@@ -1635,5 +1635,339 @@
       "status": "ready",
       "checkedAt": "2026-11-02T09:11:20.055716+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.41129",
+    "url": "https://arxiv.org/abs/2610.41129",
+    "id": "research-pcp-clarification",
+    "title": "PCP：多个 Agent 同时提问，怎样分配人的注意力？",
+    "summary": "PCP 把多个 Agent 的澄清请求统一调度，将占用同一个人的时间计入决策，而非只看单个 Agent 是否不确定。",
+    "insight": "在多 Agent 工作台同时记录用户答复等待、无阻塞工作量与检索成本，再比较集中调度和各自提问。",
+    "limits": "模型假设检索成功和人工回答均正确，关键概率已知。LLM案例是脚本化人工回答的采购任务，每种设置仅10组；尚不能证明真实用户或有错误检索时的收益。本站未复现实验。",
+    "organization": "University of Sydney / Amazon",
+    "dateLabel": "2026-10-30 · arXiv 首发",
+    "evidence": "原论文方法与实验已核验",
+    "originalTitle": "When Should AI Agents Ask? Clarification Requests Under Limited Human Attention",
+    "date": "2026-10-30",
+    "checkedAt": "2026-11-02T14:28:08.893140+00:00",
+    "originalDate": "2026-10-30",
+    "updatedAt": "2026-10-30T01:36:07Z",
+    "firstSeenAt": "2026-11-02T08:25:32Z",
+    "lastSeenAt": "2026-11-02T10:00:01Z",
+    "tags": [
+      "人机协作",
+      "多Agent调度",
+      "澄清请求"
+    ],
+    "authors": [
+      "Hanzhao Wang",
+      "Shengjie Liu",
+      "Zhengchao Wang"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2610.41129v1"
+      },
+      {
+        "label": "arXiv 原论文",
+        "url": "https://arxiv.org/abs/2610.41129"
+      },
+      {
+        "label": "arXiv 方法与实验全文",
+        "url": "https://arxiv.org/html/2610.41129v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "PCP 把多个 Agent 的澄清请求统一调度，将占用同一个人的时间计入决策，而非只看单个 Agent 是否不确定。",
+      "motivation": "一个问题得到回答会延迟其他问题；等待答复时仍可做独立工作或继续检索，因此少提问不一定意味着协作效率高。",
+      "novelty": "作者主张用成对价值差刻画人工注意力竞争，并给出特定条件下的性能保证。本站判断：值得研究的是跨任务协调信号，不宜仅把它做成单 Agent 的提问阈值。",
+      "evidenceScope": "已读取 arXiv v1 第3节模型、第5节PCP方法、第6.2节实验及第7节局限；非仅据摘要。",
+      "limits": "模型假设检索成功和人工回答均正确，关键概率已知。LLM案例是脚本化人工回答的采购任务，每种设置仅10组；尚不能证明真实用户或有错误检索时的收益。本站未复现实验。",
+      "method": [
+        "将每项任务记录为剩余独立工作、失败检索次数与问题状态，并区分搜索、通知、答复和延迟成本。",
+        "精确求解单任务与双任务子问题，用双任务成本减去两个单任务成本，估计共享人工注意力的代价。",
+        "每轮选择当前成本与预计后续成本之和较小的联合方案，决定谁搜索、谁工作、向人提出和优先回答哪些问题。",
+        "执行后更新状态；检索已解决的问题可撤回，再重新调度。"
+      ],
+      "inspirations": [
+        "在多 Agent 工作台同时记录用户答复等待、无阻塞工作量与检索成本，再比较集中调度和各自提问。",
+        "把“可以撤回的问题”和“等待时继续工作”加入对照实验，联合衡量任务完成时间与打扰成本。"
+      ],
+      "reviewedAt": "2026-11-02T14:28:08.893140+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/html/2610.41129v1",
+        "https://arxiv.org/abs/2610.41129"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.41129",
+      "status": "requires_login",
+      "checkedAt": "2026-11-02T14:31:11.571910+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.41264v1",
+    "url": "https://arxiv.org/abs/2610.41264v1",
+    "id": "research-civmarshmallow",
+    "title": "CivMarshmallow：回放未来结果，纠正长程 RL 的即时分数陷阱",
+    "summary": "CivMarshmallow 用存档分支回放的未来结果训练奖励评审器，纠正即时分数误导；中盘训练收益较强，但完整对局相对强 RL 基线的终局分数差距很小。",
+    "insight": "构造“即时指标变好、最终任务变差”的对照集，单独检验奖励模型能否发现代理指标陷阱。",
+    "limits": "预印本；策略训练限于 Freeciv、固定对手及 120 回合设置。77% 指中盘阶段增益，不是全局胜率：完整对局最佳混合奖励终局分数 23.35，scoreboard 基线 23.29，不能据此声称全面显著领先。",
+    "dateLabel": "2026-10-30 · arXiv v1",
+    "evidence": "原论文方法与评测已核验，未复现",
+    "originalTitle": "Rome Wasn't Built in One Turn: Replay-Grounded Reward Signals for Long-Horizon Freeciv Agents",
+    "date": "2026-10-30",
+    "checkedAt": "2026-11-02T14:26:48.867638+00:00",
+    "originalDate": "2026-10-30",
+    "updatedAt": "2026-10-30T05:13:31Z",
+    "firstSeenAt": "2026-11-02T08:25:32Z",
+    "lastSeenAt": "2026-11-02T10:00:01Z",
+    "tags": [
+      "Agent RL",
+      "奖励建模",
+      "可回放环境"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "arXiv 原论文 v1",
+        "url": "https://arxiv.org/abs/2610.41264v1"
+      },
+      {
+        "label": "arXiv 方法与实验全文",
+        "url": "https://arxiv.org/html/2610.41264v1"
+      },
+      {
+        "label": "作者代码库",
+        "url": "https://github.com/jamesnulliu/CivMarshmallow"
+      },
+      {
+        "label": "作者 HF 检查点集合",
+        "url": "https://huggingface.co/collections/CivMarshmallow/civmarshmallow"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "CivMarshmallow 用存档分支回放的未来结果训练奖励评审器，纠正即时分数误导；中盘训练收益较强，但完整对局相对强 RL 基线的终局分数差距很小。",
+      "motivation": "长程任务的终局反馈稀疏，而即时高分未必意味着长期更优。作者在策略游戏中观察到这种排名反转，检验能否用实际后续执行给奖励模型提供监督。",
+      "novelty": "作者主张是把可回放未来结果、成对评审和分阶段奖励结合。本站判断：最值得迁移的是奖励标签的执行依据与按阶段校准，而非把现成大模型的偏好直接当真值。",
+      "evidenceScope": "已读 arXiv v1 正文第 4—6 节及附录 B—D 的方法、实验和评测协议；未运行代码或独立复现实验。",
+      "limits": "预印本；策略训练限于 Freeciv、固定对手及 120 回合设置。77% 指中盘阶段增益，不是全局胜率：完整对局最佳混合奖励终局分数 23.35，scoreboard 基线 23.29，不能据此声称全面显著领先。",
+      "method": [
+        "CivHarness 保存 Freeciv 状态，固定种子恢复并分支回放，以后续终局分数构造成对监督。",
+        "用玩家可见的局面描述微调 Qwen2.5-7B 评审器 CivTelescope，比较两种状态的未来价值。",
+        "借助已知终局得分的参考局面，把成对偏好校准为状态势能，再以势能差构造密集训练信号。",
+        "Qwen3-8B 策略从剩余 20 回合逐步扩展到 120 回合；完整对局早期保留基础奖励，随后增加评审器权重。"
+      ],
+      "inspirations": [
+        "构造“即时指标变好、最终任务变差”的对照集，单独检验奖励模型能否发现代理指标陷阱。",
+        "把奖励选择做成阶段性决策，同时报告阶段增益、完整任务结果及回放和评审成本。"
+      ],
+      "reviewedAt": "2026-11-02T14:26:48.867638+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2610.41264v1",
+        "https://arxiv.org/html/2610.41264v1",
+        "https://github.com/jamesnulliu/CivMarshmallow",
+        "https://huggingface.co/collections/CivMarshmallow/civmarshmallow"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.41264",
+      "status": "requires_login",
+      "checkedAt": "2026-11-02T14:31:11.571910+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.35864v2",
+    "url": "https://arxiv.org/abs/2610.35864v2",
+    "id": "research-vibevideobench",
+    "title": "VibeVideoBench：代码视频的交付率，应与成片质量分开评测",
+    "summary": "评测代码视频 Agent，必须同时看能否按时交付和成片质量；VibeVideoBench 把两者分开计分。",
+    "insight": "先生成可播放基线，预留完整渲染时间，再在副本上改进，减少最后一刻无成片。",
+    "limits": "固定一小时、CPU沙箱，结论针对模型与harness整体；任务以英语为主。裁判适合系统排序，但单片判分和音画同步仍需人工复核。",
+    "dateLabel": "2026-10-27 · v2 更新",
+    "evidence": "已读原论文方法与评测协议，未复现",
+    "date": "2026-10-27",
+    "checkedAt": "2026-11-02T14:27:19.340652+00:00",
+    "originalDate": "2026-10-26",
+    "updatedAt": "2026-10-27T16:22:04Z",
+    "firstSeenAt": "2026-11-02T08:25:32Z",
+    "lastSeenAt": "2026-11-02T10:00:01Z",
+    "tags": [
+      "代码视频",
+      "交付可靠性",
+      "多模态评测"
+    ],
+    "topics": [
+      "code2motion",
+      "code2video"
+    ],
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2610.35864"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2610.35864"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://vibevideobench.github.io/"
+      },
+      {
+        "label": "arXiv v2原论文",
+        "url": "https://arxiv.org/abs/2610.35864v2"
+      },
+      {
+        "label": "原论文HTML方法与评测",
+        "url": "https://arxiv.org/html/2610.35864v2"
+      },
+      {
+        "label": "作者公开数据集",
+        "url": "https://huggingface.co/datasets/diaomuxi/vibevideobench"
+      },
+      {
+        "label": "作者代码仓库",
+        "url": "https://github.com/vibevideobench/VibeVideoBench"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "评测代码视频 Agent，必须同时看能否按时交付和成片质量；VibeVideoBench 把两者分开计分。",
+      "motivation": "静态代码或短视频指标难以覆盖有声、长时序、可修改视频的交付过程。",
+      "novelty": "作者主张将通用Agent、有声代码视频及任务级证据评测结合；本站判断，其可迁移价值是把交付可靠性纳入能力评价。",
+      "evidenceScope": "已读arXiv v2第3—5节及附录J，并交叉查看作者项目页；未复现实验。",
+      "limits": "固定一小时、CPU沙箱，结论针对模型与harness整体；任务以英语为主。裁判适合系统排序，但单片判分和音画同步仍需人工复核。",
+      "method": [
+        "将真实需求、视频描述、素材和教学资料整理为239个自包含任务，冻结交付与音频要求。",
+        "Agent 在相同一小时沙箱中自由选工具，交付MP4、源工程和时间表。",
+        "程序检查媒体规格；三组多模态裁判检查任务要求及五维质量，并要求时间段证据。",
+        "分别报告已交付样本分数和未交付计零分数，再用人类偏好核验排序。"
+      ],
+      "inspirations": [
+        "先生成可播放基线，预留完整渲染时间，再在副本上改进，减少最后一刻无成片。",
+        "为训练奖励保留规格、内容和感知质量三个分量，避免一个总分掩盖失败。",
+        "检查次数不等于有效反馈；可实验比较有证据定位的修复与反复截图自评。"
+      ],
+      "reviewedAt": "2026-11-02T14:27:19.340652+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/html/2610.35864v2",
+        "https://vibevideobench.github.io/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.35864",
+      "status": "requires_login",
+      "checkedAt": "2026-11-02T14:31:11.571910+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://openai.com/index/how-we-detect-frontier-model-misalignment/",
+    "url": "https://openai.com/index/how-we-detect-frontier-model-misalignment/",
+    "id": "update-openai-misalignment-monitoring",
+    "title": "OpenAI Agent 监控：分层复核执行证据，避免把报警直接变成 RL 奖励",
+    "summary": "OpenAI 披露覆盖训练、评测和部署的分层 Agent 监控：轻量探针筛查、模型复核、调查 Agent 重建上下文，再结合网络日志等独立证据决定是否升级处理。敏感训练任务会跳过初筛，直接进入模型复核。",
+    "insight": "本站判断：Agent RL 的训练奖励、运行时监控和事后调查应分别设计。该文选择保留触发监控样本的奖励，并异步调查，以减少模型因报警惩罚而学会隐藏行为的直接压力；评测应加入独立环境证据和对未报警样本的随机复查。",
+    "limits": "已阅读官方技术正文，未复现监控或核验内部事故。结果是厂商披露；误报影响持续人工响应，监控对未知失效仍可能漏检。异步设计降低直接选择压力，不等于消除隐藏行为动机。",
+    "organization": "OpenAI",
+    "dateLabel": "2026-10-29 · 官方技术更新",
+    "evidence": "官方技术正文已核验",
+    "date": "2026-10-29",
+    "checkedAt": "2026-11-02T14:28:08.924168+00:00",
+    "firstSeenAt": "2026-11-02T08:23:45Z",
+    "lastSeenAt": "2026-11-02T10:00:01Z",
+    "tags": [
+      "Agent RL",
+      "运行时监控",
+      "执行证据"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "OpenAI · 官方更新",
+        "url": "https://openai.com/index/how-we-detect-frontier-model-misalignment"
+      },
+      {
+        "label": "OpenAI 官方监控设计与评估说明",
+        "url": "https://openai.com/index/how-we-detect-frontier-model-misalignment/"
+      }
+    ]
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://www.anthropic.com/research/early-progress-drug-development",
+    "url": "https://www.anthropic.com/research/early-progress-drug-development",
+    "id": "showcase-claude-drug-workflows",
+    "title": "Claude 科研工作流：把实验反馈与指标重审放回 Agent 闭环",
+    "summary": "Anthropic 汇总与六家机构的药物研发合作。工作流不止生成候选方案，还涉及读取实验数据、调整评估指标、联系外部实验环节和审阅制造文档；文中明确大部分成果仍处于临床前阶段。",
+    "insight": "本站判断：值得迁移到 Agent benchmark 的是“发现指标失真—重查原始数据—修订协议—再次实验”的过程。只按终稿或单次分数评估，会遗漏 Agent 能否纠正评测方法本身，以及人与工具分别承担了什么工作。",
+    "limits": "已阅读官方案例正文，未独立读取全部合作方技术报告或复现实验。厂商案例不能推断普遍成功率；临床前结果不代表人体疗效，也不意味着 Agent 可独立替代专业人员。",
+    "organization": "Anthropic",
+    "dateLabel": "2026-10-27 · 官方案例更新",
+    "evidence": "官方案例正文已核验",
+    "date": "2026-10-27",
+    "checkedAt": "2026-11-02T14:28:08.924168+00:00",
+    "firstSeenAt": "2026-11-02T14:31:11.571910+00:00",
+    "tags": [
+      "科研Agent",
+      "实验反馈",
+      "Showcase"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "Anthropic 官方案例与局限说明",
+        "url": "https://www.anthropic.com/research/early-progress-drug-development"
+      }
+    ]
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html",
+    "url": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html",
+    "id": "update-kimi-code-240",
+    "title": "Kimi Code 2.4：跨客户端会话续接与按任务选模型",
+    "summary": "Kimi Code CLI 2.4.0 发布说明新增导入 Claude Code、Codex 最近会话并继续工作，Tower 支持为不同任务选择模型；计划模式改为由用户开启，并要求每份计划等待审阅。",
+    "insight": "本站判断：跨工具续接能力值得单独评测：导入后是否保留任务约束、工具结果与未完成动作，比“能读到历史对话”更有意义。多 Agent 结果应记录每个任务实际使用的模型，避免只凭主会话模型标签归因。",
+    "limits": "仅核验官方发布说明，未安装或测试导入、Tower 路由和计划审批；会话可导入不代表运行环境、权限或工具状态能够完整迁移。",
+    "organization": "Kimi",
+    "dateLabel": "2026-10-28 · CLI v2.4.0 更新",
+    "evidence": "官方发布说明已核验",
+    "date": "2026-10-28",
+    "checkedAt": "2026-11-02T14:28:08.924168+00:00",
+    "firstSeenAt": "2026-11-02T14:31:11.571910+00:00",
+    "tags": [
+      "Agent Harness",
+      "会话续接",
+      "多Agent"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "Kimi Code 官方发布说明",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html"
+      }
+    ]
   }
 ]
