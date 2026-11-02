@@ -1969,5 +1969,300 @@
         "url": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html"
       }
     ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.42148v1",
+    "url": "https://arxiv.org/abs/2610.42148v1",
+    "id": "research-flide-state-forking",
+    "title": "Flide：共享 Agent 状态计算，同时保持每个判断的独立语义",
+    "summary": "Flide 让共享长上下文的多个分类决策共用一次计算，同时隔离每个问题的计算路径，避免为提速而改变问题输入或概率语义。",
+    "insight": "做Agent路由或多维评审时，将一次状态的多项分类判断合批；同时测延迟、概率偏差和阈值决策翻转。",
+    "limits": "主要测单H200上的分类决策工作负载；9.5倍是特定模型与多问题设置的最高加速，不能外推自由文本生成或整项Agent任务。精确算术等价不等于默认浮点输出逐比特相同。",
+    "dateLabel": "2026-10-30 · arXiv 首发",
+    "evidence": "原论文方法与评测已核验，未复现",
+    "originalTitle": "Flide: Accelerating Decision Inference with Exact State Forking",
+    "date": "2026-10-30",
+    "checkedAt": "2026-11-02T20:21:11.365126+00:00",
+    "originalDate": "2026-10-30",
+    "updatedAt": "2026-10-30T17:59:38Z",
+    "firstSeenAt": "2026-11-02T08:23:45Z",
+    "lastSeenAt": "2026-11-02T16:00:01Z",
+    "tags": [
+      "推理加速",
+      "状态复用",
+      "决策模型"
+    ],
+    "authors": [
+      "Bobo Li",
+      "Jiajia Song",
+      "Hao Fei",
+      "Wynne Hsu",
+      "Mong Li Lee"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv 原论文",
+        "url": "https://arxiv.org/abs/2610.42148v1"
+      },
+      {
+        "label": "方法与实验全文",
+        "url": "https://arxiv.org/html/2610.42148v1"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://flide.org/"
+      },
+      {
+        "label": "作者源码",
+        "url": "https://github.com/OmniJev/flide"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Flide 让共享长上下文的多个分类决策共用一次计算，同时隔离每个问题的计算路径，避免为提速而改变问题输入或概率语义。",
+      "motivation": "Agent 对同一状态常要作多项判断；逐题推理重复前缀计算，直接拼接问题又会相互影响。混合循环层还不能仅靠注意力掩码隔离问题。",
+      "novelty": "作者主张将混合模型的状态分叉、平坦执行图和增量复用结合，并证明精确算术下等价于独立推理。本站判断：研究价值在于把共享计算与隔离语义同时作为约束。",
+      "evidenceScope": "已读arXiv v1第3节方法、第4节实验及附录F/G，并交叉查看作者项目页；未运行引擎或复现实验。",
+      "limits": "主要测单H200上的分类决策工作负载；9.5倍是特定模型与多问题设置的最高加速，不能外推自由文本生成或整项Agent任务。精确算术等价不等于默认浮点输出逐比特相同。",
+      "method": [
+        "将共享状态与问题表示为树，保持每题提示词和位置与单独运行一致，再展平成一段GPU执行流。",
+        "ForkAttention 限制注意力只能读共享主干与本分支；Gated DeltaNet 分支从同一循环状态及卷积窗口继续。",
+        "以GPU元数据描述动态分支，复用CUDA执行图，并只读取所需选项的输出。",
+        "保存共享前缀检查点，后续Agent步骤只算新增部分；可选固定归约顺序模式控制批次带来的浮点变化。"
+      ],
+      "inspirations": [
+        "做Agent路由或多维评审时，将一次状态的多项分类判断合批；同时测延迟、概率偏差和阈值决策翻转。",
+        "对增长中的轨迹缓存设计前缀一致性测试，并区分数学等价、有限精度误差与逐比特一致性。"
+      ],
+      "reviewedAt": "2026-11-02T20:21:11.365126+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/html/2610.42148v1",
+        "https://flide.org/",
+        "https://github.com/OmniJev/flide"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.42148",
+      "status": "requires_login",
+      "checkedAt": "2026-11-02T20:22:30.870292+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.41272v1",
+    "url": "https://arxiv.org/abs/2610.41272v1",
+    "id": "research-angler-reef",
+    "title": "ANGLER / REEF：用真实状态变化评测 Web Agent 的越权与恢复",
+    "summary": "ANGLER 在可重置网站中依据实际状态变化评测 Web Agent；同预算下，适应性测试发现更多越权成功，也暴露正常任务完成率下降。",
+    "insight": "为 Agent 评测同时设置任务成功、未授权状态变化、恢复三个检查器，防止把口头拒绝当安全通过。",
+    "limits": "预印本；9 个隔离仿真网站、8 种 VLM Agent 配置。平均攻击成功率 15.24%→20.36%，不能外推为真实服务风险率或纯模型排名；重复运行实验仅覆盖 Qwen3-VL。",
+    "dateLabel": "2026-10-30 · arXiv v1",
+    "evidence": "原论文方法与评测已核验，未复现",
+    "originalTitle": "ANGLER: Verifier-Grounded Benchmarking with an Adaptive Attacker for Web Agents",
+    "date": "2026-10-30",
+    "checkedAt": "2026-11-02T20:20:08.321291+00:00",
+    "originalDate": "2026-10-30",
+    "updatedAt": "2026-10-30T05:25:48Z",
+    "firstSeenAt": "2026-11-02T08:25:32Z",
+    "lastSeenAt": "2026-11-02T16:00:01Z",
+    "tags": [
+      "Web Agent",
+      "状态验证",
+      "安全评测"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "arXiv 原论文 v1",
+        "url": "https://arxiv.org/abs/2610.41272v1"
+      },
+      {
+        "label": "arXiv 方法与实验全文",
+        "url": "https://arxiv.org/html/2610.41272v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "ANGLER 在可重置网站中依据实际状态变化评测 Web Agent；同预算下，适应性测试发现更多越权成功，也暴露正常任务完成率下降。",
+      "motivation": "只看恶意文本、模型回答或固定攻击集，容易漏掉执行中的风险；交互过可疑内容，也不等于最终越权行为成功。",
+      "novelty": "作者强调固定可执行规范与适应性测试的结合。本站判断：关键价值是将风险发现建立在状态验证上，并把中间交互、持续越权和恢复分开统计。",
+      "evidenceScope": "已读 arXiv v1 第 3—6 节及附录 B.1、B.5—B.6 的方法与实验；未复现。",
+      "limits": "预印本；9 个隔离仿真网站、8 种 VLM Agent 配置。平均攻击成功率 15.24%→20.36%，不能外推为真实服务风险率或纯模型排名；重复运行实验仅覆盖 Qwen3-VL。",
+      "method": [
+        "REEF 将正常任务、越权目标与交付方式组成可执行案例，先检查网站约束和配置有效性。",
+        "每轮重置环境，分别验证正常任务完成、终止时仍存在的越权效果，以及曾出现但已恢复的效果。",
+        "ANGLER 先保证任务覆盖，再利用历史执行反馈和候选选择调整后续测试；验证规则保持固定。",
+        "在相同任务安排、Agent 配置和每站 100 次执行预算下，对比适应性、非适应性与无干扰条件。"
+      ],
+      "inspirations": [
+        "为 Agent 评测同时设置任务成功、未授权状态变化、恢复三个检查器，防止把口头拒绝当安全通过。",
+        "比较防御方案时固定任务和测试预算，同时报告安全指标与正常任务完成率，避免靠停止工作换取低风险分数。"
+      ],
+      "reviewedAt": "2026-11-02T20:20:08.321291+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2610.41272v1",
+        "https://arxiv.org/html/2610.41272v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.41272",
+      "status": "requires_login",
+      "checkedAt": "2026-11-02T20:22:30.870292+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.38231v1",
+    "url": "https://arxiv.org/abs/2610.38231v1",
+    "id": "research-3dcodeedit",
+    "title": "3DCodeEdit：代码跑通之后，怎样知道3D真的改对了？",
+    "summary": "3D代码能运行仍可能改错形状；3DCodeEdit用渲染证据区分执行成功与编辑成功。",
+    "insight": "给3D Agent反馈具体哪两个部件相交、脱离或错位，再要求局部修复。",
+    "limits": "覆盖静态Blender物体；清单不充分衡量美学、机械功能或动画。多轮结果来自312任务子集，不能与全量单次结果直接混比；模型裁判仍可能误判。",
+    "dateLabel": "2026-10-28 · arXiv 首发",
+    "evidence": "已读原论文方法与实验，未复现",
+    "date": "2026-10-28",
+    "checkedAt": "2026-11-02T20:20:56.161834+00:00",
+    "originalDate": "2026-10-28",
+    "updatedAt": "2026-10-28T03:29:59Z",
+    "firstSeenAt": "2026-11-02T20:20:56.161834+00:00",
+    "tags": [
+      "Blender程序编辑",
+      "渲染反馈",
+      "结构保留"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "sources": [
+      {
+        "label": "arXiv原论文",
+        "url": "https://arxiv.org/abs/2610.38231v1"
+      },
+      {
+        "label": "原论文HTML方法与评测",
+        "url": "https://arxiv.org/html/2610.38231v1"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://binjiew.github.io/3DCodeEdit/"
+      },
+      {
+        "label": "作者代码仓库",
+        "url": "https://github.com/BinjieW/3DCodeEdit"
+      },
+      {
+        "label": "作者公开数据集",
+        "url": "https://huggingface.co/datasets/BinjieW/3DCodeEdit"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "3D代码能运行仍可能改错形状；3DCodeEdit用渲染证据区分执行成功与编辑成功。",
+      "motivation": "真实创作需保留既有结构再修改，生成任务或固定参考图难以评估这类开放编辑。",
+      "novelty": "作者强调完整3D程序的分级编辑与无参考输出评测；本站判断，关键价值是把几何错误与语法错误分开诊断。",
+      "evidenceScope": "已读arXiv v1第3—4节与Limitations，交叉核验作者项目、代码仓库和HF数据卡；未复现。",
+      "limits": "覆盖静态Blender物体；清单不充分衡量美学、机械功能或动画。多轮结果来自312任务子集，不能与全量单次结果直接混比；模型裁判仍可能误判。",
+      "method": [
+        "将108个完整Blender程序配成2592项参数、结构、风格和场景编辑任务。",
+        "执行修改前后代码，从六个一致视角渲染，先检查可运行性。",
+        "裁判按人工审核清单检查请求的变化及未要求变化部分的保留，全部通过才算成功。",
+        "在312任务子集比较代码自查、看图自查、独立评审及文字反馈，最多修订八轮。"
+      ],
+      "inspirations": [
+        "给3D Agent反馈具体哪两个部件相交、脱离或错位，再要求局部修复。",
+        "奖励分别记录执行、目标变化与结构保留，防止重建整个物体换取局部通过。",
+        "比较独立评审与自查时固定轮数和预算，并单独统计未要求改动的损伤。"
+      ],
+      "reviewedAt": "2026-11-02T20:20:56.161834+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/html/2610.38231v1",
+        "https://binjiew.github.io/3DCodeEdit/",
+        "https://github.com/BinjieW/3DCodeEdit",
+        "https://huggingface.co/datasets/BinjieW/3DCodeEdit"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.38231",
+      "status": "requires_login",
+      "checkedAt": "2026-11-02T20:22:30.870292+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://openai.com/index/lifeval/",
+    "url": "https://openai.com/index/lifeval/",
+    "id": "research-openai-lifeval",
+    "title": "LifeVal：先问人们需要哪些帮助，再构造个人 Agent 评测",
+    "summary": "OpenAI 介绍 LifeVal，评估个人 Agent 在照护、教育、家务管理、购物和公共服务等日常任务中的能力。任务选择以美国及跨国时间使用调查为起点，再通过 3,995 人的代表性调查了解人们最希望获得哪些帮助。",
+    "insight": "本站判断：Agent benchmark 可以把任务的现实需求与执行能力分开测量。先用调查说明为什么选这些任务，再评估是否完成实际操作，能够补足单纯按模型容易量化的题型建榜的偏差。还应分别报告任务完成、需要人做出的决定和授权边界。",
+    "limits": "已读官方介绍，未复现实验。页面展示的任务分数不能直接视作真实用户场景成功率；本次可读正文未提供完整任务集、逐项评分协议、评测模型配置或独立复现结果。未把官方介绍误称为已开放 benchmark 数据集。",
+    "organization": "OpenAI",
+    "dateLabel": "2026-11-02 · 官方评测介绍",
+    "evidence": "官方评测介绍已核验",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-02T20:20:52.417927+00:00",
+    "firstSeenAt": "2026-11-02T20:22:30.870292+00:00",
+    "tags": [
+      "个人Agent",
+      "Benchmark构造",
+      "真实任务"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "OpenAI LifeVal 官方介绍",
+        "url": "https://openai.com/index/lifeval/"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/nvidia/nemotron-transcribe-granary",
+    "url": "https://huggingface.co/blog/nvidia/nemotron-transcribe-granary",
+    "id": "update-nvidia-granary-v2-agent-recipe",
+    "title": "Granary v2：显式转写目标、质量元数据与可检查的 Agent 微调流程",
+    "summary": "NVIDIA 将 Nemotron 3.5 Transcribe 与 Granary v2 数据流程配套发布。Granary v2 公开清单覆盖 48 种语言的约 46.3 万小时源语音标签，保留多种转写格式、指令目标与质量标记，并提供可由编码 Agent 调用的微调流程说明。",
+    "insight": "本站判断：可迁移的重点是把数据目标、评测切分和运行检查变成明确产物。该流程区分书面标签与 TTS 发音形式，按说话人保留测试集；Agent skill 还要求检查 checkpoint 加载覆盖、LoRA 是否真的合并，以及通用能力是否退化，避免训练跑完就宣称有效。",
+    "limits": "已读 NVIDIA 博文、官方数据卡和公开 skill 源码，未执行训练。公开仓库分发标签清单而非音频，原始音频需按来源条款另取；约46.3万小时并非全量模型训练混合。质量标记由流水线产生，不能当成人工金标；数据卡注明完整端到端运行与逐阶段脚本仍将补充。",
+    "organization": "NVIDIA",
+    "dateLabel": "2026-10-28 · 官方模型与数据发布说明",
+    "evidence": "官方博文、数据卡及流程源码已核验",
+    "date": "2026-10-28",
+    "checkedAt": "2026-11-02T20:20:52.417927+00:00",
+    "firstSeenAt": "2026-11-02T20:22:30.870292+00:00",
+    "tags": [
+      "数据清洗",
+      "合成数据",
+      "Agent训练工作流"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "NVIDIA 官方 Hugging Face 博文",
+        "url": "https://huggingface.co/blog/nvidia/nemotron-transcribe-granary"
+      },
+      {
+        "label": "Granary v2 官方数据卡",
+        "url": "https://huggingface.co/datasets/nvidia/Granary-v2"
+      },
+      {
+        "label": "NVIDIA NeMo 公开微调 Agent skill",
+        "url": "https://github.com/NVIDIA-NeMo/Speech/blob/main/.claude/skills/finetune-speech-llm/SKILL.md"
+      }
+    ]
   }
 ]
