@@ -31,6 +31,23 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
 
+      # This is the artifact build time, not a promise of deployment completion.
+      # Keep runtime-only metadata out of Git so unchanged syncs remain unchanged.
+      - name: Stamp the public build
+        run: |
+          python3 - <<'PY'
+          import datetime
+          import json
+          import os
+          from pathlib import Path
+
+          path = Path('site/publication.json')
+          publication = json.loads(path.read_text())
+          publication['builtAt'] = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z')
+          publication['commitSha'] = os.environ['GITHUB_SHA']
+          path.write_text(json.dumps(publication, indent=2) + '\n')
+          PY
+
       - name: Upload the public site only
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         with:
