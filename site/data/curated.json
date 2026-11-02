@@ -1,0 +1,1639 @@
+[
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://mistral.ai/news/mistral-large-4-oss/",
+    "url": "https://mistral.ai/news/mistral-large-4-oss/",
+    "id": "update-mistral-large4-oss",
+    "title": "Mistral Large 4：从预览到开放权重，补充 Agentic Webdev 展示",
+    "summary": "Mistral 10 月 29 日宣布开放改进后的 Large 4 权重，描述进一步 RL 带来的代码与推理效率变化；展示自主构建卫星 3D 地图等工程任务。",
+    "insight": "同一模型的预览与正式权重值得分别留档。Agentic Webdev 的可用评估应包含数据接入、浏览器自查、性能和外部审查后的修复。",
+    "limits": "开放权重公告已核验；本站未下载或测试权重。排名、效率收益及展示完成情况来自官方说明，不代表本站复现。",
+    "organization": "Mistral",
+    "dateLabel": "2026-10-29",
+    "evidence": "原始来源已核验",
+    "date": "2026-10-29",
+    "checkedAt": "2026-11-02",
+    "tags": [
+      "Mistral",
+      "Open weights",
+      "Showcase"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "开放权重与案例官方全文",
+        "url": "https://mistral.ai/news/mistral-large-4-oss/"
+      },
+      {
+        "label": "官方新闻目录（发布日期）",
+        "url": "https://mistral.ai/news/"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.39608",
+    "url": "https://arxiv.org/abs/2610.39608",
+    "id": "research-agenticds",
+    "title": "AgenticDS：选数据，先验证约束，再看训练收益",
+    "summary": "把训练目标、许可证和训练阶段变成结构化检索计划，并用可追溯证据检查候选数据集。论文同时评测检索排序与下游训练效果。",
+    "insight": "可借鉴的不是更长的搜索链，而是把“推荐数据”和“验证适用性”分开；数据平台应记录每个筛选条件的证据。",
+    "limits": "论文结果来自 HuDS-Bench 与所选数学、代码、医学任务；尚不能推出对任意训练配方都有效。本站未复现实验。",
+    "organization": "NJU Websoft",
+    "dateLabel": "2026-10-29",
+    "evidence": "原始来源已核验",
+    "date": "2026-10-29",
+    "checkedAt": "2026-11-02",
+    "originalDate": "2026-10-29",
+    "tags": [
+      "数据检索",
+      "数据质量",
+      "Search-to-train"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "arXiv 原论文",
+        "url": "https://arxiv.org/abs/2610.39608"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "AgenticDS 把训练数据搜索改造成有约束、可追溯的检索流程：模型负责解释需求，确定性程序执行检索与过滤，最终再用训练实验检查数据是否有用。",
+      "motivation": "相似的数据卡未必满足训练阶段、许可证等条件；缺失元数据也不能直接判为不相关。自由搜索 Agent 又容易自行推荐、自行宣称满足约束。",
+      "novelty": "作者主张用类型化契约连接规划、执行与证据诊断，并补上 search-to-train 评估。本站判断：值得借鉴的是约束和证据的工程接口；未独立证明其新颖性。",
+      "evidenceScope": "已读取 arXiv v1 HTML 全文中的第3节方法、第4节评估及附录I限制；不是仅据摘要扩写。",
+      "limits": "部分关系查询标签与系统使用同一知识图谱；训练效用研究每领域查询较少。仅支持所测英文 Hugging Face 场景，本站未复现实验。",
+      "method": [
+        "Planner 将需求编译为带硬约束、软偏好和允许图路径的结构化计划，并保留原始查询分支。",
+        "Engineer 执行 BM25 与向量混合检索，沿指定的一至两跳关系寻找数据集。",
+        "按证据目的分组融合排序；排除明确违规项，保留未知项及其来源链。",
+        "Critic 读取数据卡、样本与检索证据重排，输出诊断，仅允许局部修复；再以固定训练预算检验下游收益。"
+      ],
+      "inspirations": [
+        "把数据筛选拆成满足、违反、未知三态，单独评估缺失元数据造成的漏召回。",
+        "构建不依赖检索知识图谱的测试标签，并增加同领域多查询、多训练种子验证。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://arxiv.org/html/2610.39608v1",
+        "https://arxiv.org/abs/2610.39608"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.39608",
+      "status": "ready",
+      "checkedAt": "2026-11-02T08:44:48.184Z"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+    "id": "update-gemini-carbon",
+    "title": "Gemini 4 Carbon：长程工程能力更新，仍分阶段开放",
+    "summary": "Google 于 10 月 28 日发布 Carbon，重点展示长期软件工程和安全防御任务表现，并说明先向部分安全防御者和可信伙伴开放。",
+    "insight": "跟踪模型更新时同时记录“宣布、受限测试、普遍可用”三个状态；长程 showcase 应配套过程日志、失败分支与预算。",
+    "limits": "官方发布与能力主张已核验；本站未独立测试。发布不代表已在所有产品或第三方编辑器开放。",
+    "organization": "Google DeepMind",
+    "dateLabel": "2026-10-28",
+    "evidence": "原始来源已核验",
+    "date": "2026-10-28",
+    "checkedAt": "2026-11-02",
+    "tags": [
+      "Google",
+      "长程 Agent",
+      "模型发布"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "官方发布",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+      }
+    ]
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-genie-4/",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-genie-4/",
+    "id": "showcase-genie4",
+    "title": "Genie 4：可交互世界模型与 Agent 环境的连接",
+    "summary": "Google 展示自然语言实时控制场景、角色和视角，以及原生环境音与对话的交互模拟；当前面向有限测试者。",
+    "insight": "对 Agent 研究的价值在于可扩展交互环境。后续应验证状态一致性、任务可重复性和奖励可计算性，而不只看演示画面。",
+    "limits": "这是官方研究展示，尚不能证明适合作为稳定训练环境；页面说明仍在有限测试，本站未实测。",
+    "organization": "Google DeepMind",
+    "dateLabel": "2026-10-27",
+    "evidence": "原始来源已核验",
+    "date": "2026-10-27",
+    "checkedAt": "2026-11-02",
+    "tags": [
+      "Google",
+      "World model",
+      "Showcase"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "官方发布",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/introducing-genie-4/"
+      }
+    ]
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://help.openai.com/en/articles/9624314-model-release-notes",
+    "url": "https://help.openai.com/en/articles/9624314-model-release-notes",
+    "id": "update-gpt61-terra",
+    "title": "GPT-6.1 Terra：视觉推理与 Computer Use 的新选项",
+    "summary": "OpenAI 10 月 26 日发布说明确认 Terra 正在 API、ChatGPT Work 和 Codex 推出，支持视觉推理、计算机操作与写作等任务。",
+    "insight": "可加入相同工具链与预算下的视觉操作对照，分别记录任务完成、误操作、恢复能力和费用。产品可用性应与模型能力分开记录。",
+    "limits": "来源是发布说明而非统一性能评测；本站未做能力复测，账户、产品与推理地域的访问条件仍需单独确认。",
+    "organization": "OpenAI",
+    "dateLabel": "2026-10-26",
+    "evidence": "原始来源已核验",
+    "date": "2026-10-26",
+    "checkedAt": "2026-11-02",
+    "tags": [
+      "OpenAI",
+      "Computer use",
+      "模型更新"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "官方发布",
+        "url": "https://help.openai.com/en/articles/9624314-model-release-notes"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2605.24218",
+    "url": "https://arxiv.org/abs/2605.24218",
+    "id": "research-quest",
+    "title": "QUEST：用可验证的合成任务训练 Deep Research",
+    "summary": "QUEST 结合中期训练、SFT 与 RL，以统一 rubric tree 构造合成任务和可验证奖励，并公开模型、数据与训练脚本。",
+    "insight": "任务合成可以从“生成问题”升级为“同时生成评估结构”；适合研究数据覆盖、奖励可验证性与长程上下文管理的关系。",
+    "limits": "8K 任务及跨八个基准的结果是作者报告；不要将特定基准表现外推为开放世界研究可靠性。",
+    "organization": "QUEST",
+    "dateLabel": "2026-10-25 · v2 更新",
+    "evidence": "原始来源已核验",
+    "date": "2026-10-25",
+    "checkedAt": "2026-11-02",
+    "originalDate": "2026-05-22",
+    "tags": [
+      "合成数据",
+      "Deep Research",
+      "Rubric"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "arXiv 原论文",
+        "url": "https://arxiv.org/abs/2605.24218"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "QUEST 将可评分的合成研究任务、上下文压缩和 MT→SFT→RL 串起来，训练同时处理事实检索与开放报告的 Deep Research Agent。",
+      "motivation": "只合成单一标准答案的难题，难覆盖多解与报告质量；长程研究还会因网页噪声和上下文膨胀丢失证据状态。",
+      "novelty": "作者主张全合成 rubric 流程与完整训练配方；rubric tree 本身继承自 Mind2Web 2。本站判断：贡献在组合与数据构造，不能把树结构本身写成首次提出。",
+      "evidenceScope": "已读取 v2 HTML 第2节数据构造、第3节上下文、第4节训练及第7节失败尝试的相关段落。",
+      "limits": "开放报告奖励仍依赖教师参考与模型判断；自动构造不等于无需质量审计。论文效果来自指定八个基准，本站未复现。",
+      "method": [
+        "从热点主题浏览网页，生成任务和层级 rubric；客观任务配 Python 检验脚本，开放任务按维度与参考报告比较。",
+        "教师执行任务，按评分过滤轨迹；客观任务可带细粒度反馈重试，并补齐声明对应的引用。",
+        "MT 学结构化摘要和网页信息提取，SFT 学高质量轨迹；上下文压缩后按 session 组织训练。",
+        "RL 结合 rubric 与事实核验奖励；压缩状态保留可信、被反驳和待核验条目，以支持跨窗口续查。"
+      ],
+      "inspirations": [
+        "把不同证据置信状态带入长程记忆，测试压缩后错误信息是否被重新当成事实。",
+        "为开放报告同时保留程序可验项和模型判断项，分别分析奖励误差与训练收益。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://arxiv.org/html/2605.24218v2",
+        "https://arxiv.org/abs/2605.24218v2"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2605.24218",
+      "status": "ready",
+      "checkedAt": "2026-11-02T08:44:48.223Z"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://agenticrlbench.env-lab.ai/",
+    "url": "https://agenticrlbench.env-lab.ai/",
+    "id": "research-agentrl-bench",
+    "title": "AgentRL-Bench：用真实 RL 工程问题检验 Agent",
+    "summary": "项目页面列出 19 项可验证任务与 3 项开放任务，覆盖训练数据、配方、算法、基础设施、监控和评估等工程工作。",
+    "insight": "这种评测把“能提出建议”与“能修好运行中的训练系统”分开。比较结果时需要同时看任务通过条件和运行异常。",
+    "limits": "原站直读超时；内容依据官方站点搜索索引核验。排行榜依赖 Agent、模型、预算与版本，本站不据此给模型排总榜。",
+    "organization": "AgentRL-Bench",
+    "dateLabel": "2026-10-25",
+    "evidence": "官方站点搜索索引已核验",
+    "date": "2026-10-25",
+    "checkedAt": "2026-11-02",
+    "tags": [
+      "工程评测",
+      "训练调试",
+      "Verifier"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "官方发布",
+        "url": "https://agenticrlbench.env-lab.ai/"
+      }
+    ]
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://www.kimi.com/en/blog/kimi-k3-1-pro",
+    "url": "https://www.kimi.com/en/blog/kimi-k3-1-pro",
+    "id": "update-kimi-k31-pro",
+    "title": "Kimi K3.1 Pro：更大规模联合 RL，展示 3D 与长程工程",
+    "summary": "Kimi 官方介绍 K3.1 Pro 为 K3 的后训练版本，扩展联合 RL、沙箱和环境质量检查；展示游戏、Three.js 场景与人体行走模拟等任务。",
+    "insight": "对 3D 和创意 Agent，可把展示转成可复现评测：保存初始任务、素材、执行轨迹、渲染结果及逐项验收，区分视觉完成度和交互正确性。",
+    "limits": "展示与基准是厂商自述，本站未验证演示。官网称 API 与产品可用，但完整权重计划 11 月 4 日发布；截至本次核验不能写成已开放权重。",
+    "organization": "Moonshot AI",
+    "dateLabel": "2026-10-24",
+    "evidence": "原始来源已核验",
+    "date": "2026-10-24",
+    "checkedAt": "2026-11-02",
+    "tags": [
+      "Kimi",
+      "3D creation",
+      "Long-horizon"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "官方技术博客",
+        "url": "https://www.kimi.com/en/blog/kimi-k3-1-pro"
+      },
+      {
+        "label": "官方研究目录（发布日期）",
+        "url": "https://www.kimi.com/en/blog/"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/merve/train-agents",
+    "url": "https://huggingface.co/blog/merve/train-agents",
+    "id": "research-hf-curriculum",
+    "title": "Hugging Face：Agent 后训练的五阶段实践路线",
+    "summary": "课程把 Agent 后训练组织为 SFT、蒸馏、RL、交互环境与 harness/规模化，并关联代码、直播和训练器文档。",
+    "insight": "启动项目时先问监督信号从哪里来：示范轨迹、教师概率还是可验证结果。不同信号决定数据、环境与评估的投入。",
+    "limits": "这是教学路线和资源索引，不是五种方法的统一效果比较，也不保证按顺序训练就能获得前沿能力。",
+    "organization": "Hugging Face",
+    "dateLabel": "2026-10-20",
+    "evidence": "原始来源已核验",
+    "date": "2026-10-20",
+    "checkedAt": "2026-11-02",
+    "tags": [
+      "SFT",
+      "TRL",
+      "OpenEnv"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "Hugging Face 原页",
+        "url": "https://huggingface.co/blog/merve/train-agents"
+      }
+    ]
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://api-docs.deepseek.com/updates/",
+    "url": "https://api-docs.deepseek.com/updates/",
+    "id": "update-deepseek-flash1017",
+    "title": "DeepSeek Flash 1017：跟踪模型、Harness 与任务成本的共同变化",
+    "summary": "DeepSeek 10 月 17 日更新 Flash，同时公布搜索 API。官方说明称新快照提升 Agent 基准表现，并缩短任务运行时间与输出长度。",
+    "insight": "成本评估应绑定快照、harness 和任务设置；比较完成质量相同条件下的总运行成本，比单看输出 token 数更有价值。",
+    "limits": "数据为厂商报告。不同指标采用不同框架、子集或 Pass@5，不能直接混成总榜；本站未实测性能或确认所有客户端同步。",
+    "organization": "DeepSeek",
+    "dateLabel": "2026-10-17",
+    "evidence": "原始来源已核验",
+    "date": "2026-10-17",
+    "checkedAt": "2026-11-02",
+    "tags": [
+      "DeepSeek",
+      "模型更新",
+      "Token efficiency"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "官方发布",
+        "url": "https://api-docs.deepseek.com/updates/"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://huggingface.co/papers/2610.19789",
+    "url": "https://huggingface.co/papers/2610.19789",
+    "id": "research-selfdistill-reality",
+    "title": "自蒸馏 Reality Check：增益、稳定性与成本要一起比较",
+    "summary": "研究在四类 Agent 任务、三种模型规模下比较十种自蒸馏方法和 GRPO，报告没有方法在所有设置中稳定胜出，额外成本也未稳定换来收益。",
+    "insight": "新蒸馏配方应先与同条件 GRPO 基线比较，并报告随机种子、训练曲线和 GPU 时长；最终最高分不足以判断可用性。",
+    "limits": "结论仅覆盖论文所选方法、任务和配方，不能解读为自蒸馏无效；本站未复现 132 次训练实验。",
+    "organization": "Zhejiang University",
+    "dateLabel": "2026-10-14",
+    "evidence": "原始来源已核验",
+    "date": "2026-10-14",
+    "checkedAt": "2026-11-02",
+    "originalDate": "2026-10-14",
+    "tags": [
+      "Self-distillation",
+      "GRPO",
+      "对照实验"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "Hugging Face 论文页",
+        "url": "https://huggingface.co/papers/2610.19789"
+      },
+      {
+        "label": "arXiv 原论文",
+        "url": "https://arxiv.org/abs/2610.19789"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "这篇工作统一评估十种 Agent 自蒸馏方法与 GRPO，发现收益依赖设置，最终高分可能掩盖训练退化，固定步数优势也可能在同等时间预算下消失。",
+      "motivation": "既有论文常复用不同条件下的基线结果，较少同时报告重复评估、训练稳定性和实测成本，难判断新模块是否值得采用。",
+      "novelty": "作者主张贡献是系统性对照评测，而非新训练算法。本站判断：价值在把收益、稳定性与成本放入同一协议；新颖性与实现公平性仍需独立审查。",
+      "evidenceScope": "HTML 版本不可用；已读39页原论文 PDF 的第3—4节、第7节及限制段，核验了协议和成本比较定义。",
+      "limits": "八个种子是 rollout 评估，非八次独立训练；最终评估沿用固定验证任务集。各方法保留不同超参数，结论不代表所有规模和环境。",
+      "method": [
+        "组合四个文本 Agent 基准与 Qwen3.5 的 2B、4B、9B，得到十二种模型—任务设置。",
+        "每种方法运行100步，保留论文建议的方法特定配置，共132次训练；每五步验证。",
+        "训练后用八个 rollout 种子重复评估均值和标准差，测试时移除特权教师上下文。",
+        "比较验证曲线面积、峰值到最终值的退化和实测 GPU 成本，并在 GRPO 时间预算内重新比较。"
+      ],
+      "inspirations": [
+        "新蒸馏方法同时报告等步数和等时间结果，避免额外教师计算被隐藏。",
+        "增加独立训练种子，并将验证集与最终测试集分开，检查方法选择是否过拟合。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://arxiv.org/pdf/2610.19789",
+        "https://arxiv.org/abs/2610.19789"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.19789",
+      "status": "ready",
+      "checkedAt": "2026-11-02T08:44:48.278Z"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://www.anthropic.com/claude-haiku-5-5",
+    "url": "https://www.anthropic.com/claude-haiku-5-5",
+    "id": "update-claude-haiku55",
+    "title": "Claude Haiku 5.5：高频任务与子 Agent 的成本方向",
+    "summary": "Anthropic 将 Haiku 5.5 定位于摘要、压缩、查询、分类和浏览器等高频任务，并展示与大型 Claude 模型协作的子 Agent 用法。",
+    "insight": "异构多 Agent 系统可以按任务难度分工；评估时应测委派后的总耗时、返工和错误传播，而非仅看小模型单次调用价格。",
+    "limits": "性能与成本比较来自厂商发布，依赖任务与缓存条件；本站未验证真实工作流中的节省幅度。",
+    "organization": "Anthropic",
+    "dateLabel": "2026-10-07",
+    "evidence": "原始来源已核验",
+    "date": "2026-10-07",
+    "checkedAt": "2026-11-02",
+    "tags": [
+      "Anthropic",
+      "Subagent",
+      "模型发布"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "官方发布",
+        "url": "https://www.anthropic.com/claude-haiku-5-5"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2609.25611",
+    "url": "https://arxiv.org/abs/2609.25611",
+    "id": "update-qwen38-omni",
+    "title": "Qwen3.8 Omni：从多模态理解走向视频与音频任务执行",
+    "summary": "Qwen Team 技术报告介绍原生多模态联合训练，并发布 Qwen-MM-Plugins 与 Qwen-Live-Harness，面向视频编辑、翻译和实时多模态 Agent。",
+    "insight": "多模态 Agent 不只需要感知能力，也依赖工具、上下文、记忆与子 Agent 协同。可将同一任务分别评测模型理解和完整执行链路。",
+    "limits": "技术报告与官方目录已核验，未运行框架或复测视频产物；9 月 22 日是论文提交日，官网产品目录标注的发布日为 9 月 18 日。",
+    "organization": "Qwen Team",
+    "dateLabel": "2026-09-22 · 技术报告",
+    "evidence": "原始来源已核验",
+    "date": "2026-09-22",
+    "checkedAt": "2026-11-02",
+    "originalDate": "2026-09-22",
+    "tags": [
+      "Qwen",
+      "Omnimodal",
+      "Multimodal agent"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "Qwen Team 官方技术报告",
+        "url": "https://arxiv.org/abs/2609.25611"
+      },
+      {
+        "label": "官方研究目录（发布记录）",
+        "url": "https://qwen.ai/research"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Qwen3.8-Omni 把原生视听理解、跨模态训练与工具执行连接起来，面向长视频处理和实时多模态 Agent。",
+      "motivation": "会描述画面和声音，并不意味着能完成剪辑、会议整理等长程任务；把全部视频一次塞入上下文又会增加成本。作者因此同时改进模型能力、按需取证和执行框架。",
+      "novelty": "作者主张从感知型 Omni 模型推进到原生多模态任务执行。我的评述是：值得关注的是训练与执行系统的配合，单个 Showcase 无法分离模型、工具和提示词各自的贡献。",
+      "evidenceScope": "全文可读，核对了架构、预训练、后训练、长视频方法及实时框架章节，并查看官方插件 README。",
+      "limits": "报告中的能力和效率为作者实验；本次未运行插件、检查视频成品或独立复测。演示可行性不能替代稳定成功率。",
+      "method": [
+        "将图像、普通音频和空间音频编码对齐到共享骨干，保留时间信息，联合训练单模态与跨模态数据。",
+        "先由领域专家模型生成轨迹并蒸馏到统一学生，再用跨模态 RL 同时优化任务结果和多轮交互质量。",
+        "分析长视频时先粗定位，再调用工具获取相关音视频片段；必要时让子 Agent 并行分析。",
+        "通过多模态插件提供媒体读写能力；实时框架将前台对话与后台任务异步连接，并管理上下文和记忆。"
+      ],
+      "inspirations": [
+        "可为同一视频任务设置“静态全量输入”和“按需取证”对照，同时记录成功率、取证覆盖率与总成本。",
+        "可将视觉理解、工具操作、成品质量分别评分，检查“理解正确但交付失败”发生在哪一层。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://arxiv.org/html/2609.25611v1",
+        "https://github.com/QwenLM/Qwen-MM-Plugins"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2609.25611",
+      "status": "ready",
+      "checkedAt": "2026-11-02T08:44:48.386Z"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://z.ai/blog/glm-5.3",
+    "url": "https://z.ai/blog/glm-5.3",
+    "id": "update-glm53",
+    "title": "GLM-5.3：把后训练扩展重点放到可执行环境",
+    "summary": "Z.ai 的发布文章称 GLM-5.3 沿用 GLM-5.2 基座，改进来自后训练扩展；文中描述环境合成、任务可解性检查和 verifier 校验。",
+    "insight": "与纯模型榜单相比，这类技术披露更值得追踪环境质量：任务能否执行、结果能否验证、奖励捷径如何排除。",
+    "limits": "性能和训练归因是厂商自述；官方页面搜索索引可读，直读正文为空。未核验权重当前可用状态或复现实验。",
+    "organization": "Z.ai",
+    "dateLabel": "2026-08-14",
+    "evidence": "官方站点搜索索引已核验",
+    "date": "2026-08-14",
+    "checkedAt": "2026-11-02",
+    "tags": [
+      "Z.ai",
+      "环境合成",
+      "Post-training"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "官方发布",
+        "url": "https://z.ai/blog/glm-5.3"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2608.03223",
+    "url": "https://arxiv.org/abs/2608.03223",
+    "id": "research-adrs",
+    "title": "ADRS：让 token 级监督与真实回报对齐",
+    "summary": "ADRS 用训练期特权技能重评分轨迹，通过步内标准化和回报相关门控，把自蒸馏信号接入原生 RL 的奖励与优势计算。",
+    "insight": "密集监督的关键问题是“老师偏好是否与任务回报相关”；可优先消融门控和归一化，而非只比较最终分数。",
+    "limits": "作者在三个交互基准报告收益；推理时不使用特权技能。本站只核验公开论文摘要，未复现或确认跨任务普适性。",
+    "organization": "ADRS",
+    "dateLabel": "2026-08-04",
+    "evidence": "原始来源已核验",
+    "date": "2026-08-04",
+    "checkedAt": "2026-11-02",
+    "originalDate": "2026-08-04",
+    "tags": [
+      "Reward shaping",
+      "信用分配",
+      "Self-distillation"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "arXiv 原论文",
+        "url": "https://arxiv.org/abs/2608.03223"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "ADRS 用同一冻结策略在额外技能上下文中重评已采样 token，把教师偏好校准为与回报相关的信用信号，同时保持 rollout 与推理不接触技能。",
+      "motivation": "结果奖励无法细分中间决策；教师高置信也未必对应成功，而且不同步骤的原始概率尺度不同，直接蒸馏容易传递误导信号。",
+      "novelty": "作者主张将分数校准、回报相关门控和原生信用计算联合设计。本站判断：双路径避免零和信号被轨迹求和消除，是关键细节；未独立证明方法新颖性。",
+      "evidenceScope": "已读取 v1 HTML 第3—4节、附录A.4—A.7，核验双路径优势、技能匹配和 TVA 降级语义。",
+      "limits": "TVA 是批内相关性而非因果保证；L1 fallback 不含回报，不能称为 TVA 估计。实验证据限于所测三类环境，本站未复现。",
+      "method": [
+        "普通策略采集多条轨迹，记录环境回报；确定性技能提供器为任务匹配训练期指导。",
+        "冻结同一策略，对固定 token 重新评分；在每一步内中心化、归一化教师分数。",
+        "用同组教师置信度与实际回报的关系计算 TVA 门控，降低不可靠监督的权重。",
+        "保留环境决定的轨迹优势，另对白化后的教师信号做 token 级调制，再执行 GRPO/GiGPO 更新。"
+      ],
+      "inspirations": [
+        "消融门控、归一化与 token 路径，区分收益来自信息质量还是梯度尺度。",
+        "加入错误技能和稀疏回报场景，测门控是否真能抑制错误监督，并记录额外重评分成本。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://arxiv.org/html/2608.03223v1",
+        "https://arxiv.org/abs/2608.03223"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2608.03223",
+      "status": "ready",
+      "checkedAt": "2026-11-02T08:44:48.313Z"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2606.04484",
+    "url": "https://arxiv.org/abs/2606.04484",
+    "id": "research-agentjet",
+    "title": "AgentJet：解耦 rollout 与优化，让复杂 Agent 可以训练",
+    "summary": "AgentJet 通过可配置的 server/client 拓扑分离模型优化和 Agent 执行，支持异构模型、隔离运行环境、容错与可替换客户端。",
+    "insight": "研究长程 RL 时，运行时稳定性和上下文重复开销应与算法一起看；框架解耦有助于沿用真实 Agent harness。",
+    "limits": "论文中 AppWorld 的加速针对 actor-update 环节，不等同于所有任务的端到端训练加速。未复现。",
+    "organization": "AgentJet",
+    "dateLabel": "2026-07-21 · v2 更新",
+    "evidence": "原始来源已核验",
+    "date": "2026-07-21",
+    "checkedAt": "2026-11-02",
+    "originalDate": "2026-06-03",
+    "tags": [
+      "Agentic RL",
+      "异步训练",
+      "基础设施"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "arXiv 原论文",
+        "url": "https://arxiv.org/abs/2606.04484"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "AgentJet 将持有优化器的训练服务与可随时替换的 Agent 客户端分离，在兼容推理接口上捕获轨迹，使复杂 harness 能进入 RL 流程。",
+      "motivation": "真实 Agent 有环境故障、异构运行时、多模型协作与上下文压缩，集中式训练框架难同时处理；多轮重复前缀还抬高更新开销。",
+      "novelty": "作者主张把连接拓扑变成可配置训练机制，并结合时间线重建与在线替换。本站判断：系统贡献更突出，不应把现成 RL 更新算法列为新算法。",
+      "evidenceScope": "已读取 v2 HTML 第4.1—4.4节、第5.4.1节；核验 episode 生命周期、时间线合并及 AppWorld 对照。",
+      "limits": "所报6.25倍是 AppWorld 前25步的 actor-update 时间改进，不是所有训练端到端加速；任意 harness 兼容性和故障恢复仍需部署验证。",
+      "method": [
+        "按待训练模型启动 swarm server；隔离客户端运行 Agent 和环境，由控制客户端配置服务。",
+        "为每个 episode 注册独立路由，透明记录请求、token、概率与训练掩码。",
+        "客户端结束后提交奖励或丢弃信号；样本池满足条件后触发模型更新。",
+        "将前缀匹配的短时间线并入长时间线，保留生成 token 掩码；评估 episode 完成后丢弃，避免混入训练。"
+      ],
+      "inspirations": [
+        "在真实工具失败和客户端崩溃下测吞吐、样本丢失与恢复时间，补充仅看任务奖励的评测。",
+        "对含压缩、并行子 Agent 的轨迹核验合并后概率与掩码，检查效率提升是否改变监督。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://arxiv.org/html/2606.04484v2",
+        "https://arxiv.org/abs/2606.04484v2"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2606.04484",
+      "status": "ready",
+      "checkedAt": "2026-11-02T08:44:48.351Z"
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://huggingface.co/papers/2607.14777",
+    "url": "https://huggingface.co/papers/2607.14777",
+    "id": "research-seed",
+    "title": "SEED：把完成轨迹中的经验回灌为密集监督",
+    "summary": "SEED 从当前策略产生的完整轨迹中提炼 hindsight skills，再比较有无技能上下文时的动作概率，为 RL 加入 token 级监督。",
+    "insight": "教师可以是获得额外事后信息的当前策略。值得研究的是经验能否随着策略更新而演化，以及失败经验的监督是否可靠。",
+    "limits": "论文报告文本与视觉 Agent 任务收益；需要额外分析与重评分计算，不能只用样本效率推断总训练成本。未复现。",
+    "organization": "SEED",
+    "dateLabel": "2026-07-16",
+    "evidence": "原始来源已核验",
+    "date": "2026-07-16",
+    "checkedAt": "2026-11-02",
+    "originalDate": "2026-07-16",
+    "tags": [
+      "On-policy",
+      "技能蒸馏",
+      "Long-horizon"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "Hugging Face 论文页",
+        "url": "https://huggingface.co/papers/2607.14777"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://jinyangwu.github.io/seed/"
+      },
+      {
+        "label": "arXiv 原论文（首发日期）",
+        "url": "https://arxiv.org/abs/2607.14777"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "SEED 让当前策略复盘自己刚完成的轨迹，再把事后经验转成细粒度训练信号；部署时只保留学好的策略。",
+      "motivation": "长程 Agent 往往只在任务结束时拿到奖励，中间哪些动作有帮助并不清楚。固定经验库还可能跟不上策略变化，因此作者希望经验与行动能力同步更新。",
+      "novelty": "作者主张让采样分布与事后监督共同演化。我的评述是：关键不是简单复制成功轨迹，而是同一模型用额外事后信息指导自身；初始复盘能力仍来自外部监督。",
+      "evidenceScope": "核对了全文方法第 3 节、ALFWorld 消融及作者项目页；方法解释不只依据摘要。",
+      "limits": "现有证据来自作者选定的环境与模型；本次未复现。技能格式正确不保证因果归因正确，样本更省也不必然意味着训练更便宜。",
+      "method": [
+        "先收集普通策略的离线轨迹，用外部分析器生成成功经验或失败规避规则，再通过 SFT 教会策略做轨迹复盘。",
+        "每轮冻结当前策略快照，用它采集 on-policy 轨迹，也用同一快照分析完整过程、提炼事后技能。",
+        "保持已采样动作不变，由可训练策略在有无技能上下文下重评分；对数概率差经置信度门控形成蒸馏信号，教师分支停止梯度。",
+        "联合优化环境奖励驱动的 GRPO 与蒸馏目标，随后同步更新行动者和分析器；推理时移除技能分析环节。"
+      ],
+      "inspirations": [
+        "可对比冻结、延迟同步和每轮同步分析器，测量经验过时是否影响训练稳定性。",
+        "可分开评估成功与失败轨迹生成的技能，并加入错误技能对照，检查自我强化错误的风险。",
+        "报告样本效率时同时统计复盘和重评分开销，比较相同总计算预算下的收益。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://arxiv.org/html/2607.14777v1",
+        "https://jinyangwu.github.io/seed/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2607.14777",
+      "status": "ready",
+      "checkedAt": "2026-11-02T08:44:48.430Z"
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://huggingface.co/papers/2606.26790",
+    "url": "https://huggingface.co/papers/2606.26790",
+    "id": "research-opid",
+    "title": "OPID：把全局经验和关键步骤知识分层蒸馏",
+    "summary": "OPID 从 on-policy 轨迹提炼 episode 与 step 两层技能，优先为关键决策匹配局部技能，再把重评分差异转成蒸馏优势。",
+    "insight": "做数据蒸馏时可以保留“为什么这个动作关键”的局部依据，而不是只复制教师整段轨迹；分层技能提供了可消融的切入点。",
+    "limits": "作者评测限于 ALFWorld、WebShop 与搜索 QA 等设置。技能提取和关键步识别本身也可能引入错误。未复现。",
+    "organization": "OPID",
+    "dateLabel": "2026-06-25",
+    "evidence": "原始来源已核验",
+    "date": "2026-06-25",
+    "checkedAt": "2026-11-02",
+    "originalDate": "2026-06-25",
+    "tags": [
+      "Skill distillation",
+      "信用分配",
+      "On-policy"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "Hugging Face 原页",
+        "url": "https://huggingface.co/papers/2606.26790"
+      },
+      {
+        "label": "arXiv 原论文（首发日期）",
+        "url": "https://arxiv.org/abs/2606.26790"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "OPID 把一条轨迹的全局经验与关键步骤知识分开，按决策位置注入技能，再把其影响蒸馏回普通策略。",
+      "motivation": "最终奖励无法说明长轨迹中哪个决定关键；给每一步相同的总结又可能太粗。作者希望让稀疏结果反馈得到有位置、有粒度的监督补充。",
+      "novelty": "作者主张将分层技能和关键步路由用于 on-policy 蒸馏。我的评述是：可检验的新意在监督粒度与路由，而不是额外生成一套专家动作；技能仍依赖外部分析器的判断。",
+      "evidenceScope": "核对了全文第 3 节、训练与推理边界及附录分析器配置；原文包含 ALFWorld、WebShop 和搜索 QA 实验。",
+      "limits": "本次未复现。关键步识别和事后总结可能出错；额外分析与重评分应计入预算，不能直接外推到更长的真实工作流。",
+      "method": [
+        "从当前策略的完整轨迹提取两层技能：整段任务的可复用流程或避错规则，以及少量关键决策的局部知识。",
+        "采用关键步优先路由：关键位置使用对应局部技能，其他位置使用全局技能，避免把两者无差别拼接。",
+        "固定原始动作，分别在普通与技能增强上下文中重评分；token 对数概率之差作为技能优势。",
+        "将技能优势与组内归一化结果优势相加，使用裁剪策略目标优化；部署时不再调用分析器或读取事后技能。"
+      ],
+      "inspirations": [
+        "可对照随机关键步、分析器关键步和人工关键步，拆分“技能写得好”与“位置选得准”的贡献。",
+        "可在工具调用参数、停止探索和错误恢复等决策上单独评测，观察局部监督是否减少特定失败。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://arxiv.org/html/2606.26790v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2606.26790",
+      "status": "ready",
+      "checkedAt": "2026-11-02T08:44:48.466Z"
+    }
+  },
+  {
+    "sourceType": "x",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://x.com/HuggingPapers/status/2062465924117168393",
+    "url": "https://x.com/HuggingPapers/status/2062465924117168393",
+    "id": "research-drift-x",
+    "title": "DRIFT：从 X 论文线索追到轨迹中的第一处有害错误",
+    "summary": "DRIFT 将 Deep Research 轨迹拆为语义片段，追踪声明与支持证据，定位影响最终答案的错误；TELBench 提供过程级标注。",
+    "insight": "评测除了最终答案，还应定位“无依据猜测变成确定结论”的步骤。这样才能区分探索噪声、检索失败和真正的推理错误。",
+    "limits": "X 的 HuggingPapers 帖为论文传播线索，非作者实验记录；原帖仅搜索索引可读。论文已核验，所报最高增益不代表平均增益。",
+    "organization": "HuggingPapers / DRIFT",
+    "dateLabel": "2026-06-04 · X 发布",
+    "evidence": "论文原文与 X 搜索索引已核验",
+    "date": "2026-06-04",
+    "checkedAt": "2026-11-02",
+    "paperOriginalDate": "2026-06-01",
+    "paperUpdatedAt": "2026-06-02",
+    "tags": [
+      "X 论文讨论",
+      "过程评测",
+      "Deep Research"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "X 论文讨论（索引可读）",
+        "url": "https://x.com/HuggingPapers/status/2062465924117168393"
+      },
+      {
+        "label": "arXiv 原论文",
+        "url": "https://arxiv.org/abs/2606.02060"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "DRIFT 沿着“声明—证据—后续依赖”定位 Deep Research 轨迹错误，重点识别试探性猜测何时被当成确定前提。",
+      "motivation": "最终答案正确不代表过程无误，搜索失利也未必是有害错误。逐片段独立判错容易误伤正常探索，因此需要追踪声明如何进入后续推理和最终回答。",
+      "novelty": "作者主张以声明及其依赖关系审计轨迹，而非把每个片段孤立分类。我的评述是：这提供了可解释的错误定位路径，但依赖追踪仍是模型判断，不等同于干预实验的因果证明。",
+      "evidenceScope": "已读论文数据构建、DRIFT 三模块与评测协议；本次解读依据论文全文，X 帖仅作为传播入口。",
+      "limits": "基准偏向日志内可验证且边界清晰的错误，不能代表所有开放世界失败；本次未复现实验，也未把 X 转述作为实验依据。",
+      "method": [
+        "将完整轨迹切成语义片段，由模型提出候选错误、专家复核；TELBench 筛出轨迹内证据可核验的诊断实例。",
+        "Claim Keeper 通读轨迹建立声明台账，记录声明的引入位置、承诺状态以及后续使用位置。",
+        "Support Seeker 检查关键声明的支持情况，区分直接、薄弱、缺失和冲突证据；此时不直接输出错误。",
+        "Dependency Tracer 回溯风险声明是否被采纳、放大或写入答案，据此标注有害片段，并评价首错定位和片段级指标。"
+      ],
+      "inspirations": [
+        "可在 Bad Case 标注中分别记录“提出猜测”与“开始依赖猜测”，减少对合理探索的误判。",
+        "可从被定位的首错点重放，替换证据或修正声明，验证它是否真的改变最终结果。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://arxiv.org/html/2606.02060v2"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2606.02060",
+      "status": "ready",
+      "checkedAt": "2026-11-02T08:44:48.501Z"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2604.10547",
+    "url": "https://arxiv.org/abs/2604.10547",
+    "id": "research-agent2-rlbench",
+    "title": "Agent² RL-Bench：会写训练脚本，还不等于会做 RL",
+    "summary": "六项任务从静态训练延伸到含轨迹采集的在线 RL；Agent 必须在隔离工作区内训练、调试并提交可评估产物。",
+    "insight": "评估自动研究 Agent 应记录真实训练产物、迭代轨迹和预算。只检查脚本是否生成，会漏掉“没有闭合反馈循环”的失败。",
+    "limits": "作者观察到部分交互任务的大幅收益，也观察到监督路线占优和运行差异；不能把最佳单次运行当稳定能力。",
+    "organization": "Microsoft / RD-Agent",
+    "dateLabel": "2026-05-13 · v2 更新",
+    "evidence": "原始来源已核验",
+    "date": "2026-05-13",
+    "checkedAt": "2026-11-02",
+    "originalDate": "2026-04-12",
+    "tags": [
+      "RL 工程",
+      "自动研究",
+      "固定预算"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "arXiv 原论文",
+        "url": "https://arxiv.org/abs/2604.10547"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Agent² RL-Bench 检查 Agent 能否在固定预算内真正训练出更好的模型，并从执行证据区分 SFT 路线和在线 RL。",
+      "motivation": "生成训练脚本、提高最终分数，都不足以证明 Agent 会做交互式 RL。真正的难点还包括采集轨迹、处理奖励、修复训练失败并持续迭代。",
+      "novelty": "作者主张将训练结构覆盖与全过程诊断结合。我的评述是：它把“模型变好”和“完成在线 RL 工程”分开检验，比单一排行榜更有解释力，但仍混合考验规划、代码和训练稳定性。",
+      "evidenceScope": "核对了全文运行协议、结构覆盖、局限章节，以及官方 RD-Agent README 的工作区和评分流程。",
+      "limits": "论文控制实验含单次运行且只有六项任务，最佳预算内得分不等于稳定能力；不同框架和运行模式会影响结果。本次未运行训练评测。",
+      "method": [
+        "给每次运行建立隔离工作区，提供基础模型、训练数据、任务说明、评测接口和时间预算。",
+        "用六项任务覆盖静态规则奖励、静态模型裁判及交互 rollout 三层结构，要求提交实际可评估模型产物。",
+        "允许 Agent 在预算内训练、提交、获得反馈并修正，按最佳有效提交相对基础模型的提升评分。",
+        "记录代码修订、提交与模型产物，事后生成结构化报告；结合路线证据判断是否形成在线数据采集与更新闭环。"
+      ],
+      "inspirations": [
+        "可把“产生可加载模型、获得真实增益、完成在线闭环”设为三个独立验收层级，避免相互替代。",
+        "可固定驱动模型和框架，重复运行不同指令模式，并增加隐藏终评与提交次数上限，控制选优偏差。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://arxiv.org/html/2604.10547v2",
+        "https://github.com/microsoft/RD-Agent/blob/main/rdagent/scenarios/rl/autorl_bench/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2604.10547",
+      "status": "ready",
+      "checkedAt": "2026-11-02T08:44:48.530Z"
+    }
+  },
+  {
+    "sourceType": "x",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://x.com/ben_burtenshaw/status/2067615361428545566",
+    "url": "https://x.com/ben_burtenshaw/status/2067615361428545566",
+    "id": "research-x-sft",
+    "title": "X 线索：从零实现 Agent SFT 的教学材料",
+    "summary": "Hugging Face 后训练课程直接链接 Ben Burtenshaw 的 X 教学帖，主题是从零理解基于 Agent 轨迹的 SFT。",
+    "insight": "适合作为训练实现的入门阅读；结合课程中的真实代码检查监督区间和轨迹结构，再进入蒸馏与在线 RL。",
+    "limits": "X 原帖直读返回 403；链接与主题由课程原页交叉确认，未独立读取完整线程。发布日期未知。",
+    "organization": "Ben Burtenshaw",
+    "dateLabel": "发布日期未注明",
+    "evidence": "原始来源交叉核验 · X 全文受限",
+    "date": null,
+    "checkedAt": "2026-11-02",
+    "tags": [
+      "X 线索",
+      "SFT",
+      "训练实践"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "X 教学原帖（访问受限）",
+        "url": "https://x.com/ben_burtenshaw/status/2067615361428545566"
+      },
+      {
+        "label": "Hugging Face 课程交叉来源",
+        "url": "https://huggingface.co/blog/merve/train-agents"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://huggingface.co/datasets/openbmb/UltraData-SFT-Agent-2609",
+    "url": "https://huggingface.co/datasets/openbmb/UltraData-SFT-Agent-2609",
+    "id": "research-ultradata-agent",
+    "title": "UltraData Agent：把执行反馈和恢复过程纳入 SFT 数据",
+    "summary": "OpenBMB 的数据卡介绍了约 50 万条 Agent 样本，覆盖工具、搜索、代码与通用任务，并描述结果验证、轮次掩码和污染筛查。",
+    "insight": "筛选数据时应同时检查动作、观察、结果是否配对，以及失败恢复是否值得监督；“轨迹格式正确”只是第一层质量。",
+    "limits": "规模和清洗流程为发布方说明；本站未抽样复核数据质量，也未验证训练收益。页面未明确首发日期。",
+    "organization": "OpenBMB",
+    "dateLabel": "发布日期未注明",
+    "evidence": "原始来源已核验",
+    "date": null,
+    "checkedAt": "2026-11-02",
+    "tags": [
+      "Agent 数据",
+      "SFT",
+      "轨迹质量"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "Hugging Face 原页",
+        "url": "https://huggingface.co/datasets/openbmb/UltraData-SFT-Agent-2609"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://huggingface.co/datasets/while-ai/agent-simulations",
+    "url": "https://huggingface.co/datasets/while-ai/agent-simulations",
+    "id": "research-agent-simulations",
+    "title": "Agent Simulations：行为规则通过，不等于任务成功",
+    "summary": "这份 Hugging Face 数据集提供多类 Agent 的合成成功与失败轨迹，并明确说明 reward 是行为规则评分，不是任务成功真值。",
+    "insight": "为训练数据保留不同标签轴：规则合规、任务完成、证据真实性。将三者混成一个 pass 标签，会让筛选与奖励含义失真。",
+    "limits": "数据卡明确声明是生成的测试和训练数据，非人工整理真值；发布日期未注明，未进行本站质量评估。",
+    "organization": "While AI",
+    "dateLabel": "发布日期未注明",
+    "evidence": "原始来源已核验",
+    "date": null,
+    "checkedAt": "2026-11-02",
+    "tags": [
+      "合成轨迹",
+      "数据标注",
+      "质量控制"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "Hugging Face 原页",
+        "url": "https://huggingface.co/datasets/while-ai/agent-simulations"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2510.01174",
+    "url": "https://arxiv.org/abs/2510.01174",
+    "id": "creative-code2video-2025",
+    "title": "Code2Video：把教学视频写成可调试的 Manim 程序",
+    "summary": "Planner、Coder、Critic协作生成教学动画，把叙事、程序可执行性和画面布局分开处理；同时提出MMMC与TeachQuiz评测。原论文发表于2025年。",
+    "insight": "可编辑程序只是起点。章节依赖、局部修复和渲染后的空间反馈共同决定长视频能否保持结构；评测还应追问观众是否学会，而不仅是画面是否顺眼。",
+    "limits": "2025年代表作，仓库记录2026年获ICML接收；不作为2026年新论文。结果主要来自作者的MMMC评测；VLM知识测验不等同真实学习效果，人工研究规模和视频时长差异也限制外推。本站未复现。",
+    "organization": "NUS Show Lab",
+    "dateLabel": "2025-10-01 · 代表作",
+    "evidence": "原始来源已核验",
+    "date": "2025-10-01",
+    "checkedAt": "2026-11-02",
+    "originalDate": "2025-10-01",
+    "tags": [
+      "Code2Video",
+      "Manim",
+      "多Agent",
+      "教育视频",
+      "代表作"
+    ],
+    "topics": [
+      "code2video"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "论文与首次提交日期",
+        "url": "https://arxiv.org/abs/2510.01174"
+      },
+      {
+        "label": "方法全文",
+        "url": "https://arxiv.org/html/2510.01174v1"
+      },
+      {
+        "label": "作者代码与更新记录",
+        "url": "https://github.com/showlab/Code2Video"
+      },
+      {
+        "label": "官方案例",
+        "url": "https://showlab.github.io/Code2Video/"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Code2Video用三类Agent将教学主题变成可执行Manim动画。关键是把讲什么、代码能否运行、画面是否清晰拆开优化，并用教学视频基准衡量成片；它是2025年的代表性方案。",
+      "motivation": "教学视频需要公式正确、解释有顺序、图文位置可控。一次性生成代码容易报错，渲染成功也可能遮挡或布局混乱；直接让模型整段重写又会增加成本和不稳定性。",
+      "novelty": "作者主张贡献是代码式教学视频框架、分级修复、空间锚点和评测组合。我们的判断：最值得借鉴的是可定位的修复接口，而非单纯增加Agent数量；未独立证明其新颖性。",
+      "evidenceScope": "已读论文v1第3节评测、第4.1–4.3节方法与第5节实验/人工研究；另核验作者代码库和案例页。未运行代码或观看全部案例。",
+      "limits": "2025年代表作，仓库记录2026年获ICML接收；不作为2026年新论文。结果主要来自作者的MMMC评测；VLM知识测验不等同真实学习效果，人工研究规模和视频时长差异也限制外推。本站未复现。",
+      "method": [
+        "Planner先按目标受众规划章节，再把讲解句与动画配成分镜，并检索、缓存共享素材。",
+        "Coder按章节并行生成Manim；ScopeRefine先修错误行，再扩大到讲解块，最后才重建整个章节。",
+        "Critic读取视频和代码，用6×6视觉锚点与元素占位表给出可执行的位置调整，迭代渲染。",
+        "在MMMC上检查观感、时间和token成本；TeachQuiz用提示抑制先验知识后的答题增量近似知识传递。"
+      ],
+      "inspirations": [
+        "可做同预算消融：局部修复与全量重写相比，既测成本，也测未要求修改内容的漂移。",
+        "构造公式错误、瞬时遮挡和讲解错位等反例，把静态美观、时间一致性与真实学生学习收益分开验证。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://arxiv.org/html/2510.01174v1",
+        "https://github.com/showlab/Code2Video",
+        "https://showlab.github.io/Code2Video/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2510.01174",
+      "status": "ready",
+      "checkedAt": "2026-11-02T09:11:20.055716+00:00"
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://huggingface.co/sensenova/SenseNova-6.8-Code2Video",
+    "url": "https://huggingface.co/sensenova/SenseNova-6.8-Code2Video",
+    "id": "creative-sensenova-code2video",
+    "title": "SenseNova 6.8 Code2Video：开放权重、创作技能与完整制作轨迹",
+    "summary": "官方开放基于Qwen3.8-27B的代码视频模型、固定创作skill、提示增强模板及含渲染审查图的生产轨迹；支持在同一代码工程中继续修改短片。",
+    "insight": "这类发布可研究“需求展开—编码—渲染—视觉审查—返修”的完整过程。更有价值的下一步是测改动是否局部、审查是否真的发现问题，而非只挑选最终样片。",
+    "limits": "这是官方模型与工作流showcase，非已发表评测论文。官方明确仅有定性案例、尚无系统基准，生成依赖长时间运行和harness；脱敏轨迹不能原样重放。2026-10-24是HF仓库创建日，非已核实公告日。",
+    "organization": "SenseTime / OpenSenseNova",
+    "dateLabel": "2026-10-24 · HF仓库创建",
+    "evidence": "原始来源已核验",
+    "date": "2026-10-24",
+    "checkedAt": "2026-11-02",
+    "tags": [
+      "SenseNova",
+      "开放权重",
+      "程序化视频",
+      "可迭代编辑",
+      "Showcase"
+    ],
+    "topics": [
+      "code2video"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "官方模型卡与生产轨迹",
+        "url": "https://huggingface.co/sensenova/SenseNova-6.8-Code2Video"
+      },
+      {
+        "label": "官方工作流、技能与案例",
+        "url": "https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video"
+      },
+      {
+        "label": "HF元数据：仓库创建日期",
+        "url": "https://huggingface.co/api/models/sensenova/SenseNova-6.8-Code2Video"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "这是面向程序化短视频的开放模型与工具发布：模型在代码工程中生成、渲染、检查并返修画面，同时交付源码和制作记录。官方展示动效、解释视频及风格化场景，未提供系统性排行榜结果。",
+      "motivation": "程序能够显式保存文字、坐标、时长和运动参数，使创作者提出局部修改后继续处理同一个工程。项目试图把这种可编辑性变成小型开放模型能持续执行的长程创作流程。",
+      "novelty": "官方将其定位为小型开放模型进行代码视频创作的起步。我们的判断：可研究价值在模型、技能和过程证据一起公开；“首个”等宣传性优先权未在此独立验证。",
+      "evidenceScope": "已读官方GitHub的Overview、Skill、Prompt enhancement、Limitations及HF模型卡Production trajectories；这是项目说明解读，不冒充论文全文读书卡。",
+      "limits": "这是官方模型与工作流showcase，非已发表评测论文。官方明确仅有定性案例、尚无系统基准，生成依赖长时间运行和harness；脱敏轨迹不能原样重放。2026-10-24是HF仓库创建日，非已核实公告日。",
+      "method": [
+        "先用提示增强模板把短需求展开为制作说明；官方推荐强通用模型辅助，不能把所有效果都归因于视频模型。",
+        "在Agent运行环境中加载固定code-video技能，以时间函数定义帧内容，按规范编写并渲染程序。",
+        "通过联系表与实际图像进行多轮视觉审查，交付视频、规格、验证记录、源码及复现命令。",
+        "同一会话接收创作者反馈并改代码；公开JSONL记录包含工具调用、重试、压缩摘要和审查图片。"
+      ],
+      "inspirations": [
+        "建立局部改稿评测：只改配色或节奏，量化未指定文字、物体和时间点是否被误改。",
+        "用公开轨迹标注“发现缺陷—修改—复查”链条，再对比无视觉审查、不同技能与提示增强的同预算结果。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://github.com/OpenSenseNova/SenseNova-6.8-Code2Video",
+        "https://huggingface.co/sensenova/SenseNova-6.8-Code2Video",
+        "https://huggingface.co/api/models/sensenova/SenseNova-6.8-Code2Video"
+      ]
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.37690",
+    "url": "https://arxiv.org/abs/2610.37690",
+    "id": "creative-cassette-editor",
+    "title": "Cassette-Editor：让 Agent 与人共享可编辑时间线和原子提交",
+    "summary": "Agent以一个读工具和一个写工具操作持久时间线。源素材证据映射到具体片段实例；每次修改经过与人工编辑共享的校验路径，整批提交或返回定位诊断。",
+    "insight": "把结构有效性交给编辑器，将创意决策留给模型。可靠的时间映射、版本引用和可定位错误，可能比再加一个审稿Agent更直接；但合法patch仍需审看最终视听结果。",
+    "limits": "预印本只评估一个模型对277个注入故障patch的修复，且停在编译器层；修复实验没有完整时间线文档，不能推断真实创作错误率、用户满意度或审美质量。",
+    "dateLabel": "2026-10-19",
+    "evidence": "原始来源已核验",
+    "date": "2026-10-19",
+    "checkedAt": "2026-11-02",
+    "originalDate": "2026-10-19",
+    "tags": [
+      "可编辑时间线",
+      "Agent接口",
+      "原子提交",
+      "反馈修复"
+    ],
+    "topics": [
+      "video-editing"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "论文与提交日期",
+        "url": "https://arxiv.org/abs/2610.37690"
+      },
+      {
+        "label": "系统设计与实验全文",
+        "url": "https://arxiv.org/html/2610.37690v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Cassette-Editor把Agent接入真实可编辑时间线：读取和写入各一个工具，修改要么完整生效，要么带定位诊断被拒绝。核心是编辑器保障结构合法，模型负责创意与如何修复。",
+      "motivation": "同一素材经过裁剪、倒放、变速和嵌套后，原始描述未必适用于当前画面；同时，一次非法修改可能破坏时间线。仅约束输出格式不能保证引用正确，也不能避免修错时悄悄丢失意图。",
+      "novelty": "作者贡献是把证据映射、版本化读取和可修复事务组织成视频编辑接口。我们的判断：创新重心是系统边界而非新模型训练；本文未独立验证优先权。",
+      "evidenceScope": "已读v1 System Design全部子节、Controlled Repair、Discussion and Limitations及观察边界说明；277例受控修复的构造和评分边界已核验。",
+      "limits": "预印本只评估一个模型对277个注入故障patch的修复，且停在编译器层；修复实验没有完整时间线文档，不能推断真实创作错误率、用户满意度或审美质量。",
+      "method": [
+        "源素材按镜头保存检测信号；转录与镜头描述按需生成，证据绑定源坐标，并区分测量和模型解释。",
+        "读取指定帧时，按片段实例与嵌套路径回溯源时间，返回对应证据；渲染读取补充画面和投影信息。",
+        "读结果带文档版本；写入转为标准patch，经过与人工操作共享的执行器和67条规则，原子提交或拒绝。",
+        "拒绝包含错误位置、预期值与修复选项；Agent可只修订出错部分，提交后再检查渲染画面。"
+      ],
+      "inspirations": [
+        "对比全量重写和局部amend，除成功率外统计未涉及字段的误删、意图漂移和修复成本。",
+        "增加真实创作任务与编辑师盲评，分开测结构合法、源证据使用是否正确，以及最终节奏和声音质量。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://arxiv.org/html/2610.37690v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.37690",
+      "status": "ready",
+      "checkedAt": "2026-11-02T09:13:44.160959+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2609.35143",
+    "url": "https://arxiv.org/abs/2609.35143",
+    "id": "creative-timeline-bench",
+    "title": "Timeline-Bench：从原始素材到成片，评测真正的剪辑交付",
+    "summary": "56项真实任务要求从素材和brief完成视频；交付、内容、需求测试之外，加入经43位编辑师共2,582项可评估盲判校准的质量检查。",
+    "insight": "成片存在并且符合时长，不代表剪辑完成得好。评测应同时保存硬约束通过率和人类观看偏好，并允许多个有效剪法；自动质量分不能当单个视频的审美真值。",
+    "limits": "论文实验是16套Agent、每任务一次；实时官网已增至19套，勿将论文最好15/56当作当前榜首。质量校准使用同一批编辑师投票，支持Agent层面而非单片质量保证；完整素材访问受许可门槛。",
+    "organization": "TensorTest / Ritivel",
+    "dateLabel": "2026-09-28 · 论文快照",
+    "evidence": "原始来源已核验",
+    "date": "2026-09-28",
+    "checkedAt": "2026-11-02",
+    "originalDate": "2026-09-28",
+    "tags": [
+      "Benchmark",
+      "创意质量",
+      "人类偏好",
+      "端到端剪辑"
+    ],
+    "topics": [
+      "video-editing"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "论文与提交日期",
+        "url": "https://arxiv.org/abs/2609.35143"
+      },
+      {
+        "label": "构建、评分与限制全文",
+        "url": "https://arxiv.org/html/2609.35143v1"
+      },
+      {
+        "label": "官方任务与实时榜单",
+        "url": "https://timelinebench.tensortest.com/"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Timeline-Bench把56项真实剪辑委托封装成brief、素材、执行环境和评测。Agent必须完成选材、组织叙事、协调音画并导出成片；既测交付要求，也测接近真实观众体验的质量。",
+      "motivation": "视频创作有多个合理答案，单看文件格式或对齐唯一参考不足以判断作品。现有Agent可能检查了大量帧、修好了技术缺陷，却仍没有做好节奏、叙事和声音，因此需要将合规与观感分开。",
+      "novelty": "作者主张贡献是完整编辑任务与结合硬测试、人类偏好和校准裁判的协议。我们的判断：它把“完成”操作化为可复查的创意交付，但仍非单片审美真值，也未独立证明新颖性。",
+      "evidenceScope": "已读v1第2节构建/验证、第3节完整评测、第7节限制和Reproducibility Statement；官方实时榜单另行打开，明确与论文快照区分。",
+      "limits": "论文实验是16套Agent、每任务一次；实时官网已增至19套，勿将论文最好15/56当作当前榜首。质量校准使用同一批编辑师投票，支持Agent层面而非单片质量保证；完整素材访问受许可门槛。",
+      "method": [
+        "从商业项目、公开练习和定制制作整理任务，专业编辑复核brief与素材及参考成片的一致性。",
+        "用低工艺但规格合格的oracle、参考作品和单缺陷反例验证测试；参考片与Agent输入隔离。",
+        "输出依次接受交付、内容和需求检查；43位编辑师盲看成片与参考片，保留独立偏好指标。",
+        "三名多模态裁判评分标准化后聚合，以人类投票校准各集合阈值；论文报告时按Agent留出校准，再要求全部测试通过。"
+      ],
+      "inspirations": [
+        "为Code2Video增加类似双层评测：先验证文字和时序约束，再让观众比较讲解效果，避免技术合格掩盖表达失败。",
+        "做独立编辑师面板和多次运行，检验校准阈值跨模型、跨题材以及跨审美人群能否迁移。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://arxiv.org/html/2609.35143v1",
+        "https://timelinebench.tensortest.com/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2609.35143",
+      "status": "ready",
+      "checkedAt": "2026-11-02T09:11:20.055716+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.35497",
+    "url": "https://arxiv.org/abs/2610.35497",
+    "id": "creative-videoedit-credit",
+    "title": "VideoEdit：剪辑 RL 中，细粒度奖励什么时候帮忙、什么时候误导？",
+    "summary": "以选镜头、排叙事、粗剪、精剪四种任务比较结果GRPO、过程奖励和OPSD。固定过程奖励会诱发冗余推理与工具调用，逐渐衰减权重在长程精剪任务上更有效。",
+    "insight": "多看画面、多调用工具并非天然好行为：过程分升高时，成片交付率可能下降。训练应联看过程、完成率、预算截断与最终作品，而不是最大化“看起来努力”的轨迹。",
+    "limits": "主实验为Qwen3.5-9B在电影预告片任务上训练，验证来自6部未见电影。avg@4是每题4次评测，不代表4次独立训练；Fine Cut固定画面时序，收益不能直接外推到全自由剪辑或其他过程奖励。",
+    "organization": "University of Pennsylvania / Philo Labs",
+    "dateLabel": "2026-10-26",
+    "evidence": "原始来源已核验",
+    "date": "2026-10-26",
+    "checkedAt": "2026-11-02",
+    "originalDate": "2026-10-26",
+    "tags": [
+      "Agentic RL",
+      "信用分配",
+      "过程奖励",
+      "Self-distillation",
+      "电影预告片"
+    ],
+    "topics": [
+      "video-editing"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "论文与提交日期",
+        "url": "https://arxiv.org/abs/2610.35497"
+      },
+      {
+        "label": "方法、任务与实验全文",
+        "url": "https://arxiv.org/html/2610.35497v1"
+      },
+      {
+        "label": "官方任务与案例",
+        "url": "https://leizhao7.github.io/videoedit/"
+      },
+      {
+        "label": "作者训练与任务代码",
+        "url": "https://github.com/leizhao7/video-editing-credit-assignment"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "论文把电影预告片剪辑变成长程多模态RL试验场。过程奖励早期能教会检查素材，持续固定加权却可能让Agent过度推理、重复调用工具；逐渐关掉过程项可保留收益并改善交付。",
+      "motivation": "最终成片反馈稀疏，细粒度监督看似更容易训练，但“过程像好编辑”可能变成可钻空子的代理目标。作者要比较轨迹、回合和token三种信用分配，而非预设越细越好。",
+      "novelty": "作者主张贡献是剪辑任务流水线及不同信用粒度的实证边界。我们的判断：价值在揭示奖励与交付的背离；衰减日程仍需跨任务验证，不能视为普适最优，也未独立证明新颖性。",
+      "evidenceScope": "已读v1第3节信用分配、第4节环境/数据、第5节训练评测、第6.2–6.3节失败分析与结论限制；核验作者项目页和源码入口。",
+      "limits": "主实验为Qwen3.5-9B在电影预告片任务上训练，验证来自6部未见电影。avg@4是每题4次评测，不代表4次独立训练；Fine Cut固定画面时序，收益不能直接外推到全自由剪辑或其他过程奖励。",
+      "method": [
+        "对齐电影与预告片镜头，形成选材、排序、粗剪和精剪任务；筛选后用43部电影的716题训练、6部的81题验证。",
+        "Agent在OpenCode中读取媒体、操作工作区并提交作品；按任务组合确定性评分、参考辅助裁判与无参考裁判。",
+        "比较结果GRPO、固定过程项、衰减过程项及OPSD；衰减方案在第20至30次更新将过程权重降为零。",
+        "OPSD让冻结教师借助参考答案或逐回合建议指导学生，用前向KL训练；各最终模型每道验证题评测4次。"
+      ],
+      "inspirations": [
+        "用完成率、预算截断和过程—结果分差触发自适应退火，比较固定更新步数衰减，并在新电影上检验。",
+        "对代码视频制作只奖励能定位并修复真实缺陷的检查；同时测无效审查次数和视觉质量，防止“反复自查”刷分。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://arxiv.org/html/2610.35497v1",
+        "https://leizhao7.github.io/videoedit/",
+        "https://github.com/leizhao7/video-editing-credit-assignment"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.35497",
+      "status": "ready",
+      "checkedAt": "2026-11-02T09:13:44.160959+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.28416",
+    "url": "https://arxiv.org/abs/2610.28416",
+    "id": "research-code2video-compass",
+    "title": "Code2Video-Compass：把完整动效视频的可运行性、时序与设计质量一起评测",
+    "summary": "以 HTML/CSS、SVG、Canvas、Three.js 与 Remotion 生成完整视频，构建 2,104 个任务，并分开测量执行、视觉、参考一致性和时序要求。",
+    "insight": "单帧漂亮、参考片段还原和整片交付是不同能力；失败样本必须计入整体质量，才能避免只展示成功案例造成的偏差。",
+    "limits": "主实验仅使用固定 1,054 任务子集，采用单次 API 生成且无执行反馈或修复；不能直接作为多轮 Agent 工作流排名。本站未复测。",
+    "organization": "Fudan University / Sun Yat-sen University",
+    "dateLabel": "2026-10-20 · arXiv 首发",
+    "evidence": "论文方法与作者页已核验·未复测",
+    "originalTitle": "Code2Video-Compass: A Comprehensive Benchmark for General-Purpose Code-Based Video Generation across T2V, I2V, and V2V",
+    "date": "2026-10-20",
+    "checkedAt": "2026-11-02",
+    "originalDate": "2026-10-20",
+    "tags": [
+      "Remotion",
+      "Motion graphics",
+      "T2V / I2V / V2V",
+      "2026 近期论文"
+    ],
+    "topics": [
+      "code2video",
+      "code2motion"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "arXiv 论文全文",
+        "url": "https://arxiv.org/html/2610.28416"
+      },
+      {
+        "label": "作者项目页与基准说明",
+        "url": "https://code2video-compass.github.io/"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Compass 把代码视频从单一动画任务扩展为完整创作评测，覆盖文本、图像与视频参考三种输入。",
+      "motivation": "代码动效需要同时组织画面、事件顺序和跨场景状态。只看渲染成功或参考图相似度，容易遗漏“局部像，但整片没有按要求完成”的失败。",
+      "novelty": "作者主张统一多输入形式和完整视频的多层评估。本站评述：有价值的是把制作可靠性与视觉质量放在同一任务集上，但这并未证明单一综合排名适合所有创作工作流。",
+      "evidenceScope": "已核对全文第 3 节任务构建与指标、第 4.1 节实验协议、第 5 节讨论及作者项目页。",
+      "limits": "2,104 是任务总量，主实验评测 1,054 项；一次生成没有修复反馈。模型裁判经部分人评校验，仍不能替代所有风格和使用场景的判断。",
+      "method": [
+        "从独立素材和完整源视频构建任务，同一源视频派生文本、关键帧和视频参考版本；要求通过代码重建，不允许直接回放参考素材。",
+        "按构造、动态动画及状态依赖三个维度标注复杂度，覆盖十类创作内容。",
+        "用统一的网页图形与 Remotion 后端执行项目，分别记录可播放视频交付率与生成开销。",
+        "结合客观指标、要求检查和模型裁判评价整片；执行失败计入质量分母，另比较成功样本与全量尝试的结果。"
+      ],
+      "inspirations": [
+        "可在同一任务上比较一次生成和固定预算的渲染反馈迭代，判断模型排名是否随 Agent 工作流改变。",
+        "可用同源三种输入做配对分析，隔离视觉理解、动态复现和叙事组织的差异。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://arxiv.org/html/2610.28416",
+        "https://code2video-compass.github.io/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.28416",
+      "status": "ready",
+      "checkedAt": "2026-11-02T09:11:20.055716+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2606.28593",
+    "url": "https://arxiv.org/abs/2606.28593",
+    "id": "research-animation2code",
+    "title": "Animation2Code：网页动效复现中，画面相似与运动相似要分开看",
+    "summary": "将 1,069 个网页动画及其源代码配对，要求模型由视频恢复可执行 HTML/CSS/JavaScript；评价同时区分外观与运动轨迹。",
+    "insight": "动作方向、速度和相位可能在静态截图评分中完全消失。先固定渲染时钟，再分别评估外观与时序，才便于定位动效生成的短板。",
+    "limits": "数据主要来自短 CodePen 动画，不能代表全部 Manim、3D 仿真或长片任务；运动追踪对小、快、低纹理元素可能不稳定。作者页代码仍标 soon。",
+    "organization": "UC Berkeley",
+    "dateLabel": "2026-06-26 · arXiv 首发",
+    "evidence": "论文方法与作者页已核验·未复测",
+    "originalTitle": "Animation2Code: Evaluating Temporal Visual Reasoning in Video-to-Code Generation",
+    "date": "2026-06-26",
+    "checkedAt": "2026-11-02",
+    "originalDate": "2026-06-26",
+    "tags": [
+      "HTML / CSS / JavaScript",
+      "时序推理",
+      "视频到代码",
+      "2026 论文"
+    ],
+    "topics": [
+      "code2motion"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "arXiv 论文全文",
+        "url": "https://arxiv.org/html/2606.28593"
+      },
+      {
+        "label": "作者项目页与数据入口",
+        "url": "https://anya-ji.github.io/animation2code-website/"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Animation2Code 让模型从参考视频恢复网页动画程序，并把“长得像”与“动得像”拆成独立评测目标。",
+      "motivation": "静态视觉代码任务无法判断模型是否理解速度、方向和多对象时序关系；程序能运行也不意味着重现了参考运动。需要可重复渲染的受控测试。",
+      "novelty": "作者主张通过动画反渲染测试时序视觉推理。本站评述：分离外观与运动比单个图像分数更有诊断价值，但追踪器和裁剪策略也定义了基准能看见什么。",
+      "evidenceScope": "已核对全文第 2–4 节数据、确定性渲染、指标与实验设置，第 7 节限制，以及作者项目页。",
+      "limits": "样本多为短网页动画；运动轨迹提取可能出错，且裁剪评分不考查绝对页面布局。本次未运行基准，代码公开状态以作者页为准。",
+      "method": [
+        "整理公开网页动画，统一为内联 CSS/JavaScript 的自包含 HTML，去除交互触发并拆分独立动画。",
+        "使用确定性浏览器时钟逐帧渲染，形成代码与视频对；同源子样本分在同一训练或测试集合。",
+        "分别裁出运动区域，用感知特征和动态时间规整衡量外观，再用追踪点位移的相关性比较时序运动。",
+        "比较零样本、微调与迭代修正设置，并以人类偏好检查自动指标的适用性。"
+      ],
+      "inspirations": [
+        "可构造只改变速度、相位或方向的对照动画，验证评分是否对真正的运动错误敏感。",
+        "对 UI 动效补充绝对位置和布局检查，因为独立裁剪后的分数有意忽略页面中的位置偏差。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://arxiv.org/html/2606.28593",
+        "https://anya-ji.github.io/animation2code-website/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2606.28593",
+      "status": "ready",
+      "checkedAt": "2026-11-02T09:11:20.055716+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2609.36380",
+    "url": "https://arxiv.org/abs/2609.36380",
+    "id": "research-lego-anything",
+    "title": "LEGO-Anything：让编码 Agent 用 Blender 程序重建可编辑 3D 场景",
+    "summary": "编码 Agent 从单张图像反复编写、执行和检查 Blender 程序；LEGO-Bench 分别评估产物可用性、可见表面几何和渲染外观。",
+    "insight": "能交付 .blend 和 GLB，并不说明几何正确。场景迭代还需要量化参考误差和版本回滚，以免后续修饰破坏已有结构。",
+    "limits": "插件增益在 42 个 Office 案例验证；单视图几何评价不等于完整不可见结构恢复。作者项目页仍标 Code coming soon，本站未运行或复测。",
+    "organization": "University of Maryland / AWS authors",
+    "dateLabel": "2026-09-28 · arXiv 首发",
+    "evidence": "论文方法与作者页已核验·未复测",
+    "originalTitle": "LEGO-Anything: Coding Agents for 3D Scene Reconstruction",
+    "date": "2026-09-28",
+    "checkedAt": "2026-11-02",
+    "originalDate": "2026-09-28",
+    "tags": [
+      "Blender Python",
+      "Image-to-Code",
+      "场景重建",
+      "2026 论文"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "arXiv 论文全文",
+        "url": "https://arxiv.org/html/2609.36380"
+      },
+      {
+        "label": "作者项目页（非 AWS 官方站）",
+        "url": "https://lego-anything.com/"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "LEGO-Anything 将单图场景重建转成 Blender 代码迭代，并用三类指标区分“交付了文件”和“重建得准确”。",
+      "motivation": "固定三维输出不易检查和修改，编码 Agent 则能生成显式场景程序；但渲染看起来合理，仍可能掩盖几何错误及后续编辑造成的退化。",
+      "novelty": "作者主张以可执行场景程序结合端到端基准和无训练插件。本站评述：核心研究价值在可审计的三维编辑闭环，不能把高产物有效率直接解释为几何或视觉能力。",
+      "evidenceScope": "已核对全文第 3 节流程、第 4 节评分、第 5 节插件与控制实验，以及作者项目页公开状态。",
+      "limits": "主要几何分数针对参考视角可见表面；插件测试范围有限，未证明所有场景均获益。源码页面仍标即将发布，本次未复现实验。",
+      "method": [
+        "Agent 根据参考图在 Blender 中反复编辑代码、执行、查看场景和渲染，最后提交场景、导出文件与图像。",
+        "由仿真场景生成输入，私有保存几何、深度和实例真值；分别检查可用性、参考视角可见几何与重新渲染后的外观。",
+        "分析中间产物轨迹，定位初始化、退化编辑和自我评判问题；插件提供参考图引导的相机与布局初始化。",
+        "用图像区域及相对深度等测量约束修改，把每次更新视为可接受、修复或回滚的候选版本。"
+      ],
+      "inspirations": [
+        "可为 Three.js 或 Blender Agent 保留每次修改的渲染与几何指标，比较最佳中间版本和最终交付是否倒退。",
+        "可在单视图指标之外加入新视角、遮挡面和可编辑性测试，检验程序是否只拟合了一个画面。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://arxiv.org/html/2609.36380",
+        "https://lego-anything.com/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2609.36380",
+      "status": "ready",
+      "checkedAt": "2026-11-02T09:11:20.055716+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2607.01766",
+    "url": "https://arxiv.org/abs/2607.01766",
+    "id": "research-simworlds",
+    "title": "SimWorlds：程序化动态 3D 的验证，应同时看引擎状态与渲染结果",
+    "summary": "规划、编码和审查 Agent 按固定阶段构建可编辑 Blender 动态场景；确定性检查读取几何、父子关系、物理求解器和缓存等运行状态。",
+    "insight": "如果目标包含真实物理机制，几个采样帧看起来正确仍然不够。机制检查、结构检查和视觉品质应分开记录，才能用于可靠的仿真素材或训练环境。",
+    "limits": "感知与提示对齐仍依赖模型判断；4DBuildBench 仅含 50 场景，结构分数的跨系统公平性存在局限。本次未运行系统或验证产出的动画。",
+    "organization": "CMU / Harvard / UC Merced",
+    "dateLabel": "2026-07-02 · arXiv 首发",
+    "evidence": "论文方法与作者页已核验·未复测",
+    "originalTitle": "SimWorlds: A Multi-Agent System for Dynamic 3D Scene Creation",
+    "date": "2026-07-02",
+    "checkedAt": "2026-11-02",
+    "originalDate": "2026-07-02",
+    "tags": [
+      "Blender bpy",
+      "可编辑仿真环境",
+      "物理机制验证",
+      "2026 论文"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2motion"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "arXiv 论文全文",
+        "url": "https://arxiv.org/html/2607.01766"
+      },
+      {
+        "label": "作者项目页与流程说明",
+        "url": "https://dynsimworlds.github.io/"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "SimWorlds 用多 Agent 和显式场景协议生成动态 Blender 文件，让代码产生可检查的结构和物理机制。",
+      "motivation": "动态场景要协调几何、材质、运动、求解器和镜头。仅看少量渲染帧，可能把关键帧伪装的运动误认成任务要求的物理模拟。",
+      "novelty": "作者主张把分阶段执行、场景协议和引擎状态检查落实到动态三维生成。本站评述：价值在验证对象深入到机制，但规则通过仍不能推出视觉质量或用户需求全部满足。",
+      "evidenceScope": "已核对全文第 3 节方法、第 4 节机制审计与公平性说明、第 5 节限制，以及作者项目页。",
+      "limits": "视觉与语义判断仍依赖 LLM/VLM；结构指标受系统对象分组差异影响。文本生成主任务不等于单图重建，本次未复测其动画或物理场景。",
+      "method": [
+        "规划器先确定全局场景规范，再按建模、UV、材质、变形、运动、相机、灯光和渲染顺序推进。",
+        "编码器用 bpy 修改场景，确定性验证器检查分层组织、接触关系与运动阶段；失败触发有界重试或停止。",
+        "审查器结合运行状态和多视角预览判断每阶段的视觉要求，版本对应的 Blender 知识库提供接口依据。",
+        "最终同时交付动画与可编辑场景；评测以引擎机制和结构审计配合逐项视觉判断，分别报告不同层面的结果。"
+      ],
+      "inspirations": [
+        "可将仿真数据验收拆成机制、结构和视觉三份证据，避免用一项通过率代表整个素材质量。",
+        "可对已生成场景改变质量、重力或初始位置，检验运动是否仍按机制响应，而非固定动画伪装。"
+      ],
+      "reviewedAt": "2026-11-02",
+      "sourceUrls": [
+        "https://arxiv.org/html/2607.01766",
+        "https://dynsimworlds.github.io/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2607.01766",
+      "status": "ready",
+      "checkedAt": "2026-11-02T09:11:20.055716+00:00"
+    }
+  }
+]
