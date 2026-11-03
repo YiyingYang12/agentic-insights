@@ -2868,6 +2868,66 @@
     ]
   },
   {
+    "sourceType": "huggingface",
+    "category": "distillation",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2610.41216",
+    "url": "https://huggingface.co/papers/2610.41216",
+    "id": "live-bd701b3c7ea79bbc",
+    "title": "TinyAstral: Transferring Self-Evolving Harnesses to Tiny Generalist Manipulation Agents",
+    "summary": "Robot agents built on vision-language models depend on both the planner and its harness: the tools, feedback, memory, and recovery logic around it. Can improvements to a large teacher's harness be carried into a compact agent with lower inference compute cost? We present TinyAstral, a two-stage approach. We first freeze an open-weight teacher and improve its harness through recursive self-improvement (RSI): frontier LLM agents read the teacher's trajectories and propose harness edits, and each edit is accepted only if it passes a paired statistical test. We then freeze the final harness, collect teacher trajectories with reasoning and…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-10-30",
+    "evidence": "自动收录·待解读",
+    "date": "2026-10-30",
+    "checkedAt": "2026-11-03T04:00:01Z",
+    "updatedAt": "2026-10-30T03:53:42Z",
+    "firstSeenAt": "2026-11-02T08:23:45Z",
+    "lastSeenAt": "2026-11-03T04:00:01Z",
+    "dailySubmittedAt": "2026-11-03T00:00:00.000Z",
+    "tags": [
+      "Distillation"
+    ],
+    "authors": [
+      "Kehong Gong",
+      "Xiaoxu Zheng",
+      "Guanli Hou",
+      "Seunghun Lee",
+      "Mengqi Guo",
+      "Runjia Tan",
+      "Zhengyu Wen",
+      "Qi Wang",
+      "Xiaoyu He",
+      "Mingyuan Zhang",
+      "Michael Bi Mi"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2610.41216v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2610.41216"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2610.41216"
+      },
+      {
+        "label": "Project",
+        "url": "https://garfield-kh.github.io/TinyAstral/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/Garfield-kh/TinyAstral"
+      }
+    ]
+  },
+  {
     "sourceType": "arxiv",
     "category": "training",
     "verified": false,
@@ -4041,6 +4101,71 @@
       {
         "label": "arXiv · Agentic 论文",
         "url": "https://arxiv.org/abs/2610.41437v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2610.40191",
+    "url": "https://huggingface.co/papers/2610.40191",
+    "id": "live-9507acffb6734e51",
+    "title": "Video Generation Meets Agent Harness: Agentic Video Generation, Agentic World Modeling and Recursive Self-Improvement",
+    "summary": "Video generation is shifting from end-to-end synthesis toward agentic generation, where planning, tool use, and feedback enable coherent, controllable multi-shot videos. In parallel, video world models provide action-conditioned observations and predicted futures, serving as interactive environments for agents. We study their intersection through the agent harness: an executable runtime that constructs context, exposes tools, maintains state, routes feedback, and manages budgets around video models. This report examines three directions. First, agentic video generation, where harnesses coordinate scripting, shot planning, asset management…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-10-29",
+    "evidence": "自动收录·待解读",
+    "date": "2026-10-29",
+    "checkedAt": "2026-11-03T04:00:01Z",
+    "firstSeenAt": "2026-11-03T04:00:01Z",
+    "lastSeenAt": "2026-11-03T04:00:01Z",
+    "dailySubmittedAt": "2026-11-03T00:00:00.000Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Liaoyuan Fan",
+      "Yuhao Zheng",
+      "Dongxing Mao",
+      "Hangyu Ran",
+      "Siyuan Hu",
+      "Weijia Mao",
+      "Rui Zhao",
+      "Weijia Wu",
+      "Guian Fang",
+      "Yanzhe Chen",
+      "Zeyu Zhu",
+      "Yuxin Jiang",
+      "Yiren Song",
+      "Yuchao Gu",
+      "Junchao Yi",
+      "Qi Hu",
+      "Dan Kong",
+      "Alex Jinpeng Wang",
+      "Kevin Qinghong Lin",
+      "Mike Zheng Shou",
+      "Wei Liu"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2610.40191"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2610.40191"
+      },
+      {
+        "label": "Project",
+        "url": "https://agentic-videogen.github.io/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/agentic-videogen/awesome-agentic-videogen"
       }
     ]
   },

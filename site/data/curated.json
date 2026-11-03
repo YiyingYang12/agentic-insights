@@ -2264,5 +2264,241 @@
         "url": "https://github.com/NVIDIA-NeMo/Speech/blob/main/.claude/skills/finetune-speech-llm/SKILL.md"
       }
     ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.41482v1",
+    "url": "https://arxiv.org/abs/2610.41482v1",
+    "id": "research-keeper-memory",
+    "title": "KEEPER：任务得分提高，是否真的代表 Agent 记忆更可靠？",
+    "summary": "在共同记忆接口下比较四种辅助监督：奖励相关预测表现最好，但任务分数不能证明记忆错误被纠正。",
+    "insight": "把旧错误持续、纠正后复发、无声遗漏与有效事实保留分别计量，避免将忘掉问题视为修复。",
+    "limits": "两个模型、同一Agent架构；错误追踪仅一条事后挑选的基线轨迹，不能估计普遍发生率。",
+    "dateLabel": "arXiv 首发",
+    "evidence": "已读原论文方法与实验，未复现",
+    "originalTitle": "KEEPER: Learning Control-Sufficient Textual Memory for Long-Horizon LLM Agents",
+    "date": "2026-10-30",
+    "checkedAt": "2026-11-03T06:17:32Z",
+    "updatedAt": "2026-10-30T09:36:06Z",
+    "firstSeenAt": "2026-11-02T08:23:45Z",
+    "lastSeenAt": "2026-11-02T22:00:01Z",
+    "tags": [
+      "递归记忆",
+      "辅助监督",
+      "长期Agent"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "arXiv原论文",
+        "url": "https://arxiv.org/abs/2610.41482v1"
+      },
+      {
+        "label": "原论文方法与实验",
+        "url": "https://arxiv.org/html/2610.41482v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "KEEPER比较记忆训练目标；得分更高与记忆更可信，需要分别验证。",
+      "motivation": "递归摘要可能继承旧错误；删除历史又可能同时损失正确事实。",
+      "novelty": "作者主张以共同接口拆分信息内容与更新敏感性。本站判断：价值在于明确区分表征约束、文本正确性和行动收益。",
+      "evidenceScope": "已读arXiv v1第3—4节及Limitations；未运行训练。",
+      "limits": "共享参数使收益不能单归因记忆；仅一条事后选取的错误轨迹；扰动惩罚不保证生成记忆收敛。",
+      "method": [
+        "固定STEP-HRL递归接口，用旧记忆、动作和新观察生成记忆。",
+        "在模仿学习中分别加入奖励预测、后继预测、语义对齐或扰动稳定约束，并比较联合训练。",
+        "固定后续离线RL流程，在ScienceWorld和ALFWorld比较完整Agent得分。",
+        "按声明追踪一条基线轨迹的错误持续、复发和遗漏。"
+      ],
+      "inspirations": [
+        "对同一历史注入一条错误与一条正确事实，分别测纠错率和事实保留率。",
+        "冻结控制器后再比较记忆训练，减少共享参数对因果解释的干扰。"
+      ],
+      "reviewedAt": "2026-11-03T06:17:32Z",
+      "sourceUrls": [
+        "https://arxiv.org/html/2610.41482v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.41482",
+      "status": "pending",
+      "checkedAt": "2026-11-03T06:22:45.778417+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.41697v1",
+    "url": "https://arxiv.org/abs/2610.41697v1",
+    "id": "research-tsbpo",
+    "title": "TSBPO：先采到有分歧的结局，再给长程 Agent 分配信用",
+    "summary": "TSBPO 把采样预算、长程信用分配与整轮响应的损失聚合连成训练闭环；关键是实际回放产生不同结局，再用这些结局训练 Agent。",
+    "insight": "为可回放环境保留状态快照、实际历史和剩余步数，区分“当前文字相同”与“真实状态相同”。",
+    "limits": "仅两种环境、一个 1.5B actor，每配置单次训练。WebShop 81.07% 是 500 个目标各六次的逐次成功率，不是六次择优；监控与终评共享目标池。文献基线协议不同，任务 bootstrap 不代表训练种子稳定性。",
+    "dateLabel": "2026-10-30 · arXiv v1",
+    "evidence": "原论文方法与评测已核验，未复现",
+    "originalTitle": "TSBPO: Tree-Structured Branching for Policy Optimization in Interactive Language Agents",
+    "date": "2026-10-30",
+    "checkedAt": "2026-11-03T06:17:55.846657+00:00",
+    "originalDate": "2026-10-30",
+    "updatedAt": "2026-10-30T13:04:05Z",
+    "firstSeenAt": "2026-11-02T08:23:45Z",
+    "lastSeenAt": "2026-11-03T04:00:01Z",
+    "tags": [
+      "Agent RL",
+      "树形采样",
+      "信用分配"
+    ],
+    "authors": [
+      "Rui Yu",
+      "Chong Mu",
+      "Jinchuan Zhang"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "arXiv 原论文 v1",
+        "url": "https://arxiv.org/abs/2610.41697v1"
+      },
+      {
+        "label": "原论文 PDF 方法与实验",
+        "url": "https://arxiv.org/pdf/2610.41697v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "TSBPO 把采样预算、长程信用分配与整轮响应的损失聚合连成训练闭环；关键是实际回放产生不同结局，再用这些结局训练 Agent。",
+      "motivation": "只有终局成败时，训练仍不知道该在哪些任务或中间状态追加尝试，也难分清哪些动作应获奖励；不同响应长度还会改变策略更新权重。",
+      "novelty": "作者主张将结局对照采样、物理树局部信用和完整响应更新统一起来。本站判断：价值在三者的接口设计，现有实验不足以把整体收益单独归因于任一模块。",
+      "evidenceScope": "已读 arXiv v1 PDF 正文第 3—9 节及附录 A 的方法、实验协议与局限；HTML 版本返回 404，未运行代码或复现实验。",
+      "limits": "仅两种环境、一个 1.5B actor，每配置单次训练。WebShop 81.07% 是 500 个目标各六次的逐次成功率，不是六次择优；监控与终评共享目标池。文献基线协议不同，任务 bootstrap 不代表训练种子稳定性。",
+      "method": [
+        "先用成功的教师交互轨迹，对 Qwen2.5-1.5B 做环境协议 SFT；在线 RL 的结果标签由环境给出。",
+        "Root 分配任务尝试，Branch 恢复实际状态与历史，在原剩余步数内追加分支，优先获取结局不同的对照。",
+        "终局反馈形成直接兄弟分支间的轨迹优势，再加入同任务、同观测分组的步骤优势；采样预测值不充当奖励。",
+        "每个完整响应内累加 token 的裁剪策略损失，再按有效交互轮数归一化，而非先按各响应长度平均。"
+      ],
+      "inspirations": [
+        "为可回放环境保留状态快照、实际历史和剩余步数，区分“当前文字相同”与“真实状态相同”。",
+        "同时记录预算、可比较分支比例、命令有效率和预测校准，定位训练缺少有效信号的环节。",
+        "测试损失归一化时补做学习率和正则强度对照，区分响应权重变化与梯度尺度变化。"
+      ],
+      "reviewedAt": "2026-11-03T06:17:55.846657+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2610.41697v1",
+        "https://arxiv.org/pdf/2610.41697v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.41697",
+      "status": "pending",
+      "checkedAt": "2026-11-03T06:22:45.778417+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.30753v1",
+    "url": "https://arxiv.org/abs/2610.30753v1",
+    "id": "research-filmflow",
+    "title": "FilmFlow：把3D运镜写成可并发、可修订的操作时间线",
+    "summary": "FilmFlow让Agent把运镜意图写成可执行的3D相机操作时间线，再用实际渲染反馈修订。",
+    "insight": "把移动、跟踪和构图锁定拆成独立控制通道，单独测试并发区间的冲突。",
+    "limits": "依赖既有Blender场景和GPT-6-Astra；测试为500项文本任务与40项参考视频任务。内部接受仍可能残留构图缺陷。官网代码和CinemaBench仍待开放，尚不可复现完整流水线。",
+    "dateLabel": "2026-10-22 · arXiv 首发（本轮补录）",
+    "evidence": "已读原论文方法与实验，代码待开放，未复现",
+    "date": "2026-10-22",
+    "checkedAt": "2026-11-03T06:17:46.377272+00:00",
+    "originalDate": "2026-10-22",
+    "updatedAt": "2026-10-22T05:22:16Z",
+    "firstSeenAt": "2026-11-03T06:17:46.377272+00:00",
+    "tags": [
+      "程序化运镜",
+      "Blender",
+      "并发时间线"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2motion"
+    ],
+    "sources": [
+      {
+        "label": "arXiv原论文",
+        "url": "https://arxiv.org/abs/2610.30753v1"
+      },
+      {
+        "label": "原论文HTML方法与实验",
+        "url": "https://arxiv.org/html/2610.30753v1"
+      },
+      {
+        "label": "作者项目页（代码/基准待开放）",
+        "url": "https://visionary-laboratory.github.io/Filmflow/"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "FilmFlow让Agent把运镜意图写成可执行的3D相机操作时间线，再用实际渲染反馈修订。",
+      "motivation": "动态主体、构图约束和同时发生的运镜动作，需要统一协调位置、朝向与焦距。",
+      "novelty": "作者强调动态场景中的并发原子运镜和渲染反馈；本站判断，可编辑操作时间线是值得迁移到代码动效的接口设计。",
+      "evidenceScope": "已读arXiv v1方法、实验、附录A.1/A.3/B.1，并核验作者项目页；未运行或复现实验。",
+      "limits": "依赖既有Blender场景和GPT-6-Astra；测试为500项文本任务与40项参考视频任务。内部接受仍可能残留构图缺陷。官网代码和CinemaBench仍待开放，尚不可复现完整流水线。",
+      "method": [
+        "Interpreter将文本或参考视频中的意图映射到既有3D场景对象。",
+        "Scout渲染并比较开场机位，选定后保持该初始状态。",
+        "Director安排可重叠的原子操作，组合相机轨迹并烘焙关键帧。",
+        "先检查执行有效性与碰撞，再由Critic看渲染结果，修订操作、参数和时间区间。"
+      ],
+      "inspirations": [
+        "把移动、跟踪和构图锁定拆成独立控制通道，单独测试并发区间的冲突。",
+        "记录操作对应的渲染帧与屏幕空间误差，让反馈定位到具体参数或时间段。",
+        "用独立评价器和盲评检查成片；不要直接把内部Critic通过率当最终质量。"
+      ],
+      "reviewedAt": "2026-11-03T06:17:46.377272+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/html/2610.30753v1",
+        "https://visionary-laboratory.github.io/Filmflow/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.30753",
+      "status": "pending",
+      "checkedAt": "2026-11-03T06:22:45.778417+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://openai.com/index/scaling-git-at-openai/",
+    "url": "https://openai.com/index/scaling-git-at-openai/",
+    "id": "update-openai-pando-agent-scale-git",
+    "title": "Pando：并行编码 Agent 需要怎样的 Git 基础设施",
+    "summary": "OpenAI 介绍已用于内部 monorepo 的 Pando：按分支独立协调写入，复用 packfile 并通过区域缓存服务读取，以承接大量并行编码 Agent。官方称生产环境中位 push 延迟降低近五倍。",
+    "insight": "本站判断：并行 Agent 的瓶颈会移到代码分发与 CI。评估扩容时应同时测提交至可拉取的延迟、共享缓存命中及一致性边界；验证 Agent 生成的基础设施，可结合协议一致性测试、确定性模拟与形式化不变量。",
+    "limits": "官方内部工程结果，未独立复现或证明适用于所有仓库。跨分支读取不保证同一时刻快照，复用 pack 可能增加客户端流量；页面交互图是教学模拟，不能当生产 benchmark。文章未提供可直接部署的 Pando 产品。",
+    "organization": "OpenAI",
+    "dateLabel": "2026-11-02 · 官方工程介绍",
+    "evidence": "官方架构、验证与部署章节已核验，未复现",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-03T06:21:54.990731+00:00",
+    "firstSeenAt": "2026-11-03T06:22:45.778417+00:00",
+    "tags": [
+      "Agent基础设施",
+      "并行编码",
+      "环境扩展",
+      "执行验证"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "OpenAI Pando 官方工程文章",
+        "url": "https://openai.com/index/scaling-git-at-openai/"
+      }
+    ]
   }
 ]
