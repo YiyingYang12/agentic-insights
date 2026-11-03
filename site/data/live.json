@@ -2500,6 +2500,73 @@
     ]
   },
   {
+    "sourceType": "huggingface",
+    "category": "data",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.03126",
+    "url": "https://huggingface.co/papers/2611.03126",
+    "id": "live-c2172a9f8d454e10",
+    "title": "CUA-Master: Scaling Computer-use Agents through Open-World Recursive Improvements",
+    "summary": "Despite recent advances in CUAs, their development remains constrained by the limited diversity, controllability, and reliability of interaction data. Moreover, conventional optimization pipelines lack iterative feedback, while existing recursive improvement approaches often rely on self-generated experiences, limiting ability expansion and yielding diminishing returns. To address these challenges, we introduce CUA-Master, a nested double-loop recursive improvement framework. At the system level, an outer world-data-model flywheel continuously incorporates open-world corpus and leverages evolving model weaknesses to guide subsequent data…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-02",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-03T10:00:01Z",
+    "updatedAt": "2026-11-02T13:41:14Z",
+    "firstSeenAt": "2026-11-03T10:00:01Z",
+    "lastSeenAt": "2026-11-03T10:00:01Z",
+    "dailySubmittedAt": "2026-11-03T00:00:00.000Z",
+    "tags": [
+      "Data"
+    ],
+    "authors": [
+      "Xinlei Yu",
+      "Gen Li",
+      "Ji Zhao",
+      "Zhangquan Chen",
+      "Congcong Wang",
+      "Shuai Dong",
+      "Zelin Peng",
+      "Yuqi Xu",
+      "Hongrui Wu",
+      "Kaiwen Tuo",
+      "Cheng Yang",
+      "Kaituo Feng",
+      "Yifan Wu",
+      "Jiayi Zhang",
+      "Dongming Wu",
+      "Wenqi Shao",
+      "Jiaqi Wang",
+      "Xiangyu Yue"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.03126v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.03126"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.03126"
+      },
+      {
+        "label": "Project",
+        "url": "https://xlyu0106.github.io/CUA-Master/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/xlyu0106/CUA-Master"
+      }
+    ]
+  },
+  {
     "sourceType": "arxiv",
     "category": "benchmark",
     "verified": false,
@@ -2874,6 +2941,80 @@
       {
         "label": "OpenAI · 官方更新",
         "url": "https://openai.com/index/qodo-codex-plugin"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "training",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.02102",
+    "url": "https://huggingface.co/papers/2611.02102",
+    "id": "live-ec28daef7d46d3d9",
+    "title": "NorthCUA Technical Report: Turbocharging Computer-Use Agents through Experience at Scale",
+    "summary": "Scaling computer-use agents from individual actions to complex software work requires experience that connects decisions to complete outcomes. We present NorthCUA, an integrated system for turbocharging computer-use agents through experience at scale. Its Experience Flywheel supplies diverse executable tasks to the NorthCUA Harness, which sustains long interactions, records decisions, and checks task outcomes. The Flywheel uses these records to curate verified trajectories. For unsolved tasks, recursive self-improvement evolves reusable skills and preserves verified milestones so later attempts build on earlier progress. Staged Learning…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-01",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-01",
+    "checkedAt": "2026-11-03T10:00:01Z",
+    "firstSeenAt": "2026-11-03T10:00:01Z",
+    "lastSeenAt": "2026-11-03T10:00:01Z",
+    "dailySubmittedAt": "2026-11-03T00:00:00.000Z",
+    "tags": [
+      "Training / RL"
+    ],
+    "authors": [
+      "Chaoyun Zhang",
+      "Bingxuan Li",
+      "Pinxue Guo",
+      "Yangfan Gao",
+      "Zikun Cai",
+      "Tianci Xie",
+      "Hui Li",
+      "Yuqi Huang",
+      "Yifei Cao",
+      "Bo Mao",
+      "Tian Tang",
+      "Qichang Zheng",
+      "Tongtong Liu",
+      "Xiaoxing Wang",
+      "Jinxiu Liu",
+      "Lizhi Lin",
+      "Zhou Shao",
+      "Maosen Zhou",
+      "Miao Zheng",
+      "Shuo Zhang",
+      "Yangji He",
+      "Kepeng Lei",
+      "Ning Zhao",
+      "Wei Shen",
+      "Zhenjiang Jin",
+      "Xinyue Zhang",
+      "Peng Sun",
+      "Zhenhua Han",
+      "Rui Zheng",
+      "Hang Yan"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.02102"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.02102"
+      },
+      {
+        "label": "Project",
+        "url": "https://beipo.top/blog/northcua/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/beipo-ai/NorthCUA"
       }
     ]
   },

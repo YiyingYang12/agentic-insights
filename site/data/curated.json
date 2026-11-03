@@ -2789,5 +2789,231 @@
         "url": "https://huggingface.co/datasets/huggingface-mic/transformers-fleet"
       }
     ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.03634v1",
+    "url": "https://arxiv.org/abs/2611.03634v1",
+    "id": "research-webharbor-resettable-web-environments",
+    "title": "WebHarbor：把153个网站做成可重置的网页Agent训练环境",
+    "summary": "WebHarbor通过任务驱动的人机协作重建153个网站、3518项任务，支持登录和持久状态交互；重点是可审计和可重置，而非自动完整复制真实网站。",
+    "insight": "把环境建设拆成任务覆盖、视觉保真、功能深度和状态验证四项独立检查；训练环境与真实网站之间的泛化仍需单独测量。",
+    "limits": "只训练了一个4B模型；重建站点是近似环境，部分动态功能用静态代理。线上成绩排除了无效运行，部分基线引用既有论文；不能据此推断所有模型、网站或RL算法都会受益。未复现。",
+    "dateLabel": "2026-11-02 · arXiv v1",
+    "evidence": "已读原论文方法、实验及限制，未复现",
+    "originalTitle": "WebHarbor: Docking Real Websites for Evolving GUI Agent Environments",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-03T14:35:54.797969+00:00",
+    "originalDate": "2026-11-02",
+    "updatedAt": "2026-11-02T18:57:36Z",
+    "firstSeenAt": "2026-11-03T10:00:01Z",
+    "lastSeenAt": "2026-11-03T10:00:01Z",
+    "tags": [
+      "Web Agent",
+      "可重置环境",
+      "状态验证",
+      "RL"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "arXiv 原论文 v1",
+        "url": "https://arxiv.org/abs/2611.03634v1"
+      },
+      {
+        "label": "原论文 PDF",
+        "url": "https://arxiv.org/pdf/2611.03634v1"
+      },
+      {
+        "label": "作者官方仓库",
+        "url": "https://github.com/aiming-lab/WebHarbor"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://aiming-lab.github.io/WebHarbor/"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "用任务驱动的人机协作重建153个网站，获得可重置、可验证状态的网页Agent训练环境。",
+      "motivation": "真实网站会变化、受登录和速率限制，难以重复执行会修改状态的任务；小型模拟站点又容易缺少视觉和操作复杂度。",
+      "novelty": "作者主张用任务驱动的重建和人工审核，在网页真实感与可控训练之间取得平衡。本站判断：值得复用的是可重置状态与分层审计协议；论文并未证明能自动完整复制任意网站。",
+      "evidenceScope": "已读arXiv v1 PDF第3节方法、第4节实验及Limitations（正文第4—10页），核验作者仓库和项目页；未运行环境或复现实验。",
+      "limits": "只训练一个4B模型，没有跨模型或RL算法验证。网站重建仅覆盖目标任务，部分动态信息被静态代理；线上实验排除验证码等无效运行，部分对照成绩来自旧论文。人工审核与LLM判分也不能保证环境完全等价。",
+      "method": [
+        "先规定任务入口、终点、实体、动作和持久状态变化，保留替代路径与近似干扰项，再由编码Agent观察真实网页并重建本地应用和数据库。",
+        "反复执行任务，在首个不支持的状态修补功能；人工审核视觉、功能和任务有效性，通过种子状态重置支持重复运行。",
+        "构建153站点、3518任务；123站点上的2288任务用于训练，另留30站点。跨全体153站点每站筛出2项任务，共306项，做脚本验证与Agent判断的对照评测。",
+        "从同一4B SFT底座进行MM-GRPO训练，训练奖励使用格式门控和LLM任务判断；分别测本地环境与真实WebVoyager、Online-Mind2Web上的泛化。"
+      ],
+      "inspirations": [
+        "环境构建应覆盖失败状态、近似选项和持久写入，防止Agent通过简化页面的捷径获得虚高成功率。",
+        "分开测未知网站泛化、任务完成率和判分一致性；本文4B模型的脚本验证成功率30.0%、Agent判分41.5%，两种分数不可互换。",
+        "报告完整重置链路的时间和无效运行分母：本文端到端重置中位数约6秒，不能把局部数据库重置速度当作整体吞吐。"
+      ],
+      "reviewedAt": "2026-11-03T14:35:54.797969+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/pdf/2611.03634v1",
+        "https://github.com/aiming-lab/WebHarbor",
+        "https://aiming-lab.github.io/WebHarbor/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.03634",
+      "status": "pending",
+      "checkedAt": "2026-11-03T14:36:24.568903+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.00244v1",
+    "url": "https://arxiv.org/abs/2611.00244v1",
+    "id": "research-memento-context-management-2611-00244",
+    "title": "MEMENTO：先教会记笔记，再用 RL 学会跨窗口继续工作",
+    "summary": "MEMENTO 先用事后补写笔记的轨迹教 Qwen3-8B 保存进度，再用 RL 训练。作者在四个书籍 QA 集报告：同推理框架准确率从 36.9% 到 67.8%，即时上下文不超过约 20K tokens。",
+    "insight": "训练长任务 Agent 前先补足“何时保存、保存什么、如何恢复”的成功示范，再用自身轨迹 RL；将笔记行为与最终任务成功分开监测。",
+    "limits": "仅英语书籍短答案 QA、LLM 判分，未验证网页研究或代码任务迁移。笔记有效性由人工规则近似；强策略回溯收益小且耗 token。GPT 对照仅最多每集 100 题并有严重格式适配失败；成本是论文设定的推理费用，不含训练，不能解释为通用模型能力排名。未复现。",
+    "dateLabel": "2026-10-30 · arXiv v1",
+    "evidence": "原论文方法与评测已核验，未复现",
+    "originalTitle": "MEMENTO: Learning Context Management for Long Context Processing Agents",
+    "date": "2026-10-30",
+    "checkedAt": "2026-11-03T14:32:49Z",
+    "originalDate": "2026-10-30",
+    "updatedAt": "2026-10-30T18:25:08Z",
+    "firstSeenAt": "2026-11-03T04:00:01Z",
+    "lastSeenAt": "2026-11-03T04:00:01Z",
+    "tags": [
+      "Training / RL",
+      "Context Management",
+      "Memory",
+      "SFT",
+      "GRPO"
+    ],
+    "authors": [
+      "Yunfan Zhang",
+      "Taehoon Hwang",
+      "Kathleen McKeown",
+      "Smaranda Muresan"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "arXiv 原论文 v1",
+        "url": "https://arxiv.org/abs/2611.00244v1"
+      },
+      {
+        "label": "方法、评测与训练设置全文",
+        "url": "https://arxiv.org/html/2611.00244v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "MEMENTO 先用事后补写笔记的轨迹教 Qwen3-8B 保存进度，再用 RL 训练。作者在四个书籍 QA 集报告：同推理框架准确率从 36.9% 到 67.8%，即时上下文不超过约 20K tokens。",
+      "motivation": "上下文用满后，摘要能否保存证据和未完成计划决定 Agent 能否继续。直接 RL 很少采到有效记笔记行为，容易学会避开压缩工具。",
+      "novelty": "作者主张：把记笔记训练与推理框架共同设计，简单换窗训练可用于折叠和回溯。本站判断：最扎实的是同底座消融——Fold 下 SFT+RL 为 66.3%，RL-only 为 57.5%；不能据此推断对任意 Agent 任务有效。",
+      "evidenceScope": "已读 arXiv v1 方法、结果、限制、训练设置与相关提示附录。四个测试集共 4,708 题，NovelQA 未参与训练；按书籍划分，测试用独立于训练的 LLM judge。核验文献陈述，未运行实验。",
+      "limits": "仅英语书籍短答案 QA、LLM 判分，未验证网页研究或代码任务迁移。笔记有效性由人工规则近似；强策略回溯收益小且耗 token。GPT 对照仅最多每集 100 题并有严重格式适配失败；成本是论文设定的推理费用，不含训练，不能解释为通用模型能力排名。未复现。",
+      "method": [
+        "用语义搜索、关键词搜索和行号阅读工具访问书籍；create_notes 保存发现、失败尝试及下一步，换窗口时保留笔记。",
+        "从 GLM-5.3 轨迹筛选正确回答及少量合理低信心失败，事后插入笔记，过滤频率/位置/重复度问题；约 6K 条轨迹用于 Qwen3-8B SFT。",
+        "用 GRPO 联合奖励格式、笔记规则、答案正确与可选置信度校准；最终轨迹优势传给各窗口的 assistant tokens，训练时仅做换窗压缩。",
+        "测试时增加上下文折叠，保留最近笔记后的原始交互；低信心回答可从笔记检查点回溯，最多尝试五次。"
+      ],
+      "inspirations": [
+        "训练长任务 Agent 前先补足“何时保存、保存什么、如何恢复”的成功示范，再用自身轨迹 RL；将笔记行为与最终任务成功分开监测。",
+        "压缩后保留最新笔记之后的原始工具反馈，避免反复检索刚获得但尚未写入笔记的证据。",
+        "把回溯做成可选择的成本项，并测错误检测召回率：本文强策略只增约 1 个百分点，却用掉 43% 的 tokens；低信心不等于完整覆盖错误。"
+      ],
+      "reviewedAt": "2026-11-03T14:32:49Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.00244v1",
+        "https://arxiv.org/html/2611.00244v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.00244",
+      "status": "pending",
+      "checkedAt": "2026-11-03T14:37:10.733115+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.01165v1",
+    "url": "https://arxiv.org/abs/2611.01165v1",
+    "id": "research-composable-cad",
+    "title": "Composable CAD：先约定接口，再让代码生成的3D部件自由组合",
+    "summary": "Composable CAD先固定部件接口，再独立生成可编辑的CadQuery变体；作者在33个对象的825次随机重组中报告91.5%通过结构检查。",
+    "insight": "作者主张把草图到CAD改为可互换部件的设计空间，并以确定性重写满足接口。本站判断：关键是让VLM负责局部创作，让几何算法负责精确接合。",
+    "limits": "实验覆盖33个对象、单一Gemini 3.1 Pro；91.5%是825次随机重组的结构通过率，不是制造成功率。接口限单平面，组合保证依赖附录H的几何前提和改动预算；未验证功能、间隙或可制造性。",
+    "dateLabel": "2026-10-31 · arXiv首发（本轮补充解读）",
+    "evidence": "已读原论文方法、实验和条件性保证，未复现",
+    "originalTitle": "Composable CAD: Sketch-to-CAD Program Synthesis in Parts",
+    "date": "2026-10-31",
+    "checkedAt": "2026-11-03T14:32:52.389657+00:00",
+    "originalDate": "2026-10-31",
+    "updatedAt": "2026-10-31T18:04:23Z",
+    "firstSeenAt": "2026-11-03T04:00:01Z",
+    "lastSeenAt": "2026-11-03T10:00:01Z",
+    "tags": [
+      "CadQuery",
+      "部件组合",
+      "几何验证",
+      "设计空间"
+    ],
+    "authors": [
+      "Yuanbo Li",
+      "Vivian Liu",
+      "Sean Liu",
+      "Justin Matejka"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "sourceId": "arxiv_code2_3d",
+    "sources": [
+      {
+        "label": "arXiv · Code2-3D",
+        "url": "https://arxiv.org/abs/2611.01165v1"
+      },
+      {
+        "label": "原论文HTML方法与实验",
+        "url": "https://arxiv.org/html/2611.01165v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "先固定部件的几何接口，再独立生成和修正CadQuery程序，让不同设计变体可以互换组合。",
+      "motivation": "各部件单独运行正确，组装时仍可能错位、留缝或重叠；只增加渲染反馈无法直接约束隐含在代码输出中的接触面。",
+      "novelty": "作者主张把草图到CAD改为可互换部件的设计空间，并以确定性重写满足接口。本站判断：关键是让VLM负责局部创作，让几何算法负责精确接合。",
+      "evidenceScope": "已读arXiv v1第3—7节及附录D—H的方法、实验与保证前提；未运行或复现，未核验到作者公开代码仓库。",
+      "limits": "实验覆盖33个对象、单一Gemini 3.1 Pro；91.5%是825次随机重组的结构通过率，不是制造成功率。接口限单平面，组合保证依赖附录H的几何前提和改动预算；未验证功能、间隙或可制造性。",
+      "method": [
+        "分割草图，从笔画恢复连接、对齐和比例关系；将关系变成可执行检查，反馈给VLM修订粗略模型。",
+        "用互不穿插的部件包围盒固定位置，并规定相邻部件共享的平面接口。",
+        "各部件仅接收自己的粗略CadQuery程序与草图区域，并行生成多个细节变体。",
+        "执行程序后，按接口做确定性的平移、缩放和布尔补料/切除；超出材料改动预算的组合记为失败。"
+      ],
+      "inspirations": [
+        "为代码生成的部件先定义可检查接口，再允许各自独立迭代，减少反复重写整个场景。",
+        "评测应随机混搭不同次生成的部件，单次完整模型成功不能证明可复用性。",
+        "同时报告接合成功率与几何改动量，并把超预算失败计入分母，避免靠破坏细节换取连接。"
+      ],
+      "reviewedAt": "2026-11-03T14:32:52.389657+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.01165v1",
+        "https://arxiv.org/html/2611.01165v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.01165",
+      "status": "pending",
+      "checkedAt": "2026-11-03T14:36:24.568903+00:00"
+    }
   }
 ]
