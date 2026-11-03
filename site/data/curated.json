@@ -2500,5 +2500,294 @@
         "url": "https://openai.com/index/scaling-git-at-openai/"
       }
     ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.00884v1",
+    "url": "https://arxiv.org/abs/2611.00884v1",
+    "id": "research-silent-fetch-failures",
+    "title": "静默抓取失败：HTTP 200，仍可能没有读到正文",
+    "summary": "静态抓取返回200仍可能只是空壳、拦截或替代页；按正文可用性重新计量，会显著改变引用核验结果。",
+    "insight": "为资料采集分别保存网络状态、正文可用性和证据支持程度，避免将无法读取直接判断为原引用失效。",
+    "limits": "单地点、三天采样，标注与复核主要依赖LLM；人工盲审只有60条，讨论后一致不等于独立全量验证。数据和代码为承诺发布。",
+    "dateLabel": "arXiv 首发",
+    "evidence": "已读原论文方法与实验，未复现",
+    "originalTitle": "When 200 OK Is Not an Answer: Silent Fetch Failures in Agentic Web Content Acquisition",
+    "date": "2026-10-31",
+    "checkedAt": "2026-11-03T08:21:07.473156+00:00",
+    "updatedAt": "2026-10-31T12:42:45Z",
+    "firstSeenAt": "2026-11-03T04:00:01Z",
+    "lastSeenAt": "2026-11-03T04:00:01Z",
+    "tags": [
+      "Web Agent",
+      "采集质量",
+      "引用核验"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "arXiv原论文",
+        "url": "https://arxiv.org/abs/2611.00884v1"
+      },
+      {
+        "label": "原论文方法与评测",
+        "url": "https://arxiv.org/html/2611.00884v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "采集成功应检查是否读到正文，而不能只认HTTP 200。",
+      "motivation": "空壳、挑战页和替代页也会返回200，进而污染引用有效性与内容漂移评测。",
+      "novelty": "作者强调将抓取结果分类与下游评测误差连接。本站判断：价值是测量协议，而非把既有软404检测包装成新算法。",
+      "evidenceScope": "已读arXiv v1第3—8节与附录复核规则；未复现采集或分类实验。",
+      "limits": "单地点、三天采样，LLM判断可能有误；60条人工盲审不等于全量金标。仅真实页面上的启发式召回为79%，不能套用含随机路径的86%。部分分析与判定规则为事后调整。",
+      "method": [
+        "用静态和浏览器客户端配对采样，另设不存在路径作为对照。",
+        "区分正文、拦截、挑战、空壳等结果，并比较静态正文保留程度。",
+        "按站点划分训练与测试，比较便宜启发式和内容分类器，并抽样复核。",
+        "在ExpertQA引用上重算可核验率与内容漂移，分析抓取误判的下游影响。"
+      ],
+      "inspirations": [
+        "给研究采集器加入正文缺失、受限、部分可读状态；仅在可读证据上判断支持关系。",
+        "评估浏览器回退时同时统计新增可用证据、误报与耗时，并用独立人工样本校准。"
+      ],
+      "reviewedAt": "2026-11-03T08:21:07.473156+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/html/2611.00884v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.00884",
+      "status": "pending",
+      "checkedAt": "2026-11-03T08:23:00.822871+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.01245v1",
+    "url": "https://arxiv.org/abs/2611.01245v1",
+    "id": "research-bayesian-agent-distillation-2611-01245",
+    "title": "贝叶斯 Agent 蒸馏：一起教会 8B 模型“问什么”与“相信什么”",
+    "summary": "把贝叶斯教师的提问策略与显式信念状态一起蒸馏给 Llama-3.1-8B：电影推荐中“十问后选中最优项”由仅学动作的 8.5% 升至 34.5%。收益局限于训练过的任务族。",
+    "insight": "蒸馏交互 Agent 时，把可校验状态和决策依据做成监督字段，并分别测提问质量、状态正确率与最终成功率。",
+    "limits": "仅三类规则明确的合成谜题、一个 8B 底座和单训练 seed；跨任务零样本迁移未成功。部分教师参数与 scratchpad 设计受测试集反馈影响；代码、数据和适配器尚未随文公开，未独立复现。",
+    "dateLabel": "2026-10-31 · arXiv v1",
+    "evidence": "原论文方法与评测已核验，未复现",
+    "originalTitle": "Learning What to Ask and What to Believe: Distilling a Variational Bayesian Agent into Language Models",
+    "date": "2026-10-31",
+    "checkedAt": "2026-11-03T08:23:32Z",
+    "originalDate": "2026-10-31",
+    "updatedAt": "2026-10-31T20:16:04Z",
+    "firstSeenAt": "2026-11-03T04:00:01Z",
+    "lastSeenAt": "2026-11-03T04:00:01Z",
+    "tags": [
+      "Distillation",
+      "Bayesian Agent",
+      "Information Seeking",
+      "Belief State"
+    ],
+    "authors": [
+      "Baichuan Li",
+      "Yanling Chang",
+      "Alfredo Garcia"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "arXiv 原论文 v1",
+        "url": "https://arxiv.org/abs/2611.01245v1"
+      },
+      {
+        "label": "原论文方法与实验全文",
+        "url": "https://arxiv.org/html/2611.01245v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把贝叶斯教师的提问策略与显式信念状态一起蒸馏给 Llama-3.1-8B：电影推荐中“十问后选中最优项”由仅学动作的 8.5% 升至 34.5%。收益局限于训练过的任务族。",
+      "motivation": "Agent 会提问仍可能不会利用答案。作者分开检查信息收集、状态更新和最终决策，定位只模仿动作留下的缺口。",
+      "novelty": "作者主张：可把非神经贝叶斯 Agent 的查询与信念计算共同蒸馏。本站判断：更有价值的是拆开“问得好”和“用好答案”的对照；尚不能说明学到了可迁移的信息价值概念。",
+      "evidenceScope": "已读 arXiv v1 方法、实验及相关附录；电路/电影/猜词测试分别为 300/1000/400 例。核验论文陈述，未运行代码；历史 API 模型成绩并非同协议重跑。",
+      "limits": "仅三类规则明确的合成谜题、一个 8B 底座和单训练 seed；跨任务零样本迁移未成功。部分教师参数与 scratchpad 设计受测试集反馈影响；代码、数据和适配器尚未随文公开，未独立复现。",
+      "method": [
+        "在电路、电影偏好、猜词环境中生成与测试实例分离的交互；教师用变分贝叶斯更新信念，以预期信息增益（EIG）选下一问。",
+        "将轨迹编译成动作标签，或动作前的结构化信念：电路位概率、偏好权重与候选得分、逐字母检查及存活词集。",
+        "统一用 LoRA 和 assistant-token 监督微调 8B 学生；固定学生配方，对照随机提问、精确/粒子推断和 70B 教师。",
+        "在完整测试集比较任务结果、提问信息量与信念一致性；用替换提问/最终决策的诊断实验及留一任务族测试检查失效原因。"
+      ],
+      "inspirations": [
+        "蒸馏交互 Agent 时，把可校验状态和决策依据做成监督字段，并分别测提问质量、状态正确率与最终成功率。",
+        "训练数据补入状态写错后的恢复轨迹；只教正确轨迹可能让一次候选误删变成不可恢复的重复操作。",
+        "把跨任务留出与设计冻结纳入实验协议，避免将同任务提升解释为通用策略；教师更精确也需检验是否更容易被学生学会。"
+      ],
+      "reviewedAt": "2026-11-03T08:23:32Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.01245v1",
+        "https://arxiv.org/html/2611.01245v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.01245",
+      "status": "pending",
+      "checkedAt": "2026-11-03T08:23:40.013338+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.38352v1",
+    "url": "https://arxiv.org/abs/2610.38352v1",
+    "id": "research-weviscut",
+    "title": "WeVisCut：把剪辑中的失败与返修，变成9B Agent的训练数据",
+    "summary": "WeVisCut把剪辑执行、失败修复与策略训练接起来，让一个9B模型在真实工具环境中完成口播视频制作。",
+    "insight": "作者主张贯通可执行数据、恢复学习与角色/上下文配对优化。本站判断：更值得借鉴的是把失败—修复过程纳入训练，同时保持训练和部署的状态接口一致。",
+    "limits": "实验为100项固定口播任务、五次评估运行；阶段累加不能分离各组件因果贡献。模板、检索和评审模型限制泛化。约33倍差距仅指每成功成片分钟的生成token，不能换算成速度或费用。",
+    "dateLabel": "2026-10-28 · arXiv首发（本轮补充解读）",
+    "evidence": "已读原论文方法与实验；代码与权重可访问，未复现",
+    "originalTitle": "WeVisCut: The Whole Editing Room in One Agent From Narration to Long-Form Video",
+    "date": "2026-10-28",
+    "checkedAt": "2026-11-03T08:22:38.290279+00:00",
+    "originalDate": "2026-10-28",
+    "updatedAt": "2026-10-28T06:51:40Z",
+    "firstSeenAt": "2026-11-02T08:23:45Z",
+    "lastSeenAt": "2026-11-03T04:00:01Z",
+    "dailySubmittedAt": "2026-10-30T00:00:00.000Z",
+    "tags": [
+      "剪辑Agent",
+      "可执行轨迹",
+      "恢复学习",
+      "策略蒸馏"
+    ],
+    "authors": [
+      "Chenyu Mu",
+      "Wenming Weng",
+      "Qinrui Wang",
+      "Xingsong Ye",
+      "Hao Yu",
+      "Jun He",
+      "Chong Sun",
+      "Chen Li",
+      "Jing Lyu",
+      "Erkun Yang",
+      "Cheng Deng"
+    ],
+    "topics": [
+      "video-editing"
+    ],
+    "sourceId": "arxiv_video_editing",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2610.38352"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2610.38352"
+      },
+      {
+        "label": "Project",
+        "url": "https://tencent.github.io/WeVisCut"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/Tencent/WeVisCut"
+      },
+      {
+        "label": "arXiv · 视频剪辑",
+        "url": "https://arxiv.org/abs/2610.38352v1"
+      },
+      {
+        "label": "原论文HTML方法与实验",
+        "url": "https://arxiv.org/html/2610.38352v1"
+      },
+      {
+        "label": "官方架构文档",
+        "url": "https://github.com/Tencent/WeVisCut/blob/main/docs/architecture.md"
+      },
+      {
+        "label": "官方9B模型卡",
+        "url": "https://huggingface.co/tencent/WeVisCut"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "WeVisCut把剪辑执行、失败修复与策略训练接起来，让一个9B模型在真实工具环境中完成口播视频制作。",
+      "motivation": "成片只展示结果，缺少制作决策和失败过程；小模型需要可执行轨迹，才能学会继续和修复自己的编辑状态。",
+      "novelty": "作者主张贯通可执行数据、恢复学习与角色/上下文配对优化。本站判断：更值得借鉴的是把失败—修复过程纳入训练，同时保持训练和部署的状态接口一致。",
+      "evidenceScope": "已读arXiv v1第3—6节、附录A.2/B/F，并核验腾讯代码文档及Hugging Face模型卡；未运行模型或复现实验。",
+      "limits": "实验为100项固定口播任务、五次评估运行；阶段累加不能分离各组件因果贡献。模板、检索和评审模型限制泛化。约33倍差距仅指每成功成片分钟的生成token，不能换算成速度或费用。",
+      "method": [
+        "从成片恢复口播与镜头意图，再用真实工具回放、检查和局部修复，构造训练轨迹。",
+        "一个Qwen3.5-9B共享编排、内容生成与检查三种角色；先做SFT，再学习通过回放验证的成功及教师修复轨迹。",
+        "Guided-OPD混合教师与学生决策，逐步撤去教师介入，学习处理自身执行产生的状态。",
+        "RCF-DAPO只比较同一角色、同一生产上下文的候选；编排动作从同一状态恢复后执行对照。",
+        "部署时根据真实状态选择工具并局部返修；Studio保留可编辑时间线，动效通过选择模板与填槽完成。"
+      ],
+      "inspirations": [
+        "剪辑数据同时保存动作前状态、工具实返和修复关联，避免仅用漂亮成片作为监督。",
+        "评测修复策略时固定出错状态和剩余预算，比较修复收益及对已正确镜头的破坏。",
+        "把交付成功、画面与口播对齐、每成功成片分钟成本分开报告，并计入失败尝试。"
+      ],
+      "reviewedAt": "2026-11-03T08:22:38.290279+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/html/2610.38352v1",
+        "https://github.com/Tencent/WeVisCut",
+        "https://github.com/Tencent/WeVisCut/blob/main/docs/architecture.md",
+        "https://huggingface.co/tencent/WeVisCut"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.38352",
+      "status": "pending",
+      "checkedAt": "2026-11-03T08:23:00.822871+00:00"
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/transformers-mic",
+    "url": "https://huggingface.co/blog/transformers-mic",
+    "id": "update-hf-transformers-mic",
+    "title": "Transformers MIC：让 Agent 起草测试，用冻结行为基线发现静默回归",
+    "summary": "Hugging Face 介绍 Model Integration Contracts：保留关键层类型和原始预处理文件的微型模型、可执行使用示例，以及人工审核的固定输出基线。Agent 起草测试，CPU 检查行为；官方回放成功定位了 UMT5 因果注意力失效这一不报错的回归。",
+    "insight": "本站判断：Agent 改训练或推理代码时，验证不能止于运行成功。可把输入敏感性、损失、有限梯度和权重更新纳入契约，并冻结环境与基线；修改代码的 Agent 不应自行批准新的预期结果。",
+    "limits": "已读官方博文、仓库和回放证据，未执行复现。微型模型不能替代真实权重测试，仍有 Whisper 漏检；部分新增调用是知道缺陷后补写，不能当未知缺陷检出率。截至文中 11/01 状态，CI 失败仅报告、不阻断 PR，覆盖和误报成本仍待评估。",
+    "organization": "Hugging Face",
+    "dateLabel": "2026-11-03 · 官方工程介绍",
+    "evidence": "官方博文、公开仓库与评测证据已核验，未复现",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-03T08:21:33.487448+00:00",
+    "firstSeenAt": "2026-11-03T08:23:44.054615+00:00",
+    "tags": [
+      "回归评测",
+      "Agent生成测试",
+      "训练验证",
+      "可复现"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "Hugging Face 官方博文",
+        "url": "https://huggingface.co/blog/transformers-mic"
+      },
+      {
+        "label": "官方 MIC 仓库与适用边界",
+        "url": "https://github.com/huggingface/transformers-mic"
+      },
+      {
+        "label": "官方回放与漏检证据",
+        "url": "https://github.com/huggingface/transformers-mic/blob/main/docs/evidence.md"
+      },
+      {
+        "label": "冻结快照与环境版本清单",
+        "url": "https://huggingface.co/datasets/huggingface-mic/transformers-fleet"
+      }
+    ]
   }
 ]
