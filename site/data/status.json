@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "status": "ok",
-  "total": 237,
+  "total": 292,
   "intervalHours": 6,
   "timezone": "Asia/Shanghai",
   "sources": [
@@ -11,9 +11,9 @@
       "sourceType": "arxiv",
       "url": "https://export.arxiv.org/api/query",
       "status": "ok",
-      "count": 70,
-      "checkedAt": "2026-11-02T22:00:01Z",
-      "lastSuccessAt": "2026-11-02T22:00:01Z"
+      "count": 72,
+      "checkedAt": "2026-11-03T04:00:01Z",
+      "lastSuccessAt": "2026-11-03T04:00:01Z"
     },
     {
       "id": "hf_papers",
@@ -21,9 +21,9 @@
       "sourceType": "huggingface",
       "url": "https://huggingface.co/papers",
       "status": "ok",
-      "count": 64,
-      "checkedAt": "2026-11-02T22:00:01Z",
-      "lastSuccessAt": "2026-11-02T22:00:01Z"
+      "count": 44,
+      "checkedAt": "2026-11-03T04:00:01Z",
+      "lastSuccessAt": "2026-11-03T04:00:01Z"
     },
     {
       "id": "hf_blog",
@@ -32,8 +32,8 @@
       "url": "https://huggingface.co/blog",
       "status": "ok",
       "count": 9,
-      "checkedAt": "2026-11-02T22:00:01Z",
-      "lastSuccessAt": "2026-11-02T22:00:01Z"
+      "checkedAt": "2026-11-03T04:00:01Z",
+      "lastSuccessAt": "2026-11-03T04:00:01Z"
     },
     {
       "id": "openai",
@@ -42,8 +42,8 @@
       "url": "https://openai.com/news/",
       "status": "ok",
       "count": 39,
-      "checkedAt": "2026-11-02T22:00:01Z",
-      "lastSuccessAt": "2026-11-02T22:00:01Z"
+      "checkedAt": "2026-11-03T04:00:01Z",
+      "lastSuccessAt": "2026-11-03T04:00:01Z"
     },
     {
       "id": "deepmind",
@@ -51,9 +51,9 @@
       "sourceType": "official",
       "url": "https://deepmind.google/blog/",
       "status": "ok",
-      "count": 24,
-      "checkedAt": "2026-11-02T22:00:01Z",
-      "lastSuccessAt": "2026-11-02T22:00:01Z"
+      "count": 23,
+      "checkedAt": "2026-11-03T04:00:01Z",
+      "lastSuccessAt": "2026-11-03T04:00:01Z"
     },
     {
       "id": "x",
@@ -62,7 +62,7 @@
       "url": "https://x.com/",
       "status": "unconfigured",
       "count": 0,
-      "checkedAt": "2026-11-02T22:00:01Z"
+      "checkedAt": "2026-11-03T04:00:01Z"
     },
     {
       "id": "arxiv_video_editing",
@@ -71,8 +71,8 @@
       "url": "https://export.arxiv.org/api/query",
       "status": "ok",
       "count": 13,
-      "checkedAt": "2026-11-02T22:00:01Z",
-      "lastSuccessAt": "2026-11-02T22:00:01Z"
+      "checkedAt": "2026-11-03T04:00:01Z",
+      "lastSuccessAt": "2026-11-03T04:00:01Z"
     },
     {
       "id": "arxiv_code2video",
@@ -81,8 +81,8 @@
       "url": "https://export.arxiv.org/api/query",
       "status": "ok",
       "count": 3,
-      "checkedAt": "2026-11-02T22:00:01Z",
-      "lastSuccessAt": "2026-11-02T22:00:01Z"
+      "checkedAt": "2026-11-03T04:00:01Z",
+      "lastSuccessAt": "2026-11-03T04:00:01Z"
     },
     {
       "id": "arxiv_code2motion",
@@ -91,8 +91,8 @@
       "url": "https://export.arxiv.org/api/query",
       "status": "ok",
       "count": 3,
-      "checkedAt": "2026-11-02T22:00:01Z",
-      "lastSuccessAt": "2026-11-02T22:00:01Z"
+      "checkedAt": "2026-11-03T04:00:01Z",
+      "lastSuccessAt": "2026-11-03T04:00:01Z"
     },
     {
       "id": "arxiv_code2_3d",
@@ -100,21 +100,21 @@
       "sourceType": "arxiv",
       "url": "https://export.arxiv.org/api/query",
       "status": "ok",
-      "count": 16,
-      "checkedAt": "2026-11-02T22:00:01Z",
-      "lastSuccessAt": "2026-11-02T22:00:01Z"
+      "count": 17,
+      "checkedAt": "2026-11-03T04:00:01Z",
+      "lastSuccessAt": "2026-11-03T04:00:01Z"
     }
   ],
   "successCount": 9,
   "errorCount": 0,
   "topicCounts": {
-    "code2-3d": 9,
+    "code2-3d": 11,
     "code2motion": 3,
     "code2video": 3,
     "video-editing": 11
   },
-  "lastRunAt": "2026-11-02T22:00:01Z",
-  "completedAt": "2026-11-02T22:00:26Z",
-  "updatedAt": "2026-11-02T22:00:26Z",
-  "lastSuccessAt": "2026-11-02T22:00:26Z"
+  "lastRunAt": "2026-11-03T04:00:01Z",
+  "completedAt": "2026-11-03T04:00:24Z",
+  "updatedAt": "2026-11-03T04:00:24Z",
+  "lastSuccessAt": "2026-11-03T04:00:24Z"
 }
