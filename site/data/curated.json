@@ -3015,5 +3015,323 @@
       "status": "pending",
       "checkedAt": "2026-11-03T14:36:24.568903+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.02332v1",
+    "url": "https://arxiv.org/abs/2611.02332v1",
+    "id": "research-leanguard",
+    "title": "LeanGuard：让工具调用先通过形式化规则，再交给环境执行",
+    "summary": "LeanGuard将可信状态与历史规则放在工具执行前检查，拒绝时返回原因；形式化保证只覆盖已写入规范的规则。",
+    "insight": "评估执行约束要同时报告阻止的错误与被阻止的正常任务，不能把全面禁止写操作获得的低攻击率当成无代价收益。",
+    "limits": "DTap只读配置令直接攻击成功率从57.9%降至5.9%，但正常任务成功率也从53.1%降至12.5%。证明不覆盖规则遗漏、证据提取错误或回复文本中的危害；修复仅离线回放。",
+    "dateLabel": "2026-11-02 · arXiv v1",
+    "evidence": "已读原论文方法与实验，官方代码可访问，未复现",
+    "originalTitle": "LEANGUARD: Lean-Verified Guardrails for Tool-Using Agents",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-03T20:19:59.557012+00:00",
+    "originalDate": "2026-11-02",
+    "updatedAt": "2026-11-02T00:26:48Z",
+    "firstSeenAt": "2026-11-03T16:00:00Z",
+    "lastSeenAt": "2026-11-03T16:00:00Z",
+    "tags": [
+      "工具调用",
+      "形式化验证",
+      "运行时约束"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.02332"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.02332"
+      },
+      {
+        "label": "作者官方代码仓库",
+        "url": "https://github.com/DebarghaG/LeanGuard"
+      },
+      {
+        "label": "arXiv 原论文 v1",
+        "url": "https://arxiv.org/abs/2611.02332v1"
+      },
+      {
+        "label": "方法、实验与限制",
+        "url": "https://arxiv.org/html/2611.02332v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "工具执行前独立检查状态和历史约束；形式化保证相对于人工审核后的规则成立。",
+      "motivation": "参数格式正确仍可能违反授权或操作顺序，模型自己的声明不能替代可信证据。",
+      "novelty": "作者主张将时序语义正确性证明、拒绝反馈与可证明修复结合。本站判断：价值在可审计的执行边界，不代表模型推理或整套自然语言政策已被证明正确。",
+      "evidenceScope": "已读v1方法、实验、Limitations及附录G/H相关审计与修复结果；核验官方仓库，未运行。",
+      "limits": "DTap只读配置下正常任务成功率53.1%→12.5%，不能泛称能力无损。修复88/252仅为可编辑参数拒绝的离线结果。保证依赖规则、可信输入和完整拦截；仅Qwen、英文任务与模拟用户，未覆盖文本危害。",
+      "method": [
+        "拦截工具调用，由适配器读取可信状态、版本及执行历史。",
+        "执行Lean中的许可、要求和禁止规则；证据缺失或检查错误时拒绝。",
+        "允许后先登记调用，再执行；拒绝则向Agent返回失败规则与提示。",
+        "另在离线回放中搜索符合意图约束的参数修改，并生成可检查的准入证明。"
+      ],
+      "inspirations": [
+        "把确认绑定到具体参数与状态版本，调用结果未知时也保留记录，防止重试重复执行。",
+        "并列测策略违规、正常任务成功和拒绝后恢复；单看攻击成功率可能掩盖功能损失。"
+      ],
+      "reviewedAt": "2026-11-03T20:19:59.557012+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/html/2611.02332v1",
+        "https://github.com/DebarghaG/LeanGuard"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.02332",
+      "status": "pending",
+      "checkedAt": "2026-11-03T20:21:33.678976+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://huggingface.co/papers/2611.02074",
+    "url": "https://arxiv.org/abs/2611.02074v1",
+    "id": "research-swe-trail-2611-02074",
+    "title": "SWE-Trail：用历史定位值得比较的编码轨迹分岔点",
+    "summary": "SWE-Trail 用旧尝试定位值得比较的采集分岔点。训练数据中的动作仍由看不到旧历史的 Agent 生成。124B 学生三次 SFT 均值相对独立采样，在 SWE-bench Multilingual / Pro 提高 2.33 / 1.60 个百分点。",
+    "insight": "数据管线同时记录采集成功率与训练后表现；多收集成功轨迹未必等比例提高学生能力。",
+    "limits": "仅一个采集模型与 OpenHands 框架、300 个采集 issue；历史固定且每题预算相同。H5 对无历史 H0 的两项任务配对 95% 区间均跨 0。成本排除旧历史采集，H0 离线编译未计入；各具名基线为受控改编。需可恢复执行状态，尚未证明跨领域泛化，未复现。",
+    "dateLabel": "2026-11-01 · arXiv v1",
+    "evidence": "原论文方法与评测已核验，未复现",
+    "originalTitle": "SWE-Trail: History-Guided Trajectory Collection for Coding Agent Training",
+    "date": "2026-11-01",
+    "checkedAt": "2026-11-03T20:19:48Z",
+    "originalDate": "2026-11-01",
+    "updatedAt": "2026-11-01T17:26:42Z",
+    "firstSeenAt": "2026-11-03T16:00:00Z",
+    "lastSeenAt": "2026-11-03T16:00:00Z",
+    "dailySubmittedAt": "2026-11-03T00:00:00.000Z",
+    "tags": [
+      "Training / RL",
+      "Trajectory Collection",
+      "Coding Agents",
+      "SFT",
+      "Data Quality"
+    ],
+    "authors": [
+      "Ziming Li",
+      "Lu Yu",
+      "Jiatan Huang",
+      "Qing Cui",
+      "Jun Zhou",
+      "Chuxu Zhang"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.02074"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.02074"
+      },
+      {
+        "label": "arXiv 原论文 v1",
+        "url": "https://arxiv.org/abs/2611.02074v1"
+      },
+      {
+        "label": "方法、实验与附录全文",
+        "url": "https://arxiv.org/html/2611.02074v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "SWE-Trail 用旧尝试定位值得比较的采集分岔点。训练数据中的动作仍由看不到旧历史的 Agent 生成。124B 学生三次 SFT 均值相对独立采样，在 SWE-bench Multilingual / Pro 提高 2.33 / 1.60 个百分点。",
+      "motivation": "同一 issue 独立多采越来越重复；直接给 Agent 历史建议又会让轨迹依赖测试时没有的额外信息。目标是改善新轨迹的训练价值。",
+      "novelty": "作者主张：把历史用于采集预算分配，同时维持 Agent 生成上下文的一致性。本站判断：亮点是直接测下游学生并加入无历史、随机触发与随机保留对照；历史单独贡献的置信区间仍较宽。",
+      "evidenceScope": "已读 arXiv v1 方法、结果、限制及采集/训练/统计附录。GLM-5.1 采集 300 仓库各一题；Ling-3.0-flash-base 与 Qwen3-14B-Base 各条件三次 SFT；评测为 Multilingual 300 题、Pro public 731 题。来源核验，未实验复现。",
+      "limits": "仅一个采集模型与 OpenHands 框架、300 个采集 issue；历史固定且每题预算相同。H5 对无历史 H0 的两项任务配对 95% 区间均跨 0。成本排除旧历史采集，H0 离线编译未计入；各具名基线为受控改编。需可恢复执行状态，尚未证明跨领域泛化，未复现。",
+      "method": [
+        "从每题五次旧尝试与受限只读仓库检查提取分歧/重复失败，编译并回放验证状态检测规则、局部比较目标和采样温度。",
+        "新 rollout 命中规则时，Agent 只依据自身可见上下文提出八个候选动作；采集器保留默认动作并挑一个不同的可执行备选。",
+        "从同一检查点恢复两个隔离环境，各执行至两个新观察；隐藏候选来源后依据实际反馈选路线，证据不清保留默认。每轨迹最多比较一次。",
+        "只导出选中路线的原始动作与观察，检查前缀/环境摘要、工具配对和补丁一致性；剔除私有采集信息。1500 条轨迹含成功与失败，用固定配方训练学生。"
+      ],
+      "inspirations": [
+        "数据管线同时记录采集成功率与训练后表现；多收集成功轨迹未必等比例提高学生能力。",
+        "将采集器的额外知识与可学习轨迹分离，导出时验证每步可追溯到实际执行，避免事后删提示却留下依赖提示的动作。",
+        "优先分析成功/失败混合历史，并按边际收益增加历史量；本文五次增至十次历史仅小幅增益，应同时核算旧尝试、分支执行与编译成本。"
+      ],
+      "reviewedAt": "2026-11-03T20:19:48Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.02074v1",
+        "https://arxiv.org/html/2611.02074v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.02074",
+      "status": "pending",
+      "checkedAt": "2026-11-03T20:21:33.678976+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.03449v1",
+    "url": "https://arxiv.org/abs/2611.03449v1",
+    "id": "research-intent2cad",
+    "title": "Intent2CAD：训练数据怎样决定CAD代码能不能继续改",
+    "summary": "保持文本、模型和训练设置一致，Intent2CAD比较三种CAD代码监督：语义特征主要降低生成失败，共享参数主要帮助后续关系编辑。",
+    "insight": "作者主张把可恢复的设计意图显式写入训练目标，并控制模型与文本研究表示粒度。本站判断：有价值的区别是语义特征主要改善生成可靠性，共享参数主要改善关系编辑，收益不能混为一个总分。",
+    "limits": "主评测来自DeepCAD派生数据和合成编辑，编辑指令直接给出目标loop；不能等同于开放场景设计意图理解。参数化主要改善关系编辑，并未全面提升几何或特征编辑。样本bootstrap不代表训练种子稳定性；未复现。",
+    "dateLabel": "2026-11-02 · arXiv首发（本轮补充解读）",
+    "evidence": "已读原论文方法与评测；官方代码和数据可访问，未复现",
+    "originalTitle": "Intent2CAD: How Semantic-Parametric Supervision Shapes Text-to-CAD Generation",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-03T20:19:35.805052+00:00",
+    "originalDate": "2026-11-02",
+    "updatedAt": "2026-11-02T16:58:42Z",
+    "firstSeenAt": "2026-11-03T10:00:01Z",
+    "lastSeenAt": "2026-11-03T16:00:00Z",
+    "tags": [
+      "CadQuery",
+      "监督表示",
+      "参数关系",
+      "可编辑性"
+    ],
+    "authors": [
+      "Jinbo Yang",
+      "Mingyue Yuan",
+      "Shikai Jing"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "sourceId": "arxiv_code2_3d",
+    "sources": [
+      {
+        "label": "arXiv · Code2-3D",
+        "url": "https://arxiv.org/abs/2611.03449v1"
+      },
+      {
+        "label": "原论文HTML方法与评测",
+        "url": "https://arxiv.org/html/2611.03449v1"
+      },
+      {
+        "label": "作者官方代码",
+        "url": "https://github.com/JinboYang94/Intent2CAD"
+      },
+      {
+        "label": "作者仓库链接的数据集",
+        "url": "https://huggingface.co/datasets/scottyjb/Intent2CAD"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Intent2CAD把CAD监督从零散图元改成有语义的特征与共享参数，让生成的程序更容易继续编辑。",
+      "motivation": "形状相似且能运行的代码，仍可能把相同尺寸写成多个常数；后续修改容易破坏等长、镜像或比例关系。",
+      "novelty": "作者主张把可恢复的设计意图显式写入训练目标，并控制模型与文本研究表示粒度。本站判断：有价值的区别是语义特征主要改善生成可靠性，共享参数主要改善关系编辑，收益不能混为一个总分。",
+      "evidenceScope": "已读arXiv v1第3—5节及附录A/B/C/D的方法、评测、去重和统计边界；官方GitHub与其链接的HF数据页可读，未运行训练或复现实验。",
+      "limits": "主评测来自DeepCAD派生数据和合成编辑，编辑指令直接给出目标loop；不能等同于开放场景设计意图理解。参数化主要改善关系编辑，并未全面提升几何或特征编辑。样本bootstrap不代表训练种子稳定性；未复现。",
+      "method": [
+        "从DeepCAD轨迹重建带标签的CadQuery程序，用几何和源约束把可靠图元组合提升为特征；不确定部分保留原写法。",
+        "让LLM只提议局部参数重写，暴露共享变量和简单派生关系，不允许增删或重排几何操作。",
+        "执行候选，检查实体、几何标量及AST改动范围；不通过就回退，并保留三种对齐表示及相同文本。",
+        "在同一Qwen3.5-9B和LoRA配方下比较三类监督，再用生成模型直接做合成编辑，分别评估执行、特征与关系保持。"
+      ],
+      "inspirations": [
+        "代码创作数据除成品外，保留特征名、共享参数和依赖关系；把“改一个参数后相关部位是否同步”设为独立任务。",
+        "局部编辑同时验证目标变化与无关部分不变；全局形状距离低，不能替代编辑成功检查。",
+        "对监督重写保留候选、拒绝原因与回退版本，并补几何等价及近重复审计，避免把验证器通过当完全正确。"
+      ],
+      "reviewedAt": "2026-11-03T20:19:35.805052+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/html/2611.03449v1",
+        "https://github.com/JinboYang94/Intent2CAD",
+        "https://huggingface.co/datasets/scottyjb/Intent2CAD"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.03449",
+      "status": "pending",
+      "checkedAt": "2026-11-03T20:24:41.742512+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://openai.com/index/accelerating-engineering-for-the-physical-world/",
+    "url": "https://openai.com/index/accelerating-engineering-for-the-physical-world/",
+    "id": "update-openai-physical-engineering-20261103",
+    "title": "OpenAI 工程案例：从可编辑 CAD 到实物，制造审查仍是关键",
+    "summary": "OpenAI 展示 Astra 协助完成设备外壳、PCB、固件与界面的案例，以及扫描件转可编辑 CAD 的工程流程。BenchCAD 2.0 上，未命名内部新模型均分 0.875，Astra 为 0.594；这并非新模型开放发布。",
+    "insight": "本站判断：工程 Agent 应同时交付可编辑模型、图纸和检查记录，把公差、装配与制造约束提前变成检查项；漂亮渲染不能替代制造验证。",
+    "limits": "已读官方案例，未复现。原型仍经历多轮制造审查；内部模型分数不能解释为制造成功率，正文未给完整评测协议。正文未披露 CAD 代码生成表示。",
+    "organization": "OpenAI",
+    "dateLabel": "2026-11-03 · 官方工程案例",
+    "evidence": "官方案例与局限已核验，未复现",
+    "originalTitle": "Accelerating engineering for the physical world",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-03T20:24:06.964416Z",
+    "firstSeenAt": "2026-11-03T20:24:06.964416Z",
+    "tags": [
+      "工程 Agent",
+      "CAD",
+      "制造验证",
+      "模型 Showcase"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "OpenAI 官方工程案例",
+        "url": "https://openai.com/index/accelerating-engineering-for-the-physical-world/"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/ibm-research/cuga-harness",
+    "url": "https://huggingface.co/blog/ibm-research/cuga-harness",
+    "id": "update-ibm-cuga-harness-20261103",
+    "title": "CUGA 对比：同一模型，Agent 配置让任务完成率拉开差距",
+    "summary": "IBM 团队用 GLM-5.3-flash 在 90 个 AppWorld 任务上各试一次：CUGA 完成 73 项，Hermes 42 项，Deep Agents 27 项。CUGA 使用任务拆解、工具筛选、执行前检查和结果反思等专门配置。",
+    "insight": "本站判断：评测 Agent 要固定模型并披露提示、工具接口、框架配置和预算；除单题成功率，还应报告同场景多个变体全部通过的比例，检查稳定性。",
+    "limits": "作者自行评测，只有一个模型和 90 题，三套配置不相同，不能归因于单个组件或得出通用排名。实验未启用 policies，不能据此证明治理能力。公开仓库可访问，未运行复现。",
+    "organization": "IBM Research",
+    "dateLabel": "2026-11-03 · IBM 作者工程评测",
+    "evidence": "作者博文、设置与关联仓库已核验，未复现",
+    "originalTitle": "Same Model, Different Harness: CUGA, Hermes, and Deep Agents — When to Pick CUGA?",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-03T20:24:06.964416Z",
+    "firstSeenAt": "2026-11-03T20:24:06.964416Z",
+    "tags": [
+      "Agent Harness",
+      "AppWorld",
+      "配置对照",
+      "稳定性评测"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "IBM 作者博文（Hugging Face 社区）",
+        "url": "https://huggingface.co/blog/ibm-research/cuga-harness"
+      },
+      {
+        "label": "作者 CUGA 仓库",
+        "url": "https://github.com/cuga-project/cuga-agent"
+      },
+      {
+        "label": "作者关联的 Harbor 评测仓库",
+        "url": "https://github.com/cuga-project/harbor-eval"
+      }
+    ]
   }
 ]
