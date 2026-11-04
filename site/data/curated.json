@@ -3851,5 +3851,231 @@
       "status": "pending",
       "checkedAt": "2026-11-04T08:25:00.303230+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.04797v1",
+    "url": "https://arxiv.org/abs/2611.04797v1",
+    "id": "research-mobilespec-2611-04797",
+    "title": "MobileSpec：用前向计算训练端上小专家，但真机与 GUI 实验要分开看",
+    "summary": "FuRA-S 只扰动权重的分块谱坐标，用前向评估选择更新方向，保留原 INT4 权重。作者在 iPhone 16 Pro 上为一个用户训练 8B 个性化专家，10.4 小时完成；手机操作成功率提升来自另外的 GPU 与 Android 模拟器实验。",
+    "insight": "本站判断：可验证任务的个性化不一定需要保存反向传播激活。先为高频任务构建可重置环境和检查器，再比较专用适配器是否值得其训练时间；算法收益与真机系统可行性应分别验证。",
+    "limits": "真机仅一个电影标签用户，15 个留出问题从答对 5 个变为 8 个。GUI 只选五类低基线任务，每类测试 64 个新 episode，成绩为 64.1–100%，不是整个 MobileWorld 达到 89–100%。未复现；前向种群训练仍慢。",
+    "organization": "UC Santa Barbara",
+    "dateLabel": "2026-11-03 · arXiv v1（本轮完整解读）",
+    "evidence": "已读原论文方法、实验与相关附录；来源核验，未独立复现",
+    "originalTitle": "Training Specialist LLMs on Your Phone: Forward-Only Optimization via Block-Spectral Coordinates",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-04T14:18:04Z",
+    "updatedAt": "2026-11-03T12:32:03Z",
+    "firstSeenAt": "2026-11-04T10:00:01Z",
+    "lastSeenAt": "2026-11-04T10:00:01Z",
+    "tags": [
+      "端上训练",
+      "可验证奖励",
+      "进化策略",
+      "INT4"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.04797v1"
+      },
+      {
+        "label": "arXiv 方法与实验全文",
+        "url": "https://arxiv.org/html/2611.04797v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "通过少量谱坐标的前向搜索，为共享量化模型训练任务专用适配器，先证明低内存可行性。",
+      "motivation": "个人设备难承担反向传播内存，而用户往往只需要少数任务；终局奖励也难区分长流程中哪一步真正有帮助。",
+      "novelty": "作者主张，分块谱坐标既缩小进化搜索空间，又能改变整体奇异向量，并兼容冻结 INT4 权重；逐步适应度复用种群轨迹。本站判断：价值在可部署的专用适配路径，不能据此宣称通用手机 Agent 已在手机上完成 RL。",
+      "evidenceScope": "已读 v1 第 3–6 节及附录 C.2–C.5、D 相关内容。GUI 为 MAI-UI-2B、五任务、每类 15 次更新共 960 个训练 episode、30 步上限，测试各 64 次；iPhone 16 Pro 8 GB 独立实验使用 INT4 Llama-3.1-8B，20 次更新，驻留 2.1 GB、峰值 3.5 GB。",
+      "limits": "三类 GUI 任务为 89.1/100/98.4%，另两类为 64.1/68.8%；均运行于 GPU 与 Docker 模拟器。逐步奖励和终局奖励对照的采样协议不同，不能把差额全归因于信用分配。真机仅单用户 15 题，专家尚不共享所学；必须有可计算的任务适应度。",
+      "method": [
+        "一次性在服务器为权重列分块做 SVD，冻结分解方向，只训练分块奇异值的相对变化；各专家共享基础模型和冻结因子。",
+        "以成对随机扰动构造种群，前向运行可验证任务或计算用户历史记录似然，用适应度差更新小规模坐标。",
+        "对 GUI 轨迹把相似截图状态分组，跨种群比较同状态不同动作的回报，为每个成员汇总逐步优势。",
+        "将适配写成量化矩阵乘法前的输入变换，保持 INT4 权重与内核不变；按层从闪存加载以降低驻留内存。",
+        "验证专用任务的新 episode 与用户后续记录；真机另外测试一个电影标签用户的训练时长、内存和留出答案。"
+      ],
+      "inspirations": [
+        "为高频任务分别保存小适配器，区分同任务新实例、跨任务迁移与用户新数据，不用重复 episode 替代泛化证据。",
+        "复用同状态的多条轨迹分配动作信用，但检查截图相似是否代表相同隐状态，并匹配采样温度再消融。",
+        "端上实验同时报告峰值内存、耗时、功耗与实际留出题数；将服务器预处理和模拟器训练成本单列。"
+      ],
+      "reviewedAt": "2026-11-04T14:18:04Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.04797v1",
+        "https://arxiv.org/html/2611.04797v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.04797",
+      "status": "pending",
+      "checkedAt": "2026-11-04T14:24:04.810916+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.01987v1",
+    "url": "https://arxiv.org/abs/2611.01987v1",
+    "id": "research-isa-distill-2611-01987",
+    "title": "ISA-Distill：教师知道答案，不代表学生可以跳过检索",
+    "summary": "自蒸馏教师看到参考事实后，可能低估学生仍然需要的搜索。ISA-Distill 估计学生从当前状态恢复事实的能力，在利用事实和寻找证据两种反馈间加权；七个 QA 基准的宏平均 EM 相比 EviSD 提高 0.8–1.3 个百分点。",
+    "insight": "本站判断：给教师更多信息不一定产生更适合学生的监督。应评估学生当时可见的信息，区分已经有证据却重复搜索，以及仍缺证据却被要求直接作答。",
+    "limits": "仅验证带检索的 QA，最多三次搜索；校准依赖标注事实和模型判分，并非直接测到模型是否真正知道。主表未报告多训练种子方差，增幅较小；多跳搜索次数增加。论文中代码与权重仍写计划开放。",
+    "organization": "北京理工大学 / Huawei",
+    "dateLabel": "2026-11-01 · arXiv v1（本轮完整解读）",
+    "evidence": "已读原论文方法、实验与相关附录；来源核验，未独立复现",
+    "originalTitle": "Same Trajectory, Different Knowledge: Information-State-Aware On-Policy Distillation for Search Agents",
+    "date": "2026-11-01",
+    "checkedAt": "2026-11-04T14:18:04Z",
+    "firstSeenAt": "2026-11-04T08:21:31Z",
+    "tags": [
+      "搜索Agent",
+      "自蒸馏",
+      "信息状态",
+      "信用分配"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.01987v1"
+      },
+      {
+        "label": "arXiv 方法与实验全文",
+        "url": "https://arxiv.org/html/2611.01987v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "让教师反馈适应学生当前的信息缺口，既学会使用事实，也保留必要检索。",
+      "motivation": "训练时给教师参考答案或事后证据，可能让教师把对学生有用的搜索误当多余操作；相同动作在两者知识状态下价值不同。",
+      "novelty": "作者主张以事实可恢复性缓解特权信息造成的状态错配。本站判断：重点是监督与学生当时的信息对齐，并非换一个更强教师；校准分数是代理量，隐藏教师新增字段也不会抹掉其参数知识。",
+      "evidenceScope": "已读 v1 第 3–6 节与附录 A、B 的方法和评测协议。七基准共 51,713 题，EM 宏平均各数据集等权；搜索调用均值按题数加权。Qwen2.5-3B/7B 与 Llama-3B 对 EviSD 分别提高 1.3/0.8/1.3 个百分点。",
+      "limits": "7B 单跳平均搜索减少 7.21%，多跳增加 2.94%，整体减少 2.45%，不能说每类都更省。主表没有训练种子方差，未确立统计显著性；4.3% 是测得单训练步净耗时增幅，不代表全部校准成本。校准可能随训练漂移；未复现或核验可下载发布物。",
+      "method": [
+        "保存动作前可见状态，从训练标注中选择动作相关事实，并构造隐藏答案值的局部探针。",
+        "冻结当前 rollout 策略，不检索地采样 32 个局部回答；将平均 token NLL 经预先拟合、逐骨干独立的固定映射校准为可恢复性估计。",
+        "同一冻结策略充当自教师，对原动作分别在给出事实、只提出证据需求两种上下文下重评分，再按估计值加权。",
+        "只修正匹配搜索或事实结论 token 的终局优势，限制幅度以保留正负号，再做带 KL 的 GRPO 更新；推理只需学生和检索工具。"
+      ],
+      "inspirations": [
+        "构造教师有答案、学生缺证据的成对状态，检查蒸馏是否惩罚了真正改善最终答案的搜索。",
+        "按单跳和多跳分别评估预算，把新增有效搜索和删除冗余搜索拆开，避免只优化调用总数。",
+        "让局部监督只调节最终成功信号的强弱，无有效事实或无法对齐 token 时退回原始奖励；另外检查全失败组的学习信号是否不足。"
+      ],
+      "reviewedAt": "2026-11-04T14:18:04Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.01987v1",
+        "https://arxiv.org/html/2611.01987v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.01987",
+      "status": "pending",
+      "checkedAt": "2026-11-04T14:24:04.810916+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.02659v1",
+    "url": "https://arxiv.org/abs/2611.02659v1",
+    "id": "research-parametric-cad-bench-v3-2611-02659",
+    "title": "Parametric CAD Bench v3：CAD代码跑通后，还要检查尺寸与原生工程",
+    "summary": "100项任务覆盖文本建模、先建后改、工程图重建，要求原生FreeCAD工程并独立检查几何与尺寸。论文11月2日发布，结果取9月24日快照；最高综合均值61.03%，并不等于61.03%的任务成功。",
+    "insight": "视觉像、代码能执行、工程满足约束是三件事。这个基准把后两层交给独立验证器；但若要衡量真正可维护的编辑，还需检查修改是否沿用原工程、未指定部分是否保持，以及改参数后能否重建。",
+    "limits": "已读论文方法与结果，未运行评测。结果为2026-09-24的13套模型—Agent系统快照，百分比是连续平均reward，不是成功率或当前排名。create-and-edit先自行造base再造target，双文件评分不能证明复用历史。100个FreeCAD单体任务、单次最终试验及参考几何评分限制外推；不认证制造可行性或任意后续编辑。",
+    "organization": "gNucleus AI",
+    "dateLabel": "2026-11-02 · 论文v1（评测快照09-24）",
+    "evidence": "arXiv全文方法、评测及官方项目页已核验；未复现",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-04T14:19:34.317755Z",
+    "updatedAt": "2026-11-02T07:19:55Z",
+    "firstSeenAt": "2026-11-03T10:00:01Z",
+    "lastSeenAt": "2026-11-03T22:00:01Z",
+    "tags": [
+      "Evaluation",
+      "FreeCAD",
+      "代码生成3D",
+      "可编辑工程",
+      "几何验证",
+      "Benchmark"
+    ],
+    "authors": [
+      "Mei Chen",
+      "Yu Xia",
+      "Haipeng Mao"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": false,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.02659v1"
+      },
+      {
+        "label": "arXiv全文：方法、评分与局限",
+        "url": "https://arxiv.org/html/2611.02659v1"
+      },
+      {
+        "label": "作者官方基准与日期",
+        "url": "https://cadbench.ai/"
+      },
+      {
+        "label": "作者直链Harbor v3任务页",
+        "url": "https://hub.harborframework.com/datasets/gnucleus-ai/cad-bench/v3"
+      },
+      {
+        "label": "作者开源验证器（当前README）",
+        "url": "https://github.com/gNucleus-AI/freecad-validator"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把CAD Agent产物从“可执行脚本”提升到“可检验的原生工程”：几何与规格都要过关，任何必需分项为零都不能靠另一项补回。",
+      "motivation": "外形近似不代表尺寸、约束和建模结构正确；仅验证代码执行或渲染外观，容易放过不能继续用于工程工作的产物。",
+      "novelty": "作者主张以原生参数工程、隔离验证和三类工作流评测完整系统。本站判断：实用价值在产物与约束的联合验收；其编辑设置仍不能证明Agent维护了一个外部工程的原有历史。",
+      "evidenceScope": "已读arXiv v1第3—6节、附录A及示例输出要求；核对官方项目页、Harbor数据页和验证器README。未执行代码、下载任务包或复核逐任务运行。",
+      "limits": "已读论文方法与结果，未运行评测。结果为2026-09-24的13套模型—Agent系统快照，百分比是连续平均reward，不是成功率或当前排名。create-and-edit先自行造base再造target，双文件评分不能证明复用历史。100个FreeCAD单体任务、单次最终试验及参考几何评分限制外推；不认证制造可行性或任意后续编辑。",
+      "method": [
+        "设置30项文本创建、30项先建后改、40项工程图重建；后者输入工程图，编辑任务要求分别提交base和target。",
+        "在固定FreeCAD与Harbor环境运行Agent，参考模型和评分资产放在独立验证器；提交原生FCStd文件。",
+        "先检查单实体PartDesign结构及几何门槛，再用体积、表面积、惯性与面中心配准衡量形状。",
+        "工程师编写的检查器测量指定尺寸与关系；几何分和规格分取调和平均，编辑再合并两个产物得分。",
+        "跨100任务报告连续reward均值，异常计零；保留配置、工程和验证输出供检查，单次任务区间不等于重复运行稳定性。"
+      ],
+      "inspirations": [
+        "给同一CAD再发一次小改动，追踪特征身份与依赖，并重建工程，补上只看base/target文件无法证明的编辑连续性。",
+        "用多种合法建模历史生成同一几何，检查验证器是否因面划分或参数表达不同而误罚。",
+        "固定输入、模型和预算做多次运行，分别报告建模、规格、修改保真与耗时，避免把Agent配置差异当成模型能力差异。"
+      ],
+      "reviewedAt": "2026-11-04T14:19:34.317755Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.02659v1",
+        "https://arxiv.org/html/2611.02659v1",
+        "https://cadbench.ai/",
+        "https://hub.harborframework.com/datasets/gnucleus-ai/cad-bench/v3",
+        "https://github.com/gNucleus-AI/freecad-validator"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.02659",
+      "status": "pending",
+      "checkedAt": "2026-11-04T14:24:04.810916+00:00"
+    }
   }
 ]

@@ -259,6 +259,80 @@
     ]
   },
   {
+    "sourceType": "huggingface",
+    "category": "data",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.05036",
+    "url": "https://huggingface.co/papers/2611.05036",
+    "id": "live-142d77cb590d0d0f",
+    "title": "ToolSpace: Scaling Tool-Centric Environment Synthesis for Long-Horizon Agents",
+    "summary": "Large language models are deployed as long-horizon agents that compose diverse tools across MCP services into executable workflows. Existing MCP environment-scaling methods are data-centric: they first synthesize a database and scenario, then derive tools and tasks from them. As a result, tool interfaces may not match real ones, tool compositions are not grounded in execution, and tasks rarely span more than one environment. We propose ToolSpace, a tool-centric framework that reverses this order. ToolSpace mines data, state, and retry dependencies from adjacent calls in execution traces of real MCP services and open agent corpora, using…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-03",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-04T10:00:01Z",
+    "updatedAt": "2026-11-03T15:09:01Z",
+    "firstSeenAt": "2026-11-04T10:00:01Z",
+    "lastSeenAt": "2026-11-04T10:00:01Z",
+    "dailySubmittedAt": "2026-11-04T00:00:00.000Z",
+    "tags": [
+      "Data"
+    ],
+    "authors": [
+      "Guanting Dong",
+      "Zhichao Sun",
+      "Xinyu Yang",
+      "Rui Wang",
+      "Xin Deng",
+      "Jiajie Jin",
+      "Zhixiong Yang",
+      "Junhao Huang",
+      "Han Han",
+      "Mingyu Ma",
+      "Xiaotao Wang",
+      "Yuyang Hu",
+      "Xiaoshuai Song",
+      "Xiaoxi Li",
+      "Jiejun Tan",
+      "Zhecan Wang",
+      "Shihan Dou",
+      "Honglin Guo",
+      "Zhiheng Xi",
+      "Tao Gui",
+      "Tao Ji",
+      "Qi Zhang",
+      "Yutao Zhu",
+      "Ji-Rong Wen",
+      "Zhicheng Dou"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.05036v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.05036"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.05036"
+      },
+      {
+        "label": "Project",
+        "url": "https://toolspace-agent.github.io/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/dongguanting/ToolSpace"
+      }
+    ]
+  },
+  {
     "sourceType": "arxiv",
     "category": "models",
     "verified": false,
@@ -5560,6 +5634,62 @@
   },
   {
     "sourceType": "huggingface",
+    "category": "training",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.03233",
+    "url": "https://huggingface.co/papers/2611.03233",
+    "id": "live-d9e8ebb7cc737435",
+    "title": "Axion 1.0: Open Agent Foundation Models, Simplified",
+    "summary": "We introduce Axion 1.0, a fully open agent foundation model that combines strong and broad agentic capabilities with a remarkably simple training recipe. Axion 1.0 is trained in only three stages: two lightweight supervised fine-tuning stages followed by reinforcement learning, without dedicated mid-training, direct preference optimization (DPO), or on-policy distillation (OPD). The first SFT stage develops strong self-contained reasoning through model-aware data construction, where we synthesize challenging problems and adversarially strengthen them based on the base model's own successful solution strategies. The second stage extends these…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-02",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-04T10:00:01Z",
+    "updatedAt": "2026-11-02T14:48:57Z",
+    "firstSeenAt": "2026-11-03T10:00:01Z",
+    "lastSeenAt": "2026-11-04T10:00:01Z",
+    "dailySubmittedAt": "2026-11-04T00:00:00.000Z",
+    "tags": [
+      "Training / RL"
+    ],
+    "authors": [
+      "Yuqi Jia",
+      "Yunjie Tian",
+      "Jiayu Zheng",
+      "Yijun Liang",
+      "Jingchen Sun",
+      "Mengyu Zhao",
+      "Di Fu"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.03233v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.03233"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.03233"
+      },
+      {
+        "label": "Project",
+        "url": "https://axion1-0.github.io/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/bytedance/axion1_0"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
     "category": "models",
     "verified": false,
     "originUrl": "https://huggingface.co/papers/2611.03092",
@@ -5785,6 +5915,60 @@
       {
         "label": "OpenAI · 官方更新",
         "url": "https://openai.com/index/qodo-codex-plugin"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "benchmark",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.02017",
+    "url": "https://huggingface.co/papers/2611.02017",
+    "id": "live-a3c0ad5d89cb1cf1",
+    "title": "Switch-SWE: Do Coding Agents Hold Focus When Switching Between Unfinished Tasks?",
+    "summary": "Software development sessions often involve several unfinished tasks rather than one issue carried through to completion. As coding agents take on repository-level development, they need to recover an earlier task's requirements and partial progress after intervening work. Existing repository-level benchmarks typically score one issue-to-patch episode and do not directly measure whether an agent can resume a task after advancing other unfinished work in the same repository. We introduce \\ourmethod, a benchmark for focus-task resumption in sessions that interleave unfinished tasks drawn from the same source repository, with a persistent…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-01",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-01",
+    "checkedAt": "2026-11-04T10:00:01Z",
+    "firstSeenAt": "2026-11-04T10:00:01Z",
+    "lastSeenAt": "2026-11-04T10:00:01Z",
+    "dailySubmittedAt": "2026-11-04T00:00:00.000Z",
+    "tags": [
+      "Evaluation"
+    ],
+    "authors": [
+      "Shuochen Chang",
+      "Qianli Ma",
+      "Yibo Miao",
+      "Qingyang Liu",
+      "Bingjie Gao",
+      "Haonan Zhao",
+      "Siyu Sun",
+      "Yulin Sun",
+      "Han Zhao",
+      "Jiangtong Li"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.02017"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.02017"
+      },
+      {
+        "label": "Project",
+        "url": "https://mqleet.github.io/Switch-Swe/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/Miraclecsc/Switch-SWE"
       }
     ]
   },
