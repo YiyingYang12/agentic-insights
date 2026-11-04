@@ -1,5 +1,98 @@
 [
   {
+    "sourceType": "huggingface",
+    "category": "training",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.04916",
+    "url": "https://huggingface.co/papers/2611.04916",
+    "id": "live-2e7f6dec0837dd4a",
+    "title": "Behind Video Generation: Observations and Insights on Multimodal Understanding from Kling",
+    "summary": "Video generation has progressed from isolated clips to coherent short-form audiovisual sequences, and the bottleneck is shifting from rendering to semantic control. This report summarizes the observations and insights on multimodal understanding gained from successive generations of Kling. We argue that generation quality is the projection of multimodal understanding through the entire data--conditioning--alignment--evaluation chain, and we examine this chain module by module. Kling-MLLM, a shared multimodal foundation model that unifies image, video, audio, synchronized audio--video, and interleaved inputs, is specialized for each…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-03",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-04T04:00:01Z",
+    "firstSeenAt": "2026-11-04T04:00:01Z",
+    "lastSeenAt": "2026-11-04T04:00:01Z",
+    "dailySubmittedAt": "2026-11-04T00:00:00.000Z",
+    "tags": [
+      "Training / RL"
+    ],
+    "authors": [
+      "Kling Team",
+      "Dong Chen",
+      "Jialu Chen",
+      "Xinlong Chen",
+      "Yifan Dai",
+      "Haotian Dong",
+      "Binzong Geng",
+      "Yushuo Guan",
+      "Minghui Guo",
+      "Guanlin He",
+      "Guanxiao He",
+      "Jingyun Hua",
+      "Yanwei Huang",
+      "Yiyan Ji",
+      "Xueping Jia",
+      "Yizhuo Jia",
+      "Bozhou Li",
+      "Jiaze Li",
+      "Min Li",
+      "Shihao Li",
+      "Shujie Li",
+      "Shengyi Liao",
+      "Weihong Lin",
+      "Shiyuan Liu",
+      "Xinyu Liu",
+      "Siyang Mao",
+      "Xiaoru Qu",
+      "Dianmo Sheng",
+      "Yang Shi",
+      "Jiafu Tang",
+      "Longxiang Tang",
+      "Yuqi Tang",
+      "Chengzhuo Tong",
+      "Kuo Wang",
+      "Qixun Wang",
+      "Rui Wang",
+      "Tianduo Wang",
+      "Yuran Wang",
+      "Zekun Wang",
+      "Zihao Wang",
+      "Boyang Xia",
+      "Yifan Xu",
+      "Liu Yang",
+      "Zhenlong Yuan",
+      "Bohan Zeng",
+      "Mujin Zhang",
+      "Yuanxing Zhang",
+      "Zhicheng Zhang",
+      "Zhuoran Zhang",
+      "Yuanhong Zheng",
+      "Kun Gai",
+      "Chengru Song",
+      "Pengfei Wan"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.04916"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.04916"
+      },
+      {
+        "label": "Project",
+        "url": "https://klingai.com/app"
+      }
+    ]
+  },
+  {
     "sourceType": "official",
     "category": "models",
     "verified": false,
@@ -778,6 +871,65 @@
     ]
   },
   {
+    "sourceType": "huggingface",
+    "category": "training",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.02501",
+    "url": "https://huggingface.co/papers/2611.02501",
+    "id": "live-0148df21dbec54b8",
+    "title": "SpecPilot: Autonomous Algorithm Discovery and Systems Optimization for Speculative Decoding",
+    "summary": "Speculative decoding accelerates memory-bound LLM decoding with a lightweight drafter, and parallel drafters extend this speedup by drafting a whole block in one forward pass. However, it remains unclear whether their released systems (stock) attain the full speedup that parallel drafting permits. We identify three challenges. First, with one request, each step accepts few tokens but reads every target weight. Second, with batching, per-request verification work roughly halves the speedup over autoregressive (AR) decoding. Third, speculative decoding is deployment-specific, and no universal optimization fits every serving regime, drafter…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-02",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-04T04:00:01Z",
+    "updatedAt": "2026-11-02T04:21:47Z",
+    "firstSeenAt": "2026-11-03T10:00:01Z",
+    "lastSeenAt": "2026-11-04T04:00:01Z",
+    "dailySubmittedAt": "2026-11-04T00:00:00.000Z",
+    "tags": [
+      "Training / RL"
+    ],
+    "authors": [
+      "Kunjun Li",
+      "Wenhao Chai",
+      "Yihao Liang",
+      "Yuezhou Hu",
+      "Shuyao Xu",
+      "Yi Pan",
+      "William X. Zheng",
+      "Kannan Ramchandran",
+      "Kurt Keutzer",
+      "Jiantao Jiao"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.02501v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.02501"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.02501"
+      },
+      {
+        "label": "Project",
+        "url": "https://stargazerx0.github.io/specpilot-project-page/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/StargazerX0/SpecPilot"
+      }
+    ]
+  },
+  {
     "sourceType": "arxiv",
     "category": "distillation",
     "verified": false,
@@ -1252,6 +1404,66 @@
       {
         "label": "arXiv · Agentic 论文",
         "url": "https://arxiv.org/abs/2611.03434v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "benchmark",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.02737",
+    "url": "https://huggingface.co/papers/2611.02737",
+    "id": "live-a39b3c683c11ca9b",
+    "title": "MoviEdit: Long-form Multi-Shot Video Editing Made Easy",
+    "summary": "Long-form multi-shot video editing requires an intended edit to remain coherent across abrupt changes in scene, viewpoint, and subject appearance, while processing substantially longer visual context than conventional single-shot editors. We introduce MoviEdit, an end-to-end framework for scalable long-form multi-shot video editing that jointly addresses the challenges of data, modeling, and evaluation. To provide cross-shot supervision data at scale, we develop automatic data-generation pipelines spanning synchronized multi-view footage, real-world multi-shot videos, and generated multi-shot content, yielding 87K paired editing videos…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-02",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-04T04:00:01Z",
+    "updatedAt": "2026-11-02T08:26:08Z",
+    "firstSeenAt": "2026-11-03T10:00:01Z",
+    "lastSeenAt": "2026-11-04T04:00:01Z",
+    "dailySubmittedAt": "2026-11-04T00:00:00.000Z",
+    "tags": [
+      "Evaluation"
+    ],
+    "authors": [
+      "Suhyeon Lee",
+      "Zhengang Li",
+      "Soo Ye Kim",
+      "Peihao Zhu",
+      "Jong Chul Ye",
+      "Chun-Hao Paul Huang",
+      "Duygu Ceylan",
+      "Yan Kang",
+      "Hyeonho Jeong"
+    ],
+    "topics": [
+      "video-editing"
+    ],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · 视频剪辑",
+        "url": "https://arxiv.org/abs/2611.02737v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.02737"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.02737"
+      },
+      {
+        "label": "Project",
+        "url": "https://multi-shot-edit.github.io/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/adobe-research/MoviEdit-Bench"
       }
     ]
   },
@@ -2981,6 +3193,62 @@
   },
   {
     "sourceType": "huggingface",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.02079",
+    "url": "https://huggingface.co/papers/2611.02079",
+    "id": "live-ca7fb391014d6ec6",
+    "title": "ParetoSaddler: Pareto-Guided Optimization of Agent Harnesses for Quality and Cost",
+    "summary": "Harness optimization can substantially improve LLM agents without modifying model weights, but existing methods primarily optimize response quality. Extending them to joint quality--cost optimization introduces a challenge: applying the deployment preference during intermediate updates can prematurely reject candidates that are valuable for later improvements. We introduce ParetoSaddler, which addresses this mismatch by separating intermediate candidate promotion from final deployment selection. At each iteration, an optimizer updates a parent harness to produce a candidate, and then compares the two over repeated executions and uses…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-01",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-01",
+    "checkedAt": "2026-11-04T04:00:01Z",
+    "firstSeenAt": "2026-11-04T04:00:01Z",
+    "lastSeenAt": "2026-11-04T04:00:01Z",
+    "dailySubmittedAt": "2026-11-04T00:00:00.000Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Xingzhi Qian",
+      "Sungho Park",
+      "Rongyuan Tan",
+      "Jianbo Yu",
+      "Jue Zhang",
+      "Lorenzo Cavallaro",
+      "Menglin Xia",
+      "Yanzhi Chen",
+      "Xinnuo Xu",
+      "Yu Kang",
+      "Xinran Zheng",
+      "Gagan Somashekar",
+      "Xuchao Zhang",
+      "Chetan Bansal",
+      "Qingwei Lin",
+      "Victor Rühle"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.02079"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.02079"
+      },
+      {
+        "label": "Project",
+        "url": "https://autosaddler-projectpage.github.io/ParetoSaddler/"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
     "category": "training",
     "verified": false,
     "originUrl": "https://huggingface.co/papers/2611.02074",
@@ -3442,6 +3710,59 @@
       {
         "label": "arXiv · Agentic 论文",
         "url": "https://arxiv.org/abs/2611.00489v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "training",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.01120",
+    "url": "https://huggingface.co/papers/2611.01120",
+    "id": "live-70e85ca7e0f1c0d2",
+    "title": "StreamDuo: A Live Commentator and a Research Agent for Unseen Games",
+    "summary": "Streaming video LLMs can now commentate live gameplay, but they are trained and tested on the same games. We study cross-game streaming commentary, in which a model trained on one game commentates games it has never seen, and find that current commentators transfer their timing but not their knowledge of the game world. We propose StreamDuo, which pairs a trainable commentator with a frozen research agent that reads the wiki of the game being played. When the commentator sees something it cannot name, it sends the current frames, and the research agent returns a few wiki entries two seconds later while the stream continues. We train only the…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-10-31",
+    "evidence": "自动收录·待解读",
+    "date": "2026-10-31",
+    "checkedAt": "2026-11-04T04:00:01Z",
+    "updatedAt": "2026-10-31T17:08:13Z",
+    "firstSeenAt": "2026-11-03T04:00:01Z",
+    "lastSeenAt": "2026-11-04T04:00:01Z",
+    "dailySubmittedAt": "2026-11-03T00:00:00.000Z",
+    "tags": [
+      "Training / RL"
+    ],
+    "authors": [
+      "Zixian Gao",
+      "Penghao Luo",
+      "Xiangcheng Cao",
+      "Lixin Xiu",
+      "Ziqi Cai",
+      "Zhen Li",
+      "Erwin Wu",
+      "Kaipeng Zhang"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.01120v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.01120"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.01120"
+      },
+      {
+        "label": "Project",
+        "url": "https://zixiangao.github.io/StreamDuo/"
       }
     ]
   },
@@ -7268,6 +7589,68 @@
   },
   {
     "sourceType": "huggingface",
+    "category": "training",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2610.40747",
+    "url": "https://huggingface.co/papers/2610.40747",
+    "id": "live-f660f881ed80e431",
+    "title": "Mage-VL-Cowork: A Full Training Recipe to Learn Hybrid Computer Use From Evolved Harnesses",
+    "summary": "Effective computer-use agents (CUAs) should seamlessly combine visual GUI interaction with code and terminal execution within a single policy. We present Mage-VL-Cowork, a 4B hybrid CUA trained from a general multimodally aligned checkpoint through an end-to-end, progressive five-stage curriculum across midtraining, SFT, and RL. To power this curriculum at scale, Mage-CUA-Forge replaces per-task agent construction with reusable, skill-conditioned generation workflows and application-specific preparers, synthesizing 293,806 desktop and web tasks across 6,915 skills while reducing recurring per-task expenditure by 82.6%. Rather than directly…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-10-29",
+    "evidence": "自动收录·待解读",
+    "date": "2026-10-29",
+    "checkedAt": "2026-11-04T04:00:01Z",
+    "firstSeenAt": "2026-11-04T04:00:01Z",
+    "lastSeenAt": "2026-11-04T04:00:01Z",
+    "dailySubmittedAt": "2026-11-04T00:00:00.000Z",
+    "tags": [
+      "Training / RL"
+    ],
+    "authors": [
+      "Xiaoyi Zhang",
+      "Haoqing Wang",
+      "Xinjie Zhang",
+      "Xiang Ming",
+      "Xing Wang",
+      "Senqiao Yang",
+      "Kaichen Zhang",
+      "Zhaoyang Jia",
+      "Andong Tan",
+      "Xinjiang Wang",
+      "Jinghao Guo",
+      "Yifei Shen",
+      "Xiao Li",
+      "Peng Zhang",
+      "Xun Guo",
+      "Jiahao Li",
+      "Shicheng Zheng",
+      "Jinglu Wang",
+      "Zongyu Guo",
+      "Wenxuan Xie",
+      "Bin Li",
+      "Yan Lu"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2610.40747"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2610.40747"
+      },
+      {
+        "label": "Project",
+        "url": "https://microsoft.github.io/Mage/cowork/"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
     "category": "models",
     "verified": false,
     "originUrl": "https://huggingface.co/papers/2610.40191",
@@ -10569,6 +10952,60 @@
       {
         "label": "Code",
         "url": "https://github.com/MCG-NJU/AutoTavern"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2610.00854",
+    "url": "https://huggingface.co/papers/2610.00854",
+    "id": "live-cf2528fd5db9bdfb",
+    "title": "Are Frontier VLM Agents Ready to Be Robot Generalists? An Empirical Study with the Embodied Agent Arena",
+    "summary": "A robot generalist must interpret a scene, act on it, and satisfy every condition of a task. How far do frontier vision-language models (VLMs) meet these demands? We introduce Embodied Agent Arena, evaluating ten VLM agents across Geometry, Spatial Reasoning, Affordance, Task Planning, and Manipulation. Its 1,000 cases combine 32 established sources with GeoProbe, our 168-case benchmark for camera, motion, depth, and scale estimation. A minimal harness leaves task decisions to the model through source-native interfaces. Closed-weight models lead all five domains, whereas open-weight VLMs show useful spatial reasoning but substantially lower…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-10-23",
+    "evidence": "自动收录·待解读",
+    "date": "2026-10-23",
+    "checkedAt": "2026-11-04T04:00:01Z",
+    "firstSeenAt": "2026-11-04T04:00:01Z",
+    "lastSeenAt": "2026-11-04T04:00:01Z",
+    "dailySubmittedAt": "2026-11-04T00:00:00.000Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Haojian Huang",
+      "Pukun Zhao",
+      "Zexi Li",
+      "Yehang Zhang",
+      "Yangkai Wei",
+      "Wenqian Li",
+      "Han Yang",
+      "Kaiwen Zhou",
+      "Ying-Cong Chen",
+      "Yinchuan Li"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2610.00854"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2610.00854"
+      },
+      {
+        "label": "Project",
+        "url": "https://embodied-agent-arena.github.io/embodied-agent-arena/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/embodied-agent-arena/embodied-agent-arena"
       }
     ]
   },

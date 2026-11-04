@@ -3620,5 +3620,236 @@
         "url": "https://huggingface.co/blog/ibm-research/palette-deck-building"
       }
     ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://huggingface.co/papers/2610.40747",
+    "url": "https://arxiv.org/abs/2610.40747v1",
+    "id": "research-mage-vl-cowork-2610-40747",
+    "title": "Mage-VL-Cowork：先优化教师操作方式，再训练 4B GUI＋代码 Agent",
+    "summary": "通过可复用环境生成、教师工具精简和五阶段训练，让一个 4B 策略自行选择 GUI 或终端。作者在 OSWorld-Verified 的 361 题、50 步预算下报告两次评测均值 66.0%。",
+    "insight": "本站判断：蒸馏前先评估教师工具的可学习性；多一个操作通道可能只增加学生的路由歧义。生成环境也应复用技能工作流与应用状态准备器，再把检查通过的执行轨迹用于训练。",
+    "limits": "作者自测；66.0% 排除 Google Drive，部分对比模型预算不同。82.6% 省的是重复任务生成费用，未计一次性工作流编写调试；不等于总训练降本。未独立运行模型或核验全部训练数据。",
+    "organization": "Microsoft Mage Team",
+    "dateLabel": "2026-10-29 · arXiv v1（11/04 HF收录）",
+    "evidence": "已读原论文方法、实验及相关附录；来源核验，未复现",
+    "originalTitle": "Mage-VL-Cowork: A Full Training Recipe to Learn Hybrid Computer Use From Evolved Harnesses",
+    "date": "2026-10-29",
+    "checkedAt": "2026-11-04T08:21:31Z",
+    "firstSeenAt": "2026-11-04T04:00:01Z",
+    "lastSeenAt": "2026-11-04T04:00:01Z",
+    "tags": [
+      "混合电脑操作",
+      "环境合成",
+      "轨迹蒸馏",
+      "GRPO"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2610.40747"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2610.40747"
+      },
+      {
+        "label": "Project",
+        "url": "https://microsoft.github.io/Mage/cowork/"
+      },
+      {
+        "label": "arXiv 方法与实验全文",
+        "url": "https://arxiv.org/html/2610.40747v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "先改好教师的操作工具与流程，再用分阶段训练让小模型学会何时点界面、何时写代码。",
+      "motivation": "直接蒸馏强教师会继承低效操作和通道选择错误；逐题从头构造桌面环境又难以扩展。",
+      "novelty": "作者主张贡献是端到端五阶段课程、先演化教师操作框架与可复用环境合成。本站判断：关键不是工具越多越好；同一教师的 672 题对照中，GUI＋代码学生为 37.6%，额外加无障碍通道的学生为 25.1%，但这不能证明所有任务都应删除该通道。",
+      "evidenceScope": "已读 v1 第 3–6 节方法与实验、网页副本附录相关段落，并核对 Microsoft 项目页。桌面最终结果为 361 题、50 步、两次运行均值；网页 643 题上的 58.6% 对应 SFT 检查点，不能写成最终 RL 成绩。",
+      "limits": "阶段成绩 45.56%→55.84%→66.0% 是逐步训练结果，并非逐组件等算力消融。训练混合轨迹主要经 rubric LLM 判分过滤；网页执行验证不能概括成所有训练数据均严格程序验真。生成降本排除一次性编写调试；4B 参数规模并未证明手机端实测性能。",
+      "method": [
+        "固定教师权重，在开发任务上优化提示、工具、执行循环和终端库，删除重复操作通道，再分别收集 GUI、终端及混合演示。",
+        "按技能编写可复用工作流和应用状态准备器，联合生成任务、初始化脚本与评分规则；形成 293,806 个任务、6,915 项技能与 318,837 条保留混合轨迹。",
+        "从通用多模态 4B 检查点依次做 GUI 中期训练、GUI SFT、代码与终端 SFT、混合 SFT，学习单一策略内的通道切换。",
+        "在 1,988 项 ScaleCUA 任务上进行在线 GRPO；用异步执行与重要性采样控制旧策略轨迹带来的偏差。",
+        "用留出桌面任务检验完整流程；网页诊断另用可重置副本，并检查页面访问、操作轨迹和后台结果。"
+      ],
+      "inspirations": [
+        "做教师工具删减实验时同时比较教师成功率和学生学习后成功率，别只选教师榜单最高的配置。",
+        "把环境生成拆成一次性技能工作流和可重复实例，分别记录固定建设成本、每题成本与可执行验收率。",
+        "对文件创作任务同时验收结构化文件和应用渲染结果，让训练样本显式呈现代码编辑后回到界面检查的切换。"
+      ],
+      "reviewedAt": "2026-11-04T08:21:31Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2610.40747v1",
+        "https://arxiv.org/html/2610.40747v1",
+        "https://microsoft.github.io/Mage/cowork/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.40747",
+      "status": "pending",
+      "checkedAt": "2026-11-04T08:25:00.303230+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://huggingface.co/papers/2611.02079",
+    "url": "https://arxiv.org/abs/2611.02079v1",
+    "id": "research-paretosaddler-2611-02079",
+    "title": "ParetoSaddler：把中间候选晋级与最终部署预算分开",
+    "summary": "不改模型权重，改 Agent 提示、工具与执行框架。中间候选只要有可信的质量或费用改善就值得继续评估，最后再按部署预算选择；两个跨领域测试集同时改善质量与单任务执行费。",
+    "insight": "本站判断：成本更高的中间版本也可能为下一步改进铺路。应保存已评估候选、重复运行估计波动，并把最终交付门槛与探索阶段晋级规则分开。",
+    "limits": "ClawMark 仅 22 个留出题、只测 stage-0；GAIA2 留出 300 题。三次重复不足以覆盖罕见失败，bootstrap 不含任务抽样不确定性。报告的单任务节省没有摊销框架优化与重复评估费用。",
+    "organization": "Microsoft / UCL 等",
+    "dateLabel": "2026-11-01 · arXiv v1（11/04 HF收录）",
+    "evidence": "已读原论文方法、实验及相关附录；来源核验，未复现",
+    "originalTitle": "ParetoSaddler: Pareto-Guided Optimization of Agent Harnesses for Quality and Cost",
+    "date": "2026-11-01",
+    "checkedAt": "2026-11-04T08:21:31Z",
+    "firstSeenAt": "2026-11-04T04:00:01Z",
+    "lastSeenAt": "2026-11-04T04:00:01Z",
+    "tags": [
+      "Agent框架优化",
+      "质量与费用",
+      "重复评测",
+      "不修改模型权重"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.02079"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.02079"
+      },
+      {
+        "label": "Project",
+        "url": "https://autosaddler-projectpage.github.io/ParetoSaddler/"
+      },
+      {
+        "label": "arXiv 方法与实验全文",
+        "url": "https://arxiv.org/html/2611.02079v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "允许质量与费用暂时互换的中间改动继续演化，最后才用部署偏好选版本。",
+      "motivation": "过早要求每次改动都满足最终成本约束，会丢掉有潜力的候选；Agent 执行本身又有随机波动，单次涨分容易误导筛选。",
+      "novelty": "作者主张把统计 Pareto 晋级嵌入分阶段框架搜索，避免部署约束过早截断探索。本站判断：可迁移贡献是候选保留与重复执行证据；这里的晋级并不要求质量和费用每次同时改善，也不是全局最优保证。",
+      "evidenceScope": "已读 v1 方法、实验及附录 A、D–G、L。ClawMark 按场景分为 50/20/22 题，只测归一化 stage-0 rubric 分；GAIA2 为 75/65/300 题，指标是 pass@1。主表均为固定选定框架的三次测试均值与标准差。",
+      "limits": "质量优先端点在 ClawMark 为 70.86→81.35 分、$1.17→$1.01/题；GAIA2 为 56.22→62.89%、$0.78→$0.45/题。两种质量指标不可混称成功率；执行费不含搜索投入。重复次数消融未匹配总算力，bootstrap 只反映固定题内运行波动；主要在两种框架/模型组合验证，尚未独立复现。",
+      "method": [
+        "固定任务模型，用优化器修改父版本的提示、工具和执行框架，并记录问题诊断与执行轨迹。",
+        "在同一小批任务上对父、子版本各重复三次，联合收集质量与 token 计价费用。",
+        "用 Bayesian bootstrap 保留质量—费用相关性，估计宽松晋级规则的支持度；本实验用 10,000 次重采样与 0.7 阈值，允许降费时质量下降不超过 10 个百分点，提质时不设局部费用上限。",
+        "晋级后做开发集评测，保存全部已评估候选及当前 Pareto 前沿；被新候选支配的旧版本仍可成为后续父版本。",
+        "预算用完才按质量底线或前沿位置选部署版本，在按场景/Universe 分离的留出集报告结果。"
+      ],
+      "inspirations": [
+        "评测 Agent 改版时保留候选谱系，允许暂时多花费用换取可复用能力，最终交付仍严格执行成本与质量门槛。",
+        "每条任务保存多次运行的成对质量和费用，不把三个 test repeats 当作三次独立优化实验。",
+        "同时记录搜索总成本与部署每题节省，按预期使用量计算回本点；避免把省 token 直接写成端到端省钱。"
+      ],
+      "reviewedAt": "2026-11-04T08:21:31Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.02079v1",
+        "https://arxiv.org/html/2611.02079v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.02079",
+      "status": "pending",
+      "checkedAt": "2026-11-04T08:25:00.303230+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.28346v2",
+    "url": "https://arxiv.org/abs/2610.28346v2",
+    "id": "creative-autodirector-2610-28346",
+    "title": "Auto-Director：按场景返修的剪辑Agent与VEdit-Bench",
+    "summary": "四个Agent串联事实脚本、素材索引、剪辑和局部返修。作者在100主题VEdit-Bench报告综合4.19/5，专业编辑4.62；这是评分而非任务成功率。",
+    "insight": "把“画面符合旁白”和“画面符合外部事实”分开评测很有价值。素材不够时改脚本虽能改善一致性，也可能悄悄偏离需求，因此需要固定原始目标和事实清单作为独立验收依据。",
+    "limits": "已读v2全文，未复现。主评测由MLLM打分，人评相关性只抽20个视频；论文未报告置信区间或统一成本，生成模型采用逐场景生成后拼接。专业编辑仍领先；未核实作者代码和数据开放。10/20首发、10/22修订，本轮是待解读补录。",
+    "dateLabel": "2026-10-20首发 · 10-22 v2（本轮补解读）",
+    "evidence": "arXiv v2方法与实验全文已核验；未复现",
+    "date": "2026-10-20",
+    "checkedAt": "2026-11-04T08:22:45.393255Z",
+    "updatedAt": "2026-10-22T03:08:50Z",
+    "firstSeenAt": "2026-11-02T09:16:49Z",
+    "lastSeenAt": "2026-11-03T22:00:01Z",
+    "tags": [
+      "Evaluation",
+      "剪辑Agent",
+      "事实核验",
+      "多Agent",
+      "局部返修",
+      "VEdit-Bench"
+    ],
+    "authors": [
+      "Yuxia Chen",
+      "Wenbo Zhu",
+      "Yangguang Ji",
+      "Zhenxiang Jiang",
+      "Teng Zhong",
+      "Yu Zhang"
+    ],
+    "topics": [
+      "video-editing"
+    ],
+    "featured": false,
+    "sourceId": "arxiv_video_editing",
+    "sources": [
+      {
+        "label": "arXiv · 视频剪辑",
+        "url": "https://arxiv.org/abs/2610.28346v2"
+      },
+      {
+        "label": "arXiv v2：全文方法与实验",
+        "url": "https://arxiv.org/html/2610.28346v2"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "先把主题落实为事实和场景，再检索、裁剪素材；Critic只返修失败场景，已通过的场景冻结。",
+      "motivation": "固定素材可能缺少叙事证据，直接生成又难保证事实与连贯性；剪辑需要同时协调脚本、素材和构图。",
+      "novelty": "作者主张把事实规划、结构化素材与反馈闭环合为完整流程。本站判断：重点是分派可执行的局部修复，而非四个Agent的数量；也未证明达到专业编辑水平。",
+      "evidenceScope": "已读arXiv v2第3节方法、第4节基准、第5节实验及表1—3；并核对版本历史。没有运行代码或查看完整评测视频。",
+      "limits": "已读v2全文，未复现。主评测由MLLM打分，人评相关性只抽20个视频；论文未报告置信区间或统一成本，生成模型采用逐场景生成后拼接。专业编辑仍领先；未核实作者代码和数据开放。10/20首发、10/22修订，本轮是待解读补录。",
+      "method": [
+        "规划Agent检索事实，生成旁白、视觉查询与时长组成的JSON场景。",
+        "素材Agent切分镜头，把shot ID和时间戳叠在关键帧上，再生成结构化文字索引。",
+        "编辑Agent先取文本检索top-5，再结合画面按语义、氛围和时长重排。",
+        "预测主体框并平滑裁剪；多个主体无法共框时使用分屏或画中画。",
+        "Critic把问题分派给重检索、改脚本、改构图或节奏调整；最多三轮，冻结通过场景。"
+      ],
+      "inspirations": [
+        "在素材缺失任务中，同时检查改写后旁白的内部一致性与对原始要求的覆盖，避免靠删难点得高分。",
+        "保存场景版本和依赖，测局部返修是否破坏已通过场景，再比较冻结机制与全片重做。",
+        "统一模型、检索和迭代预算，对照错误定位、修复成功率、实际时延与画面质量。"
+      ],
+      "reviewedAt": "2026-11-04T08:22:45.393255Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2610.28346v2",
+        "https://arxiv.org/html/2610.28346v2"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.28346",
+      "status": "pending",
+      "checkedAt": "2026-11-04T08:25:00.303230+00:00"
+    }
   }
 ]
