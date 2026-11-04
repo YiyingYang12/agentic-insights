@@ -4077,5 +4077,400 @@
       "status": "pending",
       "checkedAt": "2026-11-04T14:24:04.810916+00:00"
     }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://huggingface.co/papers/2611.05036",
+    "url": "https://huggingface.co/papers/2611.05036",
+    "id": "live-142d77cb590d0d0f",
+    "title": "ToolSpace：从工具依赖图合成长流程任务，先执行再生成题目",
+    "summary": "ToolSpace 从工具调用轨迹提取数据、状态和重试依赖，先构造可回放的跨环境执行链，再反向写任务及验证脚本。论文报告 804 个环境、2,042 个 canonical tools、34,376 条 SFT 样本；35B 模型七项基准平均分由 23.0 升至 41.0，追加 RL 后为 43.2。",
+    "insight": "对数据建设更有价值的单位，是带参数来源与状态前置条件的可执行关系。比起继续增加孤立问答，可先覆盖跨工具依赖，再用初始快照回放检查任务是否可解、验证器是否接受预期状态。",
+    "limits": "这是作者实验结果而非本站复现。原始语料包含经过筛选的合成环境轨迹；回放有效不等于真实线上 API 完整等价。平均 18.86 次调用与 66.2% 跨环境只描述至少五次调用的 21,385 条子集。55.3% 减少是合成文件数代理，不是实测算力或费用节省；公开仓库当前范围也小于完整论文实验。",
+    "dateLabel": "2026-11-03",
+    "evidence": "已核验 arXiv v1 方法、实验与官方仓库；未复现实验",
+    "originalTitle": "ToolSpace: Scaling Tool-Centric Environment Synthesis for Long-Horizon Agents",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-04T20:23:18Z",
+    "updatedAt": "2026-11-03T15:09:01Z",
+    "firstSeenAt": "2026-11-04T10:00:01Z",
+    "lastSeenAt": "2026-11-04T16:00:01Z",
+    "dailySubmittedAt": "2026-11-04T00:00:00.000Z",
+    "tags": [
+      "Data",
+      "工具环境",
+      "可验证数据",
+      "Agent RL"
+    ],
+    "authors": [
+      "Guanting Dong",
+      "Zhichao Sun",
+      "Xinyu Yang",
+      "Rui Wang",
+      "Xin Deng",
+      "Jiajie Jin",
+      "Zhixiong Yang",
+      "Junhao Huang",
+      "Han Han",
+      "Mingyu Ma",
+      "Xiaotao Wang",
+      "Yuyang Hu",
+      "Xiaoshuai Song",
+      "Xiaoxi Li",
+      "Jiejun Tan",
+      "Zhecan Wang",
+      "Shihan Dou",
+      "Honglin Guo",
+      "Zhiheng Xi",
+      "Tao Gui",
+      "Tao Ji",
+      "Qi Zhang",
+      "Yutao Zhu",
+      "Ji-Rong Wen",
+      "Zhicheng Dou"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.05036v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.05036"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.05036"
+      },
+      {
+        "label": "Project",
+        "url": "https://toolspace-agent.github.io/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/dongguanting/ToolSpace"
+      },
+      {
+        "label": "arXiv 方法与实验全文",
+        "url": "https://arxiv.org/html/2611.05036v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "用有执行证据的工具依赖图合成训练环境，让模型练习跨服务、长流程的组合操作。",
+      "motivation": "先编数据库再编任务，容易造出偏离实际接口、缺少状态依赖的练习；真实工作则需要把多个服务返回值连续传递并处理失败。",
+      "novelty": "作者主张，工具优先构图、三类依赖和按需状态落地能扩展跨环境组合能力。本站判断：有价值的是把合成题的可执行性检查提前；优于教师或基准平均分提高，尚不能单独证明收益完全来自组合结构。",
+      "evidenceScope": "已读 v1 第 4–6 节、表 1–3及官方代码 README。8B、35B、744B 三个底座；七项工具使用基准。35B 平均分 23.0→41.0→43.2；本地结果平均三次独立运行，部分对照来自外部榜单。原论文另构造 300 题 AutomationBench Pro 与 98 题 Banking Pro。",
+      "limits": "77,760 为调用模式节点，实际工具为 2,042。作者称已按任务、调用序列和初态去除测试重叠，但本站未审计原始数据。Pro 与 Standard 的对比包含外部榜单分数，不能视作同一轮严格配对实验。仓库目前展示 47 服务、758 endpoints 的 AutomationBench 路线，不能据此声称全量图和训练集已经完整开放。",
+      "method": [
+        "收集真实 MCP、真实工作区及筛选后的合成轨迹；将“工具＋归一化参数”作为节点，以确定性规则提取数据、状态、重试关系并按出现频率加权。",
+        "将图聚类为环境：状态修改工具按需建立数据库，查询工具恢复快照，无状态匹配调用复用缓存结果。",
+        "按当前状态和参数来源筛选下一步，执行加权随机游走；调用失败或状态关系不符时回滚，无法继续的链直接丢弃。",
+        "用 Kimi K3 将执行链改写为不暴露工具名和顺序的任务，生成终态、关键中间状态和输出字段断言；从初态完整回放、验收并去重。",
+        "用通过断言的教师轨迹做 SFT；再以 35B 的 Pass@16 筛出仅一至两次成功的 653 条任务，以执行验证奖励做 GRPO。"
+      ],
+      "inspirations": [
+        "为训练数据保存参数来源、状态变化与失败恢复路径，单独消融状态边和数据边；不要只统计工具名称覆盖率。",
+        "把可回放链、自然语言需求和验收断言一起保存，并抽查断言是否遗漏任务要求或错误拒绝其他合理解法。",
+        "分别报告任务总数、长流程子集、环境跨度与实际生成费用；将缓存回放测试和真实服务泛化测试分开。"
+      ],
+      "reviewedAt": "2026-11-04T20:23:18Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.05036v1",
+        "https://arxiv.org/html/2611.05036v1",
+        "https://github.com/dongguanting/ToolSpace"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.05036",
+      "status": "pending",
+      "checkedAt": "2026-11-04T20:22:46.817259+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.04277v1",
+    "url": "https://arxiv.org/abs/2611.04277v1",
+    "id": "live-ac593914a945c443",
+    "title": "Harness-S：让不同执行框架救回失败轨迹，再训练同一个 Agent",
+    "summary": "Harness-S 先形成固定的互补执行框架池，仅在基础框架八次尝试全部失败时，选八个兄弟框架重新探索，用新轨迹组替换失败组训练共享策略。回到原框架后，4B 模型 AppWorld Avg@3 从普通 GRPO 的 48.98% 提高到 56.87%，比同框架重试对照的 51.91% 也更高。",
+    "insight": "框架变化可以成为训练期的探索辅助。最有说服力的验证不是路由后分数，而是去掉辅助框架、回到原框架仍保留多少收益；同时必须把额外重试、离线搜索和路由调用计入成本。",
+    "limits": "八次全失败触发后增加新采样，因此与普通 GRPO 不等总采样量或总算力。4B AppWorld 训练 rollout 为 2,560→3,032，GPU·h 为 50.58→67.19；完整搜索及训练还使用外部模型。公开首版聚焦 AppWorld，默认规则路由并关闭行为画像/LLM 投票，不等于论文完整配置的一键复现。",
+    "dateLabel": "2026-11-03",
+    "evidence": "已核验 arXiv v1 方法、实验、附录与官方仓库；未复现实验",
+    "originalTitle": "Harness-S: Learning from Sibling Harnesses for Generalizable Agent Training",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-04T20:23:18Z",
+    "updatedAt": "2026-11-03T04:03:44Z",
+    "firstSeenAt": "2026-11-04T10:00:01Z",
+    "lastSeenAt": "2026-11-04T16:00:01Z",
+    "tags": [
+      "Training / RL",
+      "Harness",
+      "失败轨迹",
+      "泛化"
+    ],
+    "authors": [
+      "Kangning Zhang",
+      "Wenxiang Jiao",
+      "Bowen Fang",
+      "Shuai Shao",
+      "Jiachen Zhu",
+      "Rong Shan",
+      "Shijian Wang",
+      "Hao Wang",
+      "Yuan Lu",
+      "Weiwen Liu",
+      "Weinan Zhang"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.04277v1"
+      },
+      {
+        "label": "arXiv 方法与实验全文",
+        "url": "https://arxiv.org/html/2611.04277v1"
+      },
+      {
+        "label": "官方代码与发布范围",
+        "url": "https://github.com/DeepExperience/Harness-S"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "用固定的兄弟框架帮助同一策略探索原框架下做不出的任务，再把有效行为学进策略参数。",
+      "motivation": "执行框架的修复通常只对部分任务有效，甚至造成退化；随着模型更新，同一框架的收益也会改变。单选一个最强框架或在所有任务上混用框架，都可能浪费互补性。",
+      "novelty": "作者主张，按失败触发的互补救援与随策略刷新画像，能将框架诱发行为转入共享策略。本站判断：将训练期探索辅助和测试期框架增强拆开是核心价值；H0 保留收益支持能力迁移，但不表示策略已对任意框架保持不变。",
+      "evidenceScope": "已读 v1 方法、主表及附录 A–G，并核对官方 README。Qwen3.5 4B/9B，AppWorld、SWE-Gym、DBBench 测试集分别 262/160/300 题；每题三次执行，主表平均三次独立随机运行。Pass@3 是三次至少成功一次，Avg@3 是三次成功率均值；4B AppWorld H0 的 Avg@3 为 56.87±1.47%。",
+      "limits": "与 H0 重试对照只匹配每任务救援额度，触发频率不同使总 rollout 不同。推理 Rank-1 匹配执行次数，却另有路由成本。4B AppWorld 全流程为 4,010 次搜索＋3,032 次训练 rollout、75.79 GPU·h 和 18.69M 外部 API tokens，不能宣称普遍最省。首版只发布 AppWorld 固定池及配方，默认规则路由，离线池生成不在启动命令内。",
+      "method": [
+        "冻结策略，依据多条失败轨迹诊断根因，定向修改提示、技能、上下文、记忆、hooks 或工具视图；以验证集联合覆盖选择父代，并保留合规可执行子代。",
+        "固定基础框架 H0 和 19 个辅助框架。训练时先在 H0 生成八条轨迹；只要有一次成功便保留原组。",
+        "若八次全失败，路由选择八个不同辅助框架，由同一当前策略从任务初态各重新尝试一次，以这八条新轨迹替换原失败组。",
+        "在各轨迹自身的生成上下文内计算 GRPO，只优化策略 token；以配对验证轨迹刷新各框架适用/不适用画像，论文完整路由采用多模型投票。",
+        "将训练后策略放回 H0 测试能力是否保留；另测执行前选定 Rank-1 框架的增益，任务失败后不重新选框架。"
+      ],
+      "inspirations": [
+        "比较普通训练、同框架追加重试、固定框架混合和定向救援，并把所有丢弃轨迹计入采样账单。",
+        "将框架评价从平均胜率扩展为任务覆盖并集与修复/退化矩阵；策略更新后重新校准，不让旧路由画像长期失效。",
+        "在原框架和未见框架分别测试保留收益；测试任务只用于最终评价，不能进入路由画像或选择依据。"
+      ],
+      "reviewedAt": "2026-11-04T20:23:18Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.04277v1",
+        "https://arxiv.org/html/2611.04277v1",
+        "https://github.com/DeepExperience/Harness-S"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.04277",
+      "status": "pending",
+      "checkedAt": "2026-11-04T20:25:50.194312+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://novitckii.com/resources/animation-skills/",
+    "url": "https://novitckii.com/resources/animation-skills/",
+    "id": "creative-claude-animation-skills",
+    "title": "Claude animation skills：从JSON规格到可改代码动效与审片联系表",
+    "summary": "作者提供六种动画技能。本轮核验graph路径：JSON参数填入SVG/GSAP模板，经共享构建器渲染并抽取带安全区边框的联系表；支持保留、定制模板，适合研究可重复的参数化动效流程。",
+    "insight": "可读规格、渲染代码与审片材料一起交付，比只留下成片更便于追踪改动。值得额外验证的是数据到画面的语义一致性，以及Agent是否真的查看了检查材料并据此修改；生成联系表本身不等于完成质检。",
+    "limits": "本轮静态读取主分支README、共享构建器和graph技能实现，未安装、执行或验收视频，也未审计全部六种技能。11月1日是作者介绍页标注日期；仓库创建及首发日期未核实，本轮补齐解读。已读构建代码生成截图和联系表，但没有实现自动语义评分或返修；产物文件存在也不证明内容正确，抽帧不能替代连续运动审查。",
+    "organization": "Artem Novitckii",
+    "dateLabel": "2026-11-01 · 作者介绍页日期（仓库首发未核实，本轮补齐）",
+    "evidence": "作者公开仓库及部分实现已静态核验；未运行",
+    "date": "2026-11-01",
+    "checkedAt": "2026-11-04T20:23:02.264187Z",
+    "firstSeenAt": "2026-11-04T08:22:45.393255Z",
+    "tags": [
+      "代码动效",
+      "GSAP",
+      "可编辑模板",
+      "创作技能",
+      "开源工具"
+    ],
+    "topics": [
+      "code2motion",
+      "code2video"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "作者介绍页：日期与公开项目说明",
+        "url": "https://novitckii.com/resources/animation-skills/"
+      },
+      {
+        "label": "作者仓库与工作流说明",
+        "url": "https://github.com/artemnovitckii/claude-animation-skills"
+      },
+      {
+        "label": "共享构建、快照与联系表实现",
+        "url": "https://github.com/artemnovitckii/claude-animation-skills/blob/main/kit/anim.py"
+      },
+      {
+        "label": "graph规格检查与构建入口",
+        "url": "https://github.com/artemnovitckii/claude-animation-skills/blob/main/skills/graph/build.py"
+      },
+      {
+        "label": "graph SVG/GSAP模板实现",
+        "url": "https://github.com/artemnovitckii/claude-animation-skills/blob/main/skills/graph/template.html"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "这是可检查的代码动效工具链：把结构化规格填入可改模板，产出视频和审片材料；这里核验的是graph及共享构建路径，不是新模型或实测榜单。",
+      "motivation": "图表和短动效经常只需替换数据、文案或配色。把这些变化与渲染代码分开，可重复制作，也方便检查哪一次修改影响了画面。",
+      "novelty": "作者定位为可由Claude Code使用的六种动画技能。本站判断：可借鉴的是规格、模板、渲染和审片材料的组合；不是从零生成任意动画算法，也没有在已读代码里证明自动审美纠错。",
+      "evidenceScope": "实际读取有日期的作者介绍页、作者README、kit/anim.py、skills/graph/build.py、skills/graph/template.html源码。未运行、未下载依赖，未验证其他五个技能或固定提交；源文件主分支可能变化。",
+      "limits": "本轮静态读取主分支README、共享构建器和graph技能实现，未安装、执行或验收视频，也未审计全部六种技能。11月1日是作者介绍页标注日期；仓库创建及首发日期未核实，本轮补齐解读。已读构建代码生成截图和联系表，但没有实现自动语义评分或返修；产物文件存在也不证明内容正确，抽帧不能替代连续运动审查。",
+      "method": [
+        "Agent准备JSON规格；graph构建入口检查至少两个非负数且包含正值，补齐默认文字、格式和主题参数。",
+        "共享构建器把规格和时长写入HTML，准备字体与GSAP；也允许指定本地定制模板。",
+        "graph模板按数据构造SVG曲线，暂停的GSAP时间线控制绘制进度、数字和落点效果，再登记给渲染器。",
+        "构建器调用固定版本HyperFrames渲染，或输出指定时刻快照；FFmpeg生成带安全区框的联系表，供后续检查。"
+      ],
+      "inspirations": [
+        "建立局部修改测试：只换数据或配色，核对文字、时长及未指定元素是否保持；同时保存规格和模板版本。",
+        "将输入数值、曲线位置和显示数字做一致性检查，覆盖极大数、零值、长标签及非单调序列。",
+        "记录“看见哪张检查图—指出什么问题—修改什么—再次验证”的证据链，并用完整播放补查抽帧遗漏的运动问题。"
+      ],
+      "reviewedAt": "2026-11-04T20:23:02.264187Z",
+      "sourceUrls": [
+        "https://novitckii.com/resources/animation-skills/",
+        "https://github.com/artemnovitckii/claude-animation-skills",
+        "https://github.com/artemnovitckii/claude-animation-skills/blob/main/kit/anim.py",
+        "https://github.com/artemnovitckii/claude-animation-skills/blob/main/skills/graph/build.py",
+        "https://github.com/artemnovitckii/claude-animation-skills/blob/main/skills/graph/template.html"
+      ]
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/Dharma-AI/dharma-field-extractor",
+    "url": "https://huggingface.co/blog/Dharma-AI/dharma-field-extractor",
+    "id": "update-dharma-field-extractor-20261104",
+    "title": "Dharma Field Extractor：用专用小模型把文档变成可执行的结构字段",
+    "summary": "Dharma把2B OCR基座用43,384条字段标注样本做LoRA训练，支持自由抽取或按schema输出JSON；可作为文档Agent的输入处理模块。",
+    "insight": "值得借鉴的是把缺失字段、嵌套表格与JSON合法性一起纳入训练和评测，让下游业务检查明确的字段契约。",
+    "limits": "HF托管的厂商自评，不是HF独立评测或端到端Agent实验；新2B提取器权重公开情况未核实，链接模型卡仍描述旧3B OCR。",
+    "organization": "Dharma-AI",
+    "dateLabel": "2026-11-04 · Dharma作者技术博客发布",
+    "evidence": "作者博客方法、评测边界与关联模型卡已核验；未复现",
+    "originalTitle": "Dharma Field Extractor: Any Document In, Structured Fields in JSON Out",
+    "date": "2026-11-04",
+    "checkedAt": "2026-11-04T20:22:57.698978+00:00",
+    "firstSeenAt": "2026-11-04T20:25:50.226826+00:00",
+    "tags": [
+      "专用小模型",
+      "LoRA",
+      "文档理解",
+      "结构化输出"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "Dharma作者技术博客：训练与评测",
+        "url": "https://huggingface.co/blog/Dharma-AI/dharma-field-extractor"
+      },
+      {
+        "label": "旧DharmaOCR-LITE模型卡：不能当作新2B权重",
+        "url": "https://huggingface.co/Dharma-AI/Dharma-OCR-LITE"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "专用字段抽取模型，不是新的通用Agent；用小模型为工作流产出结构化输入。",
+      "motivation": "完整OCR文本仍需映射成业务字段，直接让大模型逐页抽取又可能成本较高。",
+      "novelty": "作者主张专用小模型兼顾质量与成本；本站判断是字段契约训练案例，不证明通用能力胜过前沿模型。",
+      "evidenceScope": "项目博客全文方法/实验解读；非论文全文分析、非独立复现。",
+      "limits": "作者报告复合分0.834，非准确率或Agent成功率；对照采用低推理设置。6–147倍成本比将L40S GPU时与API牌价比较，不是服务报价或完整部署成本。新2B权重未核实公开。",
+      "method": [
+        "从已做SFT和DPO的2B OCR v1.1基座出发，用43,384条多域、多语字段样本训练LoRA。",
+        "输入文档图像，选择自由抽取或指定schema；按类型输出字段、嵌套表格及缺失值null。",
+        "在546份文档的三种请求模式上评测共1,638案例，联合检查字段路径、值相似度与JSON有效性。"
+      ],
+      "inspirations": [
+        "在业务测试集中故意询问不存在的字段，单列空值正确率与错误写库率。",
+        "把抽取分数与完整Agent任务完成率分别报告，并计入校验、重试和人工复核成本。"
+      ],
+      "reviewedAt": "2026-11-04T20:22:57.698978+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/blog/Dharma-AI/dharma-field-extractor",
+        "https://huggingface.co/Dharma-AI/Dharma-OCR-LITE"
+      ]
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html#v2-5-0-november-4-2026",
+    "url": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html#v2-5-0-november-4-2026",
+    "id": "update-kimi-code-2-5-20261104",
+    "title": "Kimi Code 2.5：远端执行与会话分叉，扩展长程Agent工作方式",
+    "summary": "CLI 2.5.0新增SSH、Docker或自定义环境中的文件/Shell执行；更新日志还列出历史轮次及运行会话分叉，Desktop 1.3.0支持多目录项目。",
+    "insight": "把对话状态、工具执行位置和代码工作区分别建模，才能可靠比较任务分支；会话复制本身不等于文件系统隔离。",
+    "limits": "这是工具版本更新，非新模型发布或能力评测。仅核验官方文档，未安装实测；远端模式不支持Tower，不能将所有工具都视为远端执行。",
+    "organization": "Moonshot AI / Kimi",
+    "dateLabel": "2026-11-04 · CLI 2.5.0 / Desktop 1.3.0更新日志",
+    "evidence": "官方版本日志与使用范围文档已核验；未实机测试",
+    "date": "2026-11-04",
+    "checkedAt": "2026-11-04T20:22:57.698978+00:00",
+    "firstSeenAt": "2026-11-04T20:25:50.226826+00:00",
+    "tags": [
+      "Kimi Code",
+      "远端执行",
+      "会话分叉",
+      "Agent工具"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "官方版本更新日志",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html#v2-5-0-november-4-2026"
+      },
+      {
+        "label": "远端环境支持与限制",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-cli/guides/remote-environment.html"
+      },
+      {
+        "label": "会话与上下文文档",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-cli/guides/sessions.html"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "CLI 2.5.0和Desktop 1.3.0更新Agent的运行环境与会话组织方式。",
+      "motivation": "长程开发需要使用远端算力、跨目录代码，并从既有推理节点尝试不同方案。",
+      "novelty": "官方新增远端环境和更细粒度分叉；本站判断是编排能力更新，未提供任务成功率提升证据。",
+      "evidenceScope": "官方文档解读，不是论文或实测评估。",
+      "limits": "远端需预装executor；WebSearch/FetchURL仍在本机，断连中的调用不会自动重试，Tower不可用。普通/fork指南仍称命令仅空闲可用，运行中分叉据版本日志，入口需实测确认。",
+      "method": [
+        "为新会话绑定SSH、Docker或自定义执行环境；文件与Shell在目标侧运行，模型请求和会话状态留在本机。",
+        "按更新日志，从历史轮次或运行会话派生独立会话，让原会话继续；普通/fork指南另说明已保存的goal目标不复制。",
+        "Desktop项目组织主目录及多个源目录，文件树切换根目录；多目录项目合并各源目录的Skills。"
+      ],
+      "inspirations": [
+        "做分支对照实验时另建隔离工作树，记录分叉轮次和环境，避免共享文件污染。",
+        "测试断连后的失败传播和恢复，核验命令未悄悄退回本机执行。"
+      ],
+      "reviewedAt": "2026-11-04T20:22:57.698978+00:00",
+      "sourceUrls": [
+        "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html#v2-5-0-november-4-2026",
+        "https://www.kimi.com/code/docs/en/kimi-code-cli/guides/remote-environment.html",
+        "https://www.kimi.com/code/docs/en/kimi-code-cli/guides/sessions.html"
+      ]
+    }
   }
 ]
