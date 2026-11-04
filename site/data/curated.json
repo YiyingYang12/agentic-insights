@@ -3333,5 +3333,292 @@
         "url": "https://github.com/cuga-project/harbor-eval"
       }
     ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/allenai/statebench",
+    "url": "https://arxiv.org/abs/2611.03094v1",
+    "id": "research-statebench-2611-03094",
+    "title": "StateBench：把长程状态跟踪拆成四级，找出记忆能力的真正缺口",
+    "summary": "StateBench 将长程状态跟踪拆成四级更新操作。直接训练的循环/混合模型在前三层能大幅外推长度，但预训练模型和最难的跨变量更新仍有缺口；“找出最新值”不能代表完整状态跟踪能力。",
+    "insight": "为 Agent 记忆评测加入覆写、自更新和跨实体依赖三类题，分别计分，防止只靠最后一次检索获得高分。",
+    "limits": "合成任务使用固定数量变量；尚未覆盖持续新增实体或真实 Agent 长任务。理论结论依赖具体架构、数值精度及部分复杂度假设。64K 是赋值次数，最难层并未达到 250× 外推；生成与五选一结果不能直接横比。未复现训练或独立审验证明。",
+    "dateLabel": "2026-11-02 · arXiv v1",
+    "evidence": "原论文方法与评测已核验，官方代码和数据可访问，未复现",
+    "originalTitle": "A Fine-Grained Hierarchy and Benchmark for State Tracking in Language Models",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-04T02:19:15Z",
+    "originalDate": "2026-11-02",
+    "updatedAt": "2026-11-02T13:12:15Z",
+    "firstSeenAt": "2026-11-04T02:19:15Z",
+    "lastSeenAt": "2026-11-04T02:19:15Z",
+    "tags": [
+      "Benchmark",
+      "State Tracking",
+      "Long Context",
+      "Memory",
+      "Gated DeltaNet"
+    ],
+    "authors": [
+      "Jackson Petty",
+      "William Merrill",
+      "Ashish Sabharwal"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "arXiv 原论文 v1",
+        "url": "https://arxiv.org/abs/2611.03094v1"
+      },
+      {
+        "label": "方法、理论条件与评测全文",
+        "url": "https://arxiv.org/html/2611.03094v1"
+      },
+      {
+        "label": "Ai2 官方发布解读（11/03）",
+        "url": "https://huggingface.co/blog/allenai/statebench"
+      },
+      {
+        "label": "作者官方代码",
+        "url": "https://github.com/allenai/state-bench"
+      },
+      {
+        "label": "Hugging Face 数据集",
+        "url": "https://huggingface.co/datasets/allenai/state-bench"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "StateBench 将长程状态跟踪拆成四级更新操作。直接训练的循环/混合模型在前三层能大幅外推长度，但预训练模型和最难的跨变量更新仍有缺口；“找出最新值”不能代表完整状态跟踪能力。",
+      "motivation": "只测检索最新信息或最难的置换问题，会掩盖中间能力差异。需要控制文本长度和表达形式，定位模型是在读错、忘记覆写，还是无法累积依赖。",
+      "novelty": "作者主张以四层代数结构连接理论表达能力与匹配评测。本站判断：研究价值主要在分层诊断和受控数据构造，能区分预训练不足与架构/优化限制；不构成所有实际 Transformer 都无法跟踪状态的证明。",
+      "evidenceScope": "已读 arXiv v1 方法、理论条件、直接训练及预训练评测和附录；核验 Ai2 官方博客、GitHub 与 HF 数据。六种 275M 架构、2/4/8/16 个普通变量；理论未独立证明，实验未复现。",
+      "limits": "合成任务使用固定数量变量；尚未覆盖持续新增实体或真实 Agent 长任务。理论结论依赖具体架构、数值精度及部分复杂度假设。64K 是赋值次数，最难层并未达到 250× 外推；生成与五选一结果不能直接横比。未复现训练或独立审验证明。",
+      "method": [
+        "用有限状态代数划分固定值、按值覆写、自增取模、跨变量引用/交换四层，并分析注意力与 Gated DeltaNet 的表达能力边界。",
+        "先生成一般引用/交换轨迹，再替换更新操作得到较简单版本，保持变量数、取值规模和赋值位置对齐；附真实最终状态及四个错误候选。",
+        "用代码、表格、人物位置等多种表述呈现同一状态过程，并标注长度、依赖链与敏感度；公开代码和数据可访问。",
+        "将六种 275M 架构从头训练于 8–256 次赋值，测试到 64,000 次；另测开放预训练与前沿模型，分析格式、长度和敏感度影响。"
+      ],
+      "inspirations": [
+        "为 Agent 记忆评测加入覆写、自更新和跨实体依赖三类题，分别计分，防止只靠最后一次检索获得高分。",
+        "同一语义实例生成多种表述，按底层轨迹划分训练/测试；同步报告格式最优值与逐格式结果，检查提示形式带来的偏差。",
+        "设计课程或蒸馏数据时同时控制依赖深度与敏感度，而非只增加 token 数；用直接训练和预训练对照判断下一步该改数据还是结构。"
+      ],
+      "reviewedAt": "2026-11-04T02:19:15Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.03094v1",
+        "https://arxiv.org/html/2611.03094v1",
+        "https://huggingface.co/blog/allenai/statebench",
+        "https://github.com/allenai/state-bench",
+        "https://huggingface.co/datasets/allenai/state-bench"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.03094",
+      "status": "pending",
+      "checkedAt": "2026-11-04T02:22:58.925468+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://reap.video/blog/claude-chatgpt-video-editor",
+    "url": "https://reap.video/blog/claude-chatgpt-video-editor",
+    "id": "creative-reap-agent-editor",
+    "title": "Reap：把真实时间线与可撤销编辑动作开放给Agent",
+    "summary": "Reap的官方指南展示Agent在同一个可见编辑器中读时间线、剪片和改字幕；开发者文档列出状态读取、拆分、移动、裁剪及保存动作。普通编辑可逐步撤销，局部细剪不必重建整个成片。",
+    "insight": "值得借鉴的是编辑环境向Agent暴露当前状态、可用动作和操作历史。评测可同时检查局部修改是否准确、无关内容是否保留、撤销是否恢复，而不只看最终视频是否好看。",
+    "limits": "官方产品文档核验，未连接账号、执行动作或检查导出视频，也无独立成功率评测。细剪需要打开的编辑器标签页；仅接入MCP不等于能自动细剪。套餐、项目状态和后台任务限制可用动作；AI Emoji与AI Highlight Words会先保存包括此前未保存的改动。11月2日是官方指南日期，正文称功能已于10月开放。",
+    "organization": "Reap",
+    "dateLabel": "2026-11-02 · 官方指南更新（功能10月开放）",
+    "evidence": "官方指南与开发者动作文档已核验；未实际运行",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-04T02:20:50.412943Z",
+    "firstSeenAt": "2026-11-03T20:19:35.805052Z",
+    "tags": [
+      "剪辑Agent",
+      "时间线编辑",
+      "工具接口",
+      "可撤销编辑",
+      "官方工具"
+    ],
+    "topics": [
+      "video-editing"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "官方指南：文章日期与开放时间",
+        "url": "https://reap.video/blog/claude-chatgpt-video-editor"
+      },
+      {
+        "label": "官方开发者动作清单",
+        "url": "https://docs.reap.video/help-center/what-your-agent-can-do-in-the-editor"
+      },
+      {
+        "label": "编辑流程与自动保存例外",
+        "url": "https://docs.reap.video/help-center/edit-clips-with-your-ai-agent"
+      },
+      {
+        "label": "编辑失败条件与恢复边界",
+        "url": "https://docs.reap.video/help-center/troubleshoot-editing-with-your-ai-agent"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "这是视频编辑环境的Agent接口更新：读当前工程后逐步执行时间线操作，人与Agent共享可见、可继续编辑的项目；本条解读官方工具文档，不是论文或实测报告。",
+      "motivation": "自动抽片后的字幕纠错、局部裁剪和素材位置调整仍需精细操作。让Agent在现有工程中修改，可避免每次需求变化都重新生成整段视频。",
+      "novelty": "官方主张：把原有编辑器约70项操作开放给Agent。本站判断：价值在状态、动作和历史记录组成的可编辑环境；这不构成新模型算法、任意代码生成能力或独立验证的剪辑效果优势。",
+      "evidenceScope": "已读官方博客、开发者动作清单、编辑工作流和故障说明。来源核验不等于功能复现；未登录、安装连接器、执行编辑或导出。",
+      "limits": "官方产品文档核验，未连接账号、执行动作或检查导出视频，也无独立成功率评测。细剪需要打开的编辑器标签页；仅接入MCP不等于能自动细剪。套餐、项目状态和后台任务限制可用动作；AI Emoji与AI Highlight Words会先保存包括此前未保存的改动。11月2日是官方指南日期，正文称功能已于10月开放。",
+      "method": [
+        "通过MCP定位或创建片段，再由具备浏览器的Agent打开该片段的编辑器；服务器创作工作流与标签页内细剪是两种操作路径。",
+        "读取get_state、get_transcript，并用list_actions获取当前片段可用动作；有无字幕、项目状态等会影响动作集合。",
+        "调用split_overlay、move_overlay、trim_overlay或字幕操作，修改同一时间线；官方说明普通编辑即时可见并形成单步撤销记录。",
+        "回读并预览结果，处理任务等待与错误，再保存、导出；普通编辑的显式保存边界与AI字幕任务的先保存行为要分别处理。"
+      ],
+      "inspirations": [
+        "建立局部改稿任务：只改一个字幕词或一个素材时间点，核对未指定字幕、音轨和镜头是否保持不变。",
+        "为撤销、重做、保存、重载建立工程快照检查，专门覆盖后台AI任务自动保存之前未保存改动的情况。",
+        "将无效动作、任务忙碌、项目锁定等执行失败与审美质量分开计分，并测试Agent能否读取错误后恢复。"
+      ],
+      "reviewedAt": "2026-11-04T02:20:50.412943Z",
+      "sourceUrls": [
+        "https://reap.video/blog/claude-chatgpt-video-editor",
+        "https://docs.reap.video/help-center/what-your-agent-can-do-in-the-editor",
+        "https://docs.reap.video/help-center/edit-clips-with-your-ai-agent",
+        "https://docs.reap.video/help-center/troubleshoot-editing-with-your-ai-agent"
+      ]
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/cwe-bench",
+    "url": "https://huggingface.co/blog/cwe-bench",
+    "id": "update-cwe-bench-v2-20261103",
+    "title": "CWE-bench v2：修好漏洞，也要证明正常功能仍然可用",
+    "summary": "CWE-bench v2提供100项公开代码审计与修复任务，覆盖91类CWE；通过条件同时要求拦住攻击输入并保留正常行为。",
+    "insight": "把修复目标与正常功能回归做成独立、可执行的检查；只比较补丁与参考答案是否相似，会错过等效修复和破坏性捷径。",
+    "limits": "已读介绍、数据卡和项目协议，未接受数据访问条件或检查全部任务。公开100题与含保留集250题是不同分母；模型使用不同框架，程序判分不等于漏洞已被穷尽。",
+    "organization": "Collinear AI",
+    "dateLabel": "2026-11-03 · v2官方介绍（项目页标11/02上线）",
+    "evidence": "已读官方博文、数据卡与评测协议；任务文件受访问条件限制，未复现",
+    "originalTitle": "CWE-bench v2: More coverage, quality, and transparency",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-04T02:19:13.988077+00:00",
+    "firstSeenAt": "2026-11-04T02:22:58.960570+00:00",
+    "tags": [
+      "防御性代码修复",
+      "行为验证",
+      "Benchmark",
+      "评测分母"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "官方v2介绍",
+        "url": "https://huggingface.co/blog/cwe-bench"
+      },
+      {
+        "label": "公开数据卡与奖励协议",
+        "url": "https://huggingface.co/datasets/collinear-ai/cwe-bench"
+      },
+      {
+        "label": "官方项目与版本范围",
+        "url": "https://cwe-bench.com/"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "把防御性修复评测拆成漏洞关闭和正常功能保留，避免用破坏功能换取通过。",
+      "motivation": "能利用漏洞不代表会修好它；开放式代码审计还要求找出问题，并保持原功能可用。",
+      "novelty": "作者强调v2扩大覆盖并开放任务与程序化判分。本站判断：可借鉴的是成对行为检查和任务审计，不是把特定榜单等同于通用安全能力。",
+      "evidenceScope": "已读11/03官方博文、公开数据卡及v2项目说明；未接受访问条件、下载受限任务或运行评测。关联10/12论文描述的是旧版120题，不用它替代v2证据。",
+      "limits": "公开集、保留集与合并集应标明分母，排名不可直接互换。原始任务受访问条件限制，未逐项核验；不同模型搭配不同框架，有限验证输入也不能保证不存在其他缺陷。",
+      "method": [
+        "给Agent真实仓库与审计指令，隐藏漏洞位置和参考修复；公开集100题覆盖91类CWE。",
+        "在隔离环境中执行修复，验证器同时运行攻击输入与合法使用场景。",
+        "构建时核对原代码失败、参考修复通过、正常功能保留，并用评审与人工审查改进验证器。",
+        "每题四次运行，以平均奖励估计pass@1；至少一次通过用于pass@4。基础设施无效运行另计，不当成模型失败。"
+      ],
+      "inspirations": [
+        "为每个修复目标配一个正常使用反例，验证补丁没有靠禁止全部操作通过。",
+        "同时公开有效运行数、重试次数、框架和成本；对比公开集与保留集时分别报告。"
+      ],
+      "reviewedAt": "2026-11-04T02:19:13.988077+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/blog/cwe-bench",
+        "https://huggingface.co/datasets/collinear-ai/cwe-bench",
+        "https://cwe-bench.com/"
+      ]
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity/",
+    "url": "https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity/",
+    "id": "update-google-antigravity-cheminformatics-20261103",
+    "title": "Antigravity 化学 Skills：让模型编排，让确定性工具计算",
+    "summary": "Google 发布 Antigravity 化学信息学 Skills，可通过 Science 插件使用。模型负责检索与流程编排，RDKit 执行分子计算，连接 ChEMBL/PubChem；案例串起文献整理、数据分析、预测模型与候选设计。",
+    "insight": "本站判断：科学 Agent 的关键接口应是可追溯的数据、可检查的计算与交互视图；把时间或骨架切分等评测规则写进 Skills，帮助人检查模型是否真正泛化。",
+    "limits": "已读官方全文，未运行工具。文中一小时是案例展示，非受控通用加速评测；数据稀疏、实验室间噪声会限制预测，候选仍需合成与实验验证，不能视为药物研发成功。",
+    "organization": "Google DeepMind",
+    "dateLabel": "2026-11-03 · 官方工具更新（本轮补充）",
+    "evidence": "官方发布、工作流与限制已核验，未运行",
+    "originalTitle": "Agentic cheminformatics with Google Antigravity",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-04T02:19:30.750177Z",
+    "firstSeenAt": "2026-11-03T20:24:06.964416Z",
+    "tags": [
+      "科学 Agent",
+      "Skills",
+      "确定性工具",
+      "数据溯源"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "Google DeepMind 官方发布与案例",
+        "url": "https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity/"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/ibm-research/palette-deck-building",
+    "url": "https://huggingface.co/blog/ibm-research/palette-deck-building",
+    "id": "update-ibm-palette-deck-building-20261103",
+    "title": "Palette：用可编辑设计稿与渲染检查，教 20B 模型制作幻灯片",
+    "summary": "IBM 用约千套合成幻灯片训练 20B 模型：一个 LoRA 分担设计与编码，先产可编辑 JSON 设计稿，再逐页生成 pptxgenjs 代码。渲染检查后局部修复，作者在 131 套 PresentBench 幻灯片上报告平均提高 3.5 分。",
+    "insight": "本站判断：先造检查器，再生产训练数据与修复样本；把内容决策和几何布局分开，并保存被否决的设计理由。修复只在检查改善时接纳，同时独立检查事实保真。",
+    "limits": "作者自行评测；另有前沿模型起草计划、独立编辑模型修复，不能视为纯 20B 端到端表现。基线引用原论文，设计语言遵循未被该基准衡量。未核验可下载权重/数据或独立复现；RL 仍是计划。",
+    "organization": "IBM Research",
+    "dateLabel": "2026-11-03 · IBM 作者工程介绍（本轮补充）",
+    "evidence": "作者完整博文中的训练流程、评测及限制已核验，未复现",
+    "originalTitle": "Palette: teaching a small model to build decks in your design language",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-04T02:19:30.750177Z",
+    "firstSeenAt": "2026-11-03T20:24:06.964416Z",
+    "tags": [
+      "合成数据",
+      "LoRA",
+      "可编辑产物",
+      "执行反馈"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "IBM 作者工程博文（Hugging Face）",
+        "url": "https://huggingface.co/blog/ibm-research/palette-deck-building"
+      }
+    ]
   }
 ]
