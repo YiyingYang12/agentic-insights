@@ -4472,5 +4472,339 @@
         "https://www.kimi.com/code/docs/en/kimi-code-cli/guides/sessions.html"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.05266v1",
+    "url": "https://arxiv.org/abs/2611.05266v1",
+    "id": "live-4e37ecd2b774efa9",
+    "title": "Targeted Guidance：只纠正出错轮次，让反馈自蒸馏与 Agent RL 稳定共存",
+    "summary": "研究将逐项文字反馈变成同权重教师的 token 分布监督，只在未满足准则的 Agent 轮次施加自蒸馏，并同时保留对应准则的 RL 奖励。Qwen3-Coder-30B 编码任务中，工具格式及多个沟通准则改善，表中主要编码通过率约 0.33，与基线持平；这是一项辅助行为与训练稳定性研究。",
+    "insight": "对既有 Agent 增加新工具参数或输出规范，可以先测文字提示是否让当前模型做得更好，再只对出错轮次给方向性监督。要同时监控主任务、准则满足率、熵和输出长度，防止局部规范学会了，主要能力却退化。",
+    "limits": "主要证据来自一个经额外 SFT 的 30B 编码策略及其专用 harness，不是通用编码榜单提升。表 1 误差是最后 32 个训练步的波动，不是多种子置信区间；本文未列出可独立复核的公开任务集与完整评测划分。每个准则仍需设计静态反馈，权重过大也会失稳。",
+    "organization": "Cursor Research / UC Berkeley",
+    "dateLabel": "2026-11-03",
+    "evidence": "已核验 arXiv v1 方法、实验表与消融说明；未复现实验",
+    "originalTitle": "Stabilizing On-Policy Targeted Guidance in Agentic Reinforcement Learning",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-05T02:29:02Z",
+    "updatedAt": "2026-11-03T17:54:33Z",
+    "firstSeenAt": "2026-11-04T10:00:01Z",
+    "lastSeenAt": "2026-11-04T22:00:01Z",
+    "tags": [
+      "Training / RL",
+      "On-policy 自蒸馏",
+      "训练稳定性",
+      "反馈"
+    ],
+    "authors": [
+      "Kevin Frans",
+      "Alexander M Rush",
+      "Sergey Levine",
+      "Pieter Abbeel",
+      "Ashvin Nair"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.05266v1"
+      },
+      {
+        "label": "arXiv 方法与实验全文",
+        "url": "https://arxiv.org/html/2611.05266v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把文字反馈只用在真正出错的轮次，并与对应标量奖励一起训练，改善 Agent 新行为的学习稳定性。",
+      "motivation": "标量奖励能强化偶尔出现的好行为，却难让模型学会几乎从不尝试的新格式；全局自蒸馏又可能干扰正常行为，造成熵突增、长度增长及主任务退化。",
+      "novelty": "作者主张，在多轮 Agent RL 中，失败轮次门控与逐准则奖励能使方向性自蒸馏稳定共存。本站判断：贡献主要是可操作的稳定化配方和失败分析；不是首创自蒸馏，也没有证明任意反馈都能保持主任务不降。",
+      "evidenceScope": "已读 v1 第 3–6 节、公式 3、表 1及图 3/5/6/7 的说明。Qwen3-Coder-30B 经编码 SFT；200 步，每批 32 组、每组 32 条 rollout，单轮遍历任务。表 1 中 Markdown 满足率 GRPO 0.00、TG 0.85；编码通过率两者均 0.33。",
+      "limits": "表中标准差跨最后 32 个训练步计算，不能作为独立重复实验或显著性证据。静态反馈设计与权重选择依赖任务；论文中的更优教师及小步改进条件在实践中不保证成立。额外教师前向不等于零成本，未给出完整 GPU 时间对照；思考 token 消融结论仅限所测设置。",
+      "method": [
+        "把奖励拆成主任务通过、长度及各项辅助准则；每个准则关联静态反馈，先比较带反馈与不带反馈的表现，筛掉无益提示。",
+        "在当前策略真实采样的轨迹中定位未满足准则的轮次，只在该轮之前加入反馈，构造共享当前权重但停止梯度的教师。",
+        "在训练端计算学生与反馈教师的全词表反向 KL，只对失败轮次保留损失；使用原轨迹 token，不额外生成替代教师回答。",
+        "将该蒸馏项与包含对应准则奖励的 GRPO 相加，按整条 rollout 的 token 数归一化；相关轮次的思考及工具调用 token 均纳入。",
+        "以新搜索工具格式、最终回复多准则和逐轮状态汇报做实验，检查去掉失败门控、去掉对应奖励及提高蒸馏权重后的稳定性。"
+      ],
+      "inspirations": [
+        "新工具参数上线前先建立失败定位器，将反馈对齐到首次格式错误轮次；分开记录格式修复率和任务完成率。",
+        "把主任务通过率、辅助准则、策略熵和平均输出长度放在同一训练面板；熵与长度同时突增时检查蒸馏压力。",
+        "对静态反馈做带/不带提示的预检，再消融门控、对应 RL 奖励和归一化；不要仅看早期准则分数决定配置。"
+      ],
+      "reviewedAt": "2026-11-05T02:29:02Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.05266v1",
+        "https://arxiv.org/html/2611.05266v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.05266",
+      "status": "pending",
+      "checkedAt": "2026-11-05T02:28:31.384719+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.02455v1",
+    "url": "https://arxiv.org/abs/2611.02455v1",
+    "id": "live-faf524013597595d",
+    "title": "RLiD：先在合法动作菜单上训练决策，再蒸馏回生成式 Agent",
+    "summary": "RLiD 将状态、记忆和合法动作菜单编译成输入，用一次前向直接选择动作标签，在决策概率上做 RL，再用成功轨迹监督生成式模型。ALFWorld 单次完整流程计时中，生成式 1.5B 学生达到 99.3% unseen 成功率、耗时 12.70 H100 GPU·h；同模型同 runner 的 token RL 为 86.6%、17.34 GPU·h。",
+    "insight": "当动作可枚举时，训练预算常被输出格式、无效命令和多种等价措辞消耗。可先在受约束动作空间学习，再蒸馏成自由文本接口；同时要把菜单提供的信息、记忆、标签正则和教师成本都算进方法。",
+    "limits": "方法要求可编译的有限动作集合，不直接覆盖任意代码或开放式工具参数生成。最强 100% 结果依赖观察历史编译出的记忆，不能写成无辅助通用 Agent。理论方差关系只比较同一文本策略的两种估计；并不保证直接决策模型优于所有带推理模型。",
+    "dateLabel": "2026-11-02",
+    "evidence": "已核验 arXiv v1 方法、主要实验及相关附录；未复现实验",
+    "originalTitle": "RLiD: Reinforcement Learning in the Decision Plane for Language Agents and LLMs",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-05T02:29:02Z",
+    "updatedAt": "2026-11-02T03:17:51Z",
+    "firstSeenAt": "2026-11-03T10:00:01Z",
+    "lastSeenAt": "2026-11-03T22:00:01Z",
+    "tags": [
+      "Training / RL",
+      "决策空间",
+      "轨迹蒸馏",
+      "可执行动作"
+    ],
+    "authors": [
+      "Ziyi Chen",
+      "Yan Zhang",
+      "Jianhui Wei",
+      "Jianing Yin",
+      "Daoan Zhang"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.02455v1"
+      },
+      {
+        "label": "arXiv 方法与实验全文",
+        "url": "https://arxiv.org/html/2611.02455v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "将 RL 的选择单位从整段文字收缩到可执行动作，并把学到的动作轨迹再转成生成式模型监督。",
+      "motivation": "环境只执行最终动作，但 token RL 会同时更新推理、格式和等价措辞，还要付生成成本；小模型会花大量交互学习怎样输出合法命令。",
+      "novelty": "作者主张，动作边缘化能移除同一决策的文本实现噪声，并提供高效 RL 后转回生成接口的路线。本站判断：实践价值在可执行接口与蒸馏链路；收益包含菜单、记忆和标签正则作用，不能全部归因于取消推理 token。",
+      "evidenceScope": "已读 v1 第 2–6 节及附录 L、N 等相关方法/结果。范围包括 ARC、Countdown、Sokoban、FrozenLake、ALFWorld。ALFWorld 为 134 unseen/140 seen、50 步上限；带记忆的 Qwen2.5-1.5B 生成式学生三训练种子均 100%。99.3%/12.70 GPU·h 来自另一单次独占 H100 全流程计时实验。",
+      "limits": "Countdown-after 中直接决策与同样带标签正则的推理混合策略差异不显著，去掉正则后优势大幅缩小；Qwen3.5-2B 的 ARC token 基线还高 1.8 个百分点。作者承认开发期记录测试曲线可能带来适应性窥视，原 Countdown 测试有 32/1,024 题与训练重叠，另报告无重叠封闭集。100% 是有限基准上的观测，不是泛化保证；ALFWorld 单次计时不能外推普遍成本比例。",
+      "method": [
+        "以普通代码编译当前观察、短历史、可选记忆和有限合法动作菜单；ALFWorld 的记忆只取自过去文字反馈，不读取隐藏模拟器状态。",
+        "给动作分配单 token 标签，一次 prefill 读取标签 logits 并归一化选择，绕过自由生成和动作解析。",
+        "在动作概率上使用 GRPO/GiGPO 优势与 PPO 更新 LoRA；打乱菜单并校正标签偏好，按需平衡不同长度 episode 的权重。",
+        "采集成功教师轨迹，在重新打乱的菜单上行为克隆并继续训练学生决策模型；也可用执行命令字符串 SFT 生成式学生。",
+        "分别测试保留/移除动作清单、保留/移除编译记忆，以及相同 runner 的 token 基线；单列教师训练、采集、学生训练和最终转换成本。"
+      ],
+      "inspirations": [
+        "对工具 Agent 将可枚举的工具/模式选择与开放参数生成拆开，分别测选择正确率、非法动作率和环境成功率。",
+        "同时比较直接动作模型、普通 token 策略及带合法标签读出的推理混合策略，匹配菜单、记忆、正则和训练交互预算。",
+        "建立教师训练到部署学生的完整成本账单，并在不含训练重复实例的封闭集测试；额外报告去菜单、去记忆后的退化。"
+      ],
+      "reviewedAt": "2026-11-05T02:29:02Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.02455v1",
+        "https://arxiv.org/html/2611.02455v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.02455",
+      "status": "pending",
+      "checkedAt": "2026-11-05T02:31:17.154004+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://www.opus.pro/blog/opusclip-4-0",
+    "url": "https://www.opus.pro/blog/opusclip-4-0",
+    "id": "creative-opusclip-4-0",
+    "title": "OpusClip 4.0：口播原片自动剪辑、Recipes复用与有边界的工程导出",
+    "summary": "4.0把重点扩展到口播原素材的自动编辑，以Recipes复用字幕、语音清理、B-roll等设置，并宣称可通过ChatGPT或Claude插件按参考风格编辑。现有帮助文档还给出文本/时间线微调及Premiere XML导出路径，但字幕动画并非完全可编辑。",
+    "insight": "值得关注的不是单次自动成片，而是“可复用编辑配置—人工微调—交回专业编辑器”的产品流程。研究时应分别检查配置重用是否稳定、内容是否忠实，以及跨工具后哪些元素仍可编辑；三者不能由一段展示视频同时证明。",
+    "limits": "官方公告与当前帮助文档核验，未登录、上传素材、运行插件或实际导出；没有独立质量、耗时或成功率评测。11月2日为4.0公告日期，本轮补录；帮助文档未标明版本日期，不能把XML导出等所有既有能力都归为4.0新增。Premiere导出的字幕动画是不可直接编辑的叠加层，可另用SRT重建字幕；不能宣称完整无损工程互通。AI Producer仅核验公告主张，工具协议、逐步动作和后端模型未公开验证。",
+    "organization": "OpusClip",
+    "dateLabel": "2026-11-02 · 4.0官方公告（本轮补录；帮助文档版本日期未知）",
+    "evidence": "官方公告及产品帮助文档已核验；未实测",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-05T02:29:20.886567Z",
+    "firstSeenAt": "2026-11-04T20:21:26.669579Z",
+    "tags": [
+      "视频剪辑",
+      "官方工具更新",
+      "口播视频",
+      "可复用配置",
+      "工程导出"
+    ],
+    "topics": [
+      "video-editing"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "4.0官方公告（2026-11-02）",
+        "url": "https://www.opus.pro/blog/opusclip-4-0"
+      },
+      {
+        "label": "官方帮助：编辑与导出工作流",
+        "url": "https://help.opus.pro/docs/article/introduction-to-opusclip"
+      },
+      {
+        "label": "官方帮助：Recipes配置和运行步骤",
+        "url": "https://help.opus.pro/docs/article/how-to-use-recipes"
+      },
+      {
+        "label": "官方帮助：Premiere XML导出及字幕限制",
+        "url": "https://help.opus.pro/docs/article/import-to-adobe-premiere"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "官方工具更新：用可保存的编辑配置处理口播素材，并提供后续微调和专业编辑器交接路径。证据是公告与文档，未实测效果。",
+      "motivation": "长视频切片解决不了尚未剪辑的原始口播素材；重复制作同一风格时，也需要避免每次重新设置字幕、清理和包装选项。",
+      "novelty": "官方主张：4.0从成片切条扩展到原始口播的Auto-edit，加入Recipes及AI Producer等工作方式。本站判断：关注点在可重复编辑与人工交接，不是新模型或代码生成方法；帮助文档中的微调和XML能力不应全部计为本次新增。",
+      "evidenceScope": "实读4.0官方公告、官方简介、Recipes使用说明和Premiere导出FAQ。此处method是文档描述的产品操作流程，不是模型内部方法；未登录、安装插件、上传素材、渲染或执行导出。",
+      "limits": "官方公告与当前帮助文档核验，未登录、上传素材、运行插件或实际导出；没有独立质量、耗时或成功率评测。11月2日为4.0公告日期，本轮补录；帮助文档未标明版本日期，不能把XML导出等所有既有能力都归为4.0新增。Premiere导出的字幕动画是不可直接编辑的叠加层，可另用SRT重建字幕；不能宣称完整无损工程互通。AI Producer仅核验公告主张，工具协议、逐步动作和后端模型未公开验证。",
+      "method": [
+        "文档中的产品流程：先选择内置或自定义Recipe，上传视频或粘贴支持的链接。",
+        "配置需要执行的字幕、语音清理、B-roll、片头等编辑项与品牌样式，检查设置及用量后创建；可保存配置供下一次使用。",
+        "自动处理后在站内进行文本或时间线微调；4.0公告另宣称AI Producer可在ChatGPT或Claude中按参考风格编辑，本文未核验插件执行。",
+        "需要继续精修时，官方文档说明Pro用户可逐条导出原素材、XML与SRT到Premiere；字幕动画作为叠加层输出，需用SRT重建才能重新编辑字幕样式。"
+      ],
+      "inspirations": [
+        "用同一批素材和固定Recipe重复处理，检查片段选择、字幕、品牌样式的变化；把配置稳定性与视觉偏好分开评分。",
+        "建立口播事实保真检查：删掉停顿或口头语后是否改变意思，自动B-roll是否与人物、地点和动作相符。",
+        "做工程交接测试：分别修改剪切点、构图、字幕文字和动效，记录可直接编辑、需重建和已烘焙的元素比例。"
+      ],
+      "reviewedAt": "2026-11-05T02:29:20.886567Z",
+      "sourceUrls": [
+        "https://www.opus.pro/blog/opusclip-4-0",
+        "https://help.opus.pro/docs/article/introduction-to-opusclip",
+        "https://help.opus.pro/docs/article/how-to-use-recipes",
+        "https://help.opus.pro/docs/article/import-to-adobe-premiere"
+      ]
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://openai.com/index/a-thousand-fewer-paths-to-root/",
+    "url": "https://openai.com/index/a-thousand-fewer-paths-to-root/",
+    "id": "update-openai-cyber-validation-20261104",
+    "title": "OpenAI安全Agent：验收结果之外，还要验证结果来自正确路径",
+    "summary": "官方报告受控Linux研究中的2,308个候选、1,724个动态复现问题及按独立补丁去重的948个提权漏洞；研究者最终审核并逐步报送维护者。",
+    "insight": "Agent拿到成功结果，不代表完成指定任务。把结果归因、变体检查与当前代码版本核验一起放进验收，才能降低虚假成功。",
+    "limits": "作者自报、未复现；使用尚未发布的cyber模型。948不表示均已合入修复，7月与10月扫描也不是同版本受控对比。",
+    "organization": "OpenAI",
+    "dateLabel": "2026-11-04 · 官方研究报告发布（实验在10月）",
+    "evidence": "官方研究报告已核验，未独立复现",
+    "originalTitle": "A thousand fewer paths to root",
+    "date": "2026-11-04",
+    "checkedAt": "2026-11-05T02:28:45.176569+00:00",
+    "firstSeenAt": "2026-11-05T02:31:17.191382+00:00",
+    "tags": [
+      "安全Agent",
+      "动态验证",
+      "补丁评审",
+      "结果归因"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "OpenAI研究报告：方法与证据边界",
+        "url": "https://openai.com/index/a-thousand-fewer-paths-to-root/"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "将候选发现变成可审核的运行证据和补丁。",
+      "motivation": "大规模候选发现后，验证与优先级成为人工瓶颈。",
+      "novelty": "作者展示规模化流程；本站认为独立路径验收比仅按成功终态打分更有借鉴意义。",
+      "evidenceScope": "官方技术报告解读，非论文复现。",
+      "limits": "早期曾出现成功结果来自其他漏洞，后加独立检查；模型尚未公开，补丁仍需人工审核，不能据此声称全自动修复已完成。",
+      "method": [
+        "筛选审计目标并静态生成去重候选。",
+        "在隔离环境动态复现，保存运行证据。",
+        "核验影响及其是否来自指定问题。",
+        "生成补丁、检查变体，由专家审核后报送维护者。"
+      ],
+      "inspirations": [
+        "将任务成功与路径合规分开记分，检查Agent是否借用了未指定资源或问题。",
+        "对候选补丁增加原功能回归、变体覆盖及最新版本复核，报告人工退回率。"
+      ],
+      "reviewedAt": "2026-11-05T02:28:45.176569+00:00",
+      "sourceUrls": [
+        "https://openai.com/index/a-thousand-fewer-paths-to-root/"
+      ]
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://openai.com/index/introducing-images-2-6/",
+    "url": "https://openai.com/index/introducing-images-2-6/",
+    "id": "update-openai-images-2-6-20261104",
+    "title": "Images 2.6：更细的编辑控制、GIF与SVG输出",
+    "summary": "OpenAI发布Images 2.6，API提供Flare与Sunburst，加入标注编辑、GIF和SVG输出，并用complexity控制规划投入、quality控制视觉细节。",
+    "insight": "创作Agent可把快速草稿与精修拆开，重点验证多轮修改有没有破坏未指定的角色、产品或品牌细节。",
+    "limits": "产品公告与系统卡，不是独立创作评测；未调用模型验收。GIF和SVG输出不等于可编辑代码动画工作流，暂不加code2motion等专题标签。",
+    "organization": "OpenAI",
+    "dateLabel": "2026-11-04 · 官方产品发布",
+    "evidence": "官方公告与系统卡已核验，未生成测试",
+    "originalTitle": "Introducing Images 2.6",
+    "date": "2026-11-04",
+    "checkedAt": "2026-11-05T02:28:45.176569+00:00",
+    "firstSeenAt": "2026-11-05T02:31:17.191382+00:00",
+    "tags": [
+      "Images 2.6",
+      "图像编辑",
+      "GIF",
+      "SVG",
+      "模型更新"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "OpenAI发布公告",
+        "url": "https://openai.com/index/introducing-images-2-6/"
+      },
+      {
+        "label": "官方系统卡：功能与安全范围",
+        "url": "https://deploymentsafety.openai.com/chatgpt-images-2-6"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "图像创作工具增加多轮编辑控制及更多输出格式。",
+      "motivation": "快速试稿同时需要保持角色、产品和品牌一致。",
+      "novelty": "官方强调速度和编辑一致性；本站将其视为创作接口更新，不推断已解决长程设计任务。",
+      "evidenceScope": "产品工作流解读，不是训练方法或实测报告。",
+      "limits": "50%提速与低质量Flare最快6秒均为官方说法，缺少本站同条件复测；系统卡只概述数据来源，未公开完整训练配方。",
+      "method": [
+        "按速度或精细度需求选择Flare或Sunburst。",
+        "通过图像标注定位编辑，分别设置complexity与quality。",
+        "迭代视觉稿，按需要输出GIF或API支持的SVG。"
+      ],
+      "inspirations": [
+        "建立局部改稿集，测指定区域修改成功率和未指定内容保持率。",
+        "测试GIF跨帧一致性、SVG结构及后续编辑成本，不只评分首张展示图。"
+      ],
+      "reviewedAt": "2026-11-05T02:28:45.176569+00:00",
+      "sourceUrls": [
+        "https://openai.com/index/introducing-images-2-6/",
+        "https://deploymentsafety.openai.com/chatgpt-images-2-6"
+      ]
+    }
   }
 ]
