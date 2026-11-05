@@ -5034,5 +5034,572 @@
       "status": "pending",
       "checkedAt": "2026-11-05T08:26:04.181502+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.03116v1",
+    "url": "https://arxiv.org/abs/2611.03116v1",
+    "id": "live-d181116f95d5568b",
+    "title": "SCOPE：把失败轨迹中的局部技能拼成成功链，再蒸馏给 Web Agent",
+    "summary": "SCOPE 从历史探索里拆出局部成功技能与失败经验，通过实际回放技能链抵达探索前沿，再把完成任务的链用于监督式轨迹蒸馏。WebArena 的 Llama-3.1-8B 从 WebRL checkpoint 起步，成功率由 WebRL 的 45.8% 到 OPSI 的 54.3%（+8.5 个百分点）；不能读成从原始模型直接得到这段增益。",
+    "insight": "值得借鉴的是失败轨迹的可复用中间状态：把“已会的前缀”与“仍需探索的决策”分开，再将带记忆的搜索行为压回无记忆策略。对我们更有意义的验证是技能回放成功率、恢复状态的额外交互成本，以及去掉训练期完成判据后能否保留收益。",
+    "limits": "默认借助 DeepSeek-V3.2 等辅助 LLM，技能标签结合模型判断与环境反馈，并非全由确定性验证器给出。训练使用完成判据；HTML/AXTree 文本观察、过滤后的站点子集及多数单次训练/评测限制外推。所谓 on-policy 含历史技能回放与前沿干预，不是全轨迹由同一当前策略无干预采样；未复现。",
+    "dateLabel": "2026-11-02",
+    "evidence": "已核验 arXiv v1 方法、主表与附录；未复现实验",
+    "originalTitle": "From Local Skills to Long-Horizon Web Tasks: Progressive Skill Exploration for LLM Web Agents",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-05T14:22:24Z",
+    "updatedAt": "2026-11-02T13:32:59Z",
+    "firstSeenAt": "2026-11-03T10:00:01Z",
+    "lastSeenAt": "2026-11-03T22:00:01Z",
+    "tags": [
+      "Distillation",
+      "Web Agent",
+      "技能探索",
+      "轨迹蒸馏"
+    ],
+    "authors": [
+      "Xueyang Feng",
+      "Xiaohe Bo",
+      "Xu Chen",
+      "Quanyu Dai",
+      "Feng Wen"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.03116v1"
+      },
+      {
+        "label": "arXiv 全文 · 方法与实验",
+        "url": "https://arxiv.org/html/2611.03116v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "先保留失败中的有效局部进展，再重放这些技能继续探索，最后将成功链蒸馏进策略。报告覆盖 Qwen2.5-3B、Llama3.1-8B 及 WebArena/WebVoyager/WebShop；摘要的 3.9%–18.6% 是不同指标的相对提升，不能当成统一的百分点增益。",
+      "motivation": "长网页任务的终局奖励稀疏，整条轨迹失败会掩盖已经完成的子任务。每次从零探索也反复消耗在已掌握步骤上，因此需要让局部成功跨 rollout 累积、失败经验只影响尚未解决的前沿。",
+      "novelty": "作者主张：将技能发现、编排、前沿扩展及轨迹蒸馏连成渐进探索流程，改善长任务的稀疏反馈。本站判断：有价值的是按可执行状态转移复用中间进展及局部失败干预；其蒸馏是混合来源成功链的监督学习，不应笼统等同 token 级教师 KL 蒸馏或纯 on-policy RL。",
+      "evidenceScope": "已读 v1 §3、§4、附录训练/评测和重复实验。测试规模为 WebArena 134、WebVoyager 311、WebShop 500 任务，均为文本观察。Llama WebArena 的 54.3% 相对 WebRL 45.8% 为 +8.5pp、18.6% 相对提升；该分支从 WebRL 权重初始化。WebVoyager 后续重复评测删去变化站点，仅剩 6 站，RFT Avg@3 34.76±0.55 对 SCOPE 38.70±2.74，误差是 3 次评测的波动而非 3 个训练种子。",
+      "limits": "训练期完成判据可含目标 URL/元素状态、目标商品约束或评测理由；局部标签依赖辅助 LLM 判断。回放受动态环境与元素重定位影响；调用次数不等于等 token、等费用或等算力。多数主实验单次运行，多项理论结论依赖局部成功概率和有效前沿概率假设。未核验可下载的完整实现，未复现实验。",
+      "method": [
+        "辅助 LLM 根据任务、完成判据和轨迹观察划分连续子任务；结合环境反馈，将成功局部转移及失败模式分别去重写入两个记忆库。全局失败的轨迹也可贡献局部技能。",
+        "把技能视为状态图边，以任务进度和访问次数选择可达前沿；从初始状态实际执行一条技能链恢复现场，并把旧元素编号重新映射到当前 HTML/AXTree。不是直接跳到任意状态。",
+        "在前沿的第一个动作注入匹配失败经验：OPTI 让外部教师出动作，OPSI 让当前策略阅读失败摘要后出动作；之后由策略自主继续探索。",
+        "跨多次 rollout 组合出通过终局判定的任务链，对其实际执行的状态—动作对做负对数似然训练；反复探索与蒸馏，将依赖记忆/辅助指导的行为内化为普通策略。"
+      ],
+      "inspirations": [
+        "为剪辑、网页或代码 Agent 记录可核验的子任务终态、前置条件和重放动作，而非只存自然语言成功总结；单独测回放在页面/文件状态变化后的有效率。",
+        "做失败经验的局部对照：固定已成功前缀，仅对下一决策比较自我干预、教师干预和自主探索，并把恢复前沿及辅助模型调用计入总成本。",
+        "区分训练时可见的任务答案/完成判据与部署时信息，进行去判据消融；保留未蒸馏搜索器与蒸馏后策略两组结果，判断收益是否真正进入参数。"
+      ],
+      "reviewedAt": "2026-11-05T14:22:24Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.03116v1",
+        "https://arxiv.org/html/2611.03116v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.03116",
+      "status": "pending",
+      "checkedAt": "2026-11-05T20:24:08.672604+00:00"
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://huggingface.co/papers/2611.02846",
+    "url": "https://huggingface.co/papers/2611.02846",
+    "id": "live-65008129e604ee76",
+    "title": "SpecOPD：从参考前缀并行采样分支，加速推测解码的在策略蒸馏",
+    "summary": "SpecOPD 在固定参考文本的多个锚点让当前 draft 模型生成新分支，共享目标模型前缀计算后训练草稿接受率。27B 原生配置下监督 token 训练吞吐为串行 Draft-OPD 的 16.09 倍，但不含参考文本准备，也不代表达到同等接受率的总训练时间缩短 16 倍。官方仓库尚未发布训练代码、评测脚本或权重。",
+    "insight": "对 Agent 的直接价值是降低长上下文输出成本：把必须保真的条件历史与可以并行的采样调度拆开。需要分别评测训练吞吐、草稿接受长度和实际服务延迟；论文在已录制 SWE/Terminal 历史上测解码效率，没有证明闭环任务成功率提高。",
+    "limits": "on-policy 仅指参考上下文条件下从当前草稿模型采样的分支，并非完整在线分布。27B 实测相对原 DFlash V2 的几何平均服务吞吐提升最高 2.83%，3.56 倍是相对自回归解码；SWE 并发 32 时反而慢 4.46%。原始数据子集/精确 checkpoint 信息仍待补齐，代码和权重未公开，未复现。",
+    "dateLabel": "2026-11-02",
+    "evidence": "已核验 arXiv v1 全文、附录与官方仓库发布范围；未复现实验",
+    "originalTitle": "SpecOPD: Branch-Parallel On-Policy Distillation for Speculative Decoding",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-05T14:22:24Z",
+    "updatedAt": "2026-11-02T09:47:06Z",
+    "firstSeenAt": "2026-11-03T10:00:01Z",
+    "lastSeenAt": "2026-11-05T16:00:01Z",
+    "dailySubmittedAt": "2026-11-05T00:00:00.000Z",
+    "tags": [
+      "Distillation",
+      "推测解码",
+      "训练效率",
+      "On-Policy Distillation"
+    ],
+    "authors": [
+      "Tianyu Liu",
+      "Jun Zhang",
+      "Wenjie Huang",
+      "Yuhao Shen",
+      "Tianqi Xu",
+      "Xinyue Hao",
+      "Hongyaoxing Gu",
+      "Xuyang Liu",
+      "Baolin Zhang",
+      "Yating Zhu",
+      "Shuang Ge",
+      "Jun Dai",
+      "Lei Chen",
+      "Yue Li",
+      "Mingchen Wan"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.02846v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.02846"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.02846"
+      },
+      {
+        "label": "Project",
+        "url": "https://qwenapp.github.io/SpecOPD/en.html"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/QwenApp/SpecOPD"
+      },
+      {
+        "label": "arXiv 全文 · 方法与实验",
+        "url": "https://arxiv.org/html/2611.02846v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "用参考前缀作共享主干、当前草稿模型的新续写作独立分支，批量取得目标分布监督。最高 41.45% 是 8B 五基准平均接受长度的相对提升；16.09 倍是特定 27B 训练配置的监督 token 吞吐；这两项与 3.56 倍自回归服务加速分别属于不同测量。",
+      "motivation": "并行草稿模型仍会因接受长度不足而丢掉速度收益。传统在策略蒸馏串行收集完整 draft-and-verify 响应，采样依赖造成训练空隙；但监督一个分支只需要它的参考前缀及实际采样历史，不必等待整条响应完成。",
+      "novelty": "作者主张：在保持各分支条件历史的前提下，并行化采样和教师监督，并统一覆盖三类注意力。本站判断：贡献主要是采样/执行组织和状态保真，E2E-TV 本身承接已有工作；参考上下文的 fresh branches 不等于在线完整轨迹，代理损失也不是服务接受长度的无偏估计。",
+      "evidenceScope": "已读 v1 方法、主表、附录 A/B/C 及官方 README。覆盖 8B 全注意力、27B 全/线性混合、125B 稀疏/线性混合，MT-Bench/HumanEval/MATH-500 与录制 SWE/Terminal 历史，T=0/1；接受长度含 bonus token。27B 训练 16.09 倍=约 4.95 倍更新速度×3.25 倍监督量，8 GPU 原生配置、两轮短窗口计时，排除离线参考准备；不测等接受率到达时间。27B 服务五任务几何平均相对 AR 为并发 1/8/32 下 2.97/2.23/1.35 倍，相对原 DFlash V2 仅 2.83%/2.20%/1.21%。",
+      "limits": "离线对照匹配更新步数及参考序列批量，但 SpecOPD/对照的 GPU 数、梯度路径和计算预算不同。服务各条件仅一次完整运行，request bootstrap 不是训练种子误差。训练参考来源、子集及精确 checkpoint 标识仍有未记录项。官方仓库目前仅介绍和图；训练代码、评测脚本、权重未包含。来源核验不代表复现或闭环 Agent 能力验证。",
+      "method": [
+        "从已有参考响应中选择锚点，以当前草稿策略并行生成短续写；每次更新重新采样。参考外部上下文固定，分支续写才是在当前策略下采样。",
+        "将各分支打包为共享主干的树，目标模型只读取锚点之前主干和该分支的先前 token；用正确预测行与语义位置隔离兄弟分支、未来参考文本及当前答案。",
+        "分别适配全注意力的树掩码、稀疏注意力的分支一致压缩索引组、线性注意力的锚点状态恢复与独立状态推进；不能仅靠一个通用 mask 解决所有注意力状态。",
+        "沿采样历史计算草稿与完整目标分布的重叠，以 E2E-TV 的前缀存活乘积代理目标更新草稿，早期失配会影响后续前缀项；再在实际推测解码服务中单独测接受长度和吞吐。"
+      ],
+      "inspirations": [
+        "训练中建立分支一致性检查：相同前缀与采样历史的独立评分应匹配打包评分，尤其覆盖线性状态、压缩索引和预测行，防止隐性未来信息泄漏。",
+        "为 Agent 推理做分层账本：离线参考准备、采样/训练、服务并发吞吐、最终闭环成功率分别报告，避免用监督 token/s 替代端到端经济性。",
+        "优先在真实长工具历史上检查草稿覆盖与并发退化；27B 的 SWE/Terminal 接受收益接近零或略负，提示通用平均增益不足以保证目标 Agent 场景受益。"
+      ],
+      "reviewedAt": "2026-11-05T14:22:24Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.02846v1",
+        "https://arxiv.org/html/2611.02846v1",
+        "https://github.com/QwenApp/SpecOPD"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.02846",
+      "status": "pending",
+      "checkedAt": "2026-11-05T20:24:08.672604+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.01860v1",
+    "url": "https://arxiv.org/abs/2611.01860v1",
+    "id": "research-agentic-computer-graphics-survey",
+    "title": "Agentic Graphics综述：代码能改什么、反馈能看见什么，要分开记录",
+    "summary": "用任务规格、基础模型、执行协调与图形接口四个维度比较图形Agent，并设计带证据的文献整理流程。它把代码、场景状态与渲染画面分别记录，强调反馈必须影响后续动作。",
+    "insight": "研究代码创作时，既要问能否执行，也要问修改能定位到哪个对象、反馈能发现哪类错误、失败能否回滚。统一记录这些接口，有助于判断改进来自模型还是工具与工作流。",
+    "limits": "这是一篇综述与文献整理系统，不是新生成模型或性能榜单。作者报告语料覆盖2024年至2026年9月并人工核验相关性，不代表已完整覆盖11月论文；标签和趋势仍受检索及自动标注误差影响。方法章明确结构校验不验证分类正确性，本轮未见召回率、标注准确率或人工一致性的受控评估。论文说系统计划公开；本站未验证其实现、重跑文献系统或复现被综述工作。",
+    "organization": "UT Austin · Stanford · SFU · UC Berkeley · Cambridge",
+    "dateLabel": "2026-11-01 · v1首发（本轮补齐综述解读）",
+    "evidence": "已读v1分类框架、文献系统方法及评测讨论；未复现",
+    "date": "2026-11-01",
+    "checkedAt": "2026-11-05T14:20:54.881337Z",
+    "originalDate": "2026-11-01",
+    "updatedAt": "2026-11-01T12:52:13Z",
+    "firstSeenAt": "2026-11-03T16:00:00Z",
+    "lastSeenAt": "2026-11-05T16:00:01Z",
+    "tags": [
+      "综述",
+      "图形Agent",
+      "可编辑表示",
+      "反馈验证",
+      "文献系统"
+    ],
+    "authors": [
+      "Hengyu Liu",
+      "Jihyeon Je",
+      "Ruiqi Wang",
+      "Mingxuan Wu",
+      "Haven Feng",
+      "Qixing Huang",
+      "Georgios Pavlakos",
+      "Hao Zhang",
+      "Jiajun Wu",
+      "Maneesh Agrawala",
+      "Leonidas Guibas",
+      "R. Kenny Jones",
+      "Shangzhe Wu",
+      "Guandao Yang"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2motion"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.01860"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.01860"
+      },
+      {
+        "label": "arXiv v1全文：分类、文献系统与评测边界",
+        "url": "https://arxiv.org/html/2611.01860v1"
+      },
+      {
+        "label": "arXiv v1版本与提交日期",
+        "url": "https://arxiv.org/abs/2611.01860v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "这是一张图形Agent的设计地图：把动作、反馈、表示和修复机制拆开比较，并用Agent持续整理文献；不提出新的生成模型。",
+      "motivation": "CAD、动效和场景生成常用不同术语描述相似组件，单看成品难比较反馈是否有效、局部修改是否受支持，文献增长又使人工整理难以持续。",
+      "novelty": "作者主张跨图形任务的统一分类及可持续更新的文献系统。本站判断：价值在可比较的设计接口和证据记录，而非某个新Agent算法；多角色名称或生成脚本本身不能证明有效反馈闭环。",
+      "evidenceScope": "实读arXiv v1 §2范围、§3.3–3.4执行/反馈/表示、§4文献系统方法与结果、§5评测分类、§9开放问题。作者报告350篇语料；这里method指综述组织流程。没有把语料趋势当成生成性能提升，未复现实验。",
+      "limits": "这是一篇综述与文献整理系统，不是新生成模型或性能榜单。作者报告语料覆盖2024年至2026年9月并人工核验相关性，不代表已完整覆盖11月论文；标签和趋势仍受检索及自动标注误差影响。方法章明确结构校验不验证分类正确性，本轮未见召回率、标注准确率或人工一致性的受控评估。论文说系统计划公开；本站未验证其实现、重跑文献系统或复现被综述工作。",
+      "method": [
+        "先限定纳入范围：LLM决定部分动作，在图形环境执行，并由中间结果或执行反馈影响下一步；再按四个维度建立统一分类。",
+        "文献Agent读取已有记录、时间截止和预算，检索候选、合并重复并核对官方版本；不确定或未读项目保留队列。",
+        "阅读正文及相关图表后，再判定范围和标签；保留证据位置，并分开作者事实、分析判断及训练/推理/评测步骤。",
+        "逐篇校验字段与标签结构后持久保存，供复查和续跑；按标注语料比较反馈、修复策略、工具资源和任务分布。"
+      ],
+      "inspirations": [
+        "为每个创作系统保存“可修改对象/参数”和“可观测证据”两张清单，设计看起来正确但拓扑、约束或动态状态错误的反例。",
+        "同模型、同预算对比整段重生成、局部补丁与回滚；同时量化目标达成、无关内容破坏和恢复成本。",
+        "给文献自动标注加入抽样人工复核，分别统计漏检、证据不足和分类错误，避免JSON字段完整被当成结论可靠。"
+      ],
+      "reviewedAt": "2026-11-05T14:20:54.881337Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.01860v1",
+        "https://arxiv.org/html/2611.01860v1",
+        "https://huggingface.co/papers/2611.01860"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.01860",
+      "status": "pending",
+      "checkedAt": "2026-11-05T20:24:08.672604+00:00"
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/phonon-tts",
+    "url": "https://huggingface.co/blog/phonon-tts",
+    "id": "update-phonon-tts-integration-20261105",
+    "title": "Phonon端侧语音：把Agent发声做成本地模块，区分推理与声音制作",
+    "summary": "新博文介绍Phonon的端侧流式TTS和Transformers集成。31M英文版采用Apache 2.0；40M系列含五语版本，采用CC BY-NC 4.0。ptts面向设备单流，Transformers支持批量生成；这是一篇旧模型的新解读，不是11/05新模型首发。",
+    "insight": "语音Agent可将决策与播报分开部署，单独测试首音、完整应答和数字读法。更换推理接口仍需检查文本规范化，不能只比较模型权重或短句音质。",
+    "limits": "未下载模型、试听或复测榜单；TTS不是完整语音Agent。当前五语不含中文。31M不含音频tokenizer参数；40M下载需接受条款。声音编码器未公开，自定义声音制作依赖Gradium服务，已有声音文件的本地合成不等于离线克隆。",
+    "organization": "Gradium · Hugging Face",
+    "dateLabel": "2026-11-05 · 技术博文；权重已于10/20发布",
+    "evidence": "已核验技术博文、模型卡、官方文档与原发布页，未运行",
+    "originalTitle": "A Closer Look at Phonon TTS. Launching High-Quality On-Device Speech That Tops the Benchmarks.",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-05T14:22:12.991968+00:00",
+    "firstSeenAt": "2026-11-05T20:28:02.026328+00:00",
+    "tags": [
+      "端侧语音",
+      "TTS",
+      "流式推理",
+      "Agent工具",
+      "模型更新解读"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "Gradium/HF技术博文（11/05）",
+        "url": "https://huggingface.co/blog/phonon-tts"
+      },
+      {
+        "label": "原权重发布公告（10/20）",
+        "url": "https://gradium.ai/blog/release-phonon-open-weight"
+      },
+      {
+        "label": "31M英文模型卡与限制",
+        "url": "https://huggingface.co/gradium/phonon-31m-en"
+      },
+      {
+        "label": "40M多语模型卡",
+        "url": "https://huggingface.co/gradium/phonon-40m-multilingual"
+      },
+      {
+        "label": "Transformers接口与声音编码边界",
+        "url": "https://huggingface.co/docs/transformers/model_doc/gradium_phonon_tts"
+      },
+      {
+        "label": "ptts推理框架与集成说明",
+        "url": "https://github.com/gradium-ai/xn-ptts"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "把文本转成可流式播放的本地语音，为离线助手和交互应用提供独立发声模块。",
+      "motivation": "云端语音需要额外网络往返；设备应用还要平衡内存、语言覆盖、读音准确性和交互延迟。",
+      "novelty": "作者强调小型端侧模型、多后端部署及HF集成。本站判断：价值是可复用的语音输出组件和清楚的接口边界，不能由TTS榜单推断Agent任务完成率，也不自动归入代码动画或视频剪辑专题。",
+      "evidenceScope": "项目与接口解读；新博文日期11/05，原权重公告10/20，未复现实验或验收示例应用。",
+      "limits": "厂商模型卡与技术文档，不是本站听测。长文分句后韵律不能保证全篇连续；公开tokenizer只有解码器，不提供从录音离线制作声音latent的完整流程。40M与31M许可不同，未进行任何登录、条款接受或下载。",
+      "method": [
+        "准备对应语言的checkpoint、音频解码器与预先制作的声音latent文件；已准备的资源可用于本地合成。",
+        "因果Transformer结合文本与声音条件，用flow head逐步产生音频latent，再解码为24kHz波形。",
+        "设备单流使用ptts；批量文本可用Transformers。长文本分块，数字、金额与地址需补语言相关规范化。",
+        "合成音频逐段返回供应用播放；Agent的理解、规划、工具动作和交互验收仍由外部流程承担。"
+      ],
+      "inspirations": [
+        "将首音延迟、总应答延迟、峰值内存和中断后停播分别测量，覆盖目标硬件及实际句长。",
+        "用金额、日期、代码和长文本做接口回归；固定checkpoint、声音与文本规范化，避免把前处理差异误判为模型差异。"
+      ],
+      "reviewedAt": "2026-11-05T14:22:12.991968+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/blog/phonon-tts",
+        "https://gradium.ai/blog/release-phonon-open-weight",
+        "https://huggingface.co/gradium/phonon-31m-en",
+        "https://huggingface.co/gradium/phonon-40m-multilingual",
+        "https://huggingface.co/docs/transformers/model_doc/gradium_phonon_tts",
+        "https://github.com/gradium-ai/xn-ptts"
+      ]
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://openai.com/index/introducing-gpt-6-cyber/",
+    "url": "https://openai.com/index/introducing-gpt-6-cyber/",
+    "id": "update-openai-gpt6-cyber-20261105",
+    "title": "GPT-6 Cyber发布：安全Agent的能力训练与授权范围评测并行",
+    "summary": "OpenAI发布GPT-6 Astra的安全专用变体，首批仅向部分获批Daybreak Red客户开放API与Codex。官方ExploitGym结果为48.5%，前代32.1%；同时单独测量越界行为，而非只看任务完成率。",
+    "insight": "Agent训练要把任务收益、授权边界和如实报告拆开验收。更坚持执行也可能更难及时停止，单一成功率难以覆盖这种取舍。",
+    "limits": "厂商自评，本站未运行。Honeypot测试的0%观测越界不保证部署永不越界；部分停止和阻碍报告指标弱于Astra。948项Linux结果已在11/04研究收录，此次是模型正式命名与开放，不能再算新增948项。",
+    "organization": "OpenAI",
+    "dateLabel": "2026-11-05 · 官方模型发布",
+    "evidence": "已读官方发布及系统卡部分章节，未复现",
+    "originalTitle": "GPT‑6 Cyber: Advancing the frontier of aligned cybersecurity agents",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-05T20:27:06.240778+00:00",
+    "firstSeenAt": "2026-11-05T20:28:02.026328+00:00",
+    "tags": [
+      "模型发布",
+      "安全Agent",
+      "强化学习",
+      "授权范围",
+      "Agent评测"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "官方模型发布（11/05）",
+        "url": "https://openai.com/index/introducing-gpt-6-cyber/"
+      },
+      {
+        "label": "系统卡：训练与授权范围评测",
+        "url": "https://deploymentsafety.openai.com/gpt-6-cyber"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "安全专用模型同步训练任务能力与授权约束，限获批客户使用。",
+      "motivation": "安全任务需要持续调查，但工具可用不等于动作获授权；还需准确报告失败与阻碍。",
+      "novelty": "作者主张安全能力与对齐均改善。本站判断：值得关注的是分项训练和分项验收，而非由某项0%越界率推导通用安全保证；系统卡明确保留不同指标间的取舍。",
+      "evidenceScope": "官方公告与系统卡训练、对齐章节解读；未使用模型。公告的Linux结果与既有11/04条目重合，非重复新发现。",
+      "limits": "Honeypot无部署提示的越界率0.07%，带提示观测为0%；样本设置不能代表所有任务。RemoteExploitBench比较涉及不同访问及拒绝配置，不能直接当纯能力差；未将其95%写成通用Agent成功率。",
+      "method": [
+        "以GPT-6 Astra为基础，用安全任务强化学习改善调查、验证与纠错能力。",
+        "加入范围、授权及真实报告的训练信号，减少奖励投机，并调整授权请求的拒绝行为。",
+        "分别评测能力、越界、停止与阻碍报告；Honeypot在有无部署提示两种配置下测试。",
+        "通过Daybreak Red受限开放，结合访问控制与运行监测；实际工作仍需独立验收。"
+      ],
+      "inspirations": [
+        "为工具Agent设计可完成主任务但存在越权捷径的测试，同时记录任务成绩、越界率与合理拒绝率。",
+        "单列停止条件和最终报告真实性，将长程坚持与隐瞒阻碍区分开，固定提示和访问权限后比较版本。"
+      ],
+      "reviewedAt": "2026-11-05T20:27:06.240778+00:00",
+      "sourceUrls": [
+        "https://openai.com/index/introducing-gpt-6-cyber/",
+        "https://deploymentsafety.openai.com/gpt-6-cyber"
+      ]
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation",
+    "url": "https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation",
+    "id": "update-cosmos-interactive-simulation-20261105",
+    "title": "Cosmos交互模拟配方：把动作、传感器观测和训练数据接成闭环",
+    "summary": "NVIDIA说明四个Cosmos3 Nano示例模型的分工：离线多传感器合成、流式驾驶观测、模拟器控制转RGB、双臂动作转视频。它们可为具身Agent提供可条件化的观测与数据环境；本条不归代码视频或代码3D创作。",
+    "insight": "环境接口应分清谁维护物理状态、谁产生视觉观测、谁生成动作。这样的划分让研究者能固定任务与状态，只改变视觉域或传感器配置，分别检查策略鲁棒性、生成观测误差和长程漂移。",
+    "limits": "11月5日是HF文章日期，四张模型卡均标10月20日发布；不是今天首次发布Cosmos3。此处核验官方说明、模型卡及数据文档，未下载权重、运行代码或完整审读技术报告。Sim-Transfer的物理状态由外部模拟器负责，生成图像与原标注的对齐仍须检查；Sim-Bimanual预测画面不等于可靠物理真值。Sim-Auto闭环需外部运行环境和WSM渲染器；实时吞吐依硬件、批量及分辨率变化，播放帧率不能当推理速度。未独立验证策略训练收益或仿真到现实泛化。",
+    "organization": "NVIDIA",
+    "dateLabel": "2026-11-05 · HF技术文章；四个示例checkpoint于10月20日发布",
+    "evidence": "官方文章、四张模型卡及数据契约已核验；未运行",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-05T20:27:12.151424Z",
+    "originalDate": "2026-10-20",
+    "firstSeenAt": "2026-11-05T20:27:12.151424Z",
+    "tags": [
+      "具身Agent环境",
+      "合成数据",
+      "世界模型",
+      "因果蒸馏",
+      "官方技术说明"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "NVIDIA在HF的11月5日技术文章",
+        "url": "https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation"
+      },
+      {
+        "label": "NVIDIA技术博客（11月2日）",
+        "url": "https://developer.nvidia.com/blog/build-world-models-for-interactive-simulation-with-nvidia-cosmos/"
+      },
+      {
+        "label": "NVIDIA官方交互模拟项目页",
+        "url": "https://research.nvidia.com/labs/cosmos-lab/cosmos-simulation/"
+      },
+      {
+        "label": "Transfer-Auto官方模型卡",
+        "url": "https://huggingface.co/nvidia/Cosmos3-Nano-Transfer-Auto"
+      },
+      {
+        "label": "Sim-Auto官方模型卡",
+        "url": "https://huggingface.co/nvidia/Cosmos3-Nano-Sim-Auto"
+      },
+      {
+        "label": "Sim-Transfer官方模型卡",
+        "url": "https://huggingface.co/nvidia/Cosmos3-Nano-Sim-Transfer"
+      },
+      {
+        "label": "Sim-Bimanual官方模型卡",
+        "url": "https://huggingface.co/nvidia/Cosmos3-Nano-Sim-Bimanual"
+      },
+      {
+        "label": "官方仓库：Bimanual数据契约（静态阅读）",
+        "url": "https://github.com/NVIDIA/cosmos-framework/blob/main/.agents/skills/cosmos3-nano-sim-bimanual/post-training/references/data-contract.md"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "这是交互世界模型的官方适配与运行说明：用动作或模拟器控制连续生成观测，服务具身Agent数据和环境研究；四个示例权重并非11月5日才发布。",
+      "motivation": "真实机器人/驾驶数据难以覆盖传感器布局、天气和动作组合，离线生成也不能响应策略下一步动作；需要可适配数据接口及滚动观测生成。",
+      "novelty": "官方主张统一的后训练路线与四种开放权重示例，覆盖离线合成和交互流式模拟。本站判断：值得关注的是观测生成与Agent环境的接口及数据适配配方，不能据此宣称新代码创作系统或已证明策略泛化提升。",
+      "evidenceScope": "实读11月5日HF文章、11月2日NVIDIA技术博客、官方项目页、四张模型卡与GitHub Bimanual数据契约。模型卡分别确认16B可训练参数和10月20日发布日期；仅文档级核验，未执行配方、调用模型或审阅完整训练实现。",
+      "limits": "11月5日是HF文章日期，四张模型卡均标10月20日发布；不是今天首次发布Cosmos3。此处核验官方说明、模型卡及数据文档，未下载权重、运行代码或完整审读技术报告。Sim-Transfer的物理状态由外部模拟器负责，生成图像与原标注的对齐仍须检查；Sim-Bimanual预测画面不等于可靠物理真值。Sim-Auto闭环需外部运行环境和WSM渲染器；实时吞吐依硬件、批量及分辨率变化，播放帧率不能当推理速度。未独立验证策略训练收益或仿真到现实泛化。",
+      "method": [
+        "选任务与输入：Transfer-Auto用WSM和传感器控制做离线数据；Sim-Transfer读深度等空间控制；Bimanual读机器人或相机动作，并遵守时间对齐和归一化契约。",
+        "先用完整记录做双向域适配，学习本地传感器、场景或机器人配置对应的控制与观测关系。",
+        "将生成变成因果分块：teacher forcing只读历史观测与可用控制，再由冻结教师进行一致性蒸馏，训练四步去噪学生。",
+        "以self-forcing让学生读取自己生成的历史，配合冻结教师和辅助评分模型，处理滚动误差；缓存历史以继续生成下一块。",
+        "接入策略或人工控制形成动作—观测循环；驾驶还需运行环境更新WSM，Sim-Transfer则保留外部模拟器的物理状态和标注。"
+      ],
+      "inspirations": [
+        "固定同一物理轨迹，仅改变外观与传感器域，分别量化策略成功率和图像—标注对齐，避免将更逼真当成更有效的训练数据。",
+        "按rollout长度记录状态漂移、物体持续性和动作条件遵循，对比真实历史与生成历史输入，检查self-forcing收益是否跨域成立。",
+        "把数据契约作为训练前检查：T次状态转移配T+1观测，动作坐标系、掩码和归一化要一致；示例数据能跑通不能代表目标分布。"
+      ],
+      "reviewedAt": "2026-11-05T20:27:12.151424Z",
+      "sourceUrls": [
+        "https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation",
+        "https://developer.nvidia.com/blog/build-world-models-for-interactive-simulation-with-nvidia-cosmos/",
+        "https://research.nvidia.com/labs/cosmos-lab/cosmos-simulation/",
+        "https://huggingface.co/nvidia/Cosmos3-Nano-Transfer-Auto",
+        "https://huggingface.co/nvidia/Cosmos3-Nano-Sim-Auto",
+        "https://huggingface.co/nvidia/Cosmos3-Nano-Sim-Transfer",
+        "https://huggingface.co/nvidia/Cosmos3-Nano-Sim-Bimanual",
+        "https://github.com/NVIDIA/cosmos-framework/blob/main/.agents/skills/cosmos3-nano-sim-bimanual/post-training/references/data-contract.md"
+      ]
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/",
+    "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/",
+    "id": "official-google-gemini-omni-1-2-flash-20261105",
+    "title": "Gemini Omni 1.2 Flash：15 秒视频与多轮编辑，720p 输出单价约降三成",
+    "summary": "Google 发布视频生成/编辑模型 Omni 1.2 Flash：原生片段上限从 1.1 的 10 秒增至 15 秒，支持连续对话改稿与多种参考输入。官方称 720p 视频输出价约降 30% 至 $0.07/秒；开发者价格页按输出 token 计费，输入等费用另计。公告提供一致性演示，未给系统基准。",
+    "insight": "可作为创作 Agent 的生成与修改工具研究：先低分辨率出稿、根据审查结果局部改动，再放大选中版本。关键评测是多轮更改后未指定内容是否保持、实际返工次数和总成本；这次发布并未证明 Agent 任务成功率或代码工程可编辑性。",
+    "limits": "这是视频工具更新，不是通用推理 Agent 模型或开源论文。质量改善来自官方说明与选取样例，没有统计样本量、独立评测或量化延迟对照；快动作、快速脚本变化和复杂物理仍待改善。API 为付费层，约 $0.07/秒只对应 720p 输出口径；4K 为升采样而非公告证明的原生生成。",
+    "organization": "Google DeepMind",
+    "dateLabel": "2026-11-05 · 官方发布",
+    "evidence": "官方公告全文与开发者价格页已核验；未调用模型、未测效果",
+    "originalTitle": "Gemini Omni 1.2 Flash: Fast and cost-effective with longer clips",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-05T20:26:00Z",
+    "updatedAt": "2026-11-05T17:03:44.791497Z",
+    "firstSeenAt": "2026-11-05T20:26:00Z",
+    "tags": [
+      "Google DeepMind",
+      "模型更新",
+      "视频生成",
+      "多轮视频编辑",
+      "Showcase"
+    ],
+    "authors": [
+      "Anish Nangia"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "Google 官方发布",
+        "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/"
+      },
+      {
+        "label": "Gemini API 官方定价",
+        "url": "https://aistudio.google.com/docs/pricing#gemini-omni-1.2-flash"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Omni 1.2 Flash 提供更长的视频片段与连续改稿接口，并降低 720p 输出单价。它可以成为创作工作流中的生成工具，但公告中的展示不能替代 Agent 闭环评测。",
+      "motivation": "一次生成后反复整段重做会增加制作成本，也容易破坏已有角色与风格。官方希望以更长片段、参考约束和多轮编辑降低广告、解释视频等内容的反复制作负担。",
+      "novelty": "官方主张：原生长度增加、参考遵循及跨帧一致性更强，并可在完整 15 秒片段上多轮改稿。本站判断：值得跟踪的是反复修改接口与成本变化；这不是代码生成视频、可编辑时间线或自主剪辑 Agent 的新证据。",
+      "evidenceScope": "已读 Google 11 月 5 日公告正文、演示说明与限制；结构化发布时间为 17:00 UTC。已读开发者定价页：1.2 Flash 视频输出 $12/百万 token，720p 每秒 5,792 token，因此约 $0.07/秒；1.1 为 $17.50/百万 token、约 $0.10/秒。15 秒 720p 仅视频输出约 $1.04，不含输入等费用。未播放并独立打分全部演示，未执行 API 或计时。",
+      "limits": "公告只作产品能力与价格说明，未给统一质量榜单、显著性或端到端 Agent 成功率。对话式视频修改不代表可导出的代码/时间线工程；4K 为升采样。价格及开放入口以对应地区、账户和后续官方说明为准，未核验本用户访问资格。",
+      "method": [
+        "使用角色、商品或风格图片，最长 3 秒的动作参考片段及音频线索作为生成条件；公告未披露模型训练与内部架构。",
+        "选择 3–15 秒、按 1 秒递增的片段时长，先以 360p 或 720p 生成草稿；15 秒上限相对 Omni 1.1 的 10 秒。",
+        "在同一视频上通过后续对话改背景、商品、光照或画幅；官方演示多轮修改，但未证明所有输入都能保持其余部分不变。",
+        "筛选作品后升采样到 1080p 或 4K；开发者可经付费 Gemini API 使用，公告也列出 Cloud、Flow、Vids 等逐步推出入口。"
+      ],
+      "inspirations": [
+        "建立多轮改稿集：依次只改背景、商品、灯光，逐轮测角色身份、构图和动作是否被误改，并保留每一步输出。",
+        "按最终可用片段计总成本，把输入 token、失败尝试、编辑及升采样都纳入；与 1.1 在同样素材、目标分辨率和预算下对照。",
+        "让创作 Agent 在调用前产出可检查的修改清单，调用后验证每项约束；把工具质量和规划/审查能力分开评测。"
+      ],
+      "reviewedAt": "2026-11-05T20:26:00Z",
+      "sourceUrls": [
+        "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/",
+        "https://aistudio.google.com/docs/pricing#gemini-omni-1.2-flash"
+      ]
+    }
   }
 ]

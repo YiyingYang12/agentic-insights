@@ -5214,6 +5214,52 @@
     ]
   },
   {
+    "sourceType": "huggingface",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.03852",
+    "url": "https://huggingface.co/papers/2611.03852",
+    "id": "live-be3900a8b377de3a",
+    "title": "Why Pay for Long Reasoning When Rewrite Do Trick? Causal Effects of Reasoning History Compaction on Future Generation and Agent Cost",
+    "summary": "Reasoning substantially improves language models' ability to solve difficult problems, but long reasoning traces make these gains expensive. Efficient reasoning should express useful analysis in fewer tokens by reducing repetition and text that adds little value to solving the problem. Progress in proprietary models motivates this goal, yet their hidden scratchpads limit direct study of how it is achieved. We investigate whether open-weight models can generate less verbose reasoning by changing the form of their own earlier thoughts, without retraining. Our intervention rewrites prior reasoning into compact state records before pending tool…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-02",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-05T16:00:01Z",
+    "updatedAt": "2026-11-02T19:21:48Z",
+    "firstSeenAt": "2026-11-04T10:00:01Z",
+    "lastSeenAt": "2026-11-05T16:00:01Z",
+    "dailySubmittedAt": "2026-11-05T00:00:00.000Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Anton Hristov"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.03852v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.03852"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.03852"
+      },
+      {
+        "label": "Project",
+        "url": "https://debeltoni.github.io/ShortReasoning/"
+      }
+    ]
+  },
+  {
     "sourceType": "arxiv",
     "category": "distillation",
     "verified": false,
@@ -8901,6 +8947,50 @@
       {
         "label": "OpenAI · 官方更新",
         "url": "https://openai.com/index/qodo-codex-plugin"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.01926",
+    "url": "https://huggingface.co/papers/2611.01926",
+    "id": "live-f345e027ff61a2b3",
+    "title": "TAC-CoT: Tool-Empowered Implicit Chain-of-Thought via Interleaving Explicit Tokens",
+    "summary": "LLM-based agentic systems are increasingly combined with CoT reasoning to solve tasks that require accurate reasoning, external knowledge, and multi-step deliberation. Yet, explicit CoT incurs substantial generation overhead, while implicit CoT, which replaces textual rationales with compact continuous tokens, does not naturally support the explicit communication interface required for agentic tool-use. We propose TAC-CoT, a tool-empowered adaptive implicit CoT framework that replaces explicit reasoning traces with compact latent reasoning segments while retaining textual tokens only for tool calls, observations, and final answers. This…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-01",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-01",
+    "checkedAt": "2026-11-05T16:00:01Z",
+    "firstSeenAt": "2026-11-05T16:00:01Z",
+    "lastSeenAt": "2026-11-05T16:00:01Z",
+    "dailySubmittedAt": "2026-11-05T00:00:00.000Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Juseon Do",
+      "Sangmin Bae",
+      "Jeesu Jung",
+      "Hwanjun Song"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.01926"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.01926"
+      },
+      {
+        "label": "Project",
+        "url": "https://aclanthology.org/2026.emnlp-main.1436/"
       }
     ]
   },
