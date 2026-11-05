@@ -4806,5 +4806,233 @@
         "https://deploymentsafety.openai.com/chatgpt-images-2-6"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.06483v1",
+    "url": "https://arxiv.org/abs/2611.06483v1",
+    "id": "live-1a2a91ad13b4cd84",
+    "title": "多轮 RL 到底学会了什么：缩短交互预算后，恢复能力与单步质量需要分开看",
+    "summary": "论文同时扫描采样次数 K 与每条轨迹轮数 T，发现所测多轮 RL 的优势在紧预算下缩小，部分任务反转。BudgetMix 在训练中随机分配交互预算。Qwen3-4B 的 DeepCoder-MT 在四分之一预算下，Base/固定预算 GRPO/BudgetMix 的 Pass@8 分别为 34.0/29.2/38.1%；完整预算下为 48.3/59.0/61.2%。",
+    "insight": "一个能多次补救后完成任务的 Agent，并不等于每一步都更可靠。训练与验收应同时覆盖尝试次数、交互轮数和同状态的动作质量，特别是不能无限重试或错误不可撤销的流程。",
+    "limits": "主表是八次尝试至少一次成功的 Pass@8，不能读成单次成功率。单步精确分析集中在 FrozenLake 和 DeepCoder-MT；错误状态由随机偏离或代码扰动构造，只是代理。匹配训练配置不等于匹配总交互、token 或算力，主要结果也未提供跨训练种子区间。",
+    "dateLabel": "2026-11-04",
+    "evidence": "已读并核验 arXiv v1 方法、主表与附录评测协议；未复现实验",
+    "originalTitle": "What Does Multi-Turn Reinforcement Learning Really Improve in LLM Agents?",
+    "date": "2026-11-04",
+    "checkedAt": "2026-11-05T08:25:16Z",
+    "updatedAt": "2026-11-04T13:24:54Z",
+    "firstSeenAt": "2026-11-05T04:00:01Z",
+    "lastSeenAt": "2026-11-05T04:00:01Z",
+    "tags": [
+      "Training / RL",
+      "预算鲁棒性",
+      "Agent 评测",
+      "错误恢复"
+    ],
+    "authors": [
+      "Kejian Zhu",
+      "Zhuoran Jin",
+      "Shangqing Tu",
+      "Tianyi Men",
+      "Yupu Hao",
+      "Jiachun Li",
+      "Kang Liu",
+      "Jun Zhao"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.06483v1"
+      },
+      {
+        "label": "arXiv 方法与实验全文",
+        "url": "https://arxiv.org/html/2611.06483v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "多轮 RL 的提升可能更多来自长流程组织与出错后恢复；随机预算训练能改善短预算下的表现。",
+      "motivation": "只报告固定上限内是否成功，会把单步决策质量与多次补救能力混在一起，掩盖部署时预算缩短造成的性能退化。",
+      "novelty": "作者主张，所测多轮 RL 更明显改善错误恢复和长程韧性，BudgetMix 可缓解预算依赖。本站判断：核心价值是把评测预算和配对状态诊断纳入分析；不是证明所有 Agent RL 都降低单步能力，也不能从似然重叠断言没有学到新能力。",
+      "evidenceScope": "已读 v1 第 2–5 节、表 1、附录 A/B 及相关分析。主表覆盖 FrozenLake、DeepCoder-MT、BFCL-v3、InterCode-SQL，最大轮数分别 70/10/24/10；25/50/75/100% 四档均为 Pass@8。4B 的 BudgetMix 跨算法及主表设置平均增益 4.2 个百分点，8B 为 4.8。",
+      "limits": "单步代码测试率不等于整体软件质量；错误状态只是受控代理。短预算的结构可解上界有些基于参考工具轨迹估计，并非所有任务的严格最短解。全预算下并非每个单项都提升；未复现、未据此声称统计显著或等算力优势。",
+      "method": [
+        "以 Pass@(K,T) 分别扫描独立轨迹数量与每条轨迹交互上限；固定 K=8 比较不同 T，双方提示均明确总轮数和剩余轮数。",
+        "从 Base 与 RL 轨迹等量抽取中间状态，固定状态和历史，各采样 16 个下一步动作；用 FrozenLake 动态规划 Q* 或代码单元测试通过率评分。",
+        "构造偏离目标或被扰坏代码的代理错误状态，检查恢复能力；结合动作似然、轨迹似然及训练过程分析收益出现在哪一层。",
+        "BudgetMix 对每个任务组从最大预算的 10% 到 100% 候选值中均匀抽取一个预算，组内共享；超预算未完成记零奖励，沿用原 RL 目标。",
+        "在 Qwen3-4B/8B 与 GRPO、GiGPO、PPO 上测试四档预算；GiGPO 的锚点同时包含环境状态与剩余预算，避免混合不同决策条件。"
+      ],
+      "inspirations": [
+        "把线上允许的尝试次数和轮数做成二维验收矩阵，分别报告 Pass@1、Pass@K、实际调用量与失败位置。",
+        "从多个策略等量收集同状态比较池，加入正常状态与受扰动状态，区分首次选对和出错后恢复。",
+        "训练时混合实际会遇到的预算，并在状态和优势估计中保留剩余预算；对不可逆操作另测一次决策风险。"
+      ],
+      "reviewedAt": "2026-11-05T08:25:16Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.06483v1",
+        "https://arxiv.org/html/2611.06483v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.06483",
+      "status": "pending",
+      "checkedAt": "2026-11-05T08:26:04.181502+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.06445v1",
+    "url": "https://arxiv.org/abs/2611.06445v1",
+    "id": "live-294ba69d5c5ec013",
+    "title": "SumOne：用遮挡重建训练独立记忆压缩器，减少长流程上下文成本",
+    "summary": "SumOne 用 2B 模型压缩旧轨迹，让冻结重建器结合摘要恢复随机遮掉的内容，以恢复质量和长度惩罚训练。主实验中 DeepSearchQA F1 从完整历史的 0.52 变为 0.48，估算每题成本 $0.170→$0.038；SWE-bench Verified resolved rate 为 0.63→0.59，表中成本 $0.286→$0.071。",
+    "insight": "摘要质量可以用丢掉原文后还能恢复什么来训练，减少对下游 Agent 执行的依赖。但能恢复历史并不保证保留未来决策关键证据，因此压缩率、真实任务效果和记忆类别都应独立验收。",
+    "limits": "成本按论文给定 API 单价估算，忽略缓存、批量等折扣，也不是端到端延迟实测；SWE 成本正文与表 1 有不一致，本条保留表中原值。压缩并非无损：LongMemEval-S 总分从完整历史 0.77 降至 0.47。重建奖励仍依赖 LLM judge，不能称无偏或确定性验证。",
+    "dateLabel": "2026-11-04",
+    "evidence": "已读并核验 arXiv v1 方法、实验表和训练/价格附录；未复现实验",
+    "originalTitle": "SUMONE: A Simple and Efficient Summarizer for Plug-and-Play Agent Memory",
+    "date": "2026-11-04",
+    "checkedAt": "2026-11-05T08:25:16Z",
+    "updatedAt": "2026-11-04T12:49:07Z",
+    "firstSeenAt": "2026-11-05T04:00:01Z",
+    "lastSeenAt": "2026-11-05T04:00:01Z",
+    "tags": [
+      "Training / RL",
+      "Agent Memory",
+      "上下文压缩",
+      "自监督"
+    ],
+    "authors": [
+      "Jizhe Zhang",
+      "Ang Li",
+      "Chenheng Zhang",
+      "Yisen Wang"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.06445v1"
+      },
+      {
+        "label": "arXiv 方法与实验全文",
+        "url": "https://arxiv.org/html/2611.06445v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "以随机遮挡后的历史重建作为奖励，训练一个可独立插入不同 Agent 的小型上下文摘要器。",
+      "motivation": "每次带完整历史会累积大量输入成本；若用下游任务回报训练压缩器，又需昂贵执行且容易依赖特定 Agent。作者希望从原始轨迹本身获得可复用监督。",
+      "novelty": "作者主张，从原始轨迹的遮挡重建即可学习不依赖下游执行的独立记忆压缩模块。本站判断：监督目标与模块解耦值得借鉴；互信息只是解释视角，论文没有直接估计互信息，也没有保证摘要保留所有未来有用信息。",
+      "evidenceScope": "已读 v1 第 3–4 节、表 1–10 与附录。约 5K 样本来自搜索和软件工程轨迹，16K/32K 上下文，8×H20、600 步 GRPO。主实验为 Qwen3.5-35B-A3B＋OpenCode；另测四种下游模型、四种 harness 和 LongMemEval-S，原生 harness 压缩关闭。",
+      "limits": "LongMemEval-S 0.47 虽高于所比压缩器，仍明显低于完整历史 0.77，且并非各子类最好；Codex 下与自摘要同为 0.47。SWE 表 1 的 $0.071/$0.286 约为 25%，正文却称 58%，需要作者澄清。主要表未报告跨种子误差；推理成本不包括训练摘要器的总费用，不宜外推普遍节省比例。",
+      "method": [
+        "将保留的系统指令、任务、既有记忆与近期对话记为上下文，旧历史交给 Qwen3.5-2B 生成摘要。",
+        "把旧历史划成约 512-token 区块，尽量按工具调用或角色边界切分，随机遮住其中 50%。",
+        "冻结 Qwen3.5-9B，输入保留上下文、可见历史和候选摘要，重建缺失块；由 DeepSeek V4.1 Flash 对照原文评估内容 precision 与 recall。",
+        "以逐块恢复得分减去摘要长度惩罚作为奖励，每个样本生成八个候选，用 GRPO 更新摘要器，重建器保持冻结。",
+        "部署时去掉重建和 judge，只保留摘要器替换过期历史；按统一 32K 压缩阈值比较不同任务、下游模型与 harness。"
+      ],
+      "inspirations": [
+        "给压缩器增加可恢复的约束、证据、失败结果测试集，区分语义遗漏与编造，而非仅评价摘要流畅度。",
+        "在一致阈值和输出预算下比较原模型提示摘要、直接摘要 judge 奖励及重建奖励，同时保留完整历史作为效果上界参照。",
+        "上线时单独记录压缩调用、累计输入、缓存命中、延迟和任务损失；对时间关系、更新事实等脆弱记忆设置专门回归集。"
+      ],
+      "reviewedAt": "2026-11-05T08:25:16Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.06445v1",
+        "https://arxiv.org/html/2611.06445v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.06445",
+      "status": "pending",
+      "checkedAt": "2026-11-05T08:26:04.181502+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.05992v1",
+    "url": "https://arxiv.org/abs/2611.05992v1",
+    "id": "creative-clips2story",
+    "title": "Clips2Story：从打乱素材中检索、排故事，先交付可编辑分镜",
+    "summary": "用关键词从无序素材池取片，再由LLM形成可编辑分镜；可保留原声，或生成衔接旁白并检索对应画面。核心是现有素材的选择与叙事组织，不是像素生成。",
+    "insight": "可将“片段证据—叙事计划—最终装配”分开审查：先检查有无合适素材，再检查旁白是否被素材支持，最后检查转场。分镜可读性为人工干预提供入口，但不会自动保证事实忠实或剪辑质量。",
+    "limits": "测试由100条长视频分别切分、打乱构成，不等于跨来源真实素材库；人工研究为15人、3类共18条源视频。OPC只量原顺序一致性，不能等同新叙事质量；关键词也由模型看完整源内容产生。文本描述会漏掉动作细节和音乐连续性，硬检索可能丢失有用B-roll，旁白重组存在失实风险。代码称接收后公开，本站未运行；可编辑分镜不等于已验证专业剪辑工程互通。",
+    "organization": "NYU · University of Washington · University of Michigan",
+    "dateLabel": "2026-11-04 · v1首发",
+    "evidence": "已读v1方法、实验、消融与局限；未复现",
+    "date": "2026-11-04",
+    "checkedAt": "2026-11-05T08:24:11.712351Z",
+    "originalDate": "2026-11-04",
+    "updatedAt": "2026-11-04T05:37:16Z",
+    "firstSeenAt": "2026-11-05T04:00:01Z",
+    "lastSeenAt": "2026-11-05T04:00:01Z",
+    "tags": [
+      "视频剪辑",
+      "素材检索",
+      "可编辑分镜",
+      "免训练",
+      "叙事评测"
+    ],
+    "authors": [
+      "Junnuo Wang",
+      "Weihan Xu",
+      "Hao-Wen Dong"
+    ],
+    "topics": [
+      "video-editing"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "arXiv · 视频剪辑",
+        "url": "https://arxiv.org/abs/2611.05992v1"
+      },
+      {
+        "label": "arXiv v1全文：方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.05992v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "免训练地把关键词和无序实拍片段变成分镜，再装配视频；提供无旁白NF与旁白驱动ND两种方式。",
+      "motivation": "成片摘要通常沿用已有叙事，不能直接处理散乱素材；需要先筛出相关证据，再允许创作者检查和修改故事顺序。",
+      "novelty": "作者主张关键词驱动的clips-to-storyboard任务与检索优先流程。本站判断：贡献主要是无序素材上的任务组织和可编辑中间结果，未提出新训练算法；没有证据表明其具备自动审片返修闭环。",
+      "evidenceScope": "实际读arXiv v1 §3方法、§4评测、§5结果/消融/成本、§6局限及附录B分镜格式。作者在100条五类视频上评测；ND人工连贯性为4.43/5、REGen为3.17/5，仅适用于论文的小规模场景级研究。未复现实验或验收演示。",
+      "limits": "测试由100条长视频分别切分、打乱构成，不等于跨来源真实素材库；人工研究为15人、3类共18条源视频。OPC只量原顺序一致性，不能等同新叙事质量；关键词也由模型看完整源内容产生。文本描述会漏掉动作细节和音乐连续性，硬检索可能丢失有用B-roll，旁白重组存在失实风险。代码称接收后公开，本站未运行；可编辑分镜不等于已验证专业剪辑工程互通。",
+      "method": [
+        "用WhisperX转写、BLIP中帧描述，以及GroundingDINO/CLIP实体和背景信息，为片段建立文字描述。",
+        "按关键词与转写、画面描述的向量相似度检索，总候选时长最多15分钟，供后续规划。",
+        "GPT-5.2选择与排序片段，生成可编辑分镜；NF保留原始音画，ND补充衔接旁白。",
+        "ND用VITS合成旁白，按VTGHLS相关分数选取匹配时长的画面，静音铺在旁白下；再与保留原声的片段装配。"
+      ],
+      "inspirations": [
+        "为每句新旁白保存支持它的源片段和时间段，单独测试“故事连贯但事实关系被改变”的错误。",
+        "对比固定关键词筛选与按叙事缺口二次检索，检查被硬过滤掉的过渡镜头能否改善连贯性。",
+        "增加跨拍摄日期、跨来源素材库和真实编辑意图；把关键词贴合、事实保真、原序一致与人工修改成本分开测。"
+      ],
+      "reviewedAt": "2026-11-05T08:24:11.712351Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.05992v1",
+        "https://arxiv.org/html/2611.05992v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.05992",
+      "status": "pending",
+      "checkedAt": "2026-11-05T08:26:04.181502+00:00"
+    }
   }
 ]
