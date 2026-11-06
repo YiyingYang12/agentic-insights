@@ -6239,5 +6239,346 @@
       "status": "pending",
       "checkedAt": "2026-11-06T08:28:16.201096+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.08219v1",
+    "url": "https://arxiv.org/abs/2611.08219v1",
+    "id": "live-c543b49531fde155",
+    "title": "Agent-R²：用真实工作流与文件合成 4k 个交付任务，再做 SFT 与 RL",
+    "summary": "从职业活动、网页工作流和真实附件合成 4k 个交付任务，约 3k 用于专家轨迹 SFT、1k 用于 rubric 奖励 RL。4B 模型的 GDPval 文中评分从 32.4 升至 51.0，OfficeQA Markdown 版正确答案 Pass@1 从 2.2% 升至 14.8%。",
+    "insight": "办公 Agent 数据应把真实文件、跨文件依赖和交付验收标准一起设计。值得借鉴的是对参考交付物与 rubric 相互校验，并分别统计读文件、修错与复查行为；只有文件看起来真实，仍不足以保证任务可完成。",
+    "limits": "GDPval 的 Pass@k 是最多 k 次中首个生成交付物的评分，不是标准成功概率；依赖模型裁判。100 例人工审计仅 85% 任务可完成、95% 跨文件一致。4B 系统另用视觉模型；论文与 README 的 sandbox 说明存在差异，完整 4k 数据未核验发布。",
+    "dateLabel": "2026-11-05",
+    "evidence": "已读原论文 v1 方法、实验与附录；核验公开代码说明及 HF 模型文件元数据，未运行或复现实验。",
+    "originalTitle": "Agent-R$^2$: Scaling Agents for Realistic Productivity Work via Real-Source Data Synthesis",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-06T14:29:17Z",
+    "updatedAt": "2026-11-05T16:08:05Z",
+    "firstSeenAt": "2026-11-06T10:00:01Z",
+    "lastSeenAt": "2026-11-06T10:00:01Z",
+    "tags": [
+      "Data",
+      "Synthetic Data",
+      "Training / RL",
+      "Office Agents"
+    ],
+    "authors": [
+      "Teng Pan",
+      "Zixuan Wang",
+      "Yuchen Yan",
+      "Qifei Wu",
+      "Yao Chen",
+      "Yingqi Qu",
+      "Ruiqing Zhang",
+      "Yongliang Shen"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.08219v1"
+      },
+      {
+        "label": "arXiv · 方法与附录全文",
+        "url": "https://arxiv.org/html/2611.08219v1"
+      },
+      {
+        "label": "作者代码与运行说明",
+        "url": "https://github.com/ZJU-REAL/Agent-R2"
+      },
+      {
+        "label": "作者公开模型",
+        "url": "https://huggingface.co/teng-pan/Agent-R2-4B"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把“生成任务”推进到“真实附件支撑的工作流＋可评分交付物”，用 3k 专家示范和 1k RL 任务提升小模型办公能力；成绩限于论文的工具、视觉后端和判分协议。",
+      "motivation": "现有数据常只教单个工具或文件类型，难覆盖职业工作流、异构附件理解以及事实、计算、版式等交付要求；仅写出文件不能代表完成工作。",
+      "novelty": "作者主张：职业种子、语料工作流、真实多格式附件和交付 rubric 在整条合成流程中相互支撑。本站判断：价值是把文件证据与验收要求一起纳入后训练数据；4k-SFT 对照为 45.5，SFT+RL 为 51.0，支持 RL 有增量贡献，但不能将全部提升单独归因于真实文件。",
+      "evidenceScope": "已读 v1 §2–4 与附录 A–E。GDPval 为 220 任务、Gemini-3.1-Pro 裁判、最多 100 步；文中 Pass@k 评分首个产出交付物的尝试。OfficeQA 使用官方 Markdown 版，Pass@k 才表示 k 次中至少一次答对。4B 文本模型调用 Qwen3-VL-4B 视觉工具。两种裁判各三次重判已生成文件，不是六次独立训练复现。",
+      "limits": "人工抽查 100 例：工作流完全对齐 86%、跨文件一致 95%、可完成 85%；rubric 单项有效率 99.8% 不能代替这些比例。去重仅覆盖所报哈希、URL、文本相似度，不能排除基础模型既有污染。代码与 HF 权重分片公开；论文称使用 AIO Sandbox，README 称实验用百度内部 sandbox、AIO 为替代，两者说明有差异，未做开箱复现。",
+      "method": [
+        "用 O*NET 职业活动引导 Qwen3.6-Plus 从 DLR-Web 语料提取依赖文件的工作流；过滤无实际操作或不涉及文件的候选。",
+        "按所需格式搜索并检查真实附件，淘汰超 50 页、超 2 MB 或不能共同支持工作流的文件组合。",
+        "在 sandbox 中结合文件内容生成指令和细粒度 rubric；Claude Opus 4.5 生成参考交付物及轨迹，检查后修订不合理 rubric，或让专家修正交付物。",
+        "以不重叠的约 3k/1k 任务先 SFT、再 GRPO；将文件渲染或转为表格，由 Qwen3.6-Plus 对交付物与参考文件评分，使用归一化终点奖励。",
+        "固定最终检查点，在统一工具框架下测试；分开报告交付评分、正确答案与轨迹检查行为，并做文件/指令重合审计。"
+      ],
+      "inspirations": [
+        "为视频剪辑、代码动画或办公任务构建“素材证据—步骤依赖—交付检查项”三联数据，并让独立检查发现任务本身不可完成的情况。",
+        "除最终评分外，记录遇错继续写文件、占位文本、输出后复查等行为；验证行为改善是否伴随实际质量提升，而非只奖励步骤变多。",
+        "对合成数据分层抽审跨文件实体/日期一致性与可完成性；保留来源、文件哈希和数据划分，避免用 rubric 单项有效率替代任务质量。"
+      ],
+      "reviewedAt": "2026-11-06T14:29:17Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.08219v1",
+        "https://arxiv.org/html/2611.08219v1",
+        "https://github.com/ZJU-REAL/Agent-R2",
+        "https://huggingface.co/teng-pan/Agent-R2-4B"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.08219",
+      "status": "pending",
+      "checkedAt": "2026-11-06T14:30:44.920877+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.07372v1",
+    "url": "https://arxiv.org/abs/2611.07372v1",
+    "id": "live-51914316aeeeb914",
+    "title": "EnvOpt：先整理 Agent 的工作环境，让后续任务少花调用成本",
+    "summary": "EnvOpt 固定目标 Agent 的模型与运行框架，用研究 Agent 离线重组文件、索引、数据库和工具访问层。AutomationBench 上 Haiku 4.5 的通过率从 2.33% 到 16.67%（+14.34 个百分点），评测模型调用成本下降 72.73%；优化过程不向训练任务提供答案或 verifier，但独立验证集用 verifier 决定早停。",
+    "insight": "可将反复查表、发现接口和解析文件的开销移到可复用的环境准备阶段。值得研究的是信息完整性、未知查询成功率和总生命周期成本的联合优化：少用 token 不能代替完成任务，离线构建与后续更新费用也应计入。",
+    "limits": "优化阶段不给训练任务 verifier，但验证早停和提示修订使用验证反馈；不能称全流程无监督。部分迁移配置通过率略降，信息保持没有形式化保证。离线优化另计，公开仓库仅核验部分环境产物，未复现。",
+    "dateLabel": "2026-11-05",
+    "evidence": "已读 arXiv v1 方法与讨论、官方 PDF 主表和附录；核验公开仓库根目录，未运行或复现实验。",
+    "originalTitle": "EnvOpt: Automated Optimization for Agent Environments",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-06T14:29:17Z",
+    "updatedAt": "2026-11-05T03:16:52Z",
+    "firstSeenAt": "2026-11-06T04:00:01Z",
+    "lastSeenAt": "2026-11-06T10:00:01Z",
+    "tags": [
+      "Agent systems",
+      "Environment Optimization",
+      "Cost Evaluation"
+    ],
+    "authors": [
+      "Mingxuan Li",
+      "Huanzhi Mao",
+      "Qiuyang Mang",
+      "Hanchen Li",
+      "Joseph E. Gonzalez",
+      "Alex Dimakis"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.07372v1"
+      },
+      {
+        "label": "arXiv · 方法全文",
+        "url": "https://arxiv.org/html/2611.07372v1"
+      },
+      {
+        "label": "arXiv · 含表格与附录的 PDF",
+        "url": "https://arxiv.org/pdf/2611.07372v1"
+      },
+      {
+        "label": "作者公开环境仓库",
+        "url": "https://github.com/itea1001/EnvOpt"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "固定模型与运行框架，离线整理环境表示。AutomationBench 的 Haiku 4.5 通过率 2.33%→16.67%，测试集模型调用总成本 $42.36→$11.55（−72.73%）；这是环境搜索，非模型权重训练。",
+      "motivation": "同一批资料可能以大量 API 请求、零散文件或已整理索引呈现；即便模型能力相同，发现、解析和定位信息也会消耗不同数量的 token。作者希望把能在多任务间复用的整理工作前置，并与模型及运行框架优化组合。",
+      "novelty": "作者主张：把稳定环境的组织与暴露方式作为模型参数、运行框架之外的优化方向，并自动搜索可复用的环境改造。本站判断：更有价值的证据是跨模型迁移及工具单独优化的消融；论文不能证明环境改造与提示、工具工程有完全清晰的边界，也不能把训练隐藏 verifier 扩写成全流程无监督。",
+      "evidenceScope": "已读 v1 方法、算法、官方 PDF 表 1–5 与附录。覆盖五个评测：工作区、数据工程和两个代码库。AutomationBench 从 600 题拆出 200 测试、96 验证，表中为三次独立运行均值，未见具体随机种子；其离线优化另需 $150.10、6.6 小时。公开仓库只确认 README 与 AutomationBench 环境目录；未复现。",
+      "limits": "验证集有 verifier，作者还据验证表现修订过提示；信息保持靠约束与有限评测。部分迁移通过率下降，例如 Workspace 的 Opus 5 为 62.27%→61.14%。表中成本是测试集模型调用统计，不是单题价格或总生命周期成本；离线构建、启动转换和持续维护须另算。高频环境变化与分布外查询未充分验证。",
+      "method": [
+        "固定目标模型与运行框架，定义可修改的环境目录或访问层，把优化任务拆成各步互不重叠的训练子集，另保留验证和测试任务。",
+        "研究 Agent 在沙箱调用目标 Agent，读执行轨迹，重组表示：例如预取并展平记录、建立 SQLite 目录、制作接口速查表或代码定位工具；同类但不同状态的环境可由转换程序逐任务准备。",
+        "每步在预算内迭代编辑与运行，不给训练任务的标准答案或 verifier；研究 Agent 依据轨迹、答案一致性等判断质量，仅保留更省成本且自认为质量未降的修改。只有环境产物传出，框架修改丢弃。",
+        "每步结束后，在独立验证集使用真实 verifier 统计成功率和成本；若成本上升或质量下降超过容忍度，停止并返回上一步环境。最终在未见测试任务以及其他模型/框架上评估。"
+      ],
+      "inspirations": [
+        "为重复使用的知识库或代码仓库建立可版本化的索引与访问层，按新查询分割测试集，比较只换工具与连同资料表示一起重构的收益。",
+        "把环境改造当成带质量约束的迁移：验证原始信息仍可达、读写语义没有改变，并加入冷门查询和错误恢复用例；SQL 分隔符等基础转换错误会让模型反复补救。",
+        "计算离线优化、任务启动转换、推理和增量维护的总成本，再估算复用多少次才能回本；同时报告通过率百分点变化，避免只追求 token 或步骤减少。"
+      ],
+      "reviewedAt": "2026-11-06T14:29:17Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.07372v1",
+        "https://arxiv.org/html/2611.07372v1",
+        "https://arxiv.org/pdf/2611.07372v1",
+        "https://github.com/itea1001/EnvOpt"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.07372",
+      "status": "pending",
+      "checkedAt": "2026-11-06T14:29:25.839828+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.08294v1",
+    "url": "https://arxiv.org/abs/2611.08294v1",
+    "id": "live-c25d2ad8e1470d00",
+    "title": "ManimCode：用视觉纠错轨迹和RL训练4B教育动画模型",
+    "summary": "保留代码、报错、视频帧、视觉批评与修订轨迹，训练同一个Qwen3.5-4B承担写作、审片和改码，再对自身失败状态做Reviser RL。同样10次渲染预算下，ManimData-test渲染成功率由未训练4B的52.6%升至96.6%；成功渲染仍不等于教学内容完整正确。",
+    "insight": "代码动画数据应保存“为什么失败、看到了什么、怎样改好”，而不只保存最终Python。该研究把执行修复与视觉质量修订分开训练，适合研究可编辑视频的反馈闭环；需要同时观察覆盖率、画面缺陷与修订造成的新错误。",
+    "limits": "项目页当前代码与ManimData均标coming soon，未复现。VQ仅统计成功渲染视频；多数大模型对照是单次生成，不能据此宣称同预算全面超越。长片可跳过失败场景，完成数不等于所有内容完整；人评仅1名团队成员盲评98对。",
+    "dateLabel": "2026-11-05 · arXiv v1（UTC；北京时间11/06）",
+    "evidence": "已读原论文§3–5与附录A–C、作者项目页；代码/数据尚待作者开放，未运行",
+    "originalTitle": "ManimCode: Learning Visual Self-Correction for Educational Animation",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-06T14:27:17.641060Z",
+    "originalDate": "2026-11-05",
+    "updatedAt": "2026-11-05T16:55:44Z",
+    "firstSeenAt": "2026-11-06T10:00:01Z",
+    "lastSeenAt": "2026-11-06T10:00:01Z",
+    "tags": [
+      "Manim",
+      "视觉自纠错",
+      "轨迹SFT",
+      "RLOO",
+      "可编辑动画"
+    ],
+    "authors": [
+      "Zhengyang Liang",
+      "Lizi Liao"
+    ],
+    "topics": [
+      "code2motion",
+      "code2video"
+    ],
+    "sourceId": "arxiv_code2video",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.08294v1"
+      },
+      {
+        "label": "论文方法、实验与完整附录",
+        "url": "https://arxiv.org/html/2611.08294v1"
+      },
+      {
+        "label": "作者项目页与代码/数据开放状态",
+        "url": "https://liang-zhengyang.github.io/manimcode/"
+      },
+      {
+        "label": "作者主页对项目与论文的关联",
+        "url": "https://liang-zhengyang.github.io/"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "一个4B模型学习写Manim、看帧批评和修订代码；轨迹SFT提升生成与视觉纠错，后续RL主要提升渲染成功率。Manim程序可再编辑，但论文没有测后续人类修改成本。",
+      "motivation": "能跑出视频不代表标签清楚、讲解完整或内容正确。最终程序数据丢失了报错与修订依据，而大模型生成的纠错轨迹也未必覆盖小模型自身会犯的错误。",
+      "novelty": "作者主张将可验证的动画修订过程变成训练数据，并用自身错误状态补足教师轨迹分布。本站判断：价值在于把视觉反馈转为可学习的修订动作；消融显示RL主要改善渲染成功，ManimBench VQ从SFT的3.45变为3.44，不能描述成所有质量维度持续提升。",
+      "evidenceScope": "已读§3–5及A–C。场景测试500/100请求；同loop未训练4B→训练模型RS为52.6→96.6%、82→97%，VQ为2.48→2.94、3.00→3.44。长片替换场景模块后19/117→107/117、53/239→239/239；基线与替换版均用未训练4B规划，每场景最多10次渲染。MMMC有10题规划失败；TEB有10题的23/1,371个缺失场景计划由同一4B重规划。代码、ManimData下载尚未开放，本轮未复现。",
+      "limits": "VQ由Gemini 3.8 Flash判分且只对成功视频取均值；人评是1名不知模型身份的团队成员检查98对双方都渲染成功的视频，不是学生学习实验。长片允许跳过失败场景，且更换原基准judge，绝对分不可与原论文直接比较；TEB移除音频与旁白维度。ManimBench检索排除85个近重复文档例，JanusCoder训练含71/100测试请求；不同基线有1/4/10次渲染等预算差异。8帧审阅和暂停点检查可能漏掉短暂缺陷，最佳候选仍可能越界。未核验已发布权重，代码与数据为coming soon。",
+      "method": [
+        "从Wikipedia图形化STEM请求与社区程序构造输入；检索2,219张Manim/API插件卡片，Qwen3.8-27B在最多10次渲染中生成或修订。",
+        "渲染器提供执行报错，布局检查器检查暂停点的越界、重叠和小字；Reviewer观察8帧并评分批评。保留满足质量阈值的最佳版本和全过程，得到24,034条记录。",
+        "把轨迹转成305,452个写作、审阅、执行修复、质量修订和检索查询样本，以角色条件LoRA SFT训练同一个Qwen3.5-4B，而非三个独立4B模型。",
+        "用SFT模型自己生成崩溃或待改进状态；每状态采样8份修订并渲染。修复奖励结合可执行性与内容覆盖，视觉修订用顺序交换的成对偏好；用RLOO及KL约束更新Reviser，无需参考程序或目标视频。",
+        "推理时4B轮流承担各角色，循环渲染、审阅和改码，最多10次并保留最佳成功版本；Qwen3.8-27B只参与数据与训练奖励，检索仍另用8B嵌入/重排模型。"
+      ],
+      "inspirations": [
+        "为Manim、Remotion或网页动效保存完整修订样本：请求、代码版本、时间点帧、执行错误、批评和改码结果；同时保存失败修订，研究怎样避免改好重叠却制造越界。",
+        "固定检索、渲染次数与耗时上限，对比未训练模型、仅SFT和SFT+RL；同时报告成功率、成功样本质量和失败计零的总体分，避免幸存样本掩盖失败。",
+        "将长视频验收细化为计划有效率、场景覆盖、内容正确、字幕布局和时间连续性；加入短暂缺陷与无参考内容检查，不把生成了视频文件当作完整教学交付。"
+      ],
+      "reviewedAt": "2026-11-06T14:27:17.641060Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.08294v1",
+        "https://arxiv.org/html/2611.08294v1",
+        "https://liang-zhengyang.github.io/manimcode/",
+        "https://liang-zhengyang.github.io/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.08294",
+      "status": "pending",
+      "checkedAt": "2026-11-06T14:29:25.839828+00:00"
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/allenai/toyblocks",
+    "url": "https://huggingface.co/blog/allenai/toyblocks",
+    "id": "update-ai2-toyblocks-20261106",
+    "title": "ToyBlocks：用可控积木世界联动机器人数据、规划与执行评测",
+    "summary": "Ai2 发布受控桌面积木仿真框架：程序生成任务，规划器组合短技能产生示范，再分开评估高层规划与低层动作。官方博文称首批 85,336 条长程示范，当前公开数据卡合计 83,496 条，口径差异尚未解释，不能直接视为同一批。代码、数据与两个配套模型已公开；完整集成 RL 训练仍待发布。",
+    "insight": "把数据生成与评测共用的任务规格固定下来，再用高层或低层 oracle 替换组件，可定位失败来自看错、规划错还是动作执行失败；对失败状态重新生成示范，比只扩大总体数据量更便于检验研究假设。",
+    "limits": "官方博文与公开仓库/模型卡级核验，未运行仿真或真机。范围为桌面积木，不能外推通用机器人能力。博文的 85,336 条示范与数据卡的 83,496 条存在未解释的版本/口径差异；真机结果的博客口径为 15/30，模型卡仍为 6/10，未证明两者同协议。技术报告尚标 coming soon。",
+    "organization": "Ai2 · Allen Institute for AI",
+    "dateLabel": "2026-11-06 · 官方框架发布博文",
+    "evidence": "Ai2 官方发布全文、公开仓库 README、数据卡、模型卡及文档入口已核验；未实测。",
+    "originalTitle": "ToyBlocks: A controlled world for robot learning and evaluation",
+    "date": "2026-11-06",
+    "checkedAt": "2026-11-06T14:27:03.415000Z",
+    "firstSeenAt": "2026-11-06T14:30:44.969166+00:00",
+    "tags": [
+      "数据/环境",
+      "具身Agent",
+      "合成示范",
+      "层级规划",
+      "MCP",
+      "泛化评测"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "Ai2 官方发布全文",
+        "url": "https://huggingface.co/blog/allenai/toyblocks"
+      },
+      {
+        "label": "公开框架与发布范围",
+        "url": "https://github.com/allenai/ToyBlocks"
+      },
+      {
+        "label": "官方工作流文档",
+        "url": "https://allenai.github.io/ToyBlocks/docs/user_guide/index.html"
+      },
+      {
+        "label": "公开示范数据",
+        "url": "https://huggingface.co/datasets/allenai/toyblocks-data"
+      },
+      {
+        "label": "高层模型与分难度评测",
+        "url": "https://huggingface.co/allenai/Molmo2-4B-tb"
+      },
+      {
+        "label": "低层策略与评测时间预算",
+        "url": "https://huggingface.co/allenai/maniflow-tb"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "在可控物理世界中生成数据并拆开测规划和动作，为具身 Agent 提供实验环境；首发范围与效果边界需分别看。",
+      "motivation": "真实机器人示范昂贵，场景难系统变化；一次端到端失败也难判定是感知、计划还是控制问题。",
+      "novelty": "团队主张将可控世界、自动任务/数据生成、分层策略与评测整合为 FoundationWorld。本站判断：核心价值是可干预的实验环境与组件归因；公开示范或成功视频本身不证明开放世界泛化。",
+      "evidenceScope": "已读官方博文、代码 README、两模型卡、数据卡与工作流入口，技术报告尚待公开。博文 search-and-spell 的 63% 包含正确识别不可行任务，其场景一半不可行；30/30 是另一组经典积木规划。未独立运行实验。",
+      "limits": "博客真机层级系统 15/30 只覆盖已见积木、字母可见且直立的最易设置；模型卡另写 6/10，样本/协议未统一，不能汇总为一般成功率。正文 agent 实验称 Opus 5.5，演示字幕称 Fable 5.1，不能混同。完整 RL 训练集成未发布；模型卡还显示低层结果依赖超时预算且同样本重复运行不确定。 博文示范数 85,336 与当前数据卡 83,496 尚未统一；公开数据卡仅覆盖三积木定向堆叠的成功示范，失败轨迹被过滤，不能将框架支持的任务和恢复能力都视为现有数据覆盖。",
+      "method": [
+        "用任务规格和场景变量定义目标，改变积木外观、布局及物理参数；通过留出区域、积木或组合测试泛化。",
+        "短技能由运动规划或 RL 生成，任务与运动规划器组合技能并并行执行；仿真专家可用真实策略不可直接获取的位置/姿态等特权状态。",
+        "把轨迹记录并渲染为 LeRobot 格式示范，训练基于图像的 ManiFlow 动作模型及选择技能/指向目标的 Molmo2 高层模型。",
+        "闭环评测可用 oracle 替换高层或低层，按任务谓词记录成功和进度；也可将技能作为 MCP 工具交给大模型，失败状态能回流生成新示范。",
+        "真机迁移额外使用系统辨识、视觉/物理随机化和图像深度估计；仅在限定机械臂与积木场景检验，不能把零真实示范训练理解为不需真实设备校准。"
+      ],
+      "inspirations": [
+        "固定任务集与动作预算，分别换成高层 oracle、低层 oracle 和全学习系统，记录错误感知、错误计划、执行失败及错误宣告完成。",
+        "用同量数据比较随机新增示范与从失败状态补采的示范，同时留出区域、外观和技能组合，避免只看训练分布成功率。",
+        "把可行任务完成率与不可行任务识别率分开；控制时间上限并报告重复运行波动，防止把超时设置或仿真随机性误当模型差异。"
+      ],
+      "reviewedAt": "2026-11-06T14:27:03.415000Z",
+      "sourceUrls": [
+        "https://huggingface.co/blog/allenai/toyblocks",
+        "https://github.com/allenai/ToyBlocks",
+        "https://allenai.github.io/ToyBlocks/docs/user_guide/index.html",
+        "https://huggingface.co/datasets/allenai/toyblocks-data",
+        "https://huggingface.co/allenai/Molmo2-4B-tb",
+        "https://huggingface.co/allenai/maniflow-tb"
+      ]
+    }
   }
 ]
