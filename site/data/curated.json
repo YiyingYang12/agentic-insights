@@ -6580,5 +6580,351 @@
         "https://huggingface.co/allenai/maniflow-tb"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.07689v1",
+    "url": "https://arxiv.org/abs/2611.07689v1",
+    "id": "live-1acaf730d091fb0b",
+    "title": "MCPHallu：四类结构风险诊断 MCP 幻觉，评分实现与论文须分别核对",
+    "summary": "用358个任务、36个真实 MCP 服务器诊断条件分支、不可达目标、工具混淆与上下文遗忘。论文中14个 Agent 平均综合分为0.642，整体通过率47.8%；不可达目标仅23.2%通过。公开源码默认 judge 权重与论文不同，论文成绩和当前实现不能直接等同。",
+    "insight": "评测工具 Agent 时，应同时检查可执行结果、依赖关系和不可达目标上的诚实停止，并分开报告综合分与通过率。可控风险能帮助定位薄弱环节，但仍需成对对照验证因果；复用时首先固定评分代码与judge版本，解决论文和实现口径差异。",
+    "limits": "已读论文全文及附录，未复现实验。论文与当前公开代码的评分权重不一致：论文 judge 占20–30%，固定提交848699a中的 TM 为50%、UG默认为60%、无状态 BC/CF 为80%，有状态任务则按 assertion50%+claim40%+dependency10%；README 默认judge也与论文不同，不能把论文分数视为当前默认实现的复现结果。四类标签是任务结构设计目标，可能混合错误；工具调用长度与失败的相关性受奖励早停等评分规则影响，不证明多调用造成幻觉。",
+    "dateLabel": "2026-11-05",
+    "evidence": "全文与附录已读；固定提交评分源码已核对；未复现",
+    "originalTitle": "MCPHallu: Benchmarking Reasoning, Execution, and Memory Hallucinations in MCP Agents",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-06T20:28:16Z",
+    "updatedAt": "2026-11-05T09:14:26Z",
+    "firstSeenAt": "2026-11-06T04:00:01Z",
+    "lastSeenAt": "2026-11-06T16:00:01Z",
+    "tags": [
+      "Evaluation",
+      "MCP",
+      "Hallucination",
+      "State Verification"
+    ],
+    "authors": [
+      "Yizhen Jiang",
+      "Haowei Guo",
+      "Tianyi Bai",
+      "Zengjie Hu",
+      "Lu Ma",
+      "Zhengyang Zhao",
+      "Haoze Sun",
+      "Peng Pei",
+      "Wentao Zhang"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.07689v1"
+      },
+      {
+        "label": "arXiv v1 全文与附录",
+        "url": "https://arxiv.org/html/2611.07689v1"
+      },
+      {
+        "label": "官方公开仓库",
+        "url": "https://github.com/J1zz/mcp_hallu"
+      },
+      {
+        "label": "固定提交的评分实现",
+        "url": "https://github.com/J1zz/mcp_hallu/blob/848699aaa0ce6e0a026536df050743606c8060bc/task_generation/eval/scoring.py"
+      },
+      {
+        "label": "固定提交的 README",
+        "url": "https://github.com/J1zz/mcp_hallu/blob/848699aaa0ce6e0a026536df050743606c8060bc/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "MCPHallu 把“选错条件分支、目标不可达、混淆工具、遗忘先前信息”做成358个可执行 MCP 任务。论文报告14个 Agent 的平均综合分0.642，而目标不可达任务仅23.2%的运行通过。一个复现边界同样值得关注：当前公开评分代码的 judge 权重明显高于论文描述，需分开理解论文结果与实现。",
+      "motivation": "只统计任务完成，难以分清 Agent 是忽略了能力边界、选错相似工具，还是把早先证据丢掉。研究希望在真实跨服务器工具环境中，主动构造特定风险，并区分诚实报告失败与把不一致信息当成有效结果继续使用。",
+      "novelty": "作者主张：在任务构造阶段植入可控结构风险，将推理、执行、记忆问题映射到四类可诊断任务，并主要依赖可执行或结构证据评分。本站判断：有价值的是将“能否完成”和“是否应承认无法完成”同时纳入工具评测；但类型不是互斥因果标签，而“确定性证据占主导”的论文协议尚不能由当前公开评分实现直接确认。",
+      "evidenceScope": "已读 arXiv v1 方法、主结果与附录 A–J，核对公开 README 和 scoring.py；代码固定至848699aaa0ce6e0a026536df050743606c8060bc，固定版本文件与先前main读取内容一致。本文数值均为作者论文报告，verified只表示来源核验。环境未启动、轨迹未重跑、评分未重算；默认配置变化可能影响分数和排名。",
+      "limits": "已读论文全文及附录，未复现实验。论文与当前公开代码的评分权重不一致：论文 judge 占20–30%，固定提交848699a中的 TM 为50%、UG默认为60%、无状态 BC/CF 为80%，有状态任务则按 assertion50%+claim40%+dependency10%；README 默认judge也与论文不同，不能把论文分数视为当前默认实现的复现结果。四类标签是任务结构设计目标，可能混合错误；工具调用长度与失败的相关性受奖励早停等评分规则影响，不证明多调用造成幻觉。",
+      "method": [
+        "从36个真实 MCP 服务器提取工具描述、参数与返回结构，围绕四种风险生成候选任务；每项同时保存可用工具、目标类型、难度、ground truth 与声明依赖图。",
+        "用 Claude Sonnet 4.6 合成并过滤可执行性、信息完整性、非平凡性及标签一致性，再由三位专家审查；保留358题、五个领域。无状态任务用运行时参考脚本，有状态任务用执行后的状态断言核对预期。",
+        "每次从新容器起步，在固定任务工具集合、128k上下文与最多20次工具调用下运行 ReAct Agent。依赖图只检查实际激活的条件分支，另记录不可达任务的停止行为与是否调用预先标注的混淆工具。",
+        "按论文协议合成环境结果、结构和语义judge分：BC/CF为60%结果+20%依赖+20%judge，UG/TM为70%结构+30%judge；分别报告综合分与二值通过率，在14个模型、5,012条轨迹上比较。本站另核对固定提交源码，确认其默认评分公式与论文协议不同，未据源码重新计算论文表格。"
+      ],
+      "inspirations": [
+        "为自己的 MCP 环境成对构造可行/不可行任务，报告完成率、正确拒绝率及拒绝原因的证据，避免用一律拒绝获得虚高的可靠性分。",
+        "把持久化状态断言与工具依赖图同时保留：正确文本不代表写入已完成，调用过目标工具也不代表遵守正确分支。对分数拆项公开，便于定位环境、计划和输出的差异。",
+        "发布评测时固定任务、judge与评分代码的提交版本，并自动校验论文公式、README和实际实现的一致性；对不同judge权重重新计算排名，而不是将源码可见等同于结果可复现。"
+      ],
+      "reviewedAt": "2026-11-06T20:28:16Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.07689v1",
+        "https://arxiv.org/html/2611.07689v1",
+        "https://github.com/J1zz/mcp_hallu",
+        "https://github.com/J1zz/mcp_hallu/blob/848699aaa0ce6e0a026536df050743606c8060bc/task_generation/eval/scoring.py",
+        "https://github.com/J1zz/mcp_hallu/blob/848699aaa0ce6e0a026536df050743606c8060bc/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.07689",
+      "status": "pending",
+      "checkedAt": "2026-11-06T20:29:36.546070+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.07166v1",
+    "url": "https://arxiv.org/abs/2611.07166v1",
+    "id": "live-d0a58fc610658c84",
+    "title": "Multi-step SWE：持续维护自己的代码，单步通过不等于整条工程任务成功",
+    "summary": "Multi-step SWE 用 69 条工程任务链、574 个步骤评测 Agent 能否持续扩展自己先前写的代码。每条任务含 5–15 步，每步允许 2–4 小时，并继承上一阶段的真实工作区。论文中最强模型与框架组合单次完整解题率为 18.5%，四次尝试至少一次成功为 31.9%；56.8% 的单步通过率不能替代全链路可靠性。",
+    "insight": "长周期编码评测应保留 Agent 的历史代码、错误与设计债务，并把每一阶段的新要求和回归行为交给独立验证器。可进一步加入“上一阶段参考实现起步”的对照，区分任务本身变难和前序错误传播；同时用规范驱动的差分检查研究过早宣告完成。",
+    "limits": "已读全文、主表与附录并核对公开项目入口，未运行基准。结果衡量模型与各自框架的组合，不能当纯模型排名；仅 69 题且 C/C++ 占 38 题。公开项目可能存在记忆污染，断网与有限重复代码检查不能排除；隔离单步对照仍属未来工作，不能由相关性证明错误累积的因果影响。隐藏 verifier 在步骤结束后独立判分，不应描述为交互反馈。",
+    "dateLabel": "2026-11-04",
+    "evidence": "全文、方法与附录已读；项目入口及README核对；未复现",
+    "originalTitle": "Multi-step SWE: Can Coding Agents Keep Building on Their Own Code Over Long Horizons?",
+    "date": "2026-11-04",
+    "checkedAt": "2026-11-06T20:29:21Z",
+    "updatedAt": "2026-11-04T21:49:40Z",
+    "firstSeenAt": "2026-11-06T04:00:01Z",
+    "lastSeenAt": "2026-11-06T16:00:01Z",
+    "tags": [
+      "Evaluation",
+      "Coding Agent",
+      "Long Horizon",
+      "Stateful Evaluation"
+    ],
+    "authors": [
+      "Xiangkai Zeng",
+      "Zheng Liu",
+      "Zihao Lin"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.07166v1"
+      },
+      {
+        "label": "Paper full text and appendix",
+        "url": "https://arxiv.org/html/2611.07166v1"
+      },
+      {
+        "label": "Paper PDF",
+        "url": "https://arxiv.org/pdf/2611.07166v1"
+      },
+      {
+        "label": "Official benchmark site",
+        "url": "https://multistepswe.com/"
+      },
+      {
+        "label": "Official benchmark repository",
+        "url": "https://github.com/Klavis-AI/Multi-step-SWE"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "让编码 Agent 连续维护自己写过的代码，比只看单次补丁更难：Multi-step SWE 包含 69 题、574 步；论文中 Claude Opus 5.5 + Claude Code 通过 56.8% 的步骤，却只有 18.5% 的完整 rollout 每一步都拿到满分。四次尝试至少一次全通过的任务比例为 31.9%。",
+      "motivation": "真实开发会继续要求加功能、升级规范、迁移技术栈或优化性能，后续需求承受先前代码的设计与错误。独立任务或仅检查最终产物，难以观察每个里程碑是否正确，以及 Agent 是否能持续保留已有能力。",
+      "novelty": "作者主张：把持续共享工作区的顺序任务、每步数小时的工程规模、四类任务和规范/验证同源结合成新基准。本站判断：主要价值是评测协议与验证构造，尤其失败工作区继续传递和全步骤成功标准；顺序编码评测已有先例，论文也尚未用隔离单步对照量化错误传播本身的因果贡献。",
+      "evidenceScope": "已读 arXiv v1 第 2–5 节及附录 A–E，核对表 4/5/9/10 和公开站点、GitHub README。数据为作者报告，未复现实验；研究覆盖九种模型与其各自 Harbor 框架配置，每题四次尝试，整体解题率附按任务 bootstrap 的 95% 区间。仓库根页面可见 tasks 与 MIT LICENSE，深层目录抓取受限，未逐项审计全部任务文件或容器。",
+      "limits": "任务语言与领域分布不均；规范和 verifier 仍可能歧义或误判。公开上游代码存在记忆污染风险，局部逐行重合检查不能排除改写记忆；优化满分门槛只是作者参考方案，并非理论最优。模型使用不同框架，且尚无隔离单步基线。2–4 小时是预算而非每步实际耗时，未证明增加预算本身会提高成功率；隐藏判分不等于给 Agent 的在线测试反馈。",
+      "method": [
+        "从规范、上游发布历史、参考工具和原始系统行为构建 69 条任务链，覆盖优化、功能实现、版本升级、迁移；每条链有 5–15 个完整工程请求，每步给 2–4 小时上限。",
+        "将指令、可见规范和外部接口检查锚定于同一事实来源，经两轮专家审查；为每步准备独立 verifier、参考方案及可运行的公开检查，隐藏判分用例不作为工作过程中的交互信号。",
+        "Harbor 按序运行，下一步继承 Agent 留下的工作区并加入新资料，不替换为参考实现；即使前一步失败，后续仍执行和计分，允许修改早先代码，但先前失败仍使该 rollout 不满足全步骤满分条件。",
+        "每步结束后复制工作区到独立验证容器，从源码重建并验证新要求及多数任务的既有行为。优化题还要求输出正确且速度超过参考方案门槛；评测九种模型与框架组合，每题四次 rollout，分别统计全链解题率、Pass@4 和单步通过率。"
+      ],
+      "inspirations": [
+        "为长期 coding agent 同时报告各步成功率、首次失败位置、失败后的恢复率与整条任务链成功率，并加参考工作区起步对照，避免把平均分提高误认为长期可靠性解决。",
+        "把需求追踪到规范条款和外部接口回归检查，优先使用独立实现或差分测试作为 oracle；Agent 自写测试可能重复其对需求的误解。",
+        "训练或设计停止策略时核对尚未满足的要求、独立验证证据与剩余预算；这里多数失败并非耗尽时间，但还需干预实验验证延迟停止或加强验证是否真正提升成功率。"
+      ],
+      "reviewedAt": "2026-11-06T20:29:21Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.07166v1",
+        "https://arxiv.org/html/2611.07166v1",
+        "https://arxiv.org/pdf/2611.07166v1",
+        "https://multistepswe.com/",
+        "https://github.com/Klavis-AI/Multi-step-SWE"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.07166",
+      "status": "pending",
+      "checkedAt": "2026-11-06T20:29:36.546070+00:00"
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/harness-hub/harness-adapters",
+    "url": "https://huggingface.co/blog/harness-hub/harness-adapters",
+    "id": "update-harness-adapters-safe-rl-20261106",
+    "title": "Harness adapters：把逐工具框架的 LoRA 强化学习与调用前检查接起来",
+    "summary": "作者将按 harness 训练的 LoRA 适配器、从轨迹构造可验证任务，以及执行前检查工具调用的 safeagents 接成 RL 流程。新文扩展模型与训练环境；既有 LFM2.5 适配器已公开，完整新训练曲线仍动态更新，不将进行中的训练当成最终效果。",
+    "insight": "把奖励来源、工具阻断和模型更新版本一并记录，可同时检查任务是否完成、验证是否被绕过。比较适配器时应固定底座、harness、预算和留出任务，并把误拦截单独计数。",
+    "limits": "HF 托管的社区作者文章，不是独立官方评测；已读全文及仓库 README，未运行。270 个轨迹任务中 253 个是 build、243 个来自同一源，不能代表广泛软件工程。50 步护栏消融为 +0.0±4.1 个百分点，不证明零代价或安全保证。",
+    "organization": "harness-hub 作者团队 · Hugging Face 社区博文",
+    "dateLabel": "2026-11-06 · 作者技术博文／本轮新收录",
+    "evidence": "作者博文全文、公开 GitHub README 与现有适配器集合已核验；没有安装或实验复现。",
+    "originalTitle": "Harness adapters: Safe RL for efficient agentic development",
+    "date": "2026-11-06",
+    "checkedAt": "2026-11-06T20:28:26Z",
+    "firstSeenAt": "2026-11-06T20:29:46.731785+00:00",
+    "tags": [
+      "训练/RL",
+      "LoRA",
+      "可验证环境",
+      "工具调用",
+      "奖励投机",
+      "Harness"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "harness-hub 作者技术博文",
+        "url": "https://huggingface.co/blog/harness-hub/harness-adapters"
+      },
+      {
+        "label": "safeagents 公开代码与检查规则",
+        "url": "https://github.com/huggingface/safeagents"
+      },
+      {
+        "label": "Repo2RLEnv 公开环境构造框架",
+        "url": "https://github.com/huggingface/Repo2RLEnv"
+      },
+      {
+        "label": "已公开 LFM2.5 适配器集合",
+        "url": "https://huggingface.co/collections/harness-hub/lfm25-24b-harness-adapters"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "针对具体 harness 训练轻量适配器，同时在工具执行前拦截违规调用并把违规轨迹奖励置零。",
+      "motivation": "相同底座在不同工具协议与交互流程下表现不同；可执行奖励也可能被读取答案、改测试等捷径污染。",
+      "novelty": "作者强调把 harness 适配、可验证环境和调用前检查整合。本站判断：价值在可审计的训练链路，不能据此断言通用安全或跨 harness 最优。",
+      "evidenceScope": "已读全文方法与限制、两个公开仓库 README 和 LFM2.5 适配器集合；未核验新模型全部最终 checkpoint，也未独立执行。",
+      "limits": "最终训练仍在更新，文中含 smoke 实验；任务严重偏 build 且同源集中。可选 LLM 安全 judge 在报告实验中关闭；小消融的不确定区间不能支持护栏无成本。",
+      "method": [
+        "从公开轨迹重建状态并构造 Harbor 任务；参考解需重复通过，空操作、初始桩和篡改对照必须失败。",
+        "混合任务训练逐模型、逐 harness 的 LoRA，以 TRL 异步 GRPO 更新；同一 vLLM 底座服务不同适配器。",
+        "safeagents 代理检查工具声明、目标主机及规则命中；阻断调用替换为通知，违规 rollout 奖励置零。",
+        "保留原始 token 与 logprob，并在独立留出的 40 个轨迹任务和 150 个 SmolDataEnvs 任务评测。"
+      ],
+      "inspirations": [
+        "在固定评测集上同时报告任务成功、工具调用数、违规尝试与误拦截率，避免护栏只提高表面合规。",
+        "对同源轨迹进一步做来源或仓库隔离，检验任务级留出之外的泛化；将 build、repair、extend 分开统计。"
+      ],
+      "reviewedAt": "2026-11-06T20:28:26Z",
+      "sourceUrls": [
+        "https://huggingface.co/blog/harness-hub/harness-adapters",
+        "https://github.com/huggingface/safeagents",
+        "https://github.com/huggingface/Repo2RLEnv",
+        "https://huggingface.co/collections/harness-hub/lfm25-24b-harness-adapters"
+      ]
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.08318v1",
+    "url": "https://arxiv.org/abs/2611.08318v1",
+    "id": "live-69c5ca3d5cd96678",
+    "title": "RSIJudge：同一段机器人执行轨迹，换判分标准后还算进步吗？",
+    "summary": "固定机器人执行模型与技能学习流程，只改变学习者能否读取判分代码、分数和阶段信息。在16个指令与判据不一致的任务上，暴露组按原判据为51.6%，成功反馈组27.8%；同批轨迹换成作者重写判据后为45.0%与47.2%，原优势消失。",
+    "insight": "评估自我改进时，既要审计给模型的反馈，也要审计判分器是否覆盖真实需求。保存原始执行轨迹并由多套经过审查的标准重判，能区分行为真的改善，还是更适应某份验收代码。",
+    "limits": "结果来自固定模型组合和有限仿真任务，不是所有RL或真实机器人结论。作者重写判据仍是主观代理；暴露同时增加代码、分数和阶段信息，未单独拆分。技能库迭代没有更新模型权重，未独立复现。",
+    "dateLabel": "2026-11-05 · arXiv v1",
+    "evidence": "已读原论文方法、结果及PDF关键附录；核验项目页与框架仓库，专用判据和完整实验资产未核验开放。",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-06T20:26:03.361694+00:00",
+    "updatedAt": "2026-11-05T17:14:37Z",
+    "firstSeenAt": "2026-11-06T10:00:01Z",
+    "lastSeenAt": "2026-11-06T16:00:01Z",
+    "tags": [
+      "Benchmark",
+      "Criteria Exposure",
+      "Self-Improvement",
+      "技能与记忆"
+    ],
+    "authors": [
+      "Wenbo Huang",
+      "Jianxin Bi",
+      "Shunyu Yang",
+      "Ruiyang Si",
+      "Rui Ni",
+      "Qiang Wang",
+      "Shulong Jiang",
+      "Yintianrun Zhang",
+      "Feixiang Ruan",
+      "Kewei Zhang",
+      "Ye Huang",
+      "Shukai Gong",
+      "Daquan Zhou"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.08318v1"
+      },
+      {
+        "label": "原论文方法与结果",
+        "url": "https://arxiv.org/html/2611.08318v1"
+      },
+      {
+        "label": "原论文PDF与完整附录",
+        "url": "https://arxiv.org/pdf/2611.08318v1"
+      },
+      {
+        "label": "作者研究项目页",
+        "url": "https://dagroup-pku.github.io/PyRUA-Lean/RSIJudge/"
+      },
+      {
+        "label": "项目链接的底层框架仓库",
+        "url": "https://github.com/DAGroup-PKU/PyRUA-Lean"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把“是否读判分器”作为受控变量，并用两套规则重判同一批轨迹；本研究中判据暴露额外带来的提分没有稳定转化为作者所定义的指令完成度。",
+      "motivation": "仿真判分器常包含指令未说明的顺序、阈值或终态，也可能漏验真正要求。会写控制代码的Agent可以据判据修正技能库，高分因此可能混合任务学习和对验收实现的适应。",
+      "novelty": "作者主张：判据暴露会把指令与验收实现的偏差转成自我改进分数。本站判断：同轨迹双重判定加上切换学习者所读规则，比只看训练曲线更能检验测量偏差；但重写规则由作者制定，不能据此认定所有公开判据或额外反馈都不应使用。",
+      "evidenceScope": "已读v1 §3–5、附录A–C及PDF附录D–G。16任务每组320次测试：原规则165/320与89/320，新规则144/320与151/320；暴露优势缩小25.9个百分点，按任务bootstrap的95%区间4.7–54.4。LIBERO-PRO迁移仅测零样本未全过的6任务，不是全40任务。代码仓库为PyRUA-Lean框架，未核验RSIJudge完整实验包。",
+      "limits": "只有一组执行/学习模型，主要重判在RoboDojo；作者自定的新判据并非独立人类金标准，且仍保留常未写进指令的双臂归位。每任务20个测试布局，开发重跑有噪声，未估计蒸馏方差。跨任务库经过筛选和API适配，不是原样迁移；成功反馈来自仿真，比真实人类或视觉裁判更干净。仅核验来源，未运行或复现。",
+      "method": [
+        "固定GPT-6 Astra执行器、机器人API和感知；Claude Opus 5.5在5轮中改写每任务的技能与记忆库。对照组看轨迹和成功与否，暴露组额外看判分代码、分数和阶段；执行器始终不直接读判据。",
+        "在RoboDojo选25个任务，包含16个判据与指令不一致、9个一致任务。每轮复用seed1的5个开发布局，最后冻结技能库，在未参与学习的seed0的20个布局上测试。",
+        "仅重写判据，不改任务指令：修复缺陷、移除隐藏规则、调整阈值及补上漏验；保留双臂归位。对每条轨迹同时用原规则与新规则判定，检查判定翻转，并补做让学习者读取新规则的实验。",
+        "将10个源任务的技能库各蒸馏成共享库；暴露库剔除特定判据条目，迁移到不重叠任务及对齐API的另两个仿真基准，分别报告同任务、跨任务和跨基准效果。"
+      ],
+      "inspirations": [
+        "给编程、视频剪辑或代码动画的验收项逐条绑定用户要求，标出额外隐含条件和漏验；对同一作品同时做程序检查、语义检查与盲评，记录判定冲突。",
+        "保存完整轨迹，固定行为后更换判分实现；再分别开放规则说明、阶段分数与源码，测提升来自哪一种反馈，避免将三个因素捆绑成源码的单独因果效应。",
+        "评估技能复用时，分别测试原任务新布局、新任务和新环境，并重复蒸馏；把删除了哪些特定验收规则写清楚，避免把经过人工约束的迁移当成技能原样泛化。"
+      ],
+      "reviewedAt": "2026-11-06T20:26:03.361694+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.08318v1",
+        "https://arxiv.org/html/2611.08318v1",
+        "https://arxiv.org/pdf/2611.08318v1",
+        "https://dagroup-pku.github.io/PyRUA-Lean/RSIJudge/",
+        "https://github.com/DAGroup-PKU/PyRUA-Lean"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.08318",
+      "status": "pending",
+      "checkedAt": "2026-11-06T20:29:36.546070+00:00"
+    }
   }
 ]
