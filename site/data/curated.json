@@ -5980,5 +5980,264 @@
       "status": "pending",
       "checkedAt": "2026-11-06T02:28:19.052223+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.07932v1",
+    "url": "https://arxiv.org/abs/2611.07932v1",
+    "id": "live-9fa670d8f94d930b",
+    "title": "AttnSR：用策略自身注意力分配长程 Agent 的步骤奖励",
+    "summary": "把训练回放中的注意力转为步骤关联图，再按相对平均回报分配正负中间奖励。Qwen2.5-7B 的 ALFWorld 成功率由 91.24% 升至 97.08%；ScienceWorld 平均环境步数减少 29.9%，但 WebShop 结果混合。",
+    "insight": "可尝试复用策略内部信号，减少单独训练步骤评分器的需求。关键在有界奖励预算、置信度门控及保留终点奖励；注意力仅是分配先验，仍需与同预算的均匀或位置奖励做拆分消融。",
+    "limits": "单次训练，任务配对区间不包含训练种子波动；三项成功率比较校正后仅 ALFWorld 显著。环境步数不是计算加速，墙钟/显存额外开销未测；WebShop 官方分数下降。注意力非因果归因，新增 shaping 不保证最优策略不变。",
+    "dateLabel": "2026-11-05",
+    "evidence": "原论文 v1 方法、主表与附录已核验；查看公开方法仓库，未运行训练或复现实验。",
+    "originalTitle": "AttnSR: Attention Step Reward for Long-Horizon Agentic RL",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-06T08:29:56Z",
+    "updatedAt": "2026-11-05T12:37:19Z",
+    "firstSeenAt": "2026-11-06T04:00:01Z",
+    "lastSeenAt": "2026-11-06T04:00:01Z",
+    "tags": [
+      "Training / RL",
+      "Step Reward",
+      "Credit Assignment",
+      "PPO"
+    ],
+    "authors": [
+      "Mengsong Wu",
+      "Tianchen Zhou",
+      "Zhaochen Su",
+      "Zhenhua Liu",
+      "Zhe Cui",
+      "Aimin Zhou"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.07932v1"
+      },
+      {
+        "label": "arXiv · 方法与附录全文",
+        "url": "https://arxiv.org/html/2611.07932v1"
+      },
+      {
+        "label": "作者公开方法仓库",
+        "url": "https://github.com/fairyshine/AttnSR"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "无需另训奖励模型或增加 rollout，用策略回放注意力给中间步骤补奖励；目前最明确收益在 ALFWorld，不能概括为跨环境普遍提升。",
+      "motivation": "终点回报难以区分长链条中哪些动作值得强化；步骤标注、额外试跑或独立评分器又增加成本。",
+      "novelty": "作者主张：将策略自身注意力、跨层一致性及相对回报结合为步骤奖励，无需额外 rollout 或独立奖励模型。本站判断：价值是便于接入已有 PPO 的奖励启发式；位置消融同时改变分配、门控和实际预算，尚不能单独归因于注意力。",
+      "evidenceScope": "已读 v1 正文及附录 A–G。主实验为 Qwen2.5-7B、LoRA、每环境单独训练 4 轮；贪心每任务评一次：ALFWorld 274、WebShop 500、ScienceWorld 1,819。ScienceWorld 配对统计仅保留 1,488 个输入匹配任务。公开仓库有方法及集成快照，未附权重、检查点或完整训练环境；未复现。",
+      "limits": "ALFWorld 91.24→97.08% 为 +5.84 个百分点；ScienceWorld 29.9% 指环境步数 30.68→21.51。WebShop 分数 70.74→69.71、步数 5.93→8.03。额外注意力计算仍含二次 QK 运算，实际训练耗时/峰值显存未测；任务重采样不能替代多种子训练。",
+      "method": [
+        "在已采集轨迹的 actor 回放中提取选定层 Q/K，将后续动作对历史动作与观察的注意力聚合成步骤图。",
+        "从终点沿图反向传播相关度，修正近期偏好，并融合各层分配；按注意力覆盖、集中度及层间一致性设置门控。",
+        "以轨迹回报相对 EMA 基线的差值决定奖励正负，限制总中间奖励预算；原终点奖励保留。",
+        "把中间奖励放在 assistant 步骤末 token，随后照常计算 PPO 的 GAE、价值目标和策略更新；奖励构造停止梯度。"
+      ],
+      "inspirations": [
+        "为工具 Agent 比较同预算的均匀、位置、随机及注意力分配，并单独开关门控，区分分配质量与奖励尺度效应。",
+        "同时报告成功率、同任务配对步数和 GPU 时间；区分减少失败长尾与缩短成功解法。"
+      ],
+      "reviewedAt": "2026-11-06T08:29:56Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.07932v1",
+        "https://arxiv.org/html/2611.07932v1",
+        "https://github.com/fairyshine/AttnSR"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.07932",
+      "status": "pending",
+      "checkedAt": "2026-11-06T08:28:16.201096+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.07558v1",
+    "url": "https://arxiv.org/abs/2611.07558v1",
+    "id": "live-861a917cc50af89b",
+    "title": "SKIM：把压缩后的模型容量留给工具决策，让语法约束负责格式",
+    "summary": "SKIM 为部署时有 JSON/语法约束的工具模型做剪枝与蒸馏，把容量优先留给上下文和动作选择。Qwen3.5-2B 在 25% 名义稀疏时 BFCL-v3 结构化全匹配为 80.8%，高于 FLAP 的 75.9%，但无约束工具调用全匹配为 0%；这是一种依赖 formatter 的专用压缩取舍。",
+    "insight": "压缩目标应匹配真实部署接口：格式由解码器保证时，可以把有限容量留给工具和参数决策。但必须同时测语义准确率、脱离约束的退化、完整参数量与实际吞吐；不能将格式合法性当作动作正确性，或将名义 50% 稀疏理解为成本减半。",
+    "limits": "依赖语法解码器；无约束工具生成可能接近零。50% 名义稀疏只使 2B 全模型参数减少 34.14%，batch1 解码仅 1.03 倍。27B 无剪枝基线，部分设置才有额外三种子实验；单轮蒸馏的多步问答仍明显弱于 dense。",
+    "dateLabel": "2026-11-05",
+    "evidence": "原论文 v1 方法、主表与附录已核验；作者项目页和公开代码目录可读，未运行或复现实验。",
+    "originalTitle": "SKIM: Pruning Large Language Model Agents via Selective Knowledge Informed Masking",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-06T08:29:56Z",
+    "updatedAt": "2026-11-05T07:04:45Z",
+    "firstSeenAt": "2026-11-06T04:00:01Z",
+    "lastSeenAt": "2026-11-06T04:00:01Z",
+    "tags": [
+      "Distillation",
+      "Structured Generation",
+      "Pruning",
+      "On-policy Distillation"
+    ],
+    "authors": [
+      "Moonseok Choi",
+      "Jongwon Jeong",
+      "Minki Kang",
+      "Giung Nam",
+      "Juho Lee"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.07558v1"
+      },
+      {
+        "label": "arXiv 全文",
+        "url": "https://arxiv.org/html/2611.07558v1"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://moon4sake.github.io/skim/"
+      },
+      {
+        "label": "作者代码仓库",
+        "url": "https://github.com/moon4sake/skim"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "按 token 在工具调用中的职责决定保留哪些模型单元，并仅在语法允许的输出上蒸馏。2B/25% 的 BFCL-v3 结构化准确率 80.8%（FLAP 75.9%，dense 85.9%），但无约束工具调用全匹配为 0%，适用于始终由 formatter 约束的专用模型。",
+      "motivation": "常规剪枝和蒸馏等量保留全部 token 的预测能力，而部署时语法解码器已代劳部分格式输出。作者希望减少这些位置占用的容量，优先保住上下文理解及工具、参数等选择。",
+      "novelty": "作者主张首次把结构化生成的 token 职责同时引入 Agent 剪枝与在策略蒸馏。本站判断：有价值的是压缩目标与部署约束一致；层间稀疏预算沿用 FLAP，核心在类别重要性和受约束蒸馏，不是新格式验证器或保证语义正确的机制。",
+      "evidenceScope": "已读 v1 §3–5、附录 B/C。主比较覆盖 Qwen3.5 0.8/2/4/9B 及基于 Qwen 的 Hammer2.1-3B，27B 仅报 SKIM；xLAM-FC 4,096 样本、2 轮蒸馏、贪心解码。BFCL/API-Bank 指参考工具调用全匹配，并非真实工具执行成功。2B/25% 的 BFCL 主表 80.8%，另三种子为 79.8±1.7。作者代码公开，未运行。",
+      "limits": "主表单轮蒸馏的 2B/25% HotpotQA F1 为 20.2，dense 为 43.6；额外 128 条任务轨迹后为 59.7，对照须用同样微调的 dense 60.2，数据独立划分未另行审计。50% 名义稀疏对应 2B 全参数减少 34.14%；A6000 batch1 解码 1.03 倍、batch256 1.29 倍，不能解释为成本减半。非 Qwen 系迁移未充分验证。",
+      "method": [
+        "区分工具相关输入、语义决策输出和格式输出。实际结合语义角色与 grammar 判断，因为 JSON 可选空白使合法 token 数量不足以单独分类；系统套话等不计入。",
+        "按类别平均激活能量，以 context/decision/format=1/1/0.2 计算重要性，删除低分 MLP 通道及注意力组；层间剪枝预算沿用 FLAP。",
+        "前 25% 更新用参考完成序列暖启动，之后由学生在 grammar 下贪心生成；教师在同一学生历史上给出分布，匹配合法 token 集内的前向 KL。",
+        "同时按类别对齐中间特征；剪除通道后形成较小的稠密模型，部署仍启用语法约束，并分别测工具全匹配、多步问答及吞吐。"
+      ],
+      "inspirations": [
+        "对固定 schema 的工具模型同时测语法合法率、工具/参数全匹配和无约束输出，量化专用化的收益与损失。",
+        "用真实多步轨迹补充蒸馏，并在新工具 schema 上留出测试；不把单轮工具准确率当成长程执行成功率。",
+        "分别报告全模型参数、显存、batch1 解码与高并发吞吐，检查压缩是否改善实际部署瓶颈。"
+      ],
+      "reviewedAt": "2026-11-06T08:29:56Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.07558v1",
+        "https://arxiv.org/html/2611.07558v1",
+        "https://moon4sake.github.io/skim/",
+        "https://github.com/moon4sake/skim"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.07558",
+      "status": "pending",
+      "checkedAt": "2026-11-06T08:28:16.201096+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.03178v1",
+    "url": "https://arxiv.org/abs/2611.03178v1",
+    "id": "research-coworkos-2611-03178",
+    "title": "CoworkOS：让人和Agent持续修改同一份CAD与Blender工程",
+    "summary": "把长期任务、并行Agent和可编辑应用资源组织在同一工作环境：CAD保留源码与参数，Blender保留场景和对象身份，人手调整后Agent可继续修改。重点是协作与恢复机制；24个展示案例不是专门的3D生成榜单。",
+    "insight": "代码创作可以从“一次生成成品”转为“持续维护可编辑工程”。除了首轮画面，还应评估人改某个对象后Agent是否保留改动、能否只改目标部件，以及中断或版本冲突后能否继续。",
+    "limits": "统一GLM-5.3的12项基准只是实际配置对比，不是所有领域第一；创作部分含2个CAD与2个Blender任务，主要为质性检查。STEP可导入不证明参数可编辑或可制造，GLB无动画轨；当前仓库将内置Blender工作台列为兼容路径。未运行代码或复现。",
+    "dateLabel": "2026-11-02 · arXiv v1；本轮补齐全文解读",
+    "evidence": "已读v1方法、标准评测、创作检查附录与后训练记录；代码仅静态核验，未复现",
+    "originalTitle": "CoworkOS: Scaling Agent Coworkers for Real-world Automation",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-06T08:28:46.710150Z",
+    "originalDate": "2026-11-02",
+    "updatedAt": "2026-11-02T14:15:11Z",
+    "firstSeenAt": "2026-11-06T02:21:55.699566Z",
+    "tags": [
+      "人机协作",
+      "Agent Harness",
+      "可编辑3D",
+      "版本冲突",
+      "持久任务"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1与真实提交时间",
+        "url": "https://arxiv.org/abs/2611.03178v1"
+      },
+      {
+        "label": "论文全文：方法、主表与附录",
+        "url": "https://arxiv.org/html/2611.03178v1"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://coworkos-ai.github.io/"
+      },
+      {
+        "label": "官方开源仓库",
+        "url": "https://github.com/RUC-NLPIR/CoworkOS"
+      },
+      {
+        "label": "当前Blender兼容工作台文档",
+        "url": "https://github.com/RUC-NLPIR/CoworkOS/blob/main/docs/en/blender-workflow.md"
+      },
+      {
+        "label": "共享资源版本冲突检查实现",
+        "url": "https://github.com/RUC-NLPIR/CoworkOS/blob/main/src/applications/resource-store.ts"
+      },
+      {
+        "label": "Blender场景与对象ID实现",
+        "url": "https://github.com/RUC-NLPIR/CoworkOS/blob/main/src/software/blender/runner.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "用版本化资源与持久运行状态，让人和Agent围绕同一份工程持续协作。它是通用Agent运行框架，CAD/Blender是可编辑创作应用，不是新的3D生成模型。",
+      "motivation": "一次交付不足以覆盖真实设计工作：人会直接改场景，多个Agent可能同时提出方案，渲染和训练还会跨越会话。仅保留聊天记录无法可靠维护工程当前版本、未完成任务与修改依据。",
+      "novelty": "作者主张把复杂交付、持续监督和人对工程的直接编辑统一进协作框架。本站判断：对代码创作最可借鉴的是对象身份、版本检查、候选审阅与恢复证据；现有实验没有单独证明每个机制的因果贡献，也不能据展示画面宣称3D质量全面领先。",
+      "evidenceScope": "实读§3、§4.1–4.3及A.1–A.3，另静态读资源版本检查和Blender对象ID实现。主表统一GLM-5.3 High/256K上下文；生产力均分57.54高于DSH56.13，但工具55.22低于DSH55.31、搜索82.14低于OpenHands82.22。创作检查为24例/72份产物，CAD和Blender各2例；6份STEP经OCP导入是作者报告，本轮未独立打开工程。后训练八项均分33.19→42.95，同时JobBench下降2.13分。",
+      "limits": "SkillsBench只测79项文本任务，排除视觉/媒体任务；GDPVal主表用Elo、领域均分用平局调整胜率，后训练用累计rubric分，不能混算。3D案例未证明公差、干涉或制造性能；Blender评估GLB无动画轨，视角运动不算模型动画。共享编辑的设计不等于每个导出都参数可编辑。当前文档建议新3D任务用Blender Harness，旧内置工作台为兼容路径；未安装、运行或复现实验。",
+      "method": [
+        "Main负责目标、委派与验收，Coordinator保存任务状态和消息，Subagent在独立上下文处理有边界的子任务，并返回产物引用与证据。",
+        "把平台管理的应用对象记录为身份、内容和版本；人和Agent提交修改时校验基准版本，过期候选保留为冲突待复核，避免静默覆盖。",
+        "通过领域工具读取并修改原生资源：CAD保留源码/参数，Blender以稳定对象ID和保留现有scene的Python执行支持局部修改；人保存的位置或材质变化进入后续上下文。直接控制外部软件的MCP路径仍服从该软件自己的保存与并发语义。",
+        "长操作作为Job保存状态和日志，确定性观察源先检查变化，再唤醒Main；检查点、任务记忆和工作区重建上下文，恢复后先核验当前外部状态再决定重做。",
+        "在同一GLM-5.3设置下比较12项基准，另检查24个创作案例；后训练案例由GLM-5.3控制并生成数据，对Qwen3.6-35B-A3B做五轮评测—数据修订—SFT，而非控制模型自行提升。"
+      ],
+      "inspirations": [
+        "设计“人改—Agent接续”评测：在人调整材质、尺寸或对象位置后追加需求，测原改动保留率、目标对象定位、版本冲突检出和误覆盖次数。",
+        "分层验收3D产物：代码能执行、原生文件能打开、局部参数能再编辑、几何约束满足、画面质量合格分别计分；把截图漂亮与可制造性分开。",
+        "对渲染/建模任务注入中断与并发修改，固定模型和预算，比较恢复时间、重复操作、工程损坏率和人工接管成本。"
+      ],
+      "reviewedAt": "2026-11-06T08:28:46.710150Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.03178v1",
+        "https://arxiv.org/html/2611.03178v1",
+        "https://coworkos-ai.github.io/",
+        "https://github.com/RUC-NLPIR/CoworkOS",
+        "https://github.com/RUC-NLPIR/CoworkOS/blob/main/docs/en/blender-workflow.md",
+        "https://github.com/RUC-NLPIR/CoworkOS/blob/main/src/applications/resource-store.ts",
+        "https://github.com/RUC-NLPIR/CoworkOS/blob/main/src/software/blender/runner.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.03178",
+      "status": "pending",
+      "checkedAt": "2026-11-06T08:28:16.201096+00:00"
+    }
   }
 ]
