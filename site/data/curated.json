@@ -5601,5 +5601,384 @@
         "https://aistudio.google.com/docs/pricing#gemini-omni-1.2-flash"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.06506v1",
+    "url": "https://arxiv.org/abs/2611.06506v1",
+    "id": "live-eb1151f9ec3a0b3d",
+    "title": "Trace2Eval：从真实编程轨迹恢复任务，用运行证据评作品并指导返修",
+    "summary": "从 2 万条匿名编程 Agent 流量中筛出 129 个任务，恢复初始文件/依赖，用源码及运行证据评作品的功能、代码质量和体验。19 个模型—harness 配置在同一 rubric 指导返修后，质量总分平均提高 10.05 个百分点；这不是任务成功率，也不是独立评审确认的泛化提升。",
+    "insight": "可借鉴的是同时检验“任务上下文是否恢复正确”和“交付物是否真的可用”，再把观察到的缺陷变成可执行返修指令。应另留未参与校准的人工审查集和未公开的最终判据，避免 rubric 校准或反馈循环只提高同一套评分。",
+    "limits": "初始工作区没有完整真实快照，部分文件靠推断补全；校准审计仍发现 1/41 含原解题期文件。judge 在同批 56 件产物上迭代校准并比较，93% 是零/非零可用性一致率，非全部等级准确率。加权 Agent–GT κ=0.173；原论文也承认缺核心文件和判分差异。未复现或确认完整可运行数据包。",
+    "dateLabel": "2026-11-04",
+    "evidence": "已核验 arXiv v1 方法、主表与关键附录；未复现实验",
+    "originalTitle": "Trace2Eval: Contextualized Evaluation of Coding Agents from Real-World Traces",
+    "date": "2026-11-04",
+    "checkedAt": "2026-11-06T02:21:30Z",
+    "updatedAt": "2026-11-04T13:36:50Z",
+    "firstSeenAt": "2026-11-05T10:00:02Z",
+    "lastSeenAt": "2026-11-05T22:00:01Z",
+    "tags": [
+      "Evaluation",
+      "Coding Agent",
+      "任务恢复",
+      "Rubric",
+      "反馈评测"
+    ],
+    "authors": [
+      "Ji Shi",
+      "Lirong Jie",
+      "Lexiao Zou",
+      "Yaoming Zhu",
+      "Yifan Yang",
+      "Xuezhi Cao",
+      "Xunliang Cai",
+      "Miao Zhang"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.06506v1"
+      },
+      {
+        "label": "arXiv 全文 · 方法、实验及附录",
+        "url": "https://arxiv.org/html/2611.06506v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把真实编程会话变成可重跑的评测任务：还原初始上下文、回放原工具轨迹验收恢复质量、结合源码与实际运行评分，再测反馈能否改善作品。129 任务、19 配置的平均 +10.05pp 指同 rubric 加权作品质量，并非 pass rate。",
+      "motivation": "固定代码题或补丁测试难覆盖真实用户的整站、数据脚本和工作流交付需求；真实会话又通常没有完整环境快照。作者希望把这类流量转为持续可更新的任务，并让评测同时区分功能、可维护性和用户体验。",
+      "novelty": "作者主张：以真实轨迹恢复工作区与环境，并把人类校准、多维静态/动态判分和可行动反馈连成可更新评测流程。本站判断：价值在来源、恢复证据、交付质量与修复过程可追溯；尚不能把回放相似度当精确还原，或把校准集上的 judge 一致性当未知任务的人类水平。",
+      "evidenceScope": "已读 v1 §3–5、主表及附录 A.1–A.5 的恢复、校准、聚合与返修协议。19 配置在 Claude Code/OpenHands 下跑 129 任务，三次评分 rollout；均值增益由主表复算为 10.053pp。DeepSeek-V4-Pro/Claude Code 从 76.85 到 96.13（+19.28pp），无指导二轮为 82.63，但其中仍有 31/129 任务退化。恢复的 82.6% 是 38/46 工作区校准验收，0.9175 是 132 个可评分恢复案例的平均回放一致度，均非全基准成功率。",
+      "limits": "judge 锚点在同一 56 件产物/616 个维度标签上反复校准，未见独立留出判分验证；93% 可用性一致率不能替代三级精确一致，Table 13 加权 Agent–GT κ=0.173、Human–GT=0.542。反馈与最终评分共享 rubric，改善可能局限于该标准；未将人为裁定 GT 或参考实现直接给返修模型。恢复审计 1/41 混入解题期文件，缺失核心输入仍可能发生；回放局部等价及新流量来源均不足证明无污染。匿名仓库正文未读出，未确认完整实现/任务包可下载；未复现。",
+      "method": [
+        "从 2026 年 6–7 月的 20,000 条匿名会话中识别 14,603 条编程轨迹，以六轴画像和准入评审先选 300 候选，再选 129 任务；分布对齐只针对这批流量。",
+        "按文件观察恢复旧内容、用推断或已核验公共资源补缺，剔除原会话生成的解答文件；根据安装/修改时间区分初始依赖与后续变更，构建冷启动环境。",
+        "按原顺序执行工具调用，由回放评审比较结果与原观察；低分调用触发文件/环境修复，通常最多三轮，随后人工验收。相似回放只验证已观察路径，不保证完整状态相同。",
+        "模型在恢复任务上生成作品，GLM-5.3-Flash 依据三次独立取证/评分评 11 维；功能、代码质量、体验权重为 50/35/15，分值归一到满分百分比，运行取证不改候选源码。",
+        "GLM-5.2 将缺陷证据转为返修指令，原模型在保留环境中修改，再用同一 rubric 评分；同时从同一初稿做只重复原需求的无指导二轮对照。"
+      ],
+      "inspirations": [
+        "采集编程/创作任务时保存初始快照与安装时间线，把输入文件、模型生成文件和后续修复分开登记；对恢复包检查答案文件混入，验证未在原轨迹出现的关键分支。",
+        "将代码存在、实际可运行、交互可完成作为分开的证据；同一缺陷只扣相应维度，取证失败保持未知，不当作产物失败或默认通过。",
+        "为反馈实验保留同初稿、同执行预算的无指导返修，并用另一批人工样本或冻结的隐藏判据复审；同时报告退化任务，避免只看平均分提高。"
+      ],
+      "reviewedAt": "2026-11-06T02:21:30Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.06506v1",
+        "https://arxiv.org/html/2611.06506v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.06506",
+      "status": "pending",
+      "checkedAt": "2026-11-06T02:28:19.052223+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.06803v1",
+    "url": "https://arxiv.org/abs/2611.06803v1",
+    "id": "live-96dfa856829ea10e",
+    "title": "Cached Traces：从执行轨迹提取行为信号，少跑任务预测 Agent 总分",
+    "summary": "用 LLM 按任务 rubric 摘要旧执行轨迹，再将行为表征与 IRT 成败信号结合，估计新系统的全基准得分。排除同模型家族、随机只测一题时，SWE 的 MAE 从 0.127 降到 0.081，Terminal 从 0.137 降到 0.122；它是在已有评分参考库上预测总分，不是“一题认证全部能力”。",
+    "insight": "历史日志不仅有成败，还包含定位、修改、测试与失败方式。先压成行为字段可减少文风或 harness 特征干扰，再用于选择下一道最有信息的评测题。适合预算有限时的初筛，但接近的系统排名和最终验收仍应补真实执行。",
+    "limits": "依赖足够大、近乎完整的历史参考系统及其全分；组合估计仍需目标已测题的二值结果。公开固定任务及不完整模型家族标签不能证明无污染。$2/$10/$40 是按每次执行假定 $2、忽略摘要/嵌入和参考库成本的换算，不是实测端到端账单；未复现。",
+    "dateLabel": "2026-11-04",
+    "evidence": "已核验 arXiv v1 方法、主表与交叉验证附录；未复现实验",
+    "originalTitle": "Task-Efficient Agent Evaluation Using Cached Traces",
+    "date": "2026-11-04",
+    "checkedAt": "2026-11-06T02:23:00Z",
+    "updatedAt": "2026-11-04T17:20:09Z",
+    "firstSeenAt": "2026-11-05T10:00:02Z",
+    "lastSeenAt": "2026-11-05T22:00:01Z",
+    "tags": [
+      "Evaluation",
+      "Coding Agent",
+      "轨迹表征",
+      "低成本评测",
+      "IRT"
+    ],
+    "authors": [
+      "Ben Johnson",
+      "Hayden Helm"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.06803v1"
+      },
+      {
+        "label": "arXiv 全文 · 方法、主表与交叉验证",
+        "url": "https://arxiv.org/html/2611.06803v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "在已有参考系统的轨迹与总分基础上，用少量新系统执行预测全基准成绩。Table 1 的随机单题、留一模型家族协议下，IRT+trubric 的 MAE 为 SWE 0.081、Terminal 0.122；对应基准分数尺度上的平均绝对误差，不是成功率或能力提升。",
+      "motivation": "Agent 每次完整评测成本高，只看少数题的对错会损失大量过程信息；直接嵌入原日志又容易聚类出模型身份或框架风格。作者希望提取可比较的行为，再利用已评系统为新系统估分。",
+      "novelty": "作者主张：任务特定轨迹摘要 trubric 能保留任务/正确性信号并减少身份信息，结合轨迹几何与 IRT 提升少任务评测效率。本站判断：新价值在复用行为证据而非只复用对错；这是已有基准上的分数预测方法，不是新 Agent 训练法，也不取代任务级执行验证。",
+      "evidenceScope": "已读 v1 §3–5 与附录 A/B/C。SWE 使用 107 个系统的 100 题轨迹面板预测官方 500 题分；Terminal 使用 65 个系统、89 题，每系统—题取单次轨迹，预测五次 trial 的全任务均分。实际参考集排除目标及协议指定近亲，107/65 并非每个目标都拥有的参考数。随机结果平均 50 组任务子集，非 Agent 重跑 50 次。留家族随机单题 IRT→组合：0.127→0.081、0.137→0.122；五题分别 0.088→0.063、0.097→0.090。",
+      "limits": "仅两个固定公开榜单，reference 几乎覆盖全部任务；未验证稀疏跨基准参考库、未知任务或在线监控。家族标签有缺失，留家族不能排除所有潜在亲缘和预训练污染。几何法仍用参考全分；IRT 组合和自适应选题还需要目标已测结果。SWE 单题 generic=0.079 略优于组合0.081，少参考/多题时 IRT 可更好；不能称全部设置最优。成本按固定 $2/执行估算；事后最佳字段集不是独立验证的选择算法。未确认完整实现发布、未复现。",
+      "method": [
+        "由任务描述生成任务特定的六字段 rubric，同一任务的所有系统共用；DeepSeek-V4-Flash 按理解、定位、复现、修改、验证和终态等字段概括缓存轨迹。",
+        "每个字段分别嵌入并拼接，在任务/字段内中心化；用任务语义相似度加权轨迹差异，通过 PKPS 与多维缩放得到系统的低维坐标。",
+        "用参考系统的全基准分数拟合回归器，根据目标少量已执行轨迹估分；几何分支不需目标逐题标签，与 IRT 的组合则还用这些题的成败结果。",
+        "在参考系统内部轮流留作伪目标选择超参数与混合权重；外层分别留系统、模型家族或 harness 评估，另用 IRT 的信息量选择下一题，与随机选题比较。"
+      ],
+      "inspirations": [
+        "把现有评测日志按定位、改动、测试、终态建立结构化摘要；对表征做身份泄漏探针，确认相似度来自行为而非模型名称或工具格式。",
+        "以模型家族、harness 和时间分别留出检验估分，对分数接近或预测不稳定的系统继续执行真实任务，不凭单题估计做最终榜单。",
+        "按目标误差和总成本决定题目预算，纳入参考库建设、LLM 摘要与嵌入费用；参考少或测题数增加时，保留单独 IRT 作为必要对照。"
+      ],
+      "reviewedAt": "2026-11-06T02:23:00Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.06803v1",
+        "https://arxiv.org/html/2611.06803v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.06803",
+      "status": "pending",
+      "checkedAt": "2026-11-06T02:28:19.052223+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://mistral.ai/news/build-with-studio/",
+    "url": "https://mistral.ai/news/build-with-studio/",
+    "id": "update-mistral-studio-managed-agents-20261105",
+    "title": "Mistral Studio更新：把长程Agent、可恢复工作流与评测接起来",
+    "summary": "Studio推出Managed Agents、工作流构建器及配套观测/评测能力。Agent可调用工具并等待人工批准，已部署任务可从完成步骤恢复；工作流保留可检查的代码。Managed Agents与SDK仍是公开预览，不是Le Chonk模型再次首发。",
+    "insight": "Agent产品的研究对象不止模型，还包括恢复、人工接管和回归验证。可将运行轨迹整理成评测集，检查改模型、改工具或改提示后，任务结果和副作用是否一起变化。",
+    "limits": "已读公告与文档，未安装SDK、部署或验证客户收益。进程内运行不自动获得部署后的持久执行；自托管worker默认仍使用平台会话存储，不等于全离线。各能力开放阶段不同，HTTP连接器为私有预览。",
+    "organization": "Mistral AI",
+    "dateLabel": "2026-11-05 · 平台更新；多项能力为预览版",
+    "evidence": "官方公告、11/05版本日志和接口文档已核验；未运行",
+    "originalTitle": "Le Chonk brings the brains. Studio puts it to work.",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-06T02:23:49.820670+00:00",
+    "firstSeenAt": "2026-11-06T02:29:50.778638+00:00",
+    "tags": [
+      "Agent平台",
+      "持久执行",
+      "人工审批",
+      "工作流",
+      "评测与观测"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "Mistral官方平台公告",
+        "url": "https://mistral.ai/news/build-with-studio/"
+      },
+      {
+        "label": "11/05功能及开放阶段",
+        "url": "https://docs.mistral.ai/resources/release-notes"
+      },
+      {
+        "label": "Managed Agents：运行与预览边界",
+        "url": "https://docs.mistral.ai/studio/agents/overview"
+      },
+      {
+        "label": "Workflows：持久执行与部署拓扑",
+        "url": "https://docs.mistral.ai/studio/workflows/overview"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "平台负责执行、恢复、审批和追踪，开发者定义Agent与业务流程；新能力多处于预览阶段。",
+      "motivation": "单次调用容易，长任务还需要保存进度、等待外部输入、处理故障，并让改动能够回归验证。",
+      "novelty": "官方强调统一托管、工作流、应用与观测评测。本站判断：有价值的是把长程执行与可审计的变更验证接起来；公告没有证明任务成功率全面提升，平台也不能替代任务级验收。",
+      "evidenceScope": "产品与接口解读，未实测。版本日志确认Managed Agents、workflow builder及评测相关项为公开预览；HTTP API connectors为私有预览。",
+      "limits": "预览API和限制可能变化。默认托管工作流的编排状态在Studio、worker在用户环境；企业私有部署另有条件。没有验证本账户可用范围，也不把厂商工时案例当受控实验。",
+      "method": [
+        "用Agents SDK定义模型、指令、工具和环境；本地进程开发，再选择自托管worker或Mistral托管部署。",
+        "部署运行记录模型与工具步骤，配置需要批准的动作；故障后从已完成步骤继续，而非声称外部副作用天然只发生一次。",
+        "用工作流表达固定步骤、分支、重试和人工信号，将推理放在需要判断的环节；生成代码可检查修改。",
+        "通过运行轨迹定位失败，整理评测数据并比较版本；受控上线后继续观察真实会话。"
+      ],
+      "inspirations": [
+        "做故障注入评测：在模型返回、工具已提交但尚未记录、等待人工批准等位置中断，检查恢复后的重复副作用和结果一致性。",
+        "从真实失败轨迹构造固定回归集，同时评估最终结果、批准次数、重试成本和人工接管负担。"
+      ],
+      "reviewedAt": "2026-11-06T02:23:49.820670+00:00",
+      "sourceUrls": [
+        "https://mistral.ai/news/build-with-studio/",
+        "https://docs.mistral.ai/resources/release-notes",
+        "https://docs.mistral.ai/studio/agents/overview",
+        "https://docs.mistral.ai/studio/workflows/overview"
+      ]
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/lerobot/lerobot-release-v070",
+    "url": "https://huggingface.co/blog/lerobot/lerobot-release-v070",
+    "id": "update-lerobot-v070-20261105",
+    "title": "LeRobot v0.7.0：运行中语言规划、流式训练数据与远端策略推理",
+    "summary": "LeRobot v0.7.0连接语言指令、机器人策略与训练数据：运行时可改子任务，具备文本输出的策略或外部VLM可做问答和规划；数据按需流式读取，策略可移到GPU服务器执行。它是框架集成更新，不代表所有接入模型在当天首发。",
+    "insight": "把规划质量、动作执行和数据供应分开测，才能看出瓶颈。尤其要记录新指令何时真正作用于动作，避免把规划器接受任务当成机器人已完成任务。",
+    "limits": "未安装或真机实验。改指令/问答可能触发保持或暂停，不能保证全程不停机。外部规划器与本地策略推理的组合做过真机验证，不代表远端策略组合已验证；远端策略和机器人需满足接口契约。旧async_inference模块及async extra已移除。",
+    "organization": "Hugging Face · LeRobot",
+    "dateLabel": "2026-11-05 · v0.7.0发布博文",
+    "evidence": "官方版本博文与v0.7.0接口文档已核验；未运行",
+    "originalTitle": "LeRobot v0.7.0: From Terabytes to Prompting Robots",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-06T02:23:49.820670+00:00",
+    "firstSeenAt": "2026-11-06T02:29:50.778638+00:00",
+    "tags": [
+      "具身Agent",
+      "训练框架",
+      "语言规划",
+      "流式数据",
+      "远端推理"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "LeRobot团队发布博文",
+        "url": "https://huggingface.co/blog/lerobot/lerobot-release-v070"
+      },
+      {
+        "label": "交互指令、暂停与外部规划器边界",
+        "url": "https://huggingface.co/docs/lerobot/v0.7.0/inference"
+      },
+      {
+        "label": "远端策略服务与硬件契约",
+        "url": "https://huggingface.co/docs/lerobot/v0.7.0/remote_inference"
+      },
+      {
+        "label": "训练数据流式读取",
+        "url": "https://huggingface.co/docs/lerobot/v0.7.0/training_dataset_streaming"
+      },
+      {
+        "label": "本地或服务化仿真接口",
+        "url": "https://huggingface.co/docs/lerobot/v0.7.0/simulation"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "框架让语言规划、动作分块执行与数据读取共用接口；可用于具身Agent研究，但各路径的硬件验证范围不同。",
+      "motivation": "大数据不易先完整落盘，模型也不一定装得进机器人端；真实任务还会在执行中改变目标，需要规划和动作接口明确衔接。",
+      "novelty": "团队主张语言交互、分布式训练、模型集成及远端执行的端到端整合。本站判断：主要贡献是工程接口与实验可组织性；不能把集成模型的已有成绩算作框架自身的新能力证明。",
+      "evidenceScope": "固定v0.7.0文档级核验；发布博文时间17:36:51.646Z。未下载数据/权重、未连接机器人，未重跑作者速度或成功率实验。",
+      "limits": "外部规划器与远端组合不能据接口兼容推断已通过真机测试。部分指令切换会hold，编译或剩余动作耗尽可能终止会话。仿真接口会检查形状等约束，但不会替用户保证delta/absolute等控制语义一致；代码支持不等于安全执行成功。",
+      "method": [
+        "训练时按episode分片读取元数据与视频字节范围，缓存索引；无需预下载全部payload，但仍有网络、内存和首次索引成本。",
+        "在rollout会话保持模型与连接，发送新子任务；问答/自动规划需策略文本能力或外部VLM，并核对checkpoint能否执行这些语言任务。",
+        "远端模式保留本地摄像头、驱动与记录，将观测送GPU策略服务并接收动作块；按时效丢弃过期步骤、对齐剩余轨迹。",
+        "在统一env接口中进行本地或服务化仿真与记录，固定任务、观测映射和动作约定后比较策略；真实硬件仍需单独验收。"
+      ],
+      "inspirations": [
+        "将指令变化到动作变化的延迟、停顿时间、过期动作丢弃与任务成功分别计量，比较本地同步、RTC和远端路径。",
+        "对流式与预下载训练固定样本覆盖、随机种子和网络条件，分别测首批等待、稳态吞吐、恢复一致性与GPU空转。",
+        "用相同输入分别测试规划器子任务选择和策略执行；对未见过的任务词汇，记录拒绝、误执行及人工接管。"
+      ],
+      "reviewedAt": "2026-11-06T02:23:49.820670+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/blog/lerobot/lerobot-release-v070",
+        "https://huggingface.co/docs/lerobot/v0.7.0/inference",
+        "https://huggingface.co/docs/lerobot/v0.7.0/remote_inference",
+        "https://huggingface.co/docs/lerobot/v0.7.0/training_dataset_streaming",
+        "https://huggingface.co/docs/lerobot/v0.7.0/simulation"
+      ]
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://huggingface.co/papers/2611.01926",
+    "url": "https://huggingface.co/papers/2611.01926",
+    "id": "live-f345e027ff61a2b3",
+    "title": "TAC-CoT：把潜在推理与显式工具接口交错，分别核算计算量与实际延迟",
+    "summary": "以短潜在推理段替代逐字推理，但保留工具调用、环境观察和答案的文本接口。Qwen2.5-0.5B在有工具GSM8K上由52.4%升至61.2%；前向次数减少不能直接当作端到端延迟等倍缩短。",
+    "insight": "可以压缩内部计算，同时保留外部动作可执行的接口。研究时应把潜在段预算、路由正确率、工具响应成本和最终质量拆开测；动作可读不等于潜在推理可审计。",
+    "limits": "主体是0.5B/1B/4B模型的数学与QA，ToolBench使用MirrorAPI和GPT-5.1判分；未验证实网长程Agent。表2与表10对同名0.5B QA基线的前向次数不同，不能混合算统一提速。原文附推理伪代码，本轮未核验完整可运行实现或权重。11/5是HF收录日，不是论文首发。",
+    "dateLabel": "2026-11-01 · arXiv v1；会议书目为2026年10月",
+    "evidence": "已读原论文方法、主表与附录；未复现",
+    "originalTitle": "TAC-CoT: Tool-Empowered Implicit Chain-of-Thought via Interleaving Explicit Tokens",
+    "date": "2026-11-01",
+    "checkedAt": "2026-11-06T02:22:27.333904+00:00",
+    "originalDate": null,
+    "firstSeenAt": "2026-11-05T16:00:01Z",
+    "lastSeenAt": "2026-11-05T22:00:01Z",
+    "dailySubmittedAt": "2026-11-05T00:00:00.000Z",
+    "tags": [
+      "潜在推理",
+      "工具调用",
+      "自蒸馏",
+      "计算预算"
+    ],
+    "authors": [
+      "Juseon Do",
+      "Sangmin Bae",
+      "Jeesu Jung",
+      "Hwanjun Song"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.01926"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.01926"
+      },
+      {
+        "label": "ACL会议书目与论文",
+        "url": "https://aclanthology.org/2026.emnlp-main.1436/"
+      },
+      {
+        "label": "arXiv方法与实验全文",
+        "url": "https://arxiv.org/html/2611.01926v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "将短潜在思考段与显式工具调用交错，减少推理文字，同时让模型继续接收环境反馈；本文属于训练与自蒸馏研究，不是仅换提示词。",
+      "motivation": "传统连续潜在推理常把预算一次用完再输出，难在中途调用工具；全部写成自然语言又增加生成开销。需要同时保留紧凑内部表示与可执行的交互接口。",
+      "novelty": "作者主张用交错接口让潜在推理支持工具交互和查询相关预算。本站判断：可借鉴的是内部计算与外部动作的分工；收益仍依赖合成轨迹、自蒸馏及路由训练，不能归因于简单删除推理文字。",
+      "evidenceScope": "已读v1 §2–3、附录A/B/C/E及ACL书目、HF作者讨论。数学测完整测试集，QA各抽1000题；Qwen2.5-0.5B有工具GSM8K 52.4→61.2为+8.8pp。附录单L40S计时报告数学约2.3倍、QA约2.4倍；这与摘要最高6.8倍前向减少是不同指标，未复测。",
+      "limits": "QA轨迹的99%有效性来自GPT-5.1对200例的判断，不是人工审计；答案过滤不保证每步正确。计算器使用训练表达式结果库和回退计算，ToolBench依赖MirrorAPI。表2的0.5B QA显式基线平均前向数为283.3，表10为244.0，口径差异未解释；延迟结果仅按附录自报保留。未声称潜在思考可解释或工具接口具备安全保证。ACL仅给2026年10月书目，精确首次公开日未知；11/1为arXiv提交，11/5为HF收录。",
+      "method": [
+        "先构建显式轨迹：数学数据按同题对齐推理与算式；QA由DeepSeek-V3带检索生成，只保留最终答案匹配标注的轨迹。",
+        "把每段推理替换为短连续向量序列，由当前隐藏态投影后反馈到输入嵌入；段长局部固定，正文默认3，附录规定4B模型用2。",
+        "每段结束比较工具与答案路由；选择工具就生成文本调用、执行并注入真实观察，再开始新潜在段。自适应的是段数，并非逐token任意改变段长。",
+        "联合训练显式教师、潜在学生和辅助重建解码器：重建省略的推理，监督工具调用及答案，并在答案边界对齐逐层隐藏态；观察作为环境上下文，重建解码器推理时丢弃。"
+      ],
+      "inspirations": [
+        "给同一工具任务设置显式推理、精简显式推理和潜在推理三组，固定训练轨迹与调用预算，比较路由错误、重复调用和答案质量。",
+        "同时记录模型前向数、生成耗时、外部API耗时与总延迟；用慢工具和失败重试测实际收益，避免将计算代理指标当部署成本。",
+        "单独核验轨迹来源与观察真实性，评估工具调用可读但内部状态不可解释时，错误定位和回滚是否仍有效。"
+      ],
+      "reviewedAt": "2026-11-06T02:22:27.333904+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.01926v1",
+        "https://arxiv.org/html/2611.01926v1",
+        "https://aclanthology.org/2026.emnlp-main.1436/",
+        "https://huggingface.co/papers/2611.01926"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.01926",
+      "status": "pending",
+      "checkedAt": "2026-11-06T02:28:19.052223+00:00"
+    }
   }
 ]
