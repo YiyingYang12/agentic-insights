@@ -7843,5 +7843,281 @@
       "status": "pending",
       "checkedAt": "2026-11-07T16:37:47.125686+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.05313v1",
+    "url": "https://arxiv.org/abs/2611.05313v1",
+    "id": "paper-mdskill-2611-05313",
+    "title": "MDSKILL：把技能记忆按决策功能拆开，再按成败选择蒸馏方向",
+    "summary": "MDSKILL把技能记忆分为状态理解、行动规划和执行控制，在固定8条rollout预算中探索不同视角，再由成败决定谁教谁。作者报告Qwen3-1.7B在ALFWorld成功率93.8%、WebShop成功率82.8%，相对UCOB分别高7.1、8.1个百分点；Search-QA没有同样领先，WebShop平均任务分也低于UCOB。",
+    "insight": "技能不是越多越值得蒸馏：先测它对当前策略的新增价值，再决定正向吸收、反向纠错或跨视角传授。可借鉴的是同一任务与状态下的成败配对，以及固定总采样量的视角分工；不能把相关成功直接当成技能的因果贡献。",
+    "limits": "已读全文方法、主表及附录，未复现。证据来自三个Qwen骨干和三个模拟/检索基准；部分对照沿用其他论文结果，未报告重复种子与置信区间。WebShop使用128任务评测，ALFWorld/Search-QA的完整训练测试划分及主表推理时使用哪个记忆分支未充分展开，不能据主表断言完全脱离技能检索。无额外开销目前只见固定rollout与训练配置，未提供墙钟、GPU小时或反思/核验开销账本。匿名代码链接已给出但本轮正文抓取为空、直接请求403，未核验实现和权重。",
+    "dateLabel": "2026-11-03",
+    "evidence": "原论文全文、主表与附录已读·未复现",
+    "originalTitle": "MDSKILL: Learning to Internalize Skill Memory through Multi-View Distillation for Efficient Dynamic Agent Self-Evolution",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-07T22:23:14Z",
+    "updatedAt": "2026-11-03T18:19:55Z",
+    "firstSeenAt": "2026-11-07T22:23:14Z",
+    "lastSeenAt": "2026-11-07T22:23:14Z",
+    "tags": [
+      "Agent RL",
+      "Skill Memory",
+      "OPSD",
+      "Distillation",
+      "Multi-View"
+    ],
+    "authors": [
+      "Dian Jin",
+      "Jinluan Yang",
+      "Kairong Han",
+      "Baohong Li",
+      "Zijing Hu",
+      "Yi He",
+      "Wenlin Zhong",
+      "Yunze Tong",
+      "Minqin Zhu",
+      "Linchuan Li",
+      "Yanan Niu",
+      "Kun Kuang"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · 原论文与版本时间",
+        "url": "https://arxiv.org/abs/2611.05313v1"
+      },
+      {
+        "label": "arXiv HTML · 方法、主表与附录",
+        "url": "https://arxiv.org/html/2611.05313v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "让同一个Agent分别借助状态理解、规划、控制三种技能及其组合探索，再按实际成败挑选蒸馏方向。Qwen3-1.7B相对UCOB的ALFWorld/WebShop成功率提高7.1/8.1个百分点；收益集中在交互任务，Search-QA不领先，计算总成本未验证。",
+      "motivation": "Agent生成的技能笔记可能过时、误导，或者把观察、规划、纠错混在一起。直接要求无技能分支模仿带技能分支，会把错误经验一起写进参数；论文要辨别当前真正有增益的技能，并让不同功能的经验更容易被同一策略吸收。",
+      "novelty": "作者主张：动态技能价值估计、功能分解及按结果选择正向/反向/跨视角蒸馏，能减少噪声技能造成的训练干扰。本站判断：有用之处在于把“技能是否值得学习”和“向哪个分支学习”一起纳入训练设计，并保持8条采样预算；不是增加独立强教师。消融支持这些组件的组合，但成败门槛不能单独证明技能的因果贡献，附录的方差解释也依赖理想化混合假设。",
+      "evidenceScope": "已读arXiv 2611.05313v1正文§2–5、表1及附录B–F，包括训练预算、检索与门槛细节、表2/3消融和理论适用条件。论文首发时间已从原arXiv版本页核对；数值为作者报告，verified仅来源核验。未运行环境、训练模型或核验匿名仓库内部实现；X只查公开索引，没有可核验作者原帖。",
+      "limits": "已读全文方法、主表及附录，未复现。证据来自三个Qwen骨干和三个模拟/检索基准；部分对照沿用其他论文结果，未报告重复种子与置信区间。WebShop使用128任务评测，ALFWorld/Search-QA的完整训练测试划分及主表推理时使用哪个记忆分支未充分展开，不能据主表断言完全脱离技能检索。无额外开销目前只见固定rollout与训练配置，未提供墙钟、GPU小时或反思/核验开销账本。匿名代码链接已给出但本轮正文抓取为空、直接请求403，未核验实现和权重。",
+      "method": [
+        "从交互轨迹的成功、失败与可用成功参照中，分别生成状态理解、行动规划、执行控制技能；再做功能归类核验，仅把符合目标功能的候选写入对应技能库。",
+        "每个状态先按语义相关性取各库10个候选，再用带20训练步半衰期的Beta统计估计可靠性和相对无技能分支的优势，通过Thompson采样排序。单视角取本库3个技能，组合分支从三库各取1个。",
+        "总rollout组固定为8条：4条无技能，状态/规划/控制/组合各1条。所有分支共享策略参数，技能只改变输入上下文；环境最终成败用于更新技能价值并组织训练样本。",
+        "按相同任务和anchor状态匹配成功教师、失败学生。技能总体成功数高于无技能组时允许正向及跨视角蒸馏，否则由成功无技能分支反向纠正失败技能分支；1.7B使用更严格门槛，要求同一anchor组内无技能轨迹全部失败，且至少一条技能轨迹成功，3B/7B采用放宽门槛。",
+        "在两种上下文上评估成功教师的回答，用教师top-32 token支持集上的KL进行联合蒸馏，并与GiGPO RL及参考策略KL正则合训；每个anchor每种方向最多2对，蒸馏权重0.2。作者训练150步、使用8张A100，并分别报告交互任务成功率、WebShop任务分和Search-QA准确率。"
+      ],
+      "inspirations": [
+        "维护技能对当前策略的边际价值，而非只累计历史成功次数；用同任务的无技能对照与时间衰减，区分真正新经验和模型早已掌握的重复笔记。",
+        "在固定轨迹总数下比较混合技能、三功能分组和随机分组；同时保留反向纠错，检验收益来自更广探索、正确分组还是单纯更多有效教师样本。",
+        "把内化与检索辅助分开验收：冻结技能库，在留出任务上分别关闭/开启检索，记录成功率、错误恢复及全部反思/核验/蒸馏GPU成本，并报告多种子波动。"
+      ],
+      "reviewedAt": "2026-11-07T22:23:14Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.05313v1",
+        "https://arxiv.org/html/2611.05313v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.05313",
+      "status": "pending",
+      "checkedAt": "2026-11-07T22:26:18.278672+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://github.com/m2rtyaman/motion-lab/releases/tag/v0.8.0",
+    "url": "https://github.com/m2rtyaman/motion-lab/releases/tag/v0.8.0",
+    "id": "creative-motion-lab-v080",
+    "title": "Motion Lab：把代码动效约束写成检查器，仍要验收真实成片",
+    "summary": "Motion Lab把创作方向、时间线规格与React场景代码分开，使用静态检查限制部分时间与动画错误，再按Remotion帧号推进GSAP。11月5日发布0.8.0首个tag；本轮核对固定版本源码，未运行或评测模型。",
+    "insight": "可借鉴的是将提示里的规则转成可定位报错的检查器，同时检查每条渲染路径是否真的执行规则。代码可解析、检查返回成功和成片视觉正确是不同证据，必须分别记录。",
+    "limits": "0.8.0为预发布，未安装、运行或渲染；没有小模型提升的配对实验或独立成功率。静态规则不能证明画面无重叠、内容正确或跨机器像素一致。代码允许width/height等对象变形，不能照作者帖理解为仅允许transform/opacity。render入口只跑完整check的一部分；独立七项gate只打印结果，CI下还跳过接触表与视频存在检查，不等于自动审片通过。",
+    "organization": "m2rtyaman / Motion Lab",
+    "dateLabel": "2026-11-05 · 首个tag预发布",
+    "evidence": "官方仓库、版本日期和固定tag核心代码已读；未执行或复现",
+    "originalTitle": "Motion Lab 0.8.0 — pre-release",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-07T22:22:47.603548+00:00",
+    "firstSeenAt": "2026-11-07T22:22:47.603548+00:00",
+    "tags": [
+      "代码动效",
+      "Remotion",
+      "GSAP",
+      "静态检查",
+      "开源预发布"
+    ],
+    "topics": [
+      "code2motion",
+      "code2video"
+    ],
+    "sources": [
+      {
+        "label": "作者GitHub首个预发布版本与日期",
+        "url": "https://github.com/m2rtyaman/motion-lab/releases/tag/v0.8.0"
+      },
+      {
+        "label": "固定版本README与工程结构",
+        "url": "https://github.com/m2rtyaman/motion-lab/blob/74413cfd0763a6f86569241f50cedaa73f646913/README.md"
+      },
+      {
+        "label": "AST规则实际实现",
+        "url": "https://github.com/m2rtyaman/motion-lab/blob/74413cfd0763a6f86569241f50cedaa73f646913/scripts/ast-lint.mjs"
+      },
+      {
+        "label": "实际渲染前检查入口",
+        "url": "https://github.com/m2rtyaman/motion-lab/blob/74413cfd0763a6f86569241f50cedaa73f646913/scripts/render.mjs"
+      },
+      {
+        "label": "完整检查命令及范围",
+        "url": "https://github.com/m2rtyaman/motion-lab/blob/74413cfd0763a6f86569241f50cedaa73f646913/scripts/check-runner.mjs"
+      },
+      {
+        "label": "七项检查清单实现与CI分支",
+        "url": "https://github.com/m2rtyaman/motion-lab/blob/74413cfd0763a6f86569241f50cedaa73f646913/scripts/pre-render-gate.mjs"
+      },
+      {
+        "label": "按帧推进GSAP的桥接实现",
+        "url": "https://github.com/m2rtyaman/motion-lab/blob/74413cfd0763a6f86569241f50cedaa73f646913/src/core/useRemotionGSAP.ts"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "把动画方向、结构化时间线与代码分开，先检查明确可判定的规则，再用帧驱动渲染。源码可读，但当前入口的检查覆盖不同，不能把静态通过当成视觉质量保证。",
+      "motivation": "Agent容易忽略只写在提示里的限制；不受控的随机数、浏览器时钟和时间线配置还会让逐帧渲染难以复查。需要将可判定约束及其执行入口显式化。",
+      "novelty": "作者将其定位为帮助编码Agent生成动效的确定性制作环境。本站判断：有价值的是结构化规格、代码检查和帧驱动接口的可审查组合，未发现新训练算法或证明小模型质量提升的控制实验。",
+      "evidenceScope": "核验11月5日首个tag发布及固定提交核心源码。AST实现确有规则与exit(1)，frame桥接确以frame/fps seek；render与check实际调用集合不同。未执行检查器、安装依赖、观看完整案例或测试任一模型。",
+      "limits": "0.8.0为预发布，未安装、运行或渲染；没有小模型提升的配对实验或独立成功率。静态规则不能证明画面无重叠、内容正确或跨机器像素一致。代码允许width/height等对象变形，不能照作者帖理解为仅允许transform/opacity。render入口只跑完整check的一部分；独立七项gate只打印结果，CI下还跳过接触表与视频存在检查，不等于自动审片通过。",
+      "method": [
+        "用direction.md描述创作意图，spec.json记录节拍、相机与音效时序，Scene.tsx保存React场景；作品保留可修改代码。",
+        "spec校验检查帧率、时长与节拍连续性；AST检查直接的Math.random、Date.now、定时器调用及部分布局tween，返回带规则与位置的错误。",
+        "Remotion提供当前帧，桥接将暂停的GSAP时间线seek到frame/fps，使动画由帧位置驱动；render脚本完成其指定检查后调用Remotion输出MP4。",
+        "完整check命令组合更多方向、动态、视觉证据与类型检查；审阅时应分别确认执行链及真实画面，因为render子集与七项清单不等价于完整检查。"
+      ],
+      "inspirations": [
+        "给每条关键约束构造故意违反的最小样例，测试所有公开渲染入口是否返回失败；把“规则存在”和“路径执行了规则”分开统计。",
+        "同一规格比较无检查、仅类型检查、AST+规格检查，分别测执行成功、画面缺陷、修复次数与修改成本，不以lint通过率替代成片质量。",
+        "针对随机采样帧、顺序播放和反向seek做画面一致性对照，再人工查看关键转场；保留环境版本，避免把按帧驱动直接宣称为跨平台像素一致。"
+      ],
+      "reviewedAt": "2026-11-07T22:22:47.603548+00:00",
+      "sourceUrls": [
+        "https://github.com/m2rtyaman/motion-lab/releases/tag/v0.8.0",
+        "https://github.com/m2rtyaman/motion-lab/blob/74413cfd0763a6f86569241f50cedaa73f646913/README.md",
+        "https://github.com/m2rtyaman/motion-lab/blob/74413cfd0763a6f86569241f50cedaa73f646913/scripts/ast-lint.mjs",
+        "https://github.com/m2rtyaman/motion-lab/blob/74413cfd0763a6f86569241f50cedaa73f646913/scripts/render.mjs",
+        "https://github.com/m2rtyaman/motion-lab/blob/74413cfd0763a6f86569241f50cedaa73f646913/scripts/check-runner.mjs",
+        "https://github.com/m2rtyaman/motion-lab/blob/74413cfd0763a6f86569241f50cedaa73f646913/scripts/pre-render-gate.mjs",
+        "https://github.com/m2rtyaman/motion-lab/blob/74413cfd0763a6f86569241f50cedaa73f646913/src/core/useRemotionGSAP.ts"
+      ]
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.08237v1",
+    "url": "https://arxiv.org/abs/2611.08237v1",
+    "id": "live-4e474ea65d08a917",
+    "title": "TB-MathModel：数值接近参考答案之前，先验证评测器和约束",
+    "summary": "TB-MathModel收集18道真实建模题，用多个人类参考及方向敏感计分评估指定数值结果，并加上字段可行性检查。它也暴露了参考实现和榜单聚合本身需要审计：证明字段一致，不代表物理模型正确。",
+    "insight": "先验证评测器，再比较模型。可迁移的是故意构造非法高分答案和优于参考的合法答案，明确区分执行成功、约束满足与目标质量；不要让漂亮数字掩盖评分口径或参考答案错误。",
+    "limits": "已读原文方法、结果与限制，并静态核对固定提交的计分/约束/Lean桥接代码，未运行容器或证明器。18题只验指定最后小问的数值核心，不能代表完整建模报告质量；公开题目也不排除训练污染。字段不变量不是物理真实性，Lean只覆盖选定保存产物，缺证据会跳过。论文称争议网球题排除总榜，但表2及固定版本脚本按18题平均，口径尚未对齐；本文不据此转述模型排名。作者报告624项Lean义务，README内部数量也有出入，未独立复算。",
+    "dateLabel": "2026-11-05",
+    "evidence": "原论文方法及固定版本关键代码已读·未复现",
+    "originalTitle": "Terminal-style Mathematical Modeling Bench: The First Agentic and Verifiable Benchmark for Mathematical Modeling",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-07T22:25:17.663517+00:00",
+    "updatedAt": "2026-11-05T16:18:35Z",
+    "firstSeenAt": "2026-11-06T10:00:01Z",
+    "lastSeenAt": "2026-11-07T22:00:00Z",
+    "tags": [
+      "数学建模",
+      "Agent评测",
+      "评测器审计",
+      "多参考答案",
+      "可行性约束"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · 原论文与版本",
+        "url": "https://arxiv.org/abs/2611.08237v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.08237"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.08237"
+      },
+      {
+        "label": "Project",
+        "url": "https://wxj630.github.io/terminal-bench-math-modeling/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/wxj630/terminal-bench-math-modeling"
+      },
+      {
+        "label": "arXiv HTML · 方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.08237v1"
+      },
+      {
+        "label": "固定版本 · 总榜18题聚合脚本",
+        "url": "https://github.com/wxj630/terminal-bench-math-modeling/blob/f4ea69de420aff2a9b5cff92c5d76f953b171650/scripts/write_multimodal_multi_oracle.py"
+      },
+      {
+        "label": "固定版本 · 程序化约束",
+        "url": "https://github.com/wxj630/terminal-bench-math-modeling/blob/f4ea69de420aff2a9b5cff92c5d76f953b171650/scripts/feasibility_checks.py"
+      },
+      {
+        "label": "固定版本 · Lean证据范围说明",
+        "url": "https://github.com/wxj630/terminal-bench-math-modeling/blob/f4ea69de420aff2a9b5cff92c5d76f953b171650/lean-feasibility-demo/README.md"
+      },
+      {
+        "label": "固定版本 · 选定产物证明生成",
+        "url": "https://github.com/wxj630/terminal-bench-math-modeling/blob/f4ea69de420aff2a9b5cff92c5d76f953b171650/lean-feasibility-demo/generate_check.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把数学建模Agent的“答案接近参考值”和“答案满足明确约束”分开验收，并允许多个人类参考答案。更值得借鉴的是评测器自身的反例测试；18题数值评测与字段证明都不能直接证明完整科学建模正确。",
+      "motivation": "真实建模常有多种合理模型和指标方向。单一参考值可能让更优答案失分，甚至把违反预算或几何约束的漂亮数值评成满分。论文尝试明确输出、评分方向和可验证约束，同时审计人类参考实现是否可靠。",
+      "novelty": "作者主张：把真实比赛题、多人类参考、方向敏感评分与形式化可行性检查结合，形成可复验的建模Agent评测。本站判断：实用价值在于对参考实现和评分合约本身做反例审计，以及把“不符合字段约束”与“数值不够好”分开；形式证明覆盖的只是编码后的不变量，不能自动证明物理模型或科学结论。论文提及可用于RL奖励，但未给出据此训练的新模型收益实验。",
+      "evidenceScope": "已读arXiv v1方法§3、实验§4、限制及相关附录，并只读核对作者仓库固定提交f4ea69d的多参考聚合、约束检查和Lean示例。18题/99篇/94篇及624项义务是作者报告，verified仅指来源核验；未执行外部代码、重跑模型、重算榜单或验证Lean证书。X精确题名/ID公开索引未找到可核验作者原帖。",
+      "limits": "已读原文方法、结果与限制，并静态核对固定提交的计分/约束/Lean桥接代码，未运行容器或证明器。18题只验指定最后小问的数值核心，不能代表完整建模报告质量；公开题目也不排除训练污染。字段不变量不是物理真实性，Lean只覆盖选定保存产物，缺证据会跳过。论文称争议网球题排除总榜，但表2及固定版本脚本按18题平均，口径尚未对齐；本文不据此转述模型排名。作者报告624项Lean义务，README内部数量也有出入，未独立复算。",
+      "method": [
+        "把2023–2025年CUMCM/MCM的18道题封装成终端任务，提供原题、附件及部分图像，统一要求可读取的结构化结果；隐藏检查器只计指定最后小问的数值核心，报告模型与Agent harness的组合。",
+        "按指标的越高越好、越低越好、目标值或精确匹配分别定义评分。对99篇获奖参考论文逐篇提取可计分字段，94篇有可用数值；先在每篇实际报告的字段上评分，再按参考与任务聚合，缺失产物记零，避免把未报告字段直接当失败。",
+        "在连续得分之前检查明确可判定的范围、整数/二值、排序、恒等式、有限域及分区求和等约束。违反硬约束可以将答案得分置零；同时用参考自洽、故意非法变体和同等/更优合法答案测试评测器本身。",
+        "另为选定保存产物及参考答案生成整数缩放后的Lean字段不变量证书，缺少见证时显式跳过；这是一层范围与一致性检查，连续几何、真实物理输出等仍需独立仿真或重放。",
+        "在统一CPU容器预算下进行多种子Agent评测并报告数值分、耗费及失败案例。对舞龙题的参考峰值误差等问题重新审计修正；模型差异、参考选择和计分实现版本应一起保留，不能把评测器修复误当模型能力进步。"
+      ],
+      "inspirations": [
+        "给代码/视频/3D评测分开保存“执行与硬约束是否通过”“任务内容是否正确”“视觉是否合格”。可机器证明的尺寸、预算、无NaN等约束，不能替代视觉审片或几何重放。",
+        "在模型上线前先攻击评测器：准备非法高分答案、优于参考的合法答案、缺少见证和单位错误案例；把评测器版本与参考修复记录一起入库。",
+        "遇到多个合理解法时保留参考间的差异，而非只追逐单一锚点；对总榜分母、争议题是否纳入和缺失产物处理写可测试契约，再讨论模型排名。"
+      ],
+      "reviewedAt": "2026-11-07T22:25:17.663517+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.08237v1",
+        "https://arxiv.org/html/2611.08237v1",
+        "https://github.com/wxj630/terminal-bench-math-modeling/blob/f4ea69de420aff2a9b5cff92c5d76f953b171650/scripts/write_multimodal_multi_oracle.py",
+        "https://github.com/wxj630/terminal-bench-math-modeling/blob/f4ea69de420aff2a9b5cff92c5d76f953b171650/scripts/feasibility_checks.py",
+        "https://github.com/wxj630/terminal-bench-math-modeling/blob/f4ea69de420aff2a9b5cff92c5d76f953b171650/lean-feasibility-demo/README.md",
+        "https://github.com/wxj630/terminal-bench-math-modeling/blob/f4ea69de420aff2a9b5cff92c5d76f953b171650/lean-feasibility-demo/generate_check.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.08237",
+      "status": "pending",
+      "checkedAt": "2026-11-07T22:26:18.278672+00:00"
+    }
   }
 ]

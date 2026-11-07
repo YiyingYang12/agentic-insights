@@ -35,6 +35,61 @@
   },
   {
     "sourceType": "huggingface",
+    "category": "benchmark",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.08237",
+    "url": "https://huggingface.co/papers/2611.08237",
+    "id": "live-4e474ea65d08a917",
+    "title": "Terminal-style Mathematical Modeling Bench: The First Agentic and Verifiable Benchmark for Mathematical Modeling",
+    "summary": "Mathematical modeling turns an open-ended real-world problem into assumptions, a model, a solution, and a defended recommendation, and its answers matter only if they are both close to a credible reference and physically feasible; existing benchmarks either score solver fragments or grade reports with an LLM judge, leaving those numbers unchecked. We introduce TB-MathModel (the Terminal-style Mathematical Modeling Bench), the first benchmark to make complete contest-style modeling problems agentic, verifiable, and terminal at once, over 18 real CUMCM and MCM problems (2023--2025). Each task ships the verbatim statement, official attachments…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-05",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-07T22:00:00Z",
+    "updatedAt": "2026-11-05T16:18:35Z",
+    "firstSeenAt": "2026-11-06T10:00:01Z",
+    "lastSeenAt": "2026-11-07T22:00:00Z",
+    "dailySubmittedAt": "2026-11-06T00:00:00.000Z",
+    "tags": [
+      "Evaluation"
+    ],
+    "authors": [
+      "Xiaojun Wu",
+      "Cehao Yang",
+      "Xuhui Jiang",
+      "Chengjin Xu",
+      "Jia Li",
+      "Jian Guo"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.08237v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.08237"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.08237"
+      },
+      {
+        "label": "Project",
+        "url": "https://wxj630.github.io/terminal-bench-math-modeling/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/wxj630/terminal-bench-math-modeling"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
     "category": "models",
     "verified": false,
     "originUrl": "https://huggingface.co/papers/2611.08483",
