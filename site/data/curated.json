@@ -6926,5 +6926,362 @@
       "status": "pending",
       "checkedAt": "2026-11-06T20:29:36.546070+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.04894v1",
+    "url": "https://arxiv.org/abs/2611.04894v1",
+    "id": "paper-vissearch-bench-261104894",
+    "title": "VisSearch-Bench：跨图像与多步搜索追踪证据，过程分仍须看清评分对象",
+    "summary": "VisSearch-Bench 用 204 道人工编写的开放网络视觉检索题，检查 Agent 能否跨图片、候选对象与搜索阶段保持证据关联。16 个模型共 26 种配置中，Kimi-K3 + ReAct 的完整答案准确率最高，为 26.47%（54/204）；GPT-5.5 + ReAct 的答案部分分最高，为 49.52%。名为 Process Score 的分数实际依据最终答案内容，不是逐步工具轨迹正确率。",
+    "insight": "比识别一张图后搜索名称更难的，是逐一核查整个对象集合、保留实体与图片证据对应关系，以及用前一步发现决定下一步目标。研究上可维护可追溯的实体—图片—来源记录，并单独评测检索覆盖和证据利用；不能把最终答案的部分正确当成真实搜索过程已被验证。",
+    "limits": "已读可读 HTML 方法、评测和附录 B–E，并核对官方代码与 HF 数据，未复现实验。每配置每题一次回答，受网页/搜索服务变化、框架和历史重试策略影响；未确认论文历史 judge 的具体模型与人类一致性统计。Process Score 仅对最终答案按任务规则给部分分，无法证明实际视觉证据使用或推理路径正确。公开答案与参考解有污染风险，不能称污染已排除。",
+    "dateLabel": "2026-11-03 · arXiv v1",
+    "evidence": "全文与可读附录、固定提交评分实现及公开数据已核验；未复现",
+    "originalTitle": "VisSearch-Bench: Evaluating Long Horizon Visual Search in Multimodal Agents",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-07T02:23:10Z",
+    "updatedAt": "2026-11-03T13:40:41Z",
+    "firstSeenAt": "2026-11-07T02:23:34.992641+00:00",
+    "tags": [
+      "Evaluation",
+      "Visual Search",
+      "Multimodal Agents",
+      "Evidence Management"
+    ],
+    "authors": [
+      "ZhengXian Wu",
+      "Qianhao Nie",
+      "Zhuohong Chen",
+      "Junjie Gao",
+      "Yuyao Zhang",
+      "Yunyao Yu",
+      "Hangrui Xu",
+      "Cheng Cheng",
+      "Guiyu Ma",
+      "Jin Zhang",
+      "Xingzhong Xu",
+      "Kai Yang",
+      "Haoqian Wang"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1",
+        "url": "https://arxiv.org/abs/2611.04894v1"
+      },
+      {
+        "label": "Paper methods and appendices",
+        "url": "https://arxiv.org/html/2611.04894v1"
+      },
+      {
+        "label": "Author project page",
+        "url": "https://dingwu1021.github.io/VisSearch-Bench/"
+      },
+      {
+        "label": "Official code and results",
+        "url": "https://github.com/antins-labs/VisSearch-Bench-v1"
+      },
+      {
+        "label": "Public English dataset",
+        "url": "https://huggingface.co/datasets/antins-labs/VisSearch-Bench-v1"
+      },
+      {
+        "label": "固定提交的评分实现",
+        "url": "https://github.com/antins-labs/VisSearch-Bench-v1/blob/3f362dd4bd9e6f64c092277d39215dc7d515e0e5/vissearch_bench/evaluate.py"
+      },
+      {
+        "label": "固定提交的评分协议说明",
+        "url": "https://github.com/antins-labs/VisSearch-Bench-v1/blob/3f362dd4bd9e6f64c092277d39215dc7d515e0e5/docs/usage.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "204 道视觉搜索题要求跨图像和多步检索维持实体与证据关系；最强已测完整答题配置 Kimi-K3 + ReAct 也只正确回答 54 题（26.47%）。另一指标 Process Score 衡量最终答案中的项目/子问题完整性，不直接评分搜索轨迹。",
+      "motivation": "一旦把图中对象识别成名称，许多传统任务就变成文本搜索，难以检验持续的视觉上下文管理。真实任务还要求穷尽集合、比较近似对象、利用局部细节和空间关系，并把发现连接到后续查询。",
+      "novelty": "作者主张：用五种搜索结构系统评测视觉上下文管理，结合人工证据构造、全答案成功与部分结果评分。本站判断：任务覆盖和公开证据/rubric 有评测价值；但 Process Score 的名字比实际实现更强，它不是直接的过程监督或逐动作验证，也不足以单独证明模型维持了正确视觉状态。",
+      "evidenceScope": "读取 arXiv v1 方法、主实验与可读附录 B–E，核对作者项目页、仓库 README、evaluate.py、使用文档和 HF 204 行 test 数据预览。未运行任何模型、工具搜索实验或评测；PDF 因约 49 MB 超出 web 工具抓取限制未另作整页图像审读。数值是作者报告，来源核验不代表实验复现。 评分源码及文档固定至提交3f362dd4bd9e6f64c092277d39215dc7d515e0e5；未用论文首发时间推断本站首次收录时间。",
+      "limits": "仅 204 题、每配置一次有效回答；开放网页、搜索后端、API重试与框架差异限制复现和因果归因。LLM judge 评分不是全量人工判定，也不是纯确定性匹配；本次未确认历史 judge 模型和人类一致性统计。PS 评最终答案而非工具轨迹，参考解步数也非实际调用数；公开金标带来后续污染风险。",
+      "method": [
+        "人工从可公开检索的来源选定实体集合、图片链接和事实字段，先固定证据和答案，再写题；204 题覆盖集合搜索、顺序搜索、宽深混合、视觉消歧、结构引导五类，含 7 个主领域和 25 个子领域。",
+        "为每题编写参考答案、证据链接、参考搜索说明和专属评分规则；程序检查结构、来源可用性与答案覆盖，人审检查歧义和绕过视觉证据的捷径。参考解不是要求模型复现的固定工具调用路径。",
+        "以同一题目和初始图像运行 Direct、ReAct 及部分 DeerFlow 配置；ReAct 可搜索网页和图片、反向搜图、读网页和裁图，每题最多 30 轮、60 次证据工具调用、20 张图像。每配置每题使用新上下文获取一次完整回答。",
+        "推理结束后才引入参考答案和评分 rubric，以独立的 LLM judge 调用分别计算完整答案 Acc 与答案部分分 PS。公开实现只评分 final_answer，不用 intermediate_answers 或完整工具轨迹；再做视觉访问消融和任务类别分析。"
+      ],
+      "inspirations": [
+        "维护实体、图像局部、来源 URL 和待核条件的结构化记录，在集合题上显式检查覆盖率与重复项；以完整集合正确率和缺漏/误纳项目数同时验收。",
+        "将答案部分分与过程证据分开：对关键结论增加真实工具返回、图片区域和来源对应的核验，并做遮蔽或替换视觉证据的干预，验证 Agent 是否真的依赖该证据。",
+        "做视觉接口实验时保留初始图像条件并核算额外 caption 调用成本；固定数据版本、搜索时间与工具预算，分别记录访问失败和模型错误，再做多次运行与跨 judge 一致性分析。"
+      ],
+      "reviewedAt": "2026-11-07T02:23:10Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.04894v1",
+        "https://arxiv.org/html/2611.04894v1",
+        "https://dingwu1021.github.io/VisSearch-Bench/",
+        "https://github.com/antins-labs/VisSearch-Bench-v1",
+        "https://huggingface.co/datasets/antins-labs/VisSearch-Bench-v1",
+        "https://github.com/antins-labs/VisSearch-Bench-v1/blob/3f362dd4bd9e6f64c092277d39215dc7d515e0e5/vissearch_bench/evaluate.py",
+        "https://github.com/antins-labs/VisSearch-Bench-v1/blob/3f362dd4bd9e6f64c092277d39215dc7d515e0e5/docs/usage.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.04894",
+      "status": "pending",
+      "checkedAt": "2026-11-07T02:22:55.160254+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.05709v1",
+    "url": "https://arxiv.org/abs/2611.05709v1",
+    "id": "live-2ef667fbf5d22579",
+    "title": "Agent 蒸馏：先看动作已携带多少语义，再决定保留多少思考",
+    "summary": "研究分开扰动教师的思考与动作监督：在四个动作语义较明确的Agent环境中，删除思考大多保留性能；在匿名程序的定量推理任务中则明显变差。把程序变量改为描述性名称、保持计算不变，可以缓解这种损失。结果支持按动作的信息表达来设计蒸馏数据，不能概括为Agent无需思考。",
+    "insight": "训练样本的动作表示决定了学生能从哪里获得监督。先让工具参数、代码变量与状态含义清楚，再用相同轨迹做action-only消融，比默认保留或删除全部思考更可检验。效率应看实际成功率和墙钟，同时明确低披露对照里的思考来自事后程序讲解。",
+    "limits": "已读全文与附录，未复现。结论针对成功轨迹的离线蒸馏，不证明 Agent 不需要推理，也不是已实现的逐步动态思考开关。低披露算术任务的 thought 是根据已验证的程序、中间值和答案事后生成的讲解；命名干预保持计算结果，但也改变了动作的语义与token形式。判分主要看最终任务结果，部分QA依赖GPT-4o-mini；数据及交互预算有限，未核验独立代码、权重或轨迹数据发布。",
+    "dateLabel": "2026-11-03",
+    "evidence": "全文与附录已读；关键对照和耗时表核验；未复现",
+    "originalTitle": "Agents, Think Only When it Helps",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-07T02:21:01Z",
+    "updatedAt": "2026-11-03T22:35:21Z",
+    "firstSeenAt": "2026-11-05T04:00:01Z",
+    "lastSeenAt": "2026-11-05T22:00:01Z",
+    "tags": [
+      "Distillation",
+      "Agent Training",
+      "Action Representation",
+      "Efficiency"
+    ],
+    "authors": [
+      "Min-Seon Kim",
+      "Seungdong Yoa",
+      "Sanghyu Yoon",
+      "Ye Seul Sim",
+      "Suhee Yoon",
+      "Dongmin Kim",
+      "Jung-Eun Kim"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.05709v1"
+      },
+      {
+        "label": "原论文全文与附录",
+        "url": "https://arxiv.org/html/2611.05709v1"
+      },
+      {
+        "label": "原论文PDF",
+        "url": "https://arxiv.org/pdf/2611.05709v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "蒸馏要不要保留教师的思考，关键在动作本身是否已携带任务语义。Qwen2.5-3B 在 HotpotQA 删除思考后为46.8%，完整轨迹为48.0%；但匿名变量版 FinQA 从63.3%降至47.7%。把变量改成语义名称后，相同删除干预为61.8%对65.3%，说明更清楚的动作表达能减少对思考监督的依赖。",
+      "motivation": "Agent训练经常连同全部自然语言思考一起模仿教师，而搜索词、对象名称或代码标识符可能已经重复表达了关键决策。作者想区分成功动作需要的推理，与学生学习动作时必须监督的文字，避免把完整轨迹当作固定训练模板。",
+      "novelty": "作者主张：动作是否已暴露思考中的信息，决定思考监督的边际价值，并用变量命名干预支持这一解释。本站判断：贡献是可检验的数据表示原则与消融证据；它鼓励先改善动作的语义表达，再决定删哪些监督，尚未给出通用的自动披露度量或按步骤开关思考的算法。",
+      "evidenceScope": "已读arXiv v1正文§3–7和附录A–G，核对表1/2/3/7/9/10/11/12/13。数值是作者报告，来源核验不是实验复现。训练主要为成功轨迹上的LoRA SFT，KL对照也使用相同离线轨迹前缀；未检验在线RL或广泛真实生产任务。未发现可从该论文直接核验的专用代码/权重发布链接。",
+      "limits": "已读全文与附录，未复现。结论针对成功轨迹的离线蒸馏，不证明 Agent 不需要推理，也不是已实现的逐步动态思考开关。低披露算术任务的 thought 是根据已验证的程序、中间值和答案事后生成的讲解；命名干预保持计算结果，但也改变了动作的语义与token形式。判分主要看最终任务结果，部分QA依赖GPT-4o-mini；数据及交互预算有限，未核验独立代码、权重或轨迹数据发布。",
+      "method": [
+        "保留成功的教师轨迹，将观察、思考和动作分开。使用同一批轨迹、相同评测集与训练配置，只删除、替换或改写思考，另做删除/替换动作的对照；观察只作为上下文，不计算训练loss。",
+        "默认由Qwen2.5-32B提供轨迹，Qwen2.5-3B学生用LoRA做两轮SFT；扩展0.5B–14B规模、不同教师/学生家族、token级干预及固定轨迹前缀上的forward-KL蒸馏，每项按三次独立训练和评测求平均。",
+        "比较四个动作包含较多语义的Agent环境与四个采用匿名变量程序的定量推理任务；分别报告最终成功率和相对完整轨迹基线的保留率。QA使用语义judge，FEVER匹配标签，数学题做符号/数值等价判定，交互环境使用自身成功信号。",
+        "在定量任务中仅把匿名变量改成描述其含义的名称，保持数值、运算及输出不变，重新执行校验；再用语义不匹配的变量名作对照，并让完整轨迹学生在推理时直接输出动作，区分训练监督与额外生成思考的收益。",
+        "在四个高披露环境测量action-only的耗时：作者所列配置训练墙钟减少5.3–10.2%、推理墙钟减少11.1–41.7%；该结果来自具体配置，不将思考token占比直接当作算力节省。"
+      ],
+      "inspirations": [
+        "构造蒸馏数据时同时保存可执行动作与含义明确的参数/变量名，以固定输出的重命名对照测量语义带来的收益，再决定是否压缩重复思考。",
+        "为工具调用、代码与数值推理分别做完整轨迹、action-only、语义动作三组等预算实验；报告绝对成功率、保留率和墙钟，避免保留率接近100%掩盖基线本身较低。",
+        "对动作无法表达的依据、约束和跨步信息保留精简监督，并专门测长程迁移及失败恢复；这是后续设计方向，不能由本论文短预算结果直接认定有效。"
+      ],
+      "reviewedAt": "2026-11-07T02:21:01Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.05709v1",
+        "https://arxiv.org/html/2611.05709v1",
+        "https://arxiv.org/pdf/2611.05709v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.05709",
+      "status": "pending",
+      "checkedAt": "2026-11-07T02:22:55.160254+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://www.wogo.ai/en/release/hacadly-ai-agent-launch/",
+    "url": "https://www.wogo.ai/en/release/hacadly-ai-agent-launch/",
+    "id": "update-hacadly-ai-agent-20261105",
+    "title": "Hacadly：CAD重建之后，还要验证参数修改是否保住其余形状",
+    "summary": "Hacadly 将大模型与几何处理结合，从图纸生成3D，或把无历史STEP重建为可改参数的特征树。厂商在FreeCAD的20件部件上报告34次参数编辑通过33次；这是商业系统自测，不是代码模型或开放基准发布。",
+    "insight": "把形状还原与后续编辑分开验收：模型看起来相同，并不代表改孔径、厚度后还能保住其余几何。对代码/CAD Agent，应测试参数干预、无关区域不变及特征历史有效性。",
+    "limits": "只核验官方公告、产品页及厂商日文新闻稿，未试用。所有对照使用Opus5.5，差异包含几何工具系统；23例图纸重建与20件/34次编辑是不同实验。评测并未证明任意装配、制造有效性或还原原设计操作史。未确认公开源代码、可调用API或完整测试集。",
+    "organization": "WOGO",
+    "dateLabel": "2026-11-05 · 官方发布；本轮补齐项目解读",
+    "evidence": "官方发布与厂商评测定义核验；未运行或复现实验",
+    "originalTitle": "Hacadly AI Agent for Mechanical Design",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-07T02:19:57.816710+00:00",
+    "firstSeenAt": "2026-11-06T20:26:14.118390+00:00",
+    "tags": [
+      "参数化CAD",
+      "可编辑特征历史",
+      "CAD Agent",
+      "几何验证",
+      "官方工具"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "sources": [
+      {
+        "label": "WOGO官方发布与提供范围",
+        "url": "https://www.wogo.ai/en/release/hacadly-ai-agent-launch/"
+      },
+      {
+        "label": "官方产品页与参数编辑验收定义",
+        "url": "https://www.wogo.ai/en/service/mech-ai-agent/"
+      },
+      {
+        "label": "WOGO日文新闻稿与评测排除项",
+        "url": "https://prtimes.jp/main/html/rd/p/000000026.000096214.html"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "从图纸或无历史STEP生成可修改的CAD；价值应同时看几何重建、特征有效性和修改后的局部性。",
+      "motivation": "旧图纸和收到的STEP常缺少可继续修改的特征历史；生成一个外形相似文件，还不能完成孔径、厚度等派生设计。",
+      "novelty": "厂商主张将图纸/几何处理与语言模型结合，提升重建及编辑成功。本站判断：更可借鉴的是把外形还原和可编辑性分开验证；公告未披露可据以比较的训练算法或通用代码生成能力。",
+      "evidenceScope": "已读三份厂商来源。23例图纸重建报告23/23，对照有工具11/23、无工具9/23；另20件部件的形状重建为20/20、20/20、13/20，34次编辑为33/34、28/34、20/34。各组均用Opus5.5，特征重建在FreeCAD评测。未下载或逐件核验测试数据，未实测。",
+      "limits": "小规模厂商自测，无公开独立复现；图纸评测覆盖9件板金、10件切削和4件焊接/组合制造件，螺纹属性恢复未计入该23例评测。参数编辑仅现有特征值修改，不证明新增特征、复杂装配或全部CAD兼容。服务需按环境接入；未核验公开代码/API。",
+      "method": [
+        "读取DXF/PDF的多视图形状、尺寸与注释，或读取无历史的3D CAD输入；结合语言模型与WOGO几何处理生成、核对并修正模型。",
+        "对无历史部件建立新的草图、拉伸、旋转和孔等特征组织；生成适合参数修改的新历史，不定位或复原设计者原来的操作序列。",
+        "分别测图纸几何重建和后续参数编辑；后者只改既有历史的参数，不新增特征或重画草图，要求目标尺寸改变且其余形状保持。",
+        "以设备端软件连接客户CAD；企业可选客户管理的云端生成AI环境。实际CAD适配、部署验证和支持范围需逐客户确认。"
+      ],
+      "inspirations": [
+        "为同一CAD任务保留原生特征树和参数修改脚本；逐项修改孔径、孔位置和厚度，检查目标变化、无关几何保持及重算失败。",
+        "固定底座、任务和执行预算，对比裸模型、通用CAD工具与专用几何工具；把形状成功与编辑成功分别报告，避免把整套工具效果解释为模型提升。",
+        "增加未见部件和多步连续修改，分开验证几何、约束、制造条件与设计意图；原始操作史不同不一定意味着新历史不可用。"
+      ],
+      "reviewedAt": "2026-11-07T02:19:57.816710+00:00",
+      "sourceUrls": [
+        "https://www.wogo.ai/en/release/hacadly-ai-agent-launch/",
+        "https://www.wogo.ai/en/service/mech-ai-agent/",
+        "https://prtimes.jp/main/html/rd/p/000000026.000096214.html"
+      ]
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.05320v1",
+    "url": "https://arxiv.org/abs/2611.05320v1",
+    "id": "live-aff092635c883149",
+    "title": "PyRUA-DataFarm：让编码Agent搭建机器人数据工厂，把动作标签与视频外观分开",
+    "summary": "从一段真实校准视频出发，Agent编写仿真场景、专家控制器与独立判据；仿真提供动作，视频模型补真实外观。作者在5项任务各用100条数据训练π0.5，原场景累计成功93/100（遥操作84/100），外观变化下87/100（遥操作46/100）。",
+    "insight": "将可执行状态与视觉外观分开生成，再以同一动作轨迹做外观干预；同时把生成、检查与最终准入分工，并保存失败成本。视觉逼真与标签一致性应独立评测。",
+    "limits": "仅一款双臂机器人、5项任务，每任务每条件20次真机试验；未报告跨训练种子的稳定性。需要一段真实校准视频，不是零真实输入；OOD收益未与同等外观增强的真实数据对照。成本不含校准片段，部分适配成本排除总控会话与GPU时间，北美人工估算和中国服务报价口径不同。独立审查仍可能漏错；公开仓库不含模拟器、视频模型、任务数据或机器人资产。未复现实验。",
+    "dateLabel": "2026-11-03 · arXiv v1",
+    "evidence": "已读原论文方法、实验及附录A–E，核验作者项目页与DataFarm分支README；未运行。",
+    "originalTitle": "PyRUA-DataFarm: LLM Agent as a Cost-Efficient Teleoperator for Real-Ready Robot Data",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-07T02:21:23.278592+00:00",
+    "updatedAt": "2026-11-03T18:25:14Z",
+    "firstSeenAt": "2026-11-04T10:00:01Z",
+    "lastSeenAt": "2026-11-06T22:00:01Z",
+    "dailySubmittedAt": "2026-11-05T00:00:00.000Z",
+    "tags": [
+      "数据/环境",
+      "机器人示范",
+      "编码Agent",
+      "合成数据"
+    ],
+    "authors": [
+      "Kewei Zhang",
+      "Juncheng Ma",
+      "Guodong Lv",
+      "Duomin Wang",
+      "Feixiang Ruan",
+      "Ruiyang Si",
+      "Chuanrui Zhang",
+      "Yuxuan Chen",
+      "Hao Chen",
+      "Yichen Liu",
+      "Yintianrun Zhang",
+      "Yufan Deng",
+      "Enze Xie",
+      "Daquan Zhou"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv论文",
+        "url": "https://arxiv.org/abs/2611.05320v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.05320"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.05320"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://dagroup-pku.github.io/PyRUA-Lean/DataFarm/"
+      },
+      {
+        "label": "论文全文与附录",
+        "url": "https://arxiv.org/html/2611.05320v1"
+      },
+      {
+        "label": "DataFarm分支代码与README",
+        "url": "https://github.com/DAGroup-PKU/PyRUA-Lean/tree/DataFarm"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把机器人任务编译成仿真程序，再用视频模型补外观并独立验收；合成动作标签用于训练真实机器人策略，但仍依赖真实校准和可用模拟器。",
+      "motivation": "遥操作逐条占用人和机器；合成方案又常需人为搭场景、调控制器，且生成视频容易与动作标签不一致。",
+      "novelty": "作者强调从一段校准记录自动完成任务构建、真实外观渲染与独立准入。本站判断：贡献在完整数据生产与验收流程，并非新的通用视频生成模型；分工降低自审风险，但没有消除共同模型偏差或漏检。",
+      "evidenceScope": "已读arXiv v1第3–7节、附录A–E及项目页/分支README；数值是作者报告。每任务每来源100条、每条件20次测试，5任务合计100次；本轮未下载训练集、启动模拟器、执行代码或复现。H3默认生成路线与Seedance补充路线不混用成本；角色分离部分由指令约束，审查记录验证不等于强权限隔离。",
+      "limits": "仅一款双臂机器人、5项任务，每任务每条件20次真机试验；未报告跨训练种子的稳定性。需要一段真实校准视频，不是零真实输入；OOD收益未与同等外观增强的真实数据对照。成本不含校准片段，部分适配成本排除总控会话与GPU时间，北美人工估算和中国服务报价口径不同。独立审查仍可能漏错；公开仓库不含模拟器、视频模型、任务数据或机器人资产。未复现实验。",
+      "method": [
+        "从单段三视角校准视频拟合场景、相机与尺度，将未知物理量标为假设并随机化；以技能探针检查模拟器是否能支持任务。",
+        "单独角色先生成并冻结判据，编码Agent据开发种子的反馈编写专家控制器；留出初态用于准入，重新执行连续轨迹并记录动作、状态与接触。",
+        "默认H3渲染以仿真边缘图约束几何和时序，真实帧提供外观；三路相机拼成一个画布，独立生成长视频分段，再按接缝一致性拼接。",
+        "以受控损坏样例校准视频检查，另开审查Agent比对原始视频、参考与仿真状态；只用通过检查的数据训练π0.5，在同数量遥操作、仿真随机化数据上做对照。"
+      ],
+      "inspirations": [
+        "给合成训练数据保存场景程序、动作轨迹、渲染版本和检查证据，分别衡量视觉质量与动作/状态一致性；对同一轨迹更换外观，控制标签混杂。",
+        "为剪辑或代码动画构造缺对象、时序错位、视角交换等负例来校准验收器，并比较独立审查与自审的漏检率；不要用好看的视频代替可执行证据。",
+        "比较数据成本时同时报告准入率、失败重试、校准和人工工程成本，并加同等外观增强的真实数据对照，定位OOD收益来自哪里。"
+      ],
+      "reviewedAt": "2026-11-07T02:21:23.278592+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.05320v1",
+        "https://arxiv.org/html/2611.05320v1",
+        "https://dagroup-pku.github.io/PyRUA-Lean/DataFarm/",
+        "https://github.com/DAGroup-PKU/PyRUA-Lean/tree/DataFarm"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.05320",
+      "status": "pending",
+      "checkedAt": "2026-11-07T02:22:55.160254+00:00"
+    }
   }
 ]
