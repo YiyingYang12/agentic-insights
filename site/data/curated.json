@@ -7283,5 +7283,264 @@
       "status": "pending",
       "checkedAt": "2026-11-07T02:22:55.160254+00:00"
     }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://huggingface.co/papers/2611.06500",
+    "url": "https://huggingface.co/papers/2611.06500",
+    "id": "live-c0fb97ab8fe4b307",
+    "title": "Coca-Cola：把工具结果压成连续向量，按下一步动作训练压缩器",
+    "summary": "用128个latent替换冗长工具观察，通过冻结Agent上的动作分布对齐和动作监督训练压缩器。四个QA数据集、两组模型中，目标Agent token减少70.01–89.24%、单题墙钟减少24.45–55.97%；八个配置的EM/F1均高于原始上下文。token统计不计压缩器输入；单题墙钟包含压缩执行，但不等同总GPU时或全系统成本下降。",
+    "insight": "比保留工具文本本身更接近任务目标的压缩标准，是保留后续决策所需的信息。可执行的研究方向是固定模型和latent预算，对照重建与动作保持目标，并加入跨步证据回用测试；部署时还应单独核算压缩器开销和审计原始证据的路径。",
+    "limits": "已读全文、主表和附录，未复现实验。结果限于两组模型、四个QA数据集、每题最多5次搜索；需要可注入embedding的目标模型，不是黑盒文本API的直接替换方案。token统计仅涵盖目标Agent输入/输出，不含压缩器处理的文本；墙钟可含额外压缩GPU，不能等同总GPU时、训练摊销或费用节省。公开仓库有训练/评测源码，但未附训练样本、QA数据及checkpoint下载链接，ICAE也未见公开运行入口；论文未充分交代评测子集规模、任务级隔离和重复运行误差。 发布训练示例与论文的KL/预热参数不同，CLI汇总accuracy为包含判断ACC而非EM，复测须对齐配置和逐条指标。",
+    "dateLabel": "2026-11-04",
+    "evidence": "全文、附录与主表已读；固定提交实现核对；未复现",
+    "originalTitle": "Tools Need Not Speak in Text: Latent Context Compression for Agents",
+    "date": "2026-11-04",
+    "checkedAt": "2026-11-07T08:29:30Z",
+    "updatedAt": "2026-11-04T13:32:36Z",
+    "firstSeenAt": "2026-11-05T10:00:02Z",
+    "lastSeenAt": "2026-11-07T04:00:01Z",
+    "dailySubmittedAt": "2026-11-06T00:00:00.000Z",
+    "tags": [
+      "Training / RL",
+      "Latent Compression",
+      "Action Distillation",
+      "Efficiency"
+    ],
+    "authors": [
+      "Yuetong Liu",
+      "Zhehao Zhou",
+      "Yitong Zhang",
+      "Haorui Chen",
+      "Jia Li"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.06500v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.06500"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.06500"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/THU-Agent/Coca-cola"
+      },
+      {
+        "label": "原论文v1全文与附录",
+        "url": "https://arxiv.org/html/2611.06500v1"
+      },
+      {
+        "label": "原论文PDF主表",
+        "url": "https://arxiv.org/pdf/2611.06500v1"
+      },
+      {
+        "label": "核验时固定的代码提交",
+        "url": "https://github.com/THU-Agent/Coca-cola/tree/edad16f2fd3dc3ce67300361e5d540bf7192318b"
+      },
+      {
+        "label": "公开运行与指标边界说明",
+        "url": "https://github.com/THU-Agent/Coca-cola/blob/edad16f2fd3dc3ce67300361e5d540bf7192318b/docs/METHODS.md"
+      },
+      {
+        "label": "公开训练样例与复现边界",
+        "url": "https://github.com/THU-Agent/Coca-cola/blob/edad16f2fd3dc3ce67300361e5d540bf7192318b/docs/TRAINING.md"
+      },
+      {
+        "label": "固定版本的计时和token统计实现",
+        "url": "https://github.com/THU-Agent/Coca-cola/blob/edad16f2fd3dc3ce67300361e5d540bf7192318b/train/eval_all.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Coca-Cola 把搜索工具返回压成128个连续向量，直接放进冻结Agent的输入embedding，并训练压缩器尽量保持下一动作分布。作者在四个QA数据集、两组模型中报告目标Agent输入+输出token减少70.01–89.24%，单题端到端墙钟减少24.45–55.97%；这些数值不是全系统算力节省。",
+      "motivation": "工具结果往往很长，但下一步决策只需要其中几条证据。逐字保留或追求可读摘要都可能浪费上下文；研究将压缩目标改为“保留足以支持后续动作的信息”，而非重建原文。",
+      "novelty": "作者主张：用连续latent承载工具观察，并以动作保持训练替代文本重建。本站判断：有价值的是把压缩器的监督信号对准Agent的决策；同架构ICAE对照提供了实证支持。但latent上下文已有先例，容量分析只说明特定可实现编码假设下的潜力，不保证压缩后语义完整、任意目标模型可用或长程行为不变。",
+      "evidenceScope": "已读arXiv v1正文§3–5、17页PDF中的主表文本及附录A–B，核对官方仓库固定提交edad16f2fd3dc3ce67300361e5d540bf7192318b的公开实现。数值均为作者报告，verified仅来源核验；未训练模型、加载权重、访问搜索API或重跑实验。公开源码计时和token字段已检查，完整数据/权重及论文历史配置仍未复现。 当前公开实现的评测字段与训练样例已单独审计，不认定其默认设置等同于论文历史运行。",
+      "limits": "已读全文、主表和附录，未复现实验。结果限于两组模型、四个QA数据集、每题最多5次搜索；需要可注入embedding的目标模型，不是黑盒文本API的直接替换方案。token统计仅涵盖目标Agent输入/输出，不含压缩器处理的文本；墙钟可含额外压缩GPU，不能等同总GPU时、训练摊销或费用节省。公开仓库有训练/评测源码，但未附训练样本、QA数据及checkpoint下载链接，ICAE也未见公开运行入口；论文未充分交代评测子集规模、任务级隔离和重复运行误差。 发布训练示例与论文的KL/预热参数不同，CLI汇总accuracy为包含判断ACC而非EM，复测须对齐配置和逐条指标。",
+      "method": [
+        "收集4,188个任务的4,363个工具观测—动作对，按对划分3,927个训练样本与436个验证样本；编码器同时读取任务指令、当前步推理状态和原始工具输出。",
+        "通过latent adapter把编码器隐状态映射为默认128个连续向量，插入目标Agent的embedding序列，以特殊边界标识包围；保留Agent自身的文本推理和动作接口。",
+        "对同一冻结Agent分别输入完整观测和压缩观测，用forward-KL对齐下一动作分布，再用已记录动作做交叉熵监督；只更新编码器LoRA和adapter，目标Agent不更新，也不以重建工具原文为目标。",
+        "每次工具返回后重复压缩，在NQ、TriviaQA、2Wiki和HotpotQA上比较原始上下文、token剪枝、文本摘要与同架构重建式ICAE；每题最多5次搜索、每次最多5条结果，以最终答案EM/F1及目标Agent token、单题墙钟分别评测。"
+      ],
+      "inspirations": [
+        "把工具输出压缩的验收从摘要相似度改为动作分布变化、最终任务成功及错误恢复；对暂时无用但后续必需的证据专门设计延迟使用测试，检验逐步压缩是否过早丢失信息。",
+        "以同一编码器、相同latent预算对照重建目标和动作保持目标，并固定搜索后端、任务划分与重复运行，区分表示预算、训练目标和轨迹变短各自带来的收益。",
+        "部署评估同时记录主Agent与压缩器的token、显存、GPU秒和搜索时间；保留可追溯的原始工具返回供审计，再测读取latent与回查原文的组合策略是否划算。"
+      ],
+      "reviewedAt": "2026-11-07T08:29:30Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.06500v1",
+        "https://huggingface.co/papers/2611.06500",
+        "https://arxiv.org/abs/2611.06500",
+        "https://github.com/THU-Agent/Coca-cola",
+        "https://arxiv.org/html/2611.06500v1",
+        "https://arxiv.org/pdf/2611.06500v1",
+        "https://github.com/THU-Agent/Coca-cola/tree/edad16f2fd3dc3ce67300361e5d540bf7192318b",
+        "https://github.com/THU-Agent/Coca-cola/blob/edad16f2fd3dc3ce67300361e5d540bf7192318b/docs/METHODS.md",
+        "https://github.com/THU-Agent/Coca-cola/blob/edad16f2fd3dc3ce67300361e5d540bf7192318b/docs/TRAINING.md",
+        "https://github.com/THU-Agent/Coca-cola/blob/edad16f2fd3dc3ce67300361e5d540bf7192318b/train/eval_all.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.06500",
+      "status": "pending",
+      "checkedAt": "2026-11-07T08:28:49.380637+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://www.usevyra.com/blog/vyra-mcp-v2",
+    "url": "https://www.usevyra.com/blog/vyra-mcp-v2",
+    "id": "creative-vyra-headless-mcp",
+    "title": "Vyra：用MCP改真实时间线，把代码动效放回可继续修改的工程",
+    "summary": "Vyra把素材检索、时间线读写和React/Remotion动效连接到MCP。官方文档描述服务端独立编辑容器，Agent可在无浏览器连接时处理项目，结果可在网页或手机继续修改；这是一款工具的本轮补录，未实测。",
+    "insight": "可借鉴的是把Agent动作落到共享工程，并用指定时刻截图检查结果。可编辑性也有层级：普通轨道可手动改，代码动效内部则需通过Agent修改，不能把两者都称为拖拽可编辑。",
+    "limits": "仅核验官方公告和操作文档，未登录、提交素材、连接MCP或执行生成。未验证工具成功率、渲染一致性、工程源代码下载或跨剪辑软件导出。公告可见日期为10月25日，结构化元数据为10月26日，故日期暂留空，不标今日新发。",
+    "organization": "Vyra",
+    "dateLabel": "10月官方更新 · 本轮补录，具体日期口径待确认",
+    "evidence": "官方公告及MCP/编辑文档核验；未运行软件或复现",
+    "originalTitle": "The New Headless Vyra MCP",
+    "date": null,
+    "checkedAt": "2026-11-07T08:28:11.271179+00:00",
+    "firstSeenAt": "2026-11-07T08:28:11.271179+00:00",
+    "tags": [
+      "剪辑Agent",
+      "MCP",
+      "可编辑时间线",
+      "React/Remotion",
+      "官方工具"
+    ],
+    "topics": [
+      "code2motion",
+      "video-editing"
+    ],
+    "sources": [
+      {
+        "label": "官方headless MCP公告",
+        "url": "https://www.usevyra.com/blog/vyra-mcp-v2"
+      },
+      {
+        "label": "官方MCP能力与会话文档",
+        "url": "https://www.usevyra.com/docs/mcp"
+      },
+      {
+        "label": "官方编辑流程与代码动效边界",
+        "url": "https://www.usevyra.com/docs/guide"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Agent通过MCP检索素材、修改多轨时间线和生成代码动效；工程可回到Vyra人工续改，但动效内部修改仍依赖Agent。",
+      "motivation": "浏览器必须在线的编辑连接难以持续执行或同时处理多个项目；单次生成视频也缺少对素材区间、轨道和后续返修的明确控制。",
+      "novelty": "厂商主张将MCP改为无浏览器依赖的服务端执行，并支持并行项目。本站判断：值得研究的是共享工程、明确动作与截图反馈的组合；文档没有披露新训练方法，也不能证明通用剪辑质量提升。",
+      "evidenceScope": "实际读取官方headless公告、MCP能力列表及编辑指南。网页描述50余工具及React/Remotion动效，但本轮未枚举真实工具、运行任务或审读闭源实现；所有能力属于官方文档陈述。",
+      "limits": "普通时间线可手改不代表代码动效可直接拖拽。指南区分本地原素材与云端素材：本地项目依赖原设备；本地素材与headless执行的实际组合未验证。未确认完整源工程导出、外部NLE互通、长视频稳定性或权限隔离效果。",
+      "method": [
+        "连接经账户授权的MCP服务，选择或新建项目；官方称每个Agent使用服务端编辑容器，可在不保持浏览器页面开启时执行。",
+        "读取素材、轨道和片段时序，按视觉内容或转写检索素材；可截取任意时间点画面供检查。",
+        "通过工具添加、移动、修剪、分割或slip片段，修改速度、音量和关键帧；React/Remotion代码动效可放入时间线。",
+        "在网页或手机打开同一项目复核并手动调整普通时间线；动效内部不能点击拖拽修改，需继续要求Agent改变代码。"
+      ],
+      "inspirations": [
+        "将目标拆成片段选择、时序和动效属性，保存修改前后时间线状态；同时检查目标变化、未指定轨道保持及画面结果。",
+        "把普通轨道操作、代码动效修改和成片导出分别验收；记录源码可得性与跨工具互通，而不只看最终MP4能否播放。",
+        "用相同素材对比持续服务端执行与浏览器会话，测中断恢复、并行项目隔离、失败返修次数和完整交付成本。"
+      ],
+      "reviewedAt": "2026-11-07T08:28:11.271179+00:00",
+      "sourceUrls": [
+        "https://www.usevyra.com/blog/vyra-mcp-v2",
+        "https://www.usevyra.com/docs/mcp",
+        "https://www.usevyra.com/docs/guide"
+      ]
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.05814v1",
+    "url": "https://arxiv.org/abs/2611.05814v1",
+    "id": "live-04083468a79b697e",
+    "title": "CVD：把“何时向人提问”的价值蒸馏成预算分配器",
+    "summary": "CVD离线比较咨询与不咨询后的任务收益，再训练轻量预测器决定把有限的人类帮助用在哪里。批量问题看信息组合，连续任务还考虑后续机会成本；效果依执行器与任务变化，不能用模型不确定性或问题重要性直接替代咨询价值。",
+    "insight": "把“是否缺信息”改成“这条信息能否改善当前执行器的最终结果”，可以形成可训练的提问预算。对剪辑Agent，可先离线对比分镜偏好、素材选择等可选咨询的联合价值，再测同样打扰次数下的成片任务质量；强制审批仍需独立保留。",
+    "limits": "已读正文方法、结果及附录B/E，未复现。候选咨询点预先指定，输入特征按任务设计；人类答复来自模拟或基准定义，未招募真人验证。NG以随机分配或无咨询为零基线、oracle为参照计算归一化收益，主表裁剪到0–1，不是成功率；各任务归一化参照不同。TB-H主结果使用可能前缀不一致的回放，另用第一训练run在原30个测试世界做每执行器480次按真实时序执行检查，但不证明整个回放等价。预算和测试集较小，跨执行器迁移并非总有效；未核验作者公开完整代码或数据包。",
+    "dateLabel": "2026-11-04",
+    "evidence": "原文方法、主表及关键评测附录核验；未复现实验",
+    "originalTitle": "Learning When Human Decisions Matter: Executor-Relative Consultation Value for LLM Agents",
+    "date": "2026-11-04",
+    "checkedAt": "2026-11-07T08:26:50.401158+00:00",
+    "updatedAt": "2026-11-04T01:45:28Z",
+    "firstSeenAt": "2026-11-05T04:00:01Z",
+    "lastSeenAt": "2026-11-05T22:00:01Z",
+    "tags": [
+      "Distillation",
+      "Human-Agent Collaboration",
+      "Consultation Budget",
+      "Value Learning"
+    ],
+    "authors": [
+      "Shuli Jiang",
+      "Khushbu Pahwa",
+      "Yuting Zhang",
+      "Yi Zhang",
+      "Wei Xia",
+      "Stefano Soatto"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.05814v1"
+      },
+      {
+        "label": "原论文方法与评测附录",
+        "url": "https://arxiv.org/html/2611.05814v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "CVD把离线执行器试验得到的咨询收益蒸馏成轻量预测器，在有限预算下选择向人问哪些问题。Animals批量任务预算3时，作者报告NG为0.58/0.40，对照独立问题打分为0.25/0.09（Sonnet 5/GPT-6.1 Sol）；这是归一化收益而非成功率，也不是所有任务都提升。",
+      "motivation": "同一条人的提示，对不同执行器帮助不同；多个问题可能互补或重复，今天问一次还会消耗后续咨询额度。逐个判断问题是否重要或直接让LLM挑选，未必最大化最终任务收益。",
+      "novelty": "作者主张：咨询价值必须相对于具体执行器学习，联合信息价值与未来机会成本可以离线蒸馏、在线便宜分配。本站判断：有价值的是把“少打扰人”转成带明确效用与预算的决策问题；当前仍依赖预先构造的候选问题和任务特征，不能视作通用自动提问能力。",
+      "evidenceScope": "读取arXiv v1正文§2–7、结论限制及附录B、E.1/E.2，核对表1/2/3/4与TB-H chronological检查。评测为两种执行器、任务专用特征和模拟/基准答复；作者实验报告非本站复现。Sol在Flight的CVD主表NG为0，低于提示基线0.29；顺序Animals中Local Value也略高，不能泛称全面优于基线。",
+      "limits": "已读正文方法、结果及附录B/E，未复现。候选咨询点预先指定，输入特征按任务设计；人类答复来自模拟或基准定义，未招募真人验证。NG以随机分配或无咨询为零基线、oracle为参照计算归一化收益，主表裁剪到0–1，不是成功率；各任务归一化参照不同。TB-H主结果使用可能前缀不一致的回放，另用第一训练run在原30个测试世界做每执行器480次按真实时序执行检查，但不证明整个回放等价。预算和测试集较小，跨执行器迁移并非总有效；未核验作者公开完整代码或数据包。",
+      "method": [
+        "固定执行器和已给定的候选咨询点，构造五种批量、三种连续设置，共六类任务；人的隐藏信息由基准或模拟过程产生，预测器只看咨询前可见的任务特征。",
+        "离线针对不同咨询集合收集Monte Carlo执行结果，并减去不咨询基线；连续设置用已存结果和动态规划建立咨询/跳过后的续程价值，计入剩余预算与以后可获得的信息。",
+        "批量训练DeepSets集合价值回归器，连续任务训练预算与历史条件下的价值预测器；用五个独立初始化模型集成，避免强迫总收益等于单个问题收益之和。",
+        "部署时批量选择预算内预测价值最高的集合，连续任务只在预测增益为正且还有预算时咨询；主实验枚举集合，另检验贪心加单次交换近似。构造特征后分配无需LLM rollout，不代表整个任务执行没有模型调用。",
+        "在独立测试结果上比较直接提示、可适用的VoI及同样离线训练的Local Value；主表按三次运行报告归一化收益，附录提供原始效用及置信区间，并单独检查TB-H按真实时序执行后的差异。"
+      ],
+      "inspirations": [
+        "给视频剪辑或代码创作Agent建立可选咨询库：素材含义、节奏偏好、镜头取舍分别保留单问和组合干预，按相同咨询次数比较最终质量，而非只奖励少问。",
+        "更换执行模型后重新校准咨询收益；保留简单Local Value作强对照，只有问题互补或连续预算效应确实明显时才引入更复杂分配器。",
+        "把执行回放与真实按时序执行分开验收，并把预算耗尽、错误或延迟的人类回答加入测试。权限审批应作为硬约束，不由预测收益低而跳过。"
+      ],
+      "reviewedAt": "2026-11-07T08:26:50.401158+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.05814v1",
+        "https://arxiv.org/html/2611.05814v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.05814",
+      "status": "pending",
+      "checkedAt": "2026-11-07T08:28:49.380637+00:00"
+    }
   }
 ]
