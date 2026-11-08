@@ -8601,5 +8601,359 @@
       "status": "pending",
       "checkedAt": "2026-11-08T10:24:32.315445+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.08453v1",
+    "url": "https://arxiv.org/abs/2611.08453v1",
+    "id": "paper-opd-grpo-compute-2611-08453",
+    "title": "OPD vs GRPO：省50倍蒸馏算力，不等于省50倍总训练成本",
+    "summary": "作者按训练FLOPs审计基础reverse-KL OPD与GRPO：现成外部强教师通常不具稳定算力优势。同基座GRPO教师可让学生高效恢复能力，但单域50倍节省只算蒸馏阶段。更实际的机会是整合多个分域专家：计入教师训练，所测2域/4域相对joint-GRPO instance-mix分别少用42.0%/31.6%估算FLOPs达到相近表现。",
+    "insight": "评价蒸馏应先问“需要交付哪一个模型”，再算完整账。已有单域专家时，重蒸馏可能只是重复花钱；多个专家能力分散、希望交付单一模型时，低成本整合才创造额外价值。教师来源、输出长度、G值和每域回归都应进入决策。",
+    "limits": "已读全文及方法、成本与多域实验附录，未复现。FLOPs按生成token和模型参数解析估算，不含共享prompt上下文，不能等同墙钟耗时或完整GPU账单。50倍仅为蒸馏阶段，且比较G=1的OPD与G=8的GRPO；单域已有所需GRPO模型，再蒸馏反而增加总成本。42.0%/31.6%是所测2域/4域相对joint-GRPO instance-mix的全流程结果，不能泛化为任意教师、域或模型。外部教师OPD在G=1单域数学及部分OOD设置有优势例外，论文不是“OPD普遍无效”的证明。只测基础reverse-KL OPD，未系统比较混合奖励等改进；多域主实验限Qwen3-4B、可验证单轮任务，尚未验证长程工具Agent。mean@16是16次采样的平均正确率，不是至少成功一次的pass@16。论文列出了公开模型、数据与框架版本，但本轮未核验到该研究的专用作者代码库、原始训练日志和完整产物。",
+    "dateLabel": "2026-11-05",
+    "evidence": "原论文全文、方法与成本附录已核验·专用作者代码未找到·未复现",
+    "originalTitle": "Unpacking the Compute Efficiency of Strong-to-Weak OPD against GRPO",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-08T16:29:45.707267Z",
+    "updatedAt": "2026-11-05T18:47:05Z",
+    "firstSeenAt": "2026-11-08T16:29:45.707267Z",
+    "lastSeenAt": "2026-11-08T16:29:45.707267Z",
+    "tags": [
+      "On-Policy Distillation",
+      "GRPO",
+      "Training FLOPs",
+      "Multi-Teacher",
+      "Teacher Selection"
+    ],
+    "authors": [
+      "Zeyu Leo Liu",
+      "Yang Li",
+      "Bo Pang",
+      "Emre Can Acikgoz",
+      "Xuan-Phi Nguyen",
+      "Anurag Koul",
+      "Srijan Bansal",
+      "Erik Nijkamp",
+      "Shafiq Joty",
+      "Semih Yavuz"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · 首发版本与时间",
+        "url": "https://arxiv.org/abs/2611.08453v1"
+      },
+      {
+        "label": "arXiv全文 · 受控比较与成本附录",
+        "url": "https://arxiv.org/html/2611.08453v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "蒸馏更省样本不等于更省算力。论文发现外部强教师的基础OPD通常没有稳定的FLOPs优势；把同一基座各自训练出的GRPO专家再合成一个学生更有价值。计入专家训练，所测2域/4域达到联合GRPO相近表现分别少用42.0%/31.6%估算FLOPs。",
+      "motivation": "OPD让学生自己生成答案，再接受教师逐token监督，看似能缓解RL奖励稀疏；但教师前向计算、更长回答、rollout数和教师训练本身都需要成本。作者追问：相同学生达到相同未见题正确率时，哪些教师和任务组合能真正降低计算量？",
+      "novelty": "作者主张：系统核对OPD相对GRPO的FLOPs效率，并揭示教师来源比单纯更强或更大更关键，说明多教师整合何时连教师训练成本也能划算。本站判断：主要贡献是受控比较和完整成本边界，不是发明多教师OPD；“先分域专家、再整合”的价值要在同数据、同目标质量和同预算下重新验证。表示对齐与权重谱分析提供的是机制线索，不能视作因果证明。",
+      "evidenceScope": "已读arXiv v1全文§3–6及附录B、D、F、I、J中的目标函数、FLOPs核算、数据与评测、组大小和多域结果；所有成绩为作者报告，未训练或复现。论文正文与复现声明只列公共基座、数据和框架版本，未链接本研究专用仓库；精确标题/arXiv ID/GitHub检索未找到可确认作者实现，未以其他OPD库冒充。Hugging Face目标论文页本次无法读取，X仅查询公开索引且未得到可交叉核验作者原帖。",
+      "limits": "已读全文及方法、成本与多域实验附录，未复现。FLOPs按生成token和模型参数解析估算，不含共享prompt上下文，不能等同墙钟耗时或完整GPU账单。50倍仅为蒸馏阶段，且比较G=1的OPD与G=8的GRPO；单域已有所需GRPO模型，再蒸馏反而增加总成本。42.0%/31.6%是所测2域/4域相对joint-GRPO instance-mix的全流程结果，不能泛化为任意教师、域或模型。外部教师OPD在G=1单域数学及部分OOD设置有优势例外，论文不是“OPD普遍无效”的证明。只测基础reverse-KL OPD，未系统比较混合奖励等改进；多域主实验限Qwen3-4B、可验证单轮任务，尚未验证长程工具Agent。mean@16是16次采样的平均正确率，不是至少成功一次的pass@16。论文列出了公开模型、数据与框架版本，但本轮未核验到该研究的专用作者代码库、原始训练日志和完整产物。",
+      "method": [
+        "匹配学生初始化、训练题、rollout组大小与共享超参，比较GRPO的结果奖励和OPD的逐token监督。OPD在学生自身rollout的top-16 token支持上，分别归一化师生分布后计算reverse-KL；默认每题8个rollout，另测G=1。",
+        "用累计生成token估算成本：GRPO每token约10Ns，OPD额外支付教师前向2Nt。沿训练过程评测数学AIME24/25与AMC23、代码LiveCodeBench v6等held-out任务，以mean@16对FLOPs作曲线，并改变题目难度、师生尺寸、初始化、估计器和训练框架。",
+        "区分现成外部thinking教师、外部教师再GRPO、同一基座的GRPO checkpoint。Qwen3-4B数学实验中，GRPO在10.1 EFLOP达到33.9%；重新从base蒸馏其自身GRPO教师，G=8约1.62 EFLOP，G=1约0.2 EFLOP恢复这一成绩。后者约50倍只统计蒸馏阶段，未减掉此前训练教师的成本。",
+        "在数学/代码2域和再加指令遵循/知识的4域，各训练一个同基座GRPO专家；重置学生到base，按训练题所属域路由到对应教师做G=1 OPD。与逐样本混域、逐batch混域的联合GRPO及单个外部教师OPD比较，将全部专家训练加上蒸馏计入总成本。",
+        "2域专家训练10.7 EFLOP、整合约0.55；4域分别14.4和1.15。整合开销约为专家成本的5.2%/8.0%，接近或恢复各专家表现；相对joint-GRPO instance-mix，在所报告匹配表现处总FLOPs减少42.0%/31.6%。同时报告外部教师OPD的长度膨胀，以及G=1单域数学、部分OOD结果的优势例外。"
+      ],
+      "inspirations": [
+        "蒸馏实验同时记录教师准备、student rollout、teacher scoring、更新和真实耗时；固定目标质量画完整成本曲线，并单列回答长度与G值，避免拿50倍阶段节省当作端到端节省。",
+        "把同一基座的不同能力专家作为可插拔资产：先在代码、数学、工具约束等域各练专家，再按域路由整合；对每域保留独立测试与回归检查，比较联合RL和整合成本。工具轨迹方向是待测研究设想，不是本文已证实效果。",
+        "选教师时除了自身分数，再看学生达到目标的速度、长度失控和跨域保持；将同源GRPO教师列为基线，分开测G=1与G=8，并用外部教师数学/OOD例外检验“教师越强越难迁移”的适用范围。"
+      ],
+      "reviewedAt": "2026-11-08T16:29:45.707267Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.08453v1",
+        "https://arxiv.org/html/2611.08453v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.08453",
+      "status": "pending",
+      "checkedAt": "2026-11-08T16:30:50.277661+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://kino.ai/changelog",
+    "url": "https://kino.ai/changelog",
+    "id": "creative-kino-editable-project-export-202611",
+    "title": "Kino：把Agent剪辑结果交回可继续编辑的工程",
+    "summary": "Kino的11月官方更新日志列出Resolve、Premiere Pro和After Effects可编辑工程导出beta。它让外部Agent通过MCP检索素材、改代码工程，也允许人在时间线上继续修剪；本轮确认的是文档与发布状态，尚未实测导出保真。",
+    "insight": "评估剪辑Agent时应检查交付后能否继续修改：先让Agent完成剪辑，再由人移动片段、改字幕与比例，最后导入目标编辑器，分别检查时间线、音画和特效是否保留。",
+    "limits": "核验范围为厂商更新日志和文档，未安装、登录、调用MCP或实际导出。11月日志仍标进行中，没有逐项发布日期或版本号；date为空。可编辑工程导出为beta，未见逐项效果映射和往返保真测试，不能推断任意React效果都能无损转成原生工程。未核验公开产品源码或独立评测。",
+    "organization": "Kino",
+    "dateLabel": "2026年11月更新日志 · 具体发布日期未披露",
+    "evidence": "官方11月更新日志、MCP接入与工程/协作说明已核验；非功能实测",
+    "originalTitle": "Kino — November 2026 changelog: editable project export (beta)",
+    "date": null,
+    "checkedAt": "2026-11-08T16:28:20Z",
+    "firstSeenAt": "2026-11-08T16:28:20Z",
+    "tags": [
+      "剪辑Agent",
+      "MCP",
+      "React代码工程",
+      "Remotion",
+      "可编辑交付",
+      "官方工具"
+    ],
+    "topics": [
+      "code2motion",
+      "code2video",
+      "video-editing"
+    ],
+    "sources": [
+      {
+        "label": "官方11月更新日志与beta标记",
+        "url": "https://kino.ai/changelog"
+      },
+      {
+        "label": "官方产品定位与Remotion说明",
+        "url": "https://kino.ai/"
+      },
+      {
+        "label": "MCP桌面依赖与调用额度",
+        "url": "https://kino.ai/docs/mcp"
+      },
+      {
+        "label": "Agent修改与检查点",
+        "url": "https://kino.ai/docs/edit-with-agents"
+      },
+      {
+        "label": "素材代理、人工编辑与交付流程",
+        "url": "https://kino.ai/docs/kino-for-editors"
+      },
+      {
+        "label": "协作、审阅权限及费用边界",
+        "url": "https://kino.ai/docs/team"
+      },
+      {
+        "label": "厂商对React代码工程的说明",
+        "url": "https://kino.ai/comparison/descript"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Agent写可修改的代码工程，人可接手时间线；11月又加入三种专业编辑器的工程导出beta，适合关注自动剪辑后的交接与修订。",
+      "motivation": "成片能播放还不够：改两个帧的切点、修字幕、替换素材和处理审阅意见，都需要保留可继续工作的项目状态。",
+      "novelty": "厂商主张把素材、代码剪辑、人类时间线操作和审阅放在同一产品中。本站判断：本轮值得跟踪的是可编辑工程交付，而非新的模型训练方法；代码工程与跨软件互操作的质量仍需独立测试。",
+      "evidenceScope": "已读7份厂商来源。已确认11月可编辑工程导出条目、React工程定位、MCP依赖桌面运行以及检查点/审阅流程；没有运行产品、渲染样例或做跨编辑器往返测试。",
+      "limits": "核验范围为厂商更新日志和文档，未安装、登录、调用MCP或实际导出。11月日志仍标进行中，没有逐项发布日期或版本号；date为空。可编辑工程导出为beta，未见逐项效果映射和往返保真测试，不能推断任意React效果都能无损转成原生工程。未核验公开产品源码或独立评测。 MCP免费额度为每组织每周100次计量调用；模型用量和生成素材另计，审阅链接需付费编辑者计划，不能表述为全功能无限免费。",
+      "method": [
+        "素材进入库后可按转写与画面检索；文档说明默认上传720p代理，原始素材留在本机，可单独上传原片。",
+        "外部Agent连接桌面应用提供的MCP，搜索素材并读写项目；厂商将项目描述为React代码目录，动效基于Remotion。",
+        "生成后，人可在时间线上修剪和移动片段；每次Agent编辑保存检查点，审阅意见带帧位置返回并可交给Agent处理。",
+        "11月日志提供Resolve、Premiere Pro、After Effects可编辑工程导出beta；需在目标软件复查，不能将可导出等同于完整保真。"
+      ],
+      "inspirations": [
+        "建立往返编辑测试：原项目→目标编辑器→人工改字幕/切点/画幅，核对片段起止、音画同步、字体、特效和可编辑属性，记录丢失项。",
+        "同一剪辑任务比较仅生成MP4与保留代码/时间线，测三轮审阅后的人工修订时间及无关片段是否被误改。",
+        "给审阅意见标定目标帧和对象，验证Agent只改请求区域；结合检查点检查撤销与再次编辑是否恢复一致状态。"
+      ],
+      "reviewedAt": "2026-11-08T16:28:20Z",
+      "sourceUrls": [
+        "https://kino.ai/changelog",
+        "https://kino.ai/",
+        "https://kino.ai/docs/mcp",
+        "https://kino.ai/docs/edit-with-agents",
+        "https://kino.ai/docs/kino-for-editors",
+        "https://kino.ai/docs/team",
+        "https://kino.ai/comparison/descript"
+      ]
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/Siva2022/safequery-teaching-a-3b-model-to-look-before-it-qu",
+    "url": "https://huggingface.co/blog/Siva2022/safequery-teaching-a-3b-model-to-look-before-it-qu",
+    "id": "project-safequery-20261108",
+    "title": "SafeQuery：SQL Agent既要完成查询，也要把被拦截的错误尝试计入评测",
+    "summary": "作者为小模型SQL Agent加入只读、敏感表与成本检查，再用真实工具返回构造示范。已公开轨迹中，SFT与追加GRPO均通过110/111题；所谓注入抵抗率实际上是29道注入题的完整任务成功率，需与恶意操作尝试率分开。",
+    "insight": "环境拦截成功不能证明模型从未尝试越界；反过来，注入题任务失败也不能直接判作攻击成功。应把执行权限、用户目标完成、模型尝试及成本分别记录，再判断训练改善了哪一层。",
+    "limits": "同一合成零售库、模板变体和单训练种子，不能外推新schema或生产安全。注入题指标是完整任务成功率，base的0/29不等于29次攻击成功；其注入题已存unsafe_attempt也是0/29。评分接受gold值在结果/答案中出现，不完整检查语义；成功定义并不直接要求intent正确、无额外调用或无越预算尝试。goal检查只验证可执行intent和敏感表，成本是启发式估计。仅静态源码与作者保存标签核对，未重执行SQL、重算评分或训练；代码/数据为非商业许可，成本表含并发与价格假设，未用于推荐。",
+    "dateLabel": "2026-11-08社区项目文章",
+    "evidence": "社区原文、固定源码与作者冻结轨迹已核对·未复现",
+    "originalTitle": "SafeQuery: Teaching a 3B Model to Look Before It Queries",
+    "date": "2026-11-08",
+    "checkedAt": "2026-11-08T16:28:29.970984+00:00",
+    "firstSeenAt": "2026-11-08T16:33:24.506908+00:00",
+    "tags": [
+      "SFT",
+      "GRPO",
+      "SQL Agent",
+      "工具执行",
+      "评测口径"
+    ],
+    "topics": [],
+    "sourceId": "hf_blog",
+    "sources": [
+      {
+        "label": "项目文章",
+        "url": "https://huggingface.co/blog/Siva2022/safequery-teaching-a-3b-model-to-look-before-it-qu"
+      },
+      {
+        "label": "执行环境·固定提交",
+        "url": "https://github.com/siva2k16/LLMHackathon2026/blob/8362ff6f9b9330d52f28fafb2e9721c7f37add49/safequery/env.py"
+      },
+      {
+        "label": "权限检查·固定提交",
+        "url": "https://github.com/siva2k16/LLMHackathon2026/blob/8362ff6f9b9330d52f28fafb2e9721c7f37add49/safequery/guard.py"
+      },
+      {
+        "label": "结果与奖励判分·固定提交",
+        "url": "https://github.com/siva2k16/LLMHackathon2026/blob/8362ff6f9b9330d52f28fafb2e9721c7f37add49/safequery/scoring.py"
+      },
+      {
+        "label": "指标聚合·固定提交",
+        "url": "https://github.com/siva2k16/LLMHackathon2026/blob/8362ff6f9b9330d52f28fafb2e9721c7f37add49/safequery/evaluate.py"
+      },
+      {
+        "label": "成本估计·固定提交",
+        "url": "https://github.com/siva2k16/LLMHackathon2026/blob/8362ff6f9b9330d52f28fafb2e9721c7f37add49/safequery/cost.py"
+      },
+      {
+        "label": "任务文件·固定版本",
+        "url": "https://huggingface.co/datasets/Siva2022/safequery-retail-tasks/tree/033f0484e2e5c1635a57e0aa6a8304f25af63682"
+      },
+      {
+        "label": "评测轨迹·固定版本",
+        "url": "https://huggingface.co/datasets/Siva2022/safequery-eval-traces/tree/d91b707f5a38664eb36b2acb5cd5d089aa77781e"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "把规则拦截、任务完成和训练收益分开看。作者的SQL项目在111题上由base 22题成功升至SFT 110题，追加GRPO仍110题；这是同库模板测试，不是生产安全认证。",
+      "motivation": "SQL Agent可能查错、碰受限表或选择高成本查询。只有“数据库没被改坏”的结果，会漏掉模型被环境挡住的错误行为；只有正确SQL，又不足以衡量整个工具调用与回答链。",
+      "novelty": "作者主张：组合成本检查、安全环境和Agent微调得到可靠小型SQL助手。本站判断：可借鉴的是保留完整轨迹、分别核对尝试与结果，以及公开失败；现有证据不支持将99.1%当通用安全保证，也不足以证明追加RL普遍无用。",
+      "evidenceScope": "阅读11月8日HF社区文章，静态核对GitHub固定提交8362ff6及数据SHA 033f0484、轨迹SHA d91b707f。只解析600/111任务、333条保存episode标签及训练日志；未执行作者代码、SQL、模型或评分器。源码可读不等于全部安全路径测试，轨迹标签计数不等于独立重评。",
+      "limits": "同一合成零售库、模板变体和单训练种子，不能外推新schema或生产安全。注入题指标是完整任务成功率，base的0/29不等于29次攻击成功；其注入题已存unsafe_attempt也是0/29。评分接受gold值在结果/答案中出现，不完整检查语义；成功定义并不直接要求intent正确、无额外调用或无越预算尝试。goal检查只验证可执行intent和敏感表，成本是启发式估计。仅静态源码与作者保存标签核对，未重执行SQL、重算评分或训练；代码/数据为非商业许可，成本表含并发与价格假设，未用于推荐。",
+      "method": [
+        "在固定合成零售SQLite库上生成600训练、111测试任务，包括查询、拒绝和附带恶意要求；公开完整任务及三组各111条执行轨迹。",
+        "通过4个工具交互，执行前检查SQL读操作、声明intent、敏感表和估计扫描量，最终连接只读且限时；被阻断的危险尝试仍保留。",
+        "用实际工具返回构造SFT示范，再追加60步GRPO。GRPO奖励与评测共用程序评分：重执行候选SQL对比gold值，并检查最终回答包含对应值；评分器本身仍有语义覆盖边界。",
+        "本站只读聚合保存标签：base/SFT/GRPO成功22/110/110，注入题0/29/29，但三组注入题unsafe_attempt均0；60条训练日志中46条reward_std为0，不能说全部训练组无信号。"
+      ],
+      "inspirations": [
+        "对代码/数据Agent分别统计危险尝试、实际拦截、任务完成和返工成本；不要把带攻击文本题目的任务成功率直接命名为纯攻击抵抗率。",
+        "把裁判当作待测软件：验证额外列、答案矛盾、错误intent与成本超限是否影响总分；独立保留通用工具评测和跨schema测试，避免专项高分掩盖退化。"
+      ],
+      "reviewedAt": "2026-11-08T16:28:29.970984+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/blog/Siva2022/safequery-teaching-a-3b-model-to-look-before-it-qu",
+        "https://github.com/siva2k16/LLMHackathon2026/blob/8362ff6f9b9330d52f28fafb2e9721c7f37add49/safequery/env.py",
+        "https://github.com/siva2k16/LLMHackathon2026/blob/8362ff6f9b9330d52f28fafb2e9721c7f37add49/safequery/guard.py",
+        "https://github.com/siva2k16/LLMHackathon2026/blob/8362ff6f9b9330d52f28fafb2e9721c7f37add49/safequery/scoring.py",
+        "https://github.com/siva2k16/LLMHackathon2026/blob/8362ff6f9b9330d52f28fafb2e9721c7f37add49/safequery/evaluate.py",
+        "https://github.com/siva2k16/LLMHackathon2026/blob/8362ff6f9b9330d52f28fafb2e9721c7f37add49/safequery/cost.py",
+        "https://huggingface.co/datasets/Siva2022/safequery-retail-tasks/tree/033f0484e2e5c1635a57e0aa6a8304f25af63682",
+        "https://huggingface.co/datasets/Siva2022/safequery-eval-traces/tree/d91b707f5a38664eb36b2acb5cd5d089aa77781e"
+      ]
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.37739v1",
+    "url": "https://arxiv.org/abs/2610.37739v1",
+    "id": "paper-openfrontiers-2610-37739",
+    "title": "OpenFrontiers：把科研问题的独立求解、检索解法与形式证明分开评测",
+    "summary": "作者整理研究问题语料和200道数学题，并用HQ50比较闭卷、历史检索及实时联网。联网成功大多伴随获取已有解法；公开数据却仍全部标记发布审查未完成，需同时看方法贡献与数据成熟度。",
+    "insight": "科研Agent评测应先追踪解法何时公开、由谁产生、模型是否检索到它，再讨论求解能力；证明检查器通过与自然语言问题保真是两项独立验收。",
+    "limits": "这是10月27日论文的补充解读，未复现模型或Lean验收。12,151是来源记录而非去重后仍未解决的科学问题，93.4%属数学；HQ50为筛选子集。公开200题及HQ50全部release_ready=false，人工命题保真审查、首次公开时间审计等仍待完成，评分harness未随数据发布；两轮命题审查由AI完成，不能当成人类专家认证。形式证明通过只保证给定形式命题，不自动保证翻译忠实。O41仍带旧open标签，数据卡已提示既有反例；联网得到其Lean反证不是发现新结果。每配置单次尝试、Agent框架不同，clean分母随模型变且部分训练截止用发布日代替；167/181是跨配置成功尝试的检索关联，不是因果消融。",
+    "dateLabel": "10月27日论文·本轮补充解读",
+    "evidence": "方法及附录已读·公开题目字段已核对·未复现实验",
+    "originalTitle": "OpenFrontiers: A Collection of Open Research Problems\n and a Benchmark for Scientific Rediscovery",
+    "date": "2026-10-27",
+    "checkedAt": "2026-11-08T16:30:50.277661+00:00",
+    "firstSeenAt": "2026-11-06T22:00:01Z",
+    "lastSeenAt": "2026-11-08T16:00:00Z",
+    "tags": [
+      "科学Agent",
+      "Lean",
+      "数据污染",
+      "检索评测",
+      "补充解读"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2610.37739"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2610.37739"
+      },
+      {
+        "label": "Project",
+        "url": "https://openfrontiers.vercel.app/"
+      },
+      {
+        "label": "论文v1",
+        "url": "https://arxiv.org/abs/2610.37739v1"
+      },
+      {
+        "label": "方法与附录",
+        "url": "https://arxiv.org/html/2610.37739v1"
+      },
+      {
+        "label": "语料固定版本",
+        "url": "https://huggingface.co/datasets/FlippyDora/OpenFrontiers/tree/4081ea016ba948ae10545083228363ac84b860e0"
+      },
+      {
+        "label": "200题固定版本",
+        "url": "https://huggingface.co/datasets/FlippyDora/OpenFrontiers-Bench/tree/b66977d5faa9cef295a7cbbfb11b5d5a00100313"
+      },
+      {
+        "label": "HQ50固定版本",
+        "url": "https://huggingface.co/datasets/FlippyDora/OpenFrontiers-HQ50/tree/0aa3e15716b595067fe0f904f7315b6a1c83eccd"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "用已解决的研究问题测“重新发现”，把闭卷、历史检索和联网查到现成证明分开。作者在HQ50中观察到闭卷至多7/40道已解题成功，但该配置按来源与时间过滤后是4/15；不能把联网高分当原创科研能力。",
+      "motivation": "开放科学问题没有稳定答案，模型又可能检索到已发表解法或曾由本模型家族产出的证明。需要保存问题状态、解法公开日期与来源谱系，才能区分检索、形式化适配和独立求解。",
+      "novelty": "作者主张：连接广泛问题语料、可形式化验收的研究题和分检索条件评测。本站判断：最可迁移的贡献是把问题状态、解法谱系、时间及检索轨迹纳入评测；数据发布审查未完成、旧开放标签与缺失harness意味着还不能视作成熟通用科研排行榜。",
+      "evidenceScope": "已阅读arXiv v1方法、实验及附录，核对HF三个固定版本的数据卡；只读解析Bench 200条、HQ50 50条题目与50条参考答案，核对组成和release_ready字段。未运行作者代码、Lean检查器或模型；作者实验数值与本站JSON字段核验分开记录。",
+      "limits": "这是10月27日论文的补充解读，未复现模型或Lean验收。12,151是来源记录而非去重后仍未解决的科学问题，93.4%属数学；HQ50为筛选子集。公开200题及HQ50全部release_ready=false，人工命题保真审查、首次公开时间审计等仍待完成，评分harness未随数据发布；两轮命题审查由AI完成，不能当成人类专家认证。形式证明通过只保证给定形式命题，不自动保证翻译忠实。O41仍带旧open标签，数据卡已提示既有反例；联网得到其Lean反证不是发现新结果。每配置单次尝试、Agent框架不同，clean分母随模型变且部分训练截止用发布日代替；167/181是跨配置成功尝试的检索关联，不是因果消融。",
+      "method": [
+        "汇集62个来源的12,151条研究问题记录，另建200题数学集：110道近年已解题和90道状态冻结时开放题；保留来源、状态日期及解法证据层级。",
+        "构造固定Lean环境中的命题，经自动探针和两路AI审查后筛选HQ50（40已解、10开放）；隐藏题目身份与答案，区分命题可编译、形式化忠实和完整证明。",
+        "在闭卷A、固定历史截止的检索B、实时联网C中运行7种Agent配置，统一3小时上限并比较原生停止与续跑协议；每模型另剔除同家族解法与截止前已公开答案。",
+        "只接受通过两套独立Lean证明检查的提交。作者报告联网181次成功尝试中167次曾获取现成解法来源；本站另只读解析公开题目，核对200题和50题的数量、组成及全部尚未通过发布审查的标记。"
+      ],
+      "inspirations": [
+        "为Agent benchmark同时发布原始成功数、可比较题集和逐题排除原因；按模型变化的clean分母不能直接排榜。闭卷、允许资料和允许查现成答案应分别评分。",
+        "给代码/3D创作保留“目标语义审查”和“执行验收”两层：可运行或通过形式检查并不证明忠实于需求；再记录是否复用了现成工程。",
+        "为持续更新的题库加入状态快照与失效标记。公开新解法后重标题目，分别统计真正新解、检索复用和适配成功，避免旧open标签制造发现幻觉。"
+      ],
+      "reviewedAt": "2026-11-08T16:30:50.277661+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2610.37739v1",
+        "https://arxiv.org/html/2610.37739v1",
+        "https://huggingface.co/datasets/FlippyDora/OpenFrontiers/tree/4081ea016ba948ae10545083228363ac84b860e0",
+        "https://huggingface.co/datasets/FlippyDora/OpenFrontiers-Bench/tree/b66977d5faa9cef295a7cbbfb11b5d5a00100313",
+        "https://huggingface.co/datasets/FlippyDora/OpenFrontiers-HQ50/tree/0aa3e15716b595067fe0f904f7315b6a1c83eccd"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.37739",
+      "status": "pending",
+      "checkedAt": "2026-11-08T16:30:50.277661+00:00"
+    }
   }
 ]
