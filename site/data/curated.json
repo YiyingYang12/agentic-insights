@@ -8304,5 +8304,302 @@
       "status": "pending",
       "checkedAt": "2026-11-08T04:20:27.630401+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.07624v1",
+    "url": "https://arxiv.org/abs/2611.07624v1",
+    "id": "paper-evoaudit-2611-07624",
+    "title": "EvoAudit：Agent进化涨分时，也要查丢了哪些旧能力",
+    "summary": "作者审计4种Agent进化方法、2种harness和2个基准的16条演化谱系：所有选定版本都新增且遗失部分已覆盖任务。一个银行任务案例平均成功率升5.2个百分点，却失去10道原先至少成功过一次的题。EvoAudit据此调整选父版本、诊断、修改和准入；组合算法AGE在4种设置上优于A-Evolve，但仍存在旧题回归。",
+    "insight": "自进化的验收对象应包括旧任务保留、重试成本和跨环境迁移。总分只描述净效果，无法定位某次提示、工具接口或执行流程修改牺牲了什么；选当前冠军继续改、给更多泛化提醒、收紧准入，都需要各自的实验证据。",
+    "limits": "已读原论文正文及方法、成本、迁移和算子附录，未复现实验。主表汇总含搜索接触过的Train/Validation，不能当成纯未见测试成绩；固定Champion的8次重评也不是8次独立进化实验。结果限于GPT-5.4、两种harness及所测任务，AGE搜索种子为0，不能据此判断通用RSI能力或新模型排序。Pass@8是八次至少一次成功，并非八次全成功或可直接部署的成功率。AGE四项修改联合验证，未分离每项因果贡献，仍有旧任务回归；主表Evolution成本不含单列的证据采集和分析/设计成本。作者链接的RSIHub当前固定提交可读，但本轮未找到EvoAudit/AGE专门实现和完整审计产物，不能宣称该新算法已可完整复现。",
+    "dateLabel": "2026-11-05",
+    "evidence": "原论文方法、审计附录与原框架源码已核验·未复现",
+    "originalTitle": "Beneath the Surface: What We Overlook When We Talk About Agent Evolution",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-08T10:26:01.224790Z",
+    "updatedAt": "2026-11-05T08:06:37Z",
+    "firstSeenAt": "2026-11-08T10:26:01.224790Z",
+    "lastSeenAt": "2026-11-08T10:26:01.224790Z",
+    "tags": [
+      "Agent Evolution",
+      "Harness",
+      "Regression Audit",
+      "Cost",
+      "Generalization"
+    ],
+    "authors": [
+      "Xiaobo Wang",
+      "Zimu Wang",
+      "Siyu Ye",
+      "Jiaqi Li",
+      "Min Tang",
+      "Jun Bai",
+      "Yuling Shi",
+      "Ruobing Wang",
+      "Jingjing Zhang",
+      "Chaofan Wang",
+      "Kai Wu",
+      "Mengnan Qi",
+      "Kai Cai",
+      "Xiaodong Gu",
+      "Qi Liu",
+      "Zilong Zheng"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · 版本与时间",
+        "url": "https://arxiv.org/abs/2611.07624v1"
+      },
+      {
+        "label": "arXiv全文 · 诊断、方法与附录",
+        "url": "https://arxiv.org/html/2611.07624v1"
+      },
+      {
+        "label": "作者链接的RSIHub基础框架",
+        "url": "https://github.com/simple-agent-lab/RSIHub"
+      },
+      {
+        "label": "框架README · 固定提交",
+        "url": "https://github.com/simple-agent-lab/RSIHub/blob/d6554299c58bf0fe2db04ddda0277f9db67ea680/README.md"
+      },
+      {
+        "label": "原A-Evolve准入规则 · 固定提交",
+        "url": "https://github.com/simple-agent-lab/RSIHub/blob/d6554299c58bf0fe2db04ddda0277f9db67ea680/library/gate/hillclimb.py"
+      },
+      {
+        "label": "原贪心选择器 · 固定提交",
+        "url": "https://github.com/simple-agent-lab/RSIHub/blob/d6554299c58bf0fe2db04ddda0277f9db67ea680/library/select/greedy.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Agent总分提高，可能同时丢掉原本能做的任务。论文用逐题重复评测、成本曲线与跨基准测试审计harness进化，再把诊断变成AGE的四项算子修改；作者报告四种设置的平均成功率和覆盖率均超过A-Evolve，但这不是无回归或通用自我改进的证明。",
+      "motivation": "不更新模型权重、持续修改提示词、skills、工具接口与执行流程，是一种实用的Agent自改进路径。只用最终平均分挑版本，会把新增成功与旧能力退化抵消，忽略多次尝试、部署成本及未见环境；还可能错误地把当前最高分版本视为最值得继续扩展的父版本。",
+      "novelty": "作者主张：把harness进化的可靠性、经验覆盖、成本、迁移和选择/诊断/修改/准入机制放在同一可审计流程，进而以EvoAudit生成AGE改进。本站判断：最有价值的是把“涨分”拆成新增、保留和资源代价，并通过冻结池与功能干预检查决策；AGE的同分选择/成本准入是具体工程策略，不能据四项联合结果宣称每个策略都独立有效，或证明更严格门槛必然更差。",
+      "evidenceScope": "已读取arXiv v1正文§3–7及附录A–E中任务分割、成本账本、迁移、父版本扩展、组件干预、准入回放和AGE实现；数值均为作者报告。只读核对作者链接RSIHub提交d6554299c58bf0fe2db04ddda0277f9db67ea680的README、A-Evolve配置、greedy选择及hillclimb准入；该提交仍为原框架，未核验到AGE专门实现，未运行作者代码、评测或付费API。X仅做公开索引精确查询，没有可核验作者原帖。",
+      "limits": "已读原论文正文及方法、成本、迁移和算子附录，未复现实验。主表汇总含搜索接触过的Train/Validation，不能当成纯未见测试成绩；固定Champion的8次重评也不是8次独立进化实验。结果限于GPT-5.4、两种harness及所测任务，AGE搜索种子为0，不能据此判断通用RSI能力或新模型排序。Pass@8是八次至少一次成功，并非八次全成功或可直接部署的成功率。AGE四项修改联合验证，未分离每项因果贡献，仍有旧任务回归；主表Evolution成本不含单列的证据采集和分析/设计成本。作者链接的RSIHub当前固定提交可读，但本轮未找到EvoAudit/AGE专门实现和完整审计产物，不能宣称该新算法已可完整复现。",
+      "method": [
+        "固定GPT-5.4与评测契约，对AHE、HyperAgents、A-Evolve和GEPA分别使用可改内部源码的MiniSWE及只改外层的Codex。两项主基准为97题τ³-Banking与89题Terminal-Bench 2，均划分为Train/Validation/Test；每条归档进化运行20代，Test不供在线搜索或准入使用。",
+        "冻结Seed与Champion，各做8次逐题评测，分别统计平均成功率Avg@8、至少成功一次的Pass@8、新增/遗失题及每题成本；再将冻结版本迁移到278题τ²-bench与113题DeepSWE。主表包括全体原基准任务，分割表另报各split对总变化的贡献。",
+        "用共同的A-Evolve过程从16个父版本各产生3个候选，检验“当前表现”和“后续提升潜力”是否一致；将8个Champion的功能修改拆成16个组件，与泛化提醒比较并检查组合交互；另对冻结候选池回放准入规则，联合报告最佳候选是否保留、集合大小和身份。",
+        "EvoAudit把归档证据转成四项固定改动，装入A-Evolve形成AGE：select仅在最高分精确同分且证据可比时优先少回归者；analyze依据可观察轨迹区分观察与推断；mutate做有适用条件、依赖完整的一致修改；gate仍优先提分，仅同分且任务/成本可比时接纳更省钱者。",
+        "AGE以种子0运行20代、每代1个候选，在线使用50题Train及20/19题Validation，再独立重评冻结冠军8次。四种设置的Avg@8为34.0、38.1、71.8、73.5，均高于对应A-Evolve；同时披露仍遗失2、5、2、1道Seed覆盖题，避免把总分领先说成完整保留能力。"
+      ],
+      "inspirations": [
+        "给自动改提示/skill/工具代码的流水线加逐题转移账本：固定旧版、候选版和共同任务，记录0→成功、成功→0及多次成功频率；候选总分上涨时也必须展示丢失题、真实产物与关键工具轨迹。",
+        "每个进化版本同时画单次成本、达到相近覆盖所需尝试次数和累计搜索成本；对未参与搜索的任务与新工具环境单独验收，避免用更贵的重试或已见任务收益替代可部署改进。",
+        "把一条修改拆成保留依赖的功能组件，测试单项与组合；为改动写清可观察失败、推断机制、触发条件和可能受损行为，并保留有互补能力的候选。新增门槛前先在冻结池回放，不把“规则更严格”当作保留最佳版本的保证。"
+      ],
+      "reviewedAt": "2026-11-08T10:26:01.224790Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.07624v1",
+        "https://arxiv.org/html/2611.07624v1",
+        "https://github.com/simple-agent-lab/RSIHub",
+        "https://github.com/simple-agent-lab/RSIHub/blob/d6554299c58bf0fe2db04ddda0277f9db67ea680/README.md",
+        "https://github.com/simple-agent-lab/RSIHub/blob/d6554299c58bf0fe2db04ddda0277f9db67ea680/library/gate/hillclimb.py",
+        "https://github.com/simple-agent-lab/RSIHub/blob/d6554299c58bf0fe2db04ddda0277f9db67ea680/library/select/greedy.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.07624",
+      "status": "pending",
+      "checkedAt": "2026-11-08T10:24:32.315445+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.23986v1",
+    "url": "https://arxiv.org/abs/2610.23986v1",
+    "id": "creative-blenderworld-2610-23986",
+    "title": "BlenderWorld：换个视角、查原生工程，识破只在正面好看的3D",
+    "summary": "BlenderWorld用223个文本/图像/视频驱动的任务，验收可编辑.blend工程与成片。独立渲染Agent选8个视角，场景检查与视觉裁判分别核验2,651项要求，再与视觉质量各占一半合分。作者最高综合分79.9/100，但所有要求全通过的任务仅42.2%；单张漂亮截图远不能证明3D交付合格。",
+    "insight": "把用户约束转换成“该看哪个视角、该查哪个工程属性”的证据路由，比只加一个全局美观分更有诊断价值。尤其要检查换视角后消失的平面贴片、投影对齐却悬空的人物，以及Agent为了自证成功悄悄改变验收目标的情况。",
+    "limits": "10月14日首发的近30天补齐，非本周新发布。已读方法、评测与关键附录并只读核对固定源码；未运行Blender、模型或复现榜单。13个系统每题仅跑一次，部分用Codex、部分用Claude Code且推理设置/工具使用不等，因此是完整系统结果，不能单独归因于基础模型或宣称等成本排名。Agent裁判仍有判断误差：主裁判在147对样本的偏好一致率82.99%，70对分差较小样本降至68.57%。原生文件与静态检查不等于所有参数、骨骼、动画和仿真均经交互验证，论文把更系统的交互/参数评测列为未来工作；工具调用数也不是执行成功率或总成本。",
+    "dateLabel": "10月14日首发 · 近30天专题补齐",
+    "evidence": "原论文方法与评测附录、官方固定源码已核验 · 未复现",
+    "originalTitle": "BlenderWorld: Benchmarking Visual Agents for 3D Creation from Real-World References",
+    "date": "2026-10-14",
+    "checkedAt": "2026-11-08T10:25:40.015584+00:00",
+    "updatedAt": "2026-10-14T12:46:54Z",
+    "firstSeenAt": "2026-11-08T10:25:40.015584+00:00",
+    "lastSeenAt": "2026-11-08T10:25:40.015584+00:00",
+    "tags": [
+      "Blender",
+      "Native Artifacts",
+      "Multi-view",
+      "Agent-as-Judge",
+      "3D Evaluation"
+    ],
+    "authors": [
+      "Xinyu Fang",
+      "Yuchi Wang",
+      "Weihao Yu",
+      "Rongyao Fang",
+      "Zhaohai Li",
+      "Zhixun Li",
+      "Tiancheng Gu",
+      "Xilin Wei",
+      "Yuhang Zang",
+      "Hongsheng Li",
+      "Dahua Lin",
+      "Guofeng Zhang",
+      "Shuai Bai",
+      "Zhibo Yang",
+      "Dayiheng Liu"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · 原文与发布日期",
+        "url": "https://arxiv.org/abs/2610.23986v1"
+      },
+      {
+        "label": "arXiv HTML · 方法与完整附录",
+        "url": "https://arxiv.org/html/2610.23986v1"
+      },
+      {
+        "label": "Qwen官方GitHub",
+        "url": "https://github.com/QwenLM/BlenderWorld"
+      },
+      {
+        "label": "固定版本 · 评测协议",
+        "url": "https://github.com/QwenLM/BlenderWorld/blob/dd4f3571faed4ed45cc720ac94835534b9f67836/docs/evaluation.md"
+      },
+      {
+        "label": "固定版本 · 评分与失败处理实现",
+        "url": "https://github.com/QwenLM/BlenderWorld/blob/dd4f3571faed4ed45cc720ac94835534b9f67836/blenderworld/evaluation.py"
+      },
+      {
+        "label": "Hugging Face · 官方数据卡",
+        "url": "https://huggingface.co/datasets/Qwen/BlenderWorld"
+      },
+      {
+        "label": "Hugging Face · 论文页与作者说明",
+        "url": "https://huggingface.co/papers/2610.23986"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "3D Agent不能只交一张好看的图。该基准让它交可编辑Blender工程，再通过8个自适应视角与原生场景检查验收。223题中，作者最高综合分79.9，但全rubric通过率仅42.2%；这是两种不同指标。",
+      "motivation": "现实3D创作要同时理解参考图/视频、显式尺寸与材料要求，并交付可继续使用的工程。单视角相似度会奖励朝向相机的平面贴片，视觉裁判也未必能确认内部结构、对象数和工程配置；开放式任务还常常没有唯一标准模型。",
+      "novelty": "作者主张：面向真实开放式3D生产需求，联合多模态参考、原生工程、任务自适应多视角和结构/视觉双路线判分。本站判断：最可迁移的是把约束和证据来源显式绑定，以及保留完整工程后揭露单视角捷径；多视角或Blender代码本身并非新概念。公开工具与数据增加可检查性，但不能由此推定跨版本复现、成本公平或交互可编辑性已经充分验证。",
+      "evidenceScope": "已读arXiv 2610.23986v1正文§3–7及附录A–E，核对官方仓库固定提交dd4f3571faed4ed45cc720ac94835534b9f67836的README、评测/数据文档、evaluation.py及证据检查代码，并读取Qwen官方HF数据卡和作者论文帖。论文数据和结果为作者报告；只读获取公开文本/代码，未运行作者代码、下载完整617MB数据包、调用模型或实际渲染。",
+      "limits": "10月14日首发的近30天补齐，非本周新发布。已读方法、评测与关键附录并只读核对固定源码；未运行Blender、模型或复现榜单。13个系统每题仅跑一次，部分用Codex、部分用Claude Code且推理设置/工具使用不等，因此是完整系统结果，不能单独归因于基础模型或宣称等成本排名。Agent裁判仍有判断误差：主裁判在147对样本的偏好一致率82.99%，70对分差较小样本降至68.57%。原生文件与静态检查不等于所有参数、骨骼、动画和仿真均经交互验证，论文把更系统的交互/参数评测列为未来工作；工具调用数也不是执行成功率或总成本。",
+      "method": [
+        "从真实应用场景与多样参考素材出发，用MLLM辅助生成、改写需求并做结构/语义复核，得到223个任务：78文本、130图像、15视频，其中59题有规格附件。按要求来源生成2,651个带权二元rubric，经试评、至少两个独立模型及人工复核后冻结，生成阶段不向被测Agent暴露。",
+        "被测Agent通过Blender Python/MCP与文件、图像工具创建和修改场景，交付原生.blend及所需媒体/辅助文件。生成与评测容器分离；论文13个系统在每题只运行一次，再归档最终工程。",
+        "独立渲染Agent按任务和rubric选择8个互补视角，以Cycles、1024×1024、64采样重渲染。允许调整相机/取景和渲染设置及有限重试，但禁止修补提交的几何、材质、光照和动画；原始导出图/视频仍作为补充证据，视觉冲突时优先原始成片。",
+        "把1,544项scene_summary要求送场景检查Agent，核查原生结构/文件属性；1,107项render要求由VLM看重渲染、原始媒体与顺序抽帧判定。视觉裁判另评8个质量维度，缺证据的要求判不通过。它是工具辅助的模型判断，不是全部由确定性程序裁定。",
+        "按每题rubric重要性权重计算满足分，与8维质量分按50:50融合，再对固定223题平均；无原生工程或评测失败留在分母并计零，同时单独报告全部rubric通过率。对150对作品做3人偏好核验，去掉3对无多数票样本；另检查小分差、权重变化和失败轨迹。"
+      ],
+      "inspirations": [
+        "为code2-3d基准同时保存提交视角与评测新增的侧面/背面/近景，固定工程哈希；把“正面像、侧面塌”单独记为失败，避免只奖励最终截图，也避免评测Agent帮作者修场景。",
+        "将每条尺寸、物体数、接触、材质和导出要求绑定到可读场景属性或指定视角；保留rubric满足分、全要求通过率与视觉质量三个结果，调参时明确究竟改善了哪一种。",
+        "针对返修能力增加后续修改测试：改变一个尺寸或动画控制量，检查目标变化与其他约束是否保留；对分数接近的作品加人工复核和多次运行，不把一次融合均分差当稳定胜负。"
+      ],
+      "reviewedAt": "2026-11-08T10:25:40.015584+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2610.23986v1",
+        "https://arxiv.org/html/2610.23986v1",
+        "https://github.com/QwenLM/BlenderWorld",
+        "https://github.com/QwenLM/BlenderWorld/blob/dd4f3571faed4ed45cc720ac94835534b9f67836/docs/evaluation.md",
+        "https://github.com/QwenLM/BlenderWorld/blob/dd4f3571faed4ed45cc720ac94835534b9f67836/blenderworld/evaluation.py",
+        "https://huggingface.co/datasets/Qwen/BlenderWorld",
+        "https://huggingface.co/papers/2610.23986"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.23986",
+      "status": "pending",
+      "checkedAt": "2026-11-08T10:24:32.315445+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.07639v1",
+    "url": "https://arxiv.org/abs/2611.07639v1",
+    "id": "paper-marginal-rl-2611-07639",
+    "title": "Verifier RL的边际价值：先与SFT检查点比较，再决定追加训练",
+    "summary": "在合成GPU故障诊断中，作者把基础模型、SFT、SFT+GRPO及冷启动GRPO分开比较。预注册的交互/计算题子集上，追加RL的hard增益0.22分区间跨零，OOD增益0.33分区间不跨零；结论只适用于该小规模设置。",
+    "insight": "训练预算应针对SFT后仍未解决的错误分配。先冻结SFT基线、留出数据和最小有意义效应，再把追加RL收益与残余提升空间、成本及训练种子波动一起看，避免把示范带来的提升归给RL。",
+    "limits": "仅单个Qwen2.5-3B-Instruct、单训练种子、60步GRPO与lr=1e-6；黄金示范来自生成器，OOD仍是同一生成器的表面/参数变化，不代表跨领域或真实GPU运维。95%区间按题目bootstrap，不能反映训练种子方差；有两个共同主端点，正文未说明多重比较调整。相同评价分数不等于相同错误或训练组内无优势，机制仅假说。论文所指GitHub仓库本轮HTTP404，未核验完整训练配置、8124条生成与评分器，也未运行训练/推理；HF公开任务和论文可读，不能据此称已独立复现。",
+    "dateLabel": "2026-11-05首发 · 数据版本10-23",
+    "evidence": "已读v1方法及结果、核验HF任务文件；未复现训练",
+    "originalTitle": "Measuring the Marginal Value of Verifier-Based RL Beyond Supervised Fine-Tuning",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-08T10:25:59.558203+00:00",
+    "paperUpdatedAt": "2026-11-05T08:23:28Z",
+    "firstSeenAt": "2026-11-08T10:27:49.939494+00:00",
+    "tags": [
+      "RLVR",
+      "GRPO",
+      "SFT",
+      "可验证奖励",
+      "训练预算"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · 首发版本",
+        "url": "https://arxiv.org/abs/2611.07639v1"
+      },
+      {
+        "label": "原文方法与结果",
+        "url": "https://arxiv.org/html/2611.07639v1"
+      },
+      {
+        "label": "作者HF数据卡",
+        "url": "https://huggingface.co/datasets/saloni-garg/gpu-train-debug"
+      },
+      {
+        "label": "固定版本 · 四个任务划分",
+        "url": "https://huggingface.co/datasets/saloni-garg/gpu-train-debug/tree/03eb377879a1a0544014be15b43a2b71b2a9b01e/data"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把SFT本身的收益与后续RL的追加收益分开计账。作者在预注册交互/计算子集上报告：hard +0.22分（95%区间−0.06至+0.51），OOD +0.33分（+0.02至+0.68）；均按0–100分换算，不是相对增长率或任务成功率。",
+      "motivation": "只比较最终SFT+RL与基础模型，无法知道额外RL阶段是否值得成本。尤其当高质量示范已经覆盖大量任务规则时，需要测量SFT之后还有哪些可学习错误，以及追加训练相对原检查点的收益。",
+      "novelty": "作者主张：把可验证环境、pilot后的预注册修订及边际收益分析组合，公开一个近负结果。本站判断：贡献主要是对照设计与如实报告小效应，而非证明RL普遍无效；还应补多训练种子、更大预算、较低质量示范及独立生成器，以检验结果能否迁移。",
+      "evidenceScope": "已阅读全文v1§2–9及附录，读取作者HF数据卡/API和固定提交03eb377879a1a0544014be15b43a2b71b2a9b01e的四份JSONL，本站只做数量与精确prompt哈希交叉核对。训练/收益为作者报告；论文11月5日首发，HF版本10月23日更新，二者不混同。GitHub原链接与raw README均404，未读取完整实验生成、评分器或执行作者代码。",
+      "limits": "仅单个Qwen2.5-3B-Instruct、单训练种子、60步GRPO与lr=1e-6；黄金示范来自生成器，OOD仍是同一生成器的表面/参数变化，不代表跨领域或真实GPU运维。95%区间按题目bootstrap，不能反映训练种子方差；有两个共同主端点，正文未说明多重比较调整。相同评价分数不等于相同错误或训练组内无优势，机制仅假说。论文所指GitHub仓库本轮HTTP404，未核验完整训练配置、8124条生成与评分器，也未运行训练/推理；HF公开任务和论文可读，不能据此称已独立复现。",
+      "method": [
+        "构造30种合成GPU训练故障原型，以JSON提交诊断及修复项，由程序按目标给部分分。HF固定版本含1200训练、200 hard、236 test、241 OOD题；本站核对数量及跨split完全相同prompt为0，但原型和规则仍共享。",
+        "先做短程pilot，再在正式训练前书面修改问题与端点：比较基础模型、两轮SFT、SFT后60步GRPO、基础模型后60步GRPO。SFT通过hard质量门槛才启动追加RL；pilot看过的test只作描述，OOD保留作确认性评测。",
+        "固定3B模型和一训练种子；GRPO每步16题、每题8个候选。各臂仅评最终检查点，每题3次采样，按题配对bootstrap一万次。共同主端点是交互与计算题合并子集：hard 180题、OOD 168题，不能与全split均值混写。",
+        "分别报告完整split均值、子集差值及剩余提升空间：全hard约0.828→0.830，全OOD约0.855→0.858。再查看逐题进退和未满分题的采样同分率；同分可能削弱组相对信号是作者解释，尚缺干预实验或训练优势分布验证。"
+      ],
+      "inspirations": [
+        "做代码创作RL时同时保留base、SFT、SFT+RL与等预算冷启动臂；按冻结问题配对报告语法通过、执行完成、视觉验收各层变化，不能把最终总收益都算作RL收益。",
+        "在扩训前用少量rollout定位残余错误：缺知识、重复错同一目标或偶尔成功分别适合补示范、改任务覆盖与采样奖励。要检查逐目标结果和训练组内奖励差异，不能仅凭总分相同诊断学习机制。",
+        "将研究假说、看过的split、配置纠错与成本账本一起版本化；真实运维还需独立故障来源和可执行修复验证，合成题的JSON正确不等于修复过真实训练作业。"
+      ],
+      "reviewedAt": "2026-11-08T10:25:59.558203+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.07639v1",
+        "https://arxiv.org/html/2611.07639v1",
+        "https://huggingface.co/datasets/saloni-garg/gpu-train-debug",
+        "https://huggingface.co/datasets/saloni-garg/gpu-train-debug/tree/03eb377879a1a0544014be15b43a2b71b2a9b01e/data"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.07639",
+      "status": "pending",
+      "checkedAt": "2026-11-08T10:24:32.315445+00:00"
+    }
   }
 ]
