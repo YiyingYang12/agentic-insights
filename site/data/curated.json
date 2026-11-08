@@ -8955,5 +8955,189 @@
       "status": "pending",
       "checkedAt": "2026-11-08T16:30:50.277661+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.05450v1",
+    "url": "https://arxiv.org/abs/2611.05450v1",
+    "id": "paper-rescopebench-2611-05450",
+    "title": "ReScopeBench：环境变了，Agent能更新旧经验又保留正确规则吗？",
+    "summary": "18个模拟环境、352个连续任务、26次静默变化，分别检查交付结果与保存的结构/规则经验。20个模型在首次受影响任务后，更新覆盖最高只有37.63分；部分案例虽一度修复，随后又失去完整覆盖。核心问题是选择性更新、保留有效知识，以及把记忆真正用于行动。",
+    "insight": "Agent持续运行时，记忆质量不能只看积累多少或当前任务是否成功。应把一次环境变化拆成“必须修改的关系”和“必须保留的规则”，再追踪后续快照与实际交付；临时查到答案、写入新记忆、持续正确地使用，是不同验收环节。",
+    "limits": "已读全文与评测/诊断附录，并只读核验固定版本源码和部分HF数据；未运行环境、模型或复现实验。18个环境是程序化应用模拟，不等于真实企业系统部署。每个模型—环境—条件只有一条运行流，没有多次独立运行的置信区间；两条件起点相同但业务状态各自演化，非每题同状态的记忆开关A/B。经验分数依赖选定参考条目与LLM judge，衡量覆盖率而非所有记忆的准确率；跨judge高一致性不等于独立真值验证。UC/RT也可能包含首次学会，不能一概称旧知识修正率；RT仅计首次共同完成，不证明持续正确。选择性修正分析限487个符合条件的案例，未覆盖所有变化；10.26%回退仅以1520个有两次随访的首次完成案例为分母，指评分失去覆盖，不必然是永久遗忘或任务失败。覆盖与交付关联属于描述分析，不能推出因果关系或通用模型排名。",
+    "dateLabel": "2026-11-03",
+    "evidence": "原论文方法与评测附录、固定源码及HF数据配置已核验·未复现",
+    "originalTitle": "Towards Robust Long-Lived Agents: Benchmarking Experience Lifecycles in Evolving Environments",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-08T22:20:40.721960Z",
+    "updatedAt": "2026-11-03T17:57:20Z",
+    "firstSeenAt": "2026-11-08T22:20:40.721960Z",
+    "lastSeenAt": "2026-11-08T22:20:40.721960Z",
+    "tags": [
+      "Agent Memory",
+      "Skills",
+      "Environment Drift",
+      "Experience Lifecycle",
+      "Long-Lived Agents"
+    ],
+    "authors": [
+      "Shijue Huang",
+      "Hangyu Guo",
+      "Hengheng Zhang",
+      "Guo An",
+      "Zhitao He",
+      "Qi Tian",
+      "Yiren Feng"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · 首发版本与时间",
+        "url": "https://arxiv.org/abs/2611.05450v1"
+      },
+      {
+        "label": "arXiv全文 · 构造、评测与诊断附录",
+        "url": "https://arxiv.org/html/2611.05450v1"
+      },
+      {
+        "label": "作者评测仓库 · 固定提交说明",
+        "url": "https://github.com/JoeYing1019/ReScopeBench/blob/4780ba60e61b8dd41e86a370560ca72de3e9ed61/README.md"
+      },
+      {
+        "label": "UC/RT与等权聚合实现 · 固定提交",
+        "url": "https://github.com/JoeYing1019/ReScopeBench/blob/4780ba60e61b8dd41e86a370560ca72de3e9ed61/rescope_metrics/scores.py"
+      },
+      {
+        "label": "作者HF环境数据 · 代码固定版本",
+        "url": "https://huggingface.co/datasets/JoeYing/ReScopeBench/tree/f726fd6939a77440992dc433872acf2d2d03d158"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Agent记忆需要同时回答三件事：旧信息是否及时改对、仍有效的信息有没有被误删、保存的信息能否真正支持交付。ReScopeBench用18个会静默变化的模拟环境，把任务结果与记忆/skill快照分开评测；20个模型的首次受影响任务后更新覆盖最高仅37.63分。",
+      "motivation": "例如交付目录换了位置、交付规则却没变：Agent可能临时找对新目录并完成任务，却留下过期记忆；也可能更新目录时把仍有效规则删掉。只看任务得分或总记忆量无法区分这些失败，反复查环境又会消耗完成任务所需的有限预算。",
+      "novelty": "作者主张：以经验依赖为起点构造任务流和静默变化，联合测经验获得、复用、选择性修正与保留。本站判断：贡献是把“记忆维护”做成可定位的评测协议和证据链，而非新RL训练算法；特别值得借鉴的是区分改动目标与保持目标，并把保存正确和实际交付分开。",
+      "evidenceScope": "已读arXiv v1 §2–3和附录A–D，重点核对构造、双流协议、UC/RT、judge一致性及选择性修正/持久性分析。只读作者GitHub固定提交4780ba60e61b8dd41e86a370560ca72de3e9ed61的README、评分/rubric、checkpoint逻辑；从代码固定的HF版本f726fd6939a77440992dc433872acf2d2d03d158读取manifest、352条任务预览及Filesystem样例源码/契约，核验18环境/352任务/26变化的配置数量及匹配文件哈希。未执行作者代码、Docker、模型调用或独立评分。X只查公开索引，未得到可交叉核验作者原帖。",
+      "limits": "已读全文与评测/诊断附录，并只读核验固定版本源码和部分HF数据；未运行环境、模型或复现实验。18个环境是程序化应用模拟，不等于真实企业系统部署。每个模型—环境—条件只有一条运行流，没有多次独立运行的置信区间；两条件起点相同但业务状态各自演化，非每题同状态的记忆开关A/B。经验分数依赖选定参考条目与LLM judge，衡量覆盖率而非所有记忆的准确率；跨judge高一致性不等于独立真值验证。UC/RT也可能包含首次学会，不能一概称旧知识修正率；RT仅计首次共同完成，不证明持续正确。选择性修正分析限487个符合条件的案例，未覆盖所有变化；10.26%回退仅以1520个有两次随访的首次完成案例为分母，指评分失去覆盖，不必然是永久遗忘或任务失败。覆盖与交付关联属于描述分析，不能推出因果关系或通用模型排名。",
+      "method": [
+        "先在代码模拟的应用环境中识别可通过工具发现、能跨任务复用的经验，分为结构关系与操作规则。为每项经验建立私有评测依赖图、声明级rubric和当前版本参考，避免把参考答案预装进Agent记忆。",
+        "据此联合构造18环境、352任务的连续流，每流16/24/32任务，安排共26次未通知Agent的局部变化；只让部分关系、规则、权限或资源失效。回放参考解与局部修正，确认可在预算内完成，再冻结任务、工具、变化日程和grader。",
+        "20个模型统一使用Hermes，每环境分别跑保留经验与清空经验两条流；每任务开启新对话，前者保留memory、skills和可检索历史，后者只清这些经验资产，业务状态不重置。两条流起点相同，之后因各自行动而分歧。",
+        "确定性grader检查任务交付；LLM judge按当前环境版本逐声明核对全部保存内容。分别报告任务得分、结构/规则覆盖、首次受影响任务后的更新覆盖UC，以及新目标和此前正确且仍有效条目首次共同完整的及时性RT；所有指标按环境等权汇总。",
+        "作者报告最高UC仅37.63；在487个可对齐旧正确关系的案例中，第四个受影响任务后更新覆盖64.63%，仍有效内容保留91.07%。另对首次共同完成且有两次后续快照的1520个案例追踪，156个再次失去完整覆盖，说明“曾修好”不等于“持续保持”。"
+      ],
+      "inspirations": [
+        "给Agent的memory/skill做局部变更回归集：迁移一个目录、换一个工具参数或授权主体，同时保持其余规则不变；分别测过期信息修正、无关有效条目保留及后续任务交付，避免用整库重写掩盖误删。",
+        "为每条经验记录适用域、来源证据、环境版本和被哪些任务依赖；读到与旧skill冲突的新证据后，测试是否定点修订、清理矛盾副本，并连续复查至少两个后续快照，不以首次恢复打勾结束。",
+        "同时保存“已有正确经验—实际读取/使用—工具参数—交付产物”的链条，并设置查询与执行共享预算。对未交付案例区分没知识、没用对、未提交和预算耗尽；将前台调用、自动记忆注入及后台skill review成本分列，避免只优化记忆覆盖。"
+      ],
+      "reviewedAt": "2026-11-08T22:20:40.721960Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.05450v1",
+        "https://arxiv.org/html/2611.05450v1",
+        "https://github.com/JoeYing1019/ReScopeBench/blob/4780ba60e61b8dd41e86a370560ca72de3e9ed61/README.md",
+        "https://github.com/JoeYing1019/ReScopeBench/blob/4780ba60e61b8dd41e86a370560ca72de3e9ed61/rescope_metrics/scores.py",
+        "https://huggingface.co/datasets/JoeYing/ReScopeBench/tree/f726fd6939a77440992dc433872acf2d2d03d158"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.05450",
+      "status": "pending",
+      "checkedAt": "2026-11-08T22:19:39.525869+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.08209v1",
+    "url": "https://arxiv.org/abs/2611.08209v1",
+    "id": "paper-roboarcade-2611-08209",
+    "title": "RoboARCade：机器人Agent说完成后，外部验收真的通过了吗",
+    "summary": "用同一模拟环境比较两种控制接口，并拆开子任务进度、整题完成与错误成功宣告。示范和文字经验改善了选定任务的操作流程，但精度错误与误报仍然存在。",
+    "insight": "Agent评测必须把动作结果与模型自报分开；体验更丰富的界面也要按调用成本和实际完成量验收。把成功轨迹变成文字经验，需另算优化数据与准备成本。",
+    "limits": "已读论文方法与附录、固定仓库的评分器/PCR子任务和沙箱说明，未运行模拟器、模型或独立重评轨迹。49.8%是22任务各5种子下的子任务rubric均分，不是整题成功率；24%–39%误报以已尝试子任务为分母，不能替代附录按完成宣告决策统计的错误率。ICL/T2只测选定5个已有成功样例任务、每方法50次，73%/72%是rubric分，二者整题均32/50；没有权重训练，也非未见任务泛化。T2每次评测较省费用不等于计入示范获取和优化rollout的总成本较低。公开代码快照可能含论文之外的任务，未核验其与所有已发表轨迹完全一致；HF仅核对公开素材元数据。项目视频/完整轨迹站本轮403，未浏览或重放。主要为准静态桌面模拟控制，非真机结论；不同模型使用各自CLI，成本表有缺失调用的下界估计。",
+    "dateLabel": "2026-11-05论文",
+    "evidence": "全文与固定评分源码已核对·未运行或复现",
+    "originalTitle": "RoboARCade: Benchmarking Agentic Robot Control",
+    "date": "2026-11-05",
+    "checkedAt": "2026-11-08T22:19:39.525869+00:00",
+    "updatedAt": "2026-11-05T16:00:16Z",
+    "firstSeenAt": "2026-11-08T22:22:48.801798+00:00",
+    "tags": [
+      "机器人Agent",
+      "外部验收",
+      "经验蒸馏",
+      "接口评测"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "论文v1与提交时间",
+        "url": "https://arxiv.org/abs/2611.08209v1"
+      },
+      {
+        "label": "方法/实验/附录",
+        "url": "https://arxiv.org/html/2611.08209v1"
+      },
+      {
+        "label": "作者实现固定版本",
+        "url": "https://github.com/Satvik1701/RoboARCade/blob/849138cfa51c62ee2679ac5f50601008e8373133/README.md"
+      },
+      {
+        "label": "子任务与整题评分",
+        "url": "https://github.com/Satvik1701/RoboARCade/blob/849138cfa51c62ee2679ac5f50601008e8373133/core/grade_episode.py"
+      },
+      {
+        "label": "PCR任务评分示例",
+        "url": "https://github.com/Satvik1701/RoboARCade/blob/849138cfa51c62ee2679ac5f50601008e8373133/tasks/set_up_pcr_run/grade.py"
+      },
+      {
+        "label": "隔离边界说明",
+        "url": "https://github.com/Satvik1701/RoboARCade/blob/849138cfa51c62ee2679ac5f50601008e8373133/docs/SANDBOX.md"
+      },
+      {
+        "label": "公开素材固定版本",
+        "url": "https://huggingface.co/datasets/roboarcade/roboarcade-assets/tree/f04a0bd5afe4fcae66bf2a90f8031eca0e5629bd"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把“做对了多少步骤”与“整件事完成”“自己说完成”拆开。RoboARCade用隐藏模拟器状态验收机器人Agent；更丰富的3D界面只带来有限子任务收益，却明显增加调用成本。成功示范和文字经验能帮助选动作，但仍可能自信地误报完成。",
+      "motivation": "不同机器人Agent演示常同时改变任务、接口与模型，难以定位收益；只看最终宣告或总分，又会混淆看懂场景、选错操作、执行不精确和误判完成。",
+      "novelty": "作者主张：统一长程机器人控制接口与任务，并用细分失败和自主经验改写解释模型能力。本站判断：可迁移价值是把外部状态验收、过程诊断和自报完成分开；这些接口与少量种子的结果不能单独证明模型普遍优劣，经验改写也不能视作通用持续自我改进。",
+      "evidenceScope": "已读arXiv v1§3–4及附录A.2/A.4–A.7，交叉核对作者主页的Code链接和固定提交849138c下README、grade_episode、PCR任务评分及SANDBOX说明。HF素材仅元数据检查（公开非门控、版本f04a0bd）；未下载大素材或执行仓库代码。所有模型成绩为作者报告，代码核对仅为静态语义检查。",
+      "limits": "已读论文方法与附录、固定仓库的评分器/PCR子任务和沙箱说明，未运行模拟器、模型或独立重评轨迹。49.8%是22任务各5种子下的子任务rubric均分，不是整题成功率；24%–39%误报以已尝试子任务为分母，不能替代附录按完成宣告决策统计的错误率。ICL/T2只测选定5个已有成功样例任务、每方法50次，73%/72%是rubric分，二者整题均32/50；没有权重训练，也非未见任务泛化。T2每次评测较省费用不等于计入示范获取和优化rollout的总成本较低。公开代码快照可能含论文之外的任务，未核验其与所有已发表轨迹完全一致；HF仅核对公开素材元数据。项目视频/完整轨迹站本轮403，未浏览或重放。主要为准静态桌面模拟控制，非真机结论；不同模型使用各自CLI，成本表有缺失调用的下界估计。",
+      "method": [
+        "在MuJoCo中组织22个长程操作任务、3种机械臂配置，随机化初态，并用Blender提供观察图；把任务、接口、模型解耦，Agent看不到物体真值、任务资产和评分结果。",
+        "固定相同任务和5个种子，对比直接执行末端命令的多视角RGBD接口与可预览目标夹爪的VIA三维接口；分别统计子任务完成比例、整题完成、费用及每次机械动作对应的调用量。",
+        "从保存模拟状态验收rubric。本站静态核对代码：score为已完成子任务占比，solved要求全部完成；普通子任务看最终状态，ever子任务允许历史满足，另有依赖、约束失效和超时处理。失败原因则经几何误差初分，再由VLM或人检查。",
+        "在5个已出现成功轨迹的任务上，让同一Agent读一条成功示范，或将其总结为文字提示T1，再利用评分反馈修改为T2；每任务每方法10次。作者报告rubric从53.5%升到ICL73.0%/T272.0%，两者整题成功均32/50，改善不是微调权重。"
+      ],
+      "inspirations": [
+        "为网页、代码与剪辑Agent同时记录目标检查通过、整个交付完成及自报成功。固定目标状态和证据，统计“说完成但没完成”的比例，且每项都标出分母。",
+        "界面实验应固定任务、模型、动作预算，并把预览与规划工具额外调用计入费用；比较直接操作和先预览再执行，检查成本究竟换来成功、少误报还是仅更长过程。",
+        "把成功轨迹压缩成可版本化操作经验，再在未用于修改的初态上测试。分开报告部分进展、完整完成、遗忘/失效和全部准备成本，防止少量熟悉任务上涨被解释为跨任务泛化。"
+      ],
+      "reviewedAt": "2026-11-08T22:19:39.525869+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.08209v1",
+        "https://arxiv.org/html/2611.08209v1",
+        "https://github.com/Satvik1701/RoboARCade/blob/849138cfa51c62ee2679ac5f50601008e8373133/README.md",
+        "https://github.com/Satvik1701/RoboARCade/blob/849138cfa51c62ee2679ac5f50601008e8373133/core/grade_episode.py",
+        "https://github.com/Satvik1701/RoboARCade/blob/849138cfa51c62ee2679ac5f50601008e8373133/tasks/set_up_pcr_run/grade.py",
+        "https://github.com/Satvik1701/RoboARCade/blob/849138cfa51c62ee2679ac5f50601008e8373133/docs/SANDBOX.md",
+        "https://huggingface.co/datasets/roboarcade/roboarcade-assets/tree/f04a0bd5afe4fcae66bf2a90f8031eca0e5629bd"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.08209",
+      "status": "pending",
+      "checkedAt": "2026-11-08T22:19:39.525869+00:00"
+    }
   }
 ]
