@@ -8119,5 +8119,190 @@
       "status": "pending",
       "checkedAt": "2026-11-07T22:26:18.278672+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.02633v1",
+    "url": "https://arxiv.org/abs/2611.02633v1",
+    "id": "paper-collaborative-intelligence-2611-02633",
+    "title": "Collaborative Intelligence：先确认独立能做，再测模型能否当好队友",
+    "summary": "该基准用240个任务设置独立完成与团队/接管对照，仅在模型能独立解出的题上计算协作分。18个模型均出现协作弱点，高推理设置最高82.2/100；论文中frontier默认组在施压协商中仅14%达成最优交易，但已成交交易仍约有最优总效用的95%，不能把低通过率当成同等幅度的经济损失。",
+    "insight": "多Agent系统需要同时验收“会做任务”和“会处理队友带来的问题”。交接继承的错误、未被明确分配的工作和协商压力，能暴露单体榜单看不到的失败；评测时还应把规则符合度、实际结果效用和裁判误差分开。",
+    "limits": "已读全文方法与关键附录、核对官方源码，未重跑模型。每题solo和对应baseline只跑1次，测试跑3次；不同模型按各自solo通过题计分，作者的共同题/统计调整缓解但不消除筛选与小样本不确定性。LLM既影响队友脚本分支，也可经reader复核覆盖部分最终判分，不能称纯程序客观评分；人工标签检查仅40条，且两人各标20条。80个留出任务按已有模型表现等因素平衡切分，公开/留出接近不足以证明无污染或前瞻泛化。队友主要为固定脚本与LLM，不能外推真实人类协作；API成本只算被测模型，不含伙伴、裁判和复核。",
+    "dateLabel": "2026-11-02",
+    "evidence": "原论文方法与评测附录、官方源码已核验·未复现",
+    "originalTitle": "Measuring AI Agents as Teammates with Collaborative Intelligence",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-08T04:19:53Z",
+    "updatedAt": "2026-11-02T06:59:08Z",
+    "firstSeenAt": "2026-11-08T04:19:53Z",
+    "lastSeenAt": "2026-11-08T04:19:53Z",
+    "tags": [
+      "Multi-Agent",
+      "Teamwork",
+      "Evaluation",
+      "Handoff",
+      "Judge Audit"
+    ],
+    "authors": [
+      "Sean Wu",
+      "Aneesh Pappu",
+      "Jiaru Zou",
+      "Yubin Kim",
+      "Yuncong Mao",
+      "Hongjian Zhou",
+      "Junchi Yu",
+      "Jieneng Chen",
+      "James Zou"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · 原论文与版本时间",
+        "url": "https://arxiv.org/abs/2611.02633v1"
+      },
+      {
+        "label": "arXiv HTML · 方法与评测附录",
+        "url": "https://arxiv.org/html/2611.02633v1"
+      },
+      {
+        "label": "官方GitHub · 基准与代码",
+        "url": "https://github.com/zou-group/collaborative-intelligence"
+      },
+      {
+        "label": "官方数据卡 · 固定提交",
+        "url": "https://github.com/zou-group/collaborative-intelligence/blob/3de5f7d0a652c0b393342b4fbae59b78034034ea/docs/datacard.md"
+      },
+      {
+        "label": "官方评分实现 · 固定提交",
+        "url": "https://github.com/zou-group/collaborative-intelligence/blob/3de5f7d0a652c0b393342b4fbae59b78034034ea/scripts/score.py"
+      },
+      {
+        "label": "官方判分与复核说明 · 固定提交",
+        "url": "https://github.com/zou-group/collaborative-intelligence/blob/3de5f7d0a652c0b393342b4fbae59b78034034ea/docs/design.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "模型独立完成任务，不代表受队友影响后仍能做好。作者用solo能力门槛、团队及接管对照拆分两者；240题覆盖8类协作行为。最高分82.2/100来自高推理设置，但该分数受任务筛选、脚本与裁判影响，不是通用“团队智商”。",
+      "motivation": "单体能力榜单主要看模型是否能解题，团队最终成功率又容易掩盖某个成员的贡献。实际Agent要共享信息、发现无人负责的工作、抵抗不合理压力并检查接手的成果，因此需要控制任务本身难度，专门测这些协作失败。",
+      "novelty": "作者主张：用单体可解条件化的八维团队基准，区分解题能力和作为队友的表现，并通过可控脚本复现协作压力。本站判断：有价值的是三条件对照、可检查的交接状态与细分失败模式；它提供额外诊断，而非证明协作完全独立于一般能力。固定脚本、一次solo筛选和有价值取向的协商评分，仍限制跨模型、跨真实团队的解释。",
+      "evidenceScope": "已读arXiv v1正文§2–4与附录A、C、F.2、G，以及官方仓库固定提交3de5f7d0a652c0b393342b4fbae59b78034034ea的README、数据卡、设计/验证文档、评分与协商计分代码；核对公开set每维20题。数值为作者报告，未调用评测模型、运行环境或重现榜单；X仅查公开索引，无可验证作者原帖。",
+      "limits": "已读全文方法与关键附录、核对官方源码，未重跑模型。每题solo和对应baseline只跑1次，测试跑3次；不同模型按各自solo通过题计分，作者的共同题/统计调整缓解但不消除筛选与小样本不确定性。LLM既影响队友脚本分支，也可经reader复核覆盖部分最终判分，不能称纯程序客观评分；人工标签检查仅40条，且两人各标20条。80个留出任务按已有模型表现等因素平衡切分，公开/留出接近不足以证明无污染或前瞻泛化。队友主要为固定脚本与LLM，不能外推真实人类协作；API成本只算被测模型，不含伙伴、裁判和复核。",
+      "method": [
+        "从94个真实事件记录与146个已有基准任务构造240个场景，覆盖抵抗危险施压、报告违规、分享/索取信息、情绪回应、维持目标、处理冲突、主动协助及接管工作；每维30题，其中20题公开、10题保留。",
+        "通常设全信息solo、正常队友baseline与问题队友test三种条件。主动性高负载版本沿用原题solo；接管维度也沿用原题solo，比较被测模型从头处理原始问题情境（fresh）与接手续传弱模型受损会话。队友由固定分支脚本和实时LLM伙伴组成，消息由双裁判一致或第三裁判裁决标签后驱动脚本。",
+        "solo和对应baseline各跑1次，test跑3个种子；只对该模型solo通过的题计算每维平均，再等权平均8维。大多数任务二元判分；协商严格通过须询问需求、不屈服且达成最优结果，得1分、未屈服但未成功得0.5、屈服得0，并用4,000次bootstrap报告区间。",
+        "用最终答案、文件修改、隐藏测试和实际发送的信息检查结果；情绪、接管及部分协商运行另经LLM reader通读，必要时修正判分或从受影响节点续跑。官方实现因此包含程序检查、消息裁判和复核三层。",
+        "比较18个模型及6个高推理配置，检验公开/留出、种子稳定性和共同solo可解题上的排序；另用40条消息做人工标签核查，并报告协商总效用，避免只看规则通过率。成本图仅计算被测模型API调用，不含伙伴和裁判。"
+      ],
+      "inspirations": [
+        "给模型路由和多Agent交接增加成对测试：同任务从干净状态开始，与接手含被篡改测试/错误记录的状态分别运行；验收是否实际修复、通知队友并保留真实工具证据，不能只看模型口头说发现了问题。",
+        "把未分配工作、隐藏信息与忙碌工作区做成受控干预，同时保留solo及正常团队基线；将没看到问题、看到后让步、识别却没完成修复分开统计，便于定位需要改提示、工具入口还是训练数据。",
+        "为每个社交指标同时给行为规则分与任务效用分，审计裁判和reader的分歧；在尚未参与题目筛选的新模型/新脚本上复测，避免把贴合固定话术误当成可泛化的协作能力。"
+      ],
+      "reviewedAt": "2026-11-08T04:19:53Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.02633v1",
+        "https://arxiv.org/html/2611.02633v1",
+        "https://github.com/zou-group/collaborative-intelligence",
+        "https://github.com/zou-group/collaborative-intelligence/blob/3de5f7d0a652c0b393342b4fbae59b78034034ea/docs/datacard.md",
+        "https://github.com/zou-group/collaborative-intelligence/blob/3de5f7d0a652c0b393342b4fbae59b78034034ea/docs/design.md",
+        "https://github.com/zou-group/collaborative-intelligence/blob/3de5f7d0a652c0b393342b4fbae59b78034034ea/scripts/score.py",
+        "https://github.com/zou-group/collaborative-intelligence/blob/3de5f7d0a652c0b393342b4fbae59b78034034ea/src/collab_intel/conflict_score.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.02633",
+      "status": "pending",
+      "checkedAt": "2026-11-08T04:20:27.630401+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.04813v2",
+    "url": "https://arxiv.org/abs/2611.04813v2",
+    "id": "paper-agenticfinbench-2611-04813",
+    "title": "AgenticFinBench：先分清证据来源与事实真伪，再给Agent回答打分",
+    "summary": "以230道真实需求衍生题评估18种Agent配置，先按题目rubric评分，再审计主张的轨迹来源与事实真伪。作者报告原rubric榜首经审计扣7.58分并降至第4，提示流畅且完整的回答仍可能依赖错误事实。",
+    "insight": "把“有来源”“是真的”“对任务有多大影响”拆开保存，才能看见检索错误、推理误读及无依据猜对的区别。对同一根因去重扣分，并同时报告逐主张错误密度和受影响回答比例。",
+    "limits": "已读v2方法、结果及相关附录，核验公开README、230题文件与manifest，未运行评估或模型。任务经过目的性筛选且中英文不均衡，不能代表全部线上流量。幻觉专指“轨迹无支持且被外部证据反驳”，不是总事实错误率；裁判同一会话内自检也不是独立复核。不同配置的工具、指令与推理预算不同，工具使用关联不能证明因果收益。公开仓库尚未包含论文完整回答、轨迹与逐claim审计；runner遗留OR支持率/policy pass率不能替代论文指标，部分成本还是原运行均值或可见文本估计。",
+    "dateLabel": "2026-11-03首发 · 11-04修订",
+    "evidence": "原论文v2方法与公开数据文件已核验·未复现",
+    "originalTitle": "AgenticFinBench: Benchmarking Financial Agents on Diverse Tasks from Real-World Requests",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-08T04:19:25.636248+00:00",
+    "paperUpdatedAt": "2026-11-04T03:29:04Z",
+    "updatedAt": "2026-11-04T03:29:04Z",
+    "firstSeenAt": "2026-11-08T04:19:25.636248+00:00",
+    "tags": [
+      "Agent评测",
+      "真实任务",
+      "事实审计",
+      "Rubric",
+      "证据追踪"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · 版本与原文",
+        "url": "https://arxiv.org/abs/2611.04813v2"
+      },
+      {
+        "label": "arXiv HTML · v2方法和结果",
+        "url": "https://arxiv.org/html/2611.04813v2"
+      },
+      {
+        "label": "作者仓库 · 发布范围与评估说明",
+        "url": "https://github.com/NashnovaResearch/AgenticFinBench"
+      },
+      {
+        "label": "公开任务 · 230题",
+        "url": "https://github.com/NashnovaResearch/AgenticFinBench/blob/main/data/questions.json"
+      },
+      {
+        "label": "公开数据manifest",
+        "url": "https://github.com/NashnovaResearch/AgenticFinBench/blob/main/data/manifest.json"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把“回答有依据”与“回答事实正确”分开审计，再将确认错误纳入任务评分。230道真实需求衍生题上，作者报告原rubric榜首经审计扣7.58分并降至第4；这是特定配置和判分协议下的结果。",
+      "motivation": "开放式Agent回答常没有唯一标准答案，满足写作或任务rubric仍可能靠错误事实支撑。仅检查是否检索到出处又会把“引用了错误工具结果”误当正确，需要同时记录来源、事实判断与错误对结论的影响。",
+      "novelty": "作者主张：将真实开放任务、题目特定rubric和两阶段事实审计组合成无需标准答案的评测。本站判断：可迁移贡献是把来源支持、事实真伪和任务影响分开保存，再按错误根因合并扣分；低幻觉率不能替代完整正确率，完整模型与harness配置才是这里的比较单位。",
+      "evidenceScope": "阅读arXiv 2611.04813v2正文§3–5及附录A–E、H相关统计；核验作者公开仓库README、230题JSON和manifest。数字为作者报告，verified仅来源核验。原文首发11月3日、v2修订11月4日；本轮未运行外部脚本、调用评估API或复现18配置结果，未读取完整未公开实验档案。",
+      "limits": "已读v2方法、结果及相关附录，核验公开README、230题文件与manifest，未运行评估或模型。任务经过目的性筛选且中英文不均衡，不能代表全部线上流量。幻觉专指“轨迹无支持且被外部证据反驳”，不是总事实错误率；裁判同一会话内自检也不是独立复核。不同配置的工具、指令与推理预算不同，工具使用关联不能证明因果收益。公开仓库尚未包含论文完整回答、轨迹与逐claim审计；runner遗留OR支持率/policy pass率不能替代论文指标，部分成本还是原运行均值或可见文本估计。",
+      "method": [
+        "从真实请求中筛选、匿名化并经专家复核，冻结230题，覆盖8类交付任务和4级复杂度；189题中文、41题英文，按用户与类别控制采样，但不是生产流量的概率样本。",
+        "只用题目生成并复核正负rubric，避免看见待评回答后量身定做标准；正项在任务完成、解释推理、证据准确、范围适用四维分配100分，负项定义严重程度和封顶规则。",
+        "对冻结回答一次性抽取带实体、时间、单位与限定条件的原子事实；先检查完整执行轨迹是否支持，模型自己的计划或复述不算证据。再复用可靠证据并按需查原始外部来源，输出证实、反驳或未核实，不能把找不到证据直接判错。",
+        "将确认错误与回答重新对照，再连接原有负项或新增事实处罚；同一根因只扣一次，并抵扣它已经造成的正项失分。无轨迹支持且外部反驳才计入论文的幻觉类；有轨迹但事实错误仍可降低质量分。",
+        "对18种模型与harness配置的4140份冻结回答计分，分别报告质量、逐claim诊断和含幻觉回答占比。由专家盲审样本及另一模型家族复判部分rubric，检查判分一致性；问级bootstrap反映题目采样波动，重复判分不等于重复生成。"
+      ],
+      "inspirations": [
+        "为研究助手或代码创作Agent建立“输出主张—工具原始返回—独立核验”的证据链；同时保留工具本身出错、Agent误读工具和外部可证实但过程无依据三种情况。",
+        "把同根错误的传播显式成组：一个错误素材时间码可能同时损伤叙事、字幕和时长，应记录多个后果并避免重复处罚；另保留错误严重性与核心结论封顶规则。",
+        "先冻结用户要求和验收项，再看模型结果；分别报告任务分、未核实率、回答受错误影响比例和失败分母，并用独立人工样本检查自动裁判，而非把自动打分当真值。"
+      ],
+      "reviewedAt": "2026-11-08T04:19:25.636248+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.04813v2",
+        "https://arxiv.org/html/2611.04813v2",
+        "https://github.com/NashnovaResearch/AgenticFinBench",
+        "https://github.com/NashnovaResearch/AgenticFinBench/blob/main/data/questions.json",
+        "https://github.com/NashnovaResearch/AgenticFinBench/blob/main/data/manifest.json"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.04813",
+      "status": "pending",
+      "checkedAt": "2026-11-08T04:20:27.630401+00:00"
+    }
   }
 ]
