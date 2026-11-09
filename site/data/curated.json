@@ -9139,5 +9139,338 @@
       "status": "pending",
       "checkedAt": "2026-11-08T22:19:39.525869+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.03233v2",
+    "url": "https://arxiv.org/abs/2611.03233v2",
+    "id": "live-d9e8ebb7cc737435",
+    "title": "Axion 1.0：把推理与查证分开训练，再用依赖顺序奖励做RL",
+    "summary": "Axion用两段SFT分别训练自包含推理与外部查证，再接异步GRPO。数据先建立参考答案，再收集正确轨迹；RL给最终正确满分，最终答案不正确时按连续验证的依赖前缀给部分分。作者35B的SEAL-0从第二段SFT的53.2升至RL的62.2，但部分科学评测回落，且指标采用多次运行中最好单次。",
+    "insight": "训练Agent可以先区分“信息够但推不出”和“必须找证据”两类失败，再分别造数；过程奖励也应检查依赖是否成立，而非只看某个正确字符串出现。开放配方值得借鉴，但要把论文结果、发布代码与社区权重作为不同证据层核对。",
+    "limits": "已读v2全文并静态核验固定源码及HF卡片，未运行作者代码、训练或复现实验。分数为作者自测每项3次（BMB 5次）中的最好单次，不是均值；跨来源基线的工具与执行设置不完全一致。阶段比较是顺序checkpoint对照，未隔离数据难化、训练顺序和奖励各项的因果贡献；HLE-130不等于主表完整HLE，BMB限human-difficult子集。35B的RL在部分项目退步，不能概括为全面提升。约90/240 GPU小时仅指两段SFT，不含造数、验证、RL和推理。公开数据卡列10,819+7,544条SFT及484道RL任务，但122B保存的SFT输入记录列Stage I为9,840条；未验证发布集与原训练输入逐条等价。公开生成器采用一次求解再审计，并有含Trap的加权改写，区别于论文的三次独立求解与四种随机改写；原RL完整环境和总update数未恢复，发布代码也声明未重新验证GPU训练/论文指标。官方所链接35B权重是社区复现版，不是论文原checkpoint。",
+    "dateLabel": "2026-11-02",
+    "evidence": "v2原论文方法/实验、固定源码及HF卡片已核验·未复现",
+    "originalTitle": "Axion 1.0: Open Agent Foundation Models, Simplified",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-09T04:29:02Z",
+    "updatedAt": "2026-11-02T14:48:57Z",
+    "firstSeenAt": "2026-11-03T10:00:01Z",
+    "lastSeenAt": "2026-11-09T04:00:01Z",
+    "dailySubmittedAt": "2026-11-04T00:00:00.000Z",
+    "tags": [
+      "Agent训练",
+      "模型感知数据构造",
+      "两阶段SFT",
+      "GRPO",
+      "过程奖励",
+      "科学研究Agent"
+    ],
+    "authors": [
+      "Yuqi Jia",
+      "Yunjie Tian",
+      "Jiayu Zheng",
+      "Yijun Liang",
+      "Jingchen Sun",
+      "Mengyu Zhao",
+      "Di Fu"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.03233v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.03233"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.03233"
+      },
+      {
+        "label": "Project",
+        "url": "https://axion1-0.github.io/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/bytedance/axion1_0"
+      },
+      {
+        "label": "arXiv v2全文 · 方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.03233v2"
+      },
+      {
+        "label": "arXiv版本与首发/修订日期",
+        "url": "https://arxiv.org/abs/2611.03233v2"
+      },
+      {
+        "label": "作者仓库 · 固定提交",
+        "url": "https://github.com/bytedance/axion1_0/blob/66cab5555ca25d3a5460ca6a6eff07f3a6bcabbc/README.md"
+      },
+      {
+        "label": "Stage I生成器 · 一次求解与审计",
+        "url": "https://github.com/bytedance/axion1_0/blob/66cab5555ca25d3a5460ca6a6eff07f3a6bcabbc/axion/datagen/stage1/gen_from_seed.py"
+      },
+      {
+        "label": "Stage I改写器 · 含Trap加权策略",
+        "url": "https://github.com/bytedance/axion1_0/blob/66cab5555ca25d3a5460ca6a6eff07f3a6bcabbc/axion/datagen/stage1/gen_from_solution.py"
+      },
+      {
+        "label": "Stage II公开数据库任务构造",
+        "url": "https://github.com/bytedance/axion1_0/blob/66cab5555ca25d3a5460ca6a6eff07f3a6bcabbc/axion/datagen/stage2/README.md"
+      },
+      {
+        "label": "RL依赖前缀奖励实现",
+        "url": "https://github.com/bytedance/axion1_0/blob/66cab5555ca25d3a5460ca6a6eff07f3a6bcabbc/axion/training/rl/process_reward.py"
+      },
+      {
+        "label": "RL四次离线筛题实现",
+        "url": "https://github.com/bytedance/axion1_0/blob/66cab5555ca25d3a5460ca6a6eff07f3a6bcabbc/axion/datagen/stage2/pipeline/prepare_rl.py"
+      },
+      {
+        "label": "RL复现条件与验证范围",
+        "url": "https://github.com/bytedance/axion1_0/blob/66cab5555ca25d3a5460ca6a6eff07f3a6bcabbc/axion/training/rl/README.md"
+      },
+      {
+        "label": "SFT原输入计数与验证范围",
+        "url": "https://github.com/bytedance/axion1_0/blob/66cab5555ca25d3a5460ca6a6eff07f3a6bcabbc/axion/training/sft/README.md"
+      },
+      {
+        "label": "原SFT配置和输入摘要记录",
+        "url": "https://github.com/bytedance/axion1_0/blob/66cab5555ca25d3a5460ca6a6eff07f3a6bcabbc/axion/training/sft/provenance.json"
+      },
+      {
+        "label": "HF训练数据卡 · 本轮快照",
+        "url": "https://huggingface.co/datasets/Axion1-0/axion-training-data"
+      },
+      {
+        "label": "HF社区复现35B模型卡 · 本轮快照",
+        "url": "https://huggingface.co/Axion1-0/Axion-1.0-35B"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "用“先练自包含推理、再练查证工具、最后GRPO”的三阶段配方训练科学研究Agent。35B从第二段SFT到RL，SEAL-0由53.2升至62.2，但FrontierScience Research从58.3降至56.7；数据构造和依赖顺序过程奖励更值得借鉴，指标需按最好单次口径看。",
+      "motivation": "复杂Agent后训练常叠加多种阶段，却难看出模型到底缺推理还是缺外部信息获取能力。作者把两种能力分开造数：先让模型在题内信息足够时推理，再让它为缺失证据主动检索，最后用交互轨迹优化决策。",
+      "novelty": "作者主张：不加专门mid-training、DPO或OPD，也可用两段轻量SFT与RL建立广泛Agent能力；关键是依据基座成功解法难化自包含题，并用可程序化建立真值的工具任务连接数据与过程奖励。本站判断：可迁移价值在于把“推理难度”和“缺失证据”分开控制，以及只给完成依赖前缀的进展计分；GRPO本身不是新算法，顺序checkpoint结果不足以证明该课程或奖励组合优于其他同预算设计。",
+      "evidenceScope": "已读arXiv 2611.03233v2的§2数据构造、§3训练/奖励、§4评测、§5系统与附录超参；只读核验bytedance/axion1_0固定提交66cab555的Stage I生成/改写、Stage II说明、RL奖励/筛题及SFT/RL公开复现边界，并读取HF数据/模型卡当前快照与API报告的revision元数据（固定revision的raw链接复查遇429，未认证该固定链接内容）。数据行数为卡片声明，未下载全量Parquet或权重；未执行作者代码。verified仅表示来源核验，非实验复现。",
+      "limits": "已读v2全文并静态核验固定源码及HF卡片，未运行作者代码、训练或复现实验。分数为作者自测每项3次（BMB 5次）中的最好单次，不是均值；跨来源基线的工具与执行设置不完全一致。阶段比较是顺序checkpoint对照，未隔离数据难化、训练顺序和奖励各项的因果贡献；HLE-130不等于主表完整HLE，BMB限human-difficult子集。35B的RL在部分项目退步，不能概括为全面提升。约90/240 GPU小时仅指两段SFT，不含造数、验证、RL和推理。公开数据卡列10,819+7,544条SFT及484道RL任务，但122B保存的SFT输入记录列Stage I为9,840条；未验证发布集与原训练输入逐条等价。公开生成器采用一次求解再审计，并有含Trap的加权改写，区别于论文的三次独立求解与四种随机改写；原RL完整环境和总update数未恢复，发布代码也声明未重新验证GPU训练/论文指标。官方所链接35B权重是社区复现版，不是论文原checkpoint。",
+      "method": [
+        "构造自包含题：从公开科学/数学问答种子追加依赖推理；基座只用Python尝试，失败题进入候选，成功题则根据实际解法做组合、参数化、范围变化或分情况改写。论文用GPT-5.5三次独立求解一致且推导过检来重建参考答案；改写后不要求基座再次失败，不能称所有样本都超过基座能力。",
+        "构造工具题：在公开结构化数据库中先过滤候选、唯一定位实体、计算目标量，再由LLM自然语言化，检查约束/单位/精度及答案泄漏；闭卷探测剔除无需检索即可答对的题。参考答案和有序中间目标留给验证器，不提供给解题模型，再采集正确且完整的工具轨迹。",
+        "依次做两段SFT：第一段使用自包含推理轨迹，第二段从第一段checkpoint继续训练工具使用。完整对话作上下文，仅对assistant推理、工具调用和最终答案计算损失；公开HF卡列两段10,819和7,544条轨迹，但与恢复出的原训练输入不能直接认定逐条相同。",
+        "做异步GRPO：先对每个候选任务离线采4条轨迹，保留至少一次最终正确且奖励有方差的任务；正式训练每题8条。最终正确奖励1，否则按max(0,0.3P−0.1(1−A))给部分分；P只累计连续通过的依赖前缀，A表示提交了有效最终答案。中间结果须被Agent确立/使用，需外部依据的实体还要有工具观测支撑；验证混合规则与语义judge。上下文压缩后各session继承原轨迹奖励与优势。",
+        "检查能力与代价：在完整HLE、BMB困难子集、SEAL-0、HiPhO及FrontierScience两部分上评测，并比较顺序checkpoint；阶段分析另用HLE-130。自测通常跑3次、BMB跑5次，报告最好单次，观察到RL收益因基座与任务而异，不能从该表推出通用模型排名或各模块独立贡献。"
+      ],
+      "inspirations": [
+        "为自己的Agent数据保留题目生成器、候选集合、唯一性检查、参考答案与依赖图；训练输入只给问题。这样可以分别定位检索错实体、取值错、计算错，避免只靠最终成败标签。",
+        "用基座的实际成功解法找捷径，再改写依赖、参数范围或分支条件；每次改写重新验证答案，并另测成功率分布。不要把题目更长或一次失败直接当作高质量难题。",
+        "试验过程奖励时并列报告最终成功率、有效答案提交率、依赖前缀覆盖与judge误判抽检；做同预算的SFT课程/奖励消融，并保留均值和方差。若复用开源配方，先核对发布数据、训练输入和checkpoint版本，再谈复现效果。"
+      ],
+      "reviewedAt": "2026-11-09T04:29:02Z",
+      "sourceUrls": [
+        "https://arxiv.org/html/2611.03233v2",
+        "https://arxiv.org/abs/2611.03233v2",
+        "https://github.com/bytedance/axion1_0/blob/66cab5555ca25d3a5460ca6a6eff07f3a6bcabbc/README.md",
+        "https://github.com/bytedance/axion1_0/blob/66cab5555ca25d3a5460ca6a6eff07f3a6bcabbc/axion/datagen/stage1/gen_from_seed.py",
+        "https://github.com/bytedance/axion1_0/blob/66cab5555ca25d3a5460ca6a6eff07f3a6bcabbc/axion/datagen/stage1/gen_from_solution.py",
+        "https://github.com/bytedance/axion1_0/blob/66cab5555ca25d3a5460ca6a6eff07f3a6bcabbc/axion/datagen/stage2/README.md",
+        "https://github.com/bytedance/axion1_0/blob/66cab5555ca25d3a5460ca6a6eff07f3a6bcabbc/axion/training/rl/process_reward.py",
+        "https://github.com/bytedance/axion1_0/blob/66cab5555ca25d3a5460ca6a6eff07f3a6bcabbc/axion/datagen/stage2/pipeline/prepare_rl.py",
+        "https://github.com/bytedance/axion1_0/blob/66cab5555ca25d3a5460ca6a6eff07f3a6bcabbc/axion/training/rl/README.md",
+        "https://github.com/bytedance/axion1_0/blob/66cab5555ca25d3a5460ca6a6eff07f3a6bcabbc/axion/training/sft/README.md",
+        "https://github.com/bytedance/axion1_0/blob/66cab5555ca25d3a5460ca6a6eff07f3a6bcabbc/axion/training/sft/provenance.json",
+        "https://huggingface.co/datasets/Axion1-0/axion-training-data",
+        "https://huggingface.co/Axion1-0/Axion-1.0-35B"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.03233",
+      "status": "pending",
+      "checkedAt": "2026-11-09T04:25:03.948008+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://render.janction.jp/changelog#v0.4.259",
+    "url": "https://render.janction.jp/changelog#v0.4.259",
+    "id": "creative-janction-render-node-cli-20261109",
+    "title": "JANCTION Render：让终端Agent把Blender代码交给云端渲染",
+    "summary": "11月9日发布的npm 1.1.0加入Node终端渲染命令：把本地Blender脚本、.blend或3D文件上传，获取预览，提交成片任务，再查状态和下载。适合接入能写代码、但没有本地Blender/GPU的Agent；本轮已核验发布包与源码，未实跑服务。",
+    "insight": "代码创作可以把场景编写与渲染执行分开：Agent保留可修改的脚本，渲染服务返回预览和任务产物，再独立验收场景、帧序列和成片。关键不是拿到job_id，而是能否读到失败、完成修订并交回可继续修改的工程。",
+    "limits": "核验了官方发布日志、在线版本与接口说明，并只读固定Git提交和npm发布包；5个包文件与该提交逐字节一致，但没有安装、创建密钥、上传场景或实际渲染。公开仓库是客户端与集成，未核验云端渲染/交付检查后端。它消费已有bpy代码或3D工程，不是新的3D生成模型，也不自动保证设计正确。CLI提交成功只代表取得任务，不等于渲染成功；npm终端入口不等于全部MCP高级选项。可继续编辑依赖保留原脚本/工程，MP4本身没有原生对象编辑能力。交付检查是技术异常提示，不能代替视觉、叙事或多视角验收；参考图引导final仍处内部测试且默认关闭。服务不是无限免费，额度、实际GPU用时和保留期限需分别检查；公开服务成功率另排输入错误，不能当成模型代码执行成功率。",
+    "organization": "JasmyLab / JANCTION",
+    "dateLabel": "2026-11-09 · 服务0.4.259 / npm 1.1.0",
+    "evidence": "官方11月9日发布与npm包/固定源码匹配已核验；未实际渲染",
+    "originalTitle": "JANCTION Render 0.4.259 / npm 1.1.0 — terminal rendering commands",
+    "date": "2026-11-09",
+    "checkedAt": "2026-11-09T04:28:10.883Z",
+    "firstSeenAt": "2026-11-09T04:28:10.883Z",
+    "tags": [
+      "Blender",
+      "bpy",
+      "CLI",
+      "MCP",
+      "云渲染",
+      "可编辑场景"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2video"
+    ],
+    "sources": [
+      {
+        "label": "官方发布日志 · 11月9日服务0.4.259与npm 1.1.0",
+        "url": "https://render.janction.jp/changelog#v0.4.259"
+      },
+      {
+        "label": "运行服务版本 · 独立于npm包版本",
+        "url": "https://render.janction.jp/version.json"
+      },
+      {
+        "label": "终端命令实现 · 固定提交",
+        "url": "https://github.com/JasmyLab-JANCTION/janction-render/blob/5157d76f97c1dddb90d7e1e8d7d131306f04e387/npm/lib/cli.js"
+      },
+      {
+        "label": "终端与MCP入口说明 · 固定提交",
+        "url": "https://github.com/JasmyLab-JANCTION/janction-render/blob/5157d76f97c1dddb90d7e1e8d7d131306f04e387/npm/README.md"
+      },
+      {
+        "label": "npm包版本与运行要求 · 固定提交",
+        "url": "https://github.com/JasmyLab-JANCTION/janction-render/blob/5157d76f97c1dddb90d7e1e8d7d131306f04e387/npm/package.json"
+      },
+      {
+        "label": "OpenAPI Actions · API-key渲染接口",
+        "url": "https://render.janction.jp/openapi-actions.json"
+      },
+      {
+        "label": "既有创作选项和交付检查 · 11月5至6日能力",
+        "url": "https://render.janction.jp/blender-render-options"
+      },
+      {
+        "label": "当前服务范围和额度边界",
+        "url": "https://render.janction.jp/facts.json"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "只具备终端工具的Agent，现在可用Node 18+把bpy脚本或3D工程送到JANCTION云端Blender渲染，无需本地Python、uv或Blender。提交、预览、轮询和下载已有可审查的客户端实现；输出质量仍待实测。",
+      "motivation": "代码生成成功不等于用户已经拿到视频：还需要处理场景文件上传、外部素材、渲染耗时、异步任务与产物下载。把这些步骤变成可机器读取的接口，能让没有本地渲染环境的编码Agent接入同一交付流程。",
+      "novelty": "厂商本次新增Node终端命令、中文接入页与OpenAPI Actions；本站判断：价值在补齐代码Agent到实际渲染产物的执行接口，而非新生成模型或已验证的端到端自主创作能力。11月5日已发布的交付检查可用作验收设计参考，参考图引导final仍不能视为已开放。",
+      "evidenceScope": "已读官方0.4.259/0.4.258发布记录、版本JSON、OpenAPI/Actions、当前服务说明与既有创作选项文档；只读Git固定提交5157d76f97c1dddb90d7e1e8d7d131306f04e387的npm/lib/cli.js、入口、README及相关Python客户端/MCP参数。npm注册表1.1.0的gitHead匹配；包完整性与5个文件对比均匹配。没有执行作者代码、测试、模型调用或渲染。",
+      "limits": "核验了官方发布日志、在线版本与接口说明，并只读固定Git提交和npm发布包；5个包文件与该提交逐字节一致，但没有安装、创建密钥、上传场景或实际渲染。公开仓库是客户端与集成，未核验云端渲染/交付检查后端。它消费已有bpy代码或3D工程，不是新的3D生成模型，也不自动保证设计正确。CLI提交成功只代表取得任务，不等于渲染成功；npm终端入口不等于全部MCP高级选项。可继续编辑依赖保留原脚本/工程，MP4本身没有原生对象编辑能力。交付检查是技术异常提示，不能代替视觉、叙事或多视角验收；参考图引导final仍处内部测试且默认关闭。服务不是无限免费，额度、实际GPU用时和保留期限需分别检查；公开服务成功率另排输入错误，不能当成模型代码执行成功率。",
+      "method": [
+        "调用方先生成或保留bpy脚本、.blend或支持的3D文件；新CLI接受本地路径、公开HTTPS场景链接或已有scene_id，不负责把自然语言直接变成正确几何。",
+        "客户端将场景传到云端；实现包含按内容哈希复用和大文件分块续传。preview提交低规格渲染并等待结果，返回图片链接、下载文件和警告，供Agent或人检查后再改原工程。",
+        "final传入帧范围或product/turntable/animation预设，可带费用上限；默认立即返回job_id，需要继续status/download，或显式等待后下载。源码对部分重复提交附带幂等标识，但已排队并不表示成片已通过验收。",
+        "同日提供的OpenAPI Actions列出API-key认证的估算、提交和状态查询等接口。既有服务文档另提供版本对比、合成通道和交付检查；这些应逐入口验证，不能假设新npm子命令自动具备所有MCP选项。",
+        "交付时同时保留输入脚本/原生工程与渲染产物，再审帧数、分辨率、黑帧/闪烁及可编辑性。服务的技术检查或MP4下载不能替代视觉质量、场景语义和再次编辑测试。"
+      ],
+      "inspirations": [
+        "为code2-3D任务分别记录代码生成、上传、渲染完成、视觉/几何通过和人工继续修改的成功率；不要把任务排队响应或服务侧成功率当成全部流程成功。",
+        "让同一脚本经过预览、修改一个材质或镜头、重新渲染，核对请求区域是否改变、其余对象与时间段是否保持，并保留原脚本及全部参数。",
+        "将预览与最终渲染的GPU时间、上传时间和等待时间分开计量；加入超时、缺素材、重复提交和文件过期案例，检查Agent能否识别失败并交付可复查产物。"
+      ],
+      "reviewedAt": "2026-11-09T04:28:10.883Z",
+      "sourceUrls": [
+        "https://render.janction.jp/changelog#v0.4.259",
+        "https://render.janction.jp/version.json",
+        "https://github.com/JasmyLab-JANCTION/janction-render/blob/5157d76f97c1dddb90d7e1e8d7d131306f04e387/npm/lib/cli.js",
+        "https://github.com/JasmyLab-JANCTION/janction-render/blob/5157d76f97c1dddb90d7e1e8d7d131306f04e387/npm/README.md",
+        "https://github.com/JasmyLab-JANCTION/janction-render/blob/5157d76f97c1dddb90d7e1e8d7d131306f04e387/npm/package.json",
+        "https://render.janction.jp/openapi-actions.json",
+        "https://render.janction.jp/blender-render-options",
+        "https://render.janction.jp/facts.json"
+      ]
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.06048v1",
+    "url": "https://arxiv.org/abs/2611.06048v1",
+    "id": "paper-svgfaith-2611-06048",
+    "title": "SVGFaith：先验证视觉裁判能否识别细节错误，再用它给生成结果打分",
+    "summary": "用受控错误与真实生成结果两层测试视觉裁判，再把提示拆成有依赖的要求逐项评分。关键启发是检查裁判的盲区、平局覆盖和标签独立性，而非只看整体相关性。",
+    "insight": "给代码视觉Agent做验收时，先造“只错一个要求”的反例验证裁判，再用真实多错误产物复核；把美观、语义满足、执行成功与原生工程可编辑性分开，避免高相似度掩盖漏项。",
+    "limits": "依据原文和公开制品核验，未重新生成图像、调用模型或独立人评。这里评的是静态渲染的提示词忠实性，不是SVG结构可编辑性、动画质量或代码执行成功率。Arena刻意过采样难例、排除平局，非真实任务分布；在看到所有指标结果后，又纠正12个标签并删除25对，因此最终标签并非完全独立于被评指标。0.875人评参照包含投票者自身贡献，不能据接近该数称超越人类。平局计零，绝对阈值对不同分数尺度影响不同；应并看方向正确率与非平局覆盖。生成器条件切片样本小且难度/错误类型不同，不能因低分直接断言风格偏见。分解与VQA本身也会错，后者不是校准的事实概率；用它训练SVG生成器的RL收益尚未测试。",
+    "dateLabel": "2026-11-04",
+    "evidence": "原文方法/附录与固定评分代码已读·发布分数重算不等于模型复现",
+    "originalTitle": "SVGFaith: A Two-Layer Meta-Evaluation of Faithfulness Metrics for Text-to-SVG Generation",
+    "date": "2026-11-04",
+    "checkedAt": "2026-11-09T04:26:21.685229+00:00",
+    "updatedAt": "2026-11-04T06:55:22Z",
+    "firstSeenAt": "2026-11-09T04:30:41.643617+00:00",
+    "tags": [
+      "SVG",
+      "Meta-evaluation",
+      "Faithfulness",
+      "VQA",
+      "GRPO"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · 日期与版本",
+        "url": "https://arxiv.org/abs/2611.06048v1"
+      },
+      {
+        "label": "原论文 · 方法与评测附录",
+        "url": "https://arxiv.org/html/2611.06048v1"
+      },
+      {
+        "label": "作者实现 · 固定版本",
+        "url": "https://github.com/Yukinonooo/SVGFaith/tree/7906caa687f5213d7658b62736d2c85d4e40b9dd"
+      },
+      {
+        "label": "作者数据 · 固定版本",
+        "url": "https://huggingface.co/datasets/Yukinonooo/SVGFaith/tree/09e1792175d2be46bf0fd7c75c94f0bf2abf8eb7"
+      },
+      {
+        "label": "分解器模型卡",
+        "url": "https://huggingface.co/Yukinonooo/SVGFaith-Decomposer"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "整体看着像，不保证数量、左右关系、颜色归属或禁止内容正确。SVGFaith把裁判评测拆为受控反例和真实输出人评，并用依赖图解释每个要求为何失分。",
+      "motivation": "把红色放到错误对象、漏掉一个部件，图像仍可能有很高相似度。若直接拿这种指标筛训练数据或当RL奖励，Agent可能学会提高分数，却没有满足用户的具体要求。",
+      "novelty": "作者主张：以两层元评测揭示视觉指标的约束盲区，并提出可解释的依赖式逐项评分。本站判断：最值得迁移的是“先审裁判、再让裁判筛产物”的协议，以及区分不会判和平局未覆盖；通用SVG生成与RL训练提升尚未由这篇验证。",
+      "evidenceScope": "已读arXiv v1 §2–4及附录B–E；只读GitHub固定提交7906caa687f5213d7658b62736d2c85d4e40b9dd的聚合器、评测器、提示和分数文件，并用本站独立计数脚本核对发布分数。已核验HF公开数据版本09e1792175d2be46bf0fd7c75c94f0bf2abf8eb7的清单/对照JSONL及模型元数据；没有下载模型权重、渲染样本或运行作者代码。X精确索引检索无可核验作者原帖。",
+      "limits": "依据原文和公开制品核验，未重新生成图像、调用模型或独立人评。这里评的是静态渲染的提示词忠实性，不是SVG结构可编辑性、动画质量或代码执行成功率。Arena刻意过采样难例、排除平局，非真实任务分布；在看到所有指标结果后，又纠正12个标签并删除25对，因此最终标签并非完全独立于被评指标。0.875人评参照包含投票者自身贡献，不能据接近该数称超越人类。平局计零，绝对阈值对不同分数尺度影响不同；应并看方向正确率与非平局覆盖。生成器条件切片样本小且难度/错误类型不同，不能因低分直接断言风格偏见。分解与VQA本身也会错，后者不是校准的事实概率；用它训练SVG生成器的RL收益尚未测试。",
+      "method": [
+        "构造1,842对受控样例，覆盖八类约束；两方向各921对，分别改图不改描述、改描述不改图。规则编辑、检索或生成后，经自动过滤与人工复查保留。",
+        "另从六种生成系统的真实输出抽样人评，形成1,327个有胜负的Arena对；要求评忠实性而非美观。难例采样、平局排除和事后复审另列证据边界。",
+        "只看提示词生成原子要求依赖图，缓存给同一提示的各候选；教师SFT、拒绝采样SFT和结构性GRPO训练分解器，另一个未继续训练的视觉模型回答每项是否满足。",
+        "取Yes/No首token相对概率；每项受所有不同祖先各一次折扣，避免同一前提经多路径重复计数，再平均。保留原始节点分与折扣后分，用于定位直接失败与继承失败。",
+        "逐候选独立打分，再比较差值；平局计零，Diagnostic按八轴等权。公开作者分数在Arena阈值0.01下为1,168胜、37平、122负，严格准确率约0.880；这是评审排序结果，不是生成成功率。"
+      ],
+      "inspirations": [
+        "为剪辑/动效/3D验收构造局部反例：缺一镜头、错一时间点、遗漏一对象，其他条件不变；先测裁判对每项的识别能力，再引入真实失败产物。",
+        "分列语义满足、视觉质量、代码可执行、工程可编辑四类结果。若用依赖图，先验对象存在，再验其颜色与关系，同时保存分数和实际截图/产物证据。",
+        "冻结评测标签后再跑指标；确需事后修订时保留修订前后结果。报告胜/平/负与覆盖，并把平局率变化从方向判断改善中拆开。"
+      ],
+      "reviewedAt": "2026-11-09T04:26:21.685229+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.06048v1",
+        "https://arxiv.org/html/2611.06048v1",
+        "https://github.com/Yukinonooo/SVGFaith/tree/7906caa687f5213d7658b62736d2c85d4e40b9dd",
+        "https://huggingface.co/datasets/Yukinonooo/SVGFaith/tree/09e1792175d2be46bf0fd7c75c94f0bf2abf8eb7",
+        "https://huggingface.co/Yukinonooo/SVGFaith-Decomposer"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.06048",
+      "status": "pending",
+      "checkedAt": "2026-11-09T04:25:03.948008+00:00"
+    }
   }
 ]
