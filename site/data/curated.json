@@ -10130,5 +10130,400 @@
       "status": "pending",
       "checkedAt": "2026-11-09T16:28:29.029347+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.03100v2",
+    "url": "https://arxiv.org/abs/2611.03100v2",
+    "id": "live-66d51d70ec3ec4fe",
+    "title": "LUCA：把实验选择、预测、诊断与救援拆开验收的合成环境",
+    "summary": "以已知真值的合成调控网络，让Agent在有限预算内做干预、预测双目标效果，再先锁定诊断后尝试救援。作者比较7个LLM与3种基线，发现“修好系统”经常伴随错误诊断；完整解读同时核查评分和留出协议边界。",
+    "insight": "研究价值在于分开测“选了什么实验—观察到什么—怎样更新判断—行动是否奏效”。成功干预可来自下游补偿，不能自动作为理解机制或正确归因的奖励；还应审计题目泄漏、重复提交与无操作得分。",
+    "limits": "仅为固定点动力学的合成环境，不是生物实验或通用科研能力证明；有限观测可能对应多个机制，部分诊断存在等价原因。预测按表型误差±0.10评分，大网络中恒猜0.5可得约2/3，CausalSweep还被赋予真实动力学形式，须连同这些参照解释分数。论文已修正救援分母为原本异常的表型；修好一个读数不等于找到病因，新损伤另记。当前固定源码静态检查未见预测题揭示后的联合干预拦截，提交预测返回真值且未见同题重复提交拒绝；与论文留出保证之间仍待核，未执行漏洞实验，也不能断言历史模型使用了此路径。逐会话日志未随仓库公开，未复现作者结果。代码标注CC BY-NC 4.0。",
+    "organization": "Relation Therapeutics",
+    "dateLabel": "2026-11-02 · 11-05修订v2",
+    "evidence": "已读arXiv v2方法、实验及关键附录，并静态核查固定作者源码；未复现结果",
+    "originalTitle": "LUCA: A Synthetic World for Experimental Reasoning",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-09T22:23:02.582275Z",
+    "paperOriginalDate": "2026-11-02T13:17:36Z",
+    "paperUpdatedAt": "2026-11-05T19:38:14Z",
+    "updatedAt": "2026-11-05T19:38:14Z",
+    "firstSeenAt": "2026-11-03T10:00:01Z",
+    "lastSeenAt": "2026-11-03T22:00:01Z",
+    "tags": [
+      "合成环境",
+      "实验推理",
+      "因果评测",
+      "工具调用",
+      "过程评估"
+    ],
+    "authors": [
+      "Anna Gogleva",
+      "Thomas Charman",
+      "Martin Balla",
+      "Karl Gemayel"
+    ],
+    "topics": [],
+    "featured": false,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.03100v1"
+      },
+      {
+        "label": "arXiv：v2与修订日期",
+        "url": "https://arxiv.org/abs/2611.03100v2"
+      },
+      {
+        "label": "原论文v2：方法、结果、评分修订与限制",
+        "url": "https://arxiv.org/html/2611.03100v2"
+      },
+      {
+        "label": "作者固定源码：会话、留出题、预测及救援评分",
+        "url": "https://github.com/RelationRx/luca/blob/a384a55d624f8f66d113c03ff1fbdf53ea0f9585/luca/experiment.py"
+      },
+      {
+        "label": "作者固定源码：Agent工具入口与提示",
+        "url": "https://github.com/RelationRx/luca/blob/a384a55d624f8f66d113c03ff1fbdf53ea0f9585/luca/agent.py"
+      },
+      {
+        "label": "作者实验说明：日志未随仓库公开",
+        "url": "https://github.com/RelationRx/luca/blob/a384a55d624f8f66d113c03ff1fbdf53ea0f9585/experiments/README.md"
+      },
+      {
+        "label": "作者许可证：CC BY-NC 4.0",
+        "url": "https://github.com/RelationRx/luca/blob/a384a55d624f8f66d113c03ff1fbdf53ea0f9585/LICENSE"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "LUCA将“任务成功”拆成实验策略、联合干预预测、故障诊断与救援：作者发现Agent常能补偿异常，却说错原因。它适合研究证据如何改变判断；当前源码的留出题隔离与重复提交边界仍需复核，不能把成绩直接当成因果理解证明。",
+      "motivation": "只看最终修复或预测正确，无法知道Agent是否挑了有信息量的实验、正确利用观察，还是碰巧找到补偿操作。真实系统又很难拿到完整反事实真值，因此作者构造可控且有已知机制的合成世界。",
+      "novelty": "作者主张：可配置世界把实验选择到推理再到行动的整条链路分开评分，并揭示救援成功与诊断正确的分离。本站判断：主要价值是可控机制、分阶段承诺和过程证据，适合作为Agent环境设计参照；非加性任务与高分本身不能证明模型学到了真实因果机制，源码与论文协议的一致性仍须审计。",
+      "evidenceScope": "已读arXiv v2正文方法/实验/限制及附录生成流程、救援指标更正、结构和词表消融；首发2026-11-02，v2修订2026-11-05。只读核查作者仓库 a384a55d624f8f66d113c03ff1fbdf53ea0f9585 的experiment.py、agent.py、实验配置/种子清单/说明与许可证；未运行作者代码、生成器、模型或实验。公开仓库保存脚本与小型摘要，不含逐会话日志；静态实现疑点不等于已证实历史结果被污染。",
+      "limits": "仅为固定点动力学的合成环境，不是生物实验或通用科研能力证明；有限观测可能对应多个机制，部分诊断存在等价原因。预测按表型误差±0.10评分，大网络中恒猜0.5可得约2/3，CausalSweep还被赋予真实动力学形式，须连同这些参照解释分数。论文已修正救援分母为原本异常的表型；修好一个读数不等于找到病因，新损伤另记。当前固定源码静态检查未见预测题揭示后的联合干预拦截，提交预测返回真值且未见同题重复提交拒绝；与论文留出保证之间仍待核，未执行漏洞实验，也不能断言历史模型使用了此路径。逐会话日志未随仓库公开，未复现作者结果。代码标注CC BY-NC 4.0。",
+      "method": [
+        "由seed、难度和网络大小生成模块化调控网络，以sigmoid固定点动力学产生读数；调整反馈、观测比例与隐藏节点，校准基线并筛掉退化样本。它借用生物调控结构，不追求真实细胞模拟。",
+        "给Agent结构化工具，在B=N+信号数+8的预算下做BLOCK、BOOST、DAMPEN或信号激活；N=20时预算31。论文设计随后评估两个双目标联合干预的预测，按表型误差±0.10计分。",
+        "故障模式锁定一个节点或信号；Agent必须先提交并锁定原因和类型，才可使用救援测试。诊断分会话末尾揭示，救援只计算原本异常读数被恢复的比例；额外破坏原健康读数单列。",
+        "主实验设置7个LLM、3个基线、3难度×健康/故障×20样本，共1,200个计划会话，2个API错误剔除；另在20至1,280节点上研究探索策略，并做结构反转及词表/提示消融。CausalSweep拥有LLM未获知的动力学公式。",
+        "作者报告中等难度下多模型救援达到0.90以上而诊断不超过0.55；36个取得区分信号/节点证据的LLM会话仅1个得部分诊断分。本轮按v2的修正救援指标解读，并只读核查代码门控；未复现，当前留出隔离与预测重复提交仍有实现疑点。"
+      ],
+      "inspirations": [
+        "给调试、机器人或数据分析Agent分别标注“证据选择、假设更新、原因判断、执行结果”；奖励不能只取最终修复分，避免学到只会补偿的策略。",
+        "在评测服务端真正锁住阶段：揭题后禁止直接测留出组合，限制每题只提交一次，评测结束前不返回真值；把无操作救援、旁路补偿及新损伤写成独立验收项。",
+        "构造信息量可知的实验对，检查Agent做过区分性实验后是否更新假设；同时报告多解/不可辨识样本与恒值基线，避免把环境欠定性都算成推理失败。"
+      ],
+      "reviewedAt": "2026-11-09T22:23:02.582275Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.03100v2",
+        "https://arxiv.org/html/2611.03100v2",
+        "https://github.com/RelationRx/luca/blob/a384a55d624f8f66d113c03ff1fbdf53ea0f9585/luca/experiment.py",
+        "https://github.com/RelationRx/luca/blob/a384a55d624f8f66d113c03ff1fbdf53ea0f9585/luca/agent.py",
+        "https://github.com/RelationRx/luca/blob/a384a55d624f8f66d113c03ff1fbdf53ea0f9585/experiments/README.md",
+        "https://github.com/RelationRx/luca/blob/a384a55d624f8f66d113c03ff1fbdf53ea0f9585/LICENSE"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.03100",
+      "status": "pending",
+      "checkedAt": "2026-11-09T22:24:38.241309+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.02433v2",
+    "url": "https://arxiv.org/abs/2611.02433v2",
+    "id": "research-blueprint2cad",
+    "title": "Blueprint2CAD：工程图纸匹配卡在视角，微调涨分也可能只是更偏向说“不”",
+    "summary": "在10,000零件库中，DINOv3利用已知视角的图纸→渲染检索R@1为65.14%，视角未知降至43.11%。Qwen3-VL微调后二分类略涨，却把4选1检索从31.7%降至24.1%，提示平均准确率可能掩盖回答偏置。",
+    "insight": "评估CAD创作Agent的视觉验收模块时，应把视角对应、形状辨认与Yes/No偏置分开诊断；同时保留oracle与真实输入条件，并检查正负例召回和下游迁移，不能把二分类微涨当几何理解已改善。",
+    "limits": "任务只匹配2D图纸与渲染图，不生成CAD代码、恢复3D几何或验证可编辑性，因此不归code2-3d。29,925模型来自同一程序生成来源，测试挑选两端各500个表面类型样本；没有实物扫描、剖视图、GD&T或专家复杂度真值。65.14%用已知视角oracle，实际视角未知为43.11%，均为10,000库检索R@1而非生成成功率。VLM名义每任务1,000项，但论文按模型排除API错误/不可解析响应，配对统计也只取双方都回答的交集；不能当完整任务端到端成功率。LoRA无标注验证增益不显著(pHolm=0.39)，有标注为0.031；评测同时改变解码方式，训练负例与测试分布不同，4选1检索还降至机会水平。论文闭源模型调用在8月15–25日、用可变别名和默认参数，不能当11月模型现状排名。公开固定训练默认未限制20,000样本且4bit须显式开关，不能按README默认运行即视作复现；完整数据需HF访问授权，本站未运行或重算主表。",
+    "dateLabel": "11/2首发 · 11/5修订v2",
+    "evidence": "v2方法/评测与固定公开实现已核；数据访问受限，未复现",
+    "originalTitle": "Blueprint2CAD: Benchmarking Foundation Models on Engineering Drawing-to-CAD Render Correspondence",
+    "date": "2026-11-02",
+    "checkedAt": "2026-11-09T22:21:55.419519Z",
+    "paperOriginalDate": "2026-11-02T02:56:12Z",
+    "paperUpdatedAt": "2026-11-05T02:56:13Z",
+    "updatedAt": "2026-11-05T02:56:13Z",
+    "firstSeenAt": "2026-11-09T22:24:47.211574+00:00",
+    "tags": [
+      "CAD评测",
+      "Cross-view Retrieval",
+      "Oracle Viewpoint",
+      "LoRA",
+      "响应偏置"
+    ],
+    "authors": [
+      "Alexander Valverde",
+      "Danny Xie-Li",
+      "Zhichao Wang",
+      "Marcos V. Conde"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · 首发/修订日期",
+        "url": "https://arxiv.org/abs/2611.02433v2"
+      },
+      {
+        "label": "原论文 · 方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.02433v2"
+      },
+      {
+        "label": "作者仓库 · 固定版本",
+        "url": "https://github.com/alexvalgui/blueprint2cad/blob/3061b37bf7dbad7848634b56d17fc81edc7d017c/README.md"
+      },
+      {
+        "label": "检索视角与排名实现",
+        "url": "https://github.com/alexvalgui/blueprint2cad/blob/3061b37bf7dbad7848634b56d17fc81edc7d017c/vfms/src/analysis/retrieval_common.py"
+      },
+      {
+        "label": "VLM评分与失败分母实现",
+        "url": "https://github.com/alexvalgui/blueprint2cad/blob/3061b37bf7dbad7848634b56d17fc81edc7d017c/vlms/src/benchmark/run.py"
+      },
+      {
+        "label": "任务1 · 固定1000项索引",
+        "url": "https://github.com/alexvalgui/blueprint2cad/blob/3061b37bf7dbad7848634b56d17fc81edc7d017c/vlms/src/benchmark/items/task1_items.json"
+      },
+      {
+        "label": "LoRA固定配置 · 复现须显式参数",
+        "url": "https://github.com/alexvalgui/blueprint2cad/blob/3061b37bf7dbad7848634b56d17fc81edc7d017c/vlms/src/finetune/qwen/config_qwen.py"
+      },
+      {
+        "label": "作者数据集 · 需HF访问授权",
+        "url": "https://huggingface.co/datasets/alex-novineer/blueprint2cad"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把工程图纸和零件渲染图是否对应，做成受控视角的2D评测。已知视角能明显提高检索，但文本推理和小规模LoRA没有消除跨视角失败；这一基准不测试3D重建或程序CAD生成。",
+      "motivation": "零件搜索与CAD验收常需确认稀疏线条图和另一视角的阴影渲染是否是同一物体。对称外形、孔洞和倒角很容易混淆；仅按漂亮渲染或整体正确率判断，难区分视角错误、部件细节错误和模型习惯回答Yes/No。",
+      "novelty": "作者主张：提出工程线图—零件渲染对应基准及可对任意STEP集合运行的开放制图管线，用视角、标注和偏置实验定位基础模型限制。本站判断：价值在于把几何验收中的视觉前端单独测量，并用oracle对照和正负例分解阻止“微调涨分”等同于理解改善；数据来源是程序CAD，不使其成为代码生成评测，也不独立背书“首个”的优先权。",
+      "evidenceScope": "已读arXiv 2611.02433v2正文§4–7及附录A–D，核对任务、样本/配对分母、视角oracle与LoRA统计；只读核验GitHub固定提交3061b37bf7dbad7848634b56d17fc81edc7d017c的README、检索聚合、VLM评分/响应解析、四份任务索引和LoRA配置。独立解析四份索引各1,000条、验证任务500正/500负。HF API可读并标gated=auto，匿名README下载401，未下载完整图像数据。未运行作者代码、调用模型、渲染CAD或复现实验；verified仅指来源核验。",
+      "limits": "任务只匹配2D图纸与渲染图，不生成CAD代码、恢复3D几何或验证可编辑性，因此不归code2-3d。29,925模型来自同一程序生成来源，测试挑选两端各500个表面类型样本；没有实物扫描、剖视图、GD&T或专家复杂度真值。65.14%用已知视角oracle，实际视角未知为43.11%，均为10,000库检索R@1而非生成成功率。VLM名义每任务1,000项，但论文按模型排除API错误/不可解析响应，配对统计也只取双方都回答的交集；不能当完整任务端到端成功率。LoRA无标注验证增益不显著(pHolm=0.39)，有标注为0.031；评测同时改变解码方式，训练负例与测试分布不同，4选1检索还降至机会水平。论文闭源模型调用在8月15–25日、用可变别名和默认参数，不能当11月模型现状排名。公开固定训练默认未限制20,000样本且4bit须显式开关，不能按README默认运行即视作复现；完整数据需HF访问授权，本站未运行或重算主表。",
+      "method": [
+        "对Zero-to-CAD程序生成STEP集合做B-rep过滤；抽样30,237个模型，其中29,925通过制图/渲染。用同一六视角相机生成线图、仅宽高两条尺寸标注的变体和渲染；按模型ID分27,479训练、1,446验证、1,000测试，测试由表面类型分数最低/最高各500个组成。",
+        "冻结视觉编码器，从10,000模型库每个模型的六张图纸和六张渲染提取全局描述子。分别测试未知视角的全配对/平均特征，及只比较同视角的oracle对齐；以双向R@k、MRR和中位名次评价，不能把oracle当实际输入条件。",
+        "VLM任务1是前视图与随机视角渲染的二分类，500正例、250任意类别负例、250同类别负例；任务2用同视角图纸在四个随机渲染中选一；任务3不提供复杂度定义，要求将六视图判为Simple/Complex，再对照表面类型标签。四份公开索引各1,000项。",
+        "分别加尺寸标注、CoT提示和视角分组诊断；CoT只评分最后一行。论文报告按模型排除API/不可解析失败，公开harness显式剔除ERROR与CoT UNPARSEABLE，因此必须同时报告实际回答数与失败数，跨模型只在共同回答项做配对检验。",
+        "以20,000对图做rank16 LoRA/QLoRA参照，训练模型与视角来自训练划分、70%的负例从近似轮廓邻居中挖掘。无标注验证约67.0%→68.5%未达显著，正例接受率61.0%→44.0%、负例拒绝72.9%→93.0%；4选1检索31.7%→24.1%，揭示分数提升可伴随偏置和迁移退化。"
+      ],
+      "inspirations": [
+        "为CAD/Blender生成任务增加视觉验收子集：同一几何改变相机应保持匹配，近似轮廓只改一个孔或槽应拒绝；分别测视角已知、估计视角和未知视角，识别错误来自哪一层。",
+        "给自动裁判同时报正例召回、负例拒绝、回答率与全任务成功率。加入等预算CoT/视觉中间表示对照，避免裁判更常说No就让总体分上涨。",
+        "训练几何验收器后保留未训练的多候选检索、真实扫描图、剖视图和局部编辑一致性测试；负例难度、视角与解码方式固定，再判断技能迁移，不从域内二分类分数推断可编辑或工程可靠。"
+      ],
+      "reviewedAt": "2026-11-09T22:21:55.419519Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.02433v2",
+        "https://arxiv.org/html/2611.02433v2",
+        "https://github.com/alexvalgui/blueprint2cad/blob/3061b37bf7dbad7848634b56d17fc81edc7d017c/README.md",
+        "https://github.com/alexvalgui/blueprint2cad/blob/3061b37bf7dbad7848634b56d17fc81edc7d017c/vfms/src/analysis/retrieval_common.py",
+        "https://github.com/alexvalgui/blueprint2cad/blob/3061b37bf7dbad7848634b56d17fc81edc7d017c/vlms/src/benchmark/run.py",
+        "https://github.com/alexvalgui/blueprint2cad/blob/3061b37bf7dbad7848634b56d17fc81edc7d017c/vlms/src/benchmark/items/task1_items.json",
+        "https://github.com/alexvalgui/blueprint2cad/blob/3061b37bf7dbad7848634b56d17fc81edc7d017c/vlms/src/finetune/qwen/config_qwen.py",
+        "https://huggingface.co/datasets/alex-novineer/blueprint2cad"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.02433",
+      "status": "pending",
+      "checkedAt": "2026-11-09T22:24:38.241309+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.09454v1",
+    "url": "https://arxiv.org/abs/2611.09454v1",
+    "id": "live-bf1ba5f55df7a3a7",
+    "title": "LoRA→Language：把适配器写回技能文档，先证明信息真的来自它",
+    "summary": "作者比较从权重、词汇投影与实际执行中恢复技能文档。Executing Writer 在37个文档承载适配器上覆盖约39–44%的原始指令，换错适配器降至1.3–1.5%；但同一写作器对仅行为训练的LoRA只恢复1–2%。行为探测Agent能生成有用技能，是否来自适配器则必须用无适配器/错适配器对照判断。",
+    "insight": "把“文本写得像”“任务确实有提升”和“提升来自适配器”分开验收。若无适配器的相同反馈循环也能产出有效技能，结果说明提示优化有效，尚不能说明成功反编译了LoRA；文档恢复应同时记录遗漏、无依据补充和下游可执行性。",
+    "limits": "结果为作者报告，本站未复现。39–44%来自文档承载适配器；85–91%任务增益恢复来自专门训练复述文档的rank-64适配器，不能外推到任意行为LoRA。主表恢复文本仍有39%的指令单元不受原文支持；覆盖度用LLM裁判，无人工标签，两裁判绝对分差7–21个百分点。主要技能测试37项，独立SkillsBench只选4题；ALFWorld为134个未见游戏、单一主要actor，跨session波动大。无适配器reward loop与有适配器相当，58–71%是恢复LoRA相对基座增益的比例，不是任务成功率或完整技能恢复率。迁移中的Llama提升来自按开发集选择的一份技能，且部分收益是修复命令格式。全文称有released code，但本轮未定位可归属的作者仓库/固定提交，不声称实现已开源或可复现。",
+    "organization": "QpiAI",
+    "dateLabel": "2026-11-06 · v1首发",
+    "evidence": "已读arXiv v1方法、主表、限制及评测附录；来源核验，未复现实验，作者固定代码尚未定位。",
+    "originalTitle": "From LoRA to Language: Recovering Skill Documents from Adapters",
+    "date": "2026-11-06",
+    "checkedAt": "2026-11-09T22:21:05Z",
+    "originalDate": "2026-11-06",
+    "paperOriginalDate": "2026-11-06T13:26:43Z",
+    "paperUpdatedAt": "2026-11-06T13:26:43Z",
+    "updatedAt": "2026-11-06T13:26:43Z",
+    "firstSeenAt": "2026-11-09T10:00:01Z",
+    "lastSeenAt": "2026-11-09T22:00:00Z",
+    "tags": [
+      "Training / RL",
+      "技能蒸馏",
+      "LoRA",
+      "反事实对照",
+      "技能可迁移性"
+    ],
+    "authors": [
+      "Saranya Dintakurthy Swadha",
+      "Pavan C Shekar",
+      "Arpit Jain",
+      "Aswanth Krishnan"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.09454v1"
+      },
+      {
+        "label": "原论文全文 · 方法与评测附录",
+        "url": "https://arxiv.org/html/2611.09454v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "恢复LoRA中的技能文档，应按适配器是否曾学过文档原文分层：Executing Writer能读回部分文档承载/背诵技能；对纯行为技能，更可行的是对比基座与适配模型的行动，再写成可迁移文本，但仍要证明信息来自适配器。",
+      "motivation": "将SKILL.md编译进LoRA可以节约提示上下文，却让规则难以阅读、编辑、审计和迁移。仅识别适配器属于哪种技能不等于还原具体规则，而得到有用提示也不等于提取了该适配器独有的信息。",
+      "novelty": "作者主张：把adapter-to-document恢复定义为可量化任务，并用Executing Writer与行为探测Agent比较读取路径、适配器依赖和跨模型迁移。本站判断：最有价值的是三类训练来源的区分与反事实对照；证据支持有限设置下的部分恢复，不支持从任意LoRA精确反编译原始SKILL.md，也不证明权重读法原则上无效。",
+      "evidenceScope": "已读取arXiv 2611.09454v1全文§3–§8、表3/5/6/7/8/9/10及附录A/B/D/F/G/H相关评测定义与边界；核验11月6日首发时间。页面链接和题名/ID搜索未定位可归属作者实现，因此未做固定代码核验、未运行模型或作者代码，未复现实验。",
+      "limits": "强结果主要来自含文档信息或专门复述文档的适配器；同一trained writer在纯行为LoRA上仅1–2%覆盖，另以45个行为适配器训练的writer也仅约7%并过拟合。主表仍有39%无依据指令，LLM裁判有明显分歧且缺少人工标注。37个主要技能、4个筛选后的独立benchmark任务及一个主要ALFWorld actor不足以支持普遍恢复结论；其有/无adapter反馈循环差异未显著，技能文本本身未达到预设恢复80% LoRA增益的目标。原文也不是唯一正确表示，adapter未必学会每条原始规则。作者实现未定位，所有数值仅为论文报告。",
+      "method": [
+        "区分文档承载、专门训练复述文档和仅用行为答案蒸馏三种适配器；预先冻结原文指令清单，同时统计指令覆盖、无依据补充和实际任务收益，并设置错适配器与相似文档检索对照。",
+        "比较两类不执行适配器的读法：将全部252个LoRA块编码成soft prompt，或把权重方向映射到词汇并检索指令行。二者能透露技能身份或关键词，但本实验中soft-prompt写作器换错适配器仍给相近分数。",
+        "Executing Writer把目标适配器装到冻结的Qwen3-8B上，再叠加rank-16写作LoRA，只更新写作器并预测原技能文档；EW-A只用适配器，EW-T另加关键词/检索行，检索时排除目标文档自身的行。",
+        "对纯行为适配器，另用无需训练的Agent比较基座与适配模型在开发任务上的轨迹/首次分歧、探测下一动作并试写技能；分别用动作一致性或开发集奖励筛选，测试实例不暴露给写作Agent，最终在未见任务评估。",
+        "将恢复文本交给基座和无法装载该LoRA的模型，分开测迁移与适配器因果贡献：ALFWorld有适配器reward loop成功率65.3%，无适配器67.3%，差值区间包含零；任意输出约定/隐藏规则对照更能检验技能是否来自适配器。"
+      ],
+      "inspirations": [
+        "做skill-to-LoRA或行为蒸馏时，同时留存原始文档、训练来源和规则清单；恢复评测加入wrong-adapter、无adapter同预算反馈循环及检索基线，防止把写作器已有知识误当参数中提取的技能。",
+        "将阅读忠实度与执行能力分开：逐条检查遗漏/矛盾/无依据补充，再让不同actor执行；隐藏规则实验中能写出规则仍不代表小模型能遵守，跨模型提升还应拆出格式修复带来的收益。",
+        "把恢复文档压缩与放置位置作为独立消融：本文ALFWorld中148词短技能加到LoRA可提升，而847词完整技能会降低成功率；迁移时应按独立开发集选择，并报告全部session而非只展示最好一次。"
+      ],
+      "reviewedAt": "2026-11-09T22:21:05Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.09454v1",
+        "https://arxiv.org/html/2611.09454v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.09454",
+      "status": "pending",
+      "checkedAt": "2026-11-09T22:24:38.241309+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+    "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+    "id": "official-claude-fable-mythos-5-2",
+    "title": "Fable / Mythos 5.2：长任务模型更新，分开看推理速度与任务收益",
+    "summary": "Anthropic 11月9日发布 Fable / Mythos 5.2：底层模型相同，防护与准入不同；Fable 可作顾问或调度较小模型。官方称输出较5.1最多快30%。",
+    "insight": "长任务的速度、成本和完成质量需要一起测。本站建议把单模型执行与大小模型协作分开验收。",
+    "limits": "厂商评测及案例未独立复现；token生成速度不等于端到端任务加速。不同effort与工具条件不能当严格同配置排名；系统卡PDF访问失败，未核完整评测细节。",
+    "dateLabel": "2026-11-09 · 官方公告",
+    "evidence": "官方原页核验；未独立复现",
+    "date": "2026-11-09",
+    "checkedAt": "2026-11-09T22:23:28.387704+00:00",
+    "firstSeenAt": "2026-11-09T22:24:47.211574+00:00",
+    "tags": [
+      "官方更新",
+      "Agent",
+      "工程"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "官方公告 · 方法、结果与范围",
+        "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Anthropic 11月9日发布 Fable / Mythos 5.2：底层模型相同，防护与准入不同；Fable 可作顾问或调度较小模型。官方称输出较5.1最多快30%。",
+      "motivation": "长任务的速度、成本和完成质量需要一起测。本站建议把单模型执行与大小模型协作分开验收。",
+      "novelty": "作者主张：技术任务能力与效率提升。本站判断：值得复测的是多模型协作的成本收益；公告未提供足以独立重建训练方法的信息。",
+      "evidenceScope": "已读11/9官方公告与评测注释；BenchCAD为部分计分，OSWorld使用离线部分集。系统卡PDF不可读，未测试模型或复现实验。",
+      "limits": "厂商评测及案例未独立复现；token生成速度不等于端到端任务加速。不同effort与工具条件不能当严格同配置排名；系统卡PDF访问失败，未核完整评测细节。",
+      "method": [
+        "区分 Fable 的网络安全/生物防护与 Mythos 的组织验证准入。",
+        "选择直接执行、顾问咨询或调度小模型的工作流，记录调用与预算。",
+        "本站建议：按同一任务和验收规则比较effort、总耗时、费用及失败重试。"
+      ],
+      "inspirations": [
+        "用相同任务对比单模型与顾问/调度模式，计入失败和人工修复成本。",
+        "把CAD部分得分与完整可执行交付分别验收；不能把部分计分当完成率。"
+      ],
+      "reviewedAt": "2026-11-09T22:23:28.387704+00:00",
+      "sourceUrls": [
+        "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+      ]
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://openai.com/index/control-room/",
+    "url": "https://openai.com/index/control-room/",
+    "id": "official-openai-control-room",
+    "title": "Control Room：在推理层统一停止研究任务的模型输出",
+    "summary": "OpenAI 11月9日介绍 Control Room：用任务ID在推理引擎统一检查授权；官方称收到停止指令后最多35秒停止进一步模型输出。",
+    "insight": "只在Agent脚本中写停止检查，可能随任务代码出错而失效。将检查放在共享推理入口，能把控制范围与任务实现分开。",
+    "limits": "35秒来自官方系统说明，非本站压测。停止模型输出不等于杀死进程、撤销工具副作用或回滚操作；fail-closed已覆盖前沿模型研究任务，其余研究任务仍在推广。",
+    "dateLabel": "2026-11-09 · 官方公告",
+    "evidence": "官方原页核验；未独立复现",
+    "date": "2026-11-09",
+    "checkedAt": "2026-11-09T22:23:28.387704+00:00",
+    "firstSeenAt": "2026-11-09T22:24:47.211574+00:00",
+    "tags": [
+      "官方更新",
+      "Agent",
+      "工程"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "官方公告 · 方法、结果与范围",
+        "url": "https://openai.com/index/control-room/"
+      },
+      {
+        "label": "官方新闻列表 · 11/9发布日期",
+        "url": "https://openai.com/news/"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "OpenAI 11月9日介绍 Control Room：用任务ID在推理引擎统一检查授权；官方称收到停止指令后最多35秒停止进一步模型输出。",
+      "motivation": "只在Agent脚本中写停止检查，可能随任务代码出错而失效。将检查放在共享推理入口，能把控制范围与任务实现分开。",
+      "novelty": "作者主张：统一追踪和停止研究推理任务。本站判断：关键是推理层执行与失联拒绝，而非仅新增监控面板。",
+      "evidenceScope": "已读官方原页架构、35秒缓存解释与推广范围；公告日期由官方新闻列表交叉核验。未访问内部实现或独立验证故障行为。",
+      "limits": "35秒来自官方系统说明，非本站压测。停止模型输出不等于杀死进程、撤销工具副作用或回滚操作；fail-closed已覆盖前沿模型研究任务，其余研究任务仍在推广。",
+      "method": [
+        "研究任务登记job_id，并关联已批准的安全论证。",
+        "调用推理时携带ID，由引擎向控制服务确认授权。",
+        "收到停止指令后拒绝该ID后续推理；授权缓存导致最长35秒窗口。",
+        "服务故障时拒绝推理，并持续检查未接入控制的引擎。"
+      ],
+      "inspirations": [
+        "做故障注入验收：停止时并发请求、缓存命中和控制服务中断分别测延迟。",
+        "工具执行另设取消与幂等机制；不要将停止推理当成外部动作已撤回。"
+      ],
+      "reviewedAt": "2026-11-09T22:23:28.387704+00:00",
+      "sourceUrls": [
+        "https://openai.com/index/control-room/",
+        "https://openai.com/news/"
+      ]
+    }
   }
 ]
