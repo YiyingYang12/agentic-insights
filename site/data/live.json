@@ -7214,6 +7214,51 @@
     ]
   },
   {
+    "sourceType": "huggingface",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.04434",
+    "url": "https://huggingface.co/papers/2611.04434",
+    "id": "live-5672d59273875df2",
+    "title": "Sketchpad: certified exact arithmetic with a small vision-language model",
+    "summary": "Language models are accurate on most long-arithmetic problems, but their accuracy is estimated on samples and carries no guarantee for an unseen input; tool use is exact but moves the computation outside the network. We show that exactness at all input lengths becomes a finite, checkable property of a network when each of its steps reads only a bounded view of an external working memory. In Sketchpad, Qwen3.5-0.8B with a low-rank adapter executes arithmetic procedures on a rendered sheet. Each forward pass reads a three-cell view and emits one step: a digit, a carry or borrow, and the next operation. A fixed runtime moves the view and writes…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-03",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-09T16:00:01Z",
+    "firstSeenAt": "2026-11-09T04:00:01Z",
+    "lastSeenAt": "2026-11-09T16:00:01Z",
+    "dailySubmittedAt": "2026-11-09T00:00:00.000Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Mostafa 'Neo' Mohsenvand"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.04434"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.04434"
+      },
+      {
+        "label": "Project",
+        "url": "https://neovand.github.io/sketchpad/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/NeoVand/sketchpad"
+      }
+    ]
+  },
+  {
     "sourceType": "arxiv",
     "category": "data",
     "verified": false,

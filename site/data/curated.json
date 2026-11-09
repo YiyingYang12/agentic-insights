@@ -9805,5 +9805,330 @@
       "status": "pending",
       "checkedAt": "2026-11-09T10:30:16.218779+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.04434",
+    "url": "https://arxiv.org/abs/2611.04434",
+    "id": "live-5672d59273875df2",
+    "title": "Sketchpad：把算术步骤压成有限视图，再逐项认证小模型",
+    "summary": "Qwen3.5-0.8B 加约 1,022 万参数的 LoRA，每一步只读取外部纸面上的三个格子；把可能遇到的局部算术输入缩成 2,446 种，再在部署设备逐项检查。论文报告 M4 浏览器算术测试 200/200，但保证依赖固定执行路径与可信 runtime。",
+    "insight": "对可执行 Agent，值得借鉴的是先约束每一步能看到什么，把局部算子做成可穷举的契约，再单独评估任务转写、调度和通用能力损失。只看最终成功率或文本困惑度会掩盖接口错误与遗忘。",
+    "limits": "认证对象是固定 glyph、prompt、模型文件、数值精度与执行路径下的 2,446 种局部算术视图；参考算法正确性和 runtime 视图闭包仍是形式化定理的假设，不能据此认证任意推理或自然语言转写。换 GPU 需完整检查，默认最低 margin 的 10% 抽查不等于完整认证；随机 batch 只覆盖已测组合。训练也直接使用这些表项，认证并非独立测试集泛化。对话评测用参考精确整数执行器执行 sheet 块，且新 GSM8K 上 49.1% 低于基座 54.9%，不能把 gate=0 恢复基座等同于 gate=1 无能力损失。代码和文本是 Apache-2.0，HF 权重为 proprietary 预览许可，不是同等开源模型。本站仅核验论文、代码及发布证书，未运行模型、编译 Lean 或复现实验。",
+    "dateLabel": "2026-11-03 · v1 首发",
+    "evidence": "已读 arXiv v1 全文方法、认证定理及限制，并核固定 GitHub 源码与 HF 证书；来源核验，未复现实验。",
+    "originalTitle": "Sketchpad: certified exact arithmetic with a small vision-language model",
+    "date": "2026-11-03",
+    "checkedAt": "2026-11-09T16:28:03Z",
+    "originalDate": "2026-11-03",
+    "firstSeenAt": "2026-11-09T04:00:01Z",
+    "lastSeenAt": "2026-11-09T16:00:01Z",
+    "dailySubmittedAt": "2026-11-09T00:00:00.000Z",
+    "tags": [
+      "有限状态认证",
+      "LoRA",
+      "精确算术",
+      "能力保留",
+      "GRPO"
+    ],
+    "authors": [
+      "Mostafa 'Neo' Mohsenvand"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.04434"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.04434"
+      },
+      {
+        "label": "Project",
+        "url": "https://neovand.github.io/sketchpad/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/NeoVand/sketchpad"
+      },
+      {
+        "label": "arXiv v1 全文",
+        "url": "https://arxiv.org/html/2611.04434v1"
+      },
+      {
+        "label": "GitHub 固定实现",
+        "url": "https://github.com/NeoVand/sketchpad/tree/03bb36b21188ce4da24ef654f355e1c0ec96a508"
+      },
+      {
+        "label": "HF 固定模型与证书",
+        "url": "https://huggingface.co/mohsenvand/sketchpad-0.8b-preview/tree/5d0ee15c3765469bb0216d9c4070df778044b017"
+      },
+      {
+        "label": "HF 模型许可",
+        "url": "https://huggingface.co/mohsenvand/sketchpad-0.8b-preview/blob/5d0ee15c3765469bb0216d9c4070df778044b017/LICENSE"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把长算术拆成每次只看三个格子的神经网络步骤，穷举核验 2,446 种局部视图后，在运行时满足闭包与参考程序正确性的条件下，把局部正确性组合成长输入的精确执行。",
+      "motivation": "长算术抽样答对不能保证更长输入正确；保留整段历史又让网络状态难以穷举。作者改造计算接口，把状态放在外部纸面，限制每步可见信息，使精确性成为可有限检查的属性。",
+      "novelty": "作者主张：把视觉语言模型每步限制在有限外部视图，结合 Lean 中的条件定理与部署设备穷举 margin 检查，获得任意长度算术执行的保证。本站判断：最可迁移的是有限接口与分层验证思路；保证针对指定局部算子及运行条件，尚不能外推为通用 reasoning 或任意工具 Agent 的正确性证书。",
+      "evidenceScope": "已读取 arXiv 2611.04434v1 的方法、认证、算术/代数、对话、附录证明与证书字段；静态检查 GitHub 提交 03bb36b21188ce4da24ef654f355e1c0ec96a508 的 runtime、Paper.lean 和许可；刷新 HF 模型版本 5d0ee15c3765469bb0216d9c4070df778044b017，解析作者发布的两份 JSON 证书并复核行数和最低 margin。未运行作者代码或模型，未自行验证 Lean 构建或硬件 logits。",
+      "limits": "认证对象是固定 glyph、prompt、模型文件、数值精度与执行路径下的 2,446 种局部算术视图；参考算法正确性和 runtime 视图闭包仍是形式化定理的假设，不能据此认证任意推理或自然语言转写。换 GPU 需完整检查，默认最低 margin 的 10% 抽查不等于完整认证；随机 batch 只覆盖已测组合。训练也直接使用这些表项，认证并非独立测试集泛化。对话评测用参考精确整数执行器执行 sheet 块，且新 GSM8K 上 49.1% 低于基座 54.9%，不能把 gate=0 恢复基座等同于 gate=1 无能力损失。代码和文本是 Apache-2.0，HF 权重为 proprietary 预览许可，不是同等开源模型。本站仅核验论文、代码及发布证书，未运行模型、编译 Lean 或复现实验。",
+      "method": [
+        "固定 runtime 按经典笔算算法布局和移动纸面；每次前向只给操作标记及三个 32×32 格子的图像，模型输出数字、进位/借位与下一操作，步骤间不累积生成历史。",
+        "用 rank-16 LoRA 直接学习 2,446 个表项，联合交叉熵、logit margin 损失和向基座的文本蒸馏；重放低 margin 表项，并保留训练后每个表项都通过的要求。",
+        "在部署用模型文件、glyph、prompt 和数值路径上枚举检查全部视图，记录文件哈希与逐项 margin；作者 M4 发布证书的三组 242、1,553、651 行全部通过，最小 margin 为 3.016。",
+        "利用固定程序串接局部算子，支持加减乘除、平方根与 GCD；符号代数另由常规解析/组合代码组织，神经算子认证不自动涵盖该代码或题意转写。",
+        "对话分支用 synthetic sheet 调用、SFT/蒸馏和 GRPO 学习何时调用，所有阶段保留表项训练；gate=0 可恢复基座，仍需分别测 gate=1 的调用正确性、端到端能力与遗忘。"
+      ],
+      "inspirations": [
+        "对编辑器、CAD 或数据处理 Agent，把候选动作先压成显式类型与有限局部状态，单独认证可穷举算子；把题意转写和全局计划保留为另一层可测风险，避免一个成功率包揽全部责任。",
+        "将模型文件、渲染 glyph、prompt、runtime 版本、dtype、设备与 batch 配置纳入证书失效条件；完整再认证与低 margin 抽查应在产品和实验报告中明确区分。",
+        "训练精确子技能时同时做 fresh held-out 的能力保留评测；本例文本困惑度几乎不变、gate 可恢复基座，仍未阻止 gate=1 在新 GSM8K 下降 5.8 个百分点。"
+      ],
+      "reviewedAt": "2026-11-09T16:28:03Z",
+      "sourceUrls": [
+        "https://arxiv.org/html/2611.04434v1",
+        "https://arxiv.org/abs/2611.04434v1",
+        "https://github.com/NeoVand/sketchpad/tree/03bb36b21188ce4da24ef654f355e1c0ec96a508",
+        "https://huggingface.co/mohsenvand/sketchpad-0.8b-preview/tree/5d0ee15c3765469bb0216d9c4070df778044b017",
+        "https://huggingface.co/mohsenvand/sketchpad-0.8b-preview/blob/5d0ee15c3765469bb0216d9c4070df778044b017/LICENSE",
+        "https://huggingface.co/mohsenvand/sketchpad-0.8b-preview/blob/5d0ee15c3765469bb0216d9c4070df778044b017/arithmetic/certificate.json"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.04434",
+      "status": "pending",
+      "checkedAt": "2026-11-09T16:28:29.029345+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.09401v1",
+    "url": "https://arxiv.org/abs/2611.09401v1",
+    "id": "live-6fa10d9241250b5e",
+    "title": "PhyCAD：把“代码跑通”与“物理可行”分层，避免RL奖励相互补偿",
+    "summary": "让模型直接生成满足几何、应力、位移与质量约束的CadQuery程序。3,373题完整测试中，同一Qwen2.5-3B的联合通过率由SFT的21.76%升至分层GRPO的39.49%；普通GRPO虽提高代码有效率，联合通过率却降至18.80%。",
+    "insight": "代码创作Agent的奖励应先区分能否执行、是否符合几何要求、是否满足物理约束，再在同一等级优化质量。保存可编辑源程序，并以完整任务数报告联合通过率，避免“能跑”的收益掩盖约束失败。",
+    "limits": "结果为作者报告，未复现；作者仓库固定版本仅README，无法核验实际训练/评分实现。3,373题来自同一自动标注语料的留出，不代表工业工程任务或跨来源泛化。验证限单个连通实体、各向同性钢材、小应变线弹性与自动端面100 kN载荷；应力取体积加权P99，不是峰值应力；阈值由参考设计测量×1.10再向上取两位有效数字，不是材料失效准则。局部精确尺寸、非线性/屈曲/疲劳及真实制造未验证。CadQuery源码是可修改表示，但没有独立编辑任务成功率。优势的等级排序保证不等于生成设计必然可行；小模型经领域SFT/RL与前沿模型直接提示的比较不能当通用能力排名。分阶段RL额外收益有更多训练成本，未建立等预算结论。",
+    "dateLabel": "2026-11-06",
+    "evidence": "全文方法、数据划分与物理假设已核；作者代码仓库仅占位README，未复现",
+    "originalTitle": "PhyCAD: Physics-Aware Text-to-CAD Generation via Hierarchical Reinforcement Learning",
+    "date": "2026-11-06",
+    "checkedAt": "2026-11-09T16:28:10.442128Z",
+    "updatedAt": "2026-11-06T12:35:41Z",
+    "firstSeenAt": "2026-11-09T10:00:01Z",
+    "lastSeenAt": "2026-11-09T16:00:01Z",
+    "tags": [
+      "Training / RL",
+      "CadQuery",
+      "Hierarchical GRPO",
+      "FEA",
+      "Code2-3D"
+    ],
+    "authors": [
+      "Yuxin Cui",
+      "Weijie Zheng",
+      "Zhengyang Li",
+      "Han Wang",
+      "Wenjie Feng",
+      "Qiyu Kang"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "sourceId": "arxiv_code2_3d",
+    "sources": [
+      {
+        "label": "arXiv · Code2-3D",
+        "url": "https://arxiv.org/abs/2611.09401v1"
+      },
+      {
+        "label": "原论文 · 方法、主表与附录",
+        "url": "https://arxiv.org/html/2611.09401v1"
+      },
+      {
+        "label": "作者仓库 · 固定版本仅README",
+        "url": "https://github.com/PhysAGI/PhyCAD/blob/88c12f7a089d0d4f7174ae0a4967c3b90c777cde/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把奖励拆成严格优先的可行性等级，以及同等级内的多目标排序，让“更轻”或“代码有效”不能补偿关键约束失败。推理直接生成CadQuery源码，不靠测试时的仿真迭代搜索。",
+      "motivation": "自动CAD程序可能成功执行，却形状不符、过重或在指定载荷下变形过大。若将这些信号简单相加，RL可能用易得的代码分掩盖物理失败；因此需要保持可行性优先，同时给失败样本提供逐步改进的反馈。",
+      "novelty": "作者主张：用确定性CAD–CAE验证及层级平衡GRPO，将物理可行性纳入直接Text-to-CAD生成，并以PeerRank兼顾同级多目标。本站判断：关键可迁移点是让硬约束的优先顺序进入训练优势，而不是把一切奖励混成总分；论文证明的是同一提示组内的优势排序，不是模型输出的物理安全保证，也未证明跨材料/载荷与真实工程泛化。",
+      "evidenceScope": "已读arXiv 2611.09401v1全文的方法§3、数据/实验§4、讨论及附录A/B；核对77,067条标注数据划分、3,373题完整测试分母、表1/2与物理载荷设置。只读核验论文直接链接的PhysAGI/PhyCAD固定提交88c12f7a089d0d4f7174ae0a4967c3b90c777cde，仓库仅有两行README，无可核验实现、数据或权重；没有运行作者代码、CAD/FEA、训练、模型推理或复现实验。verified仅指来源核验。",
+      "limits": "结果为作者报告，未复现；作者仓库固定版本仅README，无法核验实际训练/评分实现。3,373题来自同一自动标注语料的留出，不代表工业工程任务或跨来源泛化。验证限单个连通实体、各向同性钢材、小应变线弹性与自动端面100 kN载荷；应力取体积加权P99，不是峰值应力；阈值由参考设计测量×1.10再向上取两位有效数字，不是材料失效准则。局部精确尺寸、非线性/屈曲/疲劳及真实制造未验证。CadQuery源码是可修改表示，但没有独立编辑任务成功率。优势的等级排序保证不等于生成设计必然可行；小模型经领域SFT/RL与前沿模型直接提示的比较不能当通用能力排名。分阶段RL额外收益有更多训练成本，未建立等预算结论。",
+      "method": [
+        "从约11万条Text-to-CadQuery程序中保留可执行、单个连通实体且通过CAD–CAE标注的77,067条；11,024条用于SFT，66,043条分给RL，其中再留出3,373题测试，实际RL训练62,670条，测试题不参与策略更新。",
+        "将参考CAD转为逆设计任务：去掉精确尺寸，只保留形状/构造语义与每轴粗尺寸范围；提供钢材、自动端面固定与100 kN牵引载荷。应力、位移和质量上限由参考测量乘1.10并向上取两位有效数字，要求满足约束并减轻质量。",
+        "验证生成程序的语法/安全调用、实体有效性、STEP导出重导入，再查包围盒与所需构造；网格化/有限元计算体积加权P99 von Mises应力、最大节点位移和质量。划为CAD失败、几何失败、物理/仿真失败、全部通过四级，保留部分进展与违反程度。",
+        "同一提示的候选先计算等级相对优势，再仅在同等级内对目标做并列感知的居中排名并平均，称PeerRank。实验等级权重1、内部排序权重0.25，使较高等级的优势始终更大；全通过后等权比较减重与最多10%的应力/位移余量，并非只优化质量。以每提示4个候选、DAPO式token聚合与KL正则进行GRPO更新。",
+        "推理时直接生成程序，无仿真迭代修订。对全部3,373题分别统计有效CAD、几何、仿真、物理与联合通过率；Qwen2.5-3B在同一SFT起点下，普通GRPO联合18.80%、直接分层39.49%。另经几何→物理→分层的多阶段训练达42.01%，但使用额外训练阶段。"
+      ],
+      "inspirations": [
+        "为CAD、Blender或视频代码Agent建立执行→结构/语义→任务约束的分层验收，保留每级失败分母；做“执行成功但约束更差”的专门消融，检测奖励是否鼓励钻空子。",
+        "交付源程序及参数，并加入局部修改后重新执行、重新检查几何与物理约束的测试。把可修改表示、修改后的可行率与初次生成成功率分列，避免从有源码直接推断编辑可靠。",
+        "另设跨来源、材料和载荷的独立留出，同时记录网格/求解失败、总仿真次数和时间成本；用人为构造的应力/位移越界案例校准验证器，不以参考设计的10%数值余量代替工程验收标准。"
+      ],
+      "reviewedAt": "2026-11-09T16:28:10.442128Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.09401v1",
+        "https://arxiv.org/html/2611.09401v1",
+        "https://github.com/PhysAGI/PhyCAD/blob/88c12f7a089d0d4f7174ae0a4967c3b90c777cde/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.09401",
+      "status": "pending",
+      "checkedAt": "2026-11-09T16:28:29.029159+00:00"
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/nvidia/nemotron-personas-finance-japan",
+    "url": "https://huggingface.co/blog/nvidia/nemotron-personas-finance-japan",
+    "id": "live-ac8f18750241a65f",
+    "title": "Nemotron-Personas-Finance-Japan：用统计分布约束合成用户，分层验收Agent",
+    "summary": "NVIDIA与Elith开放100万条日本成年人的合成画像，每条含9种描述、共50字段，CC BY 4.0。用统计分布生成结构化背景，再补日文生活与金融描述，可作为对话Agent用户模拟的条件数据。",
+    "insight": "有价值的是把“覆盖哪些用户”显式建模：按年龄、地区、家庭与数字素养分层生成测试任务，分别验收结构一致性、模拟行为和目标Agent结果。画像多样不等于真实行为或评测有效。",
+    "limits": "这是合成用户画像项目，非真实客户记录。覆盖日本18岁及以上人群；教育与职业等存在条件独立近似，部分资产分布基于2019年调查，不能视作2026实时人口或财务分布。官方分布图、字段统计和2万条描述聚类不证明多轮用户行为真实、Agent效果提升或公平性改善；未下载全量数据、运行生成器或独立复现。9M指100万条记录各9种描述，不是900万独立用户。",
+    "organization": "NVIDIA / Elith",
+    "dateLabel": "2026-11-09 · 官方博客公告（UTC）",
+    "evidence": "官方方法说明、固定版本数据卡及HF元数据已核验；未独立验证数据或模拟行为",
+    "originalTitle": "Nemotron-Personas-Finance-Japan: A Synthetic Dataset Capturing Japan's Demographics and Financial Context",
+    "date": "2026-11-09",
+    "checkedAt": "2026-11-09T16:27:52.406538Z",
+    "updatedAt": "2026-11-09T15:18:34.976Z",
+    "firstSeenAt": "2026-11-09T16:00:01Z",
+    "lastSeenAt": "2026-11-09T16:00:01Z",
+    "tags": [
+      "Data",
+      "合成数据",
+      "用户模拟",
+      "日本语",
+      "统计分布",
+      "Agent评测"
+    ],
+    "topics": [],
+    "featured": false,
+    "sourceId": "hf_blog",
+    "sources": [
+      {
+        "label": "Hugging Face · Blog / Showcases",
+        "url": "https://huggingface.co/blog/nvidia/nemotron-personas-finance-japan"
+      },
+      {
+        "label": "官方数据卡（固定版本）：生成方法、字段、覆盖与限制",
+        "url": "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Finance-Japan/blob/c73cc865652320aa2a4ee1c48fcd8ccc8a3d6b94/README.md"
+      },
+      {
+        "label": "HF官方仓库元数据：版本、许可与仓库日期",
+        "url": "https://huggingface.co/api/datasets/nvidia/Nemotron-Personas-Finance-Japan"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "这是一套CC BY 4.0的日本用户模拟条件数据：100万条合成记录、每条9种画像描述、总计50字段。它让Agent训练或测试先指定用户背景，再生成对话；数据本身不是已验证的交互环境。",
+      "motivation": "只让语言模型随机编用户，难以控制地区、年龄、家庭与资产等人群覆盖。项目尝试把官方统计和公开调查约束引入生成流程，为日文客服、需求澄清与多轮情境测试准备可筛选的用户背景。",
+      "novelty": "作者主张：这是百万规模、统计驱动且融合日本家庭金融情境的画像数据，可支持本地金融AI训练与评估。本站判断：研究价值在于把用户分布和语义描述拆开建模，并开放可筛选属性；首创性、偏差减少和下游收益尚未由本站独立验证。",
+      "evidenceScope": "已读官方HF博客的生成流程与使用边界、固定数据卡 c73cc865652320aa2a4ee1c48fcd8ccc8a3d6b94 的种子/Schema/质量分析/限制，以及HF仓库与datasets-server元数据。viewer报告1,000,000条train、50字段；只是来源交叉核验，未下载全量Parquet、执行作者代码或复现实验。数据卡标2026-11-10，博客实际公告为2026-11-09 15:05 UTC；仓库2026-11-04创建不作为公告日。",
+      "limits": "这是合成用户画像项目，非真实客户记录。覆盖日本18岁及以上人群；教育与职业等存在条件独立近似，部分资产分布基于2019年调查，不能视作2026实时人口或财务分布。官方分布图、字段统计和2万条描述聚类不证明多轮用户行为真实、Agent效果提升或公平性改善；未下载全量数据、运行生成器或独立复现。9M指100万条记录各9种描述，不是900万独立用户。",
+      "method": [
+        "使用日本人口统计、公开金融调查及命名分布等种子，以NeMo SDG-PGMs概率图模型生成统计约束下的结构化属性；部分相关关系作条件独立近似。",
+        "在结构化背景上加入家庭与财务情境、金融素养、职业和生活阶段等字段，用gemma-4-31B-it生成日文画像描述。每个基础记录含9种描述，不能当成9个独立用户。",
+        "用NeMo Data Designer编排模板、结构化输出、Pydantic校验与重试。官方发布50字段和Parquet数据；本轮只核数据卡及服务端元数据，未重跑生成器。",
+        "官方用人口/家庭切片、字段统计及2万条描述的嵌入聚类展示覆盖；下游可用这些画像条件化用户模拟。此处需另测对话一致性、行为真实性与目标Agent任务成功。"
+      ],
+      "inspirations": [
+        "把Agent测试任务按地区、年龄、数字素养和家庭情境分层；比较固定任务在各切片的澄清成功率与错误率，避免总均分掩盖稀有人群失败。",
+        "建立三层验收：字段/描述一致性、用户模拟的多轮目标与记忆一致性、目标Agent任务结果。结构校验通过只覆盖第一层。",
+        "按基础记录uuid划分训练与测试，防止同一合成人的不同描述跨split；另用独立来源的小规模真实行为基线检查模拟偏差，不能从画像分布接近直接推导行为有效。"
+      ],
+      "reviewedAt": "2026-11-09T16:27:52.406538Z",
+      "sourceUrls": [
+        "https://huggingface.co/blog/nvidia/nemotron-personas-finance-japan",
+        "https://huggingface.co/datasets/nvidia/Nemotron-Personas-Finance-Japan/blob/c73cc865652320aa2a4ee1c48fcd8ccc8a3d6b94/README.md",
+        "https://huggingface.co/api/datasets/nvidia/Nemotron-Personas-Finance-Japan"
+      ]
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.32129v1",
+    "url": "https://arxiv.org/abs/2610.32129v1",
+    "id": "paper-shorter-not-cheaper-2610-32129",
+    "title": "代表作补读｜Shorter Is Not Cheaper：动效代码短了，不一定更快、更省",
+    "summary": "在20个交互式概念动画任务中，对比声明式ExplainSpec与HTML/JS。作者观察到推理模型的答案token减少约25%–48%，但生成延迟未显著下降；增加修复后，Claude三种模型的DSL路线总费用都高于HTML路线。",
+    "insight": "为代码动效Agent评估“合格产物的总成本”：答案、推理、输入、失败修复与耗时分别记账，再独立验收画面、状态和实际控件，不能用代码长度代理效率。",
+    "limits": "10月23日论文代表作补读，并非本周新发布。已读全文方法、结果及局限，未独立取得作者实现、原始日志或外部预注册，也未复现实验。仅20个任务、两类模型家族；Qwen实验为单张16GB GPU上的4位量化模型。新DSL与模型熟悉的HTML在表达能力、先验熟悉度和控制器样板上不完全对等，不能归因于所有DSL。语义检查主要验证暴露状态，不等于画面真实表达、用户控件可用性或教学质量；HTML自报状态可能与绘制脱节。Claude主实验保留原冻结结果；事后发现ExplainSpec吞掉5个绘制错误，校正和宽松评分属于补充分析。Qwen多数DSL产物无效，速度和成本不能视作等质量比较。延迟差异不显著不表示等效；Claude推理开销增加没有在Qwen上显著复现。费用为作者当次工具报告值，非当前价格；未评估流式渲染、缓存或DSL微调。",
+    "dateLabel": "代表作 · 2026-10-23",
+    "evidence": "已读原文方法、实验与局限；未取得作者代码或独立复现",
+    "originalTitle": "Shorter Is Not Cheaper: A Controlled Comparison of Declarative Animation Specifications and Free-Form Code for LLM-Generated Explanations",
+    "date": "2026-10-23",
+    "checkedAt": "2026-11-09T16:28:51.429630+00:00",
+    "updatedAt": "2026-10-23T03:56:19Z",
+    "firstSeenAt": "2026-11-09T16:30:33.004039+00:00",
+    "tags": [
+      "Generative UI",
+      "DSL",
+      "Token Cost",
+      "Temporal Evaluation"
+    ],
+    "topics": [
+      "code2motion"
+    ],
+    "sourceId": "arxiv_code2motion",
+    "sources": [
+      {
+        "label": "arXiv · 发表日期与版本",
+        "url": "https://arxiv.org/abs/2610.32129v1"
+      },
+      {
+        "label": "原论文 · 完整方法、结果与局限",
+        "url": "https://arxiv.org/html/2610.32129v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "更短的动画表示不自动带来更低推理成本。作者在同一批20个任务上比较ExplainSpec与HTML/JS：推理模型的答案短25%–48%，却没有显著延迟收益；弱模型输出的DSL还更易失效。",
+      "motivation": "声明式UI把播放器和图形运行时交给固定库，模型只输出紧凑描述，看起来应当便宜。但模型还要学习陌生语义、规划时间轨迹并修错，省下的可见代码可能被推理和重试抵消。",
+      "novelty": "作者主张：用受控交互动画任务检验声明式Generative UI的效率假设，并分离答案压缩、隐藏推理和修复成本。本站判断：价值是把时间行为与“总成本/合格率”放在同一实验协议中；陌生DSL的结果不能证明所有声明式格式都更差，本文也未测流式首帧收益。",
+      "evidenceScope": "已读arXiv v1全文的ExplainSpec表示、观察契约、检查器验证、冻结设计、Claude/Qwen实验、事后审计与局限。原页未找到可核验作者实现或外部预注册入口；论文内部哈希冻结不等于独立预注册。X精确索引未得到可核验原帖。未运行作者实验或复现费用。",
+      "limits": "10月23日论文代表作补读，并非本周新发布。已读全文方法、结果及局限，未独立取得作者实现、原始日志或外部预注册，也未复现实验。仅20个任务、两类模型家族；Qwen实验为单张16GB GPU上的4位量化模型。新DSL与模型熟悉的HTML在表达能力、先验熟悉度和控制器样板上不完全对等，不能归因于所有DSL。语义检查主要验证暴露状态，不等于画面真实表达、用户控件可用性或教学质量；HTML自报状态可能与绘制脱节。Claude主实验保留原冻结结果；事后发现ExplainSpec吞掉5个绘制错误，校正和宽松评分属于补充分析。Qwen多数DSL产物无效，速度和成本不能视作等质量比较。延迟差异不显著不表示等效；Claude推理开销增加没有在Qwen上显著复现。费用为作者当次工具报告值，非当前价格；未评估流式渲染、缓存或DSL微调。",
+      "method": [
+        "为ExplainSpec定义参数、状态、离散步骤、派生表达式与7类图元，用约600行JS运行时渲染SVG；HTML/JS和DSL都实现统一的duration、参数、确定性seek及getState接口。",
+        "冻结20个任务，覆盖物理、算法、协议、机器学习和概率；两种表示分别提供同任务示例与规则。隔离浏览器按0.05秒间隔采样状态，在每题2–3组参数上与真值比对；每个离散状态至少可见0.3秒。",
+        "三种Claude 5.5模型各跑20任务×2表示×3重复，共360个作业；另用4位量化Qwen3-14B比较开启/关闭思考，共240个作业。仅加载或接口错误可修复一次，语义答案不给修复反馈。",
+        "分别计量答案token、含推理的总输出、首次延迟、费用及修复后有效率/语义通过率；以任务为统计单位，对重复取中位数或平均率，进行配对检验和校正。额外拆分推理token及事后检查器修正，明确其探索性质。",
+        "作者报告：Claude Opus首轮DSL费用3.89美元、HTML 4.43美元，计入修复后DSL升至4.63美元；Qwen开思考后DSL语义通过约17%、HTML约62%。关闭思考的DSL虽更快，但语义通过仅约3%，不能称等质量提速。"
+      ],
+      "inspirations": [
+        "对Manim、Remotion或GSAP路线同时记录答案token、推理token、首轮成功、修复次数与端到端时长；比较每个达到同一质量门槛的成品成本，保留全部失败。",
+        "共享可寻址时间与参数接口有利于检查隐藏时间段，但还要核对实际画面和真实按钮操作，防止getState正确、屏幕却画错的“自报通过”。",
+        "要验证DSL是否值得投入，单独控制样板代码、示例熟悉度、微调、缓存和流式渲染；让不支持的语法与绘制错误明确暴露，便于Agent修复而非静默失败。"
+      ],
+      "reviewedAt": "2026-11-09T16:28:51.429630+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2610.32129v1",
+        "https://arxiv.org/html/2610.32129v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.32129",
+      "status": "pending",
+      "checkedAt": "2026-11-09T16:28:29.029347+00:00"
+    }
   }
 ]
