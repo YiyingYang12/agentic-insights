@@ -147,6 +147,67 @@
   },
   {
     "sourceType": "arxiv",
+    "category": "training",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.09894v1",
+    "url": "https://arxiv.org/abs/2611.09894v1",
+    "id": "live-f1c3c59925f451e9",
+    "title": "Video-Coder: Reinforcing Agentic Coding for Video Generation",
+    "summary": "Recent years have witnessed remarkable progress in video generation in terms of visual quality and temporal consistency. However, generating videos with precise spatial structure, coherent motion dynamics, and controllable scene composition remains challenging. In this paper, we introduce Video-Coder, the first attempt to train a code-driven video generation agent, which autonomously writes and executes code to construct a dynamic 3D scene (Draft Video) that provides structure and motion signals to downstream video generators. To support this paradigm, we design a dedicated data pipeline and curate two high-quality datasets…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-06",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-06",
+    "checkedAt": "2026-11-09T10:00:01Z",
+    "updatedAt": "2026-11-06T18:59:57Z",
+    "firstSeenAt": "2026-11-09T10:00:01Z",
+    "lastSeenAt": "2026-11-09T10:00:01Z",
+    "dailySubmittedAt": "2026-11-09T00:00:00.000Z",
+    "tags": [
+      "Training / RL"
+    ],
+    "authors": [
+      "Chaoyang Wang",
+      "Sicheng Gao",
+      "Junan Hu",
+      "Kunyang Li",
+      "Dongyang Chen",
+      "Yiyang Zhou",
+      "Huaxiu Yao",
+      "Yong Jae Lee",
+      "Radu Timofte",
+      "Yuzhang Shang"
+    ],
+    "topics": [
+      "code2video"
+    ],
+    "sourceId": "arxiv_code2_3d",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.09894v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.09894"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.09894"
+      },
+      {
+        "label": "Project",
+        "url": "https://cywang735.github.io/Video-Coder/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/CYWang735/Video-Coder"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
     "category": "data",
     "verified": false,
     "originUrl": "https://arxiv.org/abs/2611.09414v1",
@@ -1028,6 +1089,64 @@
       {
         "label": "arXiv · Agentic 论文",
         "url": "https://arxiv.org/abs/2611.08922v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "benchmark",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.09017",
+    "url": "https://huggingface.co/papers/2611.09017",
+    "id": "live-4171d6dc37d9b36a",
+    "title": "Frontier3DBench: Benchmarking Coding Agents for 3D Creation across Objects, Scenes, and Interactive Open Worlds",
+    "summary": "Coding agents combine visual understanding with program execution, offering a new route to automated 3D creation. By translating images and instructions into editable programs, they bring reconstruction, generation, and editing into a shared workflow. Yet existing benchmarks fragment evaluation across task scopes and protocols, leaving their capabilities across construction levels unclear. We propose Frontier3DBench, a unified benchmark of 145 tasks across 9 categories spanning object, scene, and interactive open-world creation, with joint evaluation of appearance, structure, and behavior. Experiments with 11 model-harness configurations…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-06",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-06",
+    "checkedAt": "2026-11-09T10:00:01Z",
+    "updatedAt": "2026-11-06T05:45:31Z",
+    "firstSeenAt": "2026-11-09T10:00:01Z",
+    "lastSeenAt": "2026-11-09T10:00:01Z",
+    "dailySubmittedAt": "2026-11-09T00:00:00.000Z",
+    "tags": [
+      "Evaluation"
+    ],
+    "authors": [
+      "Xinjie Lin",
+      "Qingle Liu",
+      "Wenyi Li",
+      "John Lam",
+      "Xiaoqiu Wang",
+      "Deyao Hong",
+      "Mingju Gao",
+      "Zheng Jiang",
+      "Yizhe Chi",
+      "Youjie Zheng",
+      "Calvin Xiao",
+      "Kaisen Yang",
+      "Huan-ang Gao"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.09017v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.09017"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.09017"
+      },
+      {
+        "label": "Project",
+        "url": "https://lab.einsia.ai/frontier3dbench/"
       }
     ]
   },

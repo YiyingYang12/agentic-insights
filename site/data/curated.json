@@ -9472,5 +9472,338 @@
       "status": "pending",
       "checkedAt": "2026-11-09T04:25:03.948008+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.09017v1",
+    "url": "https://arxiv.org/abs/2611.09017v1",
+    "id": "live-4171d6dc37d9b36a",
+    "title": "Frontier3DBench：从物体到交互世界，检验3D代码能否完成真实操作",
+    "summary": "145题覆盖Blender物体、场景生成/重建/编辑，以及UE交互世界。11种模型—harness组合的165个世界提交，局部机制平均83.08分，运动净空20.82分，状态/流程30.26分；评测揭示单个机制能动作与完整活动能完成之间仍有明显距离。以上是组件平均分，不是成功率。",
+    "insight": "代码生成3D的验收应沿着“渲染外观—原生结构—实际动作—连续流程”逐层检查。尤其要把单个门或开关的局部正确，与不重置、不传送情况下完成任务并保持状态分开，才能找到下一步训练和反馈应补哪一环。",
+    "limits": "已读v1全文/评分与实验附录并静态核验固定公开仓库，未执行生成、Blender/UE或复现实验。145题较小，L3仅15题；测的是11种模型—harness组合，不是同一运行框架下的纯模型能力。32小时内最多6次L1/L2尝试用于超时/传输/公共交付失败修复，首次接受后停止，无质量分反馈；L3限24小时。置信区间来自题目bootstrap，不衡量重新生成的随机波动。参考重建与文本生成题目及评分公式不同，分数差不是同难度受控消融。L3外观占60%、可见任务保真20%、布局5%、交互15%，总分不是可玩成功率；83.08/20.82/30.26也是组件平均分。视觉judge为GPT-6-astra，隐藏生成器身份不消除judge偏差；人评仅覆盖45个参考型L1/L2项目、每项4个刻意拉开至少4分的候选，不能验证L3、近分排序或全部物理正确性。运动检查为离散采样，不保证连续时间无碰撞，状态持久性限同一会话。公开代码还列4个任务专用视觉覆盖规则，未一律采用常规图像相似度/细节变体最小值。仓库排除了模型提交物和实验输出，本轮不能据此重算主表；软件开源不等于所有来源资产同许可。",
+    "dateLabel": "2026-11-06",
+    "evidence": "原论文方法/评分附录与固定公开代码已核验·未复现",
+    "originalTitle": "Frontier3DBench: Benchmarking Coding Agents for 3D Creation across Objects, Scenes, and Interactive Open Worlds",
+    "date": "2026-11-06",
+    "checkedAt": "2026-11-09T10:30:47Z",
+    "updatedAt": "2026-11-06T05:45:31Z",
+    "firstSeenAt": "2026-11-09T10:00:01Z",
+    "lastSeenAt": "2026-11-09T10:00:01Z",
+    "dailySubmittedAt": "2026-11-09T00:00:00.000Z",
+    "tags": [
+      "Code2-3D",
+      "Blender",
+      "Unreal Engine",
+      "可编辑工程",
+      "交互评测",
+      "状态与流程"
+    ],
+    "authors": [
+      "Xinjie Lin",
+      "Qingle Liu",
+      "Wenyi Li",
+      "John Lam",
+      "Xiaoqiu Wang",
+      "Deyao Hong",
+      "Mingju Gao",
+      "Zheng Jiang",
+      "Yizhe Chi",
+      "Youjie Zheng",
+      "Calvin Xiao",
+      "Kaisen Yang",
+      "Huan-ang Gao"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.09017v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.09017"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.09017"
+      },
+      {
+        "label": "Project",
+        "url": "https://lab.einsia.ai/frontier3dbench/"
+      },
+      {
+        "label": "arXiv全文 · 方法与评测附录",
+        "url": "https://arxiv.org/html/2611.09017v1"
+      },
+      {
+        "label": "作者仓库 · 固定提交",
+        "url": "https://github.com/Einsia/Frontier3D/blob/1462133985213af9bae14344d2b938e18868350b/README.md"
+      },
+      {
+        "label": "评分与4个任务覆盖例外",
+        "url": "https://github.com/Einsia/Frontier3D/blob/1462133985213af9bae14344d2b938e18868350b/docs/en/scoring.md"
+      },
+      {
+        "label": "L3独立采集及交互定义",
+        "url": "https://github.com/Einsia/Frontier3D/blob/1462133985213af9bae14344d2b938e18868350b/docs/en/reference/l3.md"
+      },
+      {
+        "label": "生成预算、修复与首个接受规则",
+        "url": "https://github.com/Einsia/Frontier3D/blob/1462133985213af9bae14344d2b938e18868350b/docs/en/experiment.md"
+      },
+      {
+        "label": "145题固定索引",
+        "url": "https://github.com/Einsia/Frontier3D/blob/1462133985213af9bae14344d2b938e18868350b/docs/reference/task-index.csv"
+      },
+      {
+        "label": "L1/L2评分清单与专用规则",
+        "url": "https://github.com/Einsia/Frontier3D/blob/1462133985213af9bae14344d2b938e18868350b/docs/reference/scoring-task-inventory.json"
+      },
+      {
+        "label": "固定题集聚合及缺失处理代码",
+        "url": "https://github.com/Einsia/Frontier3D/blob/1462133985213af9bae14344d2b938e18868350b/benchmark/aggregation.py"
+      },
+      {
+        "label": "30/30/40聚合策略",
+        "url": "https://github.com/Einsia/Frontier3D/blob/1462133985213af9bae14344d2b938e18868350b/configs/release/aggregation-policy.json"
+      },
+      {
+        "label": "L3视觉权重与证据绑定实现",
+        "url": "https://github.com/Einsia/Frontier3D/blob/1462133985213af9bae14344d2b938e18868350b/harness/L3/release/codebase/harness/L3/Suite/quality_v5.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "用145个任务同时测代码生成的Blender物体/场景与Unreal交互世界。最有价值的信号是：165个世界提交的局部机制平均83.08分，但运动净空20.82、状态/流程30.26分；做好单个开关或门，还没有解决跨区域、带前置条件的完整活动。",
+      "motivation": "现有3D创作评测常分别测物体外观、场景布局或游戏机制，难看清一个Agent能否把可编辑资产组装成可运行的世界。作者把外观、原生结构与实际动作结果放进同一任务体系，避免漂亮截图掩盖几何关系、编辑保留或交互流程的问题。",
+      "novelty": "作者主张：把物体、场景、可交互世界的9类任务放进共享benchmark，并联合渲染、原生结构与独立运行测试定位参考保真和协同行为瓶颈。本站判断：最可借鉴的是将“局部动作有效”与“连续任务完成、状态保留、运动空间足够”拆成独立证据，而非只扩展一个总榜。论文提出coding agents将替代传统专用3D管线的判断，但这些实验没有直接建立替代结论，也未隔离模型和harness各自贡献。",
+      "evidenceScope": "已读arXiv 2611.09017v1的§2构造/评分、§3实验与附录A/B；读取作者项目页，并只读核验Einsia/Frontier3D固定提交1462133985213af9bae14344d2b938e18868350b的145题索引、130项L1/L2评分清单、实验预算、聚合代码、L3 v5权重/证据绑定及交互说明。未运行作者代码、构建UE工程、下载并核验全部大资产或复现结果；论文指标为作者报告，verified只表示来源核验。",
+      "limits": "已读v1全文/评分与实验附录并静态核验固定公开仓库，未执行生成、Blender/UE或复现实验。145题较小，L3仅15题；测的是11种模型—harness组合，不是同一运行框架下的纯模型能力。32小时内最多6次L1/L2尝试用于超时/传输/公共交付失败修复，首次接受后停止，无质量分反馈；L3限24小时。置信区间来自题目bootstrap，不衡量重新生成的随机波动。参考重建与文本生成题目及评分公式不同，分数差不是同难度受控消融。L3外观占60%、可见任务保真20%、布局5%、交互15%，总分不是可玩成功率；83.08/20.82/30.26也是组件平均分。视觉judge为GPT-6-astra，隐藏生成器身份不消除judge偏差；人评仅覆盖45个参考型L1/L2项目、每项4个刻意拉开至少4分的候选，不能验证L3、近分排序或全部物理正确性。运动检查为离散采样，不保证连续时间无碰撞，状态持久性限同一会话。公开代码还列4个任务专用视觉覆盖规则，未一律采用常规图像相似度/细节变体最小值。仓库排除了模型提交物和实验输出，本轮不能据此重算主表；软件开源不等于所有来源资产同许可。",
+      "method": [
+        "构造三层任务：65个物体、65个场景、15个交互世界，共9类；来源含公开3D资产/图像、作者照片、游戏截图和全景投影。GPT-6-astra辅助扩写任务说明；编辑题同时规定修改对象和保护内容，世界题附实体、初始状态、操作及前置条件构成的交互契约。评分源资产与标注不交给生成Agent。",
+        "让Agent交付原生工程：L1/L2输出可编辑Blender场景、构造/编辑代码与要求的导出物；L3输出UE工程和交互逻辑。11种模型—harness组合分别完成全套；网络访问受限，只能在预算内根据公共执行/交付错误修复，不能看到评分反馈。通过交付检查后冻结同一候选供评测。",
+        "分开检查外观、结构和编辑：Blender侧执行、检查原生几何并渲染；文本生成重视觉/要求，参考重建结合图像相似度、投影定位与细节，编辑另计目标修改和受保护内容保留。常规细节评分取多seed与原生/导出变体中的最弱完整结果；当前代码有4个专用视觉覆盖例外，不能称所有任务都同一像素公式。",
+        "独立验收交互世界：在另一工作区重建UE项目，采集视图、几何、角色行走、动作影响和库存变化；单个机制测试可设置测试条件，完整活动则禁止传送和重置。交互分由局部机制40%、运动净空25%、状态与流程35%组成，后者再平分终态条件和连续路线完成；视觉上的功能身份不充当实际交互成功。",
+        "汇总并做局部人评校准：每层按固定题目等权平均，再按L1/L2/L3=30/30/40加权；确认的交付失败计零，技术证据缺失保留未测并阻止完整总分。作者主表1595项均已测量；Sol+Codex总分66.02，Astra+Codex世界层61.28领先。8人对45个参考型L1/L2项目各排4候选，得到360个排名，Kendall τb=0.727、第一名一致79.2%、完整顺序一致44.7%，只支持该范围的视觉排序一致性。"
+      ],
+      "inspirations": [
+        "为code2-3d输出同时保存原生工程、可重复执行脚本、多角度渲染和导出资产；把“修改目标”与“保护原有内容”拆开验收，并跨seed/导出复查细节，防止只交一张好看的截图。",
+        "给世界任务加入真实连续链：走到工具区拿物件、打开通路、运输到目标、离开后返回验证状态，禁止传送/重置；分别记录错误触达拒绝、动作效果、碰撞净空和最终状态。做RL奖励时也保留这些分量，避免主要优化外观总分而忽略可完成的活动。",
+        "比较创作Agent时固定harness与预算并重复生成，另外报告组件分、失败类别和全流程成本；对接近分数的候选及L3行为单独做人评/人工复核。这里的人评支持参考保真排序，不能直接当交互验收可靠性的证明。"
+      ],
+      "reviewedAt": "2026-11-09T10:30:47Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.09017v1",
+        "https://arxiv.org/html/2611.09017v1",
+        "https://lab.einsia.ai/frontier3dbench/",
+        "https://github.com/Einsia/Frontier3D/blob/1462133985213af9bae14344d2b938e18868350b/README.md",
+        "https://github.com/Einsia/Frontier3D/blob/1462133985213af9bae14344d2b938e18868350b/docs/en/scoring.md",
+        "https://github.com/Einsia/Frontier3D/blob/1462133985213af9bae14344d2b938e18868350b/docs/en/reference/l3.md",
+        "https://github.com/Einsia/Frontier3D/blob/1462133985213af9bae14344d2b938e18868350b/docs/en/experiment.md",
+        "https://github.com/Einsia/Frontier3D/blob/1462133985213af9bae14344d2b938e18868350b/docs/reference/task-index.csv",
+        "https://github.com/Einsia/Frontier3D/blob/1462133985213af9bae14344d2b938e18868350b/docs/reference/scoring-task-inventory.json",
+        "https://github.com/Einsia/Frontier3D/blob/1462133985213af9bae14344d2b938e18868350b/benchmark/aggregation.py",
+        "https://github.com/Einsia/Frontier3D/blob/1462133985213af9bae14344d2b938e18868350b/configs/release/aggregation-policy.json",
+        "https://github.com/Einsia/Frontier3D/blob/1462133985213af9bae14344d2b938e18868350b/harness/L3/release/codebase/harness/L3/Suite/quality_v5.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.09017",
+      "status": "pending",
+      "checkedAt": "2026-11-09T10:30:16.218779+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.09894v1",
+    "url": "https://arxiv.org/abs/2611.09894v1",
+    "id": "live-f1c3c59925f451e9",
+    "title": "Video-Coder：让RL训练的Agent先写Blender草稿，再引导视频生成",
+    "summary": "将对象布局、运动和相机写成可执行Blender程序，用运行与画面反馈反复修正，再把草稿交给固定视频生成器。主表中MiniMax-H3的PhyGen均分0.61→0.67；VBench三项物理维度54.58%→78.19%。",
+    "insight": "把“能执行”和“符合视觉要求”分开奖励，并在最终交付前从源程序干净重跑。训练代码创作Agent时，应分别验收草稿的可修改结构、生成成片的约束保留，以及失败/重试成本。",
+    "limits": "结果为作者报告，未复现。VBench只评三项物理维度，不能当全套总分；PhyGen主表0.61→0.67为+0.06，OmniWeaving 0.48→0.51为+0.03，正文个别增益措辞不一致。数据规模也未统一：摘要/方法6k+2k，实验/结论及HF卡10k+4k，公开固定RL文件实数1,678，不能推定实际训练量。参考视频由MiniMax-H3合成，非真实物理真值；视觉裁判会错。公开配置有额外忠实性零分gate、GSPO loss与教师配置差异，未证实对应论文跑分。可编辑的是Blender源程序/草稿，最终生成视频的细节保真和可逆编辑未验证；未给出独立单次执行成功率、编辑测试或等成本结论。",
+    "dateLabel": "2026-11-06",
+    "evidence": "原文方法/主表及固定代码、RL文件已核；11/8开放制品，未复现",
+    "originalTitle": "Video-Coder: Reinforcing Agentic Coding for Video Generation",
+    "date": "2026-11-06",
+    "checkedAt": "2026-11-09T10:31:59.337Z",
+    "updatedAt": "2026-11-06T18:59:57Z",
+    "firstSeenAt": "2026-11-09T10:00:01Z",
+    "lastSeenAt": "2026-11-09T10:00:01Z",
+    "tags": [
+      "Agentic RL",
+      "Blender",
+      "GRPO",
+      "Code2Video",
+      "可编辑草稿"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2video"
+    ],
+    "sourceId": "arxiv_code2_3d",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.09894v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.09894"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.09894"
+      },
+      {
+        "label": "Project",
+        "url": "https://cywang735.github.io/Video-Coder/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/CYWang735/Video-Coder"
+      },
+      {
+        "label": "原论文 · 方法与主表",
+        "url": "https://arxiv.org/html/2611.09894v1"
+      },
+      {
+        "label": "作者实现 · 固定版本",
+        "url": "https://github.com/CYWang735/Video-Coder/tree/cbc3d975b3fb709c0bab668b2316988ceaa43f72"
+      },
+      {
+        "label": "训练数据 · 固定版本",
+        "url": "https://huggingface.co/datasets/Video-Coder/Train-Data/tree/c60da610e502f3d55e7bd3776e830770e92caa9a"
+      },
+      {
+        "label": "9B模型 · 固定卡片与配置",
+        "url": "https://huggingface.co/Video-Coder/Video-Coder-9B/tree/d54ffa251e73b6e602f981414aa223ebb65b1217"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "先让代码明确3D结构与运动，再让视频模型补外观；RL优化写代码、运行、看结果、改代码的完整轨迹。代码草稿与最终生成成片是两个不同产物。",
+      "motivation": "视频看着逼真，仍可能少一个物体、方向错误或运动不合要求。可执行场景提供能检查、能局部修改的中间表示，但只奖励程序跑通又容易学出保守且不符合要求的画面。",
+      "novelty": "作者主张：训练多模态代码Agent，以统一执行环境及退火双奖励改善视频物理一致性。本站判断：值得借鉴的是把可执行中间表示、交互反馈和成片评价连成训练闭环；论文没有证明通用视频创作、全流程可编辑或低成本优势。",
+      "evidenceScope": "已读arXiv v1方法§3、实验§4与主表；只读GitHub固定提交cbc3d975b3fb709c0bab668b2316988ceaa43f72的奖励、训练配置、执行器及推理脚本；核验HF固定数据版本c60da610e502f3d55e7bd3776e830770e92caa9a的卡片、文件树与完整RL JSON（1,678条），以及模型固定版本卡片/config。未下载723MB SFT、视频压缩包或模型权重，未训练、运行代码、播放成片或复现分数。verified仅指来源核验。",
+      "limits": "结果为作者报告，未复现。VBench只评三项物理维度，不能当全套总分；PhyGen主表0.61→0.67为+0.06，OmniWeaving 0.48→0.51为+0.03，正文个别增益措辞不一致。数据规模也未统一：摘要/方法6k+2k，实验/结论及HF卡10k+4k，公开固定RL文件实数1,678，不能推定实际训练量。参考视频由MiniMax-H3合成，非真实物理真值；视觉裁判会错。公开配置有额外忠实性零分gate、GSPO loss与教师配置差异，未证实对应论文跑分。可编辑的是Blender源程序/草稿，最终生成视频的细节保真和可逆编辑未验证；未给出独立单次执行成功率、编辑测试或等成本结论。",
+      "method": [
+        "构建场景提示，教师在Blender工具环境中迭代生成轨迹；草稿与文本再经MiniMax-H3合成参考视频，并过滤执行、可见性和语义问题。参考是合成监督。",
+        "以Qwen3.5-9B做SFT，再在相同交互环境中做组相对RL。训练时冻结下游视频模型，只更新产出代码与工具调用的Agent。",
+        "用执行验收和最终视频视觉评分构成双奖励；论文公式为0.5×视频分+exp(-step/T)×执行分。执行权重逐渐下降，按公式到T仍约0.368，并非归零。",
+        "公开代码在提交后另行静态检查并干净重跑；验收的默认语义VLM开关关闭，视频奖励另由Qwen裁判分项计算。当前实现还将忠实性为0的已执行轨迹总奖励归零，未完成轨迹的token不进loss。",
+        "推理保存草稿视频及Blender脚本，再调用视频模型生成成片；公开脚本默认最多三次草稿尝试。报告须区分一次成功与重试后成功，以及草稿可编辑和成片是否保留修改。"
+      ],
+      "inspirations": [
+        "建立两阶段验收：先检查代码与草稿中对象数、轨迹、镜头，再对比生成成片是否保留这些约束；保存源程序，做一次局部修改再渲染的回归测试。",
+        "给RL日志同时保留执行验收、语义子分、零分gate、超时和重试次数，避免只报成功样例均分；裁判服务失败与模型产物失败应分列。",
+        "将数据版本、实际样本数、训练loss和奖励配置绑定到每次实验；对合成参考做独立人工/规则抽检，防止教师错误被视觉奖励放大。"
+      ],
+      "reviewedAt": "2026-11-09T10:31:59.337Z",
+      "sourceUrls": [
+        "https://arxiv.org/html/2611.09894v1",
+        "https://github.com/CYWang735/Video-Coder/tree/cbc3d975b3fb709c0bab668b2316988ceaa43f72",
+        "https://huggingface.co/datasets/Video-Coder/Train-Data/tree/c60da610e502f3d55e7bd3776e830770e92caa9a",
+        "https://huggingface.co/Video-Coder/Video-Coder-9B/tree/d54ffa251e73b6e602f981414aa223ebb65b1217"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.09894",
+      "status": "pending",
+      "checkedAt": "2026-11-09T10:30:16.218779+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.09769v1",
+    "url": "https://arxiv.org/abs/2611.09769v1",
+    "id": "live-23ef671b4d79ed5b",
+    "title": "AnimWeb-Bench：网页看着像还不够，要逐段验收运动、时序和速度",
+    "summary": "把124个真实动态网页转成视频到HTML任务，以关键帧外观和组件轨迹两条线验收。作者的诊断实验显示，查看原尺寸帧并回看自己渲染的视频，有助于纠正仅凭代码难发现的动效错误。",
+    "insight": "为代码动效Agent建立“关键帧外观＋区间轨迹＋渲染回看”的验收循环；单独检查出现顺序、时长、速度与缓动，同时保留遗漏组件和执行失败，避免一张漂亮终帧掩盖过程错误。",
+    "limits": "已读全文与公开实现，未运行生成、评分或独立人评。124页来自Awwwards，限初始加载的2–15秒DOM动画，不覆盖全部交互流程、响应式布局或长期运行；原站资产仍属原作者，论文声明数据仅供非商业研究。原生视频与2fps图像输入不一致，不宜把模型名次当纯模型能力排名。静态与动态指标定义不同，绝对值不能直接相减证明难度差；轨迹检测、OCR、对齐都会引入误差，自动分不等于用户可接受率或可编辑性。400对人评是8模型对同一基线×50页、每对5人多数票，不是400个独立网页；相关性未证明跨域泛化。FI/RF干预源于本基准执行轨迹，属于诊断性改进，且未建立等调用/时间预算的独立留出验证。固定公开实现的跨视频轨迹匹配权重及外观特征与论文描述存在差异（代码用0.60/0.25/0.05/0.10及灰度/HSV，论文写0.4/0.2/0.1/0.3及CLIP）；最终外观评分仍用CLIP，复现前需澄清版本，不能把源码可读当论文与实现完全一致。",
+    "dateLabel": "2026-11-06",
+    "evidence": "已读原文方法、实验与附录及固定实现；未复现实验",
+    "originalTitle": "AnimWeb-Bench: Benchmarking Animated Webpage Code Generation from Videos",
+    "date": "2026-11-06",
+    "checkedAt": "2026-11-09T10:30:16.218779+00:00",
+    "updatedAt": "2026-11-06T17:31:09Z",
+    "firstSeenAt": "2026-11-09T10:00:01Z",
+    "lastSeenAt": "2026-11-09T10:00:01Z",
+    "tags": [
+      "Animated Webpage",
+      "Video-to-Code",
+      "Temporal Evaluation",
+      "Render Feedback"
+    ],
+    "topics": [
+      "code2motion"
+    ],
+    "sourceId": "arxiv_code2motion",
+    "sources": [
+      {
+        "label": "arXiv · 日期与版本",
+        "url": "https://arxiv.org/abs/2611.09769v1"
+      },
+      {
+        "label": "原论文 · 方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.09769v1"
+      },
+      {
+        "label": "作者项目 · 样例与数据入口",
+        "url": "https://starry1001.github.io/AnimWeb-Bench-website/"
+      },
+      {
+        "label": "作者实现 · 固定版本",
+        "url": "https://github.com/starry1001/AnimWeb/tree/24973b9bb559b8af3176bedd555e83318fd0ffc6"
+      },
+      {
+        "label": "轨迹匹配实现 · 与论文差异边界",
+        "url": "https://github.com/starry1001/AnimWeb/blob/24973b9bb559b8af3176bedd555e83318fd0ffc6/utils/animation_score.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "静态截图相似不保证网页动得对。AnimWeb-Bench用124页、33类动画构造视频到代码评测，将稳定画面的外观与变化过程中的组件运动分别计分。",
+      "motivation": "终帧可以很像，但照片可能沿错方向移动、文字同时出现而非逐字显现，或者动画节奏完全不对。只验截图或离散点击前后状态，无法定位连续时间中的这些失败。",
+      "novelty": "作者主张：将完整真实网页的连续动画复建纳入视频到代码评测，并提出外观与动画双维协议。本站判断：更可迁移的是关键帧与轨迹的分层错误定位，以及用真实输出视频验证时间行为；是否“首个”与更广泛领域中的指标可靠性不作独立背书。",
+      "evidenceScope": "已读arXiv v1 §3–4及附录A–F，核验作者项目页与GitHub固定提交24973b9bb559b8af3176bedd555e83318fd0ffc6的README、配置、评测入口及轨迹匹配实现。只读核验，未调用模型、运行作者脚本或复现人评。公开X精确索引无可核验原帖。",
+      "limits": "已读全文与公开实现，未运行生成、评分或独立人评。124页来自Awwwards，限初始加载的2–15秒DOM动画，不覆盖全部交互流程、响应式布局或长期运行；原站资产仍属原作者，论文声明数据仅供非商业研究。原生视频与2fps图像输入不一致，不宜把模型名次当纯模型能力排名。静态与动态指标定义不同，绝对值不能直接相减证明难度差；轨迹检测、OCR、对齐都会引入误差，自动分不等于用户可接受率或可编辑性。400对人评是8模型对同一基线×50页、每对5人多数票，不是400个独立网页；相关性未证明跨域泛化。FI/RF干预源于本基准执行轨迹，属于诊断性改进，且未建立等调用/时间预算的独立留出验证。固定公开实现的跨视频轨迹匹配权重及外观特征与论文描述存在差异（代码用0.60/0.25/0.05/0.10及灰度/HSV，论文写0.4/0.2/0.1/0.3及CLIP）；最终外观评分仍用CLIP，复现前需澄清版本，不能把源码可读当论文与实现完全一致。",
+      "method": [
+        "从Awwwards动画页筛选124个真实网页，涵盖7个领域、33种动画；记录初始加载或一个完整循环，并收集素材。视频为1920×1080、30fps、2–15秒，91.9%的网页含多种动画。",
+        "模型接收参考视频或2fps采样帧及素材拼图，输出含内联CSS/JS的HTML；编码Agent在无网络工作区中读文件、写代码。用同样的浏览器录制生成页，保留其完整动画序列。",
+        "先用短时间窗图像变化找稳定关键帧，再以外观和归一化时间进行保序匹配；在配对帧上分别计算结构、OCR文字、颜色和CLIP相似度。",
+        "检测并连接逐帧UI组件，先按文字、再用匈牙利匹配建立跨视频轨迹对应；分开计算位置、尺寸、速度和外观，缺失/多余轨迹及只出现一侧的时刻会降低得分。",
+        "评测14个多模态模型及3个编码Agent；在50页上形成400个对同一基线的盲比对，每对5人投票。另对Codex累加原尺寸帧查看与渲染反馈：后者相对前者令四项动画指标提升4.0%–7.0%，属于作者报告的相对改进。"
+      ],
+      "inspirations": [
+        "给Manim、Remotion或GSAP任务同时冻结关键画面与时间约束：对象何时出现、先后关系、运动方向、停留时长；按区间看录屏，单列时间错误，避免只验终帧。",
+        "Agent先看原尺寸关键帧与转场附近的密集采样，再渲染自己的完整动画并对照修订。用独立留出集和相同时间/调用预算比较反馈策略，区分方法收益与多花算力。",
+        "建立局部负例校准动效裁判：保持外观不变，只改一个时点、速度或运动方向，检查是否正确降分；另报执行成功、原生代码结构可编辑和人工体验，不能由轨迹相似度代替。"
+      ],
+      "reviewedAt": "2026-11-09T10:30:16.218779+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.09769v1",
+        "https://arxiv.org/html/2611.09769v1",
+        "https://starry1001.github.io/AnimWeb-Bench-website/",
+        "https://github.com/starry1001/AnimWeb/tree/24973b9bb559b8af3176bedd555e83318fd0ffc6",
+        "https://github.com/starry1001/AnimWeb/blob/24973b9bb559b8af3176bedd555e83318fd0ffc6/utils/animation_score.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.09769",
+      "status": "pending",
+      "checkedAt": "2026-11-09T10:30:16.218779+00:00"
+    }
   }
 ]
