@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "partial",
+  "status": "ok",
   "total": 660,
   "intervalHours": 6,
   "timezone": "Asia/Shanghai",
@@ -12,8 +12,8 @@
       "url": "https://export.arxiv.org/api/query",
       "status": "ok",
       "count": 67,
-      "checkedAt": "2026-11-09T16:00:01Z",
-      "lastSuccessAt": "2026-11-09T16:00:01Z"
+      "checkedAt": "2026-11-09T22:00:00Z",
+      "lastSuccessAt": "2026-11-09T22:00:00Z"
     },
     {
       "id": "hf_papers",
@@ -21,9 +21,9 @@
       "sourceType": "huggingface",
       "url": "https://huggingface.co/papers",
       "status": "ok",
-      "count": 61,
-      "checkedAt": "2026-11-09T16:00:01Z",
-      "lastSuccessAt": "2026-11-09T16:00:01Z"
+      "count": 63,
+      "checkedAt": "2026-11-09T22:00:00Z",
+      "lastSuccessAt": "2026-11-09T22:00:00Z"
     },
     {
       "id": "hf_blog",
@@ -32,8 +32,8 @@
       "url": "https://huggingface.co/blog",
       "status": "ok",
       "count": 8,
-      "checkedAt": "2026-11-09T16:00:01Z",
-      "lastSuccessAt": "2026-11-09T16:00:01Z"
+      "checkedAt": "2026-11-09T22:00:00Z",
+      "lastSuccessAt": "2026-11-09T22:00:00Z"
     },
     {
       "id": "openai",
@@ -42,18 +42,18 @@
       "url": "https://openai.com/news/",
       "status": "ok",
       "count": 33,
-      "checkedAt": "2026-11-09T16:00:01Z",
-      "lastSuccessAt": "2026-11-09T16:00:01Z"
+      "checkedAt": "2026-11-09T22:00:00Z",
+      "lastSuccessAt": "2026-11-09T22:00:00Z"
     },
     {
       "id": "deepmind",
       "label": "Google DeepMind · 官方更新",
       "sourceType": "official",
       "url": "https://deepmind.google/blog/",
-      "status": "error",
-      "count": 0,
-      "checkedAt": "2026-11-09T16:00:01Z",
-      "lastSuccessAt": "2026-11-09T04:00:01Z"
+      "status": "ok",
+      "count": 25,
+      "checkedAt": "2026-11-09T22:00:00Z",
+      "lastSuccessAt": "2026-11-09T22:00:00Z"
     },
     {
       "id": "x",
@@ -62,7 +62,7 @@
       "url": "https://x.com/",
       "status": "unconfigured",
       "count": 0,
-      "checkedAt": "2026-11-09T16:00:01Z"
+      "checkedAt": "2026-11-09T22:00:00Z"
     },
     {
       "id": "arxiv_video_editing",
@@ -71,8 +71,8 @@
       "url": "https://export.arxiv.org/api/query",
       "status": "ok",
       "count": 15,
-      "checkedAt": "2026-11-09T16:00:01Z",
-      "lastSuccessAt": "2026-11-09T16:00:01Z"
+      "checkedAt": "2026-11-09T22:00:00Z",
+      "lastSuccessAt": "2026-11-09T22:00:00Z"
     },
     {
       "id": "arxiv_code2video",
@@ -81,8 +81,8 @@
       "url": "https://export.arxiv.org/api/query",
       "status": "ok",
       "count": 5,
-      "checkedAt": "2026-11-09T16:00:01Z",
-      "lastSuccessAt": "2026-11-09T16:00:01Z"
+      "checkedAt": "2026-11-09T22:00:00Z",
+      "lastSuccessAt": "2026-11-09T22:00:00Z"
     },
     {
       "id": "arxiv_code2motion",
@@ -91,8 +91,8 @@
       "url": "https://export.arxiv.org/api/query",
       "status": "ok",
       "count": 4,
-      "checkedAt": "2026-11-09T16:00:01Z",
-      "lastSuccessAt": "2026-11-09T16:00:01Z"
+      "checkedAt": "2026-11-09T22:00:00Z",
+      "lastSuccessAt": "2026-11-09T22:00:00Z"
     },
     {
       "id": "arxiv_code2_3d",
@@ -101,20 +101,20 @@
       "url": "https://export.arxiv.org/api/query",
       "status": "ok",
       "count": 18,
-      "checkedAt": "2026-11-09T16:00:01Z",
-      "lastSuccessAt": "2026-11-09T16:00:01Z"
+      "checkedAt": "2026-11-09T22:00:00Z",
+      "lastSuccessAt": "2026-11-09T22:00:00Z"
     }
   ],
-  "successCount": 8,
-  "errorCount": 1,
+  "successCount": 9,
+  "errorCount": 0,
   "topicCounts": {
     "code2-3d": 13,
     "code2motion": 5,
     "code2video": 5,
     "video-editing": 13
   },
-  "lastRunAt": "2026-11-09T16:00:01Z",
-  "completedAt": "2026-11-09T16:00:30Z",
-  "updatedAt": "2026-11-09T16:00:30Z",
-  "lastSuccessAt": "2026-11-09T16:00:30Z"
+  "lastRunAt": "2026-11-09T22:00:00Z",
+  "completedAt": "2026-11-09T22:00:31Z",
+  "updatedAt": "2026-11-09T22:00:31Z",
+  "lastSuccessAt": "2026-11-09T22:00:31Z"
 }
