@@ -11538,5 +11538,445 @@
         "https://huggingface.co/datasets/google/asimov_agentic/resolve/5c7078735d2fa510345da18743ce9750eef7a9ec/README.md"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.12393v1",
+    "url": "https://arxiv.org/abs/2611.12393v1",
+    "id": "live-cd4e20fface7229b",
+    "title": "AutoBuddy：先发现该做的事，再用真实状态变化验收",
+    "summary": "AutoBuddy先从邮件、聊天和记录里找出“我还欠谁什么工作”，再在模拟系统中执行。作者用1个合成组织的120项任务比较17个模型，各跑3次；最高端到端得分0.698，包含部分分，不能读成69.8%的任务完全成功。发现准确与执行可靠需要分开测。",
+    "insight": "主动助手的第一道题是判断归属、时效和是否已完成，第二道题才是执行。给每个待办保留原始请求证据，再分别统计误报、遗漏、目标/渠道错误和完成状态，能看清“发现得多”为什么仍未交付；上线还需要补测错误主动行动的代价。",
+    "limits": "仅一个合成组织、94个员工-日期快照；每次从空任务表做一次发现，并非六个月持续在线实测。评测只执行与隐藏真值匹配的任务，误报只影响发现precision，未计入误操作的真实后果或端到端成本。任务间状态污染导致每次排除0–7个业务任务；部分harness失败也按规定排除。写入在模拟环境全部预授权，不能把少问确认直接推广到真实业务。未定位作者实现/完整数据，未复现。",
+    "organization": "Microsoft",
+    "dateLabel": "2026-11-09 · arXiv v1首发",
+    "evidence": "已读全文与附录；来源核验，作者实现未定位，未独立复现",
+    "originalTitle": "AutoBuddy: Evaluating Proactive, Always-On Agents on Task Discovery and Execution in a Simulated Workplace",
+    "date": "2026-11-09",
+    "checkedAt": "2026-11-10T22:30:51.577951Z",
+    "originalDate": "2026-11-09",
+    "paperOriginalDate": "2026-11-09T13:30:18Z",
+    "paperUpdatedAt": "2026-11-09T13:30:18Z",
+    "updatedAt": "2026-11-09T13:30:18Z",
+    "firstSeenAt": "2026-11-10T10:00:01Z",
+    "lastSeenAt": "2026-11-10T22:00:01Z",
+    "tags": [
+      "Evaluation",
+      "主动Agent",
+      "任务发现",
+      "合成工作环境",
+      "状态验收"
+    ],
+    "authors": [
+      "Shiqi Chen",
+      "Daniel Madrigal Diaz",
+      "Wei-Ning Chen",
+      "Gbola Afonja",
+      "Fangkai Yang",
+      "Rujia Wang",
+      "Chetan Bansal",
+      "Victor Rühle",
+      "Saravan Rajmohan",
+      "Dongge Han"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.12393v1"
+      },
+      {
+        "label": "arXiv v1全文 · 方法、评测与附录A–C",
+        "url": "https://arxiv.org/html/2611.12393v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "AutoBuddy先从邮件、聊天和记录里找出“我还欠谁什么工作”，再在模拟系统中执行。作者用1个合成组织的120项任务比较17个模型，各跑3次；最高端到端得分0.698，包含部分分，不能读成69.8%的任务完全成功。发现准确与执行可靠需要分开测。",
+      "motivation": "常见Agent评测直接给任务，但工作空间里混着未完成请求、已答复旧线程、同事的任务和无须行动的背景。既要判断哪些义务属于当前用户，还要在正确系统、渠道和受众上真正完成；只看建议清单或自报done都不足以评估主动助手。",
+      "novelty": "作者主张：把主动发现与多步执行连到同一有时间和权限约束的合成组织，用规则产生真值、以真实状态变化评估结果，并分解失败发生在哪一阶段。本站判断：有价值的是“义务来源—发现记录—执行效果”的可追踪链；但真值匹配后才执行过滤掉了误报行动，单次快照也没有验证长期always-on任务维护。发现与执行的相关性来自17个模型的小样本，不能据此证明能力完全独立。",
+      "evidenceScope": "已读arXiv 2611.12393v1正文§3–5、结论和附录A–C，核对生成流程、确定性匹配/评分、任务分母与排除、模型表和成功/失败轨迹。检查原文外链，并做精确题名、作者、GitHub公开repository和HF模型/数据检索；未定位可归属的AutoBuddy研究实现或数据，无法固定作者代码commit。Copilot SDK只是底层框架来源，未当作作者实现。未执行作者代码或模型，verified只指论文来源核验。",
+      "limits": "生成六个月历史不等于连续运行六个月；仅一个世界，44人、94个actor-days，未报告跨组织泛化。发现窗口由真值任务最早事件到最晚请求界定，持续开放时间窗未测。organiser的跨日重开、用户确认、优先级排序在本实验不生效；成功后蒸馏技能只在actor-day最后一项之后发生，未贡献后续被评分任务。匹配按请求记录ID而非语义等价，误报不执行且不扣端到端分。每run排除0–7个被先前任务改变起始记录且未通过的业务任务；整actor-day评分前harness失败会排除，执行中失败计0，比较分母不完全一致。最高0.698是混合部分分平均；49.8%是全模型已执行任务的满分率。全写入预授权，“停下确认”的失败标签不能视为真实高风险操作应免确认。三次重复不覆盖多世界不确定性，发现precision与执行r=0.27不证明因果独立。原文未给完整数值token/时间预算、成本和公开作者实现，精确文本事实/证据匹配的鲁棒性也未由开放评分代码验证。",
+      "method": [
+        "先生成公司范围、岗位/访问权、带日期的事件及业务记录，组成可按日期查询的时间图；再渲染邮件、聊天、会议、文档及模拟业务系统。文档绑定明确修订与报告数据，未绑定则拒绝构建；任务及期望结果由世界事实和规则计算，隐藏答案不进入工作空间。",
+        "每个actor-day先只读建立员工/项目画像，再在指定时间窗搜索并打开记录，提取尚未履行的请求和承诺，排除已完成、他人任务和纯背景。任务表保留请求者、来源记录、时间、稳定键及执行简报，确定性organiser去重；实验每个actor-day空状态、只发现一次。",
+        "用任务引用的请求记录，与隐藏真值做一对一确定性匹配，分别计算precision和recall；无需LLM裁判。只有匹配上的任务才进入执行，每项开新会话，读取自己生成的任务记录并回查原材料；同一actor-day顺序执行、共享工作空间。",
+        "比较执行前后的实际状态：邮件必须到达指定邮箱，文档内容/受众必须改变，业务记录需按规则更新且不动无关记录并通知请求者。大部分业务/研究/人数复核任务二元评分；54项文档任务与3项重启作业任务按内容0.5、完成0.2、读取证据0.2、答复状态0.1加权。",
+        "在1个合成世界的120任务、94个actor-days、44名员工上固定同一Copilot SDK harness，17模型各3次。端到端为所有可评分真值任务的执行得分平均，未发现计0，按协议排除状态污染/部分harness失败。最高0.698±0.002；全体4,943次已发现任务执行中49.8%满分，这两个数的分母与含义不同。"
+      ],
+      "inspirations": [
+        "给研究推送或办公助手建立义务账本：每条保存请求者、证据ID、应交付渠道、受众、截止时间和完成回执；重开必须有更新的明确请求。用旧线程、同事请求与已完成任务作对照，检查是否制造重复工作。这是应用建议，本文未测试真实企微。",
+        "设计两条互补评测：先给所有模型同一真值任务测执行，再让模型自行发现并承担全部误报行动的成本；把遗漏、重复发送、越权对象、错误渠道与真实完成率单列，避免端到端均分掩盖主动干扰。",
+        "用日期/权限一致的合成事件生成可校验任务，但增加连续多天回放、真正无人有待办的快照、任务顺序随机化与独立初始状态对照；在不同授权规则下另测何时应确认，防止把全预授权环境的排名当上线选择结论。"
+      ],
+      "reviewedAt": "2026-11-10T22:30:51.577951Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.12393v1",
+        "https://arxiv.org/html/2611.12393v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.12393",
+      "status": "pending",
+      "checkedAt": "2026-11-10T22:29:13.929Z"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://news.adobe.com/news/2026/11/adobe-transforms-creative-cloud-tools",
+    "url": "https://news.adobe.com/news/2026/11/adobe-transforms-creative-cloud-tools",
+    "id": "creative-adobe-max-2026-agentic-workflows",
+    "title": "Adobe Creative Agent扩展：Premiere内多步编辑与可复用Skills，第三方MCP仍待开放",
+    "summary": "Adobe在MAX扩展Creative Agent，Premiere助手可整理素材、组装初剪并处理效果、遮罩和调色；文档说明编辑进入Undo/History，并支持自定义Skills。助手目前为beta；外部agent经本地MCP修改原生工程，要等官方预告的2027年初private beta。",
+    "insight": "值得研究的是自然语言任务如何落成可检查的工程改动：同一目标能否稳定复用Skills，人工接手后能否继续改片段、字幕与效果，以及撤销能否恢复原状态。把生成媒体、操作编辑器和结果可继续编辑分开验收，才能看清这种流程的价值。",
+    "limits": "依据11月10日官方公告和同日更新的Premiere文档，未安装、登录、上传素材、运行编辑或导出工程，未验证成功率、耗时、视觉质量及任意素材的编辑保真。助手仍为beta，FAQ当前不支持自接模型；部分工具需将媒体送到云端，不能把本地MCP预告写成当前助手全离线。第三方agent修改原生工程的MCP集成仅预告2027年初private beta，实际开放尚待核验。此为产品流程更新，没有公开模型训练方法；After Effects或3D画布名称本身不证明代码创作。",
+    "organization": "Adobe",
+    "dateLabel": "2026-11-10 · MAX官方公告；助手beta，MCP为2027年初private beta预告",
+    "evidence": "已读官方公告、27.0发布说明和助手文档；未实测",
+    "originalTitle": "Adobe Transforms its Creative Cloud Tools into Agentic Workflows Built with the Precision and Control Pros Expect, Giving Creatives More Time for Their Craft",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-10T22:34:17Z",
+    "firstSeenAt": "2026-11-10T22:34:17Z",
+    "tags": [
+      "视频剪辑",
+      "官方工具更新",
+      "原生工程",
+      "AI Assistant",
+      "Skills",
+      "MCP预告"
+    ],
+    "topics": [
+      "video-editing"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "Adobe MAX官方公告（11月10日）",
+        "url": "https://news.adobe.com/news/2026/11/adobe-transforms-creative-cloud-tools"
+      },
+      {
+        "label": "Premiere 27.0发布说明",
+        "url": "https://helpx.adobe.com/premiere/desktop/whats-new/release-notes.html"
+      },
+      {
+        "label": "官方帮助：助手流程与撤销",
+        "url": "https://helpx.adobe.com/premiere/desktop/premiere-ai-assistant/overview.html"
+      },
+      {
+        "label": "官方FAQ：模型和本地/云端边界",
+        "url": "https://helpx.adobe.com/premiere/desktop/premiere-ai-assistant/assistant-faq.html"
+      },
+      {
+        "label": "官方帮助：自定义Skills",
+        "url": "https://helpx.adobe.com/premiere/desktop/premiere-ai-assistant/customize-ai-assistant-with-skills.html"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "官方工具更新：通过对话在Premiere工程里完成多步编辑，以历史记录和Skills支持人工接手与重复流程。当前助手beta和未来第三方MCP集成须分开看。",
+      "motivation": "素材整理、转录、初剪和批量效果包含大量重复操作；创作者还需要在专业编辑器内继续细修，而不仅收到一个最终视频文件。",
+      "novelty": "官方主张：Creative Agent扩展到Premiere、After Effects等工具，Premiere增加跨片段效果、遮罩跟踪及序列调色等能力，并预告保留原生可编辑元素的MCP集成。本站判断：关注点在编辑状态、人工接手和流程复用；证据是产品公告与文档，不是新基础模型或代码生成方法，MCP原生工程承诺尚待开放检验。",
+      "evidenceScope": "实读11月10日官方公告全文、Premiere 27.0发布说明及同日更新的助手概览、FAQ和Skills文档。公告网页工具失败但直接HTTP200；帮助页直接HTTP403但网页工具可读正文。此处method是文档里的产品操作流程。仅归video-editing，没有程序动画或3D脚本产物证据；未运行产品、读取私有项目、调用模型或验证跨软件导出。",
+      "limits": "依据11月10日官方公告和同日更新的Premiere文档，未安装、登录、上传素材、运行编辑或导出工程，未验证成功率、耗时、视觉质量及任意素材的编辑保真。助手仍为beta，FAQ当前不支持自接模型；部分工具需将媒体送到云端，不能把本地MCP预告写成当前助手全离线。第三方agent修改原生工程的MCP集成仅预告2027年初private beta，实际开放尚待核验。此为产品流程更新，没有公开模型训练方法；After Effects或3D画布名称本身不证明代码创作。",
+      "method": [
+        "文档描述的产品流程：打开AI Assistant，以自然语言提出目标；可把项目素材或时间线选区作为引用，也可提供脚本等参考文件。",
+        "助手选择Premiere工具完成素材归类、标记、初步组装、字幕、遮罩或调色；变更直接进入工程，编辑者检查结果并继续对话或手动微调。",
+        "通过Undo/History审查和撤回编辑，用权限选项控制何时批准动作；FAQ明确部分工具在本地、部分需要云端，当前不能接入自带模型。",
+        "将重复准备流程写成带名称和描述的SKILL.md供后续调用。第三方agent经MCP改原生工程是另一路预告，计划2027年初private beta，本文未视为已上线。"
+      ],
+      "inspirations": [
+        "固定素材与Skill重复执行，分别记录片段选择、命名、字幕及效果的一致性，不以单条演示证明稳定性。",
+        "保存每轮工程前后差异，再测试手动二次修改和撤销恢复，分别量化可编辑元素比例及无关内容被改动的情况。",
+        "比较内置助手和未来MCP方案时固定目标、素材及人工接手步骤，同时报告执行成功、编辑质量、云端依赖与用量成本。"
+      ],
+      "reviewedAt": "2026-11-10T22:34:17Z",
+      "sourceUrls": [
+        "https://news.adobe.com/news/2026/11/adobe-transforms-creative-cloud-tools",
+        "https://helpx.adobe.com/premiere/desktop/whats-new/release-notes.html",
+        "https://helpx.adobe.com/premiere/desktop/premiere-ai-assistant/overview.html",
+        "https://helpx.adobe.com/premiere/desktop/premiere-ai-assistant/assistant-faq.html",
+        "https://helpx.adobe.com/premiere/desktop/premiere-ai-assistant/customize-ai-assistant-with-skills.html"
+      ]
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.12799v1",
+    "url": "https://arxiv.org/abs/2611.12799v1",
+    "id": "live-8ad45d625103e14e",
+    "title": "Agentic-OPD：从历史RL检查点回收互补能力，公开实现仍有评测边界待核",
+    "summary": "把一次RL训练保存的历史策略当教师池，按学生当前不会的题选教师，只在教师经验成功率更高的题上蒸馏学生失败轨迹。论文报告7B模型在7个DeepSearch测试集的平均EM从38.8%升至46.2%；公开代码按其中三个测试集挑检查点，结果与该默认配置的对应关系尚未核实。",
+    "insight": "保存历史检查点的价值不只在回滚：一个总体更弱的策略可能解决当前策略遗漏的问题。值得把“互补覆盖”“新获得/新丢失任务”和蒸馏总计算分别记账；教师选择、停止规则和最终测试必须隔离，避免把验证集回收或测试集挑优当成独立泛化。",
+    "limits": "这是论文自报结果与公开实现的静态核验，未复现。7.4是7B的七QA集平均EM增量，不是所有任务统一成功率；3B的2Wiki、ALFWorld Heat会退步。路由验证集上60题回收同时丢失45题，仅净增15题，且用同集挑update20。历史教师来自已有RL，后续筛选、双侧rollout、重打分和优化仍需额外计算，未给等总计算对照。固定代码按Bamboogle/Musique/TriviaQA测试均值选择保留检查点，论文未提供对应运行账本，不能确认表1是否使用此默认，也不能宣称其测试完全没有选择偏差。公开Search实现与论文在调度细节、文档版本及LAD实现完整性上尚待核对，未确认配套训练权重或完整五域复现包。",
+    "dateLabel": "2026-11-09 · arXiv v1",
+    "evidence": "Read full methods, results and appendix; static public implementation audit; not reproduced",
+    "originalTitle": "Agentic-OPD: Recovering Forgotten Agent Capabilities via On-Policy Distillation for Agentic Tasks",
+    "date": "2026-11-09",
+    "checkedAt": "2026-11-10T22:32:56.411933+00:00",
+    "paperOriginalDate": "2026-11-09T18:07:42Z",
+    "paperUpdatedAt": "2026-11-09T18:07:42Z",
+    "updatedAt": "2026-11-09T18:07:42Z",
+    "firstSeenAt": "2026-11-10T10:00:01Z",
+    "lastSeenAt": "2026-11-10T22:00:01Z",
+    "tags": [
+      "Distillation",
+      "Agent RL",
+      "Multi-teacher",
+      "Checkpoint reuse"
+    ],
+    "authors": [
+      "Tingcheng Bian",
+      "Kangye Gong",
+      "Jinchang Luo",
+      "MingQuan Cheng",
+      "Feiran Liu",
+      "Ni Li",
+      "Xiaoling Xia",
+      "Haiwei Wang",
+      "Hui Li"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.12799v1"
+      },
+      {
+        "label": "arXiv v1: methods and appendix",
+        "url": "https://arxiv.org/html/2611.12799v1"
+      },
+      {
+        "label": "Public author profile",
+        "url": "https://github.com/CarnegieBin"
+      },
+      {
+        "label": "Fixed repository README",
+        "url": "https://github.com/CarnegieBin/Agentic-OPD/blob/b618d2fb6854683258be74dd84457bcfb2aca652/README.md"
+      },
+      {
+        "label": "Fixed checkpoint selection code",
+        "url": "https://github.com/CarnegieBin/Agentic-OPD/blob/b618d2fb6854683258be74dd84457bcfb2aca652/search_opd/checkpoint_trainer_opd.py"
+      },
+      {
+        "label": "Fixed top-k OPD implementation",
+        "url": "https://github.com/CarnegieBin/Agentic-OPD/blob/b618d2fb6854683258be74dd84457bcfb2aca652/search_opd/core_opd.py"
+      },
+      {
+        "label": "Fixed teacher scheduling code",
+        "url": "https://github.com/CarnegieBin/Agentic-OPD/blob/b618d2fb6854683258be74dd84457bcfb2aca652/search_opd/adaptive_teacher_opd.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把一次RL训练保存的历史策略当教师池，按学生当前不会的题选教师，只在教师经验成功率更高的题上蒸馏学生失败轨迹。论文报告7B模型在7个DeepSearch测试集的平均EM从38.8%升至46.2%；公开代码按其中三个测试集挑检查点，结果与该默认配置的对应关系尚未核实。",
+      "motivation": "只留下验证集最好的RL检查点，可能把训练途中曾学会、后来遗忘的任务解法一起丢掉。历史策略总体分数更低，却未必在每一道题上都更差；关键是挑出能补学生短板的教师，并避免用教师的弱项覆盖学生已有能力。",
+      "novelty": "作者主张：把同一次RL的时间序列检查点变成弱到强、多教师OPD来源，用HCN的互补覆盖调度与LAD的局部接受条件组合回收遗失能力。本站判断：有用的研究切口是区分“教师总体强”和“能补当前学生的哪一块”，并同时统计回收与损失；历史并集不是一台可部署策略，也不是必然可恢复的上限。代码与论文协议差异使数值仍需独立验证。",
+      "evidenceScope": "已读arXiv 2611.12799v1方法§3、实验§4、结论及附录A.1–A.5，核对训练/路由验证/测试区分、各表分母和成本公式；首发2026-11-09T18:07:42Z，当前只见v1。GitHub公开profile名TingchengBian与第一作者相符、同名仓库README描述同一研究，固定到b618d2fb6854683258be74dd84457bcfb2aca652，只读选定README、调度、loss、mask与检查点选择源码；论文原页未直接链接仓库，关联依赖公开profile和同方法内容。HF目标论文页HTTP404，名称检索不能证明命中模型/数据属于本文。没有执行作者脚本、测试、训练或模型推理。 论文表1的3B/7B/4B七集平均EM分别由35.6/38.8/47.8升至38.4/46.2/50.4，增量2.8/7.4/2.6个百分点；7B的7.4以表内舍入均值相减可复核。其他四域只用Qwen2.5-3B：Tool-use五基准平均pass@1为26.1→32.1，WebShop Success为63.0→66.0而Score另为80.6→84.0，ALFWorld全评估集成功率88.5→91.0，SciWorld Overall为14.4→18.0。各域量纲不同，没有统一五域总成功率。“24项”是7个QA、5个数学工具基准、1个WebShop、5个SciWorld子任务与6个ALFWorld子任务，不是24种环境。Tool-use以32次采样平均估pass@1，不是pass@32；三个交互环境报告三随机seed均值，正文未清楚交代其是否独立训练重复。2,000题路由诊断在同一验证集选update20，60回收、45丢失，净+0.75个百分点，仅作机制描述。商业参考模型未做同领域训练，不能把特定搜索协议胜出推广成整体模型排名。",
+      "limits": "这是论文自报结果与公开实现的静态核验，未复现。7.4是7B的七QA集平均EM增量，不是所有任务统一成功率；3B的2Wiki、ALFWorld Heat会退步。路由验证集上60题回收同时丢失45题，仅净增15题，且用同集挑update20。历史教师来自已有RL，后续筛选、双侧rollout、重打分和优化仍需额外计算，未给等总计算对照。固定代码按Bamboogle/Musique/TriviaQA测试均值选择保留检查点，论文未提供对应运行账本，不能确认表1是否使用此默认，也不能宣称其测试完全没有选择偏差。公开Search实现与论文在调度细节、文档版本及LAD实现完整性上尚待核对，未确认配套训练权重或完整五域复现包。",
+      "method": [
+        "论文方案：从同一次GRPO运行保留并冻结历史检查点，学生从验证集最优检查点开始。DeepSearch把NQ/HotpotQA训练数据90%用于RL及后续OPD、10%用于教师调度，另报7个benchmark的测试结果。通常每10步存一次；能力诊断另用每5步到500步的100个教师，不能混为所有实验的固定池规模。",
+        "HCN先在路由验证集记录每个教师能解的题，再周期性重测学生；按教师能解而学生仍失败的题的加权覆盖选教师。已解决题权重清零，刚由当前教师覆盖但仍未学会的题回到1，其余未解决题逐步加权并封顶；按论文公式无正覆盖时停止。这是验证集驱动的调度，不是测试时给每题选择答案。",
+        "LAD在训练题上分别采G条学生轨迹和G条当前教师轨迹，仅留下教师经验成功率严格高于学生的题；这些题里只用学生失败的轨迹学习。教师轨迹用于估计胜率，不直接作为SFT目标；有限样本胜率领先不保证每个局部动作都正确。",
+        "冻结教师读取学生实际走过的相同前缀，在学生top-k词元集合上把双方概率重新归一化，最小化KL(学生‖教师)。损失覆盖学生生成的思考、动作与回答，排除提示、环境观察、工具返回和padding，并按保留的生成token总数归一；论文的“turn过滤”并非逐轮环境价值判优。",
+        "因过滤会丢弃大量样本，反复采样补足固定保留序列数，超过L批上限可用较小batch；每K步重新调度教师。若保留率为ρ、目标BG条轨迹，论文估算总采样约2BG/ρ条，另有教师重打分和路由评估成本。部署只用最终学生；上述是论文配方，当前公开Search代码不能直接当作五域结果的完整复现配置。"
+      ],
+      "inspirations": [
+        "对Agent训练定期保存检查点与题目级成败矩阵，按未解决集合的互补性选教师，并同时画新解出、新遗忘、净收益三条曲线。预先划分训练、路由验证、停止验证和最终测试，不能把最终测试均值用于挑检查点。",
+        "如果教师整体弱于学生，先按任务层经验胜率筛选，再保护成功学生轨迹；另做只去任务筛选、只去失败筛选、只去生成token掩码的单项消融。本文w/o LAD一次移除三级筛选，不能据其下降单独归功于某一层。",
+        "把教师池存储、全池评估、学生/教师重复采样、筛选后有效token、优化步数和墙钟时间分开计费，再与继续GRPO、固定教师及参数合并做等预算比较。保留率越低越可能付出更多采样成本，不能把已有教师不用重训写成免费能力回收。"
+      ],
+      "reviewedAt": "2026-11-10T22:32:56.411933+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.12799v1",
+        "https://arxiv.org/html/2611.12799v1",
+        "https://github.com/CarnegieBin",
+        "https://github.com/CarnegieBin/Agentic-OPD/blob/b618d2fb6854683258be74dd84457bcfb2aca652/README.md",
+        "https://github.com/CarnegieBin/Agentic-OPD/blob/b618d2fb6854683258be74dd84457bcfb2aca652/search_opd/checkpoint_trainer_opd.py",
+        "https://github.com/CarnegieBin/Agentic-OPD/blob/b618d2fb6854683258be74dd84457bcfb2aca652/search_opd/core_opd.py",
+        "https://github.com/CarnegieBin/Agentic-OPD/blob/b618d2fb6854683258be74dd84457bcfb2aca652/search_opd/adaptive_teacher_opd.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.12799",
+      "status": "pending",
+      "checkedAt": "2026-11-10T22:29:47.118Z"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/",
+    "id": "update-gemini-carbon-availability-20261110",
+    "title": "Gemini 4 Carbon扩大开放：/swarm将图纸与视觉参考接入Blender和Three.js",
+    "summary": "Gemini 4 Carbon从10月受限试用扩大到付费API及Ultra用户，并预览Antigravity /swarm。官方演示把规划图纸或视频参考转成Blender、Three.js可交互场景。",
+    "insight": "让编排、资产生成、几何建模和验证各自留存可检查产物；比较多Agent与单Agent时，要同时记录额外时间和预算。",
+    "limits": "已读11/10官方发布，未调用模型、测试地区/账号可用性或检查演示工程。/swarm是预览；演示包含生成图像、视频参考与音乐，不能称纯代码或可重复成功率。性能/成本与安全数字属于官方引用，未独立复核；这些展示不保证复杂场景都可正确编辑。",
+    "organization": "Google DeepMind",
+    "dateLabel": "2026-11-10 · 开放范围与官方展示更新",
+    "evidence": "官方发布正文与日期已核验；未运行模型或示例",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-10T22:32:10.120611+00:00",
+    "updatedAt": "2026-11-10T18:41:52.176447+00:00",
+    "firstSeenAt": "2026-11-10T22:39:19.540890+00:00",
+    "tags": [
+      "模型更新",
+      "多Agent",
+      "Three.js",
+      "Blender"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": false,
+    "sourceId": "deepmind",
+    "sources": [
+      {
+        "label": "官方开放公告与代码3D展示",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/"
+      },
+      {
+        "label": "DeepMind官方RSS所指发布入口",
+        "url": "https://deepmind.google/blog/gemini-4-carbon-is-now-available/"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Gemini 4 Carbon从10月受限试用扩大到付费API及Ultra用户，并预览Antigravity /swarm。官方演示把规划图纸或视频参考转成Blender、Three.js可交互场景。",
+      "motivation": "长程工程需要协调多个实现与检查步骤；创作任务还要把图像、图纸等参考转为可操作工程。",
+      "novelty": "官方主张Carbon擅长更难的长程任务，并将/swarm用于协作。本站判断：本次新信息是开放范围扩大和具体创作流程，非Carbon首次发布；效果仍需统一预算的重复验证。",
+      "evidenceScope": "已读取11/10官方全文及发布时间/修订时间；DeepMind入口跳转至Google原页。未读取模型卡、执行样例或核验引用榜单。保留已有10/28初次发布记录，本记录专述扩大开放与新增展示。",
+      "limits": "已读11/10官方发布，未调用模型、测试地区/账号可用性或检查演示工程。/swarm是预览；演示包含生成图像、视频参考与音乐，不能称纯代码或可重复成功率。性能/成本与安全数字属于官方引用，未独立复核；这些展示不保证复杂场景都可正确编辑。",
+      "method": [
+        "官方开放说明：付费开发者/企业通过API使用，Ultra用户分产品逐步开放；高风险网络安全版本仍经Fairwind申请。",
+        "Antigravity /swarm预览把设计、协调、实现和审查分配给Agent，在隔离工作区并行处理并检验改动；这是产品流程，不是公开训练算法。",
+        "代码3D展示采用Blender建模，再在Three.js中渲染；示例还使用生成图像/视频作为参考，不能把全部视觉成果归因于代码生成。"
+      ],
+      "inspirations": [
+        "给代码3D评测保存Blender源文件、转换前后几何、Three.js工程和逐次渲染，分别检验可编辑性、结构正确性与视觉质量。",
+        "比较单Agent与/swarm时固定总预算并记录资产来源，防止把外部图像质量或更长运行时间算成编排收益。"
+      ],
+      "reviewedAt": "2026-11-10T22:32:10.120611+00:00",
+      "sourceUrls": [
+        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/",
+        "https://deepmind.google/blog/gemini-4-carbon-is-now-available/"
+      ]
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://deepmind.google/documents/36/Formal_Verification_of_Signal_4.pdf",
+    "url": "https://deepmind.google/documents/36/Formal_Verification_of_Signal_4.pdf",
+    "id": "official-deepmind-alphaproof-code-20261110",
+    "title": "AlphaProof Code：人审规范、Agent写证明，Lean核验到Signal机器码",
+    "summary": "AlphaProof Code把人审规范、多Agent证明与Lean内核验收串起来。作者报告5人用4周，为特定libsignal单聊二进制生成约650万行证明；成果把协议安全性质连接到机器码，但依赖密码学假设、执行语义及37个外部例程契约，覆盖不到整个Signal应用或所有量子安全性质。",
+    "insight": "当证明可自动扩展，主要瓶颈转为“到底证明了什么”。把可信规范及其传递依赖固定下来，让生成证明的Agent无权自行宣布完成，再用反例、可满足性和独立内核检查，能减少修改验收条件获得假成功；公开实现的隔离边界仍要单独审。",
+    "limits": "仅libsignal v0.105.4/spqr1.6.0单聊的指定AArch64 CLI构建；规范、执行环境、密码学假设和hook契约仍受信，本站未重跑Lean。非完整客户端、群聊、keygen或服务端。计算证明仅经典攻击者且有场景/规模限制；符号证明不证明SPQR的量子恢复。公开Comparator文档明确不审规范、不防恶意PR，且其CI runner不提供有效Landlock隔离。",
+    "organization": "Google DeepMind / Google",
+    "dateLabel": "2026-11-10 · 官方技术报告",
+    "evidence": "官方技术报告、博客及固定证明资产只读核验；未重放内核证明",
+    "originalTitle": "AlphaProof Code: Verifying Signal’s Security at the Machine-Code Level",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-10T22:36:24.067697Z",
+    "originalDate": "2026-11-10",
+    "paperOriginalDate": "2026-11-10",
+    "firstSeenAt": "2026-11-10T22:36:24.067697Z",
+    "lastSeenAt": "2026-11-10T22:36:24.067697Z",
+    "tags": [
+      "Showcases",
+      "形式化验证",
+      "多Agent",
+      "Lean",
+      "安全规范"
+    ],
+    "authors": [
+      "Swarat Chaudhuri",
+      "Andrew Ferraiuolo",
+      "Anton Kovsharov",
+      "Tej Chajed",
+      "Sam Schlesinger",
+      "Karn Seth",
+      "Jonathan Katz",
+      "Charles Sutton",
+      "Pushmeet Kohli"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "deepmind",
+    "sources": [
+      {
+        "label": "Google DeepMind · 技术报告PDF（57页）",
+        "url": "https://deepmind.google/documents/36/Formal_Verification_of_Signal_4.pdf"
+      },
+      {
+        "label": "作者技术报告HTML · 方法、可信基与限制",
+        "url": "https://google-deepmind.github.io/code-verification/"
+      },
+      {
+        "label": "Google DeepMind · 11/10官方公告",
+        "url": "https://deepmind.google/blog/introducing-alphaproof-code/"
+      },
+      {
+        "label": "固定版本 · 开放验证资产与复查说明",
+        "url": "https://github.com/google-deepmind/code-verification/blob/808b4b7ffef198e6a91f71ed776d641a1c236882/README.md"
+      },
+      {
+        "label": "固定Comparator文档 · 检查与威胁模型边界",
+        "url": "https://github.com/google-deepmind/code-verification/blob/808b4b7ffef198e6a91f71ed776d641a1c236882/comparator/README.md"
+      },
+      {
+        "label": "固定主定理 · 计算安全与二进制对应",
+        "url": "https://github.com/google-deepmind/code-verification/blob/808b4b7ffef198e6a91f71ed776d641a1c236882/Computational/Theorems/Main.lean"
+      },
+      {
+        "label": "固定Comparator配置 · 允许的公理",
+        "url": "https://github.com/google-deepmind/code-verification/blob/808b4b7ffef198e6a91f71ed776d641a1c236882/comparator/computational.json"
+      },
+      {
+        "label": "固定执行语义 · ElfRunsTo",
+        "url": "https://github.com/google-deepmind/code-verification/blob/808b4b7ffef198e6a91f71ed776d641a1c236882/arm64-semantics/Arm64/Trusted/Process/Semantics.lean"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "AlphaProof Code把人审规范、多Agent证明与Lean内核验收串起来。作者报告5人用4周，为特定libsignal单聊二进制生成约650万行证明；成果把协议安全性质连接到机器码，但依赖密码学假设、执行语义及37个外部例程契约，覆盖不到整个Signal应用或所有量子安全性质。",
+      "motivation": "密码协议的抽象设计安全，不保证真实实现与编译后二进制满足它；状态管理、序列化和异常路径可能引入落差。过去人工证明成本极高，而AI即使能写长证明，也可能通过弱化前提或修改依赖定义让错误目标变得容易成立。",
+      "novelty": "作者主张：首次把广泛部署且未改动的密码协议实现连接到机器码层面的协议安全证明，并以人机规范工程配合自主证明团队扩展规模。本站判断：重点是把验收权与生成权分开，并对“规范是否有意义”继续做反例检查；650万行是证明规模，不是650万行生产代码都安全，更不代表只需相信AI。公开CI与论文内部开发流程的隔离保证也不能混同。",
+      "evidenceScope": "已读官方57页PDF和同题HTML的规范/Agent编排/验收方法、二进制设置、两类证明主结论、可信基、历史bug验证与实践，以及附录B.7、C.5–C.6范围说明；未逐项审阅全部附录推导。只读报告链接固定commit 808b4b7ffef198e6a91f71ed776d641a1c236882的README、许可、Comparator文档/脚本/配置、两类headline theorem、AArch64进程语义、CLI及工具链固定文件；未下载全部证明、未构建、未重放Lean或核验CI运行结果。verified指公开来源及选定资产核验，不是独立验证650万行证明。",
+      "limits": "证明只针对特定CLI的单聊init/send/recv，keygen、群聊、sealed sender、服务端和完整移动应用未覆盖。受信基包括约1.8万行规范与约0.8万行AArch64语义、Lean内核、符号名提取/构建脚本、37个hook契约及密码学假设；约650万行证明不消除这些信任。进程是单线程静态链接、固定时钟/文件环境、8MiB栈和1GiB额外内存，原语与输出例程未证明到实际实现。符号场景限两方、预先固定身份/新鲜随机性等，并把碰撞排除；不覆盖侧信道或SPQR后量子恢复。计算证明仅经典攻击者，限制会话提升前的敌手首包/部分泄露时机，无多设备、固定消息长度；若几乎每消息开启新epoch，约2.5万消息单会话即可让界失效，非实际攻击已被发现。公开Comparator挑战从同一commit导入规范，不能自动审规范或防恶意PR；文档称CI Linux5.10使Landlock best-effort不提供隔离。本轮未查运行日志、未核650万行或重放证明，未测token成本/跨模型效率。",
+      "method": [
+        "人与规范Agent把文献安全目标写成Lean定理及依赖定义，由其他模型审查并由人批准。先检查前提可同时满足、诚实执行可达，再用变异和历史bug反驳弱规范；固定规范commit，任何假设变动走有记录的审议流程。",
+        "把未改动的libsignal v0.105.4和spqr1.6.0包装为CLI，用固定rustc编译成AArch64 Linux二进制。Lean定义加载器、内存、指令与系统调用语义，证明init/send/recv与字节级模型对应；37个低层密码/输出等例程用受信契约替代，不把这些例程也算已证明实现。",
+        "组织者把目标分给team lead和proof worker，架构Agent维护分解、集成者合并引理，同一文件一次只给一个worker。论文称常见campaign为40–80个Agent、24–72小时；本次总项目为5名研究者4周，规范由Gemini Carbon/Opus协作审查，证明代码由Carbon Agent产生，不能当无人工或等预算模型对比。",
+        "分别证明符号安全和计算安全：前者把密码原语理想化，将机器执行细化到协议事件；后者连接安全游戏、字节模型和二进制，并以有成本界的reduction量化攻击优势。前向保密、认证和泄露后恢复都受各自场景与假设限制；只部分符号握手性质涵盖未来破坏DH的攻击者。",
+        "Gatekeeper调用Comparator确认定理及传递定义与批准目标一致、只用标准Lean公理，并由新Lean内核重放。作者还在隔离副本重引入两个已修历史bug，证明其二进制不满足符号安全定理。开放包提供复查入口；本站仅核脚本/配置，未实际重放或将两例反证当全面漏检率。"
+      ],
+      "inspirations": [
+        "在Agent评测中冻结验收条件及其传递依赖，检查提交是否悄悄改了测试定义、前提或依赖；允许澄清规范，但改动要有反例依据、批准记录与重新验证。",
+        "为复杂工具链建立“已验证/受信/未覆盖”清单。测试通过之外，再加可达正例、失败变异和真实历史回归；证明一个假设下的性质时，同时说明环境、版本和输入范围。",
+        "多Agent长任务可采用单文件所有者、独立集成者、共享公告与昂贵检查队列；后续用完成率、成本和返修量对照评估。本文是单个大型工程案例，没有证明40–80并发对任意项目最优。"
+      ],
+      "reviewedAt": "2026-11-10T22:36:24.067697Z",
+      "sourceUrls": [
+        "https://deepmind.google/documents/36/Formal_Verification_of_Signal_4.pdf",
+        "https://google-deepmind.github.io/code-verification/",
+        "https://deepmind.google/blog/introducing-alphaproof-code/",
+        "https://github.com/google-deepmind/code-verification/blob/808b4b7ffef198e6a91f71ed776d641a1c236882/README.md",
+        "https://github.com/google-deepmind/code-verification/blob/808b4b7ffef198e6a91f71ed776d641a1c236882/comparator/README.md",
+        "https://github.com/google-deepmind/code-verification/blob/808b4b7ffef198e6a91f71ed776d641a1c236882/Computational/Theorems/Main.lean",
+        "https://github.com/google-deepmind/code-verification/blob/808b4b7ffef198e6a91f71ed776d641a1c236882/comparator/computational.json",
+        "https://github.com/google-deepmind/code-verification/blob/808b4b7ffef198e6a91f71ed776d641a1c236882/arm64-semantics/Arm64/Trusted/Process/Semantics.lean"
+      ]
+    }
   }
 ]
