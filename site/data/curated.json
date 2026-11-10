@@ -10852,5 +10852,323 @@
         "https://huggingface.co/datasets/nvidia/Nemotron-PII-Japan"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.11995v1",
+    "url": "https://arxiv.org/abs/2611.11995v1",
+    "id": "live-ad5effbf586448eb",
+    "title": "Infrathon：长跑Agent评测要看整条进步曲线，也要保留没交卷的任务",
+    "summary": "在25个AI基础设施优化任务上跑6个模型、共150次，算子预算12小时，模块/系统24小时。135次在后半程继续提高最佳有效得分，但半程得分为正的运行的中位增益仅3.05%；短测和长测的领先者会变化。",
+    "insight": "同一模型在短预算领先，未必在长预算仍领先。应同时记录最佳有效结果、时间、配置例外和失败账本；135/150后来变好不等于多数任务有巨大收益，也不证明延长时间总比多次短跑划算。",
+    "limits": "这是模型与harness组合的结果，每个任务—模型选最近启动的一次运行，非多随机种子稳定排名；跨任务名次分不是准确率。预算包含等待，GPU小时是分配量，未给完整API/CPU/存储账单，可见token不含隐藏推理。公开清单保留GLM/Wan2.2无提交为0；GLM/GKD与DeepSeek/Paged-GQA记录提前结束，并标注异硬件、GLM/QVG采用不同框架及无LLM完整性审查等例外，不能声称150次条件完全一致。代码及数据入口当前不可公开获取；仅核网站固定数据，未重跑底层任务。私测反馈可反复用于优化，LLM审查也非完整防作弊证明。 网站README的旧预算与论文v1不同，本文采用论文版本并保留这一差异。",
+    "dateLabel": "2026-11-09 · arXiv v1首发",
+    "evidence": "方法与实验正文已核；固定网站数据一致性审计，研究实现不可获取，未复现",
+    "originalTitle": "Infrathon: Benchmarking Language Agents for Real-World, Long-Horizon AI Infra Optimization",
+    "date": "2026-11-09",
+    "checkedAt": "2026-11-10T10:29:39.170558+00:00",
+    "paperOriginalDate": "2026-11-09T07:24:54Z",
+    "paperUpdatedAt": "2026-11-09T07:24:54Z",
+    "updatedAt": "2026-11-09T07:24:54Z",
+    "firstSeenAt": "2026-11-10T10:00:01Z",
+    "lastSeenAt": "2026-11-10T10:00:01Z",
+    "tags": [
+      "Evaluation",
+      "长程Agent",
+      "基础设施优化",
+      "预算与成本"
+    ],
+    "authors": [
+      "Zhengyu Hu",
+      "Zheyuan Xiao",
+      "Yike Wang",
+      "Hamish Ivison",
+      "Haoyu Wang",
+      "Yige Yuan",
+      "Rulin Shao",
+      "Yuetai Li",
+      "Niqi Lyu",
+      "Yicheng Ding",
+      "Shu Yang",
+      "Zhichen Zeng",
+      "Banghua Zhu",
+      "Jiaxin Pei",
+      "Kaize Ding",
+      "Pradeep Dasigi",
+      "Dan Roth",
+      "Hannaneh Hajishirzi",
+      "Noah A. Smith",
+      "Teng Xiao",
+      "Radha Poovendran"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.11995v1"
+      },
+      {
+        "label": "arXiv v1 · 方法、评测与附录",
+        "url": "https://arxiv.org/html/2611.11995v1"
+      },
+      {
+        "label": "作者项目页 · 任务与结果",
+        "url": "https://infrathonx.github.io/"
+      },
+      {
+        "label": "固定公开结果 · 150条运行记录",
+        "url": "https://github.com/InfrathonX/InfrathonX.github.io/blob/554d647e606e598e7c29cbb8a7490dbc94d0ede4/data/infrathon.js"
+      },
+      {
+        "label": "固定任务清单 · 配置例外",
+        "url": "https://github.com/InfrathonX/InfrathonX.github.io/blob/554d647e606e598e7c29cbb8a7490dbc94d0ede4/data/tasks.json"
+      },
+      {
+        "label": "固定网站仓库 · 发布与数据范围",
+        "url": "https://github.com/InfrathonX/InfrathonX.github.io/blob/554d647e606e598e7c29cbb8a7490dbc94d0ede4/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "在25个AI基础设施优化任务上跑6个模型、共150次，算子预算12小时，模块/系统24小时。135次在后半程继续提高最佳有效得分，但半程得分为正的运行的中位增益仅3.05%；短测和长测的领先者会变化。",
+      "motivation": "基础设施优化需要反复定位瓶颈、改代码、验证正确性和性能；只评一次提交或短时快照，会漏掉平台期后的进步、晚期退步以及模型排名反转。不同任务又用吞吐、缓存保真或质量门槛，不能直接平均原始分数。",
+      "novelty": "作者主张：把算子、模块、系统级真实AI基础设施优化统一到12–24小时的长程、可反馈评测中。本站判断：核心价值是公开最佳有效分数随时间的变化、约束审查与预算口径，让“有没有继续进步”成为可核问题；“首个”优先权未独立穷举验证，也不把一次榜单视作纯模型能力或普适排名。",
+      "evidenceScope": "已读arXiv v1正文方法、实验和行为分析，附录A的预算/选择/计分、25项任务范围、B–C长短程口径及E.1案例采样；只读核验作者项目页和网站固定提交554d647e的README、任务/结果/计数数据与文件树。自行解析公开结果JSON重算150条、135条后半程提升、144条正半程运行中位3.0528%及33条增益>10%，这只是已发布数据的一致性核对，不是独立实验复现。研究仓库及其原地址均返回Repository not found，HF数据卡401，未绕过权限；未执行作者脚本、模型或GPU任务。 主实验预算11,376 GPU小时=Work 4,320+持续分配Judge 6,768+后端288；短程对照另2,592。均为作者资源分配统计，不是实测GPU忙碌时间或完整费用。 预算采用论文v1附录A；固定网站README仍写主实验10,512及短程2,016 GPU小时，与论文未同步，不将两处预算视为一致。交叉审另一次HF README请求返回404，仅能确认当前未取得公开数据。",
+      "limits": "这是模型与harness组合的结果，每个任务—模型选最近启动的一次运行，非多随机种子稳定排名；跨任务名次分不是准确率。预算包含等待，GPU小时是分配量，未给完整API/CPU/存储账单，可见token不含隐藏推理。公开清单保留GLM/Wan2.2无提交为0；GLM/GKD与DeepSeek/Paged-GQA记录提前结束，并标注异硬件、GLM/QVG采用不同框架及无LLM完整性审查等例外，不能声称150次条件完全一致。代码及数据入口当前不可公开获取；仅核网站固定数据，未重跑底层任务。私测反馈可反复用于优化，LLM审查也非完整防作弊证明。 网站README的旧预算与论文v1不同，本文采用论文版本并保留这一差异。",
+      "method": [
+        "与专家构造25项任务：11算子、5模块、9系统，覆盖10训练和15推理任务。每题明确可编辑工作区、公开测试、私有测试、资源与预算；算子12小时，模块/系统24小时，包含工具执行和反馈等待，不是150次全部24小时。",
+        "把Work开发环境与Judge私测容器隔离。Agent修改、测试和提交，Controller限制提交频率并用GPT-6.1 Sol审查规则及疑似reward hacking；通过后才运行隐藏正确性/数值/质量检查并返允许的诊断，提前自报完成会被stop hook催促继续。",
+        "用6个模型与各自harness组合得到150个任务—模型运行：Claude用Claude Code，其余按论文主设置用Codex CLI。取预算内最佳有限有效私测分；无有效提交记0并留在25题分母，按题内名次等权汇总，而非比较不同任务原始数值。",
+        "在相同预算比例比较排名：25%时Astra领先，50%后Claude领先且后续检查点总体顺序不变；最终Claude领先17/25题。135/150在后半程刷新最好值，但144条半程得分为正的运行中位提升3.05%，其中33条超过10%，并非90%都有大幅提升。",
+        "再在6题×2模型上以相同分配GPU小时比较1次长跑和2/4次短跑选优：复用12次主运行并新增72次，长跑赢9/12组合，但算子任务短跑仍有竞争力。结合违规、测到旧缓存/错误函数和过早结束案例分析失败；不能推广成所有任务都应跑满24小时。"
+      ],
+      "inspirations": [
+        "给自己的Agent评测保存提交版本、实际被测函数/缓存键、有效性及错误类别；无提交与基础设施错误都留在账本，防止只展示成功样本或测试了没改动的代码。",
+        "同时画固定预算25%/50%/100%的最好有效分数与成本，并做同GPU预算的单次长跑/多次短跑对照；把CPU、推理API、隐藏推理、Judge闲置分配量和实际利用率分开，比较边际收益而非只看总时长。",
+        "把任务约束写成可执行验收并辅以独立审查，记录每次拒绝原因；最终另设不返反馈的封存评估、同硬件多次重复与harness交叉实验，区分私测自适应调优、框架效应和可迁移能力。"
+      ],
+      "reviewedAt": "2026-11-10T10:29:39.170558+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.11995v1",
+        "https://arxiv.org/html/2611.11995v1",
+        "https://infrathonx.github.io/",
+        "https://github.com/InfrathonX/InfrathonX.github.io/blob/554d647e606e598e7c29cbb8a7490dbc94d0ede4/data/infrathon.js",
+        "https://github.com/InfrathonX/InfrathonX.github.io/blob/554d647e606e598e7c29cbb8a7490dbc94d0ede4/data/tasks.json",
+        "https://github.com/InfrathonX/InfrathonX.github.io/blob/554d647e606e598e7c29cbb8a7490dbc94d0ede4/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.11995",
+      "status": "pending",
+      "checkedAt": "2026-11-10T10:28:37.046931+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.10592v1",
+    "url": "https://arxiv.org/abs/2611.10592v1",
+    "id": "live-6eec83f74896238a",
+    "title": "MotionGraphicsBench：把动效要求变成逐项可检查的程序验收",
+    "summary": "100个真实Lottie设计衍生任务提供静态SVG与动效指令，让模型生成JS/GSAP源码，再逐项验证几何、外观和时序。180个平衡人评留出动画上，程序与人判断一致率93.3%，VLM基线83.3%；这测的是要求满足度，不是美感。",
+    "insight": "比“视频看起来像不像”更可用的反馈，是明确哪个姿态、相对轨迹或事件先后没做到。验收程序应接受多种合理实现，再用独立人评和针对性反例检验误放/误拒；程序确定性不自动等于标准正确。",
+    "limits": "验证对象是给定完整SVG后的短动效指令满足度，不是画面美感、视频剪辑、图形创作或任意交互。180人评测试覆盖同一100任务的留出生成结果，且人为平衡90通过/90拒绝；不能当新任务泛化或真实分布准确率。仍有9次误拒、3次误放；合成测试标签也未经独立人评。pass@32是32个独立候选中存在全通过项，非单次或自修复成功率。实际仅测JS/GSAP，未测CSS/SMIL及原生Lottie/Figma工程互通或二次编辑。作者HF发布页/API匿名401，无法核数据卡、100个验证器和原始记录；已读的MoVer是上游渲染器，不代表本基准实现开放或已复现。",
+    "dateLabel": "2026-11-07 · arXiv v1首发",
+    "evidence": "全文方法与评测已核验；上游渲染代码只读，基准数据发布未核验；未复现",
+    "originalTitle": "MotionGraphicsBench: Evaluating Motion Graphics Generation with Programmatic Verification",
+    "date": "2026-11-07",
+    "checkedAt": "2026-11-10T10:29:32.516639Z",
+    "paperOriginalDate": "2026-11-07T08:59:49Z",
+    "paperUpdatedAt": "2026-11-07T08:59:49Z",
+    "updatedAt": "2026-11-07T08:59:49Z",
+    "firstSeenAt": "2026-11-10T04:00:01Z",
+    "lastSeenAt": "2026-11-10T10:00:01Z",
+    "tags": [
+      "Evaluation",
+      "SVG",
+      "GSAP",
+      "动效评测",
+      "程序化验证"
+    ],
+    "authors": [
+      "Jiaju Ma",
+      "Ashvini Kumar Jindal",
+      "Chuhua Wang",
+      "Sumithra Bhakthavatsalam"
+    ],
+    "topics": [
+      "code2motion"
+    ],
+    "featured": true,
+    "sourceId": "arxiv_code2motion",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.10592v1"
+      },
+      {
+        "label": "arXiv v1 · 方法、标注与完整评分协议",
+        "url": "https://arxiv.org/html/2611.10592v1"
+      },
+      {
+        "label": "作者指定发布入口 · 本轮匿名访问401",
+        "url": "https://huggingface.co/datasets/figma-ai/motion-graphics-bench"
+      },
+      {
+        "label": "上游MoVer固定README · 非本基准完整实现",
+        "url": "https://github.com/jama1017/MoVer/blob/b7f78946c7544b303905aa96ed9b85a0a817d20c/README.md"
+      },
+      {
+        "label": "上游MoVer固定转换器 · SVG帧取样",
+        "url": "https://github.com/jama1017/MoVer/blob/b7f78946c7544b303905aa96ed9b85a0a817d20c/src/mover/converter/mover_converter.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "100个真实Lottie设计衍生任务提供静态SVG与动效指令，让模型生成JS/GSAP源码，再逐项验证几何、外观和时序。180个平衡人评留出动画上，程序与人判断一致率93.3%，VLM基线83.3%；这测的是要求满足度，不是美感。",
+      "motivation": "同一动效需求可以有不同合法轨迹和时间安排，逐像素对齐单一成片会误伤；VLM总评又难定位是哪条要求失败。作者把“已有素材怎么动”单独拿出来，验证局部姿态、部件关系、可见性与事件顺序。",
+      "novelty": "作者主张：从真实动效设计构造100个细致指令任务，用按题编写、可读且确定性的程序代替单参考相似度或VLM总评，并在留出生成结果上校验人类一致性。本站判断：关键是把合法变化与不满足要求的变化分开测试，让失败原因可追查；验证器仍由模型和人工构造、存在阈值偏差，不能把确定执行称为对所有正确动效的形式化保证。",
+      "evidenceScope": "已读arXiv 2611.10592v1全文§3–6及附录A–D：SVG/指令构建、双Agent验证器、标注与留出协议、所有检查通过的评分、51,200次设计预算和失败分析。论文链接的HF页面及公开API均匿名HTTP401，未获得数据卡或固定数据提交。只读审查论文所用上游MoVer的固定提交b7f78946c7544b303905aa96ed9b85a0a817d20c之README、转换器和渲染会话：确认按时间取样并序列化SVG帧；未将该旧项目当成MotionGraphicsBench的100个检查器。未执行代码、调用模型、浏览器渲染或复现实验；verified只指来源核验。",
+      "limits": "验证对象是给定完整SVG后的短动效指令满足度，不是画面美感、视频剪辑、图形创作或任意交互。180人评测试覆盖同一100任务的留出生成结果，且人为平衡90通过/90拒绝；不能当新任务泛化或真实分布准确率。仍有9次误拒、3次误放；合成测试标签也未经独立人评。pass@32是32个独立候选中存在全通过项，非单次或自修复成功率。实际仅测JS/GSAP，未测CSS/SMIL及原生Lottie/Figma工程互通或二次编辑。作者HF发布页/API匿名401，无法核数据卡、100个验证器和原始记录；已读的MoVer是上游渲染器，不代表本基准实现开放或已复现。",
+      "method": [
+        "从LottieAnimation-660K按结构复杂度筛选并人工审1000候选，保留100个设计。补齐选定静态帧中隐藏的路径，保证SVG含所需全部元素；LLM草拟后人工修订动效指令，覆盖17类要求，每题含7–14类，原片平均3.50秒。",
+        "模型只输出一个有限、确定性的JS/GSAP时间线，对已有SVG元素加动效；给定总时长与源帧率，时长容差一帧。输入SVG是参考外观，不一定是第0帧。浏览器按时间取SVG帧，用节点文档路径索引动画矩阵，测几何、样式、轮廓、遮挡及相对时序。",
+        "用两个GPT-6 Astra Agent分工：writer写Python验收，synthesizer在不看候选程序/报告的条件下造合法变体与定向违规反例，每题最多20个。writer结合原Lottie及1585个人标构造动画（410通过/1175拒绝）反复修改，最后冻结每题验证器。合成标签是Agent主张，不是独立人工真值。",
+        "留出180个动画、90人类通过与90拒绝，来自4个留出模型配置但覆盖同一100任务；标注先双人独立、分歧后讨论共识。程序一致率168/180=93.3%，VLM为150/180=83.3%；程序通过召回81/90、拒绝召回87/90，误判是9次过严拒绝及3次漏检子部件相对运动。",
+        "对47配置/32模型用独立于标注集的新生成批次测试：15配置每题32次，其余32配置每题1次，共计划51200尝试。至少一个检查且全部通过、无执行错误才成功；缺失测量和执行错误计失败。15配置平均pass@1为36.7%、pass@32为73.7%，后者是候选集合存在成功项；生成过程不读取验证报告来修复。"
+      ],
+      "inspirations": [
+        "给code2motion样例先列可判定要求：铰点固定、两部件不脱开、事件先后、透明度恢复与最终姿态；保存逐项测量和全项通过率，同时另做人评美感，避免漂亮成片掩盖局部错误。",
+        "建设验收器时同时造“换时序仍合法”的正例与“只破坏一个约束”的负例，留出新模型输出及新任务家族。独立审查合成标签，记录误放/误拒，防止生成器和裁判共享同一盲点。",
+        "将多次采样、基于报告修复和人工二次编辑做等预算对照。先复核公开检查器，再探索把报告用于训练奖励；31.6%的无执行错误失败只错一个检查，但一个检查可能含多个要求，不能直接当作一改即好。"
+      ],
+      "reviewedAt": "2026-11-10T10:29:32.516639Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.10592v1",
+        "https://arxiv.org/html/2611.10592v1",
+        "https://huggingface.co/datasets/figma-ai/motion-graphics-bench",
+        "https://github.com/jama1017/MoVer/blob/b7f78946c7544b303905aa96ed9b85a0a817d20c/README.md",
+        "https://github.com/jama1017/MoVer/blob/b7f78946c7544b303905aa96ed9b85a0a817d20c/src/mover/converter/mover_converter.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.10592",
+      "status": "pending",
+      "checkedAt": "2026-11-10T10:28:37.046931+00:00"
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://huggingface.co/papers/2611.12886",
+    "url": "https://huggingface.co/papers/2611.12886",
+    "id": "live-df80bbd528685052",
+    "title": "Reframe：先让视觉 Agent 用好工具证据，再在修复后的同一观测上蒸馏",
+    "summary": "Reframe 先以定位奖励和原图随机丢弃训练图像/视频专家，再将学生缺失或低质量的工具动作替换为标注动作，从修复后的观测继续采样并蒸馏。相对同教师、同学生配置的 vanilla MOPD，图像七项均分提高 1.29 分、视频七项提高 0.78 分；公开代码、模型及数据元数据已核验。",
+    "insight": "工具调用正确、取得相关证据和真正使用证据是三个不同目标。蒸馏时教师应在学生实际得到的观测上打分；如果外部标注修复了动作，要记录状态干预，并将注入 token 与学生采样 token 分开监督，不能把整条修复轨迹都称为纯 on-policy。",
+    "limits": "结果为作者报告，本站未运行模型或复现。主要基座只有 Qwen3.5-9B，工具仅裁图/选帧、最多两次视觉操作；不是视频剪辑、代码动画或开放环境长程 Agent 评测。两组七项均分混合不同指标，并非14项统一成功率；Reframe未在每项都胜过MOPD或专家。原图/返回图token预算一致不等于训练计算量一致：还需训练两位专家，外部模型的基座与原生工具接口也不同。75.53%观测依赖仅是V*191题、固定工具动作、原图仍在的条件探针归一化误差改善，不是75.53%任务必须靠工具。GD-GRPO对照同时改奖励、dropout和分组，OG-MOPD同时改动作修复与NLL，未逐项隔离因果贡献。论文选最佳checkpoint但未充分说明选择集及多seed置信区间；依赖真实grounding标注，数据清洗与发布权重未独立复验。",
+    "organization": "南京大学 / 中国科学院自动化研究所",
+    "dateLabel": "2026-11-09 · arXiv v1 首发",
+    "evidence": "已读arXiv v1全文与附录；固定作者代码静态审读，HF模型/数据卡与发布清单已核验；未执行或复现。",
+    "originalTitle": "Reframe: Observation-Aligned Multi-Teacher On-Policy Distillation for Agentic Visual Reasoning",
+    "date": "2026-11-09",
+    "checkedAt": "2026-11-10T10:30:31.250767Z",
+    "originalDate": "2026-11-09",
+    "paperOriginalDate": "2026-11-09T18:59:54Z",
+    "paperUpdatedAt": "2026-11-09T18:59:54Z",
+    "updatedAt": "2026-11-09T18:59:54Z",
+    "firstSeenAt": "2026-11-10T10:00:01Z",
+    "lastSeenAt": "2026-11-10T10:00:01Z",
+    "dailySubmittedAt": "2026-11-10T00:00:00.000Z",
+    "tags": [
+      "Distillation",
+      "视觉 Agent",
+      "多教师",
+      "On-policy",
+      "观测修复",
+      "Grounding"
+    ],
+    "authors": [
+      "Haozhi Yuan",
+      "Handong Li",
+      "Yifan Zhang",
+      "Qianshan Wei"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.12886v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.12886"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.12886"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/EliYuan30/Reframe"
+      },
+      {
+        "label": "原论文全文 · 方法、消融与评测附录",
+        "url": "https://arxiv.org/html/2611.12886v1"
+      },
+      {
+        "label": "作者代码 · 本轮固定提交",
+        "url": "https://github.com/EliYuan30/Reframe/tree/f3e4c4b092d209656de307994123c23d705bbc54"
+      },
+      {
+        "label": "作者模型 · 已核发布清单与模型卡",
+        "url": "https://huggingface.co/EliYuan00/Reframe"
+      },
+      {
+        "label": "作者数据 · 已核发布清单与数据卡",
+        "url": "https://huggingface.co/datasets/EliYuan00/Reframe-100K"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "只蒸馏教师的输出分布，无法补回学生先前裁错图、选错帧而丢失的证据。Reframe先训练会定位且使用工具观测的专家，再在学生轨迹中少量修复坏动作，让教师和学生围绕同一修复后观测进行逐token蒸馏；注入动作另外用NLL学习。",
+      "motivation": "视觉Agent即使调用工具，也可能绕过返回图、继续凭原图作答；多教师蒸馏又会被学生自己取得的劣质观测限制。作者希望同时解决“拿到有效证据”和“真的根据证据推理”，并将图像、视频两个专长合入一个模型。",
+      "novelty": "作者主张：以GD-GRPO建立观测依赖，再用OG-MOPD修复观测状态，统一图像/视频工具推理且无需任务专用SFT冷启动。本站判断：关键是把“到达什么观测状态”纳入蒸馏，并按token来源分离监督；实现与论文支持这个设计，但标注修复和NLL仍是外部监督，首创性未穷尽验证，现有消融也不能单独证明每个部件的贡献。",
+      "evidenceScope": "已阅读arXiv 2611.12886v1全文§3–§4、表2–7及附录A–C；静态审读作者提交f3e4c4b092d209656de307994123c23d705bbc54中的训练脚本、scheduler、reward、teacher请求构造与branch-token损失。HF模型固定revision 0ddc755259c2c9701b4a20ca2ac4e796c025f603、数据revision f17e7050ae422777515ca1f7221bc4d3a68b0d30：卡片均标Apache-2.0，公开清单分别有权重分片和Parquet/媒体归档；仅核元数据/卡片，未下载权重或完整数据、未运行作者代码、未复现。arXiv首发日期与HF日报收录日分开保留。",
+      "limits": "以单一9B基座、两种视觉工具和至多两次操作为主，不支持开放环境或视频创作泛化结论。7项图像/7项视频均分含不同计分方式，MVBench还排除Fine-grained Pose；外部模型基座/工具适配不同，不能将共享视觉预算等同公平总算力比较。无任务专用SFT冷启动不代表没有动作级监督；修复依赖训练标注，改变学生后续状态分布。GD-GRPO与OG-MOPD均为组合消融，最佳checkpoint选择集及多seed区间披露有限。V*观测依赖191题每条件单次，原图仍可见且GT是注入动作，不等于实际工具执行成功率。代码已公开但仅静态抽查，公开脚本默认GPU数与论文多机配置须区分；权重质量、数据去重与证据标注未独立复验。",
+      "method": [
+        "构建Reframe-100K：论文约63K图像/37K视频QA，作者仓库给出63,020+36,706=99,726条。过滤文本即可回答及证据不足样本，结合完整输入/标注证据各8次rollout审查；空间框扩为1.5倍、时间段两端各加一帧，保留上下文，再生成工具适用性和可执行标注动作。",
+        "从Qwen3.5-9B分别训练图像与视频专家：GD-GRPO同时奖励答案、工具行为和证据定位并处罚无效输出，调用激励逐渐衰减，定位奖励不因答错而归零。首次成功工具调用后以0.5概率移除原始视觉输入，保留工具返回观测；优势按预先抽取的drop/keep标志分组，避免把随机难度混入动作优劣。",
+        "重新从同一基座初始化统一学生，使用两位固定专家。按论文主规则，学生缺失、无效或低IoU动作尝试替换为标注派生动作：裁图阈值0.25、选帧0.15，取原始/扩展证据匹配的较大值；标准动作本身也须满足工具约束。公开实现另对可组合选帧要求与标注帧集合一致。执行修复后由学生继续采样，按实际执行的crop/select路由图像/视频教师。",
+        "教师对学生实际历史、视觉观测与采样token评分；静态实现未给教师另加参考答案或独立观测轨迹。学生token用teacher−student log概率差作为密集信号并截到[-5,5]，注入动作token从该损失屏蔽、改用权重1的NLL。蒸馏阶段关闭原图dropout、手工RL奖励及固定基座KL；因此是主要由学生采样的干预式蒸馏，而非全轨迹纯on-policy。",
+        "推理时保留原始输入，撤去教师和ground-truth修复，只提供裁图/选帧工具。在统一视觉预算、greedy decoding下测7项图像和7项视频指标，并做同checkpoint有/无工具对照及V*固定动作下GT/Random/Blank返回图干预；前者看自主工具收益，后者看条件观测敏感度。"
+      ],
+      "inspirations": [
+        "做视觉或代码创作Agent蒸馏时，把工具动作、执行后的渲染/截图和教师评分绑定到同一状态。若人工或oracle修正动作，记录修正位置与token mask，再分别比较纯学生轨迹、仅修复观测、仅动作监督和二者结合；这是后续实验假设，本文未测试代码创作。",
+        "将“调用了工具”拆成定位质量、观测依赖、自主工具增益三项验收。固定动作与前文，仅替换返回观测，并同时报告原始正确率差及归一化指标，避免把天花板校正后的75.53解释成工具使用成功率。",
+        "复制该训练方案前先审数据与预算：核grounding标注误差/覆盖率、可修复动作比例、最终修复频率及teacher计算量；以相同总token和训练算力比较Mix-RL/MOPD，并扩展到更长工具链和未见工具，检验短程视觉QA收益能否迁移。"
+      ],
+      "reviewedAt": "2026-11-10T10:30:31.250767Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.12886v1",
+        "https://arxiv.org/html/2611.12886v1",
+        "https://github.com/EliYuan30/Reframe/tree/f3e4c4b092d209656de307994123c23d705bbc54",
+        "https://huggingface.co/EliYuan00/Reframe/blob/0ddc755259c2c9701b4a20ca2ac4e796c025f603/README.md",
+        "https://huggingface.co/datasets/EliYuan00/Reframe-100K/blob/f17e7050ae422777515ca1f7221bc4d3a68b0d30/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.12886",
+      "status": "pending",
+      "checkedAt": "2026-11-10T10:28:37.046931+00:00"
+    }
   }
 ]
