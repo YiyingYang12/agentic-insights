@@ -10525,5 +10525,332 @@
         "https://openai.com/news/"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.10439v1",
+    "url": "https://arxiv.org/abs/2611.10439v1",
+    "id": "live-e9745c9b6973effd",
+    "title": "MixUA / CrossLearnBench：共享经验时，先决定谁有权记住什么",
+    "summary": "MixUA把轨迹经验放进Pair、User、Agent、Global四种记忆范围，用相互隔离的可共享/受保护写入流区分技术经验与个人上下文。CrossLearnBench在既有任务中加入合成用户、偏好和私密事实，同时测任务收益、个性化与越界传播。",
+    "insight": "记忆不只是“该不该保存”，还要把适用对象与允许披露对象分开。评测应同时看跨用户收益、错配偏好、私密事实和读取/写入成本，不能用低探针命中率直接宣称隐私已解决。",
+    "limits": "全部用户及植入事实为合成数据，低泄漏仅指指定记忆探针，不是端到端保密、差分隐私或对抗安全保证；探针用精确子串并在20%种子抽样上加LLM语义判断。跨用户偏好命中与私密事实泄漏另算，LLM+review主设置仍有3.6%偏好命中。计划任务会重复，16.3个百分点是第2–3轮匹配样本相对无记忆的增益，不是R3两列直接相减；三次重复共享同一任务种子和首轮。每scope40k字符不是等总上下文，报告费用只含任务Agent和writer，未覆盖全部记忆侧调用及重试。仅5/20/100合成用户、7种固定模型-harness、最多8轮；100用户时未证实优于Global-only。未评估恶意记忆写入、同意与删除；用户/Agent子群边界尚不支持。本轮未定位可验证作者代码或运行记录，未复现实验。",
+    "dateLabel": "2026-11-07 · arXiv v1",
+    "evidence": "已读原文方法、实验及隐私边界附录；作者代码与原始记录未独立取得，未复现",
+    "originalTitle": "Who Remembers What? Multi-Granularity Memory Extraction for Multi-User, Multi-Agent Interaction",
+    "date": "2026-11-07",
+    "checkedAt": "2026-11-10T04:27:16.612637Z",
+    "paperOriginalDate": "2026-11-07T03:35:51Z",
+    "paperUpdatedAt": "2026-11-07T03:35:51Z",
+    "updatedAt": "2026-11-07T03:35:51Z",
+    "firstSeenAt": "2026-11-10T04:00:01Z",
+    "lastSeenAt": "2026-11-10T04:00:01Z",
+    "tags": [
+      "记忆评测",
+      "多用户",
+      "多Agent",
+      "隐私边界",
+      "合成数据"
+    ],
+    "authors": [
+      "Yunzhe Wang",
+      "Mesut Erhan Unal",
+      "Sheng Zhang",
+      "Shabnam Ghadar",
+      "Peng Tang"
+    ],
+    "topics": [],
+    "featured": false,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.10439v1"
+      },
+      {
+        "label": "原论文全文：方法、实验、数据构造与Boundary Contract",
+        "url": "https://arxiv.org/html/2611.10439v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把经验的适用范围和披露边界同时编码为四层记忆，可在共享任务经验的同时保留用户偏好。作者报告最高16.3个百分点的匹配任务增益及至多约0.02%的指定私密事实探针命中；后者不覆盖完整隐私威胁，偏好错配也没有消失。",
+      "motivation": "只给每个用户-Agent配对独立记忆，会重复学习；把所有经验广播到一个库，则容易混淆用户习惯、工具差异和私密上下文。作者希望每条经验既到达有用的对象，又不超出允许披露的范围。",
+      "novelty": "作者主张：四范围记忆和CrossLearnBench首次共同评测跨用户、跨Agent学习与隐私/偏好约束。本站判断：有价值的是把经验适用性与披露边界区分，再用任务与边界探针联合验收；首创性未穷尽验证，scope条件是设计要求，LLM分流与低泄漏测量不构成形式保密证明。",
+      "evidenceScope": "已读arXiv v1第3–5节及附录实现、实验配置、数据构造、指标、Boundary Contract与提示模板，核验首发时间2026-11-07 03:35:51 UTC。原页未给作者仓库，精确标题/MixUA/CrossLearnBench检索未得到可确认作者代码；不把第三方聚合页邻近论文的GitHub链接当本论文代码。未运行模型、作者程序或重建数据；结果均为作者报告。",
+      "limits": "全部用户及植入事实为合成数据，低泄漏仅指指定记忆探针，不是端到端保密、差分隐私或对抗安全保证；探针用精确子串并在20%种子抽样上加LLM语义判断。跨用户偏好命中与私密事实泄漏另算，LLM+review主设置仍有3.6%偏好命中。计划任务会重复，16.3个百分点是第2–3轮匹配样本相对无记忆的增益，不是R3两列直接相减；三次重复共享同一任务种子和首轮。每scope40k字符不是等总上下文，报告费用只含任务Agent和writer，未覆盖全部记忆侧调用及重试。仅5/20/100合成用户、7种固定模型-harness、最多8轮；100用户时未证实优于Global-only。未评估恶意记忆写入、同意与删除；用户/Agent子群边界尚不支持。本轮未定位可验证作者代码或运行记录，未复现实验。",
+      "method": [
+        "将用户和固定模型-harness视为两个轴，形成Pair、User、Agent、Global四类受众；一次任务只能读取自己的Pair/User、对应Agent与Global，经验条目保留适用情境、教训、来源和轮次。",
+        "用LLM将带verifier结果的轨迹拆成可共享与受保护两条流，交给隔离writer。条目保护标签由输入流决定，而非writer自报；受保护条目只能进入原用户的User/Pair，签发标识符与凭据值按协议任何scope都不保留。",
+        "每轮后可重新分配范围并在同一目标范围合并同义经验，仍保留受保护条目的范围上限；读取时先限制授权视图，再按情境向量相似度和每scope字符预算检索。",
+        "CrossLearnBench复用7类公开任务，保持原任务/verifier并临时注入合成个人事实与4类文档偏好。计划设置含178个演化任务、每轮171次尝试共3轮，再冻结记忆测试20个留出任务；另做546任务池中的8轮随机分配及20/100用户扩展。",
+        "分别测verifier通过、首轮说明撤回后的偏好保持、禁入scope内私密事实/偏好探针和开销。LLM+review相对无记忆在第2–3轮匹配样本提升16.3pp；随机设置未被任何配对尝试过的任务提升10.1pp。主设置约90%偏好保持，但仍有3.6%偏好跨用户命中，不能把各分母混为同一成功率。"
+      ],
+      "inspirations": [
+        "为每条记忆保存“对谁适用、谁可读取、从哪条轨迹得出”三个字段；先做授权过滤，再做语义检索，避免把相似度当作访问权限。",
+        "构建成对测试：同任务换用户、同用户换harness、允许共享的技术经验夹带合成秘密；任务得分、偏好错配、私密事实传播分别记录，并加入改写和间接推断探针。",
+        "加入团队级scope、撤回/删除和恶意贡献者实验；比较等总上下文下收益，并把splitter、writer、review、judge和重试都计入端到端费用。"
+      ],
+      "reviewedAt": "2026-11-10T04:27:16.612637Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.10439v1",
+        "https://arxiv.org/html/2611.10439v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.10439",
+      "status": "pending",
+      "checkedAt": "2026-11-10T04:29:26.912172+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.10768v1",
+    "url": "https://arxiv.org/abs/2611.10768v1",
+    "id": "live-7c352fbd46692625",
+    "title": "BlenderFORGE：用场景状态与渲染反馈训练可执行的 Blender 编辑 Agent",
+    "summary": "把已有Blender场景的四类参数编辑做成9000训练任务，以教师轨迹SFT和多轮GSPO训练8B/9B Agent。8B在固定200题的物体摆放测试中，将“几何残差至少减半”的比例从1.5%提高到36.0%。",
+    "insight": "可借鉴的是把编辑动作、目标状态和验收信号放在同一环境中，再分别衡量代码执行、局部参数正确与渲染相似。RL并非单独加上就有效：仅轨迹SFT加RL的摆放得分21%，低于轨迹SFT的24%；完整训练组合才达到36%。",
+    "limits": "原始四任务提供目标渲染图，只改已有场景的位姿、形变键、灯光或材质，不含程序建模、动画、物体增删或长程重设计。每类名义200题，主表会排除API超时/服务器错误，模型间实际分母可不同；本文引用的8B Placement消融固定N=200。SR@.5只表示归一化残差≤0.5，不是精确完成率。Shape-Key训练/测试部分基础网格共享；新相机任务最好有效率仅35%。灯光/材质主要用视觉奖励，不能保证所有非目标属性不变。附录H称制品已公开，但核验时固定仓库仅网站与演示，代码、数据、权重六项均待发布；未运行或复现实验。",
+    "dateLabel": "2026-11-07 · arXiv v1首发",
+    "evidence": "方法与实验全文已核验；研究代码/数据/权重待公开，未复现",
+    "originalTitle": "BlenderFORGE: Framework for Optimizing Reactive 3D-Graphics Editing Ability of MLLMs",
+    "date": "2026-11-07",
+    "checkedAt": "2026-11-10T04:29:39.229693Z",
+    "paperOriginalDate": "2026-11-07T14:56:41Z",
+    "paperUpdatedAt": "2026-11-07T14:56:41Z",
+    "updatedAt": "2026-11-07T14:56:41Z",
+    "firstSeenAt": "2026-11-10T04:00:01Z",
+    "lastSeenAt": "2026-11-10T04:00:01Z",
+    "tags": [
+      "Training / RL",
+      "Blender",
+      "可验证奖励",
+      "GSPO",
+      "代码编辑"
+    ],
+    "authors": [
+      "Zilin Guo",
+      "Tianrui Zhang",
+      "Yi Rong",
+      "Yichen Liu",
+      "Yuxin Guo",
+      "Jingcheng Ni",
+      "Lewei Lu",
+      "Zehuan Wu",
+      "Dan Xu"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": true,
+    "sourceId": "arxiv_code2_3d",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.10768v1"
+      },
+      {
+        "label": "arXiv v1 · 方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.10768v1"
+      },
+      {
+        "label": "作者项目页 · 编辑任务与演示",
+        "url": "https://sensetime-fvg.github.io/BlenderFORGE/"
+      },
+      {
+        "label": "作者固定仓库 · 发布清单",
+        "url": "https://github.com/SenseTime-FVG/BlenderFORGE/blob/58adea22e4ceb196d4080c0806e06821f48885ce/README.md"
+      },
+      {
+        "label": "作者固定榜单 · 指标口径与修订说明",
+        "url": "https://github.com/SenseTime-FVG/BlenderFORGE/blob/58adea22e4ceb196d4080c0806e06821f48885ce/website/leaderboard-data.js"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把已有Blender场景的四类参数编辑做成9000训练任务，以教师轨迹SFT和多轮GSPO训练8B/9B Agent。8B在固定200题的物体摆放测试中，将“几何残差至少减半”的比例从1.5%提高到36.0%。",
+      "motivation": "闭源VLM可以反复写bpy代码尝试编辑，但通常缺少可规模化训练的数据与可检查的目标状态。只看最终图片也容易把视觉接近、代码能运行和真正改对局部属性混在一起；作者希望用显式场景及工具反馈训练开放权重模型。",
+      "novelty": "作者主张：把扰动数据生成、状态可检查的Blender环境和SFT→多轮RL串成训练体系，将编辑经验写入模型参数。本站判断：价值在于为显式场景操作提供可计算反馈，并用消融显示数据、通用能力保持和RL需要配合；不是通用3D生成器，也没有证明RL独立带来增益或训练后所有任务超越闭源模型。",
+      "evidenceScope": "已读arXiv v1正文§3–4、表1–3及附录A–H，核对数据划分、GSPO、奖励、阈值分母、迁移和算力；只读核验作者项目页与GitHub固定提交58adea22e4ceb196d4080c0806e06821f48885ce的README、完整文件树及榜单数据。该提交没有训练/评测/sandbox实现可审，仅网站和演示资产；未执行作者代码、下载模型或运行Blender。verified仅指来源核验，非复现。",
+      "limits": "原始四任务提供目标渲染图，只改已有场景的位姿、形变键、灯光或材质，不含程序建模、动画、物体增删或长程重设计。每类名义200题，主表会排除API超时/服务器错误，模型间实际分母可不同；本文引用的8B Placement消融固定N=200。SR@.5只表示归一化残差≤0.5，不是精确完成率。Shape-Key训练/测试部分基础网格共享；新相机任务最好有效率仅35%。灯光/材质主要用视觉奖励，不能保证所有非目标属性不变。附录H称制品已公开，但核验时固定仓库仅网站与演示，代码、数据、权重六项均待发布；未运行或复现实验。",
+      "method": [
+        "从3D-FRONT、Infinigen和人工整理的资产构造起点—目标场景，只扰动物体位姿、形变键、灯光或材质；过滤碰撞、不可见变化和不稳定渲染。训练3000摆放题及其余各2000题，测试每类200题；摆放/灯光/材质按资产ID分离，形变键仍部分共享基础网格。",
+        "每个episode使用独立Blender进程。Agent接收场景描述、多视角起点图和对应目标图，调用bpy执行器修改场景，再取预览迭代；环境导出几何、场景参数和图像，用于检查最终状态。",
+        "以GPT-5.2教师的多轮工具轨迹做Trajectory-SFT，再混合视觉比较、函数调用和编程样本做General-SFT；四类任务联合训练单个Qwen3-VL-8B或Qwen3.5-9B Agent。SFT冻结视觉编码器及投影器。",
+        "从SFT初始化，用VeRL/HybridFlow的GSPO优化多轮交互，RL训练上限8轮。终局奖励按起点到目标的距离归一化：摆放用几何进展，形变键用状态与视觉，灯光/材质用视觉；另给小权重的有效执行/状态变化奖励，避免只会调用工具就得高分。",
+        "分别报告感知距离、几何/参数残差与阈值达标率。固定200题的8B摆放消融：轨迹SFT为24%，加General-SFT为25.5%，完整组合为36%，但轨迹SFT直接加RL降为21%；SR@.5指最终残差不超过初始的一半，不等同完整编辑成功。"
+      ],
+      "inspirations": [
+        "可为code2-3d建立三套独立验收：代码是否执行、目标参数是否到位、非目标物体/材质是否保持；把视觉得分作为补充，专门测“画面相似但偷偷改错场景”的失败。",
+        "训练时保留General-SFT与RL的交叉消融，同时记录工具调用、模型token和渲染次数。本文完整组合比最少交互方案更准，但并不最省轮数；不能只凭最终得分判断收益。",
+        "设计跨基础网格、文本独立目标、未训练相机/动画操作的留出集，并把API故障也纳入全任务账本；将50%残差阈值、严格阈值和人工可继续编辑性分开报告，检验学习的是编辑技能还是扰动模板。"
+      ],
+      "reviewedAt": "2026-11-10T04:29:39.229693Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.10768v1",
+        "https://arxiv.org/html/2611.10768v1",
+        "https://sensetime-fvg.github.io/BlenderFORGE/",
+        "https://github.com/SenseTime-FVG/BlenderFORGE/blob/58adea22e4ceb196d4080c0806e06821f48885ce/README.md",
+        "https://github.com/SenseTime-FVG/BlenderFORGE/blob/58adea22e4ceb196d4080c0806e06821f48885ce/website/leaderboard-data.js"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.10768",
+      "status": "pending",
+      "checkedAt": "2026-11-10T04:29:26.912172+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.10453v1",
+    "url": "https://arxiv.org/abs/2611.10453v1",
+    "id": "live-542350ff742e40a8",
+    "title": "BunshinRL：把正在运行的整个工作区分叉，让 Agent RL 复用状态并提前执行工具",
+    "summary": "BunshinRL 将进程、内存、文件与 GUI 状态一起分叉，用写时复制共享未改动页面，再叠加工具前缀缓存和推测执行。作者在 OSWorld 子集报告一轮 rollout 从 20.8 降至 17.0 分钟，缓存与推测只多约 1 GiB 峰值内存；WebArena 对 AgentENV 的峰值内存最多降低 43%。作者链接的代码仓库本轮仍为空。",
+    "insight": "Agent RL 的扩展瓶颈还包括 CPU 上的浏览器、桌面和后台服务。可复用的单位应是“观察结果及其对应的完整可继续执行状态”；先明确状态边界和任务/前缀身份，再在同一成本口径下衡量并发容量、尾部时延与奖励，而不是只缓存工具返回文本。",
+    "limits": "数值为作者报告，本站未复现。内存基线实验重放相同记录轨迹；WebArena 的 CRIU 因满批次 OOM 改用更小 batch，其耗时对比混合了并发量差异。训练只覆盖 OSWorld 与 WebArena shopping 子集，未充分给出实际子集大小、组/batch 和预测器配置。摘要称 rollout 时延降低 23%，但正文 20.8→17.0 分钟对应约 18.3% 时间减少（1.22×速度），两种口径未对齐，本站采用绝对值；51% total memory 的口径也未据正文独立确认。五轮奖励曲线一致不能证明所有随机环境下训练分布等价。恢复本地工作区不能撤销外部服务副作用；容器隔离也不等同于 microVM。GitHub 作者仓库显示为空，尚无可固定代码提交、可核验实现或开源许可。",
+    "organization": "UC San Diego / GenseeAI",
+    "dateLabel": "2026-11-07 · v1 首发",
+    "evidence": "已读 arXiv v1 全文方法与实验；已核作者 GitHub 链接但仓库为空；来源核验，未复现。",
+    "originalTitle": "BunshinRL: Splitting Live Agent Workspaces for Memory-Efficient Agentic RL",
+    "date": "2026-11-07",
+    "checkedAt": "2026-11-10T04:27:09Z",
+    "originalDate": "2026-11-07",
+    "paperOriginalDate": "2026-11-07T04:05:17Z",
+    "paperUpdatedAt": "2026-11-07T04:05:17Z",
+    "updatedAt": "2026-11-07T04:05:17Z",
+    "firstSeenAt": "2026-11-10T04:00:01Z",
+    "lastSeenAt": "2026-11-10T04:00:01Z",
+    "tags": [
+      "Training / RL",
+      "Rollout 基础设施",
+      "工作区分叉",
+      "写时复制",
+      "工具缓存",
+      "推测执行"
+    ],
+    "authors": [
+      "Yutong Huang",
+      "Vikranth Srivatsa",
+      "Alex Asch",
+      "Yiying Zhang"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.10453v1"
+      },
+      {
+        "label": "arXiv 全文 · 系统方法与实验",
+        "url": "https://arxiv.org/html/2611.10453v1"
+      },
+      {
+        "label": "作者仓库 · 核验时为空，未取得实现",
+        "url": "https://github.com/WukLab/ForkRL"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把 Agent RL 的运行中工作区作为可分叉对象：多条轨迹共享未改动内存，命中前缀时恢复相应程序状态，预测下一工具时在隔离分支先执行。论文展示 CPU 内存与 rollout 时延收益；实现细节目前只能依据论文，作者公开仓库仍为空。",
+      "motivation": "浏览器和桌面 Agent 每条轨迹都携带进程、内存、窗口及后台服务，GRPO 多分支会放大 CPU 内存需求；同步训练又被最慢工具调用拖住。只共享镜像文件不够，只缓存工具文本也无法让后续动作继承正确的应用状态。",
+      "novelty": "作者主张：以 live whole-workspace fork 统一实现运行中内存共享、工具前缀状态复用和可丢弃推测分支，无需按应用手工拆状态。本站判断：价值在把几种 rollout 优化落到同一个运行时状态原语，尤其关注进程内存和 GUI 而非仅文件快照；现有证据支持特定工作负载下的系统效率，不证明通用无损推测、所有训练语义等价或已具备可复现开源实现。",
+      "evidenceScope": "已阅读 arXiv 2611.10453v1 全文 §1–§7，重点 §3 三项 rollout 优化、§4 进程/内存/文件/网络/GUI 运行时与 §5 实验设定及数值；核验 arXiv 首发时间及论文直接指向的 WukLab/ForkRL GitHub 页。该页当前显示空仓库，GitHub API 匿名请求另遇速率限制，因此无固定代码提交、实现静态审计或许可证核验。未运行作者代码/模型，未复现实验。",
+      "limits": "仅在有限 OSWorld/WebArena shopping 子集和特定硬件评测，实际任务数、batch/组及小型预测器细节不足；正文性能口径与摘要 23% 时延说法未对齐。43% 峰值内存降幅是 WebArena 相对 AgentENV 的特定对比；CRIU 的 WebArena 对照改了 batch，不是完全同并发条件。五轮相同平均奖励不构成普遍语义等价证明，共享随机工具结果仍可能改变 GRPO 更新。实验 shopping 服务与数据库都在本地容器内，不能据此推断真实外部网站副作用可回滚；高权限场景隔离需求不同。作者仓库为空，暂无可固定实现或代码开源许可，结果仅按论文报告。",
+      "method": [
+        "BunshinFork 短暂冻结源工作区，记录进程树、线程、文件描述符和同步状态，在独立 PID/mount/network/IPC 命名空间重建分支。论文方案通过 Linux 内核模块及 CRIU 修改共享匿名内存的写时复制映射，并将在线分叉与异步持久化分开；页面写入后才私有化，部分共享内存区及内核元数据仍需独立副本。",
+        "同步处理文件、通信与 GUI：只读 btrfs 快照配合分支私有 overlayfs，内部 TCP 在隔离网络命名空间中恢复；将 Webtop、Selkies/Wayland 与应用一起封装，给每个分支独立窗口和输入状态。外部连接需关闭后重建，分叉本地状态不能回滚远端操作。",
+        "以初始工作区为根建立工具前缀树，命中必须匹配任务、工作区及此前每一步的工具名称和参数。磁盘保存状态增量，内存用保留祖先的 LRU 管理热快照；未保留完整快照的边界从最近祖先重放，并尝试与模型推理重叠，随后从最后命中状态产生可写分支。",
+        "用小型 Spec Tool Selector 根据轨迹预测历史工具调用，先在写时复制分支并行执行；真实调用签名匹配且依赖确认后接纳观察与状态，不匹配则终止推测链、丢弃私有写入，从此前有效状态执行真实调用。利用历史耗时优先处理拖慢整个 batch 的长尾样本，减少无效 CPU 和内存开销。",
+        "以单 H100 上的 Qwen3-VL-8B 同步 GRPO 配合 256 GB CPU 工作区服务器评测。OSWorld 的 Base/仅推测/完整方案一轮分别为 20.8/19.2/17.0 分钟，缓存与推测将峰值约 69 GiB 提至 70 GiB；另用相同轨迹重放比较 CRIU 与 AgentENV 内存，并报告五轮奖励曲线，区分系统节省与任务能力证据。"
+      ],
+      "inspirations": [
+        "为浏览器、桌面或代码创作 Agent 训练规划资源时，同时测工作区 CPU 内存、首次分叉/分歧写入成本与最大并发；把“完整复制状态”和“共享底座加私有改动”做同 batch 对照，避免 GPU 吞吐掩盖环境侧瓶颈。此处是可测试的工程启发，论文未评测视频/3D 创作任务。",
+        "工具缓存的验收加入状态一致性和采样语义：相同工具参数还须匹配任务和整段前缀，后续动作必须看到对应文件、进程与 GUI；对随机返回、时钟和远端依赖单独验证，不能用短期奖励曲线相同替代轨迹分布检查。",
+        "推测执行先限定在可隔离、可撤销的本地操作，外部写入需延后或限制网络；联合报告命中率、错误推测浪费、额外峰值内存和 batch 尾部时延。对 CRIU 等基线若因 OOM 调小 batch，应同时展示固定 batch 与固定内存预算两种结果。"
+      ],
+      "reviewedAt": "2026-11-10T04:27:09Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.10453v1",
+        "https://arxiv.org/html/2611.10453v1",
+        "https://github.com/WukLab/ForkRL"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.10453",
+      "status": "pending",
+      "checkedAt": "2026-11-10T04:29:26.912172+00:00"
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://huggingface.co/datasets/nvidia/Nemotron-PII-Japan",
+    "url": "https://huggingface.co/datasets/nvidia/Nemotron-PII-Japan",
+    "id": "dataset-nemotron-pii-japan",
+    "title": "Nemotron-PII-Japan：先确定敏感值，再生成可追溯的合成文本",
+    "summary": "NVIDIA 发布10万篇日文合成文档，覆盖8领域、43文档类型、56类PII；先确定人物、敏感值和计算关系，再生成文本及字符级标注。",
+    "insight": "Agent数据管线可以先保存事实与标注真值，再让模型负责表达；验收时同时检查漏检与脱敏后任务可用性。",
+    "limits": "仅核验官方方法说明和固定版本数据卡，未下载完整Parquet或复训。自动标注并非穷尽全部PII；外部评测仍是合成数据，56类预测仅映射到8个共同类别计分，不能视为全部类别或真实生产数据的检测保证。",
+    "dateLabel": "11/9 官方博客；数据卡标注11/10发布",
+    "evidence": "官方博客与固定数据卡核验；未独立复现",
+    "date": "2026-11-09",
+    "checkedAt": "2026-11-10T04:28:44.857773+00:00",
+    "firstSeenAt": "2026-11-10T04:31:14.011309+00:00",
+    "tags": [
+      "合成数据",
+      "隐私",
+      "数据质量"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "官方生成流程与评测",
+        "url": "https://huggingface.co/blog/nvidia/nemotron-pii-japan"
+      },
+      {
+        "label": "固定版本数据卡",
+        "url": "https://huggingface.co/datasets/nvidia/Nemotron-PII-Japan/blob/a074898c902870f2830b521cfac8a1482515374f/README.md"
+      },
+      {
+        "label": "公开数据集",
+        "url": "https://huggingface.co/datasets/nvidia/Nemotron-PII-Japan"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "NVIDIA 发布10万篇日文合成文档，覆盖8领域、43文档类型、56类PII；先确定人物、敏感值和计算关系，再生成文本及字符级标注。",
+      "motivation": "日文PII格式和业务上下文复杂，直接让模型自由编写数据会造成数值冲突、标注漂移及难以追溯的错误。",
+      "novelty": "作者主张：面向日本业务文本的结构化合成和自动标注。本站判断：值得借鉴的是“真值先行、文本后成”，而非把合成样本数量视为质量证明。",
+      "evidenceScope": "已读官方博客生成/验证/评测章节及固定数据卡a074898c。卡载810,703跨度、CC BY 4.0。博客发表于11/9，卡载发布日11/10；仓库创建/更新日不替代公告日。Sumi test 2,000篇、OOD 520篇均含合成PII；未独立核验全部样本或复现模型结果。",
+      "limits": "仅核验官方方法说明和固定版本数据卡，未下载完整Parquet或复训。自动标注并非穷尽全部PII；外部评测仍是合成数据，56类预测仅映射到8个共同类别计分，不能视为全部类别或真实生产数据的检测保证。",
+      "method": [
+        "按领域和文档类型规定必需、推荐及禁用的PII类别。",
+        "抽样人物与合成目录，规则生成PII；CalculationPlan预先确定数值关系。",
+        "模型撰写带占位符的文本，再填入预定值；检查格式、必需值与文档一致性，不合格记录拒绝或重新生成。",
+        "从最终文本生成字符跨度与类别标注，再用独立合成语料评估检测器。"
+      ],
+      "inspirations": [
+        "为Agent工具轨迹保留实体表与计算计划，逐次验证文本及工具参数是否一致。",
+        "按人物、模板和文档类型隔离测试集，同时报告PII漏检率与脱敏后任务成功率。",
+        "增加字符偏移回归检查及未标注PII抽查，避免把自动标注当完整真值。"
+      ],
+      "reviewedAt": "2026-11-10T04:28:44.857773+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/blog/nvidia/nemotron-pii-japan",
+        "https://huggingface.co/datasets/nvidia/Nemotron-PII-Japan/blob/a074898c902870f2830b521cfac8a1482515374f/README.md",
+        "https://huggingface.co/datasets/nvidia/Nemotron-PII-Japan"
+      ]
+    }
   }
 ]
