@@ -11170,5 +11170,373 @@
       "status": "pending",
       "checkedAt": "2026-11-10T10:28:37.046931+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.12856v1",
+    "url": "https://arxiv.org/abs/2611.12856v1",
+    "id": "live-740abbf64de42e5e",
+    "title": "WorkflowArena：把会做事与会组织别人做事分开评测",
+    "summary": "145个跨领域任务让Agent自主决定如何拆分、委派和整合工作，4小时内验收最终交付。最佳配置的域等权完成率为36.95%；在32道难题上，换成Opus编写的静态工作流使4个固定执行模型平均增加6.41个连续分。关键启发是把“会做事”和“会组织别人做事”分别测。",
+    "insight": "只数并行Agent或看局部得分，会漏掉最难的接口整合。应同时记录最终验收、局部得分、关键依赖和全队成本，再固定执行者比较不同编排；任务做得强的模型，给别人写流程未必同样有效。",
+    "limits": "每配置每题仅1次，无方差；模型与harness一起比较，不能单归因于模型。完成率为8领域等权且按领域阈值验收，并非145题微平均或所有子项全对。CDN/3D由Gemini-3.8-Flash辅助评分，未测人评一致性。迁移仅32个刻意挑选的难题、2个来源模型，收益混有worker指令知识，不是纯拓扑因果证据。费用只估token推理，不含评分、工具、容器等。固定发布不含实验执行框架、逐题日志或提交；且3D-001题面写3600秒而配置/论文写14400秒，无法据公开聚合表判定原实验如何处理。未运行或复现。",
+    "dateLabel": "2026-11-09 · arXiv v1首发",
+    "evidence": "全文及固定任务/评分资产只读核验；聚合数值复算，不是实验复现",
+    "originalTitle": "WorkflowArena: Benchmarking Executable Workflow Orchestration in LLM-Based Multi-Agent Systems",
+    "date": "2026-11-09",
+    "checkedAt": "2026-11-10T16:27:48.405542+00:00",
+    "paperOriginalDate": "2026-11-09T18:45:28Z",
+    "paperUpdatedAt": "2026-11-09T18:45:28Z",
+    "updatedAt": "2026-11-09T18:45:28Z",
+    "firstSeenAt": "2026-11-10T10:00:01Z",
+    "lastSeenAt": "2026-11-10T16:00:01Z",
+    "tags": [
+      "Evaluation",
+      "多Agent编排",
+      "长程任务",
+      "交付验收",
+      "Workflow transfer"
+    ],
+    "authors": [
+      "Zheng Jiang",
+      "Fang Niu",
+      "Bo Peng",
+      "Houde Qian",
+      "Wenyi Li",
+      "Deyao Hong",
+      "Mingju Gao",
+      "Yizhe Chi",
+      "Youjie Zheng",
+      "Kaisen Yang",
+      "Calvin Xiao",
+      "Lifeng Sun",
+      "Huan-ang Gao"
+    ],
+    "topics": [
+      "code2-3d",
+      "video-editing"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.12856v1"
+      },
+      {
+        "label": "arXiv v1 · 方法、实验和附录",
+        "url": "https://arxiv.org/html/2611.12856v1"
+      },
+      {
+        "label": "作者项目页 · 公开展示与原始链接",
+        "url": "https://lab.einsia.ai/workflowarena/home.html"
+      },
+      {
+        "label": "固定发布说明 · 任务开放与未发布范围",
+        "url": "https://github.com/Einsia/WorkflowArena/blob/637adecbe59ced8780279301de22b0f582495dea/README.md"
+      },
+      {
+        "label": "固定任务目录 · 145题分布",
+        "url": "https://github.com/Einsia/WorkflowArena/blob/637adecbe59ced8780279301de22b0f582495dea/benchmark/manifest.jsonl"
+      },
+      {
+        "label": "固定评分说明 · 隔离与验收口径",
+        "url": "https://github.com/Einsia/WorkflowArena/blob/637adecbe59ced8780279301de22b0f582495dea/evaluation/README.md"
+      },
+      {
+        "label": "固定迁移结果 · 论文聚合值",
+        "url": "https://github.com/Einsia/WorkflowArena/blob/637adecbe59ced8780279301de22b0f582495dea/results/transfer/workflow_transfer.json"
+      },
+      {
+        "label": "固定3D任务 · 提示与预算不一致待核",
+        "url": "https://github.com/Einsia/WorkflowArena/blob/637adecbe59ced8780279301de22b0f582495dea/benchmark/tasks/WFA-3D-001/instruction.md"
+      },
+      {
+        "label": "固定3D配置 · agent预算14400秒",
+        "url": "https://github.com/Einsia/WorkflowArena/blob/637adecbe59ced8780279301de22b0f582495dea/benchmark/tasks/WFA-3D-001/task.toml"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "145个跨领域任务让Agent自主决定如何拆分、委派和整合工作，4小时内验收最终交付。最佳配置的域等权完成率为36.95%；在32道难题上，换成Opus编写的静态工作流使4个固定执行模型平均增加6.41个连续分。关键启发是把“会做事”和“会组织别人做事”分别测。",
+      "motivation": "现有端到端评测常把Agent视为一个黑盒，协作评测又往往预先指定角色和结构，难以分清失败来自执行能力还是分工/上下文分配/合并方式。作者让任务保持真实依赖，流程由模型自己写，最终整合交付才计成绩。",
+      "novelty": "作者主张：以真实可执行交付与隐藏验收评估自主编排，并用固定执行者的工作流迁移分离组织能力。本站判断：有价值的是把分工、上下文、接口和返修过程连到最终交付，再对编排来源做控制比较；迁移仍同时改变worker指令中的任务知识，不能把全部收益解释为图结构优势或证明多Agent普遍胜过单Agent。",
+      "evidenceScope": "已读arXiv 2611.12856v1全文§3–4及附录A–G，核验任务构建、4小时计时、领域阈值、迁移控制、费用和限制；作者项目页匿名HTTP200。只读固定Git提交637adecbe59ced8780279301de22b0f582495dea的README、NOTICE、145行manifest、评分/数据文档、媒体acceptance代码、3D与视频样例、任务配置和论文聚合JSON。独立解析目录计数及复算聚合表差值，属于发布材料一致性检查，不是从逐题轨迹重算或实验复现。未下载大型资产、准备环境、运行作者代码、调用模型或渲染。",
+      "limits": "每配置每题仅1次，无方差；模型与harness一起比较，不能单归因于模型。完成率为8领域等权且按领域阈值验收，并非145题微平均或所有子项全对。CDN/3D由Gemini-3.8-Flash辅助评分，未测人评一致性。迁移仅32个刻意挑选的难题、2个来源模型，收益混有worker指令知识，不是纯拓扑因果证据。费用只估token推理，不含评分、工具、容器等。固定发布不含实验执行框架、逐题日志或提交；且3D-001题面写3600秒而配置/论文写14400秒，无法据公开聚合表判定原实验如何处理。未运行或复现。",
+      "method": [
+        "从版本化软件、Lean、科学数据、合同/财报、素材与人工情境构造145题、8域、17种任务形式。题目要求多个相互依赖组件；专家审题，并用参考解、局部正确但未整合等反例检查验收器。公开输入与隐藏参考分开，操作类还核行动历史。",
+        "每次从干净容器开始，主Agent可直接工作，也可写JavaScript Workflow编排agent/parallel/pipeline。最多16个并发worker，新上下文、同模型/harness/effort、共享工作区；原生子Agent通道关闭，统一记录委派。4小时墙钟包括队列、重试、工具和协调，环境准备/评分不计入。",
+        "9个模型、共25种模型-effort配置分别跑同一145题。记录连续分和达到领域验收条件的resolved，再对8域等权平均；不是对145题微平均。最佳resolved为36.95%，但部分分最高配置不同：Opus high在SWE得96.98分，却仅17.65%题达标。CDN/3D结合确定性检查、加权rubric及Gemini裁判。",
+        "在跨8域选出的32道难题上，固定Kimi/DeepSeek/Luna/Doubao执行者，分别使用自身动态、Astra或Opus编排。所有来源均不能编辑任务工作区；static先写冻结程序，再于新工作区执行，dynamic可看worker反馈并改流程。Opus static平均提升6.41个连续分、dynamic提升6.27；不是成功率增幅，也未对新任务随机抽样。",
+        "结合委派记录与资源量分析组织方式。高effort下Claude/Claude Code较少启动Workflow但每次worker较多，GPT/Codex调用更频繁但较小；不把调用次数当质量。总token含主Agent、worker、缓存及已记录重试；成本使用11/9价目快照，仅为模型推理估计，非全部项目账单。"
+      ],
+      "inspirations": [
+        "为视频剪辑/Blender任务同时验收组件与接口：素材区间、镜头顺序、总时长，或共享坐标、部件接缝、场景命名和最终文件。保存逐项分数与达到交付阈值的比例，避免局部高分掩盖整合失败。",
+        "固定executor、工具、总墙钟及全队token，再比较自身编排、冻结外部流程和反馈改写；增加只替换指令知识而不改拓扑的对照，区分“教会worker做题”与“改善组织”。",
+        "保留单Agent零委派基线、不同任务/多次重复和协调成本；对媒体rubric做独立人评一致性检查。复用公开任务前先统一题面与runner预算，并确保公开verifier在运行时对solver不可见。"
+      ],
+      "reviewedAt": "2026-11-10T16:27:48.405542+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.12856v1",
+        "https://arxiv.org/html/2611.12856v1",
+        "https://lab.einsia.ai/workflowarena/home.html",
+        "https://github.com/Einsia/WorkflowArena/blob/637adecbe59ced8780279301de22b0f582495dea/README.md",
+        "https://github.com/Einsia/WorkflowArena/blob/637adecbe59ced8780279301de22b0f582495dea/benchmark/manifest.jsonl",
+        "https://github.com/Einsia/WorkflowArena/blob/637adecbe59ced8780279301de22b0f582495dea/evaluation/README.md",
+        "https://github.com/Einsia/WorkflowArena/blob/637adecbe59ced8780279301de22b0f582495dea/results/transfer/workflow_transfer.json",
+        "https://github.com/Einsia/WorkflowArena/blob/637adecbe59ced8780279301de22b0f582495dea/benchmark/tasks/WFA-3D-001/instruction.md",
+        "https://github.com/Einsia/WorkflowArena/blob/637adecbe59ced8780279301de22b0f582495dea/benchmark/tasks/WFA-3D-001/task.toml"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.12856",
+      "status": "pending",
+      "checkedAt": "2026-11-10T16:26:17.880Z"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.11470v1",
+    "url": "https://arxiv.org/abs/2611.11470v1",
+    "id": "live-e4080ce1be2ba940",
+    "title": "GOPR-CAD：让 Agent 组合可执行操作图，用结构检查识别“能运行但做错了”",
+    "summary": "GOPR-CAD 把自由生成 CAD 长代码改为选择固定操作、构建类型化关系图，再由确定性规则补参数并编译。作者在 MHCAD 的342项适用结构检查中通过283项（SY 82.7%），270/300题产生有效B-rep；结构分数不是整题成功率。",
+    "insight": "可执行不等于满足设计意图。把模型决策限制在有接口约束的操作库，再对导出的真实几何检查孔洞、同轴和排列，能把语义选择、执行失败和结构缺失分开定位；但操作库覆盖和检查器盲区决定了结论能走多远。",
+    "limits": "作者报告，未复现；本轮原文与精确公开检索未定位作者实现/完整数据仓库。300题仅196题有结构检查，另104题不进入SF/SY；SY按检查加权，不能理解为82.7%零件完全正确。范围为固定操作库支持的单标准件，未证明公差、受力、制造、装配或原生CAD编辑历史；外部验证只选CADPrompt的30/200题。86个破坏性变体检出不是完整误报/漏报验证。",
+    "organization": "清华大学 自动化系 / 工业工程系",
+    "dateLabel": "2026-11-08 · arXiv v1 首发",
+    "evidence": "已读arXiv v1全文与附录A–F；原文无作者代码/数据URL，公开仓库检索未定位实现；未执行或复现。",
+    "originalTitle": "GOPR-CAD: Graph-of-Operations Progressive Reasoning for CAD Generation",
+    "date": "2026-11-08",
+    "checkedAt": "2026-11-10T16:26:06.296006Z",
+    "originalDate": "2026-11-08",
+    "paperOriginalDate": "2026-11-08T16:07:56Z",
+    "paperUpdatedAt": "2026-11-08T16:07:56Z",
+    "updatedAt": "2026-11-08T16:07:56Z",
+    "firstSeenAt": "2026-11-10T10:00:01Z",
+    "lastSeenAt": "2026-11-10T16:00:01Z",
+    "tags": [
+      "Evaluation",
+      "Text-to-CAD",
+      "操作图",
+      "确定性编译",
+      "结构评测",
+      "无需额外训练"
+    ],
+    "authors": [
+      "Yitian Pang",
+      "Yifan Li",
+      "Xiaowei Yue",
+      "Li Zheng"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.11470v1"
+      },
+      {
+        "label": "原论文全文 · 方法与附录A–F",
+        "url": "https://arxiv.org/html/2611.11470v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "让语言模型决定用哪些CAD操作及其关系，把几何实现留给固定库和编译器。MHCAD上有效模型270/300、结构检查283/342通过；外部筛选子集41/47通过。它展示的是受约束的程序化建模和结构验收，不是任意3D设计或整件工程合格率。",
+      "motivation": "一段CAD代码即使运行、导出有效实体，仍可能漏孔、错轴或用光滑环代替滚动体；外观相似也看不出内部差异。直接写长代码要求LLM同时维护几何、拓扑、参数和依赖，而单一参考几何又排斥其他合法建模方案。",
+      "novelty": "作者主张：把Text-to-CAD改为无需额外训练的操作图渐进决策，并以MHCAD及不依赖唯一参考模型的STEP/B-rep检查评估结构。本站判断：值得借鉴的是“类型化中间状态—确定性执行—结构验收”的组合；不是让模型学会任意几何实现，reference-free也不代表无需人工需求标注。Free-Text Stages同时移除多种类型状态和编译边界，无法把收益单独归因于某一个schema或编译器。",
+      "evidenceScope": "已读arXiv 2611.11470v1正文方法/实验及附录A–F，核对精确计数、bootstrap、CADPrompt筛选和伪代码。原文链接与精确题名/作者检索未定位可归属的研究代码或完整MHCAD发布；GitHub公开仓库搜索GOPR-CAD返回0，HF数据集搜索返回空，仅说明本轮检索范围，不证明不存在。无固定作者代码commit、未下载或运行实现、未重算几何检查。verified仅指论文来源核验。",
+      "limits": "主结果Qwen3.5-9B、封闭操作库、单标准件；库大小、逐项契约/数值容差、全部提示与逐题原始结果未由公开制品核实。附录Design输入含benchmark metadata，需确认传给Agent的字段与评分标注隔离。SY是适用检查加权比例，104/300题无结构检查；SF又以有效B-rep为条件。外部30题来自200题中按适用性筛选，165题因无适用检查排除，安装孔及环形排列各仅1/3通过，不能宣称任意CAD泛化。86个保持valid的定向破坏变体均被检出，不覆盖合法替代构造的误报或细小数值错误。10,000次按prompt聚类bootstrap估计样本不确定性，非多seed训练/推理稳定性。不同基线模型、手工库和推理预算未证明总成本相当；无编辑成功率、制造/力学/装配验收。训练与RL仅在未来工作中提出。",
+      "method": [
+        "Design：将需求整理为持久的建造意图，记录部件角色、数量、尺寸、布局和关系证据；后续阶段共享该记录，减少对原需求的反复独立解释。附录接口还列有benchmark metadata输入，其具体内容待公开实现核实。",
+        "Recall：先选机械能力族，再从固定库选具体操作，为每个节点保留需求证据映射。操作契约规定可用关系、必需参数及确定性几何实现；LLM不编写操作内部几何算法，也不额外训练模型。",
+        "Relation：将操作连成类型化图，表达宿主、包含、同轴/对齐、重复布局与执行依赖；只允许接口支持的关系。类型合法只说明可执行组合，不能保证选择符合用户语义。",
+        "Parameters与执行：按依赖层级从需求、关系传播和操作规则补齐参数；缺失角色或参数显式保留为类型错误，校验不通过则失败。完整图交确定性编译器和CAD内核生成并导出模型，不在几何执行阶段再让LLM自由决策。",
+        "评测：将300个单标准件需求预先标注为342项适用结构检查（覆盖196题），统一导出STEP、重导入、检验B-rep，再检查孔洞、实体、同轴、安装孔、环形排列及滚动体数量。SF=283/315只看有效B-rep上的检查；SY=283/342保留失败模型对应检查为0。104个无适用检查的题只计入STEP/valid，CADPrompt外部实验为独立按范围筛出的30题/47检查。"
+      ],
+      "inspirations": [
+        "在Blender、CAD或动画Agent中，把常见动作封装成带输入类型、前置条件和可执行检查的操作，并保留节点到需求证据的映射；另设库外需求测试，避免仅在库内组合上得到高成功率。这是应用假设，本文没有测试Blender或动画。",
+        "验收同时报告文件产出、有效制品、每项结构检查和整题全部约束通过率；对没有检查的样本单列覆盖率。为检查器补充“合法但不同实现”的正例与近边界负例，避免把86个明显破坏变体的全检出当作可靠性终点。",
+        "把可编辑性变成独立实验：修改孔数、尺寸或宿主关系后重编译，检查未指定结构是否保持，再测试导入目标CAD软件后的参数/历史保留。操作图提供可操作表示，但本文的STEP与结构分数未完成这些编辑验收。"
+      ],
+      "reviewedAt": "2026-11-10T16:26:06.296006Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.11470v1",
+        "https://arxiv.org/html/2611.11470v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.11470",
+      "status": "pending",
+      "checkedAt": "2026-11-10T16:24:11.084Z"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.12232v1",
+    "url": "https://arxiv.org/abs/2611.12232v1",
+    "id": "live-175d6cbab604d3ce",
+    "title": "ECOS：用环境结果检查自己写的技能，动作蒸馏与反思训练共享证据",
+    "summary": "ECOS用环境结果判断自生成技能偏好的动作是否有效，再校准动作蒸馏与技能生成。134个ALFWorld未见实例上，3B/7B的六类宏成功率为85.8%/86.6%，相对同协议GRPO约高11.0/7.6个百分点；推理时不检索技能或在线反思。",
+    "insight": "自己写出的反思不应因听起来合理就变成教师。可把同一类观测下哪些动作带来更好结果作为依据，同时控制当前教师影响与下一轮技能训练；推理端只保留学到的策略，训练端保留完整证据账本。",
+    "limits": "仅评估ALFWorld与WebShop两个文本环境、Qwen2.5的3B/7B，未见集仍是原六类任务的新实例。训练只有一个随机种子，三次是评估seed；部分子类退步。表1基线引用AlignOPSD且保留原聚合，不能将不同Avg./macro直接当同协议排名；表2才是同初始化/rollout预算的本地GRPO比较。3B同batch训练约慢30%，不含完整标注/预训练/部署成本对照。命令信用依赖状态聚类与稀疏观测回报，非反事实因果证明；技能诊断仍用已记录经验。动作/全文消融保持同系数与全Actor-token分母，改监督范围也改变有效蒸馏量；联合去调制/R-S消融不能分离两项贡献。本轮未发现可归属作者的公开实现、模型或数据，未复现。",
+    "dateLabel": "2026-11-09 · arXiv v1首发",
+    "evidence": "方法、实验与附录已读；实现未核，未独立复现",
+    "originalTitle": "ECOS: Environment-Calibrated On-Policy Self-Distillation for Language Agents",
+    "date": "2026-11-09",
+    "checkedAt": "2026-11-10T16:27:44.091926+00:00",
+    "paperOriginalDate": "2026-11-09T11:25:13Z",
+    "paperUpdatedAt": "2026-11-09T11:25:13Z",
+    "updatedAt": "2026-11-09T11:25:13Z",
+    "firstSeenAt": "2026-11-10T10:00:01Z",
+    "lastSeenAt": "2026-11-10T16:00:01Z",
+    "tags": [
+      "Distillation",
+      "自蒸馏",
+      "Agent RL",
+      "技能学习",
+      "信用分配"
+    ],
+    "authors": [
+      "Chenhao Zhang",
+      "Zhongan Wang",
+      "Mingxuan Li",
+      "Hehe Fan",
+      "Zheng Zhu",
+      "Ming Li"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.12232v1"
+      },
+      {
+        "label": "arXiv v1 · 方法、实验与附录A-D",
+        "url": "https://arxiv.org/html/2611.12232v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "ECOS用环境结果判断自生成技能偏好的动作是否有效，再校准动作蒸馏与技能生成。134个ALFWorld未见实例上，3B/7B的六类宏成功率为85.8%/86.6%，相对同协议GRPO约高11.0/7.6个百分点；推理时不检索技能或在线反思。",
+      "motivation": "普通自蒸馏把“加上技能后某个token更可能出现”当监督，未必意味着动作更有效；错误反思还会写进下一轮技能。论文试图用环境结果同时审核教师建议和训练产生建议的分析器，并避免让学生直接模仿依赖训练特权信息的推理文本。",
+      "novelty": "作者主张：以同一套环境命令信用，既调节当前自蒸馏教师，又训练生成下一轮教师技能的反思/分析器，形成闭环。本站判断：可借鉴之处是把“建议改变了概率”和“建议偏向有效动作”分开验收，并区分动作监督与训练期特权推理；现有诊断只证明记录经验上的相关性，不足以证明教师持续变聪明或通用自我改进。",
+      "evidenceScope": "已读arXiv v1正文方法§3、实验§4、Discussion/Limitations及附录A–D：公式、状态匹配、掩码、初始化、基线来源、任务分母和诊断口径均核对。首发2026-11-09T11:25:13Z，当前仅v1。正文/摘要无作者仓库或模型链接；准确题名/ID/作者与GitHub检索未确认实现，HF目标论文页直接HTTP404，公开模型/数据名检索只得到不相关匹配（各前30条，非穷举）。仅核论文与公开索引；未下载模型/私有数据或执行任何作者代码。 主表ECOS在140个seen任务的六类宏成功率为90.5%/93.3%；WebShop从500个held-out目标中每seed抽128个，使用1,000商品搜索索引，Success为完全成功，Score另计部分属性满足。未见134任务的本地GRPO为74.8%/78.9%，ECOS为85.8%/86.6%，并非每类都改善。150轮最终checkpoint评估三seed，每题每seed一次轨迹；不是三个独立训练重复。 论文正文另报告未见集增益11.03/7.62个百分点，本文约11.0/7.6沿用该值；表格宏均值仅保留1位，不能由舍入后的86.6减78.9反推更精确的差值。",
+      "limits": "仅评估ALFWorld与WebShop两个文本环境、Qwen2.5的3B/7B，未见集仍是原六类任务的新实例。训练只有一个随机种子，三次是评估seed；部分子类退步。表1基线引用AlignOPSD且保留原聚合，不能将不同Avg./macro直接当同协议排名；表2才是同初始化/rollout预算的本地GRPO比较。3B同batch训练约慢30%，不含完整标注/预训练/部署成本对照。命令信用依赖状态聚类与稀疏观测回报，非反事实因果证明；技能诊断仍用已记录经验。动作/全文消融保持同系数与全Actor-token分母，改监督范围也改变有效蒸馏量；联合去调制/R-S消融不能分离两项贡献。本轮未发现可归属作者的公开实现、模型或数据，未复现。",
+      "method": [
+        "先做反思/技能SFT：每个环境与模型配置用200个训练任务、每题8条轨迹，GPT-6.1 Sol标注1,600条反思和200条综合技能，完整参数训练600次更新。WebShop先用RL40收集轨迹；7B还从其GRPO40权重开始SFT，因此不是从零、无外部监督的自学。",
+        "每轮同一参数快照承担Actor、Analyzer与Teacher：Actor每题采8条轨迹，Analyzer逐条反思并合成1份技能。Teacher只比Actor多这份训练期技能，对相同已采样响应及相同推理前缀重打分，得到逐token的log概率差；不是另找一个更大教师在线出答案。",
+        "在每组真实rollout内，只有可行动作集合相同、冻结参考嵌入距离≤0.1的观测才并为状态簇；至少两种已观察命令才能提供局部信用。由记录的转移/回报构图，经Bellman估值、GAE和组归一化估计命令优势；它只校准辅助信号，主GRPO仍用整条轨迹结果。",
+        "把命令平均概率差与命令优势的符号一致性变成0–2倍权重：一致加强、冲突减弱，不翻转原token偏好。直接蒸馏只覆盖可执行命令内容，GRPO仍训练完整响应；WebShop组内8条全成功时关闭该组直接蒸馏。零辅助优势时倍率回到1，并非自动丢弃教师信号。",
+        "用状态内居中的命令优势与原始教师偏好的加权协方差，给同组8条反思和1份技能共享奖励并截到[-3,3]；每条轨迹总权重相同，反思/技能两支各半。Actor与Analyzer共享优化器做150轮在线更新，使用最终checkpoint；部署只给普通任务和交互历史，不再检索技能或在线分析。"
+      ],
+      "inspirations": [
+        "做工具Agent技能训练时，记录每个命令的可行动作集合、观测、后继状态及真实结果；先验证状态是否可比，再给反思打分，避免把不同难度场景的收益差当成技能价值。另留未参与生成/筛选技能的任务做独立验证。",
+        "将教师监督拆成可执行命令与推理文本两个掩码，学生推理仍由环境奖励学习。对照实验同时控制监督token数量或总loss强度：本文3B固定panel的WebShop成功率为全文监督52.34%、命令监督75.00%，不能据此断言所有CoT蒸馏都会伤害。",
+        "把标注成本、SFT/RL40初始化、每轮反思和教师重打分都计入训练预算；同时报告推理不带技能的成绩、三个评估seed与多个训练seed。对照表应分别列本地同协议基线和文献引用结果，保留宏平均与任务平均的差别。"
+      ],
+      "reviewedAt": "2026-11-10T16:27:44.091926+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.12232v1",
+        "https://arxiv.org/html/2611.12232v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.12232",
+      "status": "pending",
+      "checkedAt": "2026-11-10T16:25:56.021Z"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/",
+    "url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/",
+    "id": "live-6b6709b612e5913e",
+    "title": "Gemini Robotics 2.5：将高层任务跟踪、动作执行与安全验收分开看",
+    "summary": "Google发布Gemini Robotics 2.5，官方称Apollo 2汽车零件分拣试点成功率96%；机器人高层推理与动作模型分工，向合作伙伴逐步开放。",
+    "insight": "模型能执行动作、能判断任务完成、能拒绝危险请求应分别评测；示范视频和局部试点不能代替完整失败账本。",
+    "limits": "96%是官方披露的汽车零件分拣试点结果，原页未给试次数、区间或独立复核；不能推广为任意机器人任务成功率。ASIMOV网页仍提示接受条件，API为gated=auto；固定README的raw请求401、resolve请求200。说明可读不代表全部数据开放，未获取完整数据、运行评测或实测机器人。",
+    "organization": "Google DeepMind",
+    "dateLabel": "2026-11-10 · 官方原页发布",
+    "evidence": "官方原页/模型说明/安全数据卡已核；文件访问受限，未独立复现",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-10T16:25:39.687508+00:00",
+    "updatedAt": "2026-11-10T15:30:30.407418+00:00",
+    "firstSeenAt": "2026-11-10T16:00:01Z",
+    "lastSeenAt": "2026-11-10T16:00:01Z",
+    "tags": [
+      "Model update",
+      "机器人Agent",
+      "VLA",
+      "安全评测"
+    ],
+    "topics": [],
+    "featured": false,
+    "sourceId": "deepmind",
+    "sources": [
+      {
+        "label": "官方发布 · 原页时间元数据优先于feed",
+        "url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/"
+      },
+      {
+        "label": "VLA模型说明与早期访问入口",
+        "url": "https://deepmind.google/models/gemini-robotics/vla/"
+      },
+      {
+        "label": "ER高层任务规划与成功跟踪说明",
+        "url": "https://deepmind.google/models/gemini-robotics/embodied-reasoning/"
+      },
+      {
+        "label": "ASIMOV安全评测公开数据卡 · 文件受限",
+        "url": "https://huggingface.co/datasets/google/asimov_agentic"
+      },
+      {
+        "label": "HF公开元数据与文件清单",
+        "url": "https://huggingface.co/api/datasets/google/asimov_agentic"
+      },
+      {
+        "label": "固定版本安全评测README · 匿名可读",
+        "url": "https://huggingface.co/datasets/google/asimov_agentic/resolve/5c7078735d2fa510345da18743ce9750eef7a9ec/README.md"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Google发布Gemini Robotics 2.5，官方称Apollo 2汽车零件分拣试点成功率96%；机器人高层推理与动作模型分工，向合作伙伴逐步开放。",
+      "motivation": "真实场景需要连续规划、执行、检查与纠错，单次抓取演示难以反映完整任务的可靠性。",
+      "novelty": "官方主张机器人灵巧性与真实环境可靠性提升。本站判断：值得关注的是分层执行与分项安全评测，现有公开材料不足以归因到某个训练改动。",
+      "evidenceScope": "已读官方发布正文及时间元数据、VLA/ER产品说明、ASIMOV公开数据卡与固定README及API文件清单；这是官方更新解读，非论文方法复现。HF固定提交5c7078735d2fa510345da18743ce9750eef7a9ec；未接受访问条件。Feed日期11/9与原页11/10不一致，采用原页发布时间。",
+      "limits": "96%是官方披露的汽车零件分拣试点结果，原页未给试次数、区间或独立复核；不能推广为任意机器人任务成功率。ASIMOV网页仍提示接受条件，API为gated=auto；固定README的raw请求401、resolve请求200。说明可读不代表全部数据开放，未获取完整数据、运行评测或实测机器人。",
+      "method": [
+        "ER高层模型理解任务、跟踪完成状态并规划多步操作，把运动控制交给较低层VLA。",
+        "Robotics 2.5执行手、夹爪及全身动作；官方试点将这一分工用于生产线零件分拣。",
+        "ASIMOV说明将物理约束、工具安全、不确定性、人员监测和多轮越狱拆成不同测试；这与真实工厂完成率是不同指标。"
+      ],
+      "inspirations": [
+        "给Agent同时记录计划是否正确、工具是否成功、完成判断是否准确，避免一个总分掩盖失误来源。",
+        "可为编辑与3D Agent设计可回放的危险/误操作测试，分别测拒绝、澄清与恢复；这属于应用假设，发布未评测代码创作。"
+      ],
+      "reviewedAt": "2026-11-10T16:25:39.687508+00:00",
+      "sourceUrls": [
+        "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/",
+        "https://deepmind.google/models/gemini-robotics/vla/",
+        "https://deepmind.google/models/gemini-robotics/embodied-reasoning/",
+        "https://huggingface.co/datasets/google/asimov_agentic",
+        "https://huggingface.co/api/datasets/google/asimov_agentic",
+        "https://huggingface.co/datasets/google/asimov_agentic/resolve/5c7078735d2fa510345da18743ce9750eef7a9ec/README.md"
+      ]
+    }
   }
 ]
