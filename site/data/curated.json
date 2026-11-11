@@ -12380,5 +12380,347 @@
         "https://huggingface.co/blog/ggml-org/decision-models-in-llamacpp"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.13541v1",
+    "url": "https://arxiv.org/abs/2611.13541v1",
+    "id": "live-031131d64d6f31d6",
+    "title": "Agent Benchmarks Stop Ranking：把验收、连续质量与成本分开评测",
+    "summary": "作者重评分8套Agent基准，区分二元判定过粗与参考答案封顶两种问题；建议分别报告硬性验收、带固定锚点的连续质量和成本。连续评分在ALE-Bench能恢复区分度，却没有普遍改善所有基准。",
+    "insight": "通过率相同可能掩盖真实质量差异，但“改成连续分”也不保证排名更可靠。先明确硬约束、可比较的原始目标、评分聚合与误差，再单独报告成本。",
+    "limits": "这是已发布轨迹重分析及13个Terminal-Bench任务的小规模重跑，不是本站复现，也不证明所有榜单失效。只有SWE-bench具备逐Agent验证器错误资料，作者把SWE-ABS强化测试当作真值；误拒主要靠模拟。ALE-Bench部分模型日期为重建值，40题下细分层数对校准敏感；MLE-bench连续评分反而降低区分度。重跑经第三方网关、每格仅3次，整体模型排序证据较弱；不把路由模型ID当提供商独立核验。无自然标量目标的创作或主观交付物不能直接套用。原文称发布代码与派生统计，但本轮未定位作者直接链接或复核资产。",
+    "organization": "Lenovo / Marquette / Cornell",
+    "dateLabel": "2026-11-10 · arXiv v1首发",
+    "evidence": "原论文全文与方法已核验；非实验复现",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-11T10:27:18.897415+00:00",
+    "paperOriginalDate": "2026-11-10T04:03:04Z",
+    "paperUpdatedAt": "2026-11-10T04:03:04Z",
+    "updatedAt": "2026-11-10T04:03:04Z",
+    "firstSeenAt": "2026-11-11T04:00:01Z",
+    "lastSeenAt": "2026-11-11T10:00:01Z",
+    "tags": [
+      "评测方法",
+      "榜单饱和",
+      "验证器误差",
+      "质量与成本"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv原页及版本日期",
+        "url": "https://arxiv.org/abs/2611.13541v1"
+      },
+      {
+        "label": "方法、表1–2与局限全文",
+        "url": "https://arxiv.org/html/2611.13541v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "作者重评分8套Agent基准，区分二元判定过粗与参考答案封顶两种问题；建议分别报告硬性验收、带固定锚点的连续质量和成本。连续评分在ALE-Bench能恢复区分度，却没有普遍改善所有基准。",
+      "motivation": "当头部Agent通过率很接近，直接换更难任务可能掩盖评分本身的问题：验收误差大于排名差距，或者超过参考解的更优产物仍只记1分。需要先判断是测量噪声、封顶还是任务真正过易。",
+      "novelty": "作者主张把“比特过粗”和“参考解封顶”拆开实证，并给出分离验收、质量、成本的评测设计。本站判断：有价值的是在同一批轨迹上定位信息丢失及明确不适用情况；连续分数、归一化和Pareto分析本身不是新发明，裁剪值3也是约定而非最优性证明。",
+      "evidenceScope": "已读arXiv v1全文§1–8、表1–2、评分公式、13任务重跑设置和局限；原页首发2026-11-10 04:03:04 UTC。数字均为作者报告；未运行模型、重算原始轨迹或取得作者派生统计包。论文HTML无作者仓库链接，题名/ID检索未定位可归属代码；未虚构X原帖。",
+      "limits": "这是已发布轨迹重分析及13个Terminal-Bench任务的小规模重跑，不是本站复现，也不证明所有榜单失效。只有SWE-bench具备逐Agent验证器错误资料，作者把SWE-ABS强化测试当作真值；误拒主要靠模拟。ALE-Bench部分模型日期为重建值，40题下细分层数对校准敏感；MLE-bench连续评分反而降低区分度。重跑经第三方网关、每格仅3次，整体模型排序证据较弱；不把路由模型ID当提供商独立核验。无自然标量目标的创作或主观交付物不能直接套用。原文称发布代码与派生统计，但本轮未定位作者直接链接或复核资产。",
+      "method": [
+        "固定已发布任务与轨迹重评分：对SWE-bench、Terminal-Bench与OSWorld的头部结果做任务内配对统计和多重比较，报告无法显著区分的梯队；再单独检查强化验证器改变了哪些判定。",
+        "对带原始连续量的基准比较二元、参考值封顶、允许超越参考值的评分。ALE-Bench官方本就连续计分，其中位人类通过线是作者构造的对照；SWE-fficiency新评分只取专家加速至少1.2的430/498题。",
+        "定义硬性验收G、原始质量J与冻结的基线/参考锚点：正比例量用归一化对数比，参考得1分，低于基线或不合法得0，最高裁剪到3；无自然零点的指标另用线性版本，不能把对数形式通用化。",
+        "在13个Terminal-Bench数值阈值任务上以4模型、每题3次重跑，共156次；保持原验收规则，增印数值质量，同机重测参考与基线。分别记录token、定价日期、美元与时间，避免把质量和成本揉成单榜。",
+        "报告通过率梯队、所有运行的平均质量（失败计0）、成本及Pareto关系；跨版本固定锚点并校验参考强度。LLM只辅助编写检查器而不作运行时裁判是作者提出的设计取向，不是已验证普适结论。"
+      ],
+      "inspirations": [
+        "为视频/代码创作保留可执行性和必需约束的硬门槛，再分别保留视觉误差、时长偏差、编辑成功等原始测量；冻结参考版本，避免让超过“最低合格”的改进全部消失。主观审美仍需另建可靠评测。",
+        "榜单先给任务配对置信区间与统计梯队，再讨论名次；若相邻差距小于验收误判，优先审检查器、补重复运行，不把0.2个百分点当稳定领先。",
+        "对同等质量记录总成本、失败重试及延迟，展示质量—成本关系；同时保留评分前原始值，让未来修改锚点或验收器能重新核算而不是重跑全部模型。"
+      ],
+      "reviewedAt": "2026-11-11T10:27:18.897415+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.13541v1",
+        "https://arxiv.org/html/2611.13541v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.13541",
+      "status": "pending",
+      "checkedAt": "2026-11-11T10:27:02.526792+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.22341v1",
+    "url": "https://arxiv.org/abs/2610.22341v1",
+    "id": "paper-3dcodeverse-2610-22341",
+    "title": "代表作补读｜3DCodeVerse：把3D代码、验证证据与训练划分一起打包",
+    "summary": "把可执行3D程序、渲染和验收证据打包，再用于训练与Agent修订。2M指2,028,286条多描述/多表示文本行，目录为269,597个程序，不能当成200万独立场景。Qwen3.5-9B在固定212题3DCodeBench上的执行率由0升至84.9%，但这还不是几何正确率。",
+    "insight": "先区分独立程序数、caption展开行数和实用训练混合，再看程序能运行、形状正确及成片质量分别改善多少。当前默认导出与论文去污染训练集不能混为一谈；作者已公开11月7日合并的finetune资产，但仍需冻结版本重建评测。",
+    "limits": "10月15日论文的代表作补读，非本周新发表。805题六套件采用单个采样seed，执行/编译成功与形状、动效和可编辑性分别评价；几何归一化不能证明绝对尺寸正确。Harness对照并非相同调用或成本预算，90%人类偏好不可当通用成功率。默认2M导出保留未编译通过项及3DCodeBench来源，不能直接全量训练后宣称无泄漏；论文声称按factory/实例与评测ID隔离，本站尚未逐行复核。现公开插件/LoRA与论文实验版本存在差别；发布文档明确这些LoRA没有执行基准结果。数据卡标CC BY-NC-SA 4.0并保留源条款，代码Apache-2.0；未下载完整数据或运行复现。",
+    "dateLabel": "2026-10-15 · 代表作补读；本轮核验公开资产",
+    "evidence": "已读方法、数据和评测细则；固定公开文档/数据卡只读核验，未复现",
+    "originalTitle": "3DCodeVerse: Exploring 3D Worlds as Code",
+    "date": "2026-10-15",
+    "checkedAt": "2026-11-11T10:30:51.835Z",
+    "originalDate": "2026-10-15",
+    "paperOriginalDate": "2026-10-15T17:56:07Z",
+    "paperUpdatedAt": "2026-10-15T17:56:07Z",
+    "updatedAt": "2026-10-15T17:56:07Z",
+    "firstSeenAt": "2026-11-11T10:31:45.600374+00:00",
+    "tags": [
+      "可执行3D代码",
+      "程序数据",
+      "多Agent",
+      "空间验证",
+      "数据划分"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2motion"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 · 首发记录",
+        "url": "https://arxiv.org/abs/2610.22341v1"
+      },
+      {
+        "label": "原论文 · 方法与附录",
+        "url": "https://arxiv.org/html/2610.22341v1"
+      },
+      {
+        "label": "作者公开项目页",
+        "url": "https://3dcodeverse.com/"
+      },
+      {
+        "label": "固定作者仓库 · 发布状态",
+        "url": "https://github.com/gaoypeng/3dcodeverse/blob/69c1cb98035cf947fabf5e14c69cf6fa5f367242/README.md"
+      },
+      {
+        "label": "固定数据卡 · 默认导出与11月7日合并",
+        "url": "https://huggingface.co/datasets/3dcodeverse/3dcodeverse-2m/blob/9a0cb1f5f122a02c8b4785a326f886970c5e6756/README.md"
+      },
+      {
+        "label": "固定训练数据说明 · 混合与留出",
+        "url": "https://huggingface.co/datasets/3dcodeverse/3dcodeverse-2m/blob/9a0cb1f5f122a02c8b4785a326f886970c5e6756/finetune/README.md"
+      },
+      {
+        "label": "固定训练指南 · 复现所需配置",
+        "url": "https://github.com/gaoypeng/3dcodeverse/blob/69c1cb98035cf947fabf5e14c69cf6fa5f367242/finetune/README.md"
+      },
+      {
+        "label": "固定权重发布说明 · 不等于论文检查点",
+        "url": "https://github.com/gaoypeng/3dcodeverse/blob/69c1cb98035cf947fabf5e14c69cf6fa5f367242/finetune/docs/RELEASE.md"
+      },
+      {
+        "label": "当前插件与论文工作流边界",
+        "url": "https://github.com/gaoypeng/3dcodeverse/blob/69c1cb98035cf947fabf5e14c69cf6fa5f367242/harness/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把可执行3D程序、渲染和验收证据打包，再用于训练与Agent修订。2M指2,028,286条多描述/多表示文本行，目录为269,597个程序，不能当成200万独立场景。Qwen3.5-9B在固定212题3DCodeBench上的执行率由0升至84.9%，但这还不是几何正确率。",
+      "motivation": "3D代码能执行，只说明运行时接受它；部件可能悬空、关节错误或形状不符合请求。训练语料还会把同一程序的多描述误当新样本。研究需要可追溯的程序数据、分层验收和避免评测源混入训练的划分。",
+      "novelty": "作者主张：把大规模多语言可执行代码语料、分工生成与自动空间验证组合为3D编码生态，并展示训练与Agent工作流收益。本站判断：最值得借鉴的是让每条数据带上来源、执行与质量证据，并把修复失败变成可定位反馈；规模必须按独立程序、训练对和导出行分别计算，程序检查也不构成开放场景的正确性证明。",
+      "evidenceScope": "已读arXiv v1正文§3–6、附录A.1–A.5/A.8、B.1–B.2、C.1/C.3及C.4部分DPO说明，提交时间2026-10-15T17:56:07Z。核验作者项目、GitHub固定commit 69c1cb98035cf947fabf5e14c69cf6fa5f367242的README/插件/训练/评测/权重发布文档，以及HF固定revision 9a0cb1f5f122a02c8b4785a326f886970c5e6756的数据卡、finetune说明和mixes.json。论文269,597个目录程序、768,596训练对与2,028,286导出行口径不同；当前finetune卡的784,300对包含另加15,704 bootstrapped样本。六套件为212/103/200/50/200/40题，总805；GLSL成功主要指编译，单seed T=0.7。正文对象总池100题，附录主对照60题、部分模型30题，不能假定每个百分比都以100为分母；优选结果是作者报告，非本站实验。HF元数据private=false/gated=false、固定卡匿名200，API siblings恰返回100000条并未据此声称全文件盘点；未下载parquet、模型或执行作者代码。",
+      "limits": "10月15日论文的代表作补读，非本周新发表。805题六套件采用单个采样seed，执行/编译成功与形状、动效和可编辑性分别评价；几何归一化不能证明绝对尺寸正确。Harness对照并非相同调用或成本预算，90%人类偏好不可当通用成功率。默认2M导出保留未编译通过项及3DCodeBench来源，不能直接全量训练后宣称无泄漏；论文声称按factory/实例与评测ID隔离，本站尚未逐行复核。现公开插件/LoRA与论文实验版本存在差别；发布文档明确这些LoRA没有执行基准结果。数据卡标CC BY-NC-SA 4.0并保留源条款，代码Apache-2.0；未下载完整数据或运行复现。",
+      "method": [
+        "整理公开程序、转换DeepCAD/Articraft等专用表示，再由Agent补齐依赖与素材。每条保留来源、运行环境、源程序、描述、渲染和可用验证结果；执行、几何、视觉验证等级按来源区分，不把全部行都标成同等质量。",
+        "论文Harness先把请求变成部件、尺寸、材料、空间关系与验收清单，再按依赖图拆为有文件归属的编码/装配任务。各Agent写可执行Blender、CadQuery、Three.js、URDF或图形程序，在受限运行环境构建。",
+        "按构建报错、几何/接触/碰撞/运动测量、最后多视角VLM评价分层反馈。检测出的具体缺陷附原坐标系修正量；确定性检查可以限制分数或否定冲突的视觉判断，但其阈值和覆盖范围仍需验证。",
+        "把失败转换为定位到部件/文件的修订任务，保存源代码、证据和每轮结果，预算内选择最高评分版本。单轮主对象实验仍包含规划、工具调用、构建修复和验收；最多4轮改进属于另行分析，不能把所有主表增益都归给4轮循环。",
+        "用独立训练混合对9B/27B做LoRA SFT，并探索执行、几何和停止信号的DPO。805题六套件分别报告可执行率和参考保真度；Harness成品由独立重建及盲提示评价，去掉生成时计划/内部清单，再配人类偏好。当前公开版已改成宿主Agent插件，不能直接当论文原CLI的等价复现。"
+      ],
+      "inspirations": [
+        "建设code2-3d/code2motion语料时，以源程序或生成器家族为去重和划分单位，三种caption及几何/纹理变体保持同组；先过滤编译状态，再另报结构和视觉质量，别把2M行当2M独立训练问题。",
+        "把代码创作验收拆为构建、尺寸/碰撞/连接、时间采样和人类审美；保存未通过项及修订差分。渲染看起来合理时仍查原生结构，采样帧通过时仍测试未采样时刻，避免验证器盲区成为奖励捷径。",
+        "比较裸模型、带工具单轮、带反馈多轮时，固定总调用、token、墙钟与渲染预算，报告失败计零和仅成功样本两组指标；实际发布权重要重新跑同一冻结测试，不把训练loss或旧论文表格贴到新adapter上。"
+      ],
+      "reviewedAt": "2026-11-11T10:30:51.835Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2610.22341v1",
+        "https://arxiv.org/html/2610.22341v1",
+        "https://3dcodeverse.com/",
+        "https://github.com/gaoypeng/3dcodeverse/blob/69c1cb98035cf947fabf5e14c69cf6fa5f367242/README.md",
+        "https://huggingface.co/datasets/3dcodeverse/3dcodeverse-2m/blob/9a0cb1f5f122a02c8b4785a326f886970c5e6756/README.md",
+        "https://huggingface.co/datasets/3dcodeverse/3dcodeverse-2m/blob/9a0cb1f5f122a02c8b4785a326f886970c5e6756/finetune/README.md",
+        "https://github.com/gaoypeng/3dcodeverse/blob/69c1cb98035cf947fabf5e14c69cf6fa5f367242/finetune/README.md",
+        "https://github.com/gaoypeng/3dcodeverse/blob/69c1cb98035cf947fabf5e14c69cf6fa5f367242/finetune/docs/RELEASE.md",
+        "https://github.com/gaoypeng/3dcodeverse/blob/69c1cb98035cf947fabf5e14c69cf6fa5f367242/harness/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.22341",
+      "status": "pending",
+      "checkedAt": "2026-11-11T10:27:02.526792+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.14492v1",
+    "url": "https://arxiv.org/abs/2611.14492v1",
+    "id": "live-a46368db9d6297e6",
+    "title": "ReTrace：把Agent执行经验编译为条件规则，重复流程不再逐步规划",
+    "summary": "ReTrace把SOP与少量Agent轨迹编译成由代码选择下一步的工作流，工具内部仍可调用模型。在τ²电信solo模式的40个测试输入上，未修复工作流成功率75.8%（Agent为80.6%），单次平均1.3秒对170秒；只验证同一流程的新输入，不能外推为开放任务通用Agent替代。",
+    "insight": "蒸馏的产物可以是可执行规则，不一定是更小模型。关键是让每条规则带着动作前证据与适用范围，并把未覆盖分支、真实工具结果和规则失效分开验收；能载入的代码或平台的完成标记，都不足以证明流程正确。",
+    "limits": "数值均为作者报告，未独立复现。公开任务成功率以构建成功的工作流为分母，构建率另报；τ²是电信solo模式，不能与标准交互榜单直接比较。企业完成标记可能把工具失败算成功，且各方法可运行流程集合不同。推理文本不保证是真实决策原因；规则引用检查不验证条件正确。未核到本文作者实现或运行资产，不把基准/同名项目当作者代码。",
+    "organization": "Amazon / Columbia University",
+    "dateLabel": "2026-11-10 · arXiv v1",
+    "evidence": "已读原文方法、实验及关键附录；未核作者实现、未复现",
+    "originalTitle": "ReTrace: Distilling Tool-Using Agents into Planner-Free Workflows",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-11T10:27:37.785204+00:00",
+    "originalDate": "2026-11-10",
+    "paperOriginalDate": "2026-11-10T18:49:47Z",
+    "paperUpdatedAt": "2026-11-10T18:49:47Z",
+    "updatedAt": "2026-11-10T18:49:47Z",
+    "firstSeenAt": "2026-11-11T10:00:01Z",
+    "lastSeenAt": "2026-11-11T10:00:01Z",
+    "tags": [
+      "Distillation",
+      "工作流编译",
+      "条件规则",
+      "成本评测"
+    ],
+    "authors": [
+      "Kaiyuan Hou",
+      "Yang Ping Kuo",
+      "Indranil Bhattacharya",
+      "Rohith Nama",
+      "Arushi Gupta",
+      "Carlos D. Castillo",
+      "Prathap Ramachandra",
+      "Xiaofan Jiang",
+      "Francesco Carbone"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.14492v1"
+      },
+      {
+        "label": "arXiv全文 · 方法、分母、修复与成本附录",
+        "url": "https://arxiv.org/html/2611.14492v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "ReTrace把SOP与少量Agent轨迹编译成由代码选择下一步的工作流，工具内部仍可调用模型。在τ²电信solo模式的40个测试输入上，未修复工作流成功率75.8%（Agent为80.6%），单次平均1.3秒对170秒；只验证同一流程的新输入，不能外推为开放任务通用Agent替代。",
+      "motivation": "反复执行固定业务流程时，每次都调用大模型决定下一步会重复付出延迟与成本。单看工具序列又难区分动作的适用条件和参数来源。论文尝试把日志中的解释与SOP转成可复用条件规则，将规划开销前移到一次性构建阶段，而非训练新模型权重。",
+      "novelty": "作者主张：从Agent解释中恢复条件、显式记录未见证分支和证据，先生成平台无关规则文档，再编译为无运行时规划器的工作流。本站判断：可借鉴的是带出处的条件规则与可执行产物分层；但真实条件准确率、候选回放一致率及未见证分支测试覆盖未直接报告，不能用总成功率代替机制验证。移除解释并非处处更差：SOP-Bench中无解释版82.3%，完整版本80.6%。",
+      "evidenceScope": "已读arXiv v1正文§3–8及附录A–D、F、H/I/J/L相关设置、构建检查、修复、结果与成本边界。首发由arXiv提交记录核为2026-11-10T18:49:47Z。τ²使用74训练/40测试、3任务族、5折训练交叉验证，主表k=4；每配置3次轨迹抽样×4次生成×3族=36次请求，成功率按已构建工作流统计。SOP-Bench只纳入14域中的8域、758训练/744测试，按标签分层冻结划分、严格输出全字段匹配，结果是8流程宏平均，每个轨迹样本只生成一次；区间不覆盖全部轨迹抽样波动。企业79流程中ReTrace实际跑77、原Agent跑76，完成率分别93.8%与96.8%，按流程等权；配对差异仅用双方共同流程。论文及检索未核到作者公开实现链接；HF目标论文API404、名称检索存在未关联同名资产，不作为实现证据。未运行代码、模型或流程，verified仅指来源核验。",
+      "limits": "数值均为作者报告，未独立复现。公开任务成功率以构建成功的工作流为分母，构建率另报；τ²是电信solo模式，不能与标准交互榜单直接比较。企业完成标记可能把工具失败算成功，且各方法可运行流程集合不同。推理文本不保证是真实决策原因；规则引用检查不验证条件正确。未核到本文作者实现或运行资产，不把基准/同名项目当作者代码。 τ²修复从k=2的66.7%到81.2%，不是主表k=4的75.8%继续提升；修复构建率94.4%，相对原Agent差异区间[-19.8,20.7]个百分点，不支持等效结论。SOP-Bench修复使用标签反馈，87.8%不能公平对比未修复方法；附录零样本加修复90.8%更高。企业每次成本0.127→0.096美元约降24%，但平均耗时153→163秒，只有中位数68→37秒下降；工具可调用模型。构建调用数因缓存为下界，约75次回本借用公共基准2.32美元估计，企业构建成本未实测。",
+      "method": [
+        "对同一SOP收集少量成功轨迹，每步包含行动前解释、工具名、实参及返回值。逐步提取可观察前置条件、意图动作、类型化参数和参数来源；具体客户ID等改成变量，未知来源保留未知，条件只允许依赖动作前可见信息。",
+        "先按SOP总结每条轨迹，再合并为结束条件与有序条件—动作规则，每条保留轨迹或SOP出处；解释提到但没执行的替代动作标为未见证分支。对删除项要求理由，检查是否漏项与引用完整，不据此宣称条件已被证明；超过8条轨迹才逐条增量并入。",
+        "从规则文档生成Python或平台工作流图。运行时先查结束条件，否则执行首个条件成立的规则；若未完成却无规则适用，记未完成并停止，不临时找模型规划。工具内部的分类、阅读等仍可能调用模型。",
+        "公开基准对候选做静态载入/导入限制、隔离进程与训练输入回放；最多3个候选，选择重现记录步骤最多者，同分偏好更少决策步骤。企业平台不能离线回放，只检查生成图无规划节点；这些检查都不等于任务正确性证明。",
+        "可选修复在固定训练输入上收集失败，最多3轮用模型重写完整工作流，只改代码、保留原规则文档，按修复训练集得分留优且同分留早轮。τ²用4个、SOP-Bench用16个修复输入；后者反馈包含训练标签，验证集和测试集不进修复环。"
+      ],
+      "inspirations": [
+        "为重复数据清洗、评测或素材处理流程保存“动作前状态—适用条件—实参来源—执行结果”，将常见确定分支编译成代码，并给未见证分支单独造边界测试；这属于迁移建议，本文未实验视频或3D创作。",
+        "把构建成功率、构建后任务正确率、工具真实成功与平台完成标记分别记账。代码修复后规则文档可能未同步，需增加规则—代码一致性回归；不要把有证据链接当成条件真实有效。",
+        "按实际调用频率核算构建、修复、运行及工具内部模型成本，再决定是否编译。论文约75次回本是用公共基准构建成本代入企业节省额的示例，不能直接当自己业务的部署阈值。"
+      ],
+      "reviewedAt": "2026-11-11T10:27:37.785204+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.14492v1",
+        "https://arxiv.org/html/2611.14492v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.14492",
+      "status": "pending",
+      "checkedAt": "2026-11-11T10:27:02.526792+00:00"
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/qvac/botpsy",
+    "url": "https://huggingface.co/blog/qvac/botpsy",
+    "id": "live-19b4fcb1faac9c9b",
+    "title": "BotPsy：用多教师蒸馏与两轮RL训练0.8B工具Agent",
+    "summary": "Tether AI Research发布基于Qwen3.5-0.8B的BotPsy，依次用SFT、三教师在线策略蒸馏和两轮RL强化工具使用。作者报告BFCL v4从基座23.4升至44.0，并公开BF16、Q8与Q4文件目录；训练代码和完整训练数据未随本次发布。",
+    "insight": "专门化SFT后的通用能力回退值得单独测量；教师蒸馏与RL可以分阶段补足，但还要把运行引擎、量化和实际设备成本拆开比较。",
+    "limits": "分数为作者评测，未复现。GGUF实验在H100上进行，不能当手机延迟/功耗实测；跨引擎、跨评测日期的分差不能全部归因于量化。主要训练测试语言为英语，开放搜索仍弱；没有核验训练去重、完整配方或端到端隐私行为。",
+    "organization": "Tether AI Research / QVAC",
+    "dateLabel": "2026-11-11 · 模型与量化发布",
+    "evidence": "作者博客、固定模型卡与公开文件元数据已核验；未运行模型",
+    "date": "2026-11-11",
+    "checkedAt": "2026-11-11T10:26:53.596730+00:00",
+    "originalDate": "2026-11-11",
+    "firstSeenAt": "2026-11-11T10:00:01Z",
+    "lastSeenAt": "2026-11-11T10:00:01Z",
+    "tags": [
+      "Model update",
+      "On-policy distillation",
+      "RL",
+      "端侧Agent"
+    ],
+    "topics": [],
+    "featured": false,
+    "sourceId": "hf_blog",
+    "sources": [
+      {
+        "label": "作者团队原文·方法与评测脚注",
+        "url": "https://huggingface.co/blog/qvac/botpsy"
+      },
+      {
+        "label": "固定版本源模型卡·发布范围与配置",
+        "url": "https://huggingface.co/qvac/BotPsy-0.8B/blob/24561e9681643eaf807fc28b0875210cb17f89c1/README.md"
+      },
+      {
+        "label": "固定版本GGUF模型卡·量化与运行条件",
+        "url": "https://huggingface.co/qvac/BotPsy-0.8B-GGUFs/blob/17bb36aa29c58fcde8e321aaaad3f2f7372aa655/README.md"
+      },
+      {
+        "label": "源模型公开文件目录",
+        "url": "https://huggingface.co/qvac/BotPsy-0.8B/tree/24561e9681643eaf807fc28b0875210cb17f89c1"
+      },
+      {
+        "label": "GGUF公开文件目录",
+        "url": "https://huggingface.co/qvac/BotPsy-0.8B-GGUFs/tree/17bb36aa29c58fcde8e321aaaad3f2f7372aa655"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Tether AI Research发布基于Qwen3.5-0.8B的BotPsy，依次用SFT、三教师在线策略蒸馏和两轮RL强化工具使用。作者报告BFCL v4从基座23.4升至44.0，并公开BF16、Q8与Q4文件目录；训练代码和完整训练数据未随本次发布。",
+      "motivation": "小模型执行日常工具任务有部署潜力，但只训练调用轨迹可能损伤知识与指令遵循；需要兼顾调用格式、参数正确性、何时不调用和跨轮状态保持。",
+      "novelty": "作者主张BotPsy在本次测试的≤1.2B模型中工具能力领先，并给出分阶段训练及量化结果。本站判断：值得研究的是先专门化、再用多教师恢复通用能力、最后扩大RL任务覆盖的顺序；逐阶段曲线不足以独立证明每个模块的因果贡献，也不是覆盖所有同尺寸模型的排名。",
+      "evidenceScope": "已读11/11作者HF文章全文、方法/评测脚注，以及两份固定版本模型卡；匿名API核验仓库public、非gated和文件清单。原文是团队技术博客而非本轮arXiv论文；没有下载权重、运行示例、访问账户或验证设备实测。",
+      "limits": "分数为作者评测，未复现。GGUF实验在H100上进行，不能当手机延迟/功耗实测；跨引擎、跨评测日期的分差不能全部归因于量化。主要训练测试语言为英语，开放搜索仍弱；没有核验训练去重、完整配方或端到端隐私行为。 BFCL为3次运行均值；τ指标混合τ²零售/电信与τ³银行且不含航空，银行各模型均低于5。BrowseComp-Plus为4.5。Q8与BF16 GGUF的10指标平均分别50.7/50.4，非同一完整6项工具榜；GGUF未跑ToolSandbox，BFCL只跑1次。效率token比较限五模型都答对的题，并用各自tokenizer；不能直接推广全部工作负载。",
+      "method": [
+        "对Qwen3.5-0.8B全参数SFT，数据包括模拟环境轨迹、单次/并行/多步骤调用以及应当不调用工具的情形。",
+        "学生在线生成回答，按提示类型路由到工具、推理或指令遵循三种Qwen3.5-4B专家教师，用逐token反向KL蒸馏；教师各自先经RL专门化。",
+        "随后进行两轮DAPO RL：第一轮偏重工具调用，以格式检查及工具名、参数名和值的部分匹配奖励训练；第二轮扩展到数学、代码、知识、结构化输出等可验证任务。",
+        "以thinking模式评测；模型卡提醒模板默认关闭thinking，必须显式开启才能对应报告设置。公开BF16与GGUF目录，量化评测另列推理引擎、日期和重复次数，不能直接当端侧速度结论。"
+      ],
+      "inspirations": [
+        "给小Agent后训练设置工具调用、拒绝无效工具、知识和指令遵循四条曲线；控制相同预算，对比不同阶段顺序，检验蒸馏是在恢复能力还是仅改变评测提示适配。",
+        "把参数部分匹配与实际执行结果分别验收，加入“工具名正确但参数导致错误副作用”的负例，避免只优化格式和字符串匹配。",
+        "量化对比先固定同一引擎、题目顺序与外部工具版本，再上目标手机记录峰值内存、每任务耗时、功耗及失败率；0.53GB权重文件不等于完整运行内存。"
+      ],
+      "reviewedAt": "2026-11-11T10:26:53.596730+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/blog/qvac/botpsy",
+        "https://huggingface.co/qvac/BotPsy-0.8B/blob/24561e9681643eaf807fc28b0875210cb17f89c1/README.md",
+        "https://huggingface.co/qvac/BotPsy-0.8B-GGUFs/blob/17bb36aa29c58fcde8e321aaaad3f2f7372aa655/README.md",
+        "https://huggingface.co/qvac/BotPsy-0.8B/tree/24561e9681643eaf807fc28b0875210cb17f89c1",
+        "https://huggingface.co/qvac/BotPsy-0.8B-GGUFs/tree/17bb36aa29c58fcde8e321aaaad3f2f7372aa655"
+      ]
+    }
   }
 ]
