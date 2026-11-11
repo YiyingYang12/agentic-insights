@@ -11978,5 +11978,407 @@
         "https://github.com/google-deepmind/code-verification/blob/808b4b7ffef198e6a91f71ed776d641a1c236882/arm64-semantics/Arm64/Trusted/Process/Semantics.lean"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.13524v1",
+    "url": "https://arxiv.org/abs/2611.13524v1",
+    "id": "live-68dfc554fe2a2e74",
+    "title": "RSI Tax：给Agent自改进算全账，短笔记是必须比较的基线",
+    "summary": "自改进不仅消耗执行任务的token，还要为提案、反复验证和写入经验付费。在2个模型、4个任务流设置中，2048-token短笔记基线SRN的观察准确率不低于三种复杂自改进方法，按设置等权平均少用65.6%–71.0%的总token；这是特定流式适配实验，不能推广为所有RSI都无效。",
+    "insight": "把候选搜索、验证与经验写入都纳入成本，先与小而明确的短笔记基线比较；后续被用到只表示进入上下文，不表示产生了收益。",
+    "limits": "仅2模型、7条仓库链和1种终端任务顺序，未给重复运行稳定性；比较包含作者对原方法的流式改造。token含缓存输入，并非金额/延迟/GPU成本；未复用不等于可安全删除，本站未复现实验或核原始日志。",
+    "dateLabel": "2026-11-10",
+    "evidence": "全文及附录已读；汇总指标复算，原始日志和实现未核，未复现",
+    "originalTitle": "The RSI Tax: When Recursive Self-Improvement Is Not Worth the Cost",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-11T04:21:44.674743+00:00",
+    "originalDate": "2026-11-10",
+    "paperOriginalDate": "2026-11-10T03:48:55Z",
+    "paperUpdatedAt": "2026-11-10T03:48:55Z",
+    "updatedAt": "2026-11-10T03:48:55Z",
+    "firstSeenAt": "2026-11-11T04:00:01Z",
+    "lastSeenAt": "2026-11-11T04:00:01Z",
+    "tags": [
+      "Evaluation",
+      "自改进成本",
+      "Agent Skills"
+    ],
+    "authors": [
+      "Yitong Zhang",
+      "Ang Li",
+      "Yisen Wang"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 · 发表元数据",
+        "url": "https://arxiv.org/abs/2611.13524v1"
+      },
+      {
+        "label": "原文方法、结果和附录A–D",
+        "url": "https://arxiv.org/html/2611.13524v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "自改进不仅消耗执行任务的token，还要为提案、反复验证和写入经验付费。在2个模型、4个任务流设置中，2048-token短笔记基线SRN的观察准确率不低于三种复杂自改进方法，按设置等权平均少用65.6%–71.0%的总token；这是特定流式适配实验，不能推广为所有RSI都无效。",
+      "motivation": "若只看最终Agent执行任务用了多少token，就会漏掉为了得到它而做的候选搜索、回放和验证；一次昂贵更新在剩余任务很少时也可能无法摊销。需要在相同任务流里同时记完成率、执行成本与自改进成本。",
+      "novelty": "作者主张：以RSI Tax和流式协议揭示复杂自改进的完整成本，并给出简单短笔记基线及成本/后续使用分解。本站判断：最可迁移的是把“学习开销”和“服务开销”放到同一本账；结论依赖流式适配与观察窗口，尤其EvoSkill滚动刷新旧候选、Meta-Harness严格提分才部署，不等价于评价其所有原始实现或EvoSkill v2。",
+      "evidenceScope": "已读arXiv v1全文方法、四设置结果及附录A–D，复算表2的按设置等权token比例与准确率差，检查表5分母及两例更新诊断。原文未提供本研究仓库/日志链接；题名与ID定向公开搜索未定位可核作者实现，不能据此断言没有开源。未执行作者系统、未重跑任务，verified仅表示所用论文来源核验。",
+      "limits": "仅2模型、7条仓库链和1种终端任务顺序，未给重复运行稳定性；比较包含作者对原方法的流式改造。token含缓存输入，并非金额/延迟/GPU成本；未复用不等于可安全删除，本站未复现实验或核原始日志。 2328是6方法×2模型×(105+89)个已评分方法–任务对，不是2328道独立题；仓库105位置仅是完整基准493位置中的选定子集。未提供置信区间或重复运行，SRN较Static四设置平均准确率高约4.7个百分点但总token平均多约3.6%，并非总是最省。Meta-Harness/EvoSkill/RRSI的验证占比74.8%–93.6%以RSI Tax为分母，不是总执行费用；无后续使用的比例也是token占比。作者未测试能预估剩余收益并选择更新的自适应策略。",
+      "method": [
+        "固定模型权重和初始KIRA执行器，比较Static、ReasoningBank、Meta-Harness、EvoSkill、RRSI及短笔记SRN。两种模型各跑7条15任务仓库链和89个终端任务；每个任务先记原始二元结果，再允许其公开轨迹与标量反馈参与后续更新，不用未来题或隐藏测试。",
+        "隔离状态与信息边界：仓库链之间重置学习状态，每题从指定快照开始，不继承前题补丁；终端任务采用固定顺序但环境独立。SRN、Meta-Harness、EvoSkill每4题更新一次，窗口内冻结状态，支持集为最近2或4题；ReasoningBank保留逐题更新。",
+        "按请求ID去重计账，把输入和输出token分成正式执行与RSI Tax，失败或未采纳的更新照计。再将更新成本拆成验证、探索、写入与Other残差；读入已有笔记属于执行成本，embedding属于探索，缓存输入仍计入。",
+        "SRN每次只用已完成失败题的头尾轨迹、旧笔记及标量反馈生成一个不超过2048-token的替代笔记，没有候选搜索、额外采样或验证；有效非空版本直接采纳，无失败或无效响应则保持原笔记。其写入和后续读取都纳入总量。",
+        "按模型×环境分别比较准确率和总token，再对4个设置等权平均；附加追踪状态或技能在流结束/重置前是否进入后续任务。该使用标签是描述性归因，不证明它提高准确率，也不把回放支持题的新分数替换原始任务结果。"
+      ],
+      "inspirations": [
+        "为自己的技能演化流程记录正式任务、提案、旧候选复测、新候选验证、写入和检索的token，并保留失败更新；让无学习、2048-token短笔记和复杂搜索共用任务顺序与反馈边界，比较完成率和完整成本。",
+        "若当前选择规则只接受严格更高准确率且已达支持集100%，可先识别当前候选验收无法改变决定的条件；另做控制实验验证跳过检查是否影响后续学习。不能因一轮未采纳，就删掉所有验证或把安全检查也当浪费。",
+        "在视频/Blender技能库中记录技能创建代价、剩余适用任务数、实际调用和执行结果；比较不同任务顺序及长观察窗口，判断能否摊销。这里只是跨域实验建议，论文没有测试创作Agent。"
+      ],
+      "reviewedAt": "2026-11-11T04:21:44.674743+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.13524v1",
+        "https://arxiv.org/html/2611.13524v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.13524",
+      "status": "pending",
+      "checkedAt": "2026-11-11T04:22:35.210580+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.21755v1",
+    "url": "https://arxiv.org/abs/2610.21755v1",
+    "id": "paper-decicad-2610-21755",
+    "title": "代表作补读｜DeciCAD：把CAD代码变成有状态的操作契约，再学习可靠修复",
+    "summary": "代表作补读（10月15日）：DeciCAD把CAD操作压缩成带类型的语义动作，把可编辑文档状态留在FreeCAD中。200题学习测试上，几何RL使有效几何比例从66.5%升至73.5%，有效输出上的F1从0.7437升至0.7880；这不等于73.5%的工程完全满足需求。",
+    "insight": "接口设计不仅影响执行长度，也改变训练数据里什么算一个动作、能观察到哪些失败。把动作后的真实工程状态作为证据，给修复保留因果历史，再将几何覆盖与条件质量分开验收，比只缩短代码更有研究价值。",
+    "limits": "10月15日论文补读，非本周新发布。几何F1/IoU在有效输出上计算，不能当全题成功率；两种SFT的数据覆盖不同，未独立复现。作者仓库固定版本仅Coming Soon，未核实现、权重或发行包。几何对齐后相似度不等于尺寸、可编辑性或制造可行性合格。",
+    "organization": "USTC / NTU",
+    "dateLabel": "2026-10-15首发 · 代表作补读，非本周新发布",
+    "evidence": "方法与训练/评测附录已读；作者仓库仍占位，未独立复现",
+    "originalTitle": "DeciCAD: Harness-Grounded Learning of Action Policies for CAD Agents",
+    "date": "2026-10-15",
+    "checkedAt": "2026-11-11T04:22:58.494850+00:00",
+    "originalDate": "2026-10-15",
+    "paperOriginalDate": "2026-10-15T12:11:43Z",
+    "firstSeenAt": "2026-11-11T04:22:58.494850+00:00",
+    "tags": [
+      "Agent RL",
+      "CAD",
+      "语义动作",
+      "SFT",
+      "代表作补读"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": false,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 · 首发日期与摘要",
+        "url": "https://arxiv.org/abs/2610.21755v1"
+      },
+      {
+        "label": "arXiv全文 · 方法、评测与附录C–E",
+        "url": "https://arxiv.org/html/2610.21755v1"
+      },
+      {
+        "label": "作者仓库固定README · 当前仍Coming Soon",
+        "url": "https://github.com/PhysAGI/PhysCAD/blob/ea431b94ce784acf49e8f731d9ecf2cfda6fc712/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "代表作补读（10月15日）：DeciCAD把CAD操作压缩成带类型的语义动作，把可编辑文档状态留在FreeCAD中。200题学习测试上，几何RL使有效几何比例从66.5%升至73.5%，有效输出上的F1从0.7437升至0.7880；这不等于73.5%的工程完全满足需求。",
+      "motivation": "直接让Agent写任意CAD代码，会把变量、语法和实现选择混入动作学习；但把接口压得太短，又可能藏掉修复失败所需的状态。论文研究怎样保留必要动作与状态差异，同时减少无关表示。",
+      "novelty": "作者主张：把Agent接口看作决定可学策略的动作—观测空间，并用语义决策瓶颈统一执行、SFT和RL。本站判断：值得借鉴的是带状态证据的操作契约及几何奖励门控；实验并非等量监督对照，也未证明这种接口对所有CAD任务或后端都充分。",
+      "evidenceScope": "已读arXiv v1方法、四基准结果、附录C执行/观测设计、D训练与评测、E原生文档及后端说明；核作者链接仓库固定README。未执行代码、安装后端、下载权重、验证发行包或重跑实验。verified仅指公开来源核验。",
+      "limits": "10月15日论文补读，非本周新发布。几何F1/IoU在有效输出上计算，不能当全题成功率；两种SFT的数据覆盖不同，未独立复现。作者仓库固定版本仅Coming Soon，未核实现、权重或发行包。几何对齐后相似度不等于尺寸、可编辑性或制造可行性合格。 四基准为200/100/100/203题，其中两组人工挑难例；主要harness对照使用Opus4.7，学习实验为Qwen3.5-9B，不能混成同一结果。DeciCAD与代码SFT分别542/100、471/28训练/开发任务，不是等量监督；论文称最终200题测试不参与选择，本站无资产复核。45–88%只指模型输出token下降，不是端到端成本。全部实验使用FreeCAD；论文描述的其他后端、并发隔离和可编辑工程未实测，也无编辑成功率。",
+      "method": [
+        "把草图、拉伸、布尔、变换、装配等操作写成带类型动作，约定毫米、角度和坐标系；用稳定对象引用绑定当前FreeCAD文档，执行后检查结果，成功提交、失败回滚或标记结果未知。",
+        "每次返回受影响对象和明确错误类别，默认只给必要反馈；Agent可先分页列举相关对象，再读取精确参数、拓扑、约束及依赖，避免全量状态灌入上下文。",
+        "教师分别在代码接口和语义接口生成轨迹；按任务划分训练/开发集，将每步之前可见历史作为输入、下一动作作为目标，并保留失败后的修复决策，排除未来反馈。两路共用学生和优化配置，监督覆盖并非相同。",
+        "从SFT策略继续在线GRPO，先提高有效几何覆盖，再优化几何质量。每题8条轨迹；只有含非零几何奖励且组内奖励有足够差异的组进入更新，全失败组不能靠程序性分数获益。",
+        "分别报告有效几何比例和有效输出的形状分数，并记录动作/输入输出token。论文展示原生FreeCAD特征树可继续编辑；几何评分先做尺度归一、居中与ICP对齐，因此还需额外验证尺寸、约束和二次编辑。"
+      ],
+      "inspirations": [
+        "为Blender/CAD/剪辑工具定义带对象ID、坐标/时间单位、前置条件和后置检查的操作；超时后先读取真实状态，避免不确定是否成功时重复执行破坏工程。",
+        "构造训练样本时保存动作发生前的可见历史和失败后的修复，不把最终答案或未来验收反馈漏进输入；比较接口时同时报告可用任务数和训练目标数。",
+        "评测代码3D时把可运行、形状相似、绝对尺寸、约束保留、后续修改成功率分开；训练奖励优先要求真实几何进展，另设库外操作需求测试接口覆盖。"
+      ],
+      "reviewedAt": "2026-11-11T04:22:58.494850+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2610.21755v1",
+        "https://arxiv.org/html/2610.21755v1",
+        "https://github.com/PhysAGI/PhysCAD/blob/ea431b94ce784acf49e8f731d9ecf2cfda6fc712/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.21755",
+      "status": "pending",
+      "checkedAt": "2026-11-11T04:22:35.210467+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.13410v1",
+    "url": "https://arxiv.org/abs/2611.13410v1",
+    "id": "live-3561105d585a500d",
+    "title": "SteerDistill：先验证量化Agent的局部纠错，再把教师提示蒸馏掉",
+    "summary": "先让量化学生在自己的失败状态中改对，再把纠错时的提示蒸馏掉。SteerDistill用成功教师轨迹定位状态偏差，反复引导学生并检查执行结果；Qwen3-8B的W4A16五基准平均分为53.18，比量化基线QeRL高2.18分，距BF16参考0.36分。五项量纲混合，不能当统一任务成功率。",
+    "insight": "纠错样本的价值来自执行结果，而不只是教师写得更像正确答案。将原状态、修复动作、局部验收与最终成败分开保存，再让学生在去掉提示的条件下学习，可以检查它是否真的内化了纠错规律。",
+    "limits": "需成功教师参考、可回滚状态和可靠局部验证器；局部动作正确不保证最终成功或推理文本每步正确。数值为作者报告，本站未复现。五基准均分混合BFCL Overall、成功率与QA EM；W2A16的Search QA略低于BitDistiller。67%节省只针对同硬件低比特训练阶段的32对96 GPUh，包含纠错/验证但不含共同初始GRPO；4K输出token按各方法自身成功任务平均，非全任务或配对成本。初始post-RL检查点下载仍标TODO，未核论文对应运行清单；公开实现可读不等于可完整复现。",
+    "dateLabel": "2026-11-10 · arXiv v1",
+    "evidence": "已读全文方法与附录；固定作者代码静态核验，未运行或复现",
+    "originalTitle": "SteerDistill: Quantizing LLM Agents via Closed-Loop Teacher Steering",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-11T04:23:38.770880+00:00",
+    "originalDate": "2026-11-10",
+    "paperOriginalDate": "2026-11-10T00:45:58Z",
+    "paperUpdatedAt": "2026-11-10T00:45:58Z",
+    "updatedAt": "2026-11-10T00:45:58Z",
+    "firstSeenAt": "2026-11-11T04:00:01Z",
+    "lastSeenAt": "2026-11-11T04:00:01Z",
+    "tags": [
+      "Distillation",
+      "量化Agent",
+      "闭环纠错",
+      "局部验证"
+    ],
+    "authors": [
+      "Genming Cui",
+      "Xiangyu Li",
+      "Zixu Hao",
+      "Xin Ding",
+      "Yunxin Liu",
+      "Ting Cao"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.13410v1"
+      },
+      {
+        "label": "arXiv v1 · 方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.13410v1"
+      },
+      {
+        "label": "作者项目页 · 论文直接链接",
+        "url": "https://air-embodied-brain.github.io/SteerDistill/"
+      },
+      {
+        "label": "固定作者代码 · README及发布状态",
+        "url": "https://github.com/air-embodied-brain/SteerDistill/blob/0d41d93433e6c8789dcb5c6abe9c36988a3703e7/README.md"
+      },
+      {
+        "label": "固定实现 · KL路由与词元归一",
+        "url": "https://github.com/air-embodied-brain/SteerDistill/blob/0d41d93433e6c8789dcb5c6abe9c36988a3703e7/src/steerdistill/training/mytrainer.py"
+      },
+      {
+        "label": "固定实现 · 状态变化与读结果验证",
+        "url": "https://github.com/air-embodied-brain/SteerDistill/blob/0d41d93433e6c8789dcb5c6abe9c36988a3703e7/src/steerdistill/transition_verifier.py"
+      },
+      {
+        "label": "固定文档 · 数据分割与缺失检查点",
+        "url": "https://github.com/air-embodied-brain/SteerDistill/blob/0d41d93433e6c8789dcb5c6abe9c36988a3703e7/docs/benchmarks.md"
+      },
+      {
+        "label": "固定实现 · 选最新已完成检查点",
+        "url": "https://github.com/air-embodied-brain/SteerDistill/blob/0d41d93433e6c8789dcb5c6abe9c36988a3703e7/scripts/lib/resolve_online_checkpoint.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "先让量化学生在自己的失败状态中改对，再把纠错时的提示蒸馏掉。SteerDistill用成功教师轨迹定位状态偏差，反复引导学生并检查执行结果；Qwen3-8B的W4A16五基准平均分为53.18，比量化基线QeRL高2.18分，距BF16参考0.36分。五项量纲混合，不能当统一任务成功率。",
+      "motivation": "低比特量化能降低模型资源消耗，却可能让Agent忽略目录、权限、必填字段等条件，造成错误状态变化。普通离线蒸馏不一定覆盖学生实际失败处；让学生自行重试又可能一直没有正确样本。需要把可执行的局部纠错变成部署时无需提示的能力。",
+      "novelty": "作者主张：把闭环教师引导产生的局部可验证纠错，与纠正轮次/普通轮次的不同蒸馏目标结合，在量化Agent上恢复行为能力。本站判断：值得迁移的是“按状态差异定位—学生自己修正—执行验收—去提示学习”的证据链；同一动作文本或最终成功标签都不足以描述局部学习目标。论文消融支持这套组合，但不证明状态匹配是任意开放环境的充分正确性标准。",
+      "evidenceScope": "已读arXiv 2611.13410v1正文§3–4、附录A–E的算法、双KL目标、数据设置、效率口径、消融和限制，并只读作者项目与固定commit 0d41d93433e6c8789dcb5c6abe9c36988a3703e7的选定文档、KL/掩码、局部验证、原生环境、数据审计和检查点选择文件。首发按arXiv提交记录2026-11-10T00:45:58Z；HTML首页的2026-11-07不代替正式提交日。GitHub代码树和文本已读，未安装依赖、运行测试、模型/环境或训练。HF论文API404，名称搜索模型/数据为空，不据此断言任何地方都没有资产；README和benchmarks明确缺初始检查点链接。 表1三个W4A16模型相对最强量化基线均分提升2.18/1.71/1.67分，距各自BF16为0.36/0.73/0.82分。Search QA先对7个QA集EM等权平均，再作为五基准之一。32 GPUh处31.68%是中间检查点，主表tau2为31.79%，不能混用；QeRL96 GPUh为29.84%，32/96少66.7%。图3的误差带来自每检查点4次独立评估，不是4次独立训练。NeMo-RL QAD和QeRL由NVFP4/Hopper或Blackwell适配为A100组量化INT设置，结论不直接替代原生硬件/实现比较。BFCL局部四次重试9.6%→82.3%是所选偏差轮次Pass@4，非完整任务成功率。",
+      "limits": "需成功教师参考、可回滚状态和可靠局部验证器；局部动作正确不保证最终成功或推理文本每步正确。数值为作者报告，本站未复现。五基准均分混合BFCL Overall、成功率与QA EM；W2A16的Search QA略低于BitDistiller。67%节省只针对同硬件低比特训练阶段的32对96 GPUh，包含纠错/验证但不含共同初始GRPO；4K输出token按各方法自身成功任务平均，非全任务或配对成本。初始post-RL检查点下载仍标TODO，未核论文对应运行清单；公开实现可读不等于可完整复现。",
+      "method": [
+        "从同一任务专用BF16检查点建立冻结教师与量化学生，每轮冻结学生快照采轨迹。学生失败时寻找同任务、同初始状态的成功教师参考；按环境状态变化对齐，定位第一个行为偏差，动作字面不同但结果相同不必纠正。没有成功参考或本来成功的轨迹保留，继续接受普通蒸馏。",
+        "还原偏差前历史和环境，教师解释遗漏条件、适用范围、修正规则与验收目标，学生自行重新生成并执行；最多4次，失败反馈再用于改写提示。AgentWorldModel检查前后数据库状态、环境错误及读取结果；其他环境检查该动作执行后的状态相符或双方均完成任务，不能只看文本自评。",
+        "仅保留通过局部验收的改动，丢弃旧后缀与其纠错标签，再让学生无提示续跑；若仍失败便重新对齐。已验证的局部修复即使没带来整条任务成功也可保留，局部标签和终局成败分别记录。",
+        "在纠正轮次，无提示学生用前向KL匹配带提示的冻结学生快照；其他轮次用反向KL匹配BF16教师。损失覆盖保留的助手响应与工具调用词元，屏蔽用户、工具返回、提示及已丢弃后缀；全词表KL按有效响应词元归一，量化前向通过直通估计更新BF16主权重。",
+        "下一轮用更新后的量化快照重新采样。主实验每个模型训练4个任务检查点：BFCL与tau2共享工具模型，WebShop、ALFWorld、Search QA各自训练；不是一个统一学生跑完五域。推理移除蒸馏教师和纠错提示；tau2用户模拟器仍属于环境，不能把它混称部署教师。"
+      ],
+      "inspirations": [
+        "为代码、视频剪辑或3D Agent保留动作前工程快照、动作后可检查状态、教师参考与验收报告。先检查输出文件、时间线约束或几何关系，再赋予纠错标签；若只匹配一个参考，应另测合法替代方案的误拒率。这是迁移建议，本文未实验这些创作任务。",
+        "把局部改对但最终失败的轨迹也纳入训练候选，逐项记录哪一步已验证、哪一步仍失败；对旧后缀做失效处理，避免修复起点后继续学习已不成立的后续动作。",
+        "低比特Agent对照应报告完整准备成本、纠错教师成本、失败任务token和每成功任务总成本，并另做同一任务集合配对比较。将低比特阶段节省与从零训练节省分开，跨任务模型数量和初始检查点也应记账。"
+      ],
+      "reviewedAt": "2026-11-11T04:23:38.770880+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.13410v1",
+        "https://arxiv.org/html/2611.13410v1",
+        "https://air-embodied-brain.github.io/SteerDistill/",
+        "https://github.com/air-embodied-brain/SteerDistill/blob/0d41d93433e6c8789dcb5c6abe9c36988a3703e7/README.md",
+        "https://github.com/air-embodied-brain/SteerDistill/blob/0d41d93433e6c8789dcb5c6abe9c36988a3703e7/src/steerdistill/training/mytrainer.py",
+        "https://github.com/air-embodied-brain/SteerDistill/blob/0d41d93433e6c8789dcb5c6abe9c36988a3703e7/src/steerdistill/transition_verifier.py",
+        "https://github.com/air-embodied-brain/SteerDistill/blob/0d41d93433e6c8789dcb5c6abe9c36988a3703e7/docs/benchmarks.md",
+        "https://github.com/air-embodied-brain/SteerDistill/blob/0d41d93433e6c8789dcb5c6abe9c36988a3703e7/scripts/lib/resolve_online_checkpoint.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.13410",
+      "status": "pending",
+      "checkedAt": "2026-11-11T04:22:35.212080+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://openai.com/index/introducing-businesses-chatgpt/",
+    "url": "https://openai.com/index/introducing-businesses-chatgpt/",
+    "id": "update-openai-business-agents-20261110",
+    "title": "Businesses in ChatGPT：把可更新商家资料接入独立标注的商业Agent",
+    "summary": "OpenAI推出Business Hub及Business Agents测试版：商家可更新产品、价格和库存等资料；符合条件的美国电商及在线服务企业可配置Agent，用户主动进入独立标注的品牌对话。",
+    "insight": "商业Agent的研究重点包括资料时效、身份边界和用户授权；应分别测“回答是否准确”与“营销是否有效”，不能用曝光或点击代替答案质量。",
+    "limits": "这是测试版产品公告，不是新基础模型或自主结账能力。Agent当前限符合条件的美国企业；商家认领与Agent可用资格不同。未登录商家账号、测试配置或评测转化/安全性；政策要求不等于模型已在所有情境正确执行，认领也不保证推荐排名或销量。",
+    "organization": "OpenAI",
+    "dateLabel": "2026-11-10 · 官方产品/生态更新",
+    "evidence": "官方原文及相关文档已核验；未运行产品或模型",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-11T04:25:37.237233+00:00",
+    "firstSeenAt": "2026-11-11T04:28:13.117803+00:00",
+    "tags": [
+      "产品更新",
+      "Business Agent",
+      "知识更新",
+      "身份与授权"
+    ],
+    "topics": [],
+    "featured": false,
+    "sourceId": "openai",
+    "sources": [
+      {
+        "label": "官方发布公告",
+        "url": "https://openai.com/index/introducing-businesses-chatgpt/"
+      },
+      {
+        "label": "官方产品流程与资格FAQ",
+        "url": "https://openai.com/business/businesses-in-chatgpt/"
+      },
+      {
+        "label": "Business Agents身份、信息与行动政策",
+        "url": "https://openai.com/policies/business-agents-policy/"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "OpenAI推出Business Hub及Business Agents测试版：商家可更新产品、价格和库存等资料；符合条件的美国电商及在线服务企业可配置Agent，用户主动进入独立标注的品牌对话。",
+      "motivation": "商家信息可能陈旧，通用助手也不等于商家代表；商业对话需要明确知识来源、代表身份及可执行行动边界。",
+      "novelty": "官方主张商家能管理自身在ChatGPT中的信息并建立直接互动。本站判断：值得跟踪的是“可维护知识＋商业身份＋用户主动交接”的产品组合，未见训练方法、标准化成功率或独立效果评测。",
+      "evidenceScope": "已读取11/10官方公告、产品FAQ及Business Agents政策正文；日期取原页公布日，未获精确发布时间。未进入Business Hub、运行Agent或读取用户聊天。",
+      "limits": "这是测试版产品公告，不是新基础模型或自主结账能力。Agent当前限符合条件的美国企业；商家认领与Agent可用资格不同。未登录商家账号、测试配置或评测转化/安全性；政策要求不等于模型已在所有情境正确执行，认领也不保证推荐排名或销量。",
+      "method": [
+        "由有授权的商家认领并核验企业，通过Business Hub维护关键资料及产品feed；公告列出价格、库存等更新信息。",
+        "符合条件的企业配置产品与政策知识、对话指引，在预览中测试后发布；官方也提供Shopify商品目录接入流程。",
+        "消费者从商家资料页选择进入Business Agent；对话独立于原ChatGPT交流并清楚标识商业身份，赞助入口也需要标注。",
+        "公告称商家仅查看聚合发现指标、不会获得消费者完整对话；本次未实测隐私行为。商家仍需持续更新资料。官方政策要求采取联系、表单或购买等行动前获得相应授权；本次未实测这些约束。"
+      ],
+      "inspirations": [
+        "建立带版本的价格、库存和售后政策测试集，测更新延迟与过期答案率；曝光、点击等业务指标应与回答正确率分开报告。",
+        "将身份混淆、用户拒绝后继续劝诱、未经许可提交表单设为独立用例，记录授权前后状态与实际操作，不把政策文本当验收证据。"
+      ],
+      "reviewedAt": "2026-11-11T04:25:37.237233+00:00",
+      "sourceUrls": [
+        "https://openai.com/index/introducing-businesses-chatgpt/",
+        "https://openai.com/business/businesses-in-chatgpt/",
+        "https://openai.com/policies/business-agents-policy/"
+      ]
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/decision",
+    "url": "https://huggingface.co/blog/decision",
+    "id": "update-hf-decision-models-20261110",
+    "title": "Hugging Face Decision Models：把路由与验收统一为带选项概率的接口",
+    "summary": "Hugging Face在11/10介绍Decision Models生态整合：输入状态和有类型的问题，返回选项概率、选择或评分。Transformers实验性decision管线及System One接口可将这类判断接入Agent路由与验收流程。",
+    "insight": "可把反复生成文本再解析的局部判断变成结构化接口；但概率集中程度不是可靠性证明，仍要校准阈值、测误放行并记录每次输入与配置。",
+    "limits": "读取的是main文档与固定提交源码；DecisionPipeline/DecisionConfig标为实验性，不能保证已在任意稳定安装版本可用。每个prompt一次前向不等于整组问题只算一次；零输出token不等于零算力或费用。示例非系统准确率评测，选项概率及confidence所反映的集中程度也不自动校准。文中TRL集成指向仍开放的PR，不能算已发布支持。未下载权重、训练或实测延迟/质量。",
+    "organization": "Hugging Face",
+    "dateLabel": "2026-11-10 · 官方产品/生态更新",
+    "evidence": "官方原文及相关文档已核验；未运行产品或模型",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-11T04:25:37.237233+00:00",
+    "firstSeenAt": "2026-11-11T04:28:13.117803+00:00",
+    "tags": [
+      "生态更新",
+      "Decision Models",
+      "Agent路由",
+      "Verifier"
+    ],
+    "topics": [],
+    "featured": false,
+    "sourceId": "hf_blog",
+    "sources": [
+      {
+        "label": "HF官方生态介绍",
+        "url": "https://huggingface.co/blog/decision"
+      },
+      {
+        "label": "Transformers实验性DecisionPipeline及配置",
+        "url": "https://huggingface.co/docs/transformers/main/en/main_classes/pipelines#transformers.DecisionPipeline"
+      },
+      {
+        "label": "System One服务接口",
+        "url": "https://huggingface.co/docs/transformers/main/en/serve-cli/serving#v1systemone"
+      },
+      {
+        "label": "固定版本管线实现",
+        "url": "https://github.com/huggingface/transformers/blob/335dd96bddf68a9f8758ec9dd7b5cdcae8133c94/src/transformers/pipelines/decision.py"
+      },
+      {
+        "label": "llama.cpp既有支持说明（10/2）",
+        "url": "https://huggingface.co/blog/ggml-org/decision-models-in-llamacpp"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Hugging Face在11/10介绍Decision Models生态整合：输入状态和有类型的问题，返回选项概率、选择或评分。Transformers实验性decision管线及System One接口可将这类判断接入Agent路由与验收流程。",
+      "motivation": "Agent经常需要工具选择、状态判断与局部验收；自由文本输出增加解析工作，也难以统一保留备选项及不确定性。",
+      "novelty": "作者强调统一decision接口、配置和推理/训练路径。本站判断：本次价值是11/10的生态整合说明及可读实现，不是首次发明分类或今天才出现llama.cpp支持（相关官方文章为10/2）；共同协议不保证不同模型作出同样判断。",
+      "evidenceScope": "已读取11/10 HF原文、Transformers main的DecisionPipeline与服务文档、10/2 llama.cpp文章，并静态检查固定提交335dd96bddf68a9f8758ec9dd7b5cdcae8133c94的decision管线。仅核验示例模型公开元数据，未执行外部代码。",
+      "limits": "读取的是main文档与固定提交源码；DecisionPipeline/DecisionConfig标为实验性，不能保证已在任意稳定安装版本可用。每个prompt一次前向不等于整组问题只算一次；零输出token不等于零算力或费用。示例非系统准确率评测，选项概率及confidence所反映的集中程度也不自动校准。文中TRL集成指向仍开放的PR，不能算已发布支持。未下载权重、训练或实测延迟/质量。",
+      "method": [
+        "将可观察的任务状态和命名问题组成请求；choice列出候选项，score给出有序等级，noul表示真假判断，避免让任意自由文本承担接口协议。",
+        "DecisionPipeline读取决策配置与模板。专门的决策模型直接打分；兼容聊天模型可从候选标签的下一token logits取分，不必生成整段答案。",
+        "对候选分数归一化并按问题类型输出结果；score针对预定义等级而非任意连续质量真值。源码按prompt执行，多个问题是否共享prompt取决于模板。",
+        "用相同请求/响应结构通过Transformers服务端或已支持的llama.cpp接口部署；模型、模板、候选标签与温度应固定版本，并在目标数据上另做校准和验收。"
+      ],
+      "inspirations": [
+        "为路由或验收保留完整选项分布、候选定义和配置版本；用独立验证集按误放行代价设阈值，低确定性结果再交给更强模型或人工。",
+        "可在代码创作评测中试验局部视觉判断，但须与实际运行、渲染和确定性检查对照，同时报告误通过率、调用成本与延迟；这是研究建议，非该更新已证明的效果。"
+      ],
+      "reviewedAt": "2026-11-11T04:25:37.237233+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/blog/decision",
+        "https://huggingface.co/docs/transformers/main/en/main_classes/pipelines#transformers.DecisionPipeline",
+        "https://huggingface.co/docs/transformers/main/en/serve-cli/serving#v1systemone",
+        "https://github.com/huggingface/transformers/blob/335dd96bddf68a9f8758ec9dd7b5cdcae8133c94/src/transformers/pipelines/decision.py",
+        "https://huggingface.co/blog/ggml-org/decision-models-in-llamacpp"
+      ]
+    }
   }
 ]
