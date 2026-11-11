@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "status": "partial",
-  "total": 827,
+  "total": 841,
   "intervalHours": 6,
   "timezone": "Asia/Shanghai",
   "sources": [
@@ -11,9 +11,9 @@
       "sourceType": "arxiv",
       "url": "https://export.arxiv.org/api/query",
       "status": "ok",
-      "count": 68,
-      "checkedAt": "2026-11-11T04:00:01Z",
-      "lastSuccessAt": "2026-11-11T04:00:01Z"
+      "count": 70,
+      "checkedAt": "2026-11-11T10:00:01Z",
+      "lastSuccessAt": "2026-11-11T10:00:01Z"
     },
     {
       "id": "hf_papers",
@@ -21,9 +21,9 @@
       "sourceType": "huggingface",
       "url": "https://huggingface.co/papers",
       "status": "ok",
-      "count": 47,
-      "checkedAt": "2026-11-11T04:00:01Z",
-      "lastSuccessAt": "2026-11-11T04:00:01Z"
+      "count": 50,
+      "checkedAt": "2026-11-11T10:00:01Z",
+      "lastSuccessAt": "2026-11-11T10:00:01Z"
     },
     {
       "id": "hf_blog",
@@ -31,9 +31,9 @@
       "sourceType": "huggingface",
       "url": "https://huggingface.co/blog",
       "status": "ok",
-      "count": 8,
-      "checkedAt": "2026-11-11T04:00:01Z",
-      "lastSuccessAt": "2026-11-11T04:00:01Z"
+      "count": 9,
+      "checkedAt": "2026-11-11T10:00:01Z",
+      "lastSuccessAt": "2026-11-11T10:00:01Z"
     },
     {
       "id": "openai",
@@ -42,17 +42,17 @@
       "url": "https://openai.com/news/",
       "status": "ok",
       "count": 31,
-      "checkedAt": "2026-11-11T04:00:01Z",
-      "lastSuccessAt": "2026-11-11T04:00:01Z"
+      "checkedAt": "2026-11-11T10:00:01Z",
+      "lastSuccessAt": "2026-11-11T10:00:01Z"
     },
     {
       "id": "deepmind",
       "label": "Google DeepMind · 官方更新",
       "sourceType": "official",
       "url": "https://deepmind.google/blog/",
-      "status": "ok",
-      "count": 27,
-      "checkedAt": "2026-11-11T04:00:01Z",
+      "status": "error",
+      "count": 0,
+      "checkedAt": "2026-11-11T10:00:01Z",
       "lastSuccessAt": "2026-11-11T04:00:01Z"
     },
     {
@@ -62,59 +62,59 @@
       "url": "https://x.com/",
       "status": "unconfigured",
       "count": 0,
-      "checkedAt": "2026-11-11T04:00:01Z"
+      "checkedAt": "2026-11-11T10:00:01Z"
     },
     {
       "id": "arxiv_video_editing",
       "label": "arXiv · 视频剪辑",
       "sourceType": "arxiv",
       "url": "https://export.arxiv.org/api/query",
-      "status": "error",
-      "count": 0,
-      "checkedAt": "2026-11-11T04:00:01Z",
-      "lastSuccessAt": "2026-11-10T22:00:01Z"
+      "status": "ok",
+      "count": 15,
+      "checkedAt": "2026-11-11T10:00:01Z",
+      "lastSuccessAt": "2026-11-11T10:00:01Z"
     },
     {
       "id": "arxiv_code2video",
       "label": "arXiv · Code2Video",
       "sourceType": "arxiv",
       "url": "https://export.arxiv.org/api/query",
-      "status": "error",
-      "count": 0,
-      "checkedAt": "2026-11-11T04:00:01Z",
-      "lastSuccessAt": "2026-11-10T22:00:01Z"
+      "status": "ok",
+      "count": 5,
+      "checkedAt": "2026-11-11T10:00:01Z",
+      "lastSuccessAt": "2026-11-11T10:00:01Z"
     },
     {
       "id": "arxiv_code2motion",
       "label": "arXiv · Code2Motion",
       "sourceType": "arxiv",
       "url": "https://export.arxiv.org/api/query",
-      "status": "error",
-      "count": 0,
-      "checkedAt": "2026-11-11T04:00:01Z",
-      "lastSuccessAt": "2026-11-10T22:00:01Z"
+      "status": "ok",
+      "count": 5,
+      "checkedAt": "2026-11-11T10:00:01Z",
+      "lastSuccessAt": "2026-11-11T10:00:01Z"
     },
     {
       "id": "arxiv_code2_3d",
       "label": "arXiv · Code2 3D",
       "sourceType": "arxiv",
       "url": "https://export.arxiv.org/api/query",
-      "status": "error",
-      "count": 0,
-      "checkedAt": "2026-11-11T04:00:01Z",
-      "lastSuccessAt": "2026-11-10T22:00:01Z"
+      "status": "ok",
+      "count": 19,
+      "checkedAt": "2026-11-11T10:00:01Z",
+      "lastSuccessAt": "2026-11-11T10:00:01Z"
     }
   ],
-  "successCount": 5,
-  "errorCount": 4,
+  "successCount": 8,
+  "errorCount": 1,
   "topicCounts": {
     "code2-3d": 13,
     "code2motion": 6,
     "code2video": 5,
     "video-editing": 13
   },
-  "lastRunAt": "2026-11-11T04:00:01Z",
-  "completedAt": "2026-11-11T04:02:24Z",
-  "updatedAt": "2026-11-11T04:02:24Z",
-  "lastSuccessAt": "2026-11-11T04:02:24Z"
+  "lastRunAt": "2026-11-11T10:00:01Z",
+  "completedAt": "2026-11-11T10:00:24Z",
+  "updatedAt": "2026-11-11T10:00:24Z",
+  "lastSuccessAt": "2026-11-11T10:00:24Z"
 }
