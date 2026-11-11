@@ -12722,5 +12722,416 @@
         "https://huggingface.co/qvac/BotPsy-0.8B-GGUFs/tree/17bb36aa29c58fcde8e321aaaad3f2f7372aa655"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.12083v1",
+    "url": "https://arxiv.org/abs/2611.12083v1",
+    "id": "live-a2a84158d9102d4f",
+    "title": "SWE-Time：让Agent沿仓库历史找原因，并在修改前预测CI影响",
+    "summary": "SWE-Time把仓库理解拆成“哪次提交引入回归”和“修改前预测会触发哪些CI工作流”。1661题、65仓库中，Claude Code组最高两任务等权均分61.9；它测的是历史定位与特定CI路由，不是通用修复成功率。",
+    "insight": "做历史评测要同时冻结输入可见时间与验收规则版本，再审“同一需求的合理替代实现是否得到不同答案”；有确定性评分器，不等于题目没有歧义。",
+    "limits": "作者报告，未独立复现。Forward固定非草稿PR synchronize事件及历史分支，预测工作流触发集合，不执行修复或真实CI；规则层通过不等于CI成功。人工筛选只排除已发现的合理实现歧义，不能证明所有实现都同解。Backward相邻版本探针确认局部好坏边界，全历史first-bad仍依赖开发者归因。公开仓库可能已进入预训练；冻结视图与断网只能限制运行时泄漏。模型排名仅在同一harness内解释，两框架结果不能直接当纯模型优劣。未定位可归属作者的公开任务包、路由实现或运行日志，不据聚合页的“代码发布”标记宣称开源。",
+    "dateLabel": "2026-11-09 · arXiv v1首发",
+    "evidence": "原论文方法、审计与实验附录已读；公开资产未核到，未复现",
+    "originalTitle": "SWE-Time: Benchmarking Temporal Repository Understanding",
+    "date": "2026-11-09",
+    "checkedAt": "2026-11-11T16:21:17.639717+00:00",
+    "originalDate": "2026-11-09",
+    "paperOriginalDate": "2026-11-09T09:01:27Z",
+    "paperUpdatedAt": "2026-11-09T09:01:27Z",
+    "updatedAt": "2026-11-09T09:01:27Z",
+    "firstSeenAt": "2026-11-10T10:00:01Z",
+    "lastSeenAt": "2026-11-10T22:00:01Z",
+    "tags": [
+      "Evaluation",
+      "仓库演化",
+      "时间隔离"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 · 论文与首发时间",
+        "url": "https://arxiv.org/abs/2611.12083v1"
+      },
+      {
+        "label": "方法、审计与运行边界全文",
+        "url": "https://arxiv.org/html/2611.12083v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "SWE-Time把仓库理解拆成“哪次提交引入回归”和“修改前预测会触发哪些CI工作流”。1661题、65仓库中，Claude Code组最高两任务等权均分61.9；它测的是历史定位与特定CI路由，不是通用修复成功率。",
+      "motivation": "静态仓库问答难检验Agent能否把当前故障追溯到过去改动，或在尚未写补丁时推断影响范围。直接用真实issue又可能有多种正确实现，需要把历史证据、可见信息和唯一可评分目标分开构造。",
+      "novelty": "作者主张把仓库时序演化定义为独立理解能力，并以真实开发事件和可验证历史目标构造两方向评测。本站判断：值得借鉴的是“评分规则确定”与“目标无歧义”分开验收，以及成对历史状态测试；现有两任务只覆盖局部软件演化能力，不能据此包办代码理解。",
+      "evidenceScope": "已读arXiv v1正文§3–5、表2–4、附录A.1–A.3、B.1–B.2/B.4–B.5、C.1–C.5/C.7与D；首发2026-11-09T09:01:27Z。Backward为631题/49仓库，Forward为1030题/16仓库；13个Claude Code配置和2个Codex配置，主表61.9是两任务均分。300题诊断中历史代码移除使Backward 62.0→28.0；Forward两状态同时正确48.7%，不变错误12.8%仅以两边可评分对为分母，不可评分对6.0%。Forward独立平衡审计100题发现97无已知分歧、1分歧、2不确定，三题替换；99.0%只指98个有结论样本，非全基准正确率。仓库宏平均使Opus与Qwen顺序反转；聚类bootstrap反映仓库组成不确定性，不是多次模型采样稳定性。未下载任务包或运行作者代码，verified仅指原始来源核验。",
+      "limits": "作者报告，未独立复现。Forward固定非草稿PR synchronize事件及历史分支，预测工作流触发集合，不执行修复或真实CI；规则层通过不等于CI成功。人工筛选只排除已发现的合理实现歧义，不能证明所有实现都同解。Backward相邻版本探针确认局部好坏边界，全历史first-bad仍依赖开发者归因。公开仓库可能已进入预训练；冻结视图与断网只能限制运行时泄漏。模型排名仅在同一harness内解释，两框架结果不能直接当纯模型优劣。未定位可归属作者的公开任务包、路由实现或运行日志，不据聚合页的“代码发布”标记宣称开源。",
+      "method": [
+        "从真实回归报告中找开发者已完成的first-bad/bisect归因，解析为非merge完整SHA；核对可见历史与父提交，再用症状专属探针反复检验父版本正常、目标版本出错，排除无关构建失败、矛盾归因和不稳定样例。",
+        "从issue及合并修复PR恢复修改前树与真实变更路径。在固定PR事件和分支下，以当时的workflow定义计算触发集合；审查需求是否足够明确、合理替代改法是否改变集合，有分歧或不确定就不纳入。",
+        "为Backward只开放截止时点内历史，删除报告中的答案SHA与归因链接；Forward只给修改前文件树、issue和事件上下文，不给.git、修复补丁或未来工作流。打包检查和网络限制隔离后来的证据。",
+        "在逐题容器内运行Agent，两个harness各限3600秒且不自动重试。Backward完整SHA、Forward完整workflow路径集合必须精确匹配；超时、缺失或不可解析输出计0，先按题汇总各任务，再对两任务等权平均。",
+        "在各300题固定诊断子集上移除历史代码、删除issue或给出真实修改范围；另保持需求和变更范围不变，换成会改变路由答案的更早仓库状态，同时考察两个状态都答对和错误地保持同一预测。"
+      ],
+      "inspirations": [
+        "为代码或Blender/视频工程Agent保存修改前状态、请求、允许查看的历史及隐藏结果，分别测试“找出哪次变更破坏了约束”和“预测新请求影响哪些组件”。这是迁移建议，本文未测试创作工程。",
+        "评测构建时请独立人员提出合理替代实现，再运行同一验收器；若不同实现产生不同标准答案，改用多答案验收或弃题。不要用oracle答案能得满分，替代对答案真实性和歧义的审查。",
+        "让同一需求面对两版接口、依赖或场景状态，统计两版同时正确率；把不可解析输出计入失败，并另报只在可评分样本中的不变预测率，避免混用分母。"
+      ],
+      "reviewedAt": "2026-11-11T16:21:17.639717+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.12083v1",
+        "https://arxiv.org/html/2611.12083v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.12083",
+      "status": "pending",
+      "checkedAt": "2026-11-11T16:25:14.401426+00:00"
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://huggingface.co/papers/2610.40754",
+    "url": "https://huggingface.co/papers/2610.40754",
+    "id": "live-1fb1a205cae6dca3",
+    "title": "代表作补读｜DyCraft：先验收3D分镜，再让代码连接长时动画",
+    "summary": "DyCraft让编码Agent先做可检查的3D分镜，再连接动作并逐帧验收，交付可编辑Blender工程与影片。作者在24项任务中报告穿透率13.0%、悬浮率2.7%，较裸Agent更低；这些是带豁免规则的几何指标，不等于完整物理正确或任务成功。论文10月29日首发，本轮补读。",
+    "insight": "把长动画拆成“状态是否成立”和“状态之间怎样移动”两层，比只让模型反复看成片更便于定位问题。研究价值还在于明确哪些判据来自真实几何、哪些由Agent声明、哪些被豁免；可编辑工程、影片观感和物理约束应该分别验收。",
+    "limits": "未独立运行或复现。仅24条自建长动画任务、三类各8条，全部方法使用同一GPT-6-Astra，但工具、角色库、提示与运行预算并不等价；当前仓库也明确与论文运行版本不同。人工偏好72.3%不是任务成功率。公开评分器有初始重叠、网格种类与支撑来源等规则；低分不保证无穿透、受力正确或帧间不穿越。",
+    "organization": "Stanford University / University of Cambridge",
+    "dateLabel": "2026-10-29 · arXiv v1 · 代表作补读",
+    "evidence": "已读原文方法/实验/附录与固定公开文档；未执行或复现",
+    "originalTitle": "DyCraft: An Agentic System for Long-Horizon 4D Scene Generation",
+    "date": "2026-10-29",
+    "checkedAt": "2026-11-11T16:22:51.369Z",
+    "originalDate": "2026-10-29",
+    "paperOriginalDate": "2026-10-29T16:42:04Z",
+    "paperUpdatedAt": "2026-10-29T16:42:04Z",
+    "updatedAt": "2026-10-29T16:42:04Z",
+    "firstSeenAt": "2026-11-11T16:00:01Z",
+    "lastSeenAt": "2026-11-11T16:00:01Z",
+    "dailySubmittedAt": "2026-11-11T00:00:00.000Z",
+    "tags": [
+      "Agent systems",
+      "3D分镜",
+      "Blender代码",
+      "物理评测"
+    ],
+    "authors": [
+      "Jeff Tan",
+      "Hang Dai",
+      "Zeqian Long",
+      "Yanzhe Lyu",
+      "R. Kenny Jones",
+      "Shangzhe Wu",
+      "Chen Geng",
+      "Jiajun Wu"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2motion"
+    ],
+    "featured": true,
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2610.40754"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2610.40754"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://dy-craft.github.io/"
+      },
+      {
+        "label": "作者代码仓库",
+        "url": "https://github.com/jefftan969/dycraft"
+      },
+      {
+        "label": "arXiv v1提交记录",
+        "url": "https://arxiv.org/abs/2610.40754v1"
+      },
+      {
+        "label": "arXiv v1全文",
+        "url": "https://arxiv.org/html/2610.40754v1"
+      },
+      {
+        "label": "固定版本README",
+        "url": "https://github.com/jefftan969/dycraft/blob/1960d463941428af34dde405480781b77641c233/README.md"
+      },
+      {
+        "label": "固定版本架构与验收边界",
+        "url": "https://github.com/jefftan969/dycraft/blob/1960d463941428af34dde405480781b77641c233/docs/architecture.md"
+      },
+      {
+        "label": "固定版本论文运行差异与成本",
+        "url": "https://github.com/jefftan969/dycraft/blob/1960d463941428af34dde405480781b77641c233/docs/benchmark.md"
+      },
+      {
+        "label": "固定版本两组资源与预算",
+        "url": "https://github.com/jefftan969/dycraft/blob/1960d463941428af34dde405480781b77641c233/benchmark/README.md"
+      },
+      {
+        "label": "固定版本评分规则及复现限制",
+        "url": "https://github.com/jefftan969/dycraft/blob/1960d463941428af34dde405480781b77641c233/benchmark/score/README.md"
+      },
+      {
+        "label": "固定版本24部影片数据卡",
+        "url": "https://huggingface.co/datasets/jefftan969/dycraft-films/blob/f04f961e32497c79311f1d7e7e11403a8433149a/README.md"
+      },
+      {
+        "label": "固定版本25角色资产卡",
+        "url": "https://huggingface.co/datasets/jefftan969/dycraft-assets/blob/8e460c8f0a7426b37f524a91cb255582c778aa93/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "DyCraft让编码Agent先做可检查的3D分镜，再连接动作并逐帧验收，交付可编辑Blender工程与影片。作者在24项任务中报告穿透率13.0%、悬浮率2.7%，较裸Agent更低；这些是带豁免规则的几何指标，不等于完整物理正确或任务成功。论文10月29日首发，本轮补读。",
+      "motivation": "编码Agent已能做静态3D，但一次写完整动画容易把布局、姿态、接触和时序错误缠在一起，抽看少量画面也可能漏掉中间帧。论文借用动画师的关键姿态工作方式：先确认对象在关键时刻站在哪里、由谁支撑，再解决两帧之间的动作。",
+      "novelty": "作者主张：将3D分镜、CAD场景、局部动作工具与全帧验证接入保留自主性的编码Agent，扩展到分钟级多镜头4D创作。本站判断：最值得迁移的是可检查的中间状态和分层验收，而非“用了多Agent就有效”；消融主要展示去掉组件后的视觉案例，不能据此量化每个组件的平均独立收益。当前公开评分规则还揭示，论文中的物理合理性概述不足以替代可复核的指标定义。",
+      "evidenceScope": "已读arXiv v1方法§3、实验§4、附录A角色/运动来源、B人工评审、C的24任务与D裸Agent指导；首发核为2026-10-29T16:42:04Z。读Git固定提交1960d463941428af34dde405480781b77641c233的README、架构、benchmark与scorer文档；HF影片/角色库API匿名200且private=false/gated=false，分别锁定f04f961e32497c79311f1d7e7e11403a8433149a、8e460c8f0a7426b37f524a91cb255582c778aa93。人工研究109人，报告记录1538条三项二选一判断，并说明剔除任一片播放不足1秒的pair；未明确1538是剔除前还是剔除后；72.3%对裸Agent、89.7%对VIGA是三项判断汇总，非另一次总体任务成功率。影片库列24套.blend/计划/视频文件，角色卡为25角色；不把论文106976条检索库记录视为全部公开。仅读文档和文件清单，未下载大体积工程/影片、未逐行实现审计、未执行外部代码、未复现；verified仅指来源核验。",
+      "limits": "未独立运行或复现。仅24条自建长动画任务、三类各8条，全部方法使用同一GPT-6-Astra，但工具、角色库、提示与运行预算并不等价；当前仓库也明确与论文运行版本不同。人工偏好72.3%不是任务成功率。公开评分器有初始重叠、网格种类与支撑来源等规则；低分不保证无穿透、受力正确或帧间不穿越。 公开scorer明确穿透采用1–5mm自适应阈值、完整包含另判、初始重叠可豁免，重网格化和部分液体/效果不测；悬浮主指标还以所有静止物为支撑源，另有严格接地指标。只检查输出帧，单块变形网格自碰撞与帧间穿越仍可能漏检。仓库称在原始48部DyCraft/裸Agent影片可复现表2，但本次未验证；公开B06是24fps重定时版，论文8fps源运动未发布，VIGA影片不在该release。当前代码/角色/预算/检查规则与论文运行不同，不能一键宣称复现。作者报论文影片每分钟成片的中位Agent时间为主Agent11小时、含助手15小时，不能当实时生成；未报告完整货币成本、重复种子或等预算因果比较。代码Apache-2.0，影片/角色按各自许可；B11/B13/B15含非商业素材。",
+      "method": [
+        "先分两轮扩写场景与运动说明，补足空间关系、动作原因和交接状态；Agent据此安排对象、镜头与关键状态。build123d的B-rep CAD代码提供实体、关节、命名坐标和约束，也可引入带骨骼的角色；并非所有角色都由代码从零建模。",
+        "先建静态场景，再为片段写3D关键姿态。用影片相机渲染分镜并检查接触、布局与关节，相关状态通过检查和视觉审阅后才连接连续动作，减少在整段动画完成后才发现姿态不可达的返工。",
+        "在已验收状态间编写Blender动作，使用逆运动学、步态/抓握指导和原生刚体、液体等仿真；可把对象、场景或局部动作交给子Agent，主Agent负责合并。任意视角渲染与时序联系表供其自行审片。",
+        "编译并检查逐输出帧的几何、关节和已声明事件，用错误部位与深度等诊断返修，再重新渲染。公开架构区分必过检查与仅提示的解剖关节、连续性、支撑裕量和滑移检查；文字计划不会自动变成断言，不能把所有目标视为已机器验收。",
+        "交付原生.blend、影片与计划/证据；允许明确标记带例外交付。论文用24条任务作人工二选一评审，并在每部影片上统计穿透帧比例和不被支撑的动态身体—帧比例，再对24部影片等权平均；这与训练时/创作时检查器并非同一验收承诺。"
+      ],
+      "inspirations": [
+        "做代码视频或3D交互任务时，把关键状态写成可复查的接触、距离、持有者和相机可见性；分别保存静态状态检查与过渡动画检查，让返修只重做受影响片段。",
+        "把验收拆为代码执行、原生工程可编辑、逐帧约束、整段视觉叙事四层。额外测未声明事件、角色自碰撞与帧间穿越，防止只在生成器自己声明的断言上成功。",
+        "设计对照时固定角色资产、影片长度、总Agent小时及失败计分，分别报告无例外交付率与带例外交付率；复现时还要锁定评分器阈值、静态支撑豁免和影片帧率，避免把指标变化误当生成能力提升。"
+      ],
+      "reviewedAt": "2026-11-11T16:22:51.369Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2610.40754v1",
+        "https://arxiv.org/html/2610.40754v1",
+        "https://dy-craft.github.io/",
+        "https://github.com/jefftan969/dycraft/blob/1960d463941428af34dde405480781b77641c233/README.md",
+        "https://github.com/jefftan969/dycraft/blob/1960d463941428af34dde405480781b77641c233/docs/architecture.md",
+        "https://github.com/jefftan969/dycraft/blob/1960d463941428af34dde405480781b77641c233/docs/benchmark.md",
+        "https://github.com/jefftan969/dycraft/blob/1960d463941428af34dde405480781b77641c233/benchmark/README.md",
+        "https://github.com/jefftan969/dycraft/blob/1960d463941428af34dde405480781b77641c233/benchmark/score/README.md",
+        "https://huggingface.co/datasets/jefftan969/dycraft-films/blob/f04f961e32497c79311f1d7e7e11403a8433149a/README.md",
+        "https://huggingface.co/datasets/jefftan969/dycraft-assets/blob/8e460c8f0a7426b37f524a91cb255582c778aa93/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.40754",
+      "status": "pending",
+      "checkedAt": "2026-11-11T16:25:14.401426+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.10015v1",
+    "url": "https://arxiv.org/abs/2611.10015v1",
+    "id": "live-6d2c8dbba70d705f",
+    "title": "Micius-Flash：让四类工程专家指导学生自己的轨迹，蒸馏半导体Agent能力",
+    "summary": "Micius-Flash把半导体知识、代码、多模态和工具使用四类专家能力蒸馏到27B模型：学生自己生成轨迹，再由对应领域教师逐token指导。作者表中12项硬件代码得分的等权平均为64.2，对照Qwen3.8-27B为49.2；缺消融，不能把15.0个百分点提升单独归因于多教师蒸馏。论文11月4日首发，11月11日进入HF日榜。",
+    "insight": "值得借鉴的是“可追溯知识节点—合成任务—实际执行验证—学生在线轨迹”的连接，而非新增一种奖励算法。把教师专长按任务路由给学生，也应分别检验领域提升、跨领域遗忘和工具执行率；只有最终模型对照，尚不能证明每个环节的独立收益。",
+    "limits": "数值为作者报告，未复现。12项平均不等于6,798道题的整体通过率；自建Semiconductor Agent与PCB Agent的任务数、评分分母及完整划分未披露。缺MOPD独立消融、完整训练配方、污染核验与置信区间。论文称开源，但实时官网仍称权重即将发布、官方HF模型列表为空；公开GitHub是发布页，不是训练实现。",
+    "organization": "知满科技 / Micius Team",
+    "dateLabel": "2026-11-04 · arXiv v1；11-11 HF收录",
+    "evidence": "已读原文完整方法及评测；核官方发布状态；未核权重、未复现",
+    "originalTitle": "Micius-Flash: Lightweight Agentic Intelligence for Engineering",
+    "date": "2026-11-04",
+    "checkedAt": "2026-11-11T16:23:50.891682+00:00",
+    "originalDate": "2026-11-04",
+    "paperOriginalDate": "2026-11-04T17:53:55Z",
+    "paperUpdatedAt": "2026-11-04T17:53:55Z",
+    "updatedAt": "2026-11-04T17:53:55Z",
+    "firstSeenAt": "2026-11-11T16:00:01Z",
+    "lastSeenAt": "2026-11-11T16:00:01Z",
+    "dailySubmittedAt": "2026-11-11T00:00:00.000Z",
+    "tags": [
+      "Distillation",
+      "多教师蒸馏",
+      "工程Agent",
+      "执行验证"
+    ],
+    "authors": [
+      "Hongcheng Gao",
+      "Weiheng Li",
+      "Yipeng Wei",
+      "Yu Lei",
+      "Shuo Sun",
+      "Yi Li",
+      "Yajiao Wang",
+      "Jie Luo",
+      "Jianwei Wen",
+      "Xinyi Zhou",
+      "Hongda Li",
+      "Yibing Zhang",
+      "Henghui Sun",
+      "Yufan Zhou",
+      "Tianfang Hao",
+      "Naihao Xue",
+      "Hailong Qu",
+      "Jingjing Zhou",
+      "Peng Xu",
+      "Yongzheng Wei",
+      "Yichen Zhu",
+      "Ziying Wang",
+      "Yibo Wang",
+      "Jianshu Zeng",
+      "Yuhang Lei",
+      "Zeqiang Wang"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.10015"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.10015"
+      },
+      {
+        "label": "Project",
+        "url": "https://zhiman.cn/models/micius"
+      },
+      {
+        "label": "arXiv v1 · 提交记录",
+        "url": "https://arxiv.org/abs/2611.10015v1"
+      },
+      {
+        "label": "arXiv全文 · 方法与表1",
+        "url": "https://arxiv.org/html/2611.10015v1"
+      },
+      {
+        "label": "官方发布页README · 固定版本",
+        "url": "https://github.com/Zhiman-BJ/micius-flash-preview/blob/cb6d4e7dfc692ad103b0c40b753fadb3f075d767/README.md"
+      },
+      {
+        "label": "官方HF机构 · 公开资产状态",
+        "url": "https://huggingface.co/zhiman-ai"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Micius-Flash把半导体知识、代码、多模态和工具使用四类专家能力蒸馏到27B模型：学生自己生成轨迹，再由对应领域教师逐token指导。作者表中12项硬件代码得分的等权平均为64.2，对照Qwen3.8-27B为49.2；缺消融，不能把15.0个百分点提升单独归因于多教师蒸馏。论文11月4日首发，11月11日进入HF日榜。",
+      "motivation": "工程Agent要同时理解专业知识、读图、写代码和调用EDA等工具，单一通用训练集难覆盖这些能力；多个专家又难直接变成一个可部署模型。论文先按知识结构定位数据缺口、以编译和仿真筛训练样本，再让专长不同的教师在学生实际访问的上下文上提供监督。",
+      "novelty": "作者主张：将知识树驱动的数据生产、执行验证、四专家在线蒸馏和工程工具工作台组合为统一27B工程模型。本站判断：主要价值是领域数据与工具环境的系统化整合；多教师on-policy蒸馏引用已有工作，本文未给出SFT-only、单教师、不同KL或移除执行筛选的独立消融，不能声称提出全新蒸馏算法或证明增益由某一模块导致。",
+      "evidenceScope": "已读arXiv v1全文§2–6、公式1与表1，核首发记录2026-11-04T17:53:55Z，HF收录为2026-11-11，未发现新修订。方法来自论文，不以营销页替代；实时官网四教师与论文一致，固定GitHub发布页README仍写七教师，保留差异且按论文解读。表1为25项评测、总计约15K记录；本站重算其中12项硬件代码得分等权平均64.2083，对照49.1750。官网另称这12项含6,798题，但未给各项分母与统一加权公式，不能将宏平均写成总体题目成功率。自建Agent评测的任务总数、重试次数与评分细则未披露。已读官方HF机构页和无凭据models API（0条），以及固定commit cb6d4e7dfc692ad103b0c40b753fadb3f075d767的发布页README；未核到权重或训练实现，没有运行外部代码或模型。verified仅表示来源核验。",
+      "limits": "数值为作者报告，未复现。12项平均不等于6,798道题的整体通过率；自建Semiconductor Agent与PCB Agent的任务数、评分分母及完整划分未披露。缺MOPD独立消融、完整训练配方、污染核验与置信区间。论文称开源，但实时官网仍称权重即将发布、官方HF模型列表为空；公开GitHub是发布页，不是训练实现。 表1Semiconductor Agent为62.41对45.22（+17.19个百分点），仍低于GPT-5.6 Sol的87.25；这不是标准化端到端工程交付率。官网21万+仅称候选问答，不能当清洗后训练量；论文未给完整训练量、混合权重和超参数。案例存在CAD插件、3D软件与Godot项目，但不据少量案例添加代码创作能力排名，也不把PCB三维渲染当code2-3d基准。48GB/24GB部署及成本优势仅为官网说法，本轮没有权重可测，未采用为性能结论。",
+      "method": [
+        "从权威标准与资料构建半导体知识树，Agent检索和抽取概念，去重并补跨分支依赖；合成样本保留知识节点与来源映射。小规模SFT与独立评测将失败映回节点，指导下一轮扩展或纠错；报告未公开足以审计的训练/最终评测隔离清单。",
+        "分别合成知识问答、RTL/测试台代码与电路图等多模态样本；问答要求多个强模型与来源一致，代码只保留编译和仿真通过者，图像题剔除仅看文本也能作答的样本。另以500多个经专家审阅的工作场景搭交互环境，生成任务依赖图，执行轨迹并核验结果。",
+        "在基础模型上分别SFT出知识推理、代码、多模态、Agent四个教师；学生也先做SFT热身。教师数量按论文§3及实时官网记四个；旧发布页README的七个没有解释，不能拼接成另一套已确认配方。",
+        "学生在线生成回答或工具轨迹，每条只交给对应任务类别的教师。教师分布保留top-32 token并把其余概率合成一个尾部类别，学生在同一token集合上取概率；用这33类粗粒度分布的forward KL监督，保留全词表归一化，而非把top-32重新归一化。每类按有效token平均再加权，随学生更新重新采样。",
+        "通过Micius Harness连接专业工具：按领域和阶段确定工具范围、将工程文件与内容哈希及运行记录绑定，统一处理本地/远程执行和不确定结果。论文以25项评测和工程案例观察最终系统；展示出可视化或导出文件，不等于完成独立工程验收。"
+      ],
+      "inspirations": [
+        "可为代码动画或3D创作建立“对象/约束/操作—来源—失败类型”的知识图谱，按节点定向补生成与修复任务；将能运行、几何正确、视觉质量分开打分。这是迁移建议，本文硬件平均分不能证明创作能力。",
+        "蒸馏多个专项教师时保留任务路由与学生实际轨迹，先做同预算SFT、单教师、多教师三组对照；按任务报告提升和遗忘，并单独测执行成功，避免把更好数据或更大采样预算当成蒸馏机制收益。",
+        "复用“输出文件哈希—调用身份—检查报告”的证据链：看得到工程文件不等于通过检查，超时也不等于失败。把未确认执行保持未知并查原调用，减少长链工具任务的重复执行；本文未证明这些控制覆盖所有故障。"
+      ],
+      "reviewedAt": "2026-11-11T16:23:50.891682+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.10015v1",
+        "https://arxiv.org/html/2611.10015v1",
+        "https://huggingface.co/papers/2611.10015",
+        "https://zhiman.cn/models/micius",
+        "https://github.com/Zhiman-BJ/micius-flash-preview/blob/cb6d4e7dfc692ad103b0c40b753fadb3f075d767/README.md",
+        "https://huggingface.co/zhiman-ai"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.10015",
+      "status": "pending",
+      "checkedAt": "2026-11-11T16:25:14.401426+00:00"
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/token-pooling",
+    "url": "https://huggingface.co/blog/token-pooling",
+    "id": "update-hf-token-pooling-20261111",
+    "title": "Token Pooling训练：让检索模型学会在更少文档向量下保留证据",
+    "summary": "Hugging Face新教程把原始检索损失与压缩后检索损失各占一半，训练多向量编码器适应部署时的向量合并。作者单种子匹配实验中，NanoBEIR@13的factor-4检索nDCG@10由49.03升至51.23，同时文档向量比不压缩少74.8%。",
+    "insight": "给Agent检索模块设定真实存储预算，再让训练目标显式覆盖该压缩方式；检索分数、实际索引开销和最终任务成功率需要分层验收。",
+    "limits": "仅作者单seed、单基座和120k MS MARCO训练样例，未复现；固定模型卡披露benchmark参与实验开发。节省的是固定维度/精度下的向量数，不是总索引体积、端到端延迟或Agent任务成功率。11/11为教程发布日期，两个权重仓库早在10月更新；源码main快照不等于已核稳定包版本。",
+    "organization": "Hugging Face / Sentence Transformers",
+    "dateLabel": "2026-11-11 · 作者方法教程",
+    "evidence": "作者教程全文、固定模型卡与训练/评测源码已读；未训练或复现实验",
+    "date": "2026-11-11",
+    "checkedAt": "2026-11-11T16:25:10Z",
+    "originalDate": "2026-11-11",
+    "firstSeenAt": "2026-11-11T16:25:10Z",
+    "tags": [
+      "Retrieval",
+      "Token pooling",
+      "压缩感知训练",
+      "Agent检索组件"
+    ],
+    "topics": [],
+    "featured": false,
+    "sourceId": "hf_blog",
+    "sources": [
+      {
+        "label": "作者教程·完整方法与实验",
+        "url": "https://huggingface.co/blog/token-pooling"
+      },
+      {
+        "label": "固定版本pooling模型卡·评测与局限",
+        "url": "https://huggingface.co/tomaarsen/mve-ModernBERT-base-token-pooling/blob/8e57bd2bce378ed8fd3395573fb3fed16593d3ef/README.md"
+      },
+      {
+        "label": "固定版本普通损失基线模型卡",
+        "url": "https://huggingface.co/tomaarsen/mve-ModernBERT-base-token-pooling-baseline/blob/258da2cb828b18b475e50a0a4fdf57150850538b/README.md"
+      },
+      {
+        "label": "训练示例源码·本轮读取的main快照",
+        "url": "https://github.com/huggingface/sentence-transformers/blob/main/examples/multi_vector_encoder/training/token_pooling/training_cached_contrastive.py"
+      },
+      {
+        "label": "评测源码·不含自适应阈值校准循环",
+        "url": "https://github.com/huggingface/sentence-transformers/blob/main/examples/multi_vector_encoder/training/token_pooling/evaluate_token_pooling.py"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Hugging Face新教程把原始检索损失与压缩后检索损失各占一半，训练多向量编码器适应部署时的向量合并。作者单种子匹配实验中，NanoBEIR@13的factor-4检索nDCG@10由49.03升至51.23，同时文档向量比不压缩少74.8%。",
+      "motivation": "ColBERT式检索保留每个文档token的向量，表达细但索引开销高；直接事后合并会抹去对检索有用的细节，训练目标需要认识部署时的压缩约束。",
+      "novelty": "作者明确沿用既有Learn to Pool和LightOn研究，提供Sentence Transformers损失封装、配对基线及预算扫描教程。本站判断：有价值的是把部署表示约束写进训练和验收，而非新的通用Agent算法；现有实验不能证明所有语料或Agent工作流都受益。",
+      "evidenceScope": "已读11/11作者HF教程全文、两份固定revision模型卡，以及本轮main分支训练/评测源码。核验模型仓库public且非gated，未下载权重、执行源码、启动训练或访问账户。属于技术教程/组件项目，不新增arXiv论文。",
+      "limits": "仅作者单seed、单基座和120k MS MARCO训练样例，未复现；固定模型卡披露benchmark参与实验开发。节省的是固定维度/精度下的向量数，不是总索引体积、端到端延迟或Agent任务成功率。11/11为教程发布日期，两个权重仓库早在10月更新；源码main快照不等于已核稳定包版本。 97.8%保留率以该pooling模型自身未压缩52.39为分母，基线94.6%以自身51.84为分母，不能混用。自适应表有逐语料校准，当前公开评测脚本只扫描固定cap/factor；未经扩展不能声称直接复现该表全部行。",
+      "method": [
+        "用Ward聚类合并相近文档token向量，再归一化簇均值；查询不压缩，默认保护首token。factor-4是按长度近似保留四分之一，并非每篇固定向量上限。",
+        "同一编码器与一次token表示同时计算原始和factor-4检索损失，各权重0.5；聚类分配是离散的，作者用直通估计把梯度送回成员向量，不对分配求导。",
+        "两跑均由ModernBERT-base及新128维投影出发，以seed42训练同一120k MS MARCO样例一轮；batch256、编码mini-batch64、训练长度300，短查询扩到至少32位置，仅切换损失。",
+        "在NanoBEIR的13个集合比较不同factor、固定上限和自适应预算。自适应阈值须按编码器及每个语料单独校准为目标平均向量数，不能当每篇硬上限。"
+      ],
+      "inspirations": [
+        "为Agent知识库固定语料、向量维度与精度，比较普通训练、事后压缩和压缩感知训练；同时记录证据召回、实际索引字节、尾延迟及最终回答正确率。",
+        "自适应阈值在代表性训练语料上校准后冻结，再测新领域和长文；单列预算漂移与被合并的关键证据，避免用测试库反复选阈值造成乐观结论。"
+      ],
+      "reviewedAt": "2026-11-11T16:25:10Z",
+      "sourceUrls": [
+        "https://huggingface.co/blog/token-pooling",
+        "https://huggingface.co/tomaarsen/mve-ModernBERT-base-token-pooling/blob/8e57bd2bce378ed8fd3395573fb3fed16593d3ef/README.md",
+        "https://huggingface.co/tomaarsen/mve-ModernBERT-base-token-pooling-baseline/blob/258da2cb828b18b475e50a0a4fdf57150850538b/README.md",
+        "https://github.com/huggingface/sentence-transformers/blob/main/examples/multi_vector_encoder/training/token_pooling/training_cached_contrastive.py",
+        "https://github.com/huggingface/sentence-transformers/blob/main/examples/multi_vector_encoder/training/token_pooling/evaluate_token_pooling.py"
+      ]
+    }
   }
 ]

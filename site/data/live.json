@@ -11510,6 +11510,72 @@
     ]
   },
   {
+    "sourceType": "huggingface",
+    "category": "distillation",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.10015",
+    "url": "https://huggingface.co/papers/2611.10015",
+    "id": "live-6d2c8dbba70d705f",
+    "title": "Micius-Flash: Lightweight Agentic Intelligence for Engineering",
+    "summary": "We introduce Micius-Flash, a 27-billion-parameter model for engineering with native multimodal input, deep reasoning and a 256K-token context window. We design the Micius data pipeline as a knowledge-tree-driven data flywheel comprising three stages: knowledge tree construction and expansion, data synthesis, and quality validation with hard-example augmentation. From this data, we train expert models for semiconductor knowledge and reasoning, hardware coding, and semiconductor multimodal understanding, along with agentic experts. Subsequently, we employ Multi-Teacher On-Policy Distillation (MOPD) to supervise training on sequences generated…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-04",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-04",
+    "checkedAt": "2026-11-11T16:00:01Z",
+    "firstSeenAt": "2026-11-11T16:00:01Z",
+    "lastSeenAt": "2026-11-11T16:00:01Z",
+    "dailySubmittedAt": "2026-11-11T00:00:00.000Z",
+    "tags": [
+      "Distillation"
+    ],
+    "authors": [
+      "Hongcheng Gao",
+      "Weiheng Li",
+      "Yipeng Wei",
+      "Yu Lei",
+      "Shuo Sun",
+      "Yi Li",
+      "Yajiao Wang",
+      "Jie Luo",
+      "Jianwei Wen",
+      "Xinyi Zhou",
+      "Hongda Li",
+      "Yibing Zhang",
+      "Henghui Sun",
+      "Yufan Zhou",
+      "Tianfang Hao",
+      "Naihao Xue",
+      "Hailong Qu",
+      "Jingjing Zhou",
+      "Peng Xu",
+      "Yongzheng Wei",
+      "Yichen Zhu",
+      "Ziying Wang",
+      "Yibo Wang",
+      "Jianshu Zeng",
+      "Yuhang Lei",
+      "Zeqiang Wang"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.10015"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.10015"
+      },
+      {
+        "label": "Project",
+        "url": "https://zhiman.cn/models/micius"
+      }
+    ]
+  },
+  {
     "sourceType": "arxiv",
     "category": "benchmark",
     "verified": false,
@@ -25659,6 +25725,60 @@
       {
         "label": "arXiv · Agentic 论文",
         "url": "https://arxiv.org/abs/2610.41437v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2610.40754",
+    "url": "https://huggingface.co/papers/2610.40754",
+    "id": "live-1fb1a205cae6dca3",
+    "title": "DyCraft: An Agentic System for Long-Horizon 4D Scene Generation",
+    "summary": "While frontier coding agents can generate high-quality 3D scenes and articulated assets, they struggle to create coherent long-horizon animations. When equipped with general-purpose harnesses, they frequently produce physically implausible outputs, generating objects that interpenetrate, lack physical support, or move unnaturally. Such bare agents struggle to repair these errors because they default to scripting the full animation in one pass, making it difficult to verify their work and disentangle complex spatiotemporal constraints. Drawing on the practice of human animators, we introduce DyCraft, a system for animated 3D scene generation…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-10-29",
+    "evidence": "自动收录·待解读",
+    "date": "2026-10-29",
+    "checkedAt": "2026-11-11T16:00:01Z",
+    "firstSeenAt": "2026-11-11T16:00:01Z",
+    "lastSeenAt": "2026-11-11T16:00:01Z",
+    "dailySubmittedAt": "2026-11-11T00:00:00.000Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Jeff Tan",
+      "Hang Dai",
+      "Zeqian Long",
+      "Yanzhe Lyu",
+      "R. Kenny Jones",
+      "Shangzhe Wu",
+      "Chen Geng",
+      "Jiajun Wu"
+    ],
+    "topics": [
+      "code2motion"
+    ],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2610.40754"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2610.40754"
+      },
+      {
+        "label": "Project",
+        "url": "https://dy-craft.github.io/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/jefftan969/dycraft"
       }
     ]
   },
