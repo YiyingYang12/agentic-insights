@@ -13319,5 +13319,262 @@
       "status": "pending",
       "checkedAt": "2026-11-11T22:26:16.534708+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.13028v1",
+    "url": "https://arxiv.org/abs/2611.13028v1",
+    "id": "live-497d81be07fbae2e",
+    "title": "GTAGym：把游戏任务重建为可验收环境，分开衡量实时控制与原版迁移",
+    "summary": "GTAGym把GTA V任务重建为可并行运行、自动验收的浏览器环境：103个3D任务加47个图像瞄准任务。作者最高配置70.9%是重建基准成绩；原版GTA V另测100题，Qwen的LoRA RL前后成功率15%→23%，两者不能混用。",
+    "insight": "把任务目标、状态验收与训练变体共同版本化；报告环境暂停、动作频率和实时延迟条件，避免把重建场景的高分当原版任务能力。",
+    "limits": "作者结果，未独立复现。在线3D任务基于Babylon.js/GTA_SZ重建，47个图像任务也不是原版游戏完整战斗；70.9%混合两类任务并按题加权，不等于原版GTA V通关率。默认推理时暂停环境；Sol在103个3D任务上取消暂停后由62.1%降至39.8%，因此不能外推实时控制。两协议同时改变目标呈现与历史管理，不能把全部增益单独归因于上下文压缩。训练与测试任务不同但共享城市与控制器，50条训练路线还匹配测试步行类的路线长度/转弯分布，不能称全新世界泛化。原版100题由人工视频判断，未核到逐题判定与重复试验统计；不是自动评分的150题基准。生成器只在固定模板/素材内采样；静态可行性检查不保证动态任务可完成。开源目录和数据卡可读不等于本站已运行验证。",
+    "dateLabel": "2026-11-09 · arXiv v1首发；11-12进入HF日榜",
+    "evidence": "已读方法和关键评测附录，核固定公开目录；未运行或复现",
+    "originalTitle": "GTAGym: Real AAA Game Tasks Environment for Evaluation and Reinforcement Learning",
+    "date": "2026-11-09",
+    "checkedAt": "2026-11-12T04:25:32.370672+00:00",
+    "originalDate": "2026-11-09",
+    "paperOriginalDate": "2026-11-09T08:59:36Z",
+    "paperUpdatedAt": "2026-11-09T08:59:36Z",
+    "updatedAt": "2026-11-09T08:59:36Z",
+    "firstSeenAt": "2026-11-12T04:00:01Z",
+    "lastSeenAt": "2026-11-12T04:00:01Z",
+    "tags": [
+      "可验证环境",
+      "游戏Agent",
+      "RL任务生成"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.13028"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.13028"
+      },
+      {
+        "label": "作者代码与环境",
+        "url": "https://github.com/ljbro/GTAGym"
+      },
+      {
+        "label": "arXiv v1 · 首发时间",
+        "url": "https://arxiv.org/abs/2611.13028v1"
+      },
+      {
+        "label": "方法、评测与附录",
+        "url": "https://arxiv.org/html/2611.13028v1"
+      },
+      {
+        "label": "固定提交 · 评测协议",
+        "url": "https://github.com/ljbro/GTAGym/blob/76ae15527304b1e5d6873b24caafdd471ff40d6d/docs/evaluation.md"
+      },
+      {
+        "label": "固定提交 · 生成器范围",
+        "url": "https://github.com/ljbro/GTAGym/blob/76ae15527304b1e5d6873b24caafdd471ff40d6d/docs/generation.md"
+      },
+      {
+        "label": "固定提交 · 150题目录",
+        "url": "https://github.com/ljbro/GTAGym/blob/76ae15527304b1e5d6873b24caafdd471ff40d6d/tasks/catalog.json"
+      },
+      {
+        "label": "固定提交 · 50条训练实例",
+        "url": "https://github.com/ljbro/GTAGym/blob/76ae15527304b1e5d6873b24caafdd471ff40d6d/training-tasks/outdoor-walk/tasks.json"
+      },
+      {
+        "label": "固定数据卡 · 字段与发布范围",
+        "url": "https://huggingface.co/datasets/OpenMOSS-Team/GTAVBench/blob/ffef6928ffe73d9671e9c905146483261cdee142/README.md"
+      },
+      {
+        "label": "作者在线任务入口（未运行验收）",
+        "url": "https://ljbro.github.io/GTAGym/tasks.html"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "GTAGym把GTA V任务重建为可并行运行、自动验收的浏览器环境：103个3D任务加47个图像瞄准任务。作者最高配置70.9%是重建基准成绩；原版GTA V另测100题，Qwen的LoRA RL前后成功率15%→23%，两者不能混用。",
+      "motivation": "真实商业游戏有丰富交互，却难用统一规则自动判定任务成功，更难批量生成可训练的变体。作者把任务意图、交互顺序和完成条件抽出来，重建成能观测状态并返回奖励的环境，用于评测闭环控制与训练迁移。",
+      "novelty": "作者主张把商业游戏目标、可程序化验收的重建环境和受约束RL实例生成放进同一框架。本站判断：可借鉴的是从任务规格到状态验收、再到训练变体的证据链，以及把推理延迟纳入环境时钟；当前结果仍受重建保真度、固定模板和同场景训练限制，AGI分支只是协议名，不是通用智能证明。",
+      "evidenceScope": "已读arXiv v1正文§3–5及附录A/B/C/D中的任务判定、动作、模型设置、训练奖励、原版视频核验和错误恢复口径；核首发2026-11-09T08:59:36Z。固定GitHub提交76ae155的README、评测/生成/验证说明、冻结目录/指令与训练JSON可匿名读取，本站独立核150个测试ID、103/47两类分组及50个训练ID不重叠；未核几何隔离或执行作者代码。HF固定数据卡ffef692和公开API可读，Parquet存在于目录，但未下载约163MB数据文件或检查全部图像。作者重建基准最高Astra+Codex 70.9±4.4为三种子均值与总体标准差，人工89.8±1.4为三名有经验玩家。Qwen RL的步行54.2→72.9、全150题34.2→38.9；射击73.6→68.1且飞行/拦截仍0。原版100题来自49个源任务、仅导航/交互，推理同样暂停并由人工视频判定。公开生成器验收说明属于作者自检，不是模型性能或本站复现；verified仅指来源核验。",
+      "limits": "作者结果，未独立复现。在线3D任务基于Babylon.js/GTA_SZ重建，47个图像任务也不是原版游戏完整战斗；70.9%混合两类任务并按题加权，不等于原版GTA V通关率。默认推理时暂停环境；Sol在103个3D任务上取消暂停后由62.1%降至39.8%，因此不能外推实时控制。两协议同时改变目标呈现与历史管理，不能把全部增益单独归因于上下文压缩。训练与测试任务不同但共享城市与控制器，50条训练路线还匹配测试步行类的路线长度/转弯分布，不能称全新世界泛化。原版100题由人工视频判断，未核到逐题判定与重复试验统计；不是自动评分的150题基准。生成器只在固定模板/素材内采样；静态可行性检查不保证动态任务可完成。开源目录和数据卡可读不等于本站已运行验证。",
+      "method": [
+        "人工拆解75个主线任务的攻略视频，将目标、阶段顺序、约束和动态角色行为写成规格。用Babylon.js重建103个导航/交互场景；另给47个GTA图像任务标注目标命中区域，合为150题、11类。",
+        "每题固定初始状态、指令、预算及成功/失败判定；3D用引擎状态检查顺序、距离、移动方式和事件，图像题用目标区域检查。统一截图—键鼠动作接口，默认推理暂停、单次按键不超过1秒，3D最多300轮、图像最多20轮。",
+        "在同一任务集比较两协议：GTAVBench给文字指令，JSON历史最多十组并丢弃最旧五组；GTAVBench-AGI只在首张图呈现目标，交给Codex自动压缩历史。六个模型各配置三个种子，按150题微平均，并单列类别和不同暂停/动作时长设置。",
+        "按固定模板对位置、路线、转弯、移动方式或角色速度作受约束采样；排除不可行组合，保存解析后的配置、种子及版本。训练集只发布50条步行实例；模板支持不等于所有类别都已生成训练数据，狙击不参与生成。",
+        "在50条生成步行题上对Qwen3.8-27B做rank-32 LoRA+GRPO，冻结基座与视觉编码器。终局奖励以成功为主，只给未成功轨迹终点距离进展，超过100轮一次扣0.1；评测仍只算二元成功，再分别检查保留步行题、其他类别和原版100题迁移。"
+      ],
+      "inspirations": [
+        "为视频剪辑或代码创作任务保存明确的阶段顺序和可验收状态，例如素材选择、时间线约束、渲染与修改完成分别判定；同一任务同时保留结构验收和视觉检查，避免把成功运行当作品质量。这是本站迁移建议，本文不评测创作。",
+        "评估交互Agent时同时测暂停环境和真实时钟，并把观察频率、输入/输出token、实际延迟与成功率一起报告。本文0.5秒动作上限提升Sol成绩，却使平均输入从4.32M升至11.20M，细粒度反馈有成本。",
+        "生成训练环境时保存最终实例而不只保存随机种子，按空间区域、任务模板或素材来源设计更严格的隔离；分别统计同类、新类别和新环境迁移，同时检查退化项，别把步行收益推广到所有控制能力。"
+      ],
+      "reviewedAt": "2026-11-12T04:25:32.370672+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.13028v1",
+        "https://arxiv.org/html/2611.13028v1",
+        "https://github.com/ljbro/GTAGym",
+        "https://github.com/ljbro/GTAGym/blob/76ae15527304b1e5d6873b24caafdd471ff40d6d/docs/evaluation.md",
+        "https://github.com/ljbro/GTAGym/blob/76ae15527304b1e5d6873b24caafdd471ff40d6d/docs/generation.md",
+        "https://github.com/ljbro/GTAGym/blob/76ae15527304b1e5d6873b24caafdd471ff40d6d/tasks/catalog.json",
+        "https://github.com/ljbro/GTAGym/blob/76ae15527304b1e5d6873b24caafdd471ff40d6d/training-tasks/outdoor-walk/tasks.json",
+        "https://huggingface.co/datasets/OpenMOSS-Team/GTAVBench/blob/ffef6928ffe73d9671e9c905146483261cdee142/README.md",
+        "https://ljbro.github.io/GTAGym/tasks.html"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.13028",
+      "status": "pending",
+      "checkedAt": "2026-11-12T04:25:32.370672+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.14019v1",
+    "url": "https://arxiv.org/abs/2611.14019v1",
+    "id": "live-4bac72cca60c95e5",
+    "title": "PASE：把技能里的流程拆成程序，让经验更新落到可审查补丁",
+    "summary": "PASE把技能分成自然语言指南与可执行函数，从成功和失败轨迹中提出局部补丁，再用留出验证集决定是否接纳。作者Qwen3.6-27B配置的SpreadsheetBench-Verified准确率由EvoSkill的68.10%升至82.98%，高14.88个百分点；这是外部技能与程序的进化，不是更新模型权重。",
+    "insight": "把“什么时候用、为什么这样做”留在指南中，把精确查表、计算与格式处理拆成参数化函数，可以让一次修正只影响具体逻辑。可借鉴的是可定位、可比较、可拒绝的变更单元；代码可执行并不自动保证调用正确、输出正确或跨任务无回归。",
+    "limits": "仅核验论文，未复现。Verified明确划分80条进化、40条验证、280条测试，结果为3次独立进化的测试均值；完整912题评测是否排除了进化/验证样本未交代清楚，不能把所有表格指标都称为严格未见测试。未核到作者实现、数据划分清单或运行日志；主表平均分公式与误差范围未充分说明，不复述笼统的全指标领先。",
+    "organization": "东北大学、阿里巴巴",
+    "dateLabel": "2026-11-10 · arXiv v1",
+    "evidence": "已读原文方法、评测及附录；未核实现、未复现",
+    "originalTitle": "Program-Aided Patchable Skill Evolution",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-12T04:26:36.664886+00:00",
+    "originalDate": "2026-11-10",
+    "paperOriginalDate": "2026-11-10T12:53:12Z",
+    "paperUpdatedAt": "2026-11-10T12:53:12Z",
+    "updatedAt": "2026-11-10T12:53:12Z",
+    "firstSeenAt": "2026-11-11T04:00:01Z",
+    "lastSeenAt": "2026-11-11T22:00:01Z",
+    "tags": [
+      "技能蒸馏",
+      "程序化技能",
+      "局部补丁",
+      "非参数进化"
+    ],
+    "authors": [
+      "Jiahao Wang",
+      "Yuqi Xiong",
+      "Qing Yang",
+      "Zhipeng Xu",
+      "Zhenghao Liu",
+      "Zulong Chen",
+      "Yubin Bao"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.14019v1"
+      },
+      {
+        "label": "arXiv全文 · 方法、评测、划分与案例",
+        "url": "https://arxiv.org/html/2611.14019v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "PASE把技能分成自然语言指南与可执行函数，从成功和失败轨迹中提出局部补丁，再用留出验证集决定是否接纳。作者Qwen3.6-27B配置的SpreadsheetBench-Verified准确率由EvoSkill的68.10%升至82.98%，高14.88个百分点；这是外部技能与程序的进化，不是更新模型权重。",
+      "motivation": "轨迹里提炼出的经验常混在一份长技能文档中：高层策略、精确计算步骤和异常处理彼此缠绕，修一个错误容易改坏另一部分。作者希望让可重复执行的流程有独立的程序载体，保留文字解释的灵活性，同时把经验修改缩小到可定位的代码或文档行。",
+      "novelty": "作者主张：通过文字与程序协同演化，让技能补丁更精确、稳定并可迁移。本站判断：价值在于把描述性经验与可执行流程分开维护，再用验证结果约束变更。Qwen3.6-27B的消融中，禁止程序进化使Verified从82.98%降到77.26%，支持程序持续修改值得研究；但论文未给完整成本与误差区间，不能据此保证任意任务都受益。主表WikiTQ中Qwen3.7-Plus的PASE为86.14%，低于EvoSkill的86.54%，也不支持逐指标全胜的概括。",
+      "evidenceScope": "已读arXiv v1方法§3、实验§4–5、Limitations和附录A.2–A.6，核对表1–5及提示图可见内容；首发为2026-11-10T12:53:12Z。Verified400题按seed42分80/40/280；附录另列完整SpreadsheetBench912题。Domain-Spreadsheet677题，FIN/HR/RE/SAL/SC分别135/185/89/87/181，Overall与按这些样本数加权的分域分数一致。WikiTQ和HiTab各从官方测试集抽1000题，转为XLSX并要求答案写A1；不是这两个数据集全量。推理温度0.6、上下文131072、最多30轮，进化最多50轮/步、批量8、10步；3次独立进化后测试取均值。作者只承诺将发布代码/数据，原文未给对应仓库；精确标题、作者及GitHub检索未核到作者实现，HF论文API404、按arXiv标签查询模型/数据集均空。仅读论文与公开元信息，未运行外部代码；verified仅指来源核验。",
+      "limits": "仅核验论文，未复现。Verified明确划分80条进化、40条验证、280条测试，结果为3次独立进化的测试均值；完整912题评测是否排除了进化/验证样本未交代清楚，不能把所有表格指标都称为严格未见测试。未核到作者实现、数据划分清单或运行日志；主表平均分公式与误差范围未充分说明，不复述笼统的全指标领先。 主表Verified是准确率，Domain是Pass@1，WikiTQ为答案指称准确率，HiTab为执行准确率，不能相加成统一成功数。表1的Avg加权公式不清，表2“TableQA”数值对应HiTab列，不当成两个问答集的综合分。三次均值不能反推出单次正确题数；缺标准差/置信区间不宜断言微小差异显著。无检索规模实验，关联函数可能被绕过；严格提高才接纳也会拒绝暂时中性的基础重构。短文档不等于总token或总运行成本下降，62.2%涉及程序的更新占比不等于程序执行成功率。",
+      "method": [
+        "把技能表示为文档与可选程序的配对。文档说明适用情形、规则和调用方式；程序承载可复用的参数化函数，任务相关输入通过参数传入。推理Agent仍按ReAct交互，用Bash执行Python并将观察结果带回后续推理；不改变底座参数。",
+        "每轮从进化训练任务中抽取一批成功与失败轨迹。提议Agent先收到任务及轨迹步数、技能名和历史补丁索引，再按需调用read_trajectory、read_skill、read_patch读取证据，避免把全部历史直接塞入上下文。默认批量8、进化10步。",
+        "每轮提交一个create、repair或delete补丁，可只改文字、只改程序或两者同时改。创建写完整内容，删除移除整对技能，修复用行级增删；多条修改按顺序作用于当前版本。",
+        "在与进化训练集分离的验证集上比较候选版本与原版本，验证分数严格提高才接纳，否则保留原技能；相同分数也拒绝。反复用这40条验证样本筛选是开发过程，不构成对最终测试或未来任务无回归的保证。",
+        "用最终技能进行留出测试及跨模型迁移。实验把活跃技能直接注入提示词，以隔离检索影响；关联函数要由Agent显式调用，作者承认它可能绕开函数、自己重写代码。因此文档含有程序与实际执行了程序需要分别验收。"
+      ],
+      "inspirations": [
+        "给视频/代码创作技能拆出稳定接口：文字负责镜头目标、适用场景和审美约束，程序负责帧数换算、时间线边界、字体检查或参数化场景构造；补丁记录关联失败样本、修改行与影响范围。这是迁移建议，本文只做表格和表格问答实验。",
+        "验收时分别统计技能被提供、函数被调用、执行无异常与最终产物正确的比例；不能用“脚本存在”替代Agent实际利用它的证据。保留输入输出契约与历史回归样本，防止函数可运行却悄悄改变语义。",
+        "冻结并发布进化、验证和测试的实例ID，完整表格与Verified子集统一去重；补丁选择只看验证集，最终测试只作报告。把调用数、token、时间、程序长度及拒绝补丁成本一起记录，才能判断较短技能文档是否真的降低总开销。"
+      ],
+      "reviewedAt": "2026-11-12T04:26:36.664886+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.14019v1",
+        "https://arxiv.org/html/2611.14019v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.14019",
+      "status": "pending",
+      "checkedAt": "2026-11-12T04:25:32.370672+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://autoclaw.z.ai/blog/tutorial/Draft%20a%20Contract%20with%20AutoClaw/",
+    "url": "https://autoclaw.z.ai/blog/tutorial/Draft%20a%20Contract%20with%20AutoClaw/",
+    "id": "update-zai-autoclaw-contract-workflow-20261112",
+    "title": "AutoClaw合同工作流：先澄清关键选择，再生成可审阅文档包",
+    "summary": "AutoClaw新教程展示“澄清需求→生成六份可编辑文档→定点修改”的工作流。它是用虚构公司与条款重建的合同场景，截图来自多次测试；价值在于显式保留待决事项和跨文档一致性，不能当作单次自动完成或法律效力证明。",
+    "insight": "把关键选择、交付物和未决事项显式拆开，再按已确认需求核对每份输出；这种结构比只要求Agent“直接给成稿”更容易审阅。",
+    "limits": "官方演示而非独立评测；文档包和可编辑性仅据官方描述，本站未下载Word、运行产品或审验条款。演示截图跨不同测试阶段，含分开的澄清练习与起草运行，无完整连续轨迹、模型版本、成功率或成本数据。页面称澄清问题未答会倒计时后继续，这不等于用户授权；所有产物仍需人工商业与合格法律审阅。不是新模型发布，也不提供法律建议。",
+    "organization": "Z.ai / AutoClaw",
+    "dateLabel": "2026-11-12 · 官方多轮工作流演示",
+    "evidence": "官方教程全文及原页发布时间元数据已核；未运行或检验生成文档",
+    "originalTitle": "How to Draft a Contract with AutoClaw: From Business Brief to Contract Package",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-12T04:23:04.041061+00:00",
+    "originalDate": "2026-11-12",
+    "updatedAt": "2026-11-12T03:51:35Z",
+    "firstSeenAt": "2026-11-12T04:23:04.041061+00:00",
+    "tags": [
+      "官方工作流演示",
+      "需求澄清",
+      "可编辑文档",
+      "人工审阅"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "AutoClaw官方教程·完整流程与演示声明",
+        "url": "https://autoclaw.z.ai/blog/tutorial/Draft%20a%20Contract%20with%20AutoClaw/"
+      },
+      {
+        "label": "AutoClaw官方博客·11月12日条目",
+        "url": "https://autoclaw.z.ai/blog/"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "AutoClaw新教程展示“澄清需求→生成六份可编辑文档→定点修改”的工作流。它是用虚构公司与条款重建的合同场景，截图来自多次测试；价值在于显式保留待决事项和跨文档一致性，不能当作单次自动完成或法律效力证明。",
+      "motivation": "简短业务说明经常遗漏付款触发、验收条件与交付边界。直接生成长文容易把未决事项写成已确认事实，需要先把材料和决策分开。",
+      "novelty": "官方将它定位为工作区使用教程，未声称新模型或新算法。本站判断：研究启发是把澄清、结构化交付和一致性检查串起来；演示不足以证明跨任务稳定性或全自动成功率。",
+      "evidenceScope": "读取官方教程全文、博客目录与JSON-LD发布时间/修订时间；原页明确真实需求被重建、公司条款虚构、截图混合澄清练习与起草运行。未观看完整连续轨迹、下载或检查Word，也未登录或运行产品。verified仅指来源核验。",
+      "limits": "官方演示而非独立评测；文档包和可编辑性仅据官方描述，本站未下载Word、运行产品或审验条款。演示截图跨不同测试阶段，含分开的澄清练习与起草运行，无完整连续轨迹、模型版本、成功率或成本数据。页面称澄清问题未答会倒计时后继续，这不等于用户授权；所有产物仍需人工商业与合格法律审阅。不是新模型发布，也不提供法律建议。",
+      "method": [
+        "提供业务安排、所代表的一方与目标文档；教程先让Agent复述需求，等待下一条澄清指令，国家选项与适用法律另行明确。",
+        "在同一会话追问缺失或冲突信息，人工决定关键条款；未定项保留占位。官方例子以最终付款在交付还是验收时触发说明选择差异。",
+        "按确认信息生成主协议、工作说明、付款安排、验收表，以及内部谈判指南和待法律审阅清单；六份Word可编辑为官方演示主张，本站未实际打开验证。",
+        "对照原始需求做局部修订，再检查关联文档的一致性；演示后续增加变更记录、一致性清单与未决事项，所有草稿留给人工审阅。"
+      ],
+      "inspirations": [
+        "给创作Agent保留需求表、可编辑工程和未决选择清单；修改时只调整受影响组件，并检查时长、素材引用和交付规格是否同步。这是本站迁移建议，本文未测试创作任务。",
+        "建立多文档一致性验收：每个关键字段记录来源与确认状态，修改后检查全部引用；把默认选项、倒计时继续与用户明确确认分开计数，关键动作仍需明确授权。"
+      ],
+      "reviewedAt": "2026-11-12T04:23:04.041061+00:00",
+      "sourceUrls": [
+        "https://autoclaw.z.ai/blog/tutorial/Draft%20a%20Contract%20with%20AutoClaw/",
+        "https://autoclaw.z.ai/blog/"
+      ]
+    }
   }
 ]
