@@ -466,6 +466,59 @@
     ]
   },
   {
+    "sourceType": "huggingface",
+    "category": "distillation",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.14320",
+    "url": "https://huggingface.co/papers/2611.14320",
+    "id": "live-cea7186eed759f4b",
+    "title": "Don't Just Trust Your Memory: Evidence-Linked Memory Reduces Memory-Induced Degradation in LLM Agents",
+    "summary": "External memory enables LLM agents to improve from experience by distilling trajectories of past tasks into concise lessons for new tasks. However, memory can also lead to memory-induced degradation, where an agent fails on tasks it would solve without memory, often because it follows a lesson that is incorrect, or misapplies or misreads a valid one. This is because lessons are inferred from trajectories labeled only with task success or failure, yet are typically provided without the trajectories they came from, leaving the agent no way to check them. To address this, we introduce WikiTrace, an evidence-linked memory system designed to let…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-10",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-12T10:00:00Z",
+    "updatedAt": "2026-11-10T16:46:59Z",
+    "firstSeenAt": "2026-11-11T10:00:01Z",
+    "lastSeenAt": "2026-11-12T10:00:00Z",
+    "dailySubmittedAt": "2026-11-11T00:00:00.000Z",
+    "tags": [
+      "Distillation"
+    ],
+    "authors": [
+      "Yukyeong Lee",
+      "Yumin Choi",
+      "Jinheon Baek",
+      "Sung Ju Hwang"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.14320v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.14320"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.14320"
+      },
+      {
+        "label": "Project",
+        "url": "https://yukyeongleee.github.io/wikitrace/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/yukyeongleee/wikitrace"
+      }
+    ]
+  },
+  {
     "sourceType": "arxiv",
     "category": "models",
     "verified": false,
@@ -23079,6 +23132,56 @@
       {
         "label": "arXiv · Agentic 论文",
         "url": "https://arxiv.org/abs/2611.00807v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2603.27343",
+    "url": "https://huggingface.co/papers/2603.27343",
+    "id": "live-fd3aeafb8e4b5037",
+    "title": "WMIP: A Working-Memory-Inspired Programmable Probe of Cumulative State Tracking in Large Language Models",
+    "summary": "Human working memory lets people maintain and update information. Large language models (LLMs) face a related demand when tracking updates within a single prompt without writing out intermediate states, yet existing tests differ in their constraints on written steps. We introduce a working-memory-inspired probe of cumulative state tracking with program-computed answers, 3 to 100 updates, and final-state, intermediate-state, or multi-target queries. It compares protocols on identical items. Across 18 LLMs, accuracy is 84.9% on single-step arithmetic but 31.7% on core items requiring one number after three to seven updates. From 50 updates on…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-10-30",
+    "evidence": "自动收录·待解读",
+    "date": "2026-10-30",
+    "checkedAt": "2026-11-12T10:00:00Z",
+    "firstSeenAt": "2026-11-12T10:00:00Z",
+    "lastSeenAt": "2026-11-12T10:00:00Z",
+    "dailySubmittedAt": "2026-11-12T00:00:00.000Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Dengzhe Hou",
+      "Lingyu Jiang",
+      "Deng Li",
+      "Zirui Li",
+      "Fangzhou Lin",
+      "Kazunori D Yamada"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2603.27343"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2603.27343"
+      },
+      {
+        "label": "Project",
+        "url": "https://dengzhe-hou.github.io/WMIP/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/dengzhe-hou/WMIP"
       }
     ]
   },

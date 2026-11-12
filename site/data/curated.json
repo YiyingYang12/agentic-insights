@@ -13576,5 +13576,351 @@
         "https://autoclaw.z.ai/blog/"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2603.27343v3",
+    "url": "https://arxiv.org/abs/2603.27343v3",
+    "id": "live-fd3aeafb8e4b5037",
+    "title": "修订补读｜WMIP：同题换输出协议，别把低分直接当成记忆容量",
+    "summary": "WMIP用可程序求解的状态更新题，比较同题不同输出协议。18个模型的核心题正确率为342/1080（31.7%），允许512 token并要求写步骤、末行给答案后为950/1080（88.0%）；这体现协议敏感性，不能当成模型固定的记忆容量。10月30日大修，11月11日新增社区榜单，评测题与论文结果未变。",
+    "insight": "作者主张：以可调深度、可执行答案及同题协议比较，定位累计状态追踪何时退化。本站判断：更有价值的是把输出协议本身纳入评测证据，而不是用一个低分替代能力判断。社区提交要求完整响应并重评分有助可审计性；这次软件发布未产生新模型实验或改变旧结果。",
+    "limits": "仅核验论文和固定公开材料，未运行模型或重算原始响应。所有初始值和更新仍留在单条提示中，终值算术可按有符号增量相加，不能证明内部状态维护或等同人类工作记忆。16-token限制、截断与解析规则会改变分数；深度使用不同实例，跨目标数还改变操作数量，均不是单一因素实验。",
+    "organization": "东北大学（日本）等",
+    "dateLabel": "3月28日首发 · 10月30日v3修订 · 11月11日榜单更新",
+    "evidence": "已读方法、关键附录及固定公开题库/评分代码；未运行或复现",
+    "originalTitle": "WMIP: A Working-Memory-Inspired Programmable Probe of Cumulative State Tracking in Large Language Models",
+    "date": "2026-10-30",
+    "checkedAt": "2026-11-12T10:22:47.626668+00:00",
+    "originalDate": "2026-03-28",
+    "paperOriginalDate": "2026-03-28T17:25:11Z",
+    "paperUpdatedAt": "2026-10-30T19:18:02Z",
+    "updatedAt": "2026-10-30T19:18:02Z",
+    "firstSeenAt": "2026-11-12T10:00:00Z",
+    "lastSeenAt": "2026-11-12T10:00:00Z",
+    "dailySubmittedAt": "2026-11-12T00:00:00.000Z",
+    "tags": [
+      "状态追踪",
+      "输出协议",
+      "可执行评测",
+      "修订补读"
+    ],
+    "authors": [
+      "Dengzhe Hou",
+      "Lingyu Jiang",
+      "Deng Li",
+      "Zirui Li",
+      "Fangzhou Lin",
+      "Kazunori D Yamada"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2603.27343"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2603.27343"
+      },
+      {
+        "label": "作者项目页 · 论文与社区榜单",
+        "url": "https://dengzhe-hou.github.io/WMIP/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/dengzhe-hou/WMIP"
+      },
+      {
+        "label": "arXiv v3 · 首发与修订时间",
+        "url": "https://arxiv.org/abs/2603.27343v3"
+      },
+      {
+        "label": "原论文 · 方法、结果与附录",
+        "url": "https://arxiv.org/html/2603.27343v3"
+      },
+      {
+        "label": "固定提交 · 评测材料与范围",
+        "url": "https://github.com/dengzhe-hou/WMIP/blob/11ef09fc5c7b41a96f201e47ad498ce4c6a6dac4/releases/2026-10/README.md"
+      },
+      {
+        "label": "固定提交 · 11月11日榜单更新",
+        "url": "https://github.com/dengzhe-hou/WMIP/blob/11ef09fc5c7b41a96f201e47ad498ce4c6a6dac4/releases/2026-10/RELEASE_NOTES.md"
+      },
+      {
+        "label": "固定提交 · 社区提交验收边界",
+        "url": "https://github.com/dengzhe-hou/WMIP/blob/11ef09fc5c7b41a96f201e47ad498ce4c6a6dac4/submissions/README.md"
+      },
+      {
+        "label": "固定提交 · 冻结题库",
+        "url": "https://github.com/dengzhe-hou/WMIP/blob/11ef09fc5c7b41a96f201e47ad498ce4c6a6dac4/releases/2026-10/data/item_bank/item_bank.jsonl"
+      },
+      {
+        "label": "固定提交 · 数值解析与评分",
+        "url": "https://github.com/dengzhe-hou/WMIP/blob/11ef09fc5c7b41a96f201e47ad498ce4c6a6dac4/releases/2026-10/analysis/score_bank.py"
+      },
+      {
+        "label": "Hugging Face · 冻结数据卡",
+        "url": "https://huggingface.co/datasets/dengzhe-hou/WMIP/blob/v2026.10.1/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "WMIP用可程序求解的状态更新题，比较同题不同输出协议。18个模型的核心题正确率为342/1080（31.7%），允许512 token并要求写步骤、末行给答案后为950/1080（88.0%）；这体现协议敏感性，不能当成模型固定的记忆容量。10月30日大修，11月11日新增社区榜单，评测题与论文结果未变。",
+      "motivation": "一次加减算对，不代表能在长提示中保持多实体的累计状态；但不给模型写步骤与允许草稿的测试，测到的也不完全相同。作者用可执行答案、固定题目与明确的输出协议，把状态更新负担和答题条件放到同一套比较中。",
+      "novelty": "作者主张：以可调深度、可执行答案及同题协议比较，定位累计状态追踪何时退化。本站判断：更有价值的是把输出协议本身纳入评测证据，而不是用一个低分替代能力判断。社区提交要求完整响应并重评分有助可审计性；这次软件发布未产生新模型实验或改变旧结果。",
+      "evidenceScope": "已读v3正文§3–6、Limitations及附录A/B/C和关键统计/协议表。首发2026-03-28T17:25:11Z，v3修订2026-10-30T19:18:02Z；11月12日仅为HF新收录。固定作者提交11ef09fc5c7b41a96f201e47ad498ce4c6a6dac4的README、发布说明、社区提交指南、生成器相关逻辑与评分源码可读；本站用自己的JSON/CSV计数核840主库、60预算库及18模型汇总中的342/1080核心、1376/1620单步算术，不等于重评原始响应或复现实验。主库含重复协议/措辞；公开复用评分器分母为已评分响应，论文主库无缺失，社区要求完整三库。未提交榜单、调用模型或执行作者代码；verified仅指来源核验。",
+      "limits": "仅核验论文和固定公开材料，未运行模型或重算原始响应。所有初始值和更新仍留在单条提示中，终值算术可按有符号增量相加，不能证明内部状态维护或等同人类工作记忆。16-token限制、截断与解析规则会改变分数；深度使用不同实例，跨目标数还改变操作数量，均不是单一因素实验。 18模型是便利样本，四个种子是不同生成题而非重复解码。模型bootstrap区间不含题目采样不确定性、提供方依赖或多重比较校正。BFCL Kendall相关约0.417–0.449，但核心相对单步算术/抵消控制的相关差异区间均跨0；不能把它当成工具使用评测替代。源码的旧WMF-AM根目录与本次release协议不同，不能混算。社区合并仅为审阅后的自报运行，不是维护者重跑或模型身份认证。",
+      "method": [
+        "生成三个具名实体的整数初值及有顺序的获得、损失、转移操作，程序计算查询实体的终值；核心题K=3/5/7，四个生成种子各五题，共60题。排除查询实体未变或终值等于初值的退化题；扩展至100次总更新时重新采题，并非向同一轨迹追加操作。",
+        "冻结840条主库请求、60条大预算请求和180条中间状态/多目标请求。核心协议限16输出token并要求只报数；在同一核心题上另比用户/系统指令改写、512-token原提示和512-token写步骤加末行答案。1080是每模型总请求数，跨协议有重复题，不能称1080道独立问题。",
+        "按任务保存原始响应、结束原因与规则。核心提取恰好一个正确整数即可，允许周围文字；写步骤协议取最后整数。额外并列报告格式不合、数字错误和截断，截断与这些结果可重叠；集合和赋值保留两套解析器，不能把各块分数混成一个总正确率。",
+        "评测18个模型，10个本地、8个API；使用不启用推理模式的设置，GPT-5.2明确reasoning effort为none。大预算同提示的末整数评分为550/1080，再加入写步骤与末行指令达到950/1080；原始16-token响应仅换成末整数评分为355/1080，需分清预算、指令和评分三种变化。",
+        "比较不同题种、种子、措辞，并与2025-12-16公开BFCL快照关联，未重跑BFCL。11月11日v2026.10.5另加入完整三题库响应打包与重评分检查，社区报告和18个论文模型分开标注；检查完整性与分数一致性不能认证提交者声称的模型身份。"
+      ],
+      "inspirations": [
+        "给剪辑或代码创作任务建立可重放的状态账本：素材、时间线区间、对象属性每次变更都能重算，并分别问终态与中间态。对同一任务比较只给最终结果、允许草稿与调用确定性工具，避免把格式限制误判为推理失败；这是迁移建议，本文未做创作实验。",
+        "固定同一实例ID与真值，分别改变输出预算、指令和评分器；同时记录正确、格式不合、截断及未完成数。尤其不要把会丢弃失败请求的复用脚本准确率与全题分母直接比较。",
+        "公开榜单同时保存题库摘要、实际响应、推理设置、缺失数和来源证明，把可重评分与模型来源已认证分开。对协议变更或修订版本单独建行，保留旧记录，避免把软件发布当成性能提升。"
+      ],
+      "reviewedAt": "2026-11-12T10:22:47.626668+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2603.27343v3",
+        "https://arxiv.org/html/2603.27343v3",
+        "https://github.com/dengzhe-hou/WMIP/blob/11ef09fc5c7b41a96f201e47ad498ce4c6a6dac4/releases/2026-10/README.md",
+        "https://github.com/dengzhe-hou/WMIP/blob/11ef09fc5c7b41a96f201e47ad498ce4c6a6dac4/releases/2026-10/RELEASE_NOTES.md",
+        "https://github.com/dengzhe-hou/WMIP/blob/11ef09fc5c7b41a96f201e47ad498ce4c6a6dac4/submissions/README.md",
+        "https://github.com/dengzhe-hou/WMIP/blob/11ef09fc5c7b41a96f201e47ad498ce4c6a6dac4/releases/2026-10/data/item_bank/item_bank.jsonl",
+        "https://github.com/dengzhe-hou/WMIP/blob/11ef09fc5c7b41a96f201e47ad498ce4c6a6dac4/releases/2026-10/analysis/score_bank.py",
+        "https://huggingface.co/datasets/dengzhe-hou/WMIP/blob/v2026.10.1/README.md",
+        "https://dengzhe-hou.github.io/WMIP/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2603.27343",
+      "status": "pending",
+      "checkedAt": "2026-11-12T10:22:47.626668+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2608.25622v1",
+    "url": "https://arxiv.org/abs/2608.25622v1",
+    "id": "live-0ba5966fc1c54f39",
+    "title": "RefineCut（8月代表作）：先验时间线补丁，再蒸馏可执行剪辑规划器",
+    "summary": "8月代表作补读：RefineCut把剪辑要求变成可执行时间线补丁，用验证器重放教师候选，再训练8B规划器。作者Common-100上VES从直接模仿的0.620升至验证后训练的0.858，继续离线偏好优化到0.924；这是100题上的协议加权分，不是成片审美分或92.4%成功率。",
+    "insight": "将局部修改作为训练单元：先检查素材引用、时长和原有约束是否被破坏，再学习有效修复。结构正确、工程可继续编辑、观众觉得好看应分别验收。",
+    "limits": "未复现实验。Common-100有8题与训练集共享canonical任务，去除后92题结果另报；素材池仍有交叉。VES和训练/反馈共用验证器，不能替代视觉与叙事验收。论文称代码已公开，但本轮固定GitHub根目录只有README与assets，README仍写代码准备中；HF数据已可读，不能认定训练/验证器代码与权重齐备。",
+    "organization": "香港中文大学（深圳）、vivo AI Lab等",
+    "dateLabel": "2026-08-26 · 代表作补读，非本周新发布",
+    "evidence": "已读方法与评测，核固定公开数据及代码发布边界；未复现",
+    "originalTitle": "Plans You Can Check: Verifier-Grounded Learning of an Open-Weight Planner for Executable Video-Editing",
+    "date": "2026-08-26",
+    "checkedAt": "2026-11-12T10:25:29.874Z",
+    "originalDate": "2026-08-26",
+    "paperOriginalDate": "2026-08-26T10:43:26Z",
+    "paperUpdatedAt": "2026-08-26T10:43:26Z",
+    "updatedAt": "2026-08-26T10:43:26Z",
+    "firstSeenAt": "2026-11-02T09:16:49Z",
+    "lastSeenAt": "2026-11-12T10:00:00Z",
+    "tags": [
+      "代表作补读",
+      "可执行时间线",
+      "验证器蒸馏",
+      "离线DPO"
+    ],
+    "authors": [
+      "Haoyu Wang",
+      "Cheng Feng",
+      "Liuyang Bian",
+      "Ruiyang Huang",
+      "Lei Wei",
+      "Yafei Wen",
+      "Xiaoxin Chen",
+      "Xiaoying Tang"
+    ],
+    "topics": [
+      "video-editing"
+    ],
+    "featured": true,
+    "sourceId": "arxiv_video_editing",
+    "sources": [
+      {
+        "label": "arXiv原文·8月代表作",
+        "url": "https://arxiv.org/abs/2608.25622v1"
+      },
+      {
+        "label": "arXiv全文·方法与评测",
+        "url": "https://arxiv.org/html/2608.25622v1"
+      },
+      {
+        "label": "作者仓库·固定公开目录",
+        "url": "https://github.com/Lancelot-wy/RefineCut/tree/a8f5ea265fab45477944f68a472e04ee2505ba86"
+      },
+      {
+        "label": "RefineCut-Bench·固定公开数据",
+        "url": "https://huggingface.co/datasets/Randallhy/RefineCut-Bench/tree/57b7fc34f306e40ee6b6cd17e41ee1ccdf09f56a"
+      },
+      {
+        "label": "canonical-clean测试清单",
+        "url": "https://huggingface.co/datasets/Randallhy/RefineCut-Bench/blob/57b7fc34f306e40ee6b6cd17e41ee1ccdf09f56a/eval/canonical_clean_ids.json"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "8月代表作补读：RefineCut把剪辑要求变成可执行时间线补丁，用验证器重放教师候选，再训练8B规划器。作者Common-100上VES从直接模仿的0.620升至验证后训练的0.858，继续离线偏好优化到0.924；这是100题上的协议加权分，不是成片审美分或92.4%成功率。",
+      "motivation": "剪辑需求要落到素材选取、裁剪、顺序、转场和音乐对齐。教师的多个修复可能格式不同、能应用却破坏其他要求，直接模仿首选会把错误一起学进去。作者用有类型的时间线和明确约束表，让每次修改可重放、可检查。",
+      "novelty": "作者主张：把多教师轨迹变成验证过的执行监督，再用学生自身修复做偏好训练。本站判断：价值是教师标签可被重放推翻，以及修改前后约束不回退的信号；不是模型懂审美的证明。验证器单独打分的Evo消融已达0.909 VES，完整方案0.924；两个语义judge分量全用中性回退，主要证据支持结构约束驱动的改进。",
+      "evidenceScope": "已读arXiv v1§2–4、Limitations及附录B–F、H、J相关方法、数据、指标和人评说明。8月26日首发，本轮是代表作补读。论文报3960原始记录/3578 canonical任务、7971 captioned clips和499音乐元数据。固定HF版本public/ungated；本站读取train/test/Common-100文本与clean清单，独立核得2773训练/591测试，task_id交集0但测试canonical重叠73，Common-100重叠8、clean92与公开清单一致；dev596据manifest。作者clean92 VES为0.917对Mixed0.859；Human50由7位外部贡献者写简述，LLM起草并经人工审订约束，沿用同一验证器词表。盲化预览每组150个pair、每pair3位标注者，Evo对Mixed为100胜34平16负；(100+0.5×34)/150=0.780，非纯胜率。固定GitHub目录与README仅核到说明/图片；HF固定版本能核任务、schema、元数据及轨迹目录。未运行作者代码或渲染媒体，verified仅指来源核验。",
+      "limits": "未复现实验。Common-100有8题与训练集共享canonical任务，去除后92题结果另报；素材池仍有交叉。VES和训练/反馈共用验证器，不能替代视觉与叙事验收。论文称代码已公开，但本轮固定GitHub根目录只有README与assets，README仍写代码准备中；HF数据已可读，不能认定训练/验证器代码与权重齐备。 Converged@3只需3轮内FinalCSR≥0.8，和全部约束满足不同；无必保片段任务不进入ReqClipRecall分量均值，VES重归一其余权重。上游caption/beat错误可限制规划，生成槽本身不产画面；人评是渲染storyboard预览，混合规划与渲染效果，不能外推长片或任意真实项目。HF split_audit与论文部分教师计数/union口径不同，未混为已对齐的一组轨迹数；未核完整checkpoint或可复现执行包。",
+      "method": [
+        "输入简述、片段caption与结构化视觉/音乐元数据、初始时间线及约束表。规划器不看原始像素，输出类似JSON Patch的add/remove/replace操作；验证器重算约束，缺失素材用占位槽交给下游生成与渲染。",
+        "收集GPT-5.4、Qwen3-Max、DeepSeek-V4-Pro多分支轨迹，统一字段、路径和任务内素材别名。每步最多保留4个不同候选，逐个应用到时间线，按约束修复、素材召回、不回退和修改范围重排；教师首选不是真值。",
+        "用可应用、至少修好一项且不破坏已满足约束的分支做SFT，再混合步骤级与轨迹级偏好做离线DPO，得到Mixed-Pref。作者Verified SFT用3317条，原始模仿用9690条，数据量与过滤方式一起变化。",
+        "RefineCut-Evo从1500个训练状态各采4个学生补丁，以0.65验证器分加0.35任务rubric分选高差距偏好，779对重采样到1651行后离线DPO。实验中意图及素材相关性judge分量对全部6000候选均回退为0.5，同状态内抵消，不能说有独立审美裁判。",
+        "推理最多3轮：读当前状态和未满足约束、发一个补丁、应用并验证，然后交给下游渲染；不再调用教师。开发集选checkpoint，Common-100、canonical-clean92、Human50及盲化渲染预览分别评测。"
+      ],
+      "inspirations": [
+        "把素材ID、总时长容差、必保/禁用镜头、允许修改区间和节拍做成验收表。每个补丁保留修改前后工程及约束差异，优先蒸馏有效且不破坏已有要求的修复。",
+        "分别验收结构和成片：前者测补丁可应用、最终全部约束满足及工程可编辑；后者独立评故事、连续性和节奏。CSR达到0.8的收敛率、parser通过和VES都不等于完成全部需求。",
+        "按canonical任务与素材来源同时拆分，冻结测试清单和验证器版本。Common-100与clean92说明task_id不重叠仍不足以排除近似任务；迁移到自有素材库须另测泛化。"
+      ],
+      "reviewedAt": "2026-11-12T10:25:29.874Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2608.25622v1",
+        "https://arxiv.org/html/2608.25622v1",
+        "https://github.com/Lancelot-wy/RefineCut/tree/a8f5ea265fab45477944f68a472e04ee2505ba86",
+        "https://huggingface.co/datasets/Randallhy/RefineCut-Bench/tree/57b7fc34f306e40ee6b6cd17e41ee1ccdf09f56a",
+        "https://huggingface.co/datasets/Randallhy/RefineCut-Bench/blob/57b7fc34f306e40ee6b6cd17e41ee1ccdf09f56a/tasks/split_audit.json",
+        "https://huggingface.co/datasets/Randallhy/RefineCut-Bench/blob/57b7fc34f306e40ee6b6cd17e41ee1ccdf09f56a/eval/canonical_clean_ids.json"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2608.25622",
+      "status": "pending",
+      "checkedAt": "2026-11-12T10:22:47.626668+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.14320v1",
+    "url": "https://arxiv.org/abs/2611.14320v1",
+    "id": "live-cea7186eed759f4b",
+    "title": "WikiTrace：记住经验，也保留能推翻它的原始证据",
+    "summary": "WikiTrace把每条经验连回推导摘要与原始执行轨迹，让Agent遇到细节缺失、经验冲突或动作失败时查证。作者在5个基准、8套件上报告宏平均分90.2，比同样经验但无源证据访问的Insights Only高3.2分；这组合了证据访问与查证提示，不是模型参数训练。",
+    "insight": "成功或失败只是整段轨迹的结果，不能证明从中总结出的每句话正确。值得借鉴的是把经验做成可追溯、可质疑的假说：先用短提示定位问题，再回到原始状态与动作判断适用范围；同时单列“本来能做对，却被记忆带错”的损失。",
+    "limits": "已读全文与固定公开源码，未运行或复现。90.2是混合原始指标的8套件宏平均，不是821题的统一成功率；数据为定制子集。正文将AppWorld指标写作TGC，但发布配置默认启用空答案特例的lenient判定，同时保留官方TGC，现有证据不足以确认主表采用哪一字段。",
+    "organization": "KAIST AI、DeepAuto.ai",
+    "dateLabel": "2026-11-10 · arXiv v1",
+    "evidence": "已读原文方法、实验、关键附录及固定源码；未复现",
+    "originalTitle": "Don't Just Trust Your Memory: Evidence-Linked Memory Reduces Memory-Induced Degradation in LLM Agents",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-12T10:24:26.051649+00:00",
+    "originalDate": "2026-11-10",
+    "paperOriginalDate": "2026-11-10T16:46:59Z",
+    "paperUpdatedAt": "2026-11-10T16:46:59Z",
+    "updatedAt": "2026-11-10T16:46:59Z",
+    "firstSeenAt": "2026-11-11T10:00:01Z",
+    "lastSeenAt": "2026-11-12T10:00:00Z",
+    "dailySubmittedAt": "2026-11-11T00:00:00.000Z",
+    "tags": [
+      "经验蒸馏",
+      "证据链接记忆",
+      "记忆回归",
+      "非参数学习"
+    ],
+    "authors": [
+      "Yukyeong Lee",
+      "Yumin Choi",
+      "Jinheon Baek",
+      "Sung Ju Hwang"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.14320v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.14320"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.14320"
+      },
+      {
+        "label": "Project",
+        "url": "https://yukyeongleee.github.io/wikitrace/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/yukyeongleee/wikitrace"
+      },
+      {
+        "label": "arXiv全文 · 方法与评测",
+        "url": "https://arxiv.org/html/2611.14320v1"
+      },
+      {
+        "label": "作者代码 · 固定版本",
+        "url": "https://github.com/yukyeongleee/wikitrace/tree/9ee357fbb95db9caae09808f3472a9fce6409c90"
+      },
+      {
+        "label": "发布配置 · AppWorld口径",
+        "url": "https://github.com/yukyeongleee/wikitrace/blob/9ee357fbb95db9caae09808f3472a9fce6409c90/configs/base.yaml"
+      },
+      {
+        "label": "AppWorld评分实现 · 固定版本",
+        "url": "https://github.com/yukyeongleee/wikitrace/blob/9ee357fbb95db9caae09808f3472a9fce6409c90/src/wikitrace/envs/appworld/benchmarks/appworld.py"
+      },
+      {
+        "label": "Gain与Regression统计 · 固定版本",
+        "url": "https://github.com/yukyeongleee/wikitrace/blob/9ee357fbb95db9caae09808f3472a9fce6409c90/src/wikitrace/analysis/gain_regression.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "WikiTrace把每条经验连回推导摘要与原始执行轨迹，让Agent遇到细节缺失、经验冲突或动作失败时查证。作者在5个基准、8套件上报告宏平均分90.2，比同样经验但无源证据访问的Insights Only高3.2分；这组合了证据访问与查证提示，不是模型参数训练。",
+      "motivation": "外部记忆常把训练任务的一段执行压成一句规则，丢掉使规则成立的状态、限制与反例。只有成功/失败标签时，编译器可能把相关现象当成原因；失败轨迹尤其容易留下错误诊断。作者关心的是复用经验能否既救回原本失败的任务，又尽量不破坏原本能完成的任务。",
+      "novelty": "作者主张：经验—解释—原始执行的可回溯链接能减少错误经验造成的退化，并在8个套件上取得最高主表分数。本站判断：比“多存一些摘要”更有价值的是保留反证路径，以及把收益和回归分开验收。主表90.2对Insights Only的87.0，差3.2分；Regression宏平均4.5%，对照6.5%，无记忆复跑9.7%。这些支持整套查证机制有效，但不能把自主选择查证后的较好表现解释为查证动作本身的随机对照因果效应。",
+      "evidenceScope": "已读arXiv v1 §3–5、Limitations、附录A–C与E.1，核对表1–6和方法提示；首发2026-11-10T16:46:59Z。固定作者仓库9ee357fbb95db9caae09808f3472a9fce6409c90的README、配置、记忆/统计说明与关键评分、近邻检索实现仅静态阅读。ALFWorld训练50，测试101/134；ScienceWorld选10类，训练50、测试100；PlanCraft只可解题，训练50、测试100/100；AppWorld训练54，测试111/99；τ³ Retail自划38/76，许多客户跨两边共享。共821个测试实例，每方法3次试验；主表是套件等权平均，ScienceWorld为平均进度分，其他为成功/通过/TGC类指标。主模型deepseek-v4-flash高推理强度；第二模型GLM-5.3-flash只查PlanCraft和ScienceWorld的3套件。Gain和Regression使用二元完成结果，ScienceWorld不是把部分进度视为成功；95%区间按套件内任务配对bootstrap 10000次。核验不等于复现实验。",
+      "limits": "已读全文与固定公开源码，未运行或复现。90.2是混合原始指标的8套件宏平均，不是821题的统一成功率；数据为定制子集。正文将AppWorld指标写作TGC，但发布配置默认启用空答案特例的lenient判定，同时保留官方TGC，现有证据不足以确认主表采用哪一字段。 Regression4.5%的分母是无记忆3次多数成功的任务，再对记忆3次的失败率及8套件取平均，不是所有任务的失败率或纯因果伤害；表6各基准合并的Gain/Regression合格任务数依次为10/225、29/71、75/125、6/70、52/158，不能用这个池化分母替代套件宏平均。无记忆自身复跑也会变动。既有方法被改为离线、单遍、冻结记忆，ExpeL不做原重试与范例检索，不代表其所有原生设定。公开实现默认AppWorld仅在gold答案为null且唯一失败是answer-check时豁免；是否对应论文主表仍待逐样本日志核对。正文1.17倍是相对Insights Only、按套件平均的每题测试成本，不是全系统固定总价。查证原因与效果由LLM从显式推理标注；508次查证中46次无三裁判多数，效果一致性Fleiss κ=0.49，不能当成人工确认的内部因果解释。全量经验注入的扩展性未解决，来源链接本身也不保证经验正确。",
+      "method": [
+        "先在训练任务上采集不带记忆的轨迹，保留任务、动作、观察与成功/失败信号。每次试验中，各方法使用同一批训练执行；记忆在测试前一次构建，此后只读，不追加验证经验的环境运行，也不更新模型权重。",
+        "每条轨迹单独交给编译器：生成成功关键决策或失败可能原因的摘要，并提炼最多3条带适用范围的经验。每条经验同时链接到摘要和原始轨迹；不合并、筛除或持续改写它们，因而允许冗余与冲突，失败解释仍是假说。",
+        "新任务首条消息放入全部经验，再列出与任务描述最相近的3条训练执行作为导航。固定实现用text-embedding-3-small的余弦相似度找起点；它不是只检索3条经验，全部经验仍会占用上下文。",
+        "将三层记忆挂为只读文件，提示Agent在经验不够具体、源于失败或互相冲突时，借read/bash向下查原始证据；动作失败后也应再查。测试时修正的是当前推理中的理解与计划，不是永久写回经验库。",
+        "与不带记忆、既有记忆方法及Insights Only比较。后者接收相同经验和近邻导航，却没有源文件与descent查证提示；因此消融识别的是这两个改动的组合。另以3次无记忆结果的多数投票划定原本成功/失败任务，分别统计Regression与Gain，再用额外3次无记忆复跑估计随机波动。"
+      ],
+      "inspirations": [
+        "为代码/剪辑技能保存“规则、适用前提、生成该规则的输入、执行日志与产物检查”链条。遇到渲染失败或两条技能冲突时，从精确报错或帧/对象状态去查源记录；不要用一段成功视频证明所有同类任务都适用。这是迁移建议，论文未评测视频创作。",
+        "记忆实验同时保留新学会的任务与被带错的任务清单：固定多次无记忆基线、相同任务与种子，再增加独立无记忆复跑。报告条件分母、每套件率及置信区间，避免平均分上涨掩盖稳定技能退化。",
+        "做下一步实验时把源文件访问、查证提示、显式前提检查和经验检索各设独立开关；加入读不到源记录、互相矛盾的记录和长记忆库。按同一成本预算比较结果，同时记录记忆构建、检索、推理与额外工具调用成本，才能判断证据链接何时值得。"
+      ],
+      "reviewedAt": "2026-11-12T10:24:26.051649+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.14320v1",
+        "https://arxiv.org/html/2611.14320v1",
+        "https://github.com/yukyeongleee/wikitrace/tree/9ee357fbb95db9caae09808f3472a9fce6409c90",
+        "https://github.com/yukyeongleee/wikitrace/blob/9ee357fbb95db9caae09808f3472a9fce6409c90/configs/base.yaml",
+        "https://github.com/yukyeongleee/wikitrace/blob/9ee357fbb95db9caae09808f3472a9fce6409c90/src/wikitrace/envs/appworld/benchmarks/appworld.py",
+        "https://github.com/yukyeongleee/wikitrace/blob/9ee357fbb95db9caae09808f3472a9fce6409c90/src/wikitrace/analysis/gain_regression.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.14320",
+      "status": "pending",
+      "checkedAt": "2026-11-12T10:22:47.626668+00:00"
+    }
   }
 ]
