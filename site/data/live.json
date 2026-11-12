@@ -62,6 +62,53 @@
     "sourceType": "huggingface",
     "category": "benchmark",
     "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.11306",
+    "url": "https://huggingface.co/papers/2611.11306",
+    "id": "live-27ca2bcdeb1bba83",
+    "title": "ScrapeBench: Evaluating Legal Compliance of AI Agents in Website Scraping",
+    "summary": "AI agents deployed on the open web are becoming more capable of performing actions that may breach contractual provisions and violate computer security laws. In this paper, we introduce ScrapeBench, the first agentic benchmark for empirically evaluating the legal compliance of AI agents with website scraping policies, namely terms of service (ToS) and robots.txt directives. Across widely used closed-weight and open-weight AI agents, we find that most agents exhibit low compliance rates ( < 5%) when instructed to scrape websites in our sample of 1,626 popular websites that explicitly prohibit scraping. In addition, we observe that even where…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-10",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-12T16:00:00Z",
+    "firstSeenAt": "2026-11-12T16:00:00Z",
+    "lastSeenAt": "2026-11-12T16:00:00Z",
+    "dailySubmittedAt": "2026-11-12T00:00:00.000Z",
+    "tags": [
+      "Evaluation"
+    ],
+    "authors": [
+      "Joseph Marvin Imperial",
+      "Daniel Slate",
+      "Noam Kolt"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.11306"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.11306"
+      },
+      {
+        "label": "Project",
+        "url": "https://scrapebench.github.io/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/imperialite/scrapebench"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "benchmark",
+    "verified": false,
     "originUrl": "https://huggingface.co/papers/2611.14115",
     "url": "https://huggingface.co/papers/2611.14115",
     "id": "live-18d67370ce4a9110",
@@ -1823,6 +1870,61 @@
       {
         "label": "arXiv · Agentic 论文",
         "url": "https://arxiv.org/abs/2611.13669v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.12304",
+    "url": "https://huggingface.co/papers/2611.12304",
+    "id": "live-91c449c9295080a3",
+    "title": "Evolving Infra: Agent-Adaptive LLM Serving at Scale",
+    "summary": "Agentic workloads are a major source of LLM inference demand. Existing prefill--decode (PD) disaggregated serving systems offer limited flexibility for runtime adaptation of compute allocation and KV cache management, and rely on coarse signals that only partly capture the diverse and dynamic agent workload. These limitations lead to load imbalance between prefill and decode nodes and eviction of KV caches that agents will reuse. We present Evolving Infra, an agent-adaptive serving framework that adapts compute allocation to agent workloads and KV cache management to agent context management at runtime. We decouple compute allocation from…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-09",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-09",
+    "checkedAt": "2026-11-12T16:00:00Z",
+    "firstSeenAt": "2026-11-12T16:00:00Z",
+    "lastSeenAt": "2026-11-12T16:00:00Z",
+    "dailySubmittedAt": "2026-11-12T00:00:00.000Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Hao Kang",
+      "Weili Xu",
+      "Ziyang Li",
+      "Zheng Du",
+      "Hanchen Li",
+      "Tian Xia",
+      "Song Bian",
+      "Tushar Krishna",
+      "Huizi Mao",
+      "Ion Stoica",
+      "Song Han"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.12304"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.12304"
+      },
+      {
+        "label": "Project",
+        "url": "https://inference-rsi.com/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/mit-han-lab/EvolvingInfra"
       }
     ]
   },

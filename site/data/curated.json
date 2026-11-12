@@ -13922,5 +13922,415 @@
       "status": "pending",
       "checkedAt": "2026-11-12T10:22:47.626668+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.11306v2",
+    "url": "https://arxiv.org/abs/2611.11306v2",
+    "id": "live-27ca2bcdeb1bba83",
+    "title": "ScrapeBench：把政策遵循与过拒成对测，别把读过规则当作会遵守",
+    "summary": "ScrapeBench把网站政策遵循和过度拒绝分开测：1,626个明确禁止抓取网站、269个未明确禁止网站，观察Agent是否发出内容页请求。对抗提示下，Claude Opus 4.6的EP遵循率99.7%，同时NEP过拒率98.5%；只看前者会把普遍拒绝误当成精准判断。这里是研究标签下的行为评测，不是法律裁决。",
+    "insight": "为素材检索或代码Agent分别保留“已查看约束”和“下一步执行是否满足约束”的记录；把来源快照、适用对象、时间与最终工具动作关联起来，不能用一次成功读取代替执行验收。这是迁移建议，本文没有测试视频创作。",
+    "limits": "未复现实验，也未抓取被评测网站。EP/NEP是作者简化的政策标签，NEP不等于获得授权或依法可抓取；地域、目的、合同效力等未被覆盖。单次独立任务、英文高流量且美国可访问网站，不能外推所有网页或长程Agent。",
+    "dateLabel": "11月8日首发 · 11月10日v2修订 · 11月12日HF收录",
+    "evidence": "已读方法、关键附录及固定公开数据/结果；独立计数，不是实验复现",
+    "originalTitle": "ScrapeBench: Evaluating Legal Compliance of AI Agents in Website Scraping",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-12T16:28:14.042224+00:00",
+    "originalDate": "2026-11-08",
+    "paperOriginalDate": "2026-11-08T11:19:18Z",
+    "paperUpdatedAt": "2026-11-10T11:23:10Z",
+    "updatedAt": "2026-11-10T11:23:10Z",
+    "firstSeenAt": "2026-11-12T16:00:00Z",
+    "lastSeenAt": "2026-11-12T16:00:00Z",
+    "tags": [
+      "政策遵循",
+      "过度拒绝",
+      "工具轨迹审计"
+    ],
+    "authors": [
+      "Joseph Marvin Imperial",
+      "Daniel Slate",
+      "Noam Kolt"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.11306"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.11306"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://scrapebench.github.io/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/imperialite/scrapebench"
+      },
+      {
+        "label": "arXiv v2 · 日期与原文",
+        "url": "https://arxiv.org/abs/2611.11306v2"
+      },
+      {
+        "label": "原论文 · 方法、结果与局限",
+        "url": "https://arxiv.org/html/2611.11306v2"
+      },
+      {
+        "label": "固定源码 · 工具执行与评分",
+        "url": "https://github.com/imperialite/scrapebench/blob/efd95b8c2e53d4212cf9291227962f3302b8a73e/experiment_agentic.py"
+      },
+      {
+        "label": "固定说明 · 历史结果与失败分母",
+        "url": "https://github.com/imperialite/scrapebench/blob/efd95b8c2e53d4212cf9291227962f3302b8a73e/README.md"
+      },
+      {
+        "label": "轨迹发布 · 缺失与一致性边界",
+        "url": "https://github.com/imperialite/scrapebench/blob/efd95b8c2e53d4212cf9291227962f3302b8a73e/traces/README.md"
+      },
+      {
+        "label": "固定公开数据卡",
+        "url": "https://huggingface.co/datasets/josephimperial/ScrapeBench/blob/c6b1026a79fc063faa964227d4d2ec4edd22c038/README.md"
+      },
+      {
+        "label": "P8 · EP公开结果",
+        "url": "https://github.com/imperialite/scrapebench/blob/efd95b8c2e53d4212cf9291227962f3302b8a73e/results/prohibited/p8_results.csv"
+      },
+      {
+        "label": "P8 · NEP公开结果",
+        "url": "https://github.com/imperialite/scrapebench/blob/efd95b8c2e53d4212cf9291227962f3302b8a73e/results/permissible/p8_results.csv"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "ScrapeBench把网站政策遵循和过度拒绝分开测：1,626个明确禁止抓取网站、269个未明确禁止网站，观察Agent是否发出内容页请求。对抗提示下，Claude Opus 4.6的EP遵循率99.7%，同时NEP过拒率98.5%；只看前者会把普遍拒绝误当成精准判断。这里是研究标签下的行为评测，不是法律裁决。",
+      "motivation": "Agent可能读到条款却没有让它约束后续动作，也可能为避免违反规则而拒绝所有任务。只统计完成率或只统计禁止任务的拦截率，都不足以区分正确遵循与普遍拒绝；作者将任务、可见政策和实际工具轨迹放到同一评测中。",
+      "novelty": "作者主张：把网站政策遵循、过拒与政策读取行为放在同一真实站点评测中。本站判断：成对保留禁止和未明确禁止任务，比单报高遵循率更有诊断价值。P8中Claude的1621/1626次不抓取与265/269次过拒可从固定结果CSV重算；这支持警惕普遍拒绝，不能证明模型进行了准确法律推理。",
+      "evidenceScope": "已读v2正文§2–6、附录A.1–A.2/B.2–B.4/C.1/E.1–E.3及相关结果表；首发11月8日，11月10日修订，11月12日HF新增收录。固定GitHub efd95b8c2e53d4212cf9291227962f3302b8a73e 的README、工具/评分相关源码、轨迹发布说明及P1/P8两类结果CSV可读；固定HF c6b1026a79fc063faa964227d4d2ec4edd22c038 为public/ungated。本站用自己的CSV计数核1,895唯一域名、EP1626/NEP269，ToS与robots组合为501/1024/101/269；独立复算Claude P8两个分母与比例，并识别P1额外44条pilot结果，未运行作者代码或重评轨迹。作者报告普通提示下五模型EP遵循率低于5%，Grok约11%；提供链接的P4中GPT读取ToS82.8%、robots100%，遵循仍14.2%。这些是作者历史设置的结果，不代表当前产品。verified仅指来源核验。",
+      "limits": "未复现实验，也未抓取被评测网站。EP/NEP是作者简化的政策标签，NEP不等于获得授权或依法可抓取；地域、目的、合同效力等未被覆盖。单次独立任务、英文高流量且美国可访问网站，不能外推所有网页或长程Agent。 工具URL记录和裁判输出是行为代理，不能证明已经成功下载内容；当前裁判提示不接收完整HTTP响应。P1公开Kimi结果的Num URLs Fetched最大47，支持“五轮≠五调用”的审计提醒，未逐条核原轨迹。发布说明披露预期90,960试验只有90,929条六模型结果；90,537份轨迹通过打包检查，363份候选排除、29份无轨迹，另31项无公开结果；历史裁判请求/回复、逐项裁判错误和完整provider设置未保留，结构一致不等于恢复历史执行。当前脚本把推理/裁判失败排除出计分CSV，不可与历史结果不加区分混用；P1/P8四表还可见缺项和Content Filter。论文所报“约88%误读条款”来自1,260个抽样违规试验中535个有显式理由的子集，不是全体违规的因果解释。人类每人15题相关，不能把2,700决定都当独立人；阅读政策与遵循的关联也非随机查证干预。",
+      "method": [
+        "从2026年2月CrUX前3,000网站筛出1,895个英文、美国可访问网站；排除不适合严格二分类的条件限制。ToS由GPT-5.2抽取与标注，robots.txt在附录按规则解析；任一来源标EP即归EP，其余为NEP。人工抽查每类15%，不是逐站法律审核。",
+        "固定同一落地页抓取任务，改变八种提示：从普通请求，到提供政策链接、贴入文本、加强遵循要求及对抗条件。贴入ToS最多100,000字符，而工具读取文本截至8,000字符；有链接与有全文并非相同证据条件。",
+        "通过OpenRouter测试六个模型，单次独立任务、每次输出最多4,096 token。工具返回HTTP状态、最终URL、文本或错误，保存调用轨迹；论文称最多5次工具调用，但固定代码实际限制5轮模型响应，每轮可能包含多个调用，预算口径必须另核。",
+        "将政策页和内容页分开，GPT-5.2结合URL轨迹、启发式行为标记和末尾回复判断是否尝试抓取。然后用动作与EP/NEP标签计算遵循、违反、允许行为或过拒，同时记录是否查过政策；这不是内容交付质量或成功HTTP访问率。",
+        "分别报告EP与NEP分母及不同提示效果，检查“看过规则却仍抓取”的情况。另设180名美国英语参与者，三提示×两类网站每组30人，每人决定15题；人类按钮展示预存页面，不产生真实抓取，不能和模型在线工具行为等同。"
+      ],
+      "inspirations": [
+        "为素材检索或代码Agent分别保留“已查看约束”和“下一步执行是否满足约束”的记录；把来源快照、适用对象、时间与最终工具动作关联起来，不能用一次成功读取代替执行验收。这是迁移建议，本文没有测试视频创作。",
+        "设计约束评测时成对加入应阻止与可继续的任务，分别报漏拦、误拒、工具失败和实际完成率。遇到条件不明时另列未决状态，避免把缺少禁止标签当成已获许可，或把一律拒绝当作模型能力。",
+        "将模型回合、实际工具调用数和成功响应数分开限额与统计；为失败重试、不同提示历史版本和未保留的裁判证据保留独立分母。复用历史榜单前先审可追溯性，再决定哪些差异能比较。"
+      ],
+      "reviewedAt": "2026-11-12T16:28:14.042224+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.11306v2",
+        "https://arxiv.org/html/2611.11306v2",
+        "https://scrapebench.github.io/",
+        "https://github.com/imperialite/scrapebench/blob/efd95b8c2e53d4212cf9291227962f3302b8a73e/experiment_agentic.py",
+        "https://github.com/imperialite/scrapebench/blob/efd95b8c2e53d4212cf9291227962f3302b8a73e/README.md",
+        "https://github.com/imperialite/scrapebench/blob/efd95b8c2e53d4212cf9291227962f3302b8a73e/traces/README.md",
+        "https://huggingface.co/datasets/josephimperial/ScrapeBench/blob/c6b1026a79fc063faa964227d4d2ec4edd22c038/README.md",
+        "https://github.com/imperialite/scrapebench/blob/efd95b8c2e53d4212cf9291227962f3302b8a73e/results/prohibited/p8_results.csv",
+        "https://github.com/imperialite/scrapebench/blob/efd95b8c2e53d4212cf9291227962f3302b8a73e/results/permissible/p8_results.csv"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.11306",
+      "status": "pending",
+      "checkedAt": "2026-11-12T16:25:44.986486+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2607.18116v2",
+    "url": "https://arxiv.org/abs/2607.18116v2",
+    "id": "live-2b54c4c0273840cb",
+    "title": "SGA（7月代表作）：先检查Manim几何，再用局部补丁修布局",
+    "summary": "SGA在Manim代码渲染前做部分执行，把遮挡、出界等几何问题转成具体坐标和局部修改提示。其价值是让代码动效有可定位的检查反馈；MVQS只是布局代理分数，不能替代完整运行、连贯运动和教学正确性的验收。",
+    "insight": "“能提取场景图”“没有几何冲突”和“最终视频正确”应是三道独立门槛。跳过异常后仍能打分，不代表完整程序能运行；忽略运动途中的重叠，也不能证明整段动画始终可读。适合把SGA思路做成辅助检查器，再用独立渲染与任务语义测试兜住盲区。",
+    "limits": "已读v2全文与关键附录，未复现。部分主表MVQS与公布权重无法算回，附录场景计数也存在不一致；指标增益仅作为作者报告。作者项目页本轮404，代码、评分脚本和逐样本结果未核到，不声称当前完整开源可运行。",
+    "organization": "Universidad Industrial de Santander、KAUST",
+    "dateLabel": "2026-07-20 首发 · 09-10 v2修订 · 代表作补读",
+    "evidence": "全文方法、实验与关键附录核验；报告口径存疑点，未复现",
+    "originalTitle": "SGA: Plug&Play Geometric Verification for Educational Video Synthesis",
+    "date": "2026-07-20",
+    "checkedAt": "2026-11-12T16:27:25Z",
+    "originalDate": "2026-07-20",
+    "paperOriginalDate": "2026-07-20T16:11:19Z",
+    "paperUpdatedAt": "2026-09-10T02:58:54Z",
+    "updatedAt": "2026-09-10T02:58:54Z",
+    "firstSeenAt": "2026-11-02T09:16:49Z",
+    "lastSeenAt": "2026-11-12T16:00:00Z",
+    "tags": [
+      "Manim",
+      "几何验证",
+      "代码修复",
+      "评测口径",
+      "代表作补读"
+    ],
+    "authors": [
+      "Jhon Lopez",
+      "Carlos Hinojosa",
+      "Bernard Ghanem"
+    ],
+    "topics": [
+      "code2motion",
+      "code2video"
+    ],
+    "featured": true,
+    "sourceId": "arxiv_code2motion",
+    "sources": [
+      {
+        "label": "arXiv · Code2Motion",
+        "url": "https://arxiv.org/abs/2607.18116v2"
+      },
+      {
+        "label": "arXiv全文 · 方法与附录",
+        "url": "https://arxiv.org/html/2607.18116v2"
+      },
+      {
+        "label": "arXiv PDF · 原始表格",
+        "url": "https://arxiv.org/pdf/2607.18116v2"
+      },
+      {
+        "label": "ACL Anthology · Findings EMNLP 2026出版记录",
+        "url": "https://aclanthology.org/2026.findings-emnlp.454/"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "SGA在Manim代码渲染前做部分执行，把遮挡、出界等几何问题转成具体坐标和局部修改提示。其价值是让代码动效有可定位的检查反馈；MVQS只是布局代理分数，不能替代完整运行、连贯运动和教学正确性的验收。",
+      "motivation": "Manim脚本语法正确，画面仍可能出现公式压住标签、物体出界或文字过小。靠渲染后的VLM批评往往只能给笼统建议，而且每次都要等视频。作者希望直接从程序得到对象坐标和源行，给生成模型可执行的几何修正依据。",
+      "novelty": "作者主张：把几何检测、坐标反馈和局部代码修正作为即插即用模块，在2条管线×4个模型的8组比较中，报告7组MVQS高于RAW；Code2Video+GPT-5.1主表为62.97→73.11（相对约16.1%）。本站判断：更可迁移的是“错误定位到对象/源行”的接口，而不是这组分数本身。部分行按公开公式重算与表值不符，且修复与评测共享几何假设；数字还需要逐样本代码、评分日志与独立指标核对。不能由7/8推断所有模型或视觉指标都会改善。",
+      "evidenceScope": "已读arXiv 2607.18116v2方法§3、实验§4、结论/局限及附录7–13，并交叉核PDF表1、6、8的数字；未运行代码或观看实验视频。论文以MMMC-Code的117个教学主题、Code2Video/TEA两管线与GPT-5.1、GPT-5 mini、Claude 4.6 Sonnet、Gemini 3.0 Flash四模型比较，反馈预算为一轮，不是117条等长独立视频的统一成功率。作者称招募25人，15人完成静帧轨、16人完成视频轨、14人完成全部；静帧8组比较/16张图，整片6组三元组/18条视频，后者每项96次评分。84.4%/65.0%是静帧相关的报告汇总，完整视频三选偏好SGA仅38.5%，其余VLM26.0%、RAW24.0%、无偏好11.5%。ACL出版页核为2026年10月Findings EMNLP，未给确切日；不覆盖7月首发和9月修订时间。项目URL由论文直接给出，但本轮匿名404，无法确认所称代码、指标实现和日志当前可获取。",
+      "limits": "已读v2全文与关键附录，未复现。部分主表MVQS与公布权重无法算回，附录场景计数也存在不一致；指标增益仅作为作者报告。作者项目页本轮404，代码、评分脚本和逐样本结果未核到，不声称当前完整开源可运行。 按Eq.3重算TEA+Claude 4.6 Sonnet的SGA行：0.5×67.28+0.2×62.34+0.3×67.41=66.331，表列62.83；不能用普通四舍五入解释，原因未知。场景完成表的SGA1127/1127含修复前后评分，不是1127个独立视频成功；GPT-5 mini303与RAW151也不满足附录声称的严格两倍。静帧表统一写n=45，但56.7%等比例与45个等权整数判断不直接对齐，未取得逐票记录，故不倒推胜票或置信区间。完整视频双指标合并比较中SGA对RAW胜37.0%、平51.6%（n=192），不应改写成84.4%整片胜率。AST解析只证明补丁语法，部分执行、二维AABB和忽略中间重叠不能保证完整程序运行或全时域无遮挡；论文也不验证数学事实。检测器与MVQS共享规则，可能奖励检查器擅长的改动；作者未将人工视频逐项绑定到topic/backbone/pipeline，不能建立样本级MVQS—人工相关性。所谓6倍是6.4→8.8与6.4→6.8分钟所对应额外修复开销之比，非整条生成管线6倍加速。",
+      "method": [
+        "在Code2Video或TheoremExplainAgent生成Manim脚本后截取代码：解析AST，把construct中的语句分别包进try-except，跳过出错语句以提取剩余对象。记录对象类别、二维包围盒、中心、变量名和创建行号；这是真实运行时的部分执行，不是保证程序正确的静态证明。",
+        "用轴对齐包围盒检测相交面积，按遮挡比例分级并计算最小分离向量。再用描述关键词和装饰框、箭头、居中、容器、括号等结构规则排除有意重叠。动态场景取11个采样位置，但只把起止位置的冲突送去修复，中间重叠按瞬态忽略。",
+        "把冲突、目标坐标和修正模板连同创建行附近±5行交给同一生成模型，局部调整位置、缩放或相关动画前的布局。补丁必须通过AST解析，失败则回滚；论文实验只做一轮，伪代码在未检出问题时直接返回原脚本，不调用修复模型。",
+        "以MVQS组合空间、布局与教育相关代理分项，权重为0.5/0.2/0.3；例如边界、对象最小尺度、画布占用、字符串匹配标签与起止帧冲突。再另用Gemini 3.0 Flash进行视觉评分，并用静帧比较和完整短片评分核对人类可感知效果；这些量表不等于数学正确或学习效果。"
+      ],
+      "inspirations": [
+        "为Manim、网页动效或Remotion建立分层验收：语法与完整执行通过后，再检查对象边界、字幕安全区、遮挡和关键帧，最后检查连续运动与叙事。单列异常跳过的语句/对象清单，让“能提取部分对象”不能冒充交付成功。",
+        "给编辑Agent返回对象ID、源行、冲突时间区间和最小移动候选，并验证修改没有破坏关联标签、图例和尺寸约束。把有意覆盖、擦除转场、图形相交等例子放入回归集，比较局部修复与整段重写的改动范围及返修成本。",
+        "独立设计验收数据，记录每个题目、脚本版本、修复前后场景、完整渲染成功与逐项评分，保留同一ID的人工判断。把静帧偏好、整片偏好与学习任务结果分开报告，并公开分母及失败样本，避免自定义几何分数变成唯一目标。"
+      ],
+      "reviewedAt": "2026-11-12T16:27:25Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2607.18116v2",
+        "https://arxiv.org/html/2607.18116v2",
+        "https://arxiv.org/pdf/2607.18116v2",
+        "https://aclanthology.org/2026.findings-emnlp.454/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2607.18116",
+      "status": "pending",
+      "checkedAt": "2026-11-12T16:25:44.986486+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.12304v1",
+    "url": "https://arxiv.org/abs/2611.12304v1",
+    "id": "live-91c449c9295080a3",
+    "title": "Evolving Infra：让推理服务理解Agent分支、停顿与缓存复用",
+    "summary": "Evolving Infra把Agent的分支、停顿和上下文更新变成推理服务的调度信号：计算节点可切换预填充/解码角色，KV缓存继续共享。作者在36张GB300的9组闭环负载中报告相对Dynamo最高4.12倍的平均模型请求延迟比值；这是服务优化，不是模型能力或任务成功率提升。",
+    "insight": "Agent的瓶颈不只在单次生成：工具等待、上下文压缩与子Agent分叉会改变下一轮计算和缓存需求。可借鉴的是将分支生命周期显式传给服务层，再用真实请求工作量调整资源；验收时同时看吞吐、尾延迟、失败和任务质量，避免用平均速度掩盖不利场景。",
+    "limits": "已读全文、固定公开源码与数据卡，未运行或复现。主实验衡量模型请求延迟和吞吐，闭环并发会随服务速度改变请求到达率；Putnam两档并发的P95首token延迟反而更高。真实集群扩展到256张GB300，3072张规模是模拟。公开复现配置与论文部分参数不同，尚不能确认完全一致的运行协议。",
+    "organization": "Georgia Tech、UC Berkeley、MIT等",
+    "dateLabel": "2026-11-09 · arXiv v1",
+    "evidence": "已读原文方法、实验与关键附录；固定源码/数据卡静态核验，未复现",
+    "originalTitle": "Evolving Infra: Agent-Adaptive LLM Serving at Scale",
+    "date": "2026-11-09",
+    "checkedAt": "2026-11-12T16:30:21.345022+00:00",
+    "originalDate": "2026-11-09",
+    "paperOriginalDate": "2026-11-09T12:26:02Z",
+    "paperUpdatedAt": "2026-11-09T12:26:02Z",
+    "updatedAt": "2026-11-09T12:26:02Z",
+    "firstSeenAt": "2026-11-12T16:00:00Z",
+    "lastSeenAt": "2026-11-12T16:00:00Z",
+    "dailySubmittedAt": "2026-11-12T00:00:00.000Z",
+    "tags": [
+      "Agent推理服务",
+      "动态P/D调度",
+      "KV缓存",
+      "系统评测"
+    ],
+    "authors": [
+      "Hao Kang",
+      "Weili Xu",
+      "Ziyang Li",
+      "Zheng Du",
+      "Hanchen Li",
+      "Tian Xia",
+      "Song Bian",
+      "Tushar Krishna",
+      "Huizi Mao",
+      "Ion Stoica",
+      "Song Han"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.12304"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.12304"
+      },
+      {
+        "label": "Project",
+        "url": "https://inference-rsi.com/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/mit-han-lab/EvolvingInfra"
+      },
+      {
+        "label": "arXiv v1",
+        "url": "https://arxiv.org/abs/2611.12304v1"
+      },
+      {
+        "label": "arXiv全文 · 方法与实验",
+        "url": "https://arxiv.org/html/2611.12304v1"
+      },
+      {
+        "label": "作者代码 · 固定版本",
+        "url": "https://github.com/mit-han-lab/EvolvingInfra/tree/0a12617a69e73a5164bb23e1d971536e2ee4bd37"
+      },
+      {
+        "label": "公开复现实验配置 · 固定版本",
+        "url": "https://github.com/mit-han-lab/EvolvingInfra/blob/0a12617a69e73a5164bb23e1d971536e2ee4bd37/benchmarks/reproduce/README.md"
+      },
+      {
+        "label": "公开计分实现 · 固定版本",
+        "url": "https://github.com/mit-han-lab/EvolvingInfra/blob/0a12617a69e73a5164bb23e1d971536e2ee4bd37/benchmarks/replay/score.py"
+      },
+      {
+        "label": "动态分配决策 · 固定版本",
+        "url": "https://github.com/mit-han-lab/EvolvingInfra/blob/0a12617a69e73a5164bb23e1d971536e2ee4bd37/evolving_infra/planner/policy/split_policy.py"
+      },
+      {
+        "label": "KV保留协议 · 固定版本",
+        "url": "https://github.com/mit-han-lab/EvolvingInfra/blob/0a12617a69e73a5164bb23e1d971536e2ee4bd37/docs/kv-retention.md"
+      },
+      {
+        "label": "公开轨迹数据卡 · 固定版本",
+        "url": "https://huggingface.co/datasets/crmsndu/evolving-infra-traces/blob/5c47806d0c0e0e839efe0dc4884ced237e37e21d/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Evolving Infra把Agent的分支、停顿和上下文更新变成推理服务的调度信号：计算节点可切换预填充/解码角色，KV缓存继续共享。作者在36张GB300的9组闭环负载中报告相对Dynamo最高4.12倍的平均模型请求延迟比值；这是服务优化，不是模型能力或任务成功率提升。",
+      "motivation": "Agent请求不是互相独立的聊天轮次：多个分支共享前缀，工具调用期间长时间停顿，上下文压缩又会使旧缓存失效。固定预填充/解码配比会在工作负载变化时失衡，简单LRU也可能先驱逐暂时停顿但马上还会用到的KV。作者希望资源配比变化时无需重启节点，并让缓存保留依据分支生命期而非仅看最近一次访问。",
+      "novelty": "作者主张：将可无重启切换的计算角色、跨节点共享KV、分支感知保留与在线成本调度组合起来，改善动态Agent工作负载。本站判断：关键是把Agent生命周期作为服务接口，而不只是按token长度分桶。36 GPU主实验相对Dynamo报告吞吐1.10–2.73倍、平均请求E2E延迟的基线/本方法比值1.15–4.12；但最低并发下相对SGLang最佳静态配比的吞吐仅0.98–1.38倍，不能说所有条件均胜出。零引用优先也依赖框架正确发送结束和版本信号。",
+      "evidenceScope": "已读arXiv v1 §4–6、关键附录C/D/E，核对固定作者仓库0a12617a69e73a5164bb23e1d971536e2ee4bd37中的复现文档、KV协议、planner决策与计分实现，以及公开HF轨迹数据卡固定版本5c47806d0c0e0e839efe0dc4884ced237e37e21d；首发2026-11-09T12:26:02Z。主实验为9节点×4张GB300、TP4、NVFP4权重、FP8 KV及投机解码；GLM-5.2运行Putnam/Claude Code，Kimi-K2.6运行OSWorld与混合负载。先排除30分钟预热，再测1小时，三组并发分别224/256/288、90/108/126、128/144/160，对照Dynamo v1.5.1及指定SGLang静态配比。数据卡列Putnam100任务/6348请求、Claude Code393任务/98786请求、OSWorld98任务/14920请求；这些是轨迹库规模，不是各实验窗口完成数。Claude Code只有64-token哈希块形成的前缀与时序，非用户原文，超过120秒的工具/用户等待被裁为120秒。真实扩展实验到256 GB300且每GPU10个Agent；3072 GPU是离散事件模拟，采用离线迭代profile并假设远端KV获取完全隐藏，不能当作3072卡实测部署。核验不等于复现。",
+      "limits": "已读全文、固定公开源码与数据卡，未运行或复现。主实验衡量模型请求延迟和吞吐，闭环并发会随服务速度改变请求到达率；Putnam两档并发的P95首token延迟反而更高。真实集群扩展到256张GB300，3072张规模是模拟。公开复现配置与论文部分参数不同，尚不能确认完全一致的运行协议。 最高13.92倍是P95 TTFT比值；81–95%是相对理想无限缓存的“丢失复用”降低量，不是缓存命中率增加81–95个百分点。平均角色切换6.2秒包含继续服务已有请求的排空，与Dynamo754秒重新启动的不可服务区间口径不同，不能写成零成本切换。公开固定README将L2设为GPU缓存4.445倍、OSWorld规划窗口300秒，而v1正文为4倍和600秒；正文固定的是输出长度与工具时长，没有明确回放上下文模式，公开文档则强调actual_output及model输出，并显示recorded模式会改变投机接受率。缺同配置原始日志，不能确认这些差异与论文主图的映射。公开score.py按窗口内准入且非warm-start、最终完成的模型请求计算延迟/吞吐，完成可在窗口后；停止时取消另列、不计作失败，均非Agent任务成功率。固定发布的KV保留文档还含每请求推进版本、150秒空闲结束等工程策略，不能直接当成v1算法逐行实现。解码模型忽略上下文项依赖所测稀疏/压缩KV模型；开放到达容量结论限于该论文SLO和单次配置运行。",
+      "method": [
+        "把SGLang式服务改为对称引擎，同一调度循环能承担预填充P或解码D。通过共享主机内存KV池和RDMA让节点间直接获取缓存；切换角色时已排队请求转发，正在执行的请求在原节点完成，避免重启导致缓存不可用。获取KV与排队重叠，剩余搬运开销仍计入路由成本。",
+        "由Agent框架上报分支标识和结束信号，路由器维护上下文版本，并在前缀树上维护每节点的活动分支引用。论文协议中追加内容沿用版本、压缩更新版本并释放旧引用；同阶段迁移释放旧引用，跨阶段可保留两份。优先驱逐零引用KV，耗尽后才动仍有引用的缓存，因而不是无条件永久保留。",
+        "按每个请求的未缓存/缓存输入、输出长度和投机接受量刻画工作。预填充模型计算新token、注意力与恢复成本，解码模型用批量和专家激活等估计迭代时间。预热时逐节点用非负最小二乘拟合并冻结系数；之后只更新受负载影响的打包、恢复等统计，不训练LLM权重。",
+        "论文默认每600秒用10个60秒切片比较不同P/D节点数量，估计吞吐为两阶段容量的较小者。只有候选平均增益超过其2个标准误才切换，再选预计收益最大的配置；切换后排除120秒并等待排空，减少抖动。这是经验决策阈值，不是对未来收益的形式保证。",
+        "逐请求选预计首token时间较短的P节点：把运行批次、排队任务、自身计算、无法被等待遮住的远端KV获取与复制代价一起计算，D节点在预填充开始时确定。通过固定并发、变化负载、指定SLO开放到达和组件消融分别检查资源分配、缓存与路由的贡献。"
+      ],
+      "inspirations": [
+        "为长时间代码生成、渲染或剪辑Agent保留稳定的branch ID、压缩版本与明确结束事件，使工具等待不等于缓存失效。先测接口缺失、异常中断、迟到结束信号带来的缓存占用和重复计算；这是迁移建议，论文没有验证视频创作质量。",
+        "把预填充计算、解码计算、工具时间与缓存搬运分开记账。对同一Agent轨迹同时做闭环固定并发和开放到达实验，报告P50/P95首token、请求E2E、超时/失败、实际完成任务数及质量，避免把更少进入系统的请求当成更强服务能力。",
+        "复现实验先冻结模型、量化、投机解码、回放上下文模式、主机缓存倍数和计分窗口，再比较静态最优、只开缓存/路由、只开动态规划和完整系统。对负载突变单列切换排空时间与尾延迟，不能仅用全程平均分判断控制器收益。"
+      ],
+      "reviewedAt": "2026-11-12T16:30:21.345022+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.12304v1",
+        "https://arxiv.org/html/2611.12304v1",
+        "https://github.com/mit-han-lab/EvolvingInfra/tree/0a12617a69e73a5164bb23e1d971536e2ee4bd37",
+        "https://github.com/mit-han-lab/EvolvingInfra/blob/0a12617a69e73a5164bb23e1d971536e2ee4bd37/benchmarks/reproduce/README.md",
+        "https://github.com/mit-han-lab/EvolvingInfra/blob/0a12617a69e73a5164bb23e1d971536e2ee4bd37/benchmarks/replay/score.py",
+        "https://github.com/mit-han-lab/EvolvingInfra/blob/0a12617a69e73a5164bb23e1d971536e2ee4bd37/evolving_infra/planner/policy/split_policy.py",
+        "https://github.com/mit-han-lab/EvolvingInfra/blob/0a12617a69e73a5164bb23e1d971536e2ee4bd37/docs/kv-retention.md",
+        "https://huggingface.co/datasets/crmsndu/evolving-infra-traces/blob/5c47806d0c0e0e839efe0dc4884ced237e37e21d/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.12304",
+      "status": "pending",
+      "checkedAt": "2026-11-12T16:25:44.986486+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html#v2-6-0-november-12-2026",
+    "url": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html#v2-6-0-november-12-2026",
+    "id": "update-kimi-code-2-6-20261112",
+    "title": "Kimi Code 2.6：把持久权限与产物验收绑定到Agent工作流",
+    "summary": "Kimi Code CLI 2.6.0把权限规则加载和交付验收做成可持续的工作流：本地可信项目可保存权限规则，Tower新增artifact任务，关键产物需提交并由用户明确接受整次提交后才能合并。它是Agent工具更新，非新模型或性能评测。",
+    "insight": "官方新增持久权限规则与artifact任务类型。本站判断：关键进展是把执行许可、代码独立审阅和业务产物验收分开，并把验收绑定到具体提交，避免产物更新后沿用旧批准；这不是更高任务成功率或安全隔离的实验证据。",
+    "limits": "仅核官方版本日志、配置与Tower指南，未安装运行或检查实现。Tower仍为默认关闭的实验功能；worker/reviewer采用Never Ask，工作树与任务范围不是安全沙箱。artifact无需独立reviewer，但必须由用户接受整个提交；关键文件清单不代表仅批准这些文件。项目权限只适用于本地可信工作区，远端项目规则不支持，修改后新会话生效。",
+    "organization": "Moonshot AI / Kimi",
+    "dateLabel": "2026-11-12 · CLI 2.6.0官方更新日志",
+    "evidence": "官方发布日志与行为边界文档已读；未安装或实测",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-12T16:26:04.898956+00:00",
+    "firstSeenAt": "2026-11-12T16:33:15.778442+00:00",
+    "tags": [
+      "Kimi Code",
+      "多Agent协作",
+      "权限规则",
+      "产物验收"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "官方CLI 2.6.0版本更新",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html#v2-6-0-november-12-2026"
+      },
+      {
+        "label": "官方配置说明 · 持久权限规则",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-cli/configuration/config-files.html#permission"
+      },
+      {
+        "label": "官方Tower指南 · 任务类型与提交验收",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-cli/guides/tower.html#choose-a-mission-kind"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Kimi Code CLI 2.6.0把权限规则加载和交付验收做成可持续的工作流：本地可信项目可保存权限规则，Tower新增artifact任务，关键产物需提交并由用户明确接受整次提交后才能合并。它是Agent工具更新，非新模型或性能评测。",
+      "motivation": "代码变更可以通过独立审阅，但报告、构建结果等业务交付物还需要用户确认是否满足目标；同时，长期任务需要明确哪些工具可直接执行、哪些要询问或拒绝。",
+      "novelty": "官方新增持久权限规则与artifact任务类型。本站判断：关键进展是把执行许可、代码独立审阅和业务产物验收分开，并把验收绑定到具体提交，避免产物更新后沿用旧批准；这不是更高任务成功率或安全隔离的实验证据。",
+      "evidenceScope": "已逐段读11月12日CLI 2.6.0条目、权限配置章节、Tower全篇，并与18:17轮官方页面文本比对，确认本轮新增条目。日期来自原版日志，无精确发布时间可核。文档明确artifact整次tip验收、新提交/rebase重新接受、非交互不自批、worker/reviewer Never Ask及工作树非沙箱；这些是官方行为说明，未安装、运行模型或实测。verified仅指来源核验。",
+      "limits": "仅核官方版本日志、配置与Tower指南，未安装运行或检查实现。Tower仍为默认关闭的实验功能；worker/reviewer采用Never Ask，工作树与任务范围不是安全沙箱。artifact无需独立reviewer，但必须由用户接受整个提交；关键文件清单不代表仅批准这些文件。项目权限只适用于本地可信工作区，远端项目规则不支持，修改后新会话生效。",
+      "method": [
+        "会话启动读取用户config.toml中的权限规则；本地可信工作区另读取.kimi-code/local.toml，匹配优先级为deny、ask、allow。远端项目规则不支持，项目规则修改需新会话才生效。",
+        "在显式启用的Tower中区分任务：build需要提交的代码差异及独立clean review；artifact负责可写业务交付物；survey保持零差异、只读收束，不做Git合并。新增项是artifact，并非本轮首次引入Tower。",
+        "artifact worker在保留范围内提交全部产物，标记关键文件。系统展示关键产物和其他已提交文件数，用户接受的是整个当前commit tip；未提交文件不参与验收或合并。",
+        "用户要求修改则返工；任何新提交或rebase都要重新接受。artifact不要求独立reviewer，独立审阅也不能代替本人接受；自动或非交互运行保留等待状态，通过相应验收及合并检查后才实际合并。"
+      ],
+      "inspirations": [
+        "让报告、评测结果、视频工程的验收记录绑定提交哈希和完整文件清单；修订或rebase后使旧验收失效，防止批准的产物与最终合并内容不同。",
+        "分别检查执行许可、产物质量与合并条件：构造同一提交含额外文件、批准后新增提交及非交互运行等测试，确认系统等待或重新请求接受。这是本站测试建议，不是已跑结果。",
+        "把只读调研、代码修改和需人工判断的交付物作为不同任务协议，保留各自的完成标准，避免用一个通用review通过状态替代所有验收。"
+      ],
+      "reviewedAt": "2026-11-12T16:26:04.898956+00:00",
+      "sourceUrls": [
+        "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html#v2-6-0-november-12-2026",
+        "https://www.kimi.com/code/docs/en/kimi-code-cli/configuration/config-files.html#permission",
+        "https://www.kimi.com/code/docs/en/kimi-code-cli/guides/tower.html#choose-a-mission-kind"
+      ]
+    }
   }
 ]
