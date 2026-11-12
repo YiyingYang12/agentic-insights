@@ -14332,5 +14332,421 @@
         "https://www.kimi.com/code/docs/en/kimi-code-cli/guides/tower.html#choose-a-mission-kind"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.14364v1",
+    "url": "https://arxiv.org/abs/2611.14364v1",
+    "id": "paper-are-bench-2611-14364",
+    "title": "ARE-bench：研究Agent交付要同时保留历史决定与方法",
+    "summary": "ARE-bench把研究Agent放回真实会话中途的工作区：既要完成本次请求，也要保留仍有效的历史决定与方法要求。75个任务、1,173项检查中，作者报告最高严格完成率66.22%，对应逐任务平均检查通过率92.72%；“大部分做好”与“完整交付”是两种结果。",
+    "insight": "将交付完整、方法正确和约束保留分开检查。对同一产物逐步加入历史与材料要求，可以看出单看当前请求遗漏了什么；跨模型名次仍需绑定harness、任务版本与裁判。",
+    "limits": "已读v1方法、实验与关键附录，并核作者公开展示数据；未运行Agent或复现评分。模型使用不同harness，不能将差异全部归因于基础模型。公开站仅展示1个任务案例，代码和数据链接为空，未核到完整75任务可下载包；部分榜单/成本与论文不一致，需先对齐版本和分母。",
+    "organization": "Shanghai AI Lab、复旦大学、华东师范大学等",
+    "dateLabel": "2026-11-10 · arXiv v1",
+    "evidence": "全文方法、实验及公开展示数据已核；完整任务包未核到，未复现",
+    "originalTitle": "ARE-bench: Benchmarking Agents' Research Ability in Real-World Researcher Sessions and Workspaces",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-12T22:24:44.951246+00:00",
+    "paperOriginalDate": "2026-11-10T17:21:31Z",
+    "paperUpdatedAt": "2026-11-10T17:21:31Z",
+    "updatedAt": "2026-11-10T17:21:31Z",
+    "firstSeenAt": "2026-11-12T22:31:15.877020+00:00",
+    "tags": [
+      "研究Agent",
+      "工作区承接",
+      "严格验收",
+      "评测协议"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 · 日期",
+        "url": "https://arxiv.org/abs/2611.14364v1"
+      },
+      {
+        "label": "原论文 · 方法与实验",
+        "url": "https://arxiv.org/html/2611.14364v1"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://arebench.com/"
+      },
+      {
+        "label": "公开项目信息 · 发布范围",
+        "url": "https://arebench.com/data/site.json"
+      },
+      {
+        "label": "公开榜单 · 版本差异",
+        "url": "https://arebench.com/data/leaderboard.json"
+      },
+      {
+        "label": "公开任务案例 · 清单与工作区元数据",
+        "url": "https://arebench.com/data/tasks.json"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "ARE-bench把研究Agent放回真实会话中途的工作区：既要完成本次请求，也要保留仍有效的历史决定与方法要求。75个任务、1,173项检查中，作者报告最高严格完成率66.22%，对应逐任务平均检查通过率92.72%；“大部分做好”与“完整交付”是两种结果。",
+      "motivation": "真实研究请求常是“继续修这个实验”，但正确修复还依赖先前约定、参考论文、旧配置与失败日志。干净目录中的独立任务容易漏测这种承接能力；只看代码能跑或文件齐全，也可能放过悄悄替换算法、损失或数据划分的错误。",
+      "novelty": "作者主张：将真实研究会话中的有效历史约束、未清理工作区与意图清单一起用于评测。本站判断：最有价值的是将“恢复运行”和“保留方法”分开验收，并用同一交付扩大检查范围：三模型仅看交付约定/一般规范约69%，加入历史与材料要求后降至40.00%、31.56%、28.44%。这是固定交付与判分、改变计入项的诊断，不是移除上下文后重新运行的因果消融。",
+      "evidenceScope": "已读arXiv v1 §3–4、局限及附录D–G，核首发2026-11-10T17:21:31Z；项目HTML、前端脚本及公开site/leaderboard/tasks JSON均匿名可读。论文报告67 CPU/8 GPU任务、7模型×3轮共1,575次；七阶段任务有交叉，150是实际覆盖子需求，完整taxonomy为207项。任务平均41.1文件、10.3条仍有效历史请求和2.5交付物。CPU任务预算30分钟至6小时，GPU任务可至48小时；实际物理主机/GPU型号仍待核。主裁判GLM-5.3，少量运行使用Flash；没有独立人工标注的裁判准确率。本站核公开JSON仅1个CylindFormer案例，22个工作区文件条目、20项清单，其中2项标Explicit、18项Inferred；这是展示元数据，不是已下载完整可执行工作区。verified仅指来源核验。",
+      "limits": "已读v1方法、实验与关键附录，并核作者公开展示数据；未运行Agent或复现评分。模型使用不同harness，不能将差异全部归因于基础模型。公开站仅展示1个任务案例，代码和数据链接为空，未核到完整75任务可下载包；部分榜单/成本与论文不一致，需先对齐版本和分母。 后续反馈辅助推断、按失败审查迭代和中高难度筛选均可能影响任务分布，论文未给出独立构造留出或训练污染检查；研究者样本量不能由75任务推得。Codex用于GPT，其他模型用Claude Code，执行平台、预算和版本也并不完全相同。裁判对照的9,874项配对中92.76%一致、κ约0.717，715项分歧中648项方向为DeepSeek判失败/Qwen判通过；排名比较仅20任务147轨迹，历史GLM并非同输入重判，且保留阶段包的低分source延后策略，不支持无偏的人类正确率结论。公开leaderboard自标11/3，Qwen-Max ISR/CSR为37.65/85.35，而v1为37.78/85.45；前者注明两次rollout缺失并排除。公开cost也与v1冻结11/2价格后的估算不同，不混用两版。论文费用仅API估算，非完整计算/人工成本；样例20/20和16/20说明方法一致性差别，未测最终配准精度差。",
+      "method": [
+        "Curator从研究者自己的会话与完整工作区恢复用户目标、要求修订和反馈，再用全交互记录验证。仅选择有证据、中高难度、目标可恢复且结果可检查的片段；模糊条目保留人工复查，不以原Agent是否成功作为准入标准。",
+        "Builder在真实用户请求前切断会话，将仍有效的历史压成Background，保留本次Requirements及Environment。按文件事件回放工作区并交叉核对；切入文件写入过程、状态不一致或依赖无法恢复时弃用，不清除旧版本与失败残留，也不向actor提供后续材料。",
+        "按用户意图构造隐藏二元清单：明确要求与可从当时材料推断的要求分别溯源，接受不同有效实现。后续返工反馈只可帮助识别切点时已可推断的隐含要求，不能加入后来才提出的要求。每项映射到研究阶段与子需求，未触发的条件项不计分母。",
+        "Validator用原交付、空交付和貌似完整但含虚假内容的交付校准裁判，再核回放、依赖与切点后信息隔离。actor运行后逐项给证据判分；作者审失败项并同行复查，发现任务或判据问题则修订重跑。原交付用于校准，不是唯一标准答案。",
+        "七模型各做75任务×3轮；超时按当时已交付产物计分。ISR要求任务全部适用项通过；CSR先算每个任务的通过比例再等权平均。另报阶段、API成本与裁判敏感性，不能把多次尝试中的最好一次当pass@1。"
+      ],
+      "inspirations": [
+        "为代码视频或研究Agent建立承接任务：保留旧工程、失败渲染、过期配置及仍有效的用户要求，要求只修局部问题。分别检查目标改动、原方法/时间线/素材引用是否保留和最终可用产物；这是迁移建议，论文没有测试视频创作。",
+        "把每条验收项绑定到当时可见证据及可检查产物。对显式要求、历史约束、材料推断和后续才出现的新要求做版本记录，并让独立审阅者检查推断是否公平；允许等价实现，避免隐含清单变成猜作者心思。",
+        "同时发布严格整任务通过率、逐任务等权部分得分、失败/缺失分母和模型+harness配置。复现时冻结任务与运行manifest，分开比较基础模型、执行框架与裁判，人工复核有方向性的判分分歧。"
+      ],
+      "reviewedAt": "2026-11-12T22:24:44.951246+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.14364v1",
+        "https://arxiv.org/html/2611.14364v1",
+        "https://arebench.com/",
+        "https://arebench.com/data/site.json",
+        "https://arebench.com/data/leaderboard.json",
+        "https://arebench.com/data/tasks.json"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.14364",
+      "status": "pending",
+      "checkedAt": "2026-11-12T22:25:15.008677+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.10063v1",
+    "url": "https://arxiv.org/abs/2611.10063v1",
+    "id": "paper-done-is-not-correct-2611-10063",
+    "title": "Done Is Not Correct：CAD能渲染不等于做对，让完成声明发生在测量之后",
+    "summary": "这篇CAD评测把“程序能生成实体”和“Agent说已完成且满足规格”分开。作者要求模型先看到最终代码的几何测量，再允许它声明DONE；公开主数据中，静默错误从22/156降到5/156，完成声明的正确率由98/153升至121/126。关键在于验收时机，但小任务集、规格歧义与消融的时间差限制了外推。",
+    "insight": "比增加一个自评Agent更值得借鉴的是完成协议：新代码必须先执行并返回测量，模型才能对这个版本签收。同时保留“是否声明完成、是否能生成实体、是否满足要求”三条独立结果，才能区分真的做对与只是更少承诺。",
+    "limits": "已读全文并静态核公开实现、13个规格及468条主记录，未执行CAD代码或复现模型。156是每种架构全部尝试的分母，不是完成声明数。任务仅13个、没有装配或制造验证；一个L形支架规格存在两种合理解释。消融部分模型跨三个月、Sonnet还更换API路由，不能把变化完全归因于单一合同开关。",
+    "dateLabel": "2026-11-06 · arXiv v1；主实验为6月快照",
+    "evidence": "全文方法/实验与固定公开源码、主记录静态核验；未运行CAD或复现模型",
+    "originalTitle": "Done Is Not Correct: Measuring Silent Failures and Self-Verification Calibration When LLM Agents Take CAD Actions",
+    "date": "2026-11-06",
+    "checkedAt": "2026-11-12T22:26:31Z",
+    "originalDate": "2026-11-06",
+    "paperOriginalDate": "2026-11-06T09:05:00Z",
+    "paperUpdatedAt": "2026-11-06T09:05:00Z",
+    "updatedAt": "2026-11-06T09:05:00Z",
+    "firstSeenAt": "2026-11-12T22:26:31Z",
+    "lastSeenAt": "2026-11-12T22:26:31Z",
+    "tags": [
+      "CAD代码",
+      "完成声明",
+      "静默错误",
+      "验证器审计"
+    ],
+    "authors": [
+      "Carson Rodrigues",
+      "Clive Rodrigues",
+      "Aravind Reddy G"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1",
+        "url": "https://arxiv.org/abs/2611.10063v1"
+      },
+      {
+        "label": "arXiv全文 · 方法、实验与限制",
+        "url": "https://arxiv.org/html/2611.10063v1"
+      },
+      {
+        "label": "作者公开仓库 · 固定版本",
+        "url": "https://github.com/rodriguescarson/cad-silent-failure-bench/tree/c95d9ebedd5a3ce0c36513cb41768cdc63ef1369"
+      },
+      {
+        "label": "完成协议与Agent实现",
+        "url": "https://github.com/rodriguescarson/cad-silent-failure-bench/blob/c95d9ebedd5a3ce0c36513cb41768cdc63ef1369/benchmark/agents.py"
+      },
+      {
+        "label": "几何测量与判分实现",
+        "url": "https://github.com/rodriguescarson/cad-silent-failure-bench/blob/c95d9ebedd5a3ce0c36513cb41768cdc63ef1369/benchmark/grader.py"
+      },
+      {
+        "label": "主实验468条记录",
+        "url": "https://github.com/rodriguescarson/cad-silent-failure-bench/blob/c95d9ebedd5a3ce0c36513cb41768cdc63ef1369/data/primary_population.jsonl"
+      },
+      {
+        "label": "作者统计结果",
+        "url": "https://github.com/rodriguescarson/cad-silent-failure-bench/blob/c95d9ebedd5a3ce0c36513cb41768cdc63ef1369/data/stats.json"
+      },
+      {
+        "label": "专家审计结果",
+        "url": "https://github.com/rodriguescarson/cad-silent-failure-bench/blob/c95d9ebedd5a3ce0c36513cb41768cdc63ef1369/data/expert_kappa.json"
+      },
+      {
+        "label": "发布勘误与版本边界",
+        "url": "https://github.com/rodriguescarson/cad-silent-failure-bench/blob/c95d9ebedd5a3ce0c36513cb41768cdc63ef1369/ERRATA.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "这篇CAD评测把“程序能生成实体”和“Agent说已完成且满足规格”分开。作者要求模型先看到最终代码的几何测量，再允许它声明DONE；公开主数据中，静默错误从22/156降到5/156，完成声明的正确率由98/153升至121/126。关键在于验收时机，但小任务集、规格歧义与消融的时间差限制了外推。",
+      "motivation": "参数化CAD代码可能正常执行并生成外观合理的实体，却把通孔做成盲孔、把螺栓孔排列在错误直径上。执行成功率或渲染相似度无法回答“模型说完成时，有多少真的符合规格”。论文把Agent过度承诺与判分器漏检同时作为研究对象。",
+      "novelty": "作者主张：将完成声明、几何判分和置信度联合评测，并通过完成协议消融解释静默错误下降。本站判断：最实用的贡献是把代码版本与测量、声明绑定。主记录重计确认：单次/工具循环分别成功100/156与121/156，静默错误22/156与5/156；完成声明精度98/153（约64.1%）与121/126（96.0%），同时声明覆盖从98.1%降到80.8%。多Agent为96/156成功、4/156静默错误、85/89声明正确，覆盖仅57.1%，不能只看低静默错误率就判其更强。作者称单变量消融，但14/156对5/156的静默错误差异Fisher p=0.056，且部分运行时间/路由不同，支持机制线索而非完全隔离的因果证明。",
+      "evidenceScope": "已读arXiv v1 §3–8及附录B/C，并静态核固定作者仓库c95d9ebedd5a3ce0c36513cb41768cdc63ef1369的Agent协议、属性提取、判分器、13个任务JSON、468条主记录和统计/专家审计文件；用自写计数程序重计记录，不执行其中CAD代码。主数据为13任务×4模型×3次重复×3架构，每架构156次；模型是Haiku 4.5、Sonnet 4.6、DeepSeek V3.2、Qwen3.7-Max，实际列出3个模型厂商。原文称主实验调用于2026年6月，Sonnet/Qwen消融为9月，首发11月6日，不是本周最新模型横评。每格3次provider默认采样、无seed控制；任务cluster bootstrap优先于只有13个cluster的GEE。旧519条重判、156条legacy消融、60条pilot与主468不是可相加的独立主样本。公开源码、任务和记录已实际读到；未运行参考解校准、重新构建几何、观看3D viewer或复核全部逐轮对话。Zenodo入口本轮reader不可读，未把归档内容当已核。",
+      "limits": "已读全文并静态核公开实现、13个规格及468条主记录，未执行CAD代码或复现模型。156是每种架构全部尝试的分母，不是完成声明数。任务仅13个、没有装配或制造验证；一个L形支架规格存在两种合理解释。消融部分模型跨三个月、Sonnet还更换API路由，不能把变化完全归因于单一合同开关。 专家盲审仅1位共同作者：81件κ=0.64，去除L形支架后62件κ=0.87；该歧义任务占31个主静默错误中的13个。外部规格未覆盖会漏错，专家也推翻了歧义任务之外18个静默错误中的3个，不能把报告率一概视为严格下界。公差用于模型正确性，不是制造配合公差或功能认证。Qwen置信度仍饱和，核验协议并非普遍校准训练。文中“四厂商”与实际模型列表不符；固定README仍混有v1.0和234条对话的旧说明，而正文/勘误写v1.1及312条，未逐条核全文对话数量。",
+      "method": [
+        "先把13个自然语言任务写成122项可计算检查：5个单特征、6个多特征、2个约束编辑任务。每项声明公差与测量属性；参考解用于校准检查器，不展示给Agent。当前没有多零件装配层。",
+        "让模型生成build123d Python代码，用OpenCascade在独立子进程内构建并测量实体。提取包围盒、体积、质心、实体数，以及圆柱面的半径、轴线和轴向长度；按支撑圆柱及重叠轴向区间合并特征，避免把布尔分裂面误计为多个孔。",
+        "工具循环只回传实测属性或执行错误，不给目标值、公差或判分器的通过/失败结论。新代码同轮附带DONE不能结束：需先把该版本测量结果交回模型，再接受无新代码的完成声明。上限4轮加1轮确认；确认轮又写代码则结束为未声明完成。",
+        "比较单次生成、上述工具循环，以及同一模型承担planner/coder/checker的流水线（一次规划、最多3轮编码/检查）。分别记实体有效性、规格是否全过、完成声明、置信度和成本；静默错误是“有效实体且声称完成且至少一项规格未过”，其主表分母为全部尝试。",
+        "对判分器也做审计：加强孔深、孔阵列、质心与体积等检查后重判519条旧记录，另由一位未参与写规格/判分器的共同作者盲审81件实体；同时做公差缩放与去除歧义任务的敏感性分析，承认几何检查只是必要条件筛查。"
+      ],
+      "inspirations": [
+        "给代码创作产物建立版本化验收：代码或时间线一旦修改，旧测量和旧完成声明失效；仅允许对已经执行、检查过的最终版本确认完成。迁移到视频可对应导出帧率、音画时长、必保素材和字幕边界，但本论文未验证视频场景。",
+        "评测同时展示总体成功率、声明覆盖率、声明精度与有效产物条件下的错误率。把无法执行、可执行但不符要求、正确却未声明完成分开，防止靠拒绝承诺把静默错误率做低。",
+        "把验收器当作需要审计的系统：保留原判分和修订判分、逐项失败证据，并用盲审检查规格歧义。优先纳入通孔深度、位置与局部编辑不变量等仅看外观容易漏掉的属性，再扩充多零件与功能性任务。"
+      ],
+      "reviewedAt": "2026-11-12T22:26:31Z",
+      "sourceUrls": [
+        "https://arxiv.org/html/2611.10063v1",
+        "https://github.com/rodriguescarson/cad-silent-failure-bench/blob/c95d9ebedd5a3ce0c36513cb41768cdc63ef1369/benchmark/agents.py",
+        "https://github.com/rodriguescarson/cad-silent-failure-bench/blob/c95d9ebedd5a3ce0c36513cb41768cdc63ef1369/benchmark/_extract.py",
+        "https://github.com/rodriguescarson/cad-silent-failure-bench/blob/c95d9ebedd5a3ce0c36513cb41768cdc63ef1369/benchmark/grader.py",
+        "https://github.com/rodriguescarson/cad-silent-failure-bench/blob/c95d9ebedd5a3ce0c36513cb41768cdc63ef1369/data/primary_population.jsonl",
+        "https://github.com/rodriguescarson/cad-silent-failure-bench/blob/c95d9ebedd5a3ce0c36513cb41768cdc63ef1369/data/stats.json",
+        "https://github.com/rodriguescarson/cad-silent-failure-bench/blob/c95d9ebedd5a3ce0c36513cb41768cdc63ef1369/data/expert_kappa.json",
+        "https://github.com/rodriguescarson/cad-silent-failure-bench/blob/c95d9ebedd5a3ce0c36513cb41768cdc63ef1369/data/tolerance_sensitivity.json",
+        "https://github.com/rodriguescarson/cad-silent-failure-bench/blob/c95d9ebedd5a3ce0c36513cb41768cdc63ef1369/ERRATA.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.10063",
+      "status": "pending",
+      "checkedAt": "2026-11-12T22:25:15.008677+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.10866v1",
+    "url": "https://arxiv.org/abs/2611.10866v1",
+    "id": "research-deletion-tuning-2611-10866",
+    "title": "Deletion Tuning：只学哪些权重该归零，极小补丁的收益与验证边界",
+    "summary": "Deletion Tuning冻结预训练权重，只学习MLP门控投影的保留/置零掩码。作者在Llama8B的GSM8K上报告83.55%，全量微调83.24%，掩码8.4 MiB；但这是最佳验证检查点成绩，且低于0.05%的删除比例只在六个GRPO运行中明确列出，不等于所有任务、模型或训练过程都只需0.05%的可训练参数。",
+    "insight": "值得验证的方向是把能力适配做成可回滚的小补丁，并把“新任务收益”“旧能力损失”和“存储/训练成本”分开验收。掩码删除位置本身仍需要训练数据、梯度与搜索；尤其不能用同一评测集挑出的最好分数，证明面对新任务的稳定泛化。",
+    "limits": "已读全文、固定公开源码与模型卡，未运行或复现。GRPO以验证分数挑最佳检查点，发布配置把GSM8K官方test作验证、Qwen按六个基准平均挑步，没有独立于选点的最终测试保证。小模型有明显差距，训练显存高于LoRA；小掩码是存储优势，不是模型整体压缩或推理加速的实测结论。",
+    "organization": "NYU、University of Calgary",
+    "dateLabel": "2026-11-07 · arXiv v1",
+    "evidence": "全文方法、实验与附录核验；固定代码/模型卡只读，未复现",
+    "originalTitle": "The Surprising Effectiveness of Deleting Weights in LLM Post-Training",
+    "date": "2026-11-07",
+    "checkedAt": "2026-11-12T22:25:03.747896+00:00",
+    "originalDate": "2026-11-07",
+    "paperOriginalDate": "2026-11-07T17:33:20Z",
+    "paperUpdatedAt": "2026-11-07T17:33:20Z",
+    "updatedAt": "2026-11-07T17:33:20Z",
+    "firstSeenAt": "2026-11-12T22:25:03.747896+00:00",
+    "lastSeenAt": "2026-11-12T22:25:03.747896+00:00",
+    "dailySubmittedAt": "2026-11-11T00:00:00.000Z",
+    "tags": [
+      "RLVR",
+      "参数高效微调",
+      "掩码学习",
+      "自蒸馏",
+      "遗忘评估"
+    ],
+    "authors": [
+      "Jack Lu",
+      "Zhenbang Yang",
+      "Mike Lasby",
+      "Tejas Pote",
+      "Yani Ioannou",
+      "Mengye Ren"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1",
+        "url": "https://arxiv.org/abs/2611.10866v1"
+      },
+      {
+        "label": "arXiv全文 · 方法与附录",
+        "url": "https://arxiv.org/html/2611.10866v1"
+      },
+      {
+        "label": "Hugging Face论文页",
+        "url": "https://huggingface.co/papers/2611.10866"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://agenticlearning.ai/deleting-weights/"
+      },
+      {
+        "label": "作者仓库 · 固定版本",
+        "url": "https://github.com/agentic-learning-ai-lab/deleting-weights/tree/94f0340ebb574f95bb41d844165253a6785e215e"
+      },
+      {
+        "label": "软/硬掩码实现 · 固定版本",
+        "url": "https://github.com/agentic-learning-ai-lab/deleting-weights/blob/94f0340ebb574f95bb41d844165253a6785e215e/src/learnable_sparsity/differentiable_mask.py"
+      },
+      {
+        "label": "GRPO最佳检查点汇总 · 固定版本",
+        "url": "https://github.com/agentic-learning-ai-lab/deleting-weights/blob/94f0340ebb574f95bb41d844165253a6785e215e/src/summarize_grpo.py"
+      },
+      {
+        "label": "SFT自定义划分 · 固定版本",
+        "url": "https://github.com/agentic-learning-ai-lab/deleting-weights/blob/94f0340ebb574f95bb41d844165253a6785e215e/src/sft_data.py"
+      },
+      {
+        "label": "SFT训练实现 · 固定版本",
+        "url": "https://github.com/agentic-learning-ai-lab/deleting-weights/blob/94f0340ebb574f95bb41d844165253a6785e215e/src/train_sft.py"
+      },
+      {
+        "label": "作者已发布掩码卡 · 固定版本",
+        "url": "https://huggingface.co/Jacklu0831/deletion-tuning-masks/blob/dfe80f9fa54f34324e4dd64bea46521e30d930f0/README.md"
+      },
+      {
+        "label": "SDFT依赖的工具评分 · 固定版本",
+        "url": "https://github.com/idanshen/Self-Distillation/blob/d77573212fa0a3ae2eeb64b9b44db1c251f75e3e/eval_tooluse.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Deletion Tuning冻结预训练权重，只学习MLP门控投影的保留/置零掩码。作者在Llama8B的GSM8K上报告83.55%，全量微调83.24%，掩码8.4 MiB；但这是最佳验证检查点成绩，且低于0.05%的删除比例只在六个GRPO运行中明确列出，不等于所有任务、模型或训练过程都只需0.05%的可训练参数。",
+      "motivation": "全量微调要保存另一份大模型，LoRA与稀疏更新仍学习新的非零权重值；新任务适配也可能带走旧能力。作者问的是更严格的限制：保留权重一律不改，只允许把少数原权重变成零，能否学到有用的适配？这不是先训练一个模型再剪枝提速，而是把删除位置的选择当作后训练本身。",
+      "novelty": "作者主张：仅靠可学习删除在所测较大模型上接近全量微调，且较少遗忘。本站判断：最扎实的工程价值是将适配产物限制为小而可追溯的补丁。Llama8B主表83.55对83.24差0.31个百分点，掩码8.4 MiB对FP32全量检查点30633 MiB；对rank-1 LoRA的10.0 MiB只小约16%，不能把“几千倍更小”套到LoRA。Llama1B却是54.44对60.50，差6.06点；Science自蒸馏70.61也略低于71.20。模型变大时较接近，不是统一胜出；没有多种子区间支撑把小差距解释成稳定优越性。",
+      "evidenceScope": "已读arXiv v1 §3–6及附录A–H；首发2026-11-07T17:33:20Z，HF日榜11/11提交不是首发。固定作者仓库94f0340ebb574f95bb41d844165253a6785e215e核到掩码前向、Wanda初始化、GRPO选点、SFT划分/训练/评分、SDFT教师EMA与旧能力计分；SDFT上游固定d77573212fa0a3ae2eeb64b9b44db1c251f75e3e核到数据入口与评分。HF作者掩码库固定dfe80f9fa54f34324e4dd64bea46521e30d930f0匿名公开、未门控，文件清单有GRPO/SFT/SDFT产物，本轮只读卡片与小配置，未下载或加载掩码张量。GRPO在Llama1B/3B/8B用GSM8K，Qwen0.5B/3B/7B以及14B/30B-A3B用SimpleRL-Zoo训练与六数学基准宏平均；表7仅列六个小至8B运行的最终全模型零化比例0.0347%–0.0459%。SFT为14个MMLU-Pro学科和23个BBEH任务分别75/25划分并单独训练：论文名义总数9018/3014与3390/1130，报告任务等权均值；这不是一个共享模型在标准零样本榜单上的成绩。Qwen7B SDFT分别评ToolAlpaca和SciKnowEval Chemistry L-3；工具分为动作多重集及合并参数字典匹配，非真实工具环境执行成功率，Science为抽取答案的精确匹配。核验不等于复现。",
+      "limits": "已读全文、固定公开源码与模型卡，未运行或复现。GRPO以验证分数挑最佳检查点，发布配置把GSM8K官方test作验证、Qwen按六个基准平均挑步，没有独立于选点的最终测试保证。小模型有明显差距，训练显存高于LoRA；小掩码是存储优势，不是模型整体压缩或推理加速的实测结论。 App A的尺寸是从公共基座重建所需产物的二进制单位下界，排除文件头、优化器和训练状态，FFT/LoRA按FP32计；8.4 MiB不是完整8B模型，且没有展示稀疏kernel端到端速度。训练保留整个目标矩阵的浮点logits与梯度，最终置零比例不能当作可训练参数比例。旧能力结果限于Llama的GSM8K GRPO后，六基准主指标宏均值约在基座1点内；不是逐任务永不遗忘，连续多任务学习、掩码合并均是未来工作。pass@128提升说明在有限采样预算内多解出题，不证明基座绝无潜在能力。SFT公开实现会按长度过滤样本、MMLU-Pro按候选答案平均token损失选项；论文称SFT用2048条校准prompt，而固定代码使用该任务过滤后的全部训练样本，两者运行对应仍待日志确认。SDFT的工具匹配忽略动作顺序并合并参数，不是原始生成串的整串EM。主表不提供完整多种子不确定性；代码README仍把LoRA/MTH训练基线和几何分析列为待开放，不宣称全部实验一键复现。",
+      "method": [
+        "冻结基座，在每个Transformer块的MLP gate projection上，为每个目标权重配置一个可训练浮点logit。训练有效权重是原权重乘sigmoid(alpha×logit)，仅优化logit；MoE实验作用于每个expert的gate projection，路由器不改。最终删除量小，不代表训练时logit只覆盖那一小撮位置。",
+        "用任务训练分布上的Wanda幅值×输入激活范数给重要性先验；低分位置倾向负logit、高分位置倾向正logit。默认分位点1/2048并不强制最终稀疏率，随机初始化噪声也会影响初始归零数。逐步提高sigmoid陡峭度，让软掩码靠近保留/删除的硬阈值。",
+        "沿用任务的训练目标：GRPO以可验证奖励优化，SFT拟合固定目标答案；二者另有倾向保留较大权重的正则。SDFT让学生按自身策略生成，教师只对mask logits做EMA，并额外看到参考答案后提供逐token分布；基座双方都冻结。GRPO/SDFT采样使用硬掩码，梯度经软掩码传入logits，不是无梯度的随机剪枝。",
+        "推理时取logit>0保留原值，其余归零；掩码位打包后用zstd压缩，部署仍需相应基座。分别比较新任务分数、六项旧能力均值、不同采样预算下pass@k及存储量，并以不训练的Wanda先验作对照。论文GRPO主表报告保存检查点中的最佳验证分，SFT每学科/子任务各训练一个独立掩码。"
+      ],
+      "inspirations": [
+        "对代码/工具Agent先做严格隔离的适配实验：固定基座与同一训练数据，将删除掩码、LoRA和全量微调按训练计算/显存预算比较；用独立验证集选点，再一次性评测未参与选点的任务。这里是研究建议，本文没有长程代码或视频创作Agent的端到端证明。",
+        "为每个补丁保存基座版本、目标层、零化索引、训练任务和回滚验证；同时列出新完成任务与旧任务退步。先检查按任务切换掩码能否正确恢复原权重，不直接把多个删除集合取并集当成已验证的技能合成。",
+        "把存储账和训练账分开：压缩文件大小、完整基座占用、优化器/logit显存、校准成本、训练token与部署延迟各自计量。除均值外保留各旧能力指标与异常案例，避免数学分数接近掩盖指令遵循、代码或事实能力的退步。"
+      ],
+      "reviewedAt": "2026-11-12T22:25:03.747896+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.10866v1",
+        "https://arxiv.org/html/2611.10866v1",
+        "https://huggingface.co/papers/2611.10866",
+        "https://agenticlearning.ai/deleting-weights/",
+        "https://github.com/agentic-learning-ai-lab/deleting-weights/tree/94f0340ebb574f95bb41d844165253a6785e215e",
+        "https://github.com/agentic-learning-ai-lab/deleting-weights/blob/94f0340ebb574f95bb41d844165253a6785e215e/src/learnable_sparsity/differentiable_mask.py",
+        "https://github.com/agentic-learning-ai-lab/deleting-weights/blob/94f0340ebb574f95bb41d844165253a6785e215e/src/summarize_grpo.py",
+        "https://github.com/agentic-learning-ai-lab/deleting-weights/blob/94f0340ebb574f95bb41d844165253a6785e215e/src/sft_data.py",
+        "https://github.com/agentic-learning-ai-lab/deleting-weights/blob/94f0340ebb574f95bb41d844165253a6785e215e/src/train_sft.py",
+        "https://huggingface.co/Jacklu0831/deletion-tuning-masks/blob/dfe80f9fa54f34324e4dd64bea46521e30d930f0/README.md",
+        "https://github.com/idanshen/Self-Distillation/blob/d77573212fa0a3ae2eeb64b9b44db1c251f75e3e/eval_tooluse.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.10866",
+      "status": "pending",
+      "checkedAt": "2026-11-12T22:25:15.008677+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://deepmind.google/blog/introducing-gemini-4-hydrogen/",
+    "url": "https://deepmind.google/blog/introducing-gemini-4-hydrogen/",
+    "id": "update-gemini-4-hydrogen-20261112",
+    "title": "Gemini 4 Hydrogen：快速执行模型与任务内双向编排",
+    "summary": "Google发布Gemini 4 Hydrogen，面向快速代码修改、工具执行与多模态工作；新Orchestrator在同一任务轨迹内让Carbon负责规划、Hydrogen执行，遇阻再交回Carbon。官方还展示代码3D、网页动效与素材剪辑案例，但这些是精选演示，尚非本站复现。",
+    "insight": "官方主张通过任务进行中的双向模型切换，在接近Carbon任务成功率的同时提高速度和配额效率。本站判断：可研究的是如何从真实执行状态触发重新规划，而不只按最初提示做一次模型选择；节省配额、降低token数与降低实际账单必须分别测量。",
+    "limits": "未调用模型、运行演示源码或核验可编辑工程；示例没有公开系统性执行成功率或视觉质量评估。Orchestrator同一组24%配额/19%提速数字在主公告标为Terminal-Bench 4.0、Antigravity页标为4.1，版本口径未统一，不能当作同条件独立复现或美元节省。Hydrogen单模型57%是官方TB4.1 high档、每题5次平均reward且作弊校正，不是pass@5。模型卡自动评测中不合理拒绝较Flash增加5.57个百分点；完整安全报告仍待发布，不能推导全面更安全。",
+    "organization": "Google DeepMind",
+    "dateLabel": "2026-11-12 · 模型与Orchestrator发布",
+    "evidence": "官方发布、API指南、模型卡与评测方法已核；未运行模型或演示",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-12T22:27:12.184164+00:00",
+    "firstSeenAt": "2026-11-12T22:00:01Z",
+    "lastSeenAt": "2026-11-12T22:00:01Z",
+    "tags": [
+      "Gemini 4 Hydrogen",
+      "多模型编排",
+      "代码创作",
+      "模型发布"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2motion",
+      "video-editing"
+    ],
+    "sources": [
+      {
+        "label": "Google DeepMind · 11月12日官方发布",
+        "url": "https://deepmind.google/blog/introducing-gemini-4-hydrogen/"
+      },
+      {
+        "label": "Google官方发布正文",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/"
+      },
+      {
+        "label": "Antigravity官方 · Orchestrator工作流及开放范围",
+        "url": "https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity"
+      },
+      {
+        "label": "Gemini API官方 · 参数、长输出与迁移说明",
+        "url": "https://aistudio.google.com/docs/whats-new-gemini-4-hydrogen"
+      },
+      {
+        "label": "Google官方模型卡 · 已读全文与结果图",
+        "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-4-Hydrogen-Model-Card.pdf"
+      },
+      {
+        "label": "Google官方评测方法 · 重定向公开PDF",
+        "url": "https://deepmind.google/models/evals-methodology/gemini-4-hydrogen/"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Google发布Gemini 4 Hydrogen，面向快速代码修改、工具执行与多模态工作；新Orchestrator在同一任务轨迹内让Carbon负责规划、Hydrogen执行，遇阻再交回Carbon。官方还展示代码3D、网页动效与素材剪辑案例，但这些是精选演示，尚非本站复现。",
+      "motivation": "长任务的难度会随代码探索、测试失败和新信息变化。把整个任务固定交给同一模型，或只依据第一条提示选模型，难以同时兼顾规划深度与执行周转速度。",
+      "novelty": "官方主张通过任务进行中的双向模型切换，在接近Carbon任务成功率的同时提高速度和配额效率。本站判断：可研究的是如何从真实执行状态触发重新规划，而不只按最初提示做一次模型选择；节省配额、降低token数与降低实际账单必须分别测量。",
+      "evidenceScope": "已读11月12日主发布全文、开发者说明、Antigravity全文、API迁移/长输出指南，以及10页模型卡和4页评测方法PDF；模型卡第5页结果图经本地渲染查看。发布日期来自原页，RSS精确时间为2026-11-12T18:00:50Z。创作归类有独立复核，但未登录使用、调用API或运行源码，全部性能与安全数据为官方报告，verified仅指来源核验。",
+      "limits": "未调用模型、运行演示源码或核验可编辑工程；示例没有公开系统性执行成功率或视觉质量评估。Orchestrator同一组24%配额/19%提速数字在主公告标为Terminal-Bench 4.0、Antigravity页标为4.1，版本口径未统一，不能当作同条件独立复现或美元节省。Hydrogen单模型57%是官方TB4.1 high档、每题5次平均reward且作弊校正，不是pass@5。模型卡自动评测中不合理拒绝较Flash增加5.57个百分点；完整安全报告仍待发布，不能推导全面更安全。",
+      "method": [
+        "Hydrogen可单独执行代码修改、搜索与工具任务，支持low、medium、high和xhigh四档思考，默认high；模型卡仅说明由Carbon适配而来，未公开足以复现的训练配方。",
+        "Orchestrator在同一轨迹内双向切换：Carbon先只读探索并制定计划和重规划触发条件，Hydrogen执行修改与测试，遇阻再交回Carbon修订计划。官方也提供SDK显式安排worker、reviewer等角色的演示，不能将其视为自动路由的同一实现。",
+        "API模型ID为gemini-4-hydrogen。输入、思考和输出共享1,048,576 token预算；同步输出上限65,536，超过它需background加显式max_output_tokens或客户端续接，不能把1M当作独立输入与输出容量。",
+        "官方TB4.1单模型报告57.0%，使用mini-swe-agent vision、high档、每题5次结果的平均reward及作弊校正；Orchestrator效率数字另有4.0/4.1标注冲突，保留为厂商报告的限制。API/AI Studio含免费限额与付费层；Antigravity单模型向Pro/Ultra推出，Orchestrator向Ultra推出，企业另有Gemini for business，未验证具体账户权限。",
+        "创作案例包括即时编码体素3D场景、WebGL2着色器与滚动叙事、Python/表格公式像素动画，以及检索素材、配音并连续剪辑的video assembly skill。只据原页归入code2-3d、code2motion、video-editing；未证实视频由代码逐帧渲染，不加code2video。"
+      ],
+      "inspirations": [
+        "为代码创作Agent分别记录规划、执行、验证的耗时、token、配额及失败状态；让重规划由测试或渲染失败触发，再与固定单模型、初始一次路由做对照，而不直接照搬厂商提速数字。",
+        "构建同一提示的3D与动效评测，分别检查代码能否运行、参数或时间线能否继续编辑、画面质量及修改后是否回归；剪辑案例另检查素材来源、叙事连贯与可编辑工程，不能只看宣传成片。",
+        "比较四档思考时固定统一上下文、输出上限、工具预算与验收标准，同时统计误拒和未完成率；长输出记录每段续接与累计账单，避免将更长输出或更多尝试误判为能力提升。"
+      ],
+      "reviewedAt": "2026-11-12T22:27:12.184164+00:00",
+      "sourceUrls": [
+        "https://deepmind.google/blog/introducing-gemini-4-hydrogen/",
+        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
+        "https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity",
+        "https://aistudio.google.com/docs/whats-new-gemini-4-hydrogen",
+        "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-4-Hydrogen-Model-Card.pdf",
+        "https://deepmind.google/models/evals-methodology/gemini-4-hydrogen/"
+      ]
+    }
   }
 ]
