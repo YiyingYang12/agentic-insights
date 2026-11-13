@@ -16041,5 +16041,491 @@
         "https://github.com/ggml-org/ggml/discussions/1579"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.16591v1",
+    "url": "https://arxiv.org/abs/2611.16591v1",
+    "id": "live-26121f98e405c4db",
+    "title": "Singularity-Bench：Agent造完整AI系统，先守住预算与验收边界",
+    "summary": "Singularity-Bench让Agent在固定GB300硬件和4–12小时预算内，从最小代码起点构建预训练、中训练、RL、推理引擎、代码harness和集群调度六类系统。价值在端到端交付与防刷分验收；作者命名的Singularity-Index只是六个相对人工基线分数的平均，不能据此认定递归自我改进或“奇点”已经发生。",
+    "insight": "作者主张：以六层完整系统任务衡量Agent自主构建下一代Agent基础设施，并用Breakwater隔离评测过程中的奖励作弊。本站判断：更有用的贡献是把设计自由、硬件/时间预算、功能正确和执行完整性放到同一个验收协议。表5中Opus 5.5+Claude Code指数1.252，GPT-6.1 Sol+Codex为0.969；它们是模型与harness组合在这六题上的作者报告，不能脱离任务和工具链做普遍模型排名。",
+    "limits": "未运行作者代码、构建容器或复现GPU实验。每层仅一个任务，六层系统分别构建，没有把产物接成可持续自我改进闭环；指标和人工参考选择影响综合指数。后训练Opus组合0.533低于Miles 0.539，作者按逐任务sign test称差异不显著，“未检出差异”不是证明等效。主表不提供完整端到端重复运行置信区间，不能由单一综合数推出稳定胜率。预训练、中训练、RL、推理分别限4张GB300 12小时，harness为1张6小时，集群为16张4小时，且固定RL后评测另耗5小时；API成本425.41/84.52美元不含GPU及构建后harness评测，不是总成本。推理收入为预设token价格下的模拟指标，不是真实业务收入或纯kernel吞吐。Breakwater只对论文报告的红队攻击集有效，未证明普遍安全；来源核验不等于独立安全审计。公开仓库有任务/评分/防护代码和资产准备说明，但读取README与目录不能证明外部模型、数据、评测环境及全部日志均可复现。",
+    "organization": "CMU / NVIDIA / HKUST / RadixArk 等",
+    "dateLabel": "2026-11-12 · arXiv v1",
+    "evidence": "原论文方法与结果、固定仓库README和目录核验；未运行或复现",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-13T22:26:49.463640+00:00",
+    "paperOriginalDate": "2026-11-12T10:24:51Z",
+    "paperUpdatedAt": "2026-11-12T10:24:51Z",
+    "updatedAt": "2026-11-12T10:24:51Z",
+    "firstSeenAt": "2026-11-13T10:00:01Z",
+    "lastSeenAt": "2026-11-13T22:00:01Z",
+    "tags": [
+      "端到端AI开发",
+      "资源预算",
+      "评测完整性",
+      "可执行验收"
+    ],
+    "authors": [
+      "Yang Zhou",
+      "Krish Agarwal",
+      "Zhuoming Chen",
+      "Zerui Wang",
+      "Zhenyu Zhang",
+      "Wenshuang Li",
+      "Xinpeng Wei",
+      "Zhichen Zeng",
+      "Jingyu Liu",
+      "Jue Wang",
+      "Sen Wu",
+      "Ziheng Jiang",
+      "Zhen Dong",
+      "Han Cai",
+      "Binhang Yuan",
+      "Ying Sheng",
+      "Ce Zhang",
+      "Bo Li",
+      "Beidi Chen"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 · 首发记录",
+        "url": "https://arxiv.org/abs/2611.16591v1"
+      },
+      {
+        "label": "原论文 · 方法、结果与附录A",
+        "url": "https://arxiv.org/html/2611.16591v1"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://infini-ai-lab.github.io/singularity-bench/"
+      },
+      {
+        "label": "固定提交 · 任务与开源范围",
+        "url": "https://github.com/Infini-AI-Lab/singularity-bench/blob/236de218fb6bed3154f1d5ab1679bfa414c8571c/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Singularity-Bench让Agent在固定GB300硬件和4–12小时预算内，从最小代码起点构建预训练、中训练、RL、推理引擎、代码harness和集群调度六类系统。价值在端到端交付与防刷分验收；作者命名的Singularity-Index只是六个相对人工基线分数的平均，不能据此认定递归自我改进或“奇点”已经发生。",
+      "motivation": "代码片段或调参题容易把成熟框架已有能力算成Agent能力；开放任务又允许提交代码影响评分与日志。该工作把“从最小系统独立完成交付”与“结果可信地被验收”同时作为评测目标，覆盖AI开发不同层次，而非只测单次回答。",
+      "novelty": "作者主张：以六层完整系统任务衡量Agent自主构建下一代Agent基础设施，并用Breakwater隔离评测过程中的奖励作弊。本站判断：更有用的贡献是把设计自由、硬件/时间预算、功能正确和执行完整性放到同一个验收协议。表5中Opus 5.5+Claude Code指数1.252，GPT-6.1 Sol+Codex为0.969；它们是模型与harness组合在这六题上的作者报告，不能脱离任务和工具链做普遍模型排名。",
+      "evidenceScope": "已读arXiv v1摘要、§3六项任务及指数、§4防护方法、§5主表、§6.1逐项分析和附录A计分/成本口径；首发2026-11-12T10:24:51Z，仅v1。匿名读取作者项目页，并固定GitHub提交236de218fb6bed3154f1d5ab1679bfa414c8571c读取README、许可证声明与913项目录树，确认六个任务目录和Breakwater代码目录存在；没有执行代码、下载全部资产、读取全部轨迹或独立复现。verified仅表示原论文和公开来源已核验。",
+      "limits": "未运行作者代码、构建容器或复现GPU实验。每层仅一个任务，六层系统分别构建，没有把产物接成可持续自我改进闭环；指标和人工参考选择影响综合指数。后训练Opus组合0.533低于Miles 0.539，作者按逐任务sign test称差异不显著，“未检出差异”不是证明等效。主表不提供完整端到端重复运行置信区间，不能由单一综合数推出稳定胜率。预训练、中训练、RL、推理分别限4张GB300 12小时，harness为1张6小时，集群为16张4小时，且固定RL后评测另耗5小时；API成本425.41/84.52美元不含GPU及构建后harness评测，不是总成本。推理收入为预设token价格下的模拟指标，不是真实业务收入或纯kernel吞吐。Breakwater只对论文报告的红队攻击集有效，未证明普遍安全；来源核验不等于独立安全审计。公开仓库有任务/评分/防护代码和资产准备说明，但读取README与目录不能证明外部模型、数据、评测环境及全部日志均可复现。",
+      "method": [
+        "冻结任务、资源和起点：六项任务分别建设从零语言模型、Llama-3.2-1B中训练权重、GLM-4.7-Flash的多轮RL策略、GLM-5.3-Flash FP8服务、Python标准库代码harness、28模型集群调度。允许自主选实现，但限制已有生产引擎、数据和模型访问；各项用相同硬件与时间配置对照人类工程参考。",
+        "为不同产物定义独立验收：预训练看隐藏文本PPL且需因果性检查；中训练后接固定5小时GRPO再测AMC/HumanEval+/GPQA均值；RL策略用固定harness评测73个开发任务与100个SWE-bench Verified任务；推理看并发长上下文流量的完成收入并通过正确长度/准确率门槛；harness在3个kernel题和2个修复题、3种驱动模型上评测；集群看SLO达标与完成覆盖。",
+        "将提交代码与可信评分隔离：Breakwater对环境二进制/包做前后指纹核验，经代理限制模型API，阶段结束清理存活进程，外置保存不可篡改日志，并先在受限中间容器执行提交，再由独立验证与LLM审查给分。论文展示的攻击被捕获，不把这个有限结果写成所有攻击均被阻止。",
+        "报告原始指标和资源，再做归一化：六项得分各除对应人工参考，PPL反向用人工/Agent；失败或违规项记0，始终除6，各项比值不封顶。对11个模型+harness配置比较，分开披露API花费、训练吞吐、队列延迟和提交失败；综合指数超过1仅表示这组参考下的均值超过1。"
+      ],
+      "inspirations": [
+        "建设长程工程benchmark时，先固定基础资产、允许使用的生产库、模型访问、硬件时长和隐藏验收；同时公开原始任务分数与违规/未交付类别，再计算总分，避免将刷分或基础设施失败解释为能力。",
+        "把Agent产物当成不可信代码：记录写到执行环境之外，评测前清理遗留进程，在受限环境产生可检查输出，再让独立验证器判分。可把这些机制做成验收对照实验；本文的有限红队结果不能替代自己的安全审查。",
+        "对代码视频或Blender工作流可借用“系统产物+独立验收”的设计：分别测脚本执行、场景约束、可编辑性、渲染成本和视觉质量，保存失败分母；这是本站迁移建议，论文未评测创作任务。"
+      ],
+      "reviewedAt": "2026-11-13T22:26:49.463640+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.16591v1",
+        "https://arxiv.org/html/2611.16591v1",
+        "https://infini-ai-lab.github.io/singularity-bench/",
+        "https://github.com/Infini-AI-Lab/singularity-bench/blob/236de218fb6bed3154f1d5ab1679bfa414c8571c/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.16591",
+      "status": "pending",
+      "checkedAt": "2026-11-13T22:26:49.463640+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.16221v1",
+    "url": "https://arxiv.org/abs/2611.16221v1",
+    "id": "paper-bwm-forge-2611-16221",
+    "title": "BWM-Forge：先编程机器人世界，再生成视频外观",
+    "summary": "BWM-Forge让编码Agent先生成可编辑的Blender场景、机器人关节动画和相机，再用代理视频约束Seedance外观生成。四类Agent把输入校验、建模、复核、渲染及经验复用串起来。作者在15个选定任务、5类机器人上报告更好的外观一致性和指令对齐，但没有验证这些视频能提升机器人策略训练；动作看起来合理也不等于真实物理成功。",
+    "insight": "作者主张：把三种输入模式、机器人URDF资产、分阶段可执行场景、多视角生成、用户修订和经验库整合为面向具身视频数据的工作流。本站判断：价值在于将对象、关节、镜头和时间线显式保存，便于定位修改发生在几何/运动层还是外观层；这是可检查的数据生成系统设计，不能由小规模视频评分推出新的物理仿真能力、自动执行成功率或下游训练增益。",
+    "limits": "证据来自作者选定的15个任务，未报告全部尝试的分母、失败/重试分布、置信区间、匹配的人工及算力预算或下游机器人学习实验。表1原生IQ为0.732059，低于LingBot的0.734126；16 FPS重编码后0.734156仅高0.000030，不能概括为画质全面胜出。原生PA只高0.04/5分，IA高0.60/5分，均为RoboJudge自动分，不是接触动力学或任务成功率。各组分辨率不同，16 FPS转换同时改变编码；灵巧手对照还使用BWM最终视频首帧。正文表1–2各15条，但附录C只列7个任务并写“seven”，其配置覆盖全部15条与否尚不明确。表2其他模型是不同样本集合的人评分，不与本轮自动评分排行。可编辑的是程序/Blender代理层；生成外观仍可能偏离约束。固定实现的动作一致性主要是光流和时序统计，几何复核为有限样本，不能证明连续无碰撞、动态平衡或真机可执行。未运行源码、安装依赖、调用模型、观看完整生成视频或复现实验。",
+    "dateLabel": "2026-11-12 · arXiv v1；11月14日新增解读",
+    "evidence": "论文方法/实验/附录与固定公开代码静态核验；未复现实验，未执行作者代码",
+    "originalTitle": "BWM-Forge: Agentic World Programming for Embodied Intelligence",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-13T22:26:12Z",
+    "originalDate": "2026-11-12",
+    "paperOriginalDate": "2026-11-12T03:14:48Z",
+    "paperUpdatedAt": "2026-11-12T03:14:48Z",
+    "updatedAt": "2026-11-12T03:14:48Z",
+    "firstSeenAt": "2026-11-13T22:26:12Z",
+    "lastSeenAt": "2026-11-13T22:26:12Z",
+    "tags": [
+      "机器人视频数据",
+      "Blender",
+      "URDF",
+      "可编辑场景",
+      "代码世界模型",
+      "经验复用"
+    ],
+    "authors": [
+      "BWM Team"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2video"
+    ],
+    "featured": true,
+    "sources": [
+      {
+        "label": "arXiv v1 · 首发时间与摘要",
+        "url": "https://arxiv.org/abs/2611.16221v1"
+      },
+      {
+        "label": "论文全文 · 方法、表1–2及附录A–C",
+        "url": "https://arxiv.org/html/2611.16221v1"
+      },
+      {
+        "label": "作者项目页 · 代码与可编辑场景流程",
+        "url": "https://bwm-forge.github.io/"
+      },
+      {
+        "label": "作者代码 · 固定版本README与资产说明",
+        "url": "https://github.com/Lcixs/BWM-Forge/blob/6f7fb8702e1c88e4db2376d6cb04c12dca77d11e/README.md"
+      },
+      {
+        "label": "固定源码 · 分阶段项目与修改记录",
+        "url": "https://github.com/Lcixs/BWM-Forge/blob/6f7fb8702e1c88e4db2376d6cb04c12dca77d11e/Blender/blender_modeling.py"
+      },
+      {
+        "label": "固定提示 · 运动来源、采样检查与编辑边界",
+        "url": "https://github.com/Lcixs/BWM-Forge/blob/6f7fb8702e1c88e4db2376d6cb04c12dca77d11e/assets/prompts/blender/composed.md"
+      },
+      {
+        "label": "固定源码 · 光流动作一致性及质量评分",
+        "url": "https://github.com/Lcixs/BWM-Forge/blob/6f7fb8702e1c88e4db2376d6cb04c12dca77d11e/Render/evaluation.py"
+      },
+      {
+        "label": "固定源码 · 一次自动修正与人工确认",
+        "url": "https://github.com/Lcixs/BWM-Forge/blob/6f7fb8702e1c88e4db2376d6cb04c12dca77d11e/Render/render_stage.py"
+      },
+      {
+        "label": "固定源码 · 有范围的经验检索与停用",
+        "url": "https://github.com/Lcixs/BWM-Forge/blob/6f7fb8702e1c88e4db2376d6cb04c12dca77d11e/Harness/experience_store.py"
+      },
+      {
+        "label": "固定提示 · 有界复核和不确定性",
+        "url": "https://github.com/Lcixs/BWM-Forge/blob/6f7fb8702e1c88e4db2376d6cb04c12dca77d11e/assets/prompts/blender/review.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "BWM-Forge让编码Agent先生成可编辑的Blender场景、机器人关节动画和相机，再用代理视频约束Seedance外观生成。四类Agent把输入校验、建模、复核、渲染及经验复用串起来。作者在15个选定任务、5类机器人上报告更好的外观一致性和指令对齐，但没有验证这些视频能提升机器人策略训练；动作看起来合理也不等于真实物理成功。",
+      "motivation": "直接让视频模型生成机器人交互时，对象几何、关节轨迹、相机和遮挡隐含在像素里。改一个容器、换机器人或补一个观察角度往往需要重新生成，难以确认任务结构是否保留。论文希望把这些可控变量放进可执行场景，再单独合成视觉外观，为具身训练数据提供可修改、可复用的中间表示。",
+      "novelty": "作者主张：把三种输入模式、机器人URDF资产、分阶段可执行场景、多视角生成、用户修订和经验库整合为面向具身视频数据的工作流。本站判断：价值在于将对象、关节、镜头和时间线显式保存，便于定位修改发生在几何/运动层还是外观层；这是可检查的数据生成系统设计，不能由小规模视频评分推出新的物理仿真能力、自动执行成功率或下游训练增益。",
+      "evidenceScope": "已读arXiv v1 §3全部方法、§4实验、结论及附录A–C；核对表1–2和附录C分辨率/帧率设置。表1是每组15个源视频等权均值：原生BWM与LingBot的SC为0.972146/0.947975、BC为0.972240/0.957831、MS为0.994212/0.987241，DD则0.502319/0.788889；DD只反映大幅运动，不等于成功率。表2原生PA/IA为2.93/3.33，对照2.89/2.73；16 FPS版本为3.00/3.40，改帧率与重编码影响未分离。作者列出的建模模型为gpt-6-astra，输入/汇总/视觉评估用gpt-5.6-sol，Blender 5.2.2 LTS与Seedance 2.5；这里只转述该版本配置，未测试这些服务。固定GitHub提交6f7fb8702e1c88e4db2376d6cb04c12dca77d11e（2026-11-13T05:50:12Z），取得README、16个源码/提示/许可文件与完整非截断文件树，并重点静态阅读建模、运动输入、几何诊断、评分门控、经验检索及相关提示段落。看到真实分阶段工程、外观请求、质量门控及经验存储实现；库内6个.blend为机器人资产路径，未据此宣称已公开15个评测任务的完整原始结果。项目页可读；HF papers API本次404，未冒称HF数据/权重已发布。verified只表示公开来源核验。",
+      "limits": "证据来自作者选定的15个任务，未报告全部尝试的分母、失败/重试分布、置信区间、匹配的人工及算力预算或下游机器人学习实验。表1原生IQ为0.732059，低于LingBot的0.734126；16 FPS重编码后0.734156仅高0.000030，不能概括为画质全面胜出。原生PA只高0.04/5分，IA高0.60/5分，均为RoboJudge自动分，不是接触动力学或任务成功率。各组分辨率不同，16 FPS转换同时改变编码；灵巧手对照还使用BWM最终视频首帧。正文表1–2各15条，但附录C只列7个任务并写“seven”，其配置覆盖全部15条与否尚不明确。表2其他模型是不同样本集合的人评分，不与本轮自动评分排行。可编辑的是程序/Blender代理层；生成外观仍可能偏离约束。固定实现的动作一致性主要是光流和时序统计，几何复核为有限样本，不能证明连续无碰撞、动态平衡或真机可执行。未运行源码、安装依赖、调用模型、观看完整生成视频或复现实验。",
+      "method": [
+        "校验输入并记录未知量：接收首帧图、首帧加NPZ/Parquet动作轨迹，或人类示范视频；检查URDF结构/网格、关节映射、单位及采样率，再按实体、相机和支撑/遮挡关系组织视觉证据。缺少绝对尺度或被遮挡几何时保留建模假设，不当成观测真值。",
+        "分三阶段编程：先恢复环境，再独立导入机器人，最后组合为Blender场景并生成根部/关节动画与相机控制。图像模式推断动作，轨迹模式允许记录在案的重定向，示范模式把观察到的事件映射到目标机器人；保存每轮工程、脚本、预览和反馈，增量修改已保存场景。",
+        "有界复核后生成代理视频：Review Agent结合渲染帧和日志检查布局、关节、接触/支撑及路径，做局部修正，未决问题留给用户。固定提示默认运动检查不超过24个样本、危险区间可增采样，另一个复核提示最多加3帧；这些是采样诊断要求，不是已完成连续碰撞证明。",
+        "外观生成与修订：把代理视频、参考图和提示交给Doubao-Seedance-2.5。七项局部质量/动作统计给出筛选信号，初次低分最多触发一次自动提示修正；VLM再看时序采样、参考图和分数，用户确认或提出修订。局部质量分、VLM判断与论文外部VBench/RoboJudge评测是三种不同口径。",
+        "保存可复用经验：汇总阶段证据，把规则分为通用和特定机器人/夹爪/任务范围；LLM提出新增、合并、停用或不变，下次先排除失活及范围冲突项再选择。跨工作台、实验室、厨房的演示复用净空/支撑面/镜头规则；这是提示层记忆与检索，论文未训练新模型权重。"
+      ],
+      "inspirations": [
+        "把创作Agent的输出拆成可编辑场景契约和生成外观契约：对象ID、关节曲线、镜头及时间线固定后，单独检查换视角/换材质是否保留动作。可设计成对测试，对比修改前后未指定对象和事件的变化，而不只比较最终视频好不好看。",
+        "把执行、编辑保持性、视觉质量和物理有效性分开验收：分别报告所有尝试的脚本可执行率、修改成功率、未改内容泄漏、外观评分及真实模拟/真机任务成功率，并同时记录人工修订和模型调用成本。有限帧检查或光流高分不替代后两项。",
+        "经验库的规则应携带适用机器人/夹爪、尺度假设、证据来源和失效条件。用保留任务比较无记忆、原样坐标复用与有范围规则复用，检验收益是否来自可迁移约束，而不是重复展示成功案例。"
+      ],
+      "reviewedAt": "2026-11-13T22:26:12Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.16221v1",
+        "https://arxiv.org/html/2611.16221v1",
+        "https://bwm-forge.github.io/",
+        "https://github.com/Lcixs/BWM-Forge/blob/6f7fb8702e1c88e4db2376d6cb04c12dca77d11e/README.md",
+        "https://github.com/Lcixs/BWM-Forge/blob/6f7fb8702e1c88e4db2376d6cb04c12dca77d11e/Blender/blender_modeling.py",
+        "https://github.com/Lcixs/BWM-Forge/blob/6f7fb8702e1c88e4db2376d6cb04c12dca77d11e/assets/prompts/blender/composed.md",
+        "https://github.com/Lcixs/BWM-Forge/blob/6f7fb8702e1c88e4db2376d6cb04c12dca77d11e/Render/evaluation.py",
+        "https://github.com/Lcixs/BWM-Forge/blob/6f7fb8702e1c88e4db2376d6cb04c12dca77d11e/Render/render_stage.py",
+        "https://github.com/Lcixs/BWM-Forge/blob/6f7fb8702e1c88e4db2376d6cb04c12dca77d11e/Harness/experience_store.py",
+        "https://github.com/Lcixs/BWM-Forge/blob/6f7fb8702e1c88e4db2376d6cb04c12dca77d11e/assets/prompts/blender/review.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.16221",
+      "status": "pending",
+      "checkedAt": "2026-11-13T22:26:49.463640+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.16304v1",
+    "url": "https://arxiv.org/abs/2611.16304v1",
+    "id": "live-5d2dfc96094049e1",
+    "title": "StateAlign：说出缺信息以后，Agent还会不会乱调用？",
+    "summary": "把同一工具任务改成“可执行、缺用户信息、需先检索、工具不可用、已完成”五种状态，并用固定基座比较同一输出在状态对中的逐token概率。作者报告8B的BFCL多轮准确率45.5→55.2；相对多轮结果奖励训练，无工具幻觉62.2→56.1，仍未消除。公开代码和8B权重可核，但完整训练数据未发布。",
+    "insight": "可靠调用需要核验“当前是否应该执行”，不能只看函数名选得对或推理里提过缺信息。状态对提供一个可直接测试的反事实：只拿掉必需值，模型是否从执行转为询问；若能用只读工具查到，是否先检索。把这类决策一致性与最终任务完成率分开评，才不会用漂亮的推理文字掩盖编造参数。",
+    "limits": "已读全文方法/附录并静态核固定代码、100条示例和模型卡，未训练、运行模型或复现分数。论文30,433状态、约55%配对；公开仅100条示例，其中71条配对、24条有后续步骤，不能把示例当完整训练集。仓库明确未发布全量数据与构造流程；本轮仅确认HF权重清单/元数据可读，未下载权重校验或加载。训练反馈重放记录工具结果和规则化用户回复，不是任意真实API环境；未知只读调用可标void并排除损失。源码STOP接受不含调用的有效回复，INFEASIBLE以非询问的文本回复通过，未语义核验解释是否正确；单一缺值时任一被识别为询问的回复即可取得该值。状态对项依赖固定基座和参考路径，并与成功组保留策略一起加入，不能把全部增益归给一个独立token奖励。8B无工具幻觉56.1仍高于同数据单步binary GRPO的55.6，14B干扰工具幻觉22.6高于base20.7；主表不支持所有指标都改善。BFCL标准差来自同一checkpoint六次评估，非多训练种子；其他基准三次，ToolSandbox为728个无RapidAPI场景的相似度，When2Call为300例宏准确率，幻觉基准每条件296例。澄清诊断取训练外源轨迹，但检索诊断300对取训练池；错误恢复使用各模型自身出错历史，即使333个共同位置也非相同历史干预。诊断标注校验是三次Claude Opus标注，不是人工评审；原始一致率与稀有标签加权后一致率不能混用。去重只报告BFCL/When2Call问题的规范化精确匹配与n-gram检查，不证明所有测试均无污染。",
+    "organization": "Rensselaer Polytechnic Institute / IBM Research",
+    "dateLabel": "2026-11-12 · arXiv v1",
+    "evidence": "论文全文及固定训练/奖励实现核验；作者结果，未复现",
+    "originalTitle": "StateAlign: Internalizing State-Aware Decision-Making for Reliable Multi-Turn Tool Agents via Reinforcement Learning",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-13T22:26:58.079870Z",
+    "paperOriginalDate": "2026-11-12T05:04:43Z",
+    "paperUpdatedAt": "2026-11-12T05:04:43Z",
+    "updatedAt": "2026-11-12T05:04:43Z",
+    "firstSeenAt": "2026-11-13T10:00:01Z",
+    "lastSeenAt": "2026-11-13T22:00:01Z",
+    "tags": [
+      "强化学习",
+      "工具可靠性",
+      "状态对比",
+      "数据构造",
+      "GRPO"
+    ],
+    "authors": [
+      "Zhexi Lu",
+      "Subhajit Chaudhury",
+      "Tejaswini Pedapati",
+      "Keerthiram Murugesan",
+      "Lei Yu"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.16304v1"
+      },
+      {
+        "label": "原论文方法、附录与表格",
+        "url": "https://arxiv.org/html/2611.16304v1"
+      },
+      {
+        "label": "固定代码发布范围",
+        "url": "https://github.com/ZhexiLu/StateAlign/blob/9cdea5d105691004e4636e020a7d36b509b8728a/README.md"
+      },
+      {
+        "label": "固定训练器",
+        "url": "https://github.com/ZhexiLu/StateAlign/blob/9cdea5d105691004e4636e020a7d36b509b8728a/src/statealign/training/trainer.py"
+      },
+      {
+        "label": "固定离线交互与奖励",
+        "url": "https://github.com/ZhexiLu/StateAlign/blob/9cdea5d105691004e4636e020a7d36b509b8728a/src/statealign/env/episode.py"
+      },
+      {
+        "label": "固定数据说明",
+        "url": "https://github.com/ZhexiLu/StateAlign/blob/9cdea5d105691004e4636e020a7d36b509b8728a/data/README.md"
+      },
+      {
+        "label": "固定100状态示例",
+        "url": "https://github.com/ZhexiLu/StateAlign/blob/9cdea5d105691004e4636e020a7d36b509b8728a/data/statealign_example_100.jsonl"
+      },
+      {
+        "label": "固定论文训练设置",
+        "url": "https://github.com/ZhexiLu/StateAlign/blob/9cdea5d105691004e4636e020a7d36b509b8728a/configs/train/statealign_qwen3_8b.sh"
+      },
+      {
+        "label": "固定BFCL评测脚本",
+        "url": "https://github.com/ZhexiLu/StateAlign/blob/9cdea5d105691004e4636e020a7d36b509b8728a/scripts/eval/bfcl.sh"
+      },
+      {
+        "label": "固定BFCL默认采样补丁",
+        "url": "https://github.com/ZhexiLu/StateAlign/blob/9cdea5d105691004e4636e020a7d36b509b8728a/third_party/bfcl/bfcl.patch"
+      },
+      {
+        "label": "公开8B模型卡",
+        "url": "https://huggingface.co/ZhexiLu/StateAlign-8B/blob/8bfb76e9d1c00a8751a1c1835b883bcb47ec03ad/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把同一工具任务改成“可执行、缺用户信息、需先检索、工具不可用、已完成”五种状态，并用固定基座比较同一输出在状态对中的逐token概率。作者报告8B的BFCL多轮准确率45.5→55.2；相对多轮结果奖励训练，无工具幻觉62.2→56.1，仍未消除。公开代码和8B权重可核，但完整训练数据未发布。",
+      "motivation": "工具名选对只是执行条件之一。用户没给必需参数、可用工具无法完成请求、任务已经完成时，模型应改为询问、检索、拒绝或停止；论文观察到模型即使在推理里指出缺值，仍会在最终调用中编造它。单一任务成功奖励难以定位这一内部不一致，也会让同分轨迹缺少区分信号。",
+      "novelty": "作者主张：用只改变任务条件的状态对，把任务完成奖励补成能区分推理与动作是否适合当前信息的token级监督，即使一组结果同分也可学习。本站判断：有价值的是状态构造与决策翻转测试，以及固定基座无需额外更强logits教师；不是“想得正确就一定安全调用”。表2A同一binary GRPO换构造数据，BFCL47.2→51.9、无工具幻觉63.3→55.6；表2B在构造状态上，8B多轮结果项→完整StateAlign为BFCL53.0±0.9→55.2±1.3、NTA62.2→56.1。数据与完整配置都重要，且这些作者均值不能证明所有可靠性指标更好或单项机制的纯因果增益。",
+      "evidenceScope": "已读arXiv v1§2–5、附录A–F，直接核HTML表1/2/3/5–10；首发2026-11-12 05:04:43 UTC，未见v1后修订。静态读Git 9cdea5d105691004e4636e020a7d36b509b8728a README、数据格式、trainer的固定基座/截断/采样/归一化、episode奖励与续接、训练配置、BFCL脚本和补丁；自写标准库独立数100条JSON，40 Exec/20 Need_User/15 Need_Fetch/10 Infeasible/15 Stop，71有twin、24有cont，未导入作者模块。HF revision 8bfb76e9d1c00a8751a1c1835b883bcb47ec03ad匿名private=false/gated=false，API列12文件和8,190,735,360 BF16参数；仅读模型卡/配置，不把资产可读当推理成功。固定BFCL依赖commit 6ea57973c7a6097fd7c5915698c54c17c5b1b6c8，补丁只增加generation-config vllm默认采样参数选择，未执行。X公开搜索未定位可核作者帖子，无时间线/API读取。",
+      "limits": "已读全文方法/附录并静态核固定代码、100条示例和模型卡，未训练、运行模型或复现分数。论文30,433状态、约55%配对；公开仅100条示例，其中71条配对、24条有后续步骤，不能把示例当完整训练集。仓库明确未发布全量数据与构造流程；本轮仅确认HF权重清单/元数据可读，未下载权重校验或加载。训练反馈重放记录工具结果和规则化用户回复，不是任意真实API环境；未知只读调用可标void并排除损失。源码STOP接受不含调用的有效回复，INFEASIBLE以非询问的文本回复通过，未语义核验解释是否正确；单一缺值时任一被识别为询问的回复即可取得该值。状态对项依赖固定基座和参考路径，并与成功组保留策略一起加入，不能把全部增益归给一个独立token奖励。8B无工具幻觉56.1仍高于同数据单步binary GRPO的55.6，14B干扰工具幻觉22.6高于base20.7；主表不支持所有指标都改善。BFCL标准差来自同一checkpoint六次评估，非多训练种子；其他基准三次，ToolSandbox为728个无RapidAPI场景的相似度，When2Call为300例宏准确率，幻觉基准每条件296例。澄清诊断取训练外源轨迹，但检索诊断300对取训练池；错误恢复使用各模型自身出错历史，即使333个共同位置也非相同历史干预。诊断标注校验是三次Claude Opus标注，不是人工评审；原始一致率与稀有标签加权后一致率不能混用。去重只报告BFCL/When2Call问题的规范化精确匹配与n-gram检查，不证明所有测试均无污染。",
+      "method": [
+        "从ToolMind和LoopTool-23k轨迹筛掉结构无效、无关调用和无依据参数，再用Qwen3.8-27B重写信息条件。构造Exec、Need_User、Need_Fetch、Infeasible、Stop五类；非执行态尽量配同源可执行态，保留各自参考路径。论文集合30,433状态约55%有配对，未配对仅学结果奖励。",
+        "在短交互里由策略生成推理与调用：问到缺值后返回存储回复，匹配记录的检索调用后重放观察。未获得必需信息就执行给0；正确函数/指定参数匹配后，奖励按执行步数乘0.8折扣，多余调用再乘0.5；有后续记录还要继续执行或停止正确。最多4个模型步骤，后续步骤也占预算。",
+        "固定初始基座作为评分器，把策略生成的同一token及相同前缀分别放到当前状态+参考路径、配对状态+参考路径下求log概率差，截到[-1,1]并停止梯度，用它加权当前策略token对数似然。评分器的参考路径和对照状态不提供给推理时策略；续接步骤只学结果项，环境反馈不计语言模型损失。",
+        "将token归一化的GRPO结果项、KL约束与权重0.1的状态对比项联合训练；LoRA rank64/alpha128，每状态8条轨迹、每批320条。优先采奖励有变化的组，同时预留约20%有配对的等额成功组，让结果优势为0时仍有状态信号。论文Qwen3训练400步，Granite/Llama300步；公开配置主要对应Qwen3-8B。",
+        "分别验多轮任务完成、轨迹相似度、该调用/澄清/拒绝的宏准确率和无工具/干扰工具幻觉，做“原数据→构造状态”和“多轮结果项→完整配置”两组消融。另查缺值时推理与动作是否一致、信息补齐后的执行和出错后的继续工作；各诊断的训练内外来源、分母与评估重复次数单独解释。"
+      ],
+      "inspirations": [
+        "给自己的工具Agent建同源五态测试：订单号已给、只能问用户、允许只读查询、缺执行工具、请求已完成。每对只改一个条件，分别记“缺值仍调用”“可查询却猜值”“已完成仍重复调用”，再评两侧动作同时正确；这是本站实验建议。",
+        "训练时分开保存推理声明、最终动作和新观察，特别抽查“说要问却编参数调用”。把未知只读分支、无法重放和真实失败分桶，补充有状态沙盒，避免静态重放数据把合理新路径当失败或直接忽略。",
+        "复用状态对时设置严格对照：相同状态集合、rollout预算和成功组比例，仅开关token对比项；同时保留简单binary GRPO。对STOP/拒绝补语义验收，并报告真实错误率与残余幻觉，不能用询问次数或更短输出代替可靠性。"
+      ],
+      "reviewedAt": "2026-11-13T22:26:58.079870Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.16304v1",
+        "https://arxiv.org/html/2611.16304v1",
+        "https://github.com/ZhexiLu/StateAlign/blob/9cdea5d105691004e4636e020a7d36b509b8728a/README.md",
+        "https://github.com/ZhexiLu/StateAlign/blob/9cdea5d105691004e4636e020a7d36b509b8728a/src/statealign/training/trainer.py",
+        "https://github.com/ZhexiLu/StateAlign/blob/9cdea5d105691004e4636e020a7d36b509b8728a/src/statealign/env/episode.py",
+        "https://github.com/ZhexiLu/StateAlign/blob/9cdea5d105691004e4636e020a7d36b509b8728a/data/README.md",
+        "https://github.com/ZhexiLu/StateAlign/blob/9cdea5d105691004e4636e020a7d36b509b8728a/data/statealign_example_100.jsonl",
+        "https://github.com/ZhexiLu/StateAlign/blob/9cdea5d105691004e4636e020a7d36b509b8728a/configs/train/statealign_qwen3_8b.sh",
+        "https://github.com/ZhexiLu/StateAlign/blob/9cdea5d105691004e4636e020a7d36b509b8728a/scripts/eval/bfcl.sh",
+        "https://github.com/ZhexiLu/StateAlign/blob/9cdea5d105691004e4636e020a7d36b509b8728a/third_party/bfcl/bfcl.patch",
+        "https://huggingface.co/ZhexiLu/StateAlign-8B/blob/8bfb76e9d1c00a8751a1c1835b883bcb47ec03ad/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.16304",
+      "status": "pending",
+      "checkedAt": "2026-11-13T22:26:49.463640+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://code.claude.com/docs/en/code-mode",
+    "url": "https://code.claude.com/docs/en/code-mode",
+    "id": "update-claude-code-mode-20261112",
+    "title": "Claude Code Mode：把多步工具调用写成代码，审计仍要看运行过程",
+    "summary": "Claude Code的实验Code Mode让模型写JavaScript，在一次执行中并行或串联多个工具调用，并只回传需要阅读的结果。本轮此前404的完整文档已可读，补齐了权限检查、会话恢复与运行时长限制；这是工具编排方式变化，官方没有给出同任务成本或成功率对照。",
+    "insight": "官方主张是把多次相关工具操作放入一段代码，支持结果筛选与依赖串联。本站判断：值得研究的不是“多调用合成一次”本身，而是节省模型往返时，错误定位、运行期权限和审计粒度如何变化。auto模式审整段代码且看不到运行时计算出的值，不能等同于每个工具调用都经过分类器复核。",
+    "limits": "已读完整官方文档及两个版本说明，未安装、开启模式、修改配置或运行脚本。功能实验且默认关闭，只支持符合条件的原生交互终端与Anthropic直连；不支持网关/第三方云接入、-p、Agent SDK、IDE面板、Desktop或云会话，并有组织与模型条件。会话只能在终端开着Code Mode恢复；Remote Control、Chrome和computer use不可用。工具deny/ask规则与PreToolUse仍适用，但Bash文本规则不等于强隔离；文档与修复说明不能证明没有权限或运行时缺陷，也没有实测吞吐/成本收益。",
+    "organization": "Anthropic",
+    "dateLabel": "2026-11-12 · v2.1.323首发；本轮补读文档及11/13修复",
+    "evidence": "官方完整文档及发布记录核验；未运行产品或复现实验",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-13T22:25:51.024649+00:00",
+    "originalDate": "2026-11-12T22:12:13Z",
+    "updatedAt": "2026-11-13T20:40:01Z",
+    "firstSeenAt": "2026-11-13T10:26:50.136331+00:00",
+    "tags": [
+      "Claude Code",
+      "Code Mode",
+      "程序化工具调用",
+      "Agent Harness",
+      "权限与恢复"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "Claude Code官方完整文档 · Code Mode",
+        "url": "https://code.claude.com/docs/en/code-mode"
+      },
+      {
+        "label": "官方Markdown文档 · 权限和会话边界",
+        "url": "https://code.claude.com/docs/en/code-mode.md"
+      },
+      {
+        "label": "v2.1.323正式发布 · 首次加入实验模式",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.323"
+      },
+      {
+        "label": "v2.1.325正式发布 · 路径、工作树及恢复修复",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.325"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Claude Code的实验Code Mode让模型写JavaScript，在一次执行中并行或串联多个工具调用，并只回传需要阅读的结果。本轮此前404的完整文档已可读，补齐了权限检查、会话恢复与运行时长限制；这是工具编排方式变化，官方没有给出同任务成本或成功率对照。",
+      "motivation": "跨文件改动、检索过滤和独立命令并行常需要多轮模型与工具往返。Code Mode把部分控制流交给生成的JavaScript执行，减少每一步都由模型接续的需要；因此要同时评估编排收益和中间过程的可见性、权限及失败恢复。",
+      "novelty": "官方主张是把多次相关工具操作放入一段代码，支持结果筛选与依赖串联。本站判断：值得研究的不是“多调用合成一次”本身，而是节省模型往返时，错误定位、运行期权限和审计粒度如何变化。auto模式审整段代码且看不到运行时计算出的值，不能等同于每个工具调用都经过分类器复核。",
+      "evidenceScope": "本轮HTML和.md匿名200，已读原理、要求、权限、长任务、恢复与故障处理全文；上轮两个地址均404。v2.1.323的GitHub发布时间为2026-11-12T22:12:13Z（北京时间11/13），v2.1.325为2026-11-13T20:40:01Z，分别核对HTML时间与官方Atom条目。文档自身没有可核发布日期，不用此次checkedAt代替首发。未测试账号可用性、变更隐私配置或执行文中示例；verified仅指来源核验。",
+      "limits": "已读完整官方文档及两个版本说明，未安装、开启模式、修改配置或运行脚本。功能实验且默认关闭，只支持符合条件的原生交互终端与Anthropic直连；不支持网关/第三方云接入、-p、Agent SDK、IDE面板、Desktop或云会话，并有组织与模型条件。会话只能在终端开着Code Mode恢复；Remote Control、Chrome和computer use不可用。工具deny/ask规则与PreToolUse仍适用，但Bash文本规则不等于强隔离；文档与修复说明不能证明没有权限或运行时缺陷，也没有实测吞吐/成本收益。",
+      "method": [
+        "生成一段编排代码：JavaScript调用原有工具，可以并行执行独立操作，也可把前一步结果用于下一步，并只返回模型需要看的输出。它不是新底座模型，也未证明所有任务都适合批量执行。",
+        "保留两层观察：普通对话显示工具调用和编辑diff；transcript viewer的Code行可展开查看生成代码。审查时需把代码、实际工具调用及结果对应起来，不能只检查最终摘要。",
+        "分开理解权限：每次内层调用仍经过deny/ask规则和PreToolUse钩子；auto分类器在执行前检查整段代码，不见运行期算出的路径等值。其他会询问的权限模式仍按内层调用提示；REPL钩子可以检查tool_input.code。",
+        "处理等待、后台和恢复：前台等待最长10分钟，权限提示耗时也计入；满足启动模式条件时，代码可后台运行至2小时。恢复原Code Mode会话要求仍启用该模式，不能移到Desktop或转换成后台会话；后台代码不等于后台会话。",
+        "按版本验收行为：v2.1.325列出Code Mode未跟随EnterWorktree、把波浪号路径写入项目、MCP登录过期显示、审批附言丢失及恢复时自行继续工作等修复。本条保留v2.1.323首发日期，后续修复作为验收线索，不把它们宣称已独立验证。"
+      ],
+      "inspirations": [
+        "用同一批跨文件任务对照直接工具调用与代码编排，固定模型、权限与预算，分别记录模型往返数、实际工具次数、返回token、等待时间、成功率和首次失败位置；一次代码执行不能算成一次工具工作量。",
+        "在隔离测试工程中检查运行期生成路径、工作树切换、钩子超时与中途权限拒绝，记录哪些调用真正执行、哪些输出被扣留；这是建议的测试设计，不是本次已经复现。",
+        "保存完整代码与工具事件，再对断连、退出和恢复做验收，确认恢复不会未经新指令继续行动；将前台等待、后台代码和可恢复会话分别记账，避免把两个小时上限误当所有会话能力。"
+      ],
+      "reviewedAt": "2026-11-13T22:25:51.024649+00:00",
+      "sourceUrls": [
+        "https://code.claude.com/docs/en/code-mode",
+        "https://code.claude.com/docs/en/code-mode.md",
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.323",
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.325"
+      ]
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://openai.com/index/introducing-chatgpt-wallet/",
+    "url": "https://openai.com/index/introducing-chatgpt-wallet/",
+    "id": "update-openai-chatgpt-wallet-20261113",
+    "title": "ChatGPT Wallet：把逐单授权与Agent结账分开验收",
+    "summary": "ChatGPT Wallet把Agent购物从查找商品延伸到现有网站结账：用户逐单核对商品、总额和付款卡，并通过安全检查批准，支付网络随后提供替代真实卡信息的令牌。首批面向美国符合条件的成年Pro用户；按预算等预先授权Agent自主采购仍是未来规划，不能写成当前开放能力。",
+    "insight": "官方新增的是钱包与配套商家接入指南，重点兼容现有结账及支付风控。本站判断：Agent交易的关键评测对象应是“用户批准了什么、系统实际提交了什么、商家最终确认了什么”三者是否一致，而非只看网页操作完成。来源签名、支付授权与最终订单成功属于不同证据层。",
+    "limits": "证据为官方发布与完整开发者指南，未登录Wallet、添加支付方式、发起购买、配置商家或测量通过率。首批资格及地区有限；现有表单可用不意味着所有网站和风险系统都会接受。Forwarded用户信号仍逐步推出，字段可能不同；已签名浏览请求只证明请求来源，不替代用户逐单批准和商家订单验收。文档不提供可独立复核的欺诈率或拒付率数据；未来按预算/类别/时段预授权的描述不代表当前无人确认支付。",
+    "organization": "OpenAI",
+    "dateLabel": "2026-11-13 · 官方RSS 15:00 UTC；本轮补完整项目解读",
+    "evidence": "官方完整文档及发布记录核验；未运行产品或复现实验",
+    "date": "2026-11-13",
+    "checkedAt": "2026-11-13T22:25:51.024649+00:00",
+    "originalDate": "2026-11-13T15:00:00Z",
+    "firstSeenAt": "2026-11-13T16:25:23.450201+00:00",
+    "tags": [
+      "ChatGPT Wallet",
+      "交易Agent",
+      "用户授权",
+      "Web Bot Auth",
+      "工具执行验收"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "OpenAI官方发布 · ChatGPT Wallet",
+        "url": "https://openai.com/index/introducing-chatgpt-wallet/"
+      },
+      {
+        "label": "官方Commerce Partner Playbook",
+        "url": "https://developers.openai.com/commerce"
+      },
+      {
+        "label": "官方支付接入说明 · 单次授权与风险信号",
+        "url": "https://developers.openai.com/commerce/guides/accept-payments"
+      },
+      {
+        "label": "官方Agent Access · 已签名浏览请求与访问边界",
+        "url": "https://developers.openai.com/commerce/agent-access"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "ChatGPT Wallet把Agent购物从查找商品延伸到现有网站结账：用户逐单核对商品、总额和付款卡，并通过安全检查批准，支付网络随后提供替代真实卡信息的令牌。首批面向美国符合条件的成年Pro用户；按预算等预先授权Agent自主采购仍是未来规划，不能写成当前开放能力。",
+      "motivation": "购物Agent可以找到商品并操作页面，但真实交易还涉及付款凭证、用户授权、网站访问及商家风险系统。钱包试图在现有结账流程中连接这些环节；研究上需要把任务完成和受授权的动作一致性分开衡量。",
+      "novelty": "官方新增的是钱包与配套商家接入指南，重点兼容现有结账及支付风控。本站判断：Agent交易的关键评测对象应是“用户批准了什么、系统实际提交了什么、商家最终确认了什么”三者是否一致，而非只看网页操作完成。来源签名、支付授权与最终订单成功属于不同证据层。",
+      "evidenceScope": "已读11/13官方发布正文以及Commerce目录、Accept payments、Agent Access和browser access指南。发布页本地匿名直连403，但web公开原页全文可读；开发者Markdown原页匿名200。RSS精确发布时间为2026-11-13T15:00:00Z，checkedAt是本轮核验时间。用户侧流程与商家指南互相印证；具体实现、安全效果、商家兼容及交易成功没有实测，verified仅指来源核验。",
+      "limits": "证据为官方发布与完整开发者指南，未登录Wallet、添加支付方式、发起购买、配置商家或测量通过率。首批资格及地区有限；现有表单可用不意味着所有网站和风险系统都会接受。Forwarded用户信号仍逐步推出，字段可能不同；已签名浏览请求只证明请求来源，不替代用户逐单批准和商家订单验收。文档不提供可独立复核的欺诈率或拒付率数据；未来按预算/类别/时段预授权的描述不代表当前无人确认支付。",
+      "method": [
+        "确认用户意图：每次购买前展示商品、总额与所选卡，再由用户完成Face ID或指纹等安全检查。官方描述当前是逐单批准，不是仅凭聊天目标就自动付款。",
+        "使用支付替代凭证：批准后由支付网络提供令牌用于现有支付表单，Agent和商家不获得用户真实卡信息。支付指南明确该凭证对应特定交易，不可复用为另一笔购买；不能把网络令牌等同于无限授权。",
+        "区分网站访问与交易授权：云浏览器不要求商家先提供插件或商品feed。若网站误拦截，可验证Web Bot Auth签名来识别请求来源；验证来源仍不替代页面权限和订单授权。",
+        "观察商家结果：现有结账负责处理支付，业务方负责订单、履约和支持。官方指出云浏览器信号可能触发风险系统，正在逐步通过Forwarded传递部分用户信号；需区分页面提交、风险拒绝、支付确认与订单最终状态。"
+      ],
+      "inspirations": [
+        "在不产生真实交易的测试环境，分别保存批准时的商品/金额/卡选择、实际提交内容和最终订单回执，设计金额变化、库存变化或重复提交用例；以三者一致性评估Agent，而非只统计按钮点击成功。",
+        "把失败拆为网站访问、商品状态、用户拒绝、风险系统拒绝和支付/订单确认缺失，分别报告分母；签名验证通过不应自动算交易成功。",
+        "对后续预授权能力单列评测协议，明确预算、类别、期限和撤销条件后再测试；当前逐单批准的数据不能用于宣称完全自主购物已可靠。"
+      ],
+      "reviewedAt": "2026-11-13T22:25:51.024649+00:00",
+      "sourceUrls": [
+        "https://openai.com/index/introducing-chatgpt-wallet/",
+        "https://developers.openai.com/commerce",
+        "https://developers.openai.com/commerce/guides/accept-payments",
+        "https://developers.openai.com/commerce/agent-access"
+      ]
+    }
   }
 ]
