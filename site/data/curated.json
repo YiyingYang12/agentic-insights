@@ -15560,5 +15560,486 @@
         "https://zcode.z.ai/cn"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.16116v1",
+    "url": "https://arxiv.org/abs/2611.16116v1",
+    "id": "live-fc01a0c94eda0048",
+    "title": "Robo-SWE：让机器人软件修复可验收，别把测试通过当公平真值",
+    "summary": "Robo-SWE把机器人软件中的真实issue、修复前环境、开发者补丁和隐藏回归测试打成236个任务，并保留1567个候选的去留记录。价值在于可审计的构建与验收过程；测试可重复通过仍不等于补丁行为正确、题目公平或机器人安全。",
+    "insight": "作者主张：把跨ROS、仿真、算法库、机器人学习框架的真实issue修复做成可执行数据，并保存候选全链条。本站判断：最值得迁移的是同时公开“被选中的题”和“为什么没选其他题”，再区分执行稳定、判题充分和题面公平。本站重计固定CSV得到Opus设置400/708=56.50%，Sol max383/708=54.10%；这支持论文均值口径，不证明孤立模型优劣。",
+    "limits": "已读全文并静态核对固定数据发布，未构建Docker、运行Harbor、执行作者代码或复现修复。论文所述3529条可用轨迹与当前HF发布范围不同：数据卡明确不含原始Agent轨迹，只含任务包、构建元数据和选定结果表，不能声称已核全部运行过程。采集/审查流水线源码为专有；发布检查主要是文件、哈希、语法和Harbor解析，没有为这次上传重新做oracle/no-op/模型运行；镜像未打包，部分配方仍动态解析依赖，7题还需重建未公开托管的项目基础镜像。人工公平性审查未完成；论文26题“测试用到未在题面出现名字”的审计口径，与HF中unfair/questionable/minor_issues标签不是同一统计，自动标记也不等于人工判定。5个仓库占133/236题，非ROS部分全为Python；对完整机器人软件生态代表性有限。不同模型绑定不同harness、预算上限和推理档位，主结果置信区间重叠；14次容量中断被替换且包括4次原始通过，不能当严格同条件模型排名。开发者测试不足以证明真实机器人行为、安全或无训练污染；公开补丁需要评测隔离。",
+    "organization": "Bilkent University / Evalium / TUM",
+    "dateLabel": "2026-11-11 · arXiv v1",
+    "evidence": "全文与固定公开数据核验；独立重计候选/结果，未构建或复现实验",
+    "date": "2026-11-11",
+    "checkedAt": "2026-11-13T16:29:26.606134+00:00",
+    "paperOriginalDate": "2026-11-11T23:51:27Z",
+    "paperUpdatedAt": "2026-11-11T23:51:27Z",
+    "updatedAt": "2026-11-11T23:51:27Z",
+    "firstSeenAt": "2026-11-13T10:00:01Z",
+    "lastSeenAt": "2026-11-13T16:00:01Z",
+    "tags": [
+      "领域软件修复",
+      "可执行数据",
+      "候选溯源",
+      "判题公平性"
+    ],
+    "authors": [
+      "Vahid Haratian",
+      "Vahid Ansari",
+      "Mohammadhossein Malmir",
+      "Alois Knoll"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 · 首发记录",
+        "url": "https://arxiv.org/abs/2611.16116v1"
+      },
+      {
+        "label": "论文全文 · 构建与实验边界",
+        "url": "https://arxiv.org/html/2611.16116v1"
+      },
+      {
+        "label": "固定数据卡 · 实际发布范围",
+        "url": "https://huggingface.co/datasets/vharatian/Robo-SWE/blob/bbc22b944fa353cdd5016d044b23b63d2af6329b/README.md"
+      },
+      {
+        "label": "全部候选阶段与去留",
+        "url": "https://huggingface.co/datasets/vharatian/Robo-SWE/blob/bbc22b944fa353cdd5016d044b23b63d2af6329b/provenance/candidates.csv"
+      },
+      {
+        "label": "完整轮次结果表",
+        "url": "https://huggingface.co/datasets/vharatian/Robo-SWE/blob/bbc22b944fa353cdd5016d044b23b63d2af6329b/results/complete-cycles.csv"
+      },
+      {
+        "label": "发布文件验收范围",
+        "url": "https://huggingface.co/datasets/vharatian/Robo-SWE/blob/bbc22b944fa353cdd5016d044b23b63d2af6329b/provenance/harbor-validation.json"
+      },
+      {
+        "label": "任务表与审计标记",
+        "url": "https://huggingface.co/datasets/vharatian/Robo-SWE/blob/bbc22b944fa353cdd5016d044b23b63d2af6329b/data/test.jsonl"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Robo-SWE把机器人软件中的真实issue、修复前环境、开发者补丁和隐藏回归测试打成236个任务，并保留1567个候选的去留记录。价值在于可审计的构建与验收过程；测试可重复通过仍不等于补丁行为正确、题目公平或机器人安全。",
+      "motivation": "通用软件修复任务难以覆盖ROS多包构建、仿真依赖、时序与硬件约束。若环境不匹配或测试受主机负载影响，模型得分会混入基础设施问题；同时开发者测试也可能不足或要求题面没说的内容。该工作先把任务环境与构建证据公开，供进一步审查。",
+      "novelty": "作者主张：把跨ROS、仿真、算法库、机器人学习框架的真实issue修复做成可执行数据，并保存候选全链条。本站判断：最值得迁移的是同时公开“被选中的题”和“为什么没选其他题”，再区分执行稳定、判题充分和题面公平。本站重计固定CSV得到Opus设置400/708=56.50%，Sol max383/708=54.10%；这支持论文均值口径，不证明孤立模型优劣。",
+      "evidenceScope": "已读arXiv v1全文§I–VII及两表，首发2026-11-11T23:51:27Z；本轮重取全文与此前保存字节一致。HF公开且未门控，固定revision bbc22b944fa353cdd5016d044b23b63d2af6329b；读取数据卡、manifest、236条任务JSONL、1567行候选CSV、4248行完整轮次CSV及构建/排除/发布检查说明，核10份文件SHA256和字节数与manifest一致。自写标准库重计四域103/63/32/38、28仓库、928→489→262→236、15个主设置轮次始终成功83题/从未成功81题，并复算7设置的均值/Any/Every/已知成本分母。未下载全部约2.7GB任务归档、重审所有issue与补丁或取得原始轨迹；项目排行榜HTTP403，未读取其当前排名。verified仅指来源和静态统计核验。",
+      "limits": "已读全文并静态核对固定数据发布，未构建Docker、运行Harbor、执行作者代码或复现修复。论文所述3529条可用轨迹与当前HF发布范围不同：数据卡明确不含原始Agent轨迹，只含任务包、构建元数据和选定结果表，不能声称已核全部运行过程。采集/审查流水线源码为专有；发布检查主要是文件、哈希、语法和Harbor解析，没有为这次上传重新做oracle/no-op/模型运行；镜像未打包，部分配方仍动态解析依赖，7题还需重建未公开托管的项目基础镜像。人工公平性审查未完成；论文26题“测试用到未在题面出现名字”的审计口径，与HF中unfair/questionable/minor_issues标签不是同一统计，自动标记也不等于人工判定。5个仓库占133/236题，非ROS部分全为Python；对完整机器人软件生态代表性有限。不同模型绑定不同harness、预算上限和推理档位，主结果置信区间重叠；14次容量中断被替换且包括4次原始通过，不能当严格同条件模型排名。开发者测试不足以证明真实机器人行为、安全或无训练污染；公开补丁需要评测隔离。",
+      "method": [
+        "定义候选：从机器人仓库已合并、人类提交、关闭较早issue且同时修改生产代码与测试的PR挖掘任务。ROS与其他三域使用不同仓库抽样和LLM初筛输入；最终题面保留原始issue，不改写成提示答案的说明。",
+        "构建修复前环境：固定base commit、基础镜像和工具链，ROS按分支/CI选择发行版并用rosdep、colcon；其他域采用仓库级配方。把排队、延期、未尝试与真实构建失败分开记录；928个排队候选中489个曾成功构建，差值不能全部算失败。",
+        "执行准入：检查原环境测试（ROS之外）、base加开发者新测试、再加参考修复三个状态，每态重复2或3次。F2P必须修复前失败、修复后通过，P2P不能退化；编译不成功不能冒充测试失败。ROS丢弃波动测试后仍须有稳定F2P，其他域出现波动则整题拒绝。",
+        "导出再验收：转成Harbor任务，要求参考补丁得1分、空补丁得0分；262个准入候选经导出、harness、题面审查及依赖失效共移除26个，保留236题。正式评测隐藏参考补丁/测试，评分离线；作者把12核机器上ROS并发限制到3以降低负载波动。",
+        "保留分母与运行条件：五个主设置各做3个完整轮次，共3540次；GLM一轮、Kimi两轮使公开完整结果表增至4248次。每题限1小时，Claude设置另有20美元上限；记录模型+harness+推理档位，分别报告每次平均、至少一次成功、每次均成功及缺失成本。"
+      ],
+      "inspirations": [
+        "建设领域benchmark时给每个候选保存阶段、输入版本与退回原因，把资源延期、基础设施异常和模型失败分别计数；冻结可评任务分母，依赖失效时统一排除并留存原版本，避免按模型表现事后删题。",
+        "给代码修复建立三层验收：可重复的F2P/P2P、独立检查补丁是否满足issue、人工审查题面是否包含必要信息。可抽查自动标记与未标记题形成独立复核集；这个建议不把现有自动标记当真值。",
+        "迁移到代码视频/3D工程可同时保存编译结果、行为或几何约束、渲染与视觉证据，并固定引擎/依赖和并发负载。先检查参考方案与空方案，再比较同预算Agent；本文没有验证创作质量，此处只是评测设计启发。"
+      ],
+      "reviewedAt": "2026-11-13T16:29:26.606134+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.16116v1",
+        "https://arxiv.org/html/2611.16116v1",
+        "https://huggingface.co/datasets/vharatian/Robo-SWE/blob/bbc22b944fa353cdd5016d044b23b63d2af6329b/README.md",
+        "https://huggingface.co/datasets/vharatian/Robo-SWE/blob/bbc22b944fa353cdd5016d044b23b63d2af6329b/provenance/candidates.csv",
+        "https://huggingface.co/datasets/vharatian/Robo-SWE/blob/bbc22b944fa353cdd5016d044b23b63d2af6329b/results/complete-cycles.csv",
+        "https://huggingface.co/datasets/vharatian/Robo-SWE/blob/bbc22b944fa353cdd5016d044b23b63d2af6329b/provenance/harbor-validation.json",
+        "https://huggingface.co/datasets/vharatian/Robo-SWE/blob/bbc22b944fa353cdd5016d044b23b63d2af6329b/data/test.jsonl"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.16116",
+      "status": "pending",
+      "checkedAt": "2026-11-13T16:33:41.998454+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.16217v1",
+    "url": "https://arxiv.org/abs/2611.16217v1",
+    "id": "live-0c69de8e90e7f15d",
+    "title": "WorldDraft：代码固定了世界，视频模型仍可能改写它",
+    "summary": "用48个可执行世界构造432个配对草稿，检查视频模型能否保留轨迹、相机和事件，同时按文字换对外观。作者报告12模型普遍存在两者取舍；这一评测测下游渲染器，不是上游代码Agent的执行成功率。首帧SVG提示可改善两款模型，但没有解决所有指标。",
+    "insight": "可编辑场景与漂亮成片之间需要一个逐项验收接口：把程序中的实体、动作、时间窗和目标材质带到生成后的视频里，分别检验“世界没变”和“外观改对”。只看视觉质量或CLIP相似度，容易漏掉换轨迹、丢物体和把源颜色照搬过去。",
+    "limits": "已读全文、附录和固定公开源码/数据卡，未运行作者代码、Blender或视频模型，也未重放全部成片。432是48个世界各9条件，独立场景只有48；世界先经作者准入筛选，不能据此推断代码生成成功率。生成结果是视频，未证明它仍有可编辑3D结构，源.blend可改也不保证生成后编辑一致。指标在共同完成的适用场景上宏平均，缺失输出/解析错误与真实0分分开；本轮未取得各模型原始结果及逐指标最终有效分母，不能把所有分数都当432次成功率。Track Coverage是已匹配轨迹存在率，Timing Coverage无GT时间误差阈值；相机参考是ViPE估计且归一化会隐藏运动幅度误差；SAM3漏检可用GT框初始化SAM2补追踪。AP是稀疏帧正确性门控，不保证逐帧物理或身份正确。固定文档及报告器不输出论文的WP/Overall综合分；AP未答锚点在源码为pending/parse_error而非文档概述的0，故不能声称已复现主表。Primer只测2款模型，综合分提升不等于全面改进：MiniMax-H3的冲突惩罚0.74→0.78，粒度外观/绑定收益仍为负。附录C.4公开提示支持对象定位、颜色和局部图案操作，但实验自述仅验证定位/颜色，未验证纹理/环境；不能将正文纹理/环境设想视作完整验证。正文“9/10”外观负收益与表1十款开源权重模型均为负不一致；C.2删属性提示的泄漏26.75低于完整方法表2的27.21，与全指标最优措辞不齐，本站采用表格并保留差异。五名人工评审平均91%一致性未给清晰抽样数量或区间，不是整个基准准确率。未核独立重复生成种子、显著性或完整Primer发布实现，不能据细小总分差排名。数据卡/代码标Apache-2.0，评测依赖SAM3仍需单独访问许可。",
+    "dateLabel": "2026-11-12 · arXiv v1",
+    "evidence": "论文正文/附录、固定公开代码与HF清单核验；未复现实验",
+    "originalTitle": "WorldDraft: If Code Builds the World, Can Video Models Just Render It?",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-13T16:29:22Z",
+    "originalDate": "2026-11-12",
+    "paperOriginalDate": "2026-11-12T03:09:18Z",
+    "paperUpdatedAt": "2026-11-12T03:09:18Z",
+    "updatedAt": "2026-11-12T03:09:18Z",
+    "firstSeenAt": "2026-11-13T10:00:01Z",
+    "lastSeenAt": "2026-11-13T16:00:01Z",
+    "dailySubmittedAt": "2026-11-13T00:00:00.000Z",
+    "tags": [
+      "Evaluation",
+      "程序化世界",
+      "生成式渲染",
+      "属性绑定",
+      "成对评测"
+    ],
+    "authors": [
+      "Zhiyu Hou",
+      "Wen-Jie Shu",
+      "Harold Haodong Chen",
+      "Weilin Ruan",
+      "Chenfei Liao",
+      "Liuzhou Zhang",
+      "Disen Lan",
+      "Xiaogang Xu",
+      "Qi Chen",
+      "Ser-Nam Lim"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2video"
+    ],
+    "featured": true,
+    "sourceId": "arxiv_code2video",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.16217v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.16217"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.16217"
+      },
+      {
+        "label": "Project",
+        "url": "https://haroldchen19.github.io/WorldDraft-site/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/KevinHuge/WorldDraft"
+      },
+      {
+        "label": "论文全文与附录",
+        "url": "https://arxiv.org/html/2611.16217v1"
+      },
+      {
+        "label": "固定评测指标与边界",
+        "url": "https://github.com/KevinHuge/WorldDraft/blob/23c9c81d5ecf78b3493d67aa33ef408616afab62/eval/docs/metrics.md"
+      },
+      {
+        "label": "固定聚合与共同分母实现",
+        "url": "https://github.com/KevinHuge/WorldDraft/blob/23c9c81d5ecf78b3493d67aa33ef408616afab62/eval/worlddraft_eval/report/tables.py"
+      },
+      {
+        "label": "固定QA门控实现",
+        "url": "https://github.com/KevinHuge/WorldDraft/blob/23c9c81d5ecf78b3493d67aa33ef408616afab62/eval/worlddraft_eval/qa/engine.py"
+      },
+      {
+        "label": "固定追踪补全实现",
+        "url": "https://github.com/KevinHuge/WorldDraft/blob/23c9c81d5ecf78b3493d67aa33ef408616afab62/eval/worlddraft_eval/geometry/tracking.py"
+      },
+      {
+        "label": "固定数据卡",
+        "url": "https://huggingface.co/datasets/KevinHuge/WorldDraft/blob/1ef96d9c4e9b68030f4ef8d6f78a7540a16b7f61/README.md"
+      },
+      {
+        "label": "固定Blender渲染入口",
+        "url": "https://huggingface.co/datasets/KevinHuge/WorldDraft/blob/1ef96d9c4e9b68030f4ef8d6f78a7540a16b7f61/scenes/A01/render.py"
+      },
+      {
+        "label": "固定场景与数据说明",
+        "url": "https://github.com/KevinHuge/WorldDraft/blob/23c9c81d5ecf78b3493d67aa33ef408616afab62/eval/docs/data.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "48个程序化世界×3种结构细度×3种外观条件，检验“代码管世界、视频模型管外观”的接口。更细灰模可能让轨迹更稳，却让模型更难换对材质颜色；首帧提示只提供有限修正，不能代替世界与外观的分别验收。",
+      "motivation": "程序可明确控制物体、轨迹、相机和碰撞，但视频模型接到渲染草稿后可能重写这些关系；反过来，完全照搬草稿又会把占位灰模或错误颜色带进成片。常见视频质量分与语义相似度不能区分这些失败，论文因此把世界保留、目标外观与属性持续绑定分开测试。",
+      "novelty": "作者主张：用严格成对的3×3条件同时诊断世界保持、外观实现和冲突解耦，并用无需重训的首帧视觉提示改善冻结渲染器。本站判断：新意在可归因的输入控制和分别验收，不在证明上游Agent会写正确代码。表1的SolarRenderer WP63.28/RF69.97与Wan 3.0 WP44.37/RF80.40提示结构与外观取舍；Wan2.1-VACE在P1冲突条件的SL64.17是颜色探针的宏平均，不是64.17%的全部视频损坏。表2Primer让OmniWeaving WP61.61→64.60、RF66.37→70.93，MiniMax-H3 RF76.38→80.21；这些是作者自报分数点变化，不能推断全部12模型都受益或所有维度改善。",
+      "evidenceScope": "已读arXiv v1§3–5、附录A–D及表1/2，首发2026-11-12 03:09:18 UTC，未见本版修订。静态核Git提交23c9c81d5ecf78b3493d67aa33ef408616afab62的指标文档、12模型画幅配置、QA门控、共同完整场景聚合、SAM3/SAM2追踪补全和几何计分；未执行任何作者程序。HF固定revision 1ef96d9c4e9b68030f4ef8d6f78a7540a16b7f61，匿名API private=false且gated=false；自写标准库计清单2903文件，其中432草稿.mp4、432场景.blend、48个render.py，读A01渲染入口/外观元数据/预处理及数据卡，未下载或打开.blend、视频。A01入口用bpy打开现有场景并逐帧推进，不是世界构造原始代码；源图像50帧/5秒被重复采样为81帧/16fps草稿。指标分数、Primer结果与五评审一致性为作者报告，未取逐视频生成/评分日志重计。GitHub repo/tree API限流，固定raw文件和目录HTML可读；项目页HTTP200由arXiv直接链接。X公开索引未找到可核作者帖，未读时间线或调用X API。",
+      "limits": "已读全文、附录和固定公开源码/数据卡，未运行作者代码、Blender或视频模型，也未重放全部成片。432是48个世界各9条件，独立场景只有48；世界先经作者准入筛选，不能据此推断代码生成成功率。生成结果是视频，未证明它仍有可编辑3D结构，源.blend可改也不保证生成后编辑一致。指标在共同完成的适用场景上宏平均，缺失输出/解析错误与真实0分分开；本轮未取得各模型原始结果及逐指标最终有效分母，不能把所有分数都当432次成功率。Track Coverage是已匹配轨迹存在率，Timing Coverage无GT时间误差阈值；相机参考是ViPE估计且归一化会隐藏运动幅度误差；SAM3漏检可用GT框初始化SAM2补追踪。AP是稀疏帧正确性门控，不保证逐帧物理或身份正确。固定文档及报告器不输出论文的WP/Overall综合分；AP未答锚点在源码为pending/parse_error而非文档概述的0，故不能声称已复现主表。Primer只测2款模型，综合分提升不等于全面改进：MiniMax-H3的冲突惩罚0.74→0.78，粒度外观/绑定收益仍为负。附录C.4公开提示支持对象定位、颜色和局部图案操作，但实验自述仅验证定位/颜色，未验证纹理/环境；不能将正文纹理/环境设想视作完整验证。正文“9/10”外观负收益与表1十款开源权重模型均为负不一致；C.2删属性提示的泄漏26.75低于完整方法表2的27.21，与全指标最优措辞不齐，本站采用表格并保留差异。五名人工评审平均91%一致性未给清晰抽样数量或区间，不是整个基准准确率。未核独立重复生成种子、显著性或完整Primer发布实现，不能据细小总分差排名。数据卡/代码标Apache-2.0，评测依赖SAM3仍需单独访问许可。",
+      "method": [
+        "先从参考视频提取交互和镜头，由编码Agent构建Blender或MuJoCo可执行世界，经过数值稳定、交互忠实和可评估性三层准入，冻结48个世界，六类挑战各8个。原视频仅作为动态蓝图，非逐像素重建目标；公开HF包实际提供48组Blender场景和渲染入口，不据此宣称MuJoCo资产已全开放。",
+        "对每个世界固定运动与同一目标提示，交叉抽象代理P0、仿真P1、细预演P2，与中性AN、外观吻合AA、外观冲突AC，形成9个条件共432草稿。目标文字主要指定可核外观并用空间/语义角色认物；模型仅拿RGB草稿与提示，模拟器状态留给GT，不能靠GT直接生成视频。",
+        "统一评前5秒并预声明画幅映射，禁止按输出拟合配准。对实体数量、包围盒、匹配轨迹、事件和8个相机世界分别验收；Qwen3.6-27B看生成帧及GT区域裁剪，对目标属性做正反问。AP要求锚点属性正确后再判断稀疏帧持续性；泄漏SL只检查经审计、确实与目标冲突的源颜色，低泄漏不自动等于目标正确。",
+        "先在每个世界内等权平均选定条件，再在跨模型共同完整的适用世界上等权宏平均。主表分别报WP/RF/VQ/AP；中性条件测P0→P2变化，P1冲突条件测外观/持续性/惩罚/泄漏。论文另设0.50/0.25/0.25加权Overall，但固定公开报告代码仅输出分项和共同分母，本站未重建这套总分。",
+        "Primer在冻结视频模型前，用Qwen3.5-27B观察抽样草稿定位首帧对象，程序化SVG加入外缘标记与目标颜色/图案线索，只替换首帧，其余帧保留原草稿；正文还提出环境提示，附录公开工具提示的验证范围更窄。与原始输入和文字提示优化比较，只在OmniWeaving、MiniMax-H3两模型测定量改进，另一项消融仅MiniMax-H3。"
+      ],
+      "inspirations": [
+        "为代码视频保存可编辑.blend/脚本、实体ID、相机和事件清单；下游生成后按同一实体与时间窗对照，同时报执行交付、世界保留、目标外观和视觉质量。不要用最终成片好看来替代程序正确性，也不要假定像素生成结果能反向无损编辑。",
+        "用同一动态做中性、吻合、冲突三套外观条件，逐项记录目标颜色是否正确、源颜色是否残留以及主体是否被替换。把首帧提示当可消融组件，额外测提示标记残留、主体遗漏和编辑后的非目标区域回归。",
+        "给评测器加负对照：保持跟踪框存在但故意改轨迹、能定位事件却把它放错时刻、让相机幅度缩小。单独报告覆盖率与实际路径/时间误差，并公开缺失、解析错误、不可见和有效场景分母，防止覆盖分掩盖错误。"
+      ],
+      "reviewedAt": "2026-11-13T16:29:22Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.16217v1",
+        "https://huggingface.co/papers/2611.16217",
+        "https://arxiv.org/abs/2611.16217",
+        "https://haroldchen19.github.io/WorldDraft-site/",
+        "https://github.com/KevinHuge/WorldDraft",
+        "https://arxiv.org/html/2611.16217v1",
+        "https://github.com/KevinHuge/WorldDraft/blob/23c9c81d5ecf78b3493d67aa33ef408616afab62/eval/docs/metrics.md",
+        "https://github.com/KevinHuge/WorldDraft/blob/23c9c81d5ecf78b3493d67aa33ef408616afab62/eval/worlddraft_eval/report/tables.py",
+        "https://github.com/KevinHuge/WorldDraft/blob/23c9c81d5ecf78b3493d67aa33ef408616afab62/eval/worlddraft_eval/qa/engine.py",
+        "https://github.com/KevinHuge/WorldDraft/blob/23c9c81d5ecf78b3493d67aa33ef408616afab62/eval/worlddraft_eval/geometry/tracking.py",
+        "https://huggingface.co/datasets/KevinHuge/WorldDraft/blob/1ef96d9c4e9b68030f4ef8d6f78a7540a16b7f61/README.md",
+        "https://huggingface.co/datasets/KevinHuge/WorldDraft/blob/1ef96d9c4e9b68030f4ef8d6f78a7540a16b7f61/scenes/A01/render.py",
+        "https://github.com/KevinHuge/WorldDraft/blob/23c9c81d5ecf78b3493d67aa33ef408616afab62/eval/docs/data.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.16217",
+      "status": "pending",
+      "checkedAt": "2026-11-13T16:33:41.998454+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.16293v1",
+    "url": "https://arxiv.org/abs/2611.16293v1",
+    "id": "live-ce217d3babc1c08f",
+    "title": "Rasoi：把Agent改动前后画出来，但别把理解信心当正确率",
+    "summary": "Rasoi把Agent修改前后的架构快照画成可钻取的差分图，帮助人检查改动范围、遗漏与意外依赖。作者让12名经常使用编码Agent的开发者在自己的项目中用7天；10人自报更有把握理解代码，但仅2人更信任Agent。这个结果是使用体验，不是正确率提升或受控实验。",
+    "insight": "作者主张：把审查对象从当前代码图或执行轨迹，转为多轮Agent编辑造成的结构变化，并在上下文、容器、组件等层次间切换。本站判断：有价值的是在决定接受改动时提供前后结构和可追问线索，而非一张自动生成的图就能认证正确性。C4与差分本身并非新概念；本研究主要贡献是设计探针与真实使用中的定性发现。",
+    "limits": "已读全文、实现附录和原始PDF图表，未安装或运行Rasoi，未复现用户研究。12人各用不同项目和任务，仅7天，且9人为研究生；没有共同任务、随机对照或文件diff/文本解释/静态架构图的直接比较，不能将自报信心当客观理解能力、错误检出率或维护质量的因果增益。论文表1未固定各参与者的模型版本、预算和任务难度；没有公开逐任务成功/失败清单、完整问卷原始数据或耗时/成本测量。架构快照由Agent推断，可能漏边、错映射或把抽取不稳定误显示为代码变化；本文未给抽取准确率、完整提示词、验证器规则及跨版本标识匹配的可复现实证。边动画表达图中数据流方向，不是执行trace；图上未见变化也不能证明源码未改。论文称录用后计划开源，本轮未定位对应发布代码/数据；只核到作者公开主页及论文。",
+    "organization": "Columbia University",
+    "dateLabel": "2026-11-12 · arXiv v1 · 定性用户研究",
+    "evidence": "全文、实现附录与原始PDF图表核验；12人7天设计探针，未运行或复现",
+    "originalTitle": "Rasoi: Visual Diffs for Evaluating Structural Changes Made by Coding Agents",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-13T16:30:06.048727+00:00",
+    "paperOriginalDate": "2026-11-12T04:47:39Z",
+    "paperUpdatedAt": "2026-11-12T04:47:39Z",
+    "updatedAt": "2026-11-12T04:47:39Z",
+    "firstSeenAt": "2026-11-13T10:00:01Z",
+    "lastSeenAt": "2026-11-13T16:00:01Z",
+    "tags": [
+      "编码Agent审查",
+      "架构差分",
+      "人类监督",
+      "定性用户研究"
+    ],
+    "authors": [
+      "Riya Sahni",
+      "Aryan Kaul",
+      "Anushka Bhatnagar",
+      "Xuanming Zhang",
+      "Vivian Liu",
+      "Reya Vir",
+      "Lydia B. Chilton"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 · 首发记录",
+        "url": "https://arxiv.org/abs/2611.16293v1"
+      },
+      {
+        "label": "全文 · 设计与研究方法",
+        "url": "https://arxiv.org/html/2611.16293v1"
+      },
+      {
+        "label": "原始PDF · 图4/5及实现附录",
+        "url": "https://arxiv.org/pdf/2611.16293v1"
+      },
+      {
+        "label": "第一作者主页 · 论文与发布状态线索",
+        "url": "https://riyasahni.github.io/"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Rasoi把Agent修改前后的架构快照画成可钻取的差分图，帮助人检查改动范围、遗漏与意外依赖。作者让12名经常使用编码Agent的开发者在自己的项目中用7天；10人自报更有把握理解代码，但仅2人更信任Agent。这个结果是使用体验，不是正确率提升或受控实验。",
+      "motivation": "功能表面能运行，并不说明Agent没有重复逻辑、删掉旧能力、迁移错误依赖或让架构偏离意图。行级diff与Agent口头解释要求开发者自己拼接全局关系；论文关心人在接受改动前如何更新系统的结构理解，而不是再训练一个更会写代码的模型。",
+      "novelty": "作者主张：把审查对象从当前代码图或执行轨迹，转为多轮Agent编辑造成的结构变化，并在上下文、容器、组件等层次间切换。本站判断：有价值的是在决定接受改动时提供前后结构和可追问线索，而非一张自动生成的图就能认证正确性。C4与差分本身并非新概念；本研究主要贡献是设计探针与真实使用中的定性发现。",
+      "evidenceScope": "已读arXiv v1正文§I–VIII、附录A/B和表1/2，原始PDF13页；渲染核验第7页图4和第9页图5，图5两柱为10和2，计数门槛为Likert 5–7，不是10人客观通过理解测试。附录A只有系统栈、规则生成与快照字段说明，不含完整生成提示词或验证器实现。首发2026-11-12T04:47:39Z，本轮原页只有v1；与上轮下载的HTML字节一致。作者主页匿名200并列同名同作者论文；其公开GitHub账号19仓库中未定位Rasoi，相关vibedebugging-study的README为订单自动化研究材料，不认作Rasoi。仓库关键词检索0项，HF同名模型/数据为空、论文页404，只表示本轮访问范围，不能证明所有发布渠道均无资产。所有参与者人数与结果为作者报告，图表读取与计数阈值核对不等于研究复现。verified仅表示来源核验。",
+      "limits": "已读全文、实现附录和原始PDF图表，未安装或运行Rasoi，未复现用户研究。12人各用不同项目和任务，仅7天，且9人为研究生；没有共同任务、随机对照或文件diff/文本解释/静态架构图的直接比较，不能将自报信心当客观理解能力、错误检出率或维护质量的因果增益。论文表1未固定各参与者的模型版本、预算和任务难度；没有公开逐任务成功/失败清单、完整问卷原始数据或耗时/成本测量。架构快照由Agent推断，可能漏边、错映射或把抽取不稳定误显示为代码变化；本文未给抽取准确率、完整提示词、验证器规则及跨版本标识匹配的可复现实证。边动画表达图中数据流方向，不是执行trace；图上未见变化也不能证明源码未改。论文称录用后计划开源，本轮未定位对应发布代码/数据；只核到作者公开主页及论文。",
+      "method": [
+        "在完成一次有意义的Agent代码修改后，通过规则与DiagramData提示让Agent从代码库推断C4式架构快照；保存工作流、外部系统、容器、组件、有向数据/请求关系、稳定标识与布局。它不要求目标程序运行时插桩，故这里是代码推断的表示。",
+        "在一个会话中保存按版本排列的结构化快照，查看前运行验证器，并将新快照与前一版比较，汇总新增、修改、删除的节点和边。论文没有展开验证器检查项，不能据此断言图关系已经与源码或运行行为逐项校验。",
+        "用上下文层先看改动范围，再钻取容器/组件等局部；悬浮显示节点和相邻关系说明，缩略图维持全局位置，边动画辅助跟随流向。开发者再据异常返回代码检查或追问Agent；图只是审查入口，不能替代测试。",
+        "以8名开发者的非正式设计访谈确定目标，再对12名常用编码Agent的开发者做7天自然使用研究：各自在原有项目工作，首日安装讲解，每日轻量反思、结束访谈和问卷，并收集版本图。两组样本不能未经说明相加成20名独立受试者。",
+        "两名研究者迭代分析反思、访谈、问卷和图，五名研究者共同审阅主题；结果围绕范围核查、意外改动与代码关系理解组织。图5以7点量表中的5–7为同意，得到10/12理解信心、2/12对Agent信任；图4的关系理解与改动融入整体均为11/12。"
+      ],
+      "inspirations": [
+        "为Agent改动验收保留同一源码版本的原始diff、结构图及执行检查，并给每个节点/关系绑定文件位置或可验证证据。再加一组“源码不变、只重新抽图”的对照，量化抽取噪声，避免把图变化当成真实架构漂移。",
+        "将目标改动范围写成显式约束，在一次重构、迁移或多轮修改结束时展示越界节点、被删能力和残留依赖。用相同任务对比仅文本diff、静态图和版本图，测越界发现率、误报、耗时，以及自报信心与实际正确性的差距。",
+        "可为代码视频/三维工程尝试按审查问题生成依赖视图，例如素材到时间线、对象到相机与渲染脚本；同时检查可编辑源文件、执行结果及视觉保留。这是迁移建议，Rasoi未评价视频质量或3D创作，不能因其含边动画就归入代码动效专题。"
+      ],
+      "reviewedAt": "2026-11-13T16:30:06.048727+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.16293v1",
+        "https://arxiv.org/html/2611.16293v1",
+        "https://arxiv.org/pdf/2611.16293v1",
+        "https://riyasahni.github.io/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.16293",
+      "status": "pending",
+      "checkedAt": "2026-11-13T16:33:41.998454+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://api-docs.deepseek.com/guides/build_a_chatbot/",
+    "url": "https://api-docs.deepseek.com/guides/build_a_chatbot/",
+    "id": "update-deepseek-application-apis-20261113",
+    "title": "DeepSeek应用API：搜索交给服务端后，预算与证据要重新计量",
+    "summary": "DeepSeek在11月13日开放完整应用API：deepseek-flash可通过Messages、Responses和Chat Completions启用搜索、深度搜索、文件输入、读链与内容检查，由服务端执行工具和组装上下文。开发者可以少写一部分编排代码，但评测必须重新记录整轮预算、真实计费工具次数与可见证据，不能把同名参数当作同等控制。",
+    "insight": "官方新增的是把应用中的工具执行与上下文组装能力开放到现有API，并提供演示客户端。本站判断：研究重点是客户端与服务端的职责变化；少写编排代码可能便于集成，但并不等于搜索更准确、成本更低或过程完全可审计，本轮没有这些比较实验。",
+    "limits": "只核验官方发布、指南及演示仓库页面，未使用API密钥、上传文件、发送模型请求或运行演示。文档说明启用相关能力后部分参数由服务决定，Responses的max_tool_calls被忽略，max_tokens/max_output_tokens限制单步而非整轮；工具展示次数也不等于计费次数。网页正文没有作为明文完整返回，文件解析结果不可下载，图片裁切可能遗漏；来源核验不代表端到端效果、可复现性或安全性已验证。",
+    "organization": "DeepSeek",
+    "dateLabel": "2026-11-13 · 官方更新日期；未提供精确发布时间",
+    "evidence": "官方发布、文档和版本信息核验；未调用API、运行模型或复现实验",
+    "date": "2026-11-13",
+    "checkedAt": "2026-11-13T16:31:58.191009+00:00",
+    "firstSeenAt": "2026-11-13T16:25:25.537078+00:00",
+    "tags": [
+      "DeepSeek",
+      "服务端工具",
+      "深度搜索",
+      "上下文管理",
+      "Agent评测"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "DeepSeek官方更新 · 2026-11-13应用API发布",
+        "url": "https://api-docs.deepseek.com/updates/#releasing-the-full-suite-of-application-apis"
+      },
+      {
+        "label": "官方开发指南 · 协议、渲染与被忽略的参数",
+        "url": "https://api-docs.deepseek.com/guides/build_a_chatbot/"
+      },
+      {
+        "label": "官方Web Tools · 状态、引用与计费口径",
+        "url": "https://api-docs.deepseek.com/guides/web_tools/"
+      },
+      {
+        "label": "官方文件解析 · 纯文本与版面图片输入",
+        "url": "https://api-docs.deepseek.com/guides/document_parsing/"
+      },
+      {
+        "label": "官方内容安全 · 流式结束后的拒绝处理",
+        "url": "https://api-docs.deepseek.com/guides/safety/"
+      },
+      {
+        "label": "官方公开演示客户端仓库 · 仅静态阅读",
+        "url": "https://github.com/deepseek-ai/chat-demo"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "DeepSeek在11月13日开放完整应用API：deepseek-flash可通过Messages、Responses和Chat Completions启用搜索、深度搜索、文件输入、读链与内容检查，由服务端执行工具和组装上下文。开发者可以少写一部分编排代码，但评测必须重新记录整轮预算、真实计费工具次数与可见证据，不能把同名参数当作同等控制。",
+      "motivation": "自己构建聊天或检索Agent时，开发者通常要连接搜索、抓取、文件解析、结果显示与多轮历史。此次开放把其中部分工作移入模型服务端，因此需要弄清API暴露了哪些控制、状态和观察结果，才能设计公平的对照评测。",
+      "novelty": "官方新增的是把应用中的工具执行与上下文组装能力开放到现有API，并提供演示客户端。本站判断：研究重点是客户端与服务端的职责变化；少写编排代码可能便于集成，但并不等于搜索更准确、成本更低或过程完全可审计，本轮没有这些比较实验。",
+      "evidenceScope": "已读11月13日完整更新段，以及Build a Chatbot、Web Tools、File Parsing和Model Content Safety指南的协议/参数、上下文、引用、计费及拒绝处理章节，并核对官方链接的公开chat-demo仓库页面；没有执行仓库代码。更新页只给日级发布日期，checkedAt是本次核验时间。Search/Fetch单独API在10月17日已发布，本条不把它们重算成11月13日首次发布；关注此次服务端编排的完整应用API开放。verified仅指来源核验。",
+      "limits": "只核验官方发布、指南及演示仓库页面，未使用API密钥、上传文件、发送模型请求或运行演示。文档说明启用相关能力后部分参数由服务决定，Responses的max_tool_calls被忽略，max_tokens/max_output_tokens限制单步而非整轮；工具展示次数也不等于计费次数。网页正文没有作为明文完整返回，文件解析结果不可下载，图片裁切可能遗漏；来源核验不代表端到端效果、可复现性或安全性已验证。",
+      "method": [
+        "声明能力：选择deepseek-flash及一种兼容协议，按需求声明deepseek_web_search与deepseek_read_url。前者在思考开启时可多步搜索并打开检索到的页面；后者读取用户消息中的链接，两者不是同一个操作。",
+        "处理过程与历史：按返回的思考、工具调用、结果和带引用文本块渲染界面；后续请求传回完整历史，并保留kind、signature等字段。文档区分不同来源的上下文：此前搜索和深度搜索打开页面不直接进入后轮上下文，读链内容则由签名携带和恢复，不能把展示卡片当作完整抓取档案。",
+        "选择文件表示：上传时在纯文本提取与rich_layout_recognition之间选择，解析成功后用file_id引用。纯文本会丢弃图表和图片，富版面会将自动裁切的图像放回文本位置，但不保证找全每张图，相关图片也计入输入预算。",
+        "等待最终状态：启用内容检查时，服务在生成后还会审核完整输出；流式文本已经发出并不表示最终通过。若结束状态为refusal/content_filter，客户端需要撤下已显示答案并改为拒绝提示。这里是文档要求，未实测其检出能力。",
+        "分开核算预算：读取整轮usage汇总，并区分展示用搜索/抓取结果块计数与计费的tool_search、tool_fetch、tool_image_search。启用Web工具、高级检查或标题生成会使若干采样/控制参数被忽略；输出上限限制每次推理步骤，不能直接视为整轮总预算。"
+      ],
+      "inspirations": [
+        "对同一检索题集比较客户端自编排与服务端编排，固定可用来源与任务要求，分别记录实际推理步数、计费查询/抓取数、总token、等待时间和任务成功率；不要仅靠相同temperature或max_tokens宣称预算一致。",
+        "把原始返回块、引用URL、时间和结束状态作为日志保留，再独立检查引用页面是否支持答案。文档中的cited_text是答案文本而非原网页摘录，签名也不是可直接审阅的全文，不能把接口有引用当作证据忠实。",
+        "为含图表文档建立纯文本与富版面对照，记录漏图、图表问答正确率和额外输入开销；同时加入流式末尾拒绝的界面验收，检验最终显示是否与服务最终状态一致。"
+      ],
+      "reviewedAt": "2026-11-13T16:31:58.191009+00:00",
+      "sourceUrls": [
+        "https://api-docs.deepseek.com/updates/#releasing-the-full-suite-of-application-apis",
+        "https://api-docs.deepseek.com/guides/build_a_chatbot/",
+        "https://api-docs.deepseek.com/guides/web_tools/",
+        "https://api-docs.deepseek.com/guides/document_parsing/",
+        "https://api-docs.deepseek.com/guides/safety/",
+        "https://github.com/deepseek-ai/chat-demo"
+      ]
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/ggml-org/llama-cpp-v1",
+    "url": "https://huggingface.co/blog/ggml-org/llama-cpp-v1",
+    "id": "update-llamacpp-v1-20261113",
+    "title": "llama.cpp v1.0：接口版本契约更清楚，本地Agent仍需回归验收",
+    "summary": "llama.cpp与ggml发布v1.0.0，官方把公共C接口/API与ABI的不兼容变化纳入主版本边界，并区分兼容新增和无API变化的修复。此次发布实际移除了弃用接口，同时包含缓存、后端和服务器工具处理改动；它提供了更明确的依赖版本契约，不能据此推断现有Agent直接升级就兼容或更快。",
+    "insight": "作者强调稳定且可见的API/ABI边界：公共include中的破坏性C API变化升主版本，兼容特性、后端更新、模型支持或API新增升次版本，无API变化的修复升补丁版本。本站判断：价值在于让本地Agent的推理依赖更容易固定和迁移验收；版本规则属于维护承诺，不是性能、模型质量或安全性的评测结论。",
+    "limits": "已读团队文章、发布说明与版本分发说明，另对固定tag对应commit的头文件及服务器文档作静态核对；未编译、加载模型、运行服务器或做安全测试。1.0移除了弃用接口，旧绑定仍可能需要迁移；官方规则聚焦公共C接口，不能泛化为所有HTTP接口、CLI行为和模型输出永不变化。夜间构建、分发包与正式release仍需区分；缓存/后端收益取决于模型、硬件与参数，支持某模型架构不等于该模型本轮新发布。",
+    "organization": "ggml-org / Hugging Face",
+    "dateLabel": "2026-11-13 · release 10:20:19 UTC；团队文章14:05:22 UTC",
+    "evidence": "官方发布、文档和版本信息核验；未调用API、运行模型或复现实验",
+    "date": "2026-11-13",
+    "checkedAt": "2026-11-13T16:31:58.191009+00:00",
+    "firstSeenAt": "2026-11-13T16:00:01Z",
+    "lastSeenAt": "2026-11-13T16:00:01Z",
+    "tags": [
+      "llama.cpp",
+      "ggml",
+      "本地Agent",
+      "版本兼容",
+      "推理基础设施"
+    ],
+    "topics": [],
+    "sourceId": "hf_blog",
+    "sources": [
+      {
+        "label": "ggml-org官方团队文章 · llama.cpp v1.0.0",
+        "url": "https://huggingface.co/blog/ggml-org/llama-cpp-v1"
+      },
+      {
+        "label": "官方v1.0.0发布页 · 变更与tag commit",
+        "url": "https://github.com/ggml-org/llama.cpp/releases/tag/v1.0.0"
+      },
+      {
+        "label": "维护者版本与分发说明 · release和nightly的区别",
+        "url": "https://github.com/ggml-org/ggml/discussions/1579"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "llama.cpp与ggml发布v1.0.0，官方把公共C接口/API与ABI的不兼容变化纳入主版本边界，并区分兼容新增和无API变化的修复。此次发布实际移除了弃用接口，同时包含缓存、后端和服务器工具处理改动；它提供了更明确的依赖版本契约，不能据此推断现有Agent直接升级就兼容或更快。",
+      "motivation": "本地Agent依赖推理引擎、语言绑定、模型格式与服务器工具接口。快速迭代时，模型权重不变也可能因底层库升级而改变运行结果或失去兼容。v1.0此次明确版本边界，主要解决下游集成对接口稳定性与分发版本的识别问题。",
+      "novelty": "作者强调稳定且可见的API/ABI边界：公共include中的破坏性C API变化升主版本，兼容特性、后端更新、模型支持或API新增升次版本，无API变化的修复升补丁版本。本站判断：价值在于让本地Agent的推理依赖更容易固定和迁移验收；版本规则属于维护承诺，不是性能、模型质量或安全性的评测结论。",
+      "evidenceScope": "已读官方团队文章全文、v1.0.0 release概述/API/Core/server等变更段及维护者分发说明；还只读核对commit b1b770d90d94cad9e9ea5b993bdbc383a522fb28的include/llama.h和tools/server/README.md有关字段/选项，不宣称全面代码审计。GitHub release HTML时间为2026-11-13T10:20:19Z，HF RSS团队文章时间为2026-11-13T14:05:22Z，两者与checkedAt分开保留。版本说明讨论起于更早日期，只作制度背景；未把社区回复的建议当成当前规则。verified仅指来源核验。",
+      "limits": "已读团队文章、发布说明与版本分发说明，另对固定tag对应commit的头文件及服务器文档作静态核对；未编译、加载模型、运行服务器或做安全测试。1.0移除了弃用接口，旧绑定仍可能需要迁移；官方规则聚焦公共C接口，不能泛化为所有HTTP接口、CLI行为和模型输出永不变化。夜间构建、分发包与正式release仍需区分；缓存/后端收益取决于模型、硬件与参数，支持某模型架构不等于该模型本轮新发布。",
+      "method": [
+        "区分构建来源：维护者说明正式release采用vX.Y.Z，nightly仍采用b编号；正式标签要求内置ggml副本与对应已发布ggml一致，便于下游链接。不能把安装渠道列出就当作每个渠道都已同步1.0。",
+        "识别迁移点：v1.0.0发布说明移除llama_set_warmup、35个弃用函数及defrag参数，把NextN/speculative API从扩展头提升到llama.h，并调整相关状态接口名称；旧绑定需要按实际调用逐项核对。",
+        "保留运行配置：发布包含FP8 KV缓存、可调CPU份额的主机内存MoE专家缓存、后端改动与新架构支持。这些属于可选能力和实现变化，实际容量、速度及任务质量仍要在固定模型与硬件上测量。",
+        "检查服务器任务生命周期：发布说明包含客户端断开或超时时取消MCP工具调用并通知MCP服务器，以及若干网络访问修复。它为中断/恢复测试提供了明确观察点，未证明所有外部工具都能撤销已产生的副作用。"
+      ],
+      "inspirations": [
+        "给本地Agent实验同时冻结引擎commit、ggml版本、模型文件hash、量化方式、后端和工具模板；升级时用相同多轮任务检查工具调用解析、任务成功率、峰值内存和延迟，避免只记录模型名。",
+        "把迁移验收拆为绑定编译/链接和真实模型任务两层：公共符号兼容不证明上下文、采样和工具调用语义相同；分别记录API错误与行为回归。",
+        "用超时、客户端中断和内存紧张场景检查工具取消通知、遗留执行和后续请求状态；官方发布列出修复可形成测试用例，但不能替代这些测试。"
+      ],
+      "reviewedAt": "2026-11-13T16:31:58.191009+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/blog/ggml-org/llama-cpp-v1",
+        "https://github.com/ggml-org/llama.cpp/releases/tag/v1.0.0",
+        "https://github.com/ggml-org/ggml/discussions/1579"
+      ]
+    }
   }
 ]
