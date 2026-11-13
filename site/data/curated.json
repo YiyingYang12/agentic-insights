@@ -15153,5 +15153,412 @@
         "https://github.com/generative-computing/llmon/blob/0b0d7bd8b77f32c52050a037c3d3608788ba506d/llmon/examples/lora-finetuning/byo-vocab_LoRA_scienceworld.ipynb"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.16174v1",
+    "url": "https://arxiv.org/abs/2611.16174v1",
+    "id": "paper-judgemix-2611-16174",
+    "title": "JudgeMix：沿着小模型的轨迹教它，但别把裁判当真值",
+    "summary": "JudgeMix先让目标模型提出动作，由裁判决定沿用还是请专家替换，再把犯错后的状态也变成训练样本；对已经做对的步骤降低专家模仿权重。作者报告AppWorld 2B的Test-N任务完成率由纯专家数据的32.1%升至40.9%；但同轨迹条数不等于同计算成本，裁判也不是正确性的独立真值。",
+    "insight": "将执行路径、专家标签和训练权重分开设计，能让失败恢复成为明确的数据目标。验收时既要看任务提升，也要审裁判错误、状态隔离和实际数据预算；相同轨迹数量不能代替公平成本比较。",
+    "limits": "已读原文方法、实验及附录，并核PDF原始表格与裁判提示词；未训练或复现。只测Qwen3.5的2B/9B和两个工具环境，AutomationBench仅9B；数据按目标模型分别生成，跨模型复用未验证。代码、训练轨迹与权重本轮未定位，不能将论文表格当成可重放实验。",
+    "dateLabel": "2026-11-12 · arXiv v1",
+    "evidence": "原文方法、附录及PDF提示/表格已核；发布资产未定位，未复现",
+    "originalTitle": "JudgeMix: Judge-Guided Mixed-Rollout Data Synthesis for LLM Agents",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-13T10:29:48.051002+00:00",
+    "paperOriginalDate": "2026-11-12T02:03:23Z",
+    "paperUpdatedAt": "2026-11-12T02:03:23Z",
+    "updatedAt": "2026-11-12T02:03:23Z",
+    "firstSeenAt": "2026-11-13T10:00:01Z",
+    "lastSeenAt": "2026-11-13T10:00:01Z",
+    "tags": [
+      "合成轨迹",
+      "专家介入",
+      "加权SFT"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 · 首发记录",
+        "url": "https://arxiv.org/abs/2611.16174v1"
+      },
+      {
+        "label": "HTML全文 · 方法与实验",
+        "url": "https://arxiv.org/html/2611.16174v1"
+      },
+      {
+        "label": "原始PDF · 划分/轨迹表与裁判提示",
+        "url": "https://arxiv.org/pdf/2611.16174v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "JudgeMix先让目标模型提出动作，由裁判决定沿用还是请专家替换，再把犯错后的状态也变成训练样本；对已经做对的步骤降低专家模仿权重。作者报告AppWorld 2B的Test-N任务完成率由纯专家数据的32.1%升至40.9%；但同轨迹条数不等于同计算成本，裁判也不是正确性的独立真值。",
+      "motivation": "只模仿专家成功路径，模型部署时一旦走到自己的错误状态，就没有见过相应恢复方式；反过来只收小模型轨迹，又容易缺少接近完成任务的后期状态。论文将“谁实际执行动作”和“谁提供训练标签”拆开，尝试兼顾模型自身的状态分布与专家帮助。",
+      "novelty": "作者主张：用同一个逐步语义信号同时决定专家介入、错误恢复数据与监督权重，比随机混合更有效。本站判断：可借鉴的是把执行分布、标签来源和学习强度分别控制，而不是把裁判判断直接等同正确。AppWorld 2B的Test-N为40.9%，纯专家32.1%、DAgger35.6%；9B的Test-C为69.8%，纯专家65.0%。AutomationBench 9B的Test-N为28.5%对17.8%，Test-C仅15.1%对8.6%，绝对完成率仍有限。AppWorld的w消融在9B偏向0、2B偏向0.5，不能推导所有模型都应该丢掉成功步骤；相同SGC值也说明并非每个指标都严格提升。",
+      "evidenceScope": "已读arXiv v1 §2–4、Limitations、附录A–C/E–F及D的说明；原始PDF共33页，重点读取pp.14–21的划分、生成数据表及两套完整裁判提示，渲染核验pp.14–15。首发2026-11-12T02:03:23Z，核验时间另记。HTML的提示框转换失败，已回到PDF核实，不把缺字当论文缺失。表6的AppWorld为90/57/168/417题，表7的AutomationBench为350/50/100/100题；表8仍列3200条而非350×8=2800，此差异在原始PDF也存在。GitHub按JudgeMix仓库名精确查询200且0结果，HF同名模型/数据搜索200为空，HF论文API404；论文原页未列作者项目地址，只说明本轮未定位发布资产。所有数字为作者报告与表格算术复核，没有逐轨迹重计、执行作者代码或实验复现，verified只表示来源核验。",
+      "limits": "已读原文方法、实验及附录，并核PDF原始表格与裁判提示词；未训练或复现。只测Qwen3.5的2B/9B和两个工具环境，AutomationBench仅9B；数据按目标模型分别生成，跨模型复用未验证。代码、训练轨迹与权重本轮未定位，不能将论文表格当成可重放实验。 专家与裁判同模型，未见独立逐步人工准确率或置信区间；裁判要求“先查文档、避免冗余”等也会塑造策略偏好。固定轨迹数未对齐实际调用、token和过滤后训练规模，不能据此宣称更便宜。DAgger基线只生成一次数据，不是原算法反复聚合训练。表7/8的AutomationBench预算矛盾尚未解决，不能断言存在验证集泄漏，也不能声称已核训练/Dev严格隔离。作者去掉最终校验器的消融只在AppWorld、仍用逐步LLM裁判并按真实任务结果评测；不证明开放任务不需要验收器。论文未充分交代错误分支回滚、恢复样本权重归属、训练随机种子不确定性或历史服务版本，妨碍独立重放。",
+      "method": [
+        "用固定目标模型提出下一步动作，裁判读取任务、此前动作及工具返回、当前推理与候选动作，判断该步是否可接受。AppWorld用GLM-5.1兼任专家和裁判，AutomationBench用GLM-5.2；裁判检查文档先查、参数出处、分页、完成条件等，并非环境真值校验器。",
+        "裁判接受则执行目标动作；拒绝则在主轨迹中用专家动作替换。另在拒绝点临时执行错误动作，保存包含错误与反馈的新状态，为恢复行为收集专家标签。论文将其与主轨迹分开，但未提供可核实现来确认状态快照、回滚及不可逆副作用的处理。",
+        "为主轨迹与错误状态的每个历史都生成专家动作作为监督目标；标签始终来自专家，不能理解为直接模仿被接受的目标动作。被裁判接受的状态乘权重w，拒绝状态保留权重1；在Dev集从0、0.25、0.5、0.75、1选择w。",
+        "默认用最终任务校验器筛选成功轨迹，再做加权SFT；OPD和本文的一次性DAgger基线不做该筛选。各方法声称每训练题生成8条轨迹，AppWorld为90题/720条；AutomationBench划分表的350训练题与轨迹表3200条存在未解释差异，不能替作者假定实际训练清单。",
+        "对目标模型全量微调10 epochs，超出32K/64K上下文的样本丢弃，在单机8张B200上训练。最终用原基准harness评测8次独立运行的平均pass@1；AppWorld还报同一场景三个变体全过的SGC，AutomationBench将Support整域留作Test-C。"
+      ],
+      "inspirations": [
+        "为数据合成单独保存“目标候选、裁判理由、实际执行动作、专家监督标签、样本权重”五项。先用独立人工或执行检查抽查误拒和误放，再比较纯专家、随机介入与按错误介入；不要仅因下游分数上涨就认定裁判已校准。",
+        "在可隔离的工程或仿真副本中构造失败后恢复数据，并验证回滚后的状态哈希与主轨迹一致。代码视频可使用编译失败、错误帧或时间线约束冲突作为恢复起点，但这是迁移建议，本文没有创作质量实验；不能在真实业务环境故意执行错误写入。",
+        "除轨迹条数，还对齐专家与裁判调用数、token、成功过滤后样本数、超长丢弃及训练预算；保留完全独立的任务ID清单和验证集。分别报告任务完成、同场景全过与未见工具表现，防止把“8次平均pass@1”误写成“8次至少成功一次”。"
+      ],
+      "reviewedAt": "2026-11-13T10:29:48.051002+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.16174v1",
+        "https://arxiv.org/html/2611.16174v1",
+        "https://arxiv.org/pdf/2611.16174v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.16174",
+      "status": "pending",
+      "checkedAt": "2026-11-13T10:34:48.872274+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.15789v1",
+    "url": "https://arxiv.org/abs/2611.15789v1",
+    "id": "live-ccc3798de06d2ff7",
+    "title": "VibePrevisBench：Blender场景做对了，还要让观众看得懂",
+    "summary": "Blender 代码能运行、视频能打开，还不代表场景做对或观众看得懂。VibePrevisBench 用242个任务分别验收4D场景事实和画面可辨识性；11个Agent各跑一次，只有35个任务能被其中任一Agent做到Scene至少90分。这个门槛是分数，不是完整任务成功率。",
+    "insight": "把场景状态和画面表达分别验收：动作在正确时间发生，与镜头能让人看清动作，是两个不同问题。比反复要求Agent“再看看”更具体的方案，是给每个关键事件绑定状态检查、可见性检查和可辨识性检查。",
+    "limits": "已读全文、固定代码与数据卡，并独立重算发布CSV；未运行Blender、作者程序、视频模型或重新打分。Scene是有容差和机会校正的分数，Screen主要是条件性可辨识性，两者平均不是“所有要求都满足”的成功率，也不测材质、灯光、写实度或审美。固定Screen代码对事件用rule score>0或无对应check即可提问，并非每项完整通过；n/a和缺失回答排除，V3为no的事件不进入V2。故原文“只问通过项”应结合实现理解。只有一次/任务/Agent，GPT用Codex CLI、其他用Claude Code；5对相邻排名的任务bootstrap区间含0，不能将名次视为稳定模型能力排序。候选任务经同11个Agent运行后按区分度剪枝，部分参评模型也参与构造/GT估计；人工复核与跨族盲读降低但未排除偏差。视频GT部分来自重建估计，不能核实的事实不计分，规则对跌倒和漂浮仍有漏检。人评是每任务一对、共242对的易理解偏好与11个Agent均值相关，不是逐事实准确率或人评一致性保证。多看图和说“对了”的分析主要为相关；no-image消融仅1模型8个脚本任务，oracle caption仅5个视频任务且使用隐藏GT，不能证明视觉反馈普遍无用。Seedance下游仅展示2个任务的强弱代理对，不知道错误普遍传递率。公开release照片brief增加8秒orbit，paper原brief为照片视角；两者协议不能混报。固定文档承认重放连续分数有微小浮点差异，VLM新调用也非确定；不能把固定dump重复评分称端到端逐比特重现。HF开放注释和清单，但215份第三方素材需另取，部分扫描集需授权，本轮未下载验证全部素材。",
+    "dateLabel": "2026-11-11 · arXiv v1",
+    "evidence": "全文、固定公开代码及数据卡核验；独立重计发布分数，未复现实验",
+    "originalTitle": "VibePrevisBench: Evaluating Agentic Coding for 4D Scene Generation in Blender",
+    "date": "2026-11-11",
+    "checkedAt": "2026-11-13T10:29:24.878746+00:00",
+    "originalDate": "2026-11-11",
+    "paperOriginalDate": "2026-11-11T18:02:07Z",
+    "paperUpdatedAt": "2026-11-11T18:02:07Z",
+    "updatedAt": "2026-11-11T18:02:07Z",
+    "firstSeenAt": "2026-11-13T10:00:01Z",
+    "lastSeenAt": "2026-11-13T10:00:01Z",
+    "tags": [
+      "Blender",
+      "4D场景",
+      "可执行交付",
+      "双重验收",
+      "视觉可辨识性"
+    ],
+    "authors": [
+      "Yuzhe Chen",
+      "Muxi Diao",
+      "Lele Yang",
+      "Wenbin Xu",
+      "Xuyang Liu",
+      "Qile Su",
+      "Changyi Liu",
+      "Jiankang Chen",
+      "Kaiyu Jiang",
+      "Haoyu Zhang",
+      "Hongyi Fu",
+      "Jianxiong Wang",
+      "Tianke Zhang",
+      "Haonan Fan",
+      "Yingxin Li",
+      "Bingyi Li",
+      "Xu Wang",
+      "Xuanyu Zheng",
+      "Bin Wen",
+      "Tingting Gao",
+      "Wentao Zhang",
+      "Jiale Cao"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2video"
+    ],
+    "featured": true,
+    "sourceId": "arxiv_code2_3d",
+    "sources": [
+      {
+        "label": "arXiv v1",
+        "url": "https://arxiv.org/abs/2611.15789v1"
+      },
+      {
+        "label": "论文全文与附录",
+        "url": "https://arxiv.org/html/2611.15789v1"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://vibeprevisbench.github.io/"
+      },
+      {
+        "label": "作者固定仓库",
+        "url": "https://github.com/vibeprevisbench/vibeprevisbench/tree/50283c2c8e476326507b9d4cb90cec9addd795d8"
+      },
+      {
+        "label": "固定数据卡",
+        "url": "https://huggingface.co/datasets/AidanYuzhe/vibeprevisbench/blob/f18565accd2bc3630daac3849ba12783560350fb/README.md"
+      },
+      {
+        "label": "逐任务发布结果",
+        "url": "https://github.com/vibeprevisbench/vibeprevisbench/blob/50283c2c8e476326507b9d4cb90cec9addd795d8/results/cells.csv"
+      },
+      {
+        "label": "交付验证器",
+        "url": "https://github.com/vibeprevisbench/vibeprevisbench/blob/50283c2c8e476326507b9d4cb90cec9addd795d8/harness/blender_agent/validation.py"
+      },
+      {
+        "label": "Screen 检查实现",
+        "url": "https://github.com/vibeprevisbench/vibeprevisbench/blob/50283c2c8e476326507b9d4cb90cec9addd795d8/judge/screen_check.py"
+      },
+      {
+        "label": "协议与照片任务差异",
+        "url": "https://github.com/vibeprevisbench/vibeprevisbench/blob/50283c2c8e476326507b9d4cb90cec9addd795d8/docs/evaluation.md"
+      },
+      {
+        "label": "重现范围与数值差异",
+        "url": "https://github.com/vibeprevisbench/vibeprevisbench/blob/50283c2c8e476326507b9d4cb90cec9addd795d8/docs/reproducibility.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Blender 代码能运行、视频能打开，还不代表场景做对或观众看得懂。VibePrevisBench 用242个任务分别验收4D场景事实和画面可辨识性；11个Agent各跑一次，只有35个任务能被其中任一Agent做到Scene至少90分。这个门槛是分数，不是完整任务成功率。",
+      "motivation": "代码生成灰模预演可以显式控制人物、路线、镜头和切换，再交给视频模型补外观。但合法可渲染的场景可能把低机位改成平视，或把正确转弯的车拍成远处小点。只看视频打分容易漏掉真实场景错误，只检查几何又不知道故事是否可读；论文把这两层分开。",
+      "novelty": "作者主张：同时覆盖多输入、长多镜头多人调度，并对可执行4D场景和灰模画面做两层验收；能力差距更集中在空间/相机理解，单纯看更多预览未稳定纠错。本站判断：最有用的是把可重放交付、几何事实与可辨识性分开。公开CSV重计得到领先系统Scene70.02、Screen85.36、Overall77.69；这三个数各有分母，不等于77.69%任务成功。论文事件联结分析中，剔除无可用VLM判断的事实后，约36%事件同时得到规则接受和画面确认，另31%规则接受但只部分或不获画面确认；这不是全部242任务的比例。原文关于少见要求在训练数据中不足的解释仍是作者推断。",
+      "evidenceScope": "已读arXiv v1正文§3–5、附录A–C及表格，首发2026-11-11 18:02:07 UTC。静态审固定Git提交50283c2c8e476326507b9d4cb90cec9addd795d8的交付检查、重放协议、Screen筛选/计分、报告器与复现文档；HF数据revision f18565accd2bc3630daac3849ba12783560350fb公开且未门控，核数据卡、242任务索引和2538文件清单。自写标准库重计results/cells.csv全部2662行：2648已评分、14失败，各模型242唯一任务，四输入数与主表一致，任一模型Scene≥90的任务35个。没有执行作者代码、启动Blender、播放/重渲染全部成片、重新计算几何或调用裁判；84,406事实/98,957展开检查为发布文档口径，未逐条重建其GT。人评与事件联合比例为作者报告，未取得逐条人工标注重新审定。",
+      "limits": "已读全文、固定代码与数据卡，并独立重算发布CSV；未运行Blender、作者程序、视频模型或重新打分。Scene是有容差和机会校正的分数，Screen主要是条件性可辨识性，两者平均不是“所有要求都满足”的成功率，也不测材质、灯光、写实度或审美。固定Screen代码对事件用rule score>0或无对应check即可提问，并非每项完整通过；n/a和缺失回答排除，V3为no的事件不进入V2。故原文“只问通过项”应结合实现理解。只有一次/任务/Agent，GPT用Codex CLI、其他用Claude Code；5对相邻排名的任务bootstrap区间含0，不能将名次视为稳定模型能力排序。候选任务经同11个Agent运行后按区分度剪枝，部分参评模型也参与构造/GT估计；人工复核与跨族盲读降低但未排除偏差。视频GT部分来自重建估计，不能核实的事实不计分，规则对跌倒和漂浮仍有漏检。人评是每任务一对、共242对的易理解偏好与11个Agent均值相关，不是逐事实准确率或人评一致性保证。多看图和说“对了”的分析主要为相关；no-image消融仅1模型8个脚本任务，oracle caption仅5个视频任务且使用隐藏GT，不能证明视觉反馈普遍无用。Seedance下游仅展示2个任务的强弱代理对，不知道错误普遍传递率。公开release照片brief增加8秒orbit，paper原brief为照片视角；两者协议不能混报。固定文档承认重放连续分数有微小浮点差异，VLM新调用也非确定；不能把固定dump重复评分称端到端逐比特重现。HF开放注释和清单，但215份第三方素材需另取，部分扫描集需授权，本轮未下载验证全部素材。",
+      "method": [
+        "构建242个英文任务：94脚本、39照片、23续写、86参考视频，覆盖7场景域。先固定场景与事实，再形成brief；脚本经跨模型盲读，媒体GT来自扫描或4D重建并人工复核，不可核事实不计分。Agent拿到brief、媒体、实体ID和输出规格，生成可重跑的Blender Python及可重新打开的场景。",
+        "每个Agent每任务一次，4小时、8 CPU核心、无GPU、无外部素材和评分器。评估端在全新沙箱重跑程序；独立运行、完整视频、场景重新打开三道交付门任一失败，则Scene与Screen都记0且留在分母。只使用重放产物，不能用Agent另交的好看视频代替程序真实输出。",
+        "逐帧导出实体包围盒、相机与剪切，按实体ID/类别绑定GT；脚本查关系，媒体按场所做受限相似变换对齐。九维覆盖实体、布局、空间、画面结构、路线、事件、相机、剪切、物理合理性；事实按容差给部分分，块内取均值再扣随机摆放机会率、乘实体覆盖，最后等权平均任务适用维度，不按近9.9万检查总数平均。",
+        "Screen让Gemini 4以2 fps先盲述画面，再拿brief、必要参考媒体及筛选清单逐项判yes/partial/no为1/0.5/0，评价识别、动作可读、关键时刻可见和故事；照片只评识别并看评估端orbit。按固定实现，规则零分项通常排除，部分项或无规则项仍可进入，n/a/缺失不计入均值；先维内、后适用维度平均。",
+        "各任务等权汇总Scene与Screen，Overall再对两者取均值；11×242共2662条计划结果，14条交付失败计0。用另外两种VLM、242对人工偏好、缺陷注入及18种计分方案检查稳健性，再按事件联结场景分与画面判断，定位“做到了但看不清”的缺口。"
+      ],
+      "inspirations": [
+        "给代码视频交付增加“程序可重跑、场景可打开、渲染帧完整”底线，然后为每个重要事件分别记录状态正确、镜头可见、观众可辨识。保留每项时间窗和失败证据，避免几何过关掩盖镜头表达失败。",
+        "让修复指令指向一条可观察差异，例如“角色确实交接，但接触点被遮挡”；分别尝试修改动作、机位或景别，并检查其余时间窗是否回归。把这种逐项反馈与单纯多渲染/自评比较，不能直接把本文相关性当新闭环已有效。",
+        "评测时分开报告交付失败率、各输入类型的Scene、条件性Screen和事件联合通过；固定照片paper/release协议、GT版本及裁判。再额外测真实成片外观与下游视频模型是否保留关键动作，灰模分数不能替代最终观感。"
+      ],
+      "reviewedAt": "2026-11-13T10:29:24.878746+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.15789v1",
+        "https://arxiv.org/html/2611.15789v1",
+        "https://vibeprevisbench.github.io/",
+        "https://github.com/vibeprevisbench/vibeprevisbench/tree/50283c2c8e476326507b9d4cb90cec9addd795d8",
+        "https://huggingface.co/datasets/AidanYuzhe/vibeprevisbench/blob/f18565accd2bc3630daac3849ba12783560350fb/README.md",
+        "https://github.com/vibeprevisbench/vibeprevisbench/blob/50283c2c8e476326507b9d4cb90cec9addd795d8/results/cells.csv",
+        "https://github.com/vibeprevisbench/vibeprevisbench/blob/50283c2c8e476326507b9d4cb90cec9addd795d8/harness/blender_agent/validation.py",
+        "https://github.com/vibeprevisbench/vibeprevisbench/blob/50283c2c8e476326507b9d4cb90cec9addd795d8/judge/screen_check.py",
+        "https://github.com/vibeprevisbench/vibeprevisbench/blob/50283c2c8e476326507b9d4cb90cec9addd795d8/docs/evaluation.md",
+        "https://github.com/vibeprevisbench/vibeprevisbench/blob/50283c2c8e476326507b9d4cb90cec9addd795d8/docs/reproducibility.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.15789",
+      "status": "pending",
+      "checkedAt": "2026-11-13T10:34:48.872274+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.14009v1",
+    "url": "https://arxiv.org/abs/2611.14009v2",
+    "id": "research-camp-ii-2611-14009",
+    "title": "CAMP-II：用熟悉的文件操作教Agent记忆，先看清64.6分的分母",
+    "summary": "把记忆变成普通Bash文件读写，再让冻结教师逐token指导学生自己的轨迹。作者报告4B模型五域综合分从45.3升至64.6，记忆内容损失被遮掉后降至47.3，等量随机遮掉仍有63.3。这里平均的是四类成功率和一类网页评分；“2.97倍”指相对初始模型的增益之比，不是成功率翻倍。",
+    "insight": "记忆接口不只是工程包装：学生是否会尝试写、教师是否能看懂写得对不对，会同时影响蒸馏。更可复用的研究设计是“自己的记忆/他人的记忆/空记忆”配合“记忆token遮罩/等量随机遮罩”，把内容贡献与动作数量、训练token数量分开验收。",
+    "limits": "已读v2全文与固定公开代码/数据卡，未运行作者程序或模型。只覆盖Qwen3.5的4B/9B学生与一个27B教师；Visual是连续裁判分，且CAMP-II比任务RL版CAMP-I低6.3分。外部结果限网络隔离子集，本文已读材料未明确两套主成绩的完整任务ID及分母；附录65条Terminal-Bench完成轨迹只是行为分析样本。公开Visual池500个索引均见于训练schedule，本轮未建立其与论文128个测试任务的身份映射，不能据此证明无重叠，也不能直接认定论文泄漏。",
+    "organization": "Peking University / JD.com 等",
+    "dateLabel": "2026-11-10首发 · 2026-11-12修订v2",
+    "evidence": "v2全文、固定公开训练配置/源码/数据卡核验；自写统计重计训练调度表，未复现实验",
+    "originalTitle": "Coding Agent Memory Post-Training II: Unlocking the Memory Potential of Pre-trained File Operations for Long-Horizon Tasks via On-Policy Distillation",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-13T10:29:51.032771+00:00",
+    "originalDate": "2026-11-10",
+    "paperOriginalDate": "2026-11-10T12:49:24Z",
+    "paperUpdatedAt": "2026-11-12T07:08:00Z",
+    "updatedAt": "2026-11-12T07:08:00Z",
+    "firstSeenAt": "2026-11-11T04:00:01Z",
+    "lastSeenAt": "2026-11-13T04:00:00Z",
+    "tags": [
+      "文件记忆",
+      "On-policy distillation",
+      "长程Agent",
+      "上下文替换",
+      "CAMG-II"
+    ],
+    "authors": [
+      "Lirui Luo",
+      "Kelong Mao",
+      "Xinwei Yang",
+      "Rongqing Li",
+      "Luyu Chen",
+      "Kieran Wong",
+      "Yudong Guo",
+      "Xinrui Wang",
+      "Jiayin Zhu",
+      "Pu Yao",
+      "Gu Simiu",
+      "Sulong Xu",
+      "Cong Fang"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.14009v1"
+      },
+      {
+        "label": "arXiv v2 · 首发与修订记录",
+        "url": "https://arxiv.org/abs/2611.14009v2"
+      },
+      {
+        "label": "全文 · 方法与附录",
+        "url": "https://arxiv.org/html/2611.14009v2"
+      },
+      {
+        "label": "作者项目 · 指标口径说明",
+        "url": "https://liruiluo.github.io/agentmemorygym-v2/"
+      },
+      {
+        "label": "公开代码 · 固定版本",
+        "url": "https://github.com/jd-opensource/CodingAgentMemoryGym/tree/77a80b2bb2f91252eab8d611b0aa2ce255a02e0e"
+      },
+      {
+        "label": "OPD训练配置",
+        "url": "https://github.com/jd-opensource/CodingAgentMemoryGym/blob/77a80b2bb2f91252eab8d611b0aa2ce255a02e0e/camp/configs/opd.txt"
+      },
+      {
+        "label": "数据准备与划分说明",
+        "url": "https://github.com/jd-opensource/CodingAgentMemoryGym/blob/77a80b2bb2f91252eab8d611b0aa2ce255a02e0e/docs/data.md"
+      },
+      {
+        "label": "评测协议",
+        "url": "https://github.com/jd-opensource/CodingAgentMemoryGym/blob/77a80b2bb2f91252eab8d611b0aa2ce255a02e0e/docs/evaluation.md"
+      },
+      {
+        "label": "公开数据卡 · 固定版本",
+        "url": "https://huggingface.co/datasets/LiruiLuo/CAMG-II/blob/98e51fe95d06d9bad79d52d01a744a577e9b1e51/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把记忆变成普通Bash文件读写，再让冻结教师逐token指导学生自己的轨迹。作者报告4B模型五域综合分从45.3升至64.6，记忆内容损失被遮掉后降至47.3，等量随机遮掉仍有63.3。这里平均的是四类成功率和一类网页评分；“2.97倍”指相对初始模型的增益之比，不是成功率翻倍。",
+      "motivation": "长程Agent在上下文清空后，既要知道该保存什么，也要主动读回。专用记忆API或压缩协议可能让学生很少产生有效记忆动作，而更强教师也未必熟悉这些格式。论文问的是：把两者预训练中已经熟悉的Bash与文件操作用作记忆接口，是否能同时提高学生的探索覆盖和教师的指导质量？",
+      "novelty": "作者主张：共享文件操作先验同时让学生更愿意产出记忆动作、教师更能区分笔记内容，从而比陌生的专用接口更适合记忆OPD。本站判断：证据的核心是受控接口与内容消融，不是提出新的KL目标。以显示值计算，64.6−45.3=19.3，最强记忆OPD基线51.8−45.3=6.5，19.3/6.5≈2.97；CAMP-I则为54.2。主表五域等权但单位混合，不能把64.6当640题的通过比例。D.3的76.5%是400个笔记配对判别中的正确偏好，决策共享47个上下文，不是400个独立任务成功率。",
+      "evidenceScope": "已读arXiv v2 §3–7及附录A–D的接口、目标、训练和诊断实验；首发2026-11-10，修订2026-11-12，不能按本次核验时间当新发表。A.1.5说明Shop/Coding/AutoResearch为原生成功率，General先由rubric转接受/拒绝，Visual按整个128题面板平均0–100评分且未提交计0。五训练种子的综合分64.9±0.5为均值±样本标准差；主表对应其中seed1，未核全部基线多种子。取消强制写入后原模型62.6、重训64.0，限该实验协议。静态读取公开commit 77a80b2bb2f91252eab8d611b0aa2ce255a02e0e 的README、训练/数据/评测文档、OPD入口/配置/异步loop，以及HF数据卡revision 98e51fe95d06d9bad79d52d01a744a577e9b1e51；自写标准库解析训练schedule，确认12800行、每域2560行、前6400行每域1280，未执行训练器。公开数据卡列Coding3768训练任务、AutoResearch762训练/169heldout、General925池（797进入schedule）和Visual500池；这些发布池不等于论文各域128测试面板。",
+      "limits": "已读v2全文与固定公开代码/数据卡，未运行作者程序或模型。只覆盖Qwen3.5的4B/9B学生与一个27B教师；Visual是连续裁判分，且CAMP-II比任务RL版CAMP-I低6.3分。外部结果限网络隔离子集，本文已读材料未明确两套主成绩的完整任务ID及分母；附录65条Terminal-Bench完成轨迹只是行为分析样本。公开Visual池500个索引均见于训练schedule，本轮未建立其与论文128个测试任务的身份映射，不能据此证明无重叠，也不能直接认定论文泄漏。 外部4B提升各6.9个百分点属作者表2报告，非本站重跑；35B-A3B为MoE参照，不能用总参数推断推理成本。约250 GPU小时是4B单次训练的作者成本。论文A.5仍写camera-ready才发布代码，但本轮项目已链接实际可读训练源码和数据，不能继续称未开源；本轮未取得与主表逐题成绩绑定的训练权重/完整评测记录。固定配置val_files指向训练schedule，但训练内验证已关闭，不能把该行直接当作测试混用的证明。",
+      "method": [
+        "建立CAMG-II五域：连续购物、代码修复、自动机器学习、企业知识工作、网页构建。各域保留原生工具与判分，同时给每回合隔离且持久的工作区；只有.agent_memory/下的普通文件计作记忆，补丁、模型和网页产物仍按任务文件处理。",
+        "学生自由写读笔记；接近上下文容量或遇到任务边界时，标准协议要求写入非空且最多8192字节的CONTINUATION.md。有效后清除活动历史，只保留固定任务/工具指令及文件路径，不自动注入笔记正文；随后由学生发起普通文件读取。无效写入会让边界继续等待，读写都消耗行动预算。",
+        "Qwen3.5的4B/9B学生采样任务及记忆响应；冻结Qwen3.8-27B教师在学生当时实际可见的文字/图像上下文中，对这些已采样token评分。教师不取得未读文件、私有标签或隐藏评分答案；所有采样响应token受教，输入、观察和padding不计算损失。",
+        "用停止梯度的教师减学生log概率作逐token信号，并以当前策略对采样旧策略的重要性比率做裁剪更新；异步rollout与学习并行。主实验关闭任务奖励损失和critic，100个学习轮次每轮64次episode暴露、共6400次，五域均衡；不是6400个互异任务，长回合因token更多而占更大损失权重。",
+        "在每域128题、共640题的固定测试面板上比较记忆接口、CAMP-I任务RL和两档模型；再做记忆替换/清空、记忆内容loss与等量随机loss遮罩、取消强制写入的消融。推理时只运行学生，并在Terminal-Bench 2.1与SWE-Bench Pro V2的network-free子集检查迁移。"
+      ],
+      "inspirations": [
+        "做文件记忆训练时，将任务产物与记忆目录分开留痕；上下文替换后只提供路径，让读回成为可观察动作。对同一恢复点保留/换错/清空笔记，同时固定补丁和网页产物，验证究竟是哪条信息支持了下一步。",
+        "在比较记忆方案前，先测学生的有效读写覆盖和教师对同任务/异任务笔记的排序，再做记忆内容遮罩与等量随机遮罩。若接口陌生，先解决动作覆盖；若教师偏好不可靠，则不能把更大的log概率差直接解释为更好的行为信用。",
+        "为视频剪辑或代码创作Agent尝试保存时间线约束、素材出处、视觉缺陷及待验证动作，但应另建这些任务的留出集。分开报告执行成功、设计裁判分、重读行为与代价；本论文Visual是普通网页构建，未证明视频或动效创作收益。"
+      ],
+      "reviewedAt": "2026-11-13T10:29:51.032771+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.14009v2",
+        "https://arxiv.org/html/2611.14009v2",
+        "https://liruiluo.github.io/agentmemorygym-v2/",
+        "https://github.com/jd-opensource/CodingAgentMemoryGym/tree/77a80b2bb2f91252eab8d611b0aa2ce255a02e0e",
+        "https://github.com/jd-opensource/CodingAgentMemoryGym/blob/77a80b2bb2f91252eab8d611b0aa2ce255a02e0e/camp/configs/opd.txt",
+        "https://github.com/jd-opensource/CodingAgentMemoryGym/blob/77a80b2bb2f91252eab8d611b0aa2ce255a02e0e/docs/data.md",
+        "https://github.com/jd-opensource/CodingAgentMemoryGym/blob/77a80b2bb2f91252eab8d611b0aa2ce255a02e0e/docs/evaluation.md",
+        "https://huggingface.co/datasets/LiruiLuo/CAMG-II/blob/98e51fe95d06d9bad79d52d01a744a577e9b1e51/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.14009",
+      "status": "pending",
+      "checkedAt": "2026-11-13T10:34:48.872274+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://zcode.z.ai/cn/changelog",
+    "url": "https://zcode.z.ai/cn/changelog",
+    "id": "update-zcode-3-18-2-20261113",
+    "title": "ZCode 3.18.2：并行Worktree与页面点选编辑进入同一开发流程",
+    "summary": "ZCode 3.18.2的官方日志新增Worktree并行任务、Design设计系统检查，以及内置浏览器点选元素、修改保存本地网页、设备尺寸预设和PNG/PDF导出。它把代码改动、页面检查与交付留在同一开发环境；这是工具更新，不是新底座模型或已验证的质量提升。",
+    "insight": "官方新增点是并行开发与浏览器编辑/检查能力。本站判断：值得关注的是让Agent的代码修改能对应到可见页面元素，再保留检查产物；是否减少返工或提升设计一致性，还需要在相同任务、模型和预算下实测。",
+    "limits": "证据仅为官方中英文版本日志与产品文档；本站未安装或运行3.18.2，未核具体权限、Worktree隔离/冲突处理、保存格式或导出保真度。日志提到工作流脚本沙箱问题修复，但没有据此认定安全性已独立验证。Design能力没有公开通过率/视觉质量系统评测；通用网页设计也不等同于动画、视频或3D创作。",
+    "organization": "Z.ai",
+    "dateLabel": "2026-11-13 · 官方版本日志；未实机验证",
+    "evidence": "官方版本日志与文档已读；产品公告，不是实机或安全复现",
+    "date": "2026-11-13",
+    "checkedAt": "2026-11-13T10:29:04.452777+00:00",
+    "firstSeenAt": "2026-11-13T10:23:37.442761+00:00",
+    "tags": [
+      "ZCode",
+      "Agent开发环境",
+      "Worktree",
+      "浏览器编辑",
+      "设计系统检查"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "ZCode官方中文更新日志 · 3.18.2",
+        "url": "https://zcode.z.ai/cn/changelog"
+      },
+      {
+        "label": "ZCode官方英文更新日志 · 交叉核对",
+        "url": "https://zcode.z.ai/en/changelog"
+      },
+      {
+        "label": "ZCode官方文档 · 开发流程与产品定位",
+        "url": "https://zcode.z.ai/cn/docs/welcome"
+      },
+      {
+        "label": "ZCode官网 · 官方Harness归属",
+        "url": "https://zcode.z.ai/cn"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "ZCode 3.18.2的官方日志新增Worktree并行任务、Design设计系统检查，以及内置浏览器点选元素、修改保存本地网页、设备尺寸预设和PNG/PDF导出。它把代码改动、页面检查与交付留在同一开发环境；这是工具更新，不是新底座模型或已验证的质量提升。",
+      "motivation": "编码Agent的任务需要从文件修改继续到页面检查和交付。多个任务并行时，开发者还要追踪各自的代码状态；网页问题则需要把视觉位置与具体改动对应起来。此次工具更新针对这些工作流环节，并未提出新的模型训练方法。",
+      "novelty": "官方新增点是并行开发与浏览器编辑/检查能力。本站判断：值得关注的是让Agent的代码修改能对应到可见页面元素，再保留检查产物；是否减少返工或提升设计一致性，还需要在相同任务、模型和预算下实测。",
+      "evidenceScope": "已读官方中英文3.18.2完整版本段、欢迎文档全文和官网产品定位；两份日志均写2026-11-13，精确发布时间未提供。与本轮之前保存的3.17.2为顶部的日志比较，3.18.2为新增段。官网示例属于产品展示，未运行其工程；本条不引用展示中的任务耗时或质量作为评测。verified仅指来源核验。",
+      "limits": "证据仅为官方中英文版本日志与产品文档；本站未安装或运行3.18.2，未核具体权限、Worktree隔离/冲突处理、保存格式或导出保真度。日志提到工作流脚本沙箱问题修复，但没有据此认定安全性已独立验证。Design能力没有公开通过率/视觉质量系统评测；通用网页设计也不等同于动画、视频或3D创作。",
+      "method": [
+        "并行任务：版本日志新增Worktree支持；产品文档将目标、文件、终端结果、浏览器上下文与Git状态纳入同一任务。这里描述官方功能组合，未核自动分支策略或隔离实现。",
+        "定位与修改：内置浏览器可点选页面元素，并对本地网页直接修改和保存；本地网页改动后自动刷新。官方日志没有说明所有网站或复杂应用都可直接编辑。",
+        "检查与交付：新增Design能力和设计系统检查、设备尺寸预设，以及页面PNG/PDF导出。后两项可以作为人工检查的观察入口，但截图/PDF本身不证明交互正确或工程可编辑性。",
+        "持续跟进：新增Session管理Tool、按会话记住浏览页面，以及编辑最近已发/排队消息。以上是已公布的操作能力，不把这些能力自动串联为已经验证的全自动工作流。"
+      ],
+      "inspirations": [
+        "给网页Agent建立同任务的“描述问题”与“点选元素”对照，固定模型和预算，记录目标元素命中、错误元素修改、修改后交互通过率；不要仅用截图好看来评价定位质量。",
+        "并行处理同一仓库时，保留每个任务的起始版本、改动范围与合并结果，分别测完成率、冲突数和合并后回归，检验Worktree是否减少互相覆盖，而非只统计并发速度。",
+        "将设计系统规则、设备尺寸下的截图和可执行交互检查组合验收；PNG/PDF用来留存检查结果，源文件与实际运行另行核验，避免把成功导出当成完整交付。"
+      ],
+      "reviewedAt": "2026-11-13T10:29:04.452777+00:00",
+      "sourceUrls": [
+        "https://zcode.z.ai/cn/changelog",
+        "https://zcode.z.ai/en/changelog",
+        "https://zcode.z.ai/cn/docs/welcome",
+        "https://zcode.z.ai/cn"
+      ]
+    }
   }
 ]
