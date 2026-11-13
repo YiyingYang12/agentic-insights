@@ -14748,5 +14748,410 @@
         "https://deepmind.google/models/evals-methodology/gemini-4-hydrogen/"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.14925v1",
+    "url": "https://arxiv.org/abs/2611.14925v1",
+    "id": "paper-toolturns-2611-14925",
+    "title": "ToolTurns：多轮工具对话要验收每次交付，也要审裁判看到了什么",
+    "summary": "ToolTurns让工具Agent先澄清模糊请求，再接两次随对话生成的追问。2,620个问题覆盖1,827工具、11,004原始端点；作者历史口径中最佳单请求成功率69.6%，整段全过39.8%。值得借鉴的是分开测对话质量与任务完成，但裁判截断历史证据和错误剔除会影响这两个数字。",
+    "insight": "给验收器提供跨轮可追溯的证据引用，明确何时旧工具结果失效；把“找不到出处”“存在冲突”“实际错误”分开。对当前切片与完整历史两种裁判输入做配对重评，才能估计裁判信息缺失造成的下降。",
+    "limits": "已读全文与固定公开实现、完整问题JSON，并重计三个模型的保存评分及用户修订记录；未运行模型或真实API。工具观察来自论文所述缓存/模拟，追问随各Agent轨迹变化，不是所有模型收到同一后续题。裁判只读当前子任务，可能漏掉此前证据；成功率与后续下降都不能直接外推真实用户或纯记忆能力。",
+    "dateLabel": "2026-11-11 · arXiv v1",
+    "evidence": "全文与固定公开实现已读，部分公开评分已重计；未运行模型或复现实验",
+    "originalTitle": "ToolTurns: Benchmarking LLM Agents in Multi-Turn Dialogue",
+    "date": "2026-11-11",
+    "checkedAt": "2026-11-13T04:24:36.450965+00:00",
+    "paperOriginalDate": "2026-11-11T02:27:30Z",
+    "paperUpdatedAt": "2026-11-11T02:27:30Z",
+    "updatedAt": "2026-11-11T02:27:30Z",
+    "firstSeenAt": "2026-11-13T04:00:00Z",
+    "lastSeenAt": "2026-11-13T04:00:00Z",
+    "tags": [
+      "多轮工具使用",
+      "用户模拟",
+      "评测分母",
+      "证据追溯"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 · 日期",
+        "url": "https://arxiv.org/abs/2611.14925v1"
+      },
+      {
+        "label": "论文全文 · 方法与限制",
+        "url": "https://arxiv.org/html/2611.14925v1"
+      },
+      {
+        "label": "作者公开发布 v1.0.0",
+        "url": "https://github.com/milad621/ToolTurns/releases/tag/v1.0.0"
+      },
+      {
+        "label": "完整问题集 · 固定版本",
+        "url": "https://github.com/milad621/ToolTurns/blob/9095d321efe3028ed22279ea7f467aa5ce75138c/data/dialogues/our_samples/final_queries_march_27_2026.json"
+      },
+      {
+        "label": "子任务判分实现",
+        "url": "https://github.com/milad621/ToolTurns/blob/9095d321efe3028ed22279ea7f467aa5ce75138c/src/tool_llm_dialogues/evaluate/dialogue/task_success.py"
+      },
+      {
+        "label": "历史结果聚合口径",
+        "url": "https://github.com/milad621/ToolTurns/blob/9095d321efe3028ed22279ea7f467aa5ce75138c/src/tool_llm_dialogues/release.py"
+      },
+      {
+        "label": "发布核验与缺失项",
+        "url": "https://github.com/milad621/ToolTurns/blob/9095d321efe3028ed22279ea7f467aa5ce75138c/docs/VERIFICATION.md"
+      },
+      {
+        "label": "复现协议与服务边界",
+        "url": "https://github.com/milad621/ToolTurns/blob/9095d321efe3028ed22279ea7f467aa5ce75138c/docs/REPRODUCTION.md"
+      },
+      {
+        "label": "Opus历史逐题结果",
+        "url": "https://github.com/milad621/ToolTurns/blob/9095d321efe3028ed22279ea7f467aa5ce75138c/data/results/agents/opus48.json"
+      },
+      {
+        "label": "人工偏好记录",
+        "url": "https://github.com/milad621/ToolTurns/blob/9095d321efe3028ed22279ea7f467aa5ce75138c/data/results/checker_fixer/human_preferences.json"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "ToolTurns让工具Agent先澄清模糊请求，再接两次随对话生成的追问。2,620个问题覆盖1,827工具、11,004原始端点；作者历史口径中最佳单请求成功率69.6%，整段全过39.8%。值得借鉴的是分开测对话质量与任务完成，但裁判截断历史证据和错误剔除会影响这两个数字。",
+      "motivation": "真实用户常先给不完整要求，再对答案提出相关追问。单轮工具调用测试会漏掉澄清、上下文继承和连续交付；另一方面，对话流畅、工具调用简洁也不保证每个请求已解决。论文因此把交互生成、模拟用户质量与任务验收分开。",
+      "novelty": "作者主张：把广泛API目录与自适应澄清、连续追问结合，并分别检验模拟用户和Agent完成情况。本站判断：主要价值是提醒评测者同时审用户轨迹和裁判证据范围。论文中rubric与任务成功排名相关仅ρ=0.23；这不证明某模型普遍更强，而说明流畅、高效的局部行为可能掩盖没完成请求。公开聚合实现还暴露“全过”只要求剔错后已评分项全过，不能不看分母就当三项均经确认。",
+      "evidenceScope": "已读arXiv v1 §3–6及附录A–G，核首发2026-11-11T02:27:30Z；作者发布v1.0.0对应固定commit 9095d321efe3028ed22279ea7f467aa5ce75138c。静态读取判分、聚合、checker/fixer实现和配置；下载公开JSON，用自写计数核2,620题、1,827工具、11,004原始端点、47类、1,032单工具/1,588多工具/1,023跨类及69,433端点引用。原始端点数与发布文档所述10,999归一化端点不是同口径；本轮未逐文件重核2,015个工具目录或下载235MB上游缓存。对Opus4.8、GPT-5.4-mini、GPT-OSS三份各2,620条评分及1,272干预、120人工标签重计，不宣称九模型全部重算。主表最高数为作者报告；当前读到的结果与其历史口径一致。未执行作者代码、调用模型或复现工具环境，verified仅表示来源核验。",
+      "limits": "已读全文与固定公开实现、完整问题JSON，并重计三个模型的保存评分及用户修订记录；未运行模型或真实API。工具观察来自论文所述缓存/模拟，追问随各Agent轨迹变化，不是所有模型收到同一后续题。裁判只读当前子任务，可能漏掉此前证据；成功率与后续下降都不能直接外推真实用户或纯记忆能力。 固定评分中Opus有16个子任务裁判错误：作者口径5,457/7,844≈69.6%、1,044/2,620≈39.8%；若要求三项都有评分且全过，则是1,036/2,620≈39.5%，仅为公开记录敏感性重计，不是模型重评。GPT-5.4-mini另有66个对话缺子任务评分和7个子任务错误，不能默认为所有分母完整。GPT-OSS同时是参评模型与裁判，不独立。单条修订中543次触发、536次修改，缺陷335→197，120对偏好76次选修订，但公开标签仅一位评审、强制二选一；模板触发的人类收益不显著，冗长触发19例中14例更喜欢原稿。κ=0.68/0.53是论文报告的任务/质量一致性，历史标注连接与排除记录未在发布包中恢复，不作为本站独立验证。固定生成默认值仅产2,600题，不能重建2,620题历史采样；部分辅助表与行为统计不一致，历史模型网关、缓存和完整原始轨迹未恢复。保留的服务代码还有cache miss后尝试真实API网关的路径，与论文缓存/模拟描述待核，不能宣称端到端历史重放。",
+      "method": [
+        "从ToolBench的单工具、同类多工具和跨类集合采样，剔除不足3个端点的种子，并展开所选工具的全部端点。GPT-4o-mini生成不点名API且故意缺信息的请求及2–4个隐藏具体值；每题固定可用端点集合，平均26.5个，不是每题都调用全部11,004端点。",
+        "运行Agent工具搜索循环，用message_user请求澄清、finish结束当前请求，再生成两次依赖前文的追问。Agent保留含工具观察的完整消息流；用户模拟器只看用户可见会话，按提问逐步透露隐藏条件。每子任务最多10条用户可见消息，单轮搜索15条消息后加一次总结调用。",
+        "Qwen3-32B-AWQ负责模拟用户，也提供缓存未命中时的模拟API返回。用户草稿先经同模型的checker检查11类问题，有问题才由fixer修订；另用确定性规则测重复、模板化和停滞，不能把这种修订直接当成防幻觉保证。",
+        "验收分两条：五维LLM rubric诊断一致性、相关性、效率、正确性、适应性；任务成功先拦截全为说明文档占位内容的工具观察，再由gpt-oss对每个子任务的当前切片判二元完成。分别汇总请求通过率和整段全过率，必须同时报告裁判错误与缺失分母。",
+        "九个模型各面对2,620个问题，但追问随其回答动态变化。模拟用户另用322对话产生的1,272候选轮次，固定前文只改写单条消息，比较确定性缺陷与盲评偏好；这项局部干预没有重新运行后续Agent，不能推导端到端成功率增益。"
+      ],
+      "inspirations": [
+        "为代码创作构造三段需求：初始要求故意缺少分辨率或素材边界，再要求局部改动与复用前一版。保存每一轮用户可见条件和工程状态，分别检查澄清是否必要、旧约束是否保留及最终产物；这是迁移建议，本文没有测试视频/3D创作。",
+        "给验收器提供跨轮可追溯的证据引用，明确何时旧工具结果失效；把“找不到出处”“存在冲突”“实际错误”分开。对当前切片与完整历史两种裁判输入做配对重评，才能估计裁判信息缺失造成的下降。",
+        "模拟用户修订应按问题类型做预算与收益分析：记录原消息、修订、触发原因和失败例，同时做真实用户或外部盲评。对模板/冗长这类风格触发单独消融，避免把表面自然度提升当成任务真实性提高。"
+      ],
+      "reviewedAt": "2026-11-13T04:24:36.450965+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.14925v1",
+        "https://arxiv.org/html/2611.14925v1",
+        "https://github.com/milad621/ToolTurns/releases/tag/v1.0.0",
+        "https://github.com/milad621/ToolTurns/blob/9095d321efe3028ed22279ea7f467aa5ce75138c/data/dialogues/our_samples/final_queries_march_27_2026.json",
+        "https://github.com/milad621/ToolTurns/blob/9095d321efe3028ed22279ea7f467aa5ce75138c/src/tool_llm_dialogues/evaluate/dialogue/task_success.py",
+        "https://github.com/milad621/ToolTurns/blob/9095d321efe3028ed22279ea7f467aa5ce75138c/src/tool_llm_dialogues/release.py",
+        "https://github.com/milad621/ToolTurns/blob/9095d321efe3028ed22279ea7f467aa5ce75138c/docs/VERIFICATION.md",
+        "https://github.com/milad621/ToolTurns/blob/9095d321efe3028ed22279ea7f467aa5ce75138c/docs/REPRODUCTION.md",
+        "https://github.com/milad621/ToolTurns/blob/9095d321efe3028ed22279ea7f467aa5ce75138c/data/results/agents/opus48.json",
+        "https://github.com/milad621/ToolTurns/blob/9095d321efe3028ed22279ea7f467aa5ce75138c/data/results/checker_fixer/human_preferences.json"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.14925",
+      "status": "pending",
+      "checkedAt": "2026-11-13T04:22:03.677992+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.14952v1",
+    "url": "https://arxiv.org/abs/2611.14952v1",
+    "id": "live-8e624fa9557fbb80",
+    "title": "JoyFrontBench：动画会动还不够，把关键动作验收与平均分分开",
+    "summary": "JoyFrontBench用预先定义的关键任务、必保条件和完成度门槛，区分局部做得不错与整件作品真正可交付。五个模型在OpenHands上的平均任务分87.69%，整应用成功率却为51.52%；明确的SVG鼓手案例即使六条必保条件全过，仍因手臂形态和敲击同步不足而失败。它是通用前端评测，动效结论只来自对应子集。",
+    "insight": "代码动效应把结构、关键接触事件和视觉质量分开验收，并要求关键事件在同一产物、同一次运行中同时成立。可以借鉴按时间采样的证据和逐项失败定位，但自动审计只能检查记录/证据格式，不能替代对运动语义的独立判断。",
+    "limits": "已读完整方法、实验与附录，未运行作品或复现实验。本轮未找到可核作者代码仓库、固定评测实现或可下载数据；论文称public set不等于已核公开下载。人评只验证原子判断和pointwise得分，没有直接验证整应用成功判定。单组织中文需求、mock数据和人工阈值限制泛化。",
+    "organization": "JD.com",
+    "dateLabel": "2026-11-11 · arXiv v1",
+    "evidence": "全文方法、实验与附录已读；公开实现未定位，未复现",
+    "originalTitle": "JoyFrontBench: Evaluating Front-End Coding Agents through Goal-Oriented Acceptance Contracts",
+    "date": "2026-11-11",
+    "checkedAt": "2026-11-13T04:21:30Z",
+    "originalDate": "2026-11-11",
+    "paperOriginalDate": "2026-11-11T02:58:14Z",
+    "paperUpdatedAt": "2026-11-11T02:58:14Z",
+    "updatedAt": "2026-11-11T02:58:14Z",
+    "firstSeenAt": "2026-11-13T04:00:00Z",
+    "lastSeenAt": "2026-11-13T04:00:00Z",
+    "tags": [
+      "前端Agent",
+      "验收协议",
+      "动态验证",
+      "SVG动画",
+      "评测分母"
+    ],
+    "authors": [
+      "Xiaoyi Qiao",
+      "Yicheng Wang",
+      "Jianan Lin",
+      "Xiaoyang Ji",
+      "Dongyi Lv",
+      "Yidan Huang",
+      "Shi Suo",
+      "Shiying Fan",
+      "Nan Duan",
+      "Jiaqi Wang"
+    ],
+    "topics": [
+      "code2motion"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 · 首发记录",
+        "url": "https://arxiv.org/abs/2611.14952v1"
+      },
+      {
+        "label": "arXiv全文 · 方法与SVG动画案例",
+        "url": "https://arxiv.org/html/2611.14952v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "JoyFrontBench用预先定义的关键任务、必保条件和完成度门槛，区分局部做得不错与整件作品真正可交付。五个模型在OpenHands上的平均任务分87.69%，整应用成功率却为51.52%；明确的SVG鼓手案例即使六条必保条件全过，仍因手臂形态和敲击同步不足而失败。它是通用前端评测，动效结论只来自对应子集。",
+      "motivation": "一个前端或动画可以在很多局部项拿分，却在关键步骤上失效：例如保存后丢状态、鼓棒到达鼓面但鼓面没有同步响应。平均分不能说明主要目标是否完成。作者希望在生成前就写清哪些条件必须同时成立，保留部分完成的诊断价值，同时给出整件产物的验收结论。",
+      "novelty": "作者主张：把主要目标映射为生成前冻结的验收契约，让局部质量、关键任务和整应用成功成为三个不同指标。本站判断：价值在明确“必须同时成立”的条件，以及把证据补齐与产物修复分开；不是证明确定性审计能替代语义判断。测试集OpenHands五模型均值ATS87.69%、CTPR80.19%、ASR51.52%；GPT-5.6 Sol的ATS90.53最高而ASR55.71排第三，Qwen3.8 Max的ASR57.62最高，前三只差不到2个百分点且未给显著性区间。harness更换可改变排名，不能把这些数当模型本体或所有动效任务的稳定名次。",
+      "evidenceScope": "已读arXiv v1全文§3–4与附录A–F，首发2026-11-11T02:58:14Z；本轮核验时间不是发表时间。研究设计为5模型×2harness、测试70题、每条件3次计划运行，即每模型–harness 210次、每harness五模型1050次；ATS/CTPR是题内平均后题目等权，ASR是整产物二元验收，不是2596原子条件的全局通过率。全100题中13题属于SVG/Vector类别，但不等于13题全是动画；code2motion归属依据明确Q29原生SVG声明式动画及Q12/Q18/Q29时序失败分析，不归3D或代码视频。Q29是public集一个案例：ATS87.50%、6条必保全过、3个核心任务仅1个通过，两个未过任务完成率75%/50%；作者九时刻包围盒证据已读，未获得原SVG或重放。人评覆盖30题、726 pointwise条件与15 pairwise任务；原子一致83.47%、κ0.651，pairwise86.67%，并非整应用成功率的人工一致性。原始逐题/逐运行记录、作者固定代码、完整rubric、动画源文件本轮未定位：论文未提供项目链接，GitHub精确仓库搜索200返回0、HF同名数据搜索200为空、HF论文API404，仅说明本轮检索范围。未执行作者代码或复现。",
+      "limits": "已读完整方法、实验与附录，未运行作品或复现实验。本轮未找到可核作者代码仓库、固定评测实现或可下载数据；论文称public set不等于已核公开下载。人评只验证原子判断和pointwise得分，没有直接验证整应用成功判定。单组织中文需求、mock数据和人工阈值限制泛化。 80%由同一public集敏感性分析选取：该集86.6%的核心任务实际上要求全部条件过，调到75%/90%时五模型平均ASR变为58.22%/44.89%，不是自然常数。三轮同时含生成和judge随机性，不能单独归因模型不稳定；48.6%是五模型平均的70题条件中三次有过有败的比例，不是所有运行失败率。500 steps与iterations是各harness原生单位，不等于相同计算量；生成成本统计来自30题public集，不能移作70题测试成本。审计器只查记录/证据可采性，不证明语义真值；同一judge和public阈值选择、人评产物选择细节及未公开日志均限制独立验证。动效仅是通用前端基准的明确子集，未报告专门的动画连续质量或3D性能。",
+      "method": [
+        "从JD.com三十多位工程师和分析师访谈提炼需求，模型辅助去标识并去掉数据库、私有API等后端依赖；两人独立审规格/原子性/可观察性，第三人裁决，再借助参考实现手动走主流程迭代，最后冻结100题、764任务、2596原子条件。70题测试与30题public验证/诊断集分离；生成模型只看规格，不看rubric和参考作品。",
+        "每个模型–harness–题目安排三次独立生成与评测，使用新Docker工作区、同规格/网络策略和5小时上限；OpenHands最多500 iterations、OpenCode最多500 steps，但保留各自agent loop。作品提交后在只读挂载的独立容器评测，避免修评分记录时悄悄修改作品。",
+        "GPT-5.5 high依照任务协议，用构建/运行和Playwright采集交互、截图、状态、文件、网络及时间证据。pointwise原子条件给Pass/Fail；主观展示任务对照参考产物给Good/Same/Bad并对齐视口、路径、观察时刻。确定性审计器检查覆盖、证据存在和类型合规；最多三轮补证重判只修记录/证据，语义结论仍来自judge。",
+        "关键任务须全部必保条件通过且自身原子条件完成率≥80%；整应用还须能构建运行、所有关键任务在同一产物同一次运行中通过。ATS保留局部与展示分，CTPR统计关键任务通过，ASR统计整应用验收；按题内任务、三次运行、题目逐层平均，题目等权。缺失条件保留分母记零；基础设施失败先重跑，最终缺失整次运行仍在计划分母内记零。",
+        "在public集比较阈值并与人类裁决对照，再固定规则跑测试集。动效案例Q29要求单文件原生SVG的声明式章鱼鼓手；作者检查八臂角色、接触和目标同步响应，在九个时刻采样目标包围盒，并用同份记录中踩锤宽度确有变化作辅助证据。六条必保全过仍不免除形态及同步细节的完成度门槛。"
+      ],
+      "inspirations": [
+        "给代码动效建一个很小但明确的必保集：产物可运行、关键物体存在、指定时刻接触发生、接触后目标响应。外观评分另外保留；全部必保通过后再看自然度和细节完成率，不让配色或排版高分抵消关键动作错位。",
+        "把同步事件变成可检查的时间证据：预先规定接触前/接触时/接触后的采样点，记录对象状态、变换与截图，并加一个确实在运动的控制对象。包围盒九点不变只能证明这些采样点的结果，必要时补高频轨迹和连续播放，避免把有限采样当全程证明。",
+        "把生成方、判断方、记录审计方拆开保存版本和日志；补证时冻结作品，修作品则另开新运行。分别报告每题三次的成功率、全过/全败/混合分布及缺失计分，再用独立人工检查最终整应用判定，尤其核查自动judge是否错把证据齐全当语义正确。"
+      ],
+      "reviewedAt": "2026-11-13T04:21:30Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.14952v1",
+        "https://arxiv.org/html/2611.14952v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.14952",
+      "status": "pending",
+      "checkedAt": "2026-11-13T04:22:03.677992+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.15268v1",
+    "url": "https://arxiv.org/abs/2611.15268v1",
+    "id": "research-knowledge-harness-2611-15268",
+    "title": "知识留在规则里，可靠性练进权重：12B Agent如何共同改进技能与执行",
+    "summary": "作者让同一个Gemma 4 12B基座编辑技能规则，再用GRPO训练执行对话：两轮后，零售/航空任务的单次成功率由72.6%/56.0%升至85.1%/75.5%；四次全部成功的比例由48.2%/38.0%升至66.7%/60.0%。结果支持“规则补知识、权重提高稳定性”的分工，但只在一个模型、两个客服域中验证。",
+    "insight": "把“没有读到正确规则”和“读到仍执行不稳”分别诊断，才能决定该修改知识入口还是训练模型。这里最值得复用的是版本化规则、独立重测和稳定性指标；不应把有噪声的单次分数上涨当作规则已被证明正确。",
+    "limits": "已读全文及固定源码、公开任务与结果记录；仅重算作者记录的统计，未重跑对话或复核奖励。teacher-free指规则编辑和训练信号不用更强教师，环境仍用DeepSeek模拟用户，零售官方评测还用GPT-4.1判自然语言要求。官方实例未进训练/选点，但其公开知识点分布用于构造生成集；这是同域定制协议，不是跨域盲测或公共榜单成绩。",
+    "organization": "Brightendata",
+    "dateLabel": "2026-11-11 · arXiv v1",
+    "evidence": "全文与固定公开实现/任务/运行记录核验；自写统计复核，未复现实验",
+    "originalTitle": "Knowledge in the Harness, Reliability in the Weights: Teacher-Free Co-Evolution of an LLM Agent",
+    "date": "2026-11-11",
+    "checkedAt": "2026-11-13T04:24:49.161423+00:00",
+    "originalDate": "2026-11-11",
+    "paperOriginalDate": "2026-11-11T09:56:09Z",
+    "paperUpdatedAt": "2026-11-11T09:56:09Z",
+    "updatedAt": "2026-11-11T09:56:09Z",
+    "firstSeenAt": "2026-11-13T04:00:00Z",
+    "lastSeenAt": "2026-11-13T04:00:00Z",
+    "tags": [
+      "Harness演化",
+      "GRPO",
+      "技能规则",
+      "可靠性",
+      "验证集选择"
+    ],
+    "authors": [
+      "Yujia Zhang",
+      "Xinqi Ren",
+      "Shixiong Zhou",
+      "Jia Meng"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1",
+        "url": "https://arxiv.org/abs/2611.15268v1"
+      },
+      {
+        "label": "arXiv全文 · 方法与附录",
+        "url": "https://arxiv.org/html/2611.15268v1"
+      },
+      {
+        "label": "作者仓库 · 固定版本",
+        "url": "https://github.com/Brightendata/knowledge-in-the-harness/tree/afa23729961997764325aafb7e8bc080d50a7667"
+      },
+      {
+        "label": "规则编辑与程序检查",
+        "url": "https://github.com/Brightendata/knowledge-in-the-harness/blob/afa23729961997764325aafb7e8bc080d50a7667/src/rsi/harness_rsi/editor.py"
+      },
+      {
+        "label": "重测与归因回退",
+        "url": "https://github.com/Brightendata/knowledge-in-the-harness/blob/afa23729961997764325aafb7e8bc080d50a7667/src/rsi/harness_rsi/evolve.py"
+      },
+      {
+        "label": "Harness验证门",
+        "url": "https://github.com/Brightendata/knowledge-in-the-harness/blob/afa23729961997764325aafb7e8bc080d50a7667/src/rsi/pipeline/plugin_gate.py"
+      },
+      {
+        "label": "完整对话GRPO",
+        "url": "https://github.com/Brightendata/knowledge-in-the-harness/blob/afa23729961997764325aafb7e8bc080d50a7667/src/rsi/grpo/train.py"
+      },
+      {
+        "label": "权重检查点选择",
+        "url": "https://github.com/Brightendata/knowledge-in-the-harness/blob/afa23729961997764325aafb7e8bc080d50a7667/src/rsi/pipeline/model_gate.py"
+      },
+      {
+        "label": "官方任务结果记录",
+        "url": "https://github.com/Brightendata/knowledge-in-the-harness/tree/afa23729961997764325aafb7e8bc080d50a7667/results"
+      },
+      {
+        "label": "生成任务划分",
+        "url": "https://github.com/Brightendata/knowledge-in-the-harness/tree/afa23729961997764325aafb7e8bc080d50a7667/data"
+      },
+      {
+        "label": "主结果统计口径",
+        "url": "https://github.com/Brightendata/knowledge-in-the-harness/blob/afa23729961997764325aafb7e8bc080d50a7667/paper/tables.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "作者让同一个Gemma 4 12B基座编辑技能规则，再用GRPO训练执行对话：两轮后，零售/航空任务的单次成功率由72.6%/56.0%升至85.1%/75.5%；四次全部成功的比例由48.2%/38.0%升至66.7%/60.0%。结果支持“规则补知识、权重提高稳定性”的分工，但只在一个模型、两个客服域中验证。",
+      "motivation": "小模型客服Agent既可能没把政策里的条件用对，也可能明明读到规则却执行不稳定。只追加提示或只做RL难以区分这两种原因。论文在可核最终状态的客服任务中，让文本规则和模型权重分别改进，并观察规则移走后，训练是否真的把知识记进了权重。",
+      "novelty": "作者主张：无需更强模型替它写规则或示范训练，12B模型就能共同演化规则与权重；规则主要救回原先从未做对的任务，权重主要让已会任务做得稳定。本站判断：价值在于可观测的故障归因和按层验收。公开结果重计吻合主表；相对“完整政策放系统提示”的同模型参考Agent，最终零售/航空pass^1提高11.8/8.0个百分点，而相对自身skill起点是12.5/19.5点。两种基线必须区分：航空起点因政策拆分丢失跨skill依赖，部分收益是在修复这个缺陷。2×2是最终权重与规则的交叉组合，不是从头分别训练两条单层路线，不能据此认定分工在所有任务中成立。",
+      "evidenceScope": "已读arXiv v1 §3–6和附录A–E，首发2026-11-11 09:56:09 UTC。固定仓库afa23729961997764325aafb7e8bc080d50a7667实际读到规则编辑/反例检查/回退、两类gate、GRPO与配置；另以自写标准库程序解析22个公开官方结果文件，重计114/50任务、每题4次及主表分数，没有运行作者脚本或模型。生成集共2200题；独立核每域1100题、200/300/300/300划分，以及验证和各训练批之间task ID/customer不重叠；训练批之间仍有复用customer，不能称所有批次客户互斥。原文报告与官方客户/参考写入隔离，本轮未下载上游数据库重新执行完整隔离检验。评测是tau2-bench 1.0.1的同域定制设置，模拟用户DeepSeek-V4.1-Flash；作者前沿模型对照用H0、10月25日快照，并非全部换上改进后的H2。官方结果中的缺失reward按发布统计口径算失败，不从分母排除。",
+      "limits": "已读全文及固定源码、公开任务与结果记录；仅重算作者记录的统计，未重跑对话或复核奖励。teacher-free指规则编辑和训练信号不用更强教师，环境仍用DeepSeek模拟用户，零售官方评测还用GPT-4.1判自然语言要求。官方实例未进训练/选点，但其公开知识点分布用于构造生成集；这是同域定制协议，不是跨域盲测或公共榜单成绩。 验证门只要求S上涨：作者噪声模型中真实零增益的单次规则门仍有50%被接受，允许一次重试为75%；真实S下降1.5点时，重试规则门/三选一模型门的接受率约18.6%/21.5%。因此“通过门”不是改进证明。相同seed和温度0也未配对出相同对话，且按失败筛选的任务会回归均值；需要重跑控制，不能直接与收集时失败率比较。最终与前沿模型差异未显著，不等于性能等价；小样本、H0跨skill缺陷及不同历史推理回传方式限制比较。只测1基座、2域、2轮，未消融各个规则保护措施或从头单独演化一层。参考状态奖励可能遗漏确认等政策约束，LLM自审也无完备性保证。前缀树约七分之一的是重复token处理量；10^-5等价性只在float32测试模型验证，本轮未运行，不能当作所有bf16训练无数值误差或7倍端到端提速。源码/运行记录已公开；README称v1.0附LoRA权重，但本轮GitHub release API遇403限流，未下载权重核验。HF论文API返回404，不提供假定已可读的HF页。",
+      "method": [
+        "把政策原文逐字拆成入口文档和按数据库写操作划分的skill，通过load_skill按需读取。政策正文、目录、路由表和工具均不可编辑，只有文末规则区可增改删，冲突时原政策优先。每域准备200个验证任务和三批各300个训练任务，两轮实验只使用前两批。",
+        "当前系统对新批次每任务运行4次；固定基座M0根据失败会话、实际与参考写入差异、奖励组件和skill读取时机诊断。每步合并最多4条规则，重试最多3条；结构/引用/实例信息检查后做两次反例自审。当前版与候选版各对失败及成功控制任务重跑6次，总成功数至少多4才保留；某任务严重退步且失败推理引用该规则时，再归因回退。",
+        "先用每域200个验证任务、每任务8次检验规则版本，比较S=100×(0.8×pass^1+0.2×pass^4)。只有S更高才采用，失败最多重新演化一次。pass^4表示同一任务独立运行4次都成功，绝不是4次里至少成功一次；这个门是有噪声的选择规则，不是显著性检验。",
+        "在接受的规则下重新测任务难度，按全失败/部分成功/全成功分别分配16/8/5条rollout。用组内奖励归一化的GRPO训练rank-32 LoRA，覆盖推理、回复、skill与工具调用；token、对话、任务组分层平均，配PPO/负优势双裁剪，无KL惩罚。前缀树合并重复上下文以训练完整多轮对话，并过滤梯度异常的序列。",
+        "在相同验证集上比较第3、3.5、4 epoch的权重，选择得分高于当前版本的最佳检查点，再开始下一轮新批次。最后用未参与版本选择的官方零售114题和航空50题各跑4次；交叉组合原/新规则与原/新权重，观察移去任一层后的能力和可靠性变化。"
+      ],
+      "inspirations": [
+        "为Agent错误增加“规则不存在、没加载、表达错误、读到未执行”四类标签，并把错误时真正可见的skill版本写入日志。先修索引/依赖，再决定是否做RL；用移除规则的测试检查知识是否真的内化，别把在上下文里照做当成记住。",
+        "维护一组独立于触发修复事件的成功控制任务，当前版与候选版都重新运行；同时报告pass^1与四次全成功，给反复试候选设预算。保留未接受版本和回退原因，避免在有噪声的验证分数上不断挑最高值造成“自动改进”的错觉。",
+        "将规则修改和模型训练的成本分别计量：这篇每轮两域约5万次对话、4张80GB GPU约84小时。部署前用真实业务留出集验证，包括用户模拟器变化、未覆盖流程与旧规则撤除；视频/代码Agent可借鉴验收结构，但本文没有这些场景的效果证据。"
+      ],
+      "reviewedAt": "2026-11-13T04:24:49.161423+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.15268v1",
+        "https://arxiv.org/html/2611.15268v1",
+        "https://github.com/Brightendata/knowledge-in-the-harness/tree/afa23729961997764325aafb7e8bc080d50a7667",
+        "https://github.com/Brightendata/knowledge-in-the-harness/blob/afa23729961997764325aafb7e8bc080d50a7667/src/rsi/harness_rsi/editor.py",
+        "https://github.com/Brightendata/knowledge-in-the-harness/blob/afa23729961997764325aafb7e8bc080d50a7667/src/rsi/harness_rsi/evolve.py",
+        "https://github.com/Brightendata/knowledge-in-the-harness/blob/afa23729961997764325aafb7e8bc080d50a7667/src/rsi/pipeline/plugin_gate.py",
+        "https://github.com/Brightendata/knowledge-in-the-harness/blob/afa23729961997764325aafb7e8bc080d50a7667/src/rsi/grpo/train.py",
+        "https://github.com/Brightendata/knowledge-in-the-harness/blob/afa23729961997764325aafb7e8bc080d50a7667/src/rsi/pipeline/model_gate.py",
+        "https://github.com/Brightendata/knowledge-in-the-harness/tree/afa23729961997764325aafb7e8bc080d50a7667/results",
+        "https://github.com/Brightendata/knowledge-in-the-harness/tree/afa23729961997764325aafb7e8bc080d50a7667/data",
+        "https://github.com/Brightendata/knowledge-in-the-harness/blob/afa23729961997764325aafb7e8bc080d50a7667/paper/tables.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.15268",
+      "status": "pending",
+      "checkedAt": "2026-11-13T04:22:03.677992+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/ibm-granite/llmon-an-llm-native-markup-language-now-in-granite",
+    "url": "https://huggingface.co/blog/ibm-granite/llmon-an-llm-native-markup-language-now-in-granite",
+    "id": "update-granite-llmon-preview-20261112",
+    "title": "Granite LLMON预览：让指令与数据按引用关系进入Agent上下文",
+    "summary": "IBM发布Granite 4.1的3B/8B LLMON实验预览与工具包：将指令、数据、约束分块，并用exec引用明确本轮该读哪些输入、执行哪条任务。它把结构与依赖关系纳入后训练，面向间接提示注入及复杂Agent上下文，但不是强制安全隔离。",
+    "insight": "作者主张保留分隔token、可寻址块和执行引用可提升结构理解及静态间接注入鲁棒性，同时维持总体能力。本站判断：研究价值是把应用已知的指令/资料边界显式传给模型，并训练它遵循这种依赖；不能把换一种序列化格式直接等同于安全保证或全任务能力提升。",
+    "limits": "实验预览明确不面向生产；权限规则是学习到的行为，不是强制保证。OPI/ASB/StruQ所述证据针对静态间接注入，不能外推到多轮自适应攻击。模型卡通用分项有升有降，例如8B CRUXEval-O为36.88、对应Instruct为47.63，不能概括为每项无损。本站未下载权重、运行模型/训练或复现攻击；本次未精读关联旧论文的全部实验，未采用宣传图的相对改善数字。",
+    "organization": "IBM Granite",
+    "dateLabel": "2026-11-12 · 3B/8B实验预览发布",
+    "evidence": "官方全文、固定模型卡与模板已核；未运行模型或复现安全评测",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-13T04:25:00.604835+00:00",
+    "firstSeenAt": "2026-11-12T22:00:01Z",
+    "lastSeenAt": "2026-11-13T04:00:00Z",
+    "tags": [
+      "LLMON",
+      "Granite 4.1",
+      "结构化上下文",
+      "提示注入",
+      "实验预览"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "IBM Granite官方 · 11月12日实验预览发布",
+        "url": "https://huggingface.co/blog/ibm-granite/llmon-an-llm-native-markup-language-now-in-granite"
+      },
+      {
+        "label": "3B固定模型卡 · 用法、评测及限制",
+        "url": "https://huggingface.co/ibm-granite/granite-4.1-3b-llmon-preview/blob/55a14cac002854bb64c7f465c30da29209b170c8/README.md"
+      },
+      {
+        "label": "8B固定模型卡 · 用法、评测及限制",
+        "url": "https://huggingface.co/ibm-granite/granite-4.1-8b-llmon-preview/blob/e1787b0329a1abf7e58337a9988a68884a5ec629/README.md"
+      },
+      {
+        "label": "3B固定聊天模板 · 指令与输入绑定",
+        "url": "https://huggingface.co/ibm-granite/granite-4.1-3b-llmon-preview/blob/55a14cac002854bb64c7f465c30da29209b170c8/chat_template.jinja"
+      },
+      {
+        "label": "作者公开仓库 · 固定版本语言与转换说明",
+        "url": "https://github.com/generative-computing/llmon/blob/0b0d7bd8b77f32c52050a037c3d3608788ba506d/llmon/lang/README.md"
+      },
+      {
+        "label": "作者固定ScienceWorld LoRA示例 · 仅静态阅读",
+        "url": "https://github.com/generative-computing/llmon/blob/0b0d7bd8b77f32c52050a037c3d3608788ba506d/llmon/examples/lora-finetuning/byo-vocab_LoRA_scienceworld.ipynb"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "IBM发布Granite 4.1的3B/8B LLMON实验预览与工具包：将指令、数据、约束分块，并用exec引用明确本轮该读哪些输入、执行哪条任务。它把结构与依赖关系纳入后训练，面向间接提示注入及复杂Agent上下文，但不是强制安全隔离。",
+      "motivation": "Agent上下文会混合用户任务、检索资料、历史轮次和工具回包；仅靠角色标签或普通字符串，模型还需自行猜测哪些是命令、哪些是被分析的材料，以及任务对应哪个数据块。LLMON试图把这些已知结构和依赖显式编码并纳入训练。",
+      "novelty": "作者主张保留分隔token、可寻址块和执行引用可提升结构理解及静态间接注入鲁棒性，同时维持总体能力。本站判断：研究价值是把应用已知的指令/资料边界显式传给模型，并训练它遵循这种依赖；不能把换一种序列化格式直接等同于安全保证或全任务能力提升。",
+      "evidenceScope": "已读IBM官方发布全文、3B/8B固定模型卡全文、两模型相同的固定聊天模板，以及作者仓库固定版本的语言/转换与聊天渲染说明相关章节、ScienceWorld notebook说明和配置。两HF模型API公开且非gated，模型卡许可证Apache-2.0；只读取元数据与文本，未下载权重。原页和模型卡发布日为2026-11-12，RSS为19:07:35Z；仓库创建于10月不当作本次发布日。评测数字均为作者报告，verified仅指来源核验。",
+      "limits": "实验预览明确不面向生产；权限规则是学习到的行为，不是强制保证。OPI/ASB/StruQ所述证据针对静态间接注入，不能外推到多轮自适应攻击。模型卡通用分项有升有降，例如8B CRUXEval-O为36.88、对应Instruct为47.63，不能概括为每项无损。本站未下载权重、运行模型/训练或复现攻击；本次未精读关联旧论文的全部实验，未采用宣传图的相对改善数字。",
+      "method": [
+        "从Granite 4.1 base而非已发布Instruct权重开始后训练；在tokenizer加入六种保留分隔token，把指令、数据和要求表示为带标签与地址的块，继续通过聊天模板组织角色和轮次。",
+        "由应用构造exec引用：instruction/system是权威指令，input指向要阅读的数据、文档、工具定义或结果。数据的exec=True表示本轮要使用该输入，不把其中命令升级为指令；False仍保留在上下文但不被引用。普通user.content会被模板视为任务指令，应用必须先正确区分可信任务与外部资料。",
+        "将聊天、多轮、RAG和工具调用训练语料重新序列化，并加入不被exec引用的干扰指令/数据，保持目标回答不变，让模型学习按引用关系选择内容。",
+        "官方训练说明再接五阶段GRPO，覆盖推理、RLHF、知识校准与数学，最后用模型遭遇注入后的回答构造1000对on-policy偏好做DPO。这里是官方流程说明，不是本站可重复训练配方。",
+        "工具包提供JSON转换与聊天渲染；ScienceWorld示例额外用LoRA学习规划词汇，再将输出动作经匹配器送入环境。它属于新增监督与执行流程的示范，不能仅凭与未训练基线的差距归因于标记格式；本轮只读固定notebook。"
+      ],
+      "inspirations": [
+        "为RAG或浏览Agent保留任务、约束、文档和工具结果的独立字段与来源关系；构造同一资料正确绑定、错绑和未绑定三个版本，分别检查任务完成与攻击成功，避免只测模型是否拒绝。",
+        "固定底座、训练数据、工具预算和攻击集，比较普通模板、显式结构、再加干扰训练的增量；同时报告合法任务成功率、静态注入与多轮自适应攻击表现，不用单一鲁棒性分数代替整体可用性。",
+        "给时间线/CAD等结构化Agent设计领域词汇时，同时测格式可解析、引用一致和实际动作成功；把LoRA监督、动作匹配器和序列化格式拆开对照，避免把执行端修复或新增训练的收益误归到表示方法。"
+      ],
+      "reviewedAt": "2026-11-13T04:25:00.604835+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/blog/ibm-granite/llmon-an-llm-native-markup-language-now-in-granite",
+        "https://huggingface.co/ibm-granite/granite-4.1-3b-llmon-preview/blob/55a14cac002854bb64c7f465c30da29209b170c8/README.md",
+        "https://huggingface.co/ibm-granite/granite-4.1-8b-llmon-preview/blob/e1787b0329a1abf7e58337a9988a68884a5ec629/README.md",
+        "https://huggingface.co/ibm-granite/granite-4.1-3b-llmon-preview/blob/55a14cac002854bb64c7f465c30da29209b170c8/chat_template.jinja",
+        "https://github.com/generative-computing/llmon/blob/0b0d7bd8b77f32c52050a037c3d3608788ba506d/llmon/lang/README.md",
+        "https://github.com/generative-computing/llmon/blob/0b0d7bd8b77f32c52050a037c3d3608788ba506d/llmon/examples/lora-finetuning/byo-vocab_LoRA_scienceworld.ipynb"
+      ]
+    }
   }
 ]
