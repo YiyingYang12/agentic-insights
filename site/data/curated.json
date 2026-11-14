@@ -17367,5 +17367,354 @@
       "status": "pending",
       "checkedAt": "2026-11-14T10:23:39.533773+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.16861v1",
+    "url": "https://arxiv.org/abs/2611.16861v1",
+    "id": "live-b336ec294e395892",
+    "title": "Visual Cipher Bench：先发现图像规则，再验证执行",
+    "summary": "Visual Cipher Bench用40道原创视觉谜题，考察Agent能否从图像自行发现规则，再用代码执行与交叉检验。8模型的29种配置共3480次独立尝试，最佳配置平均准确率26.7%；10题提示对照中，提供机制线索后7.8%升至55.6%，提示规则发现值得单独评测。",
+    "insight": "作者主张：长程代码能力未自动迁移为视觉规则发现能力。本站判断：最有价值的是把“发现规则”与“按规则执行”拆开。提示实验每条件只有10题×3个GPT配置×3次=90次，7/90变50/90，超时51次降至18次；不能与全40题最佳配置的26.7%直接混比分母。机制提示缩小假设空间并给出表示方式，支持规则搜索是瓶颈之一，但不是排除感知、知识或执行问题的因果证明。",
+    "limits": "已读原文方法、结果及附录A，并静态核对固定代码提交；未执行Agent、容器或复现实验。40题为手工构建，含英语词汇、摩斯与盲文等外部知识；作者原创声明不等于训练污染审计。每配置120次是三次独立运行的平均准确率，不是pass@3；模型使用不同runner和不同effort配置数，且未等算力/令牌预算，不能据此作普遍模型排名。两位专家与oracle 40/40是作者按预设机制的检查，不是独立盲测人类基线或完备唯一性证明。提示对照仅10题、3个GPT配置，未给置信区间；代表性失败轨迹无系统编码分母，不能量化某类失败占比。代码与参考答案可公开读取不等于隔离在实际运行中已验证，评测时须避免把完整仓库或答案挂给Agent。",
+    "organization": "Einsia.AI / 清华大学等",
+    "dateLabel": "2026-11-12 · arXiv v1",
+    "evidence": "全文方法/结果及固定提交静态核验，未运行复现",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-14T16:29:35.626385+00:00",
+    "paperOriginalDate": "2026-11-12T14:33:46Z",
+    "paperUpdatedAt": "2026-11-12T14:33:46Z",
+    "updatedAt": "2026-11-12T14:33:46Z",
+    "firstSeenAt": "2026-11-13T10:00:01Z",
+    "lastSeenAt": "2026-11-14T16:00:00Z",
+    "tags": [
+      "视觉推理",
+      "规则发现",
+      "长程Agent",
+      "精确答案评测"
+    ],
+    "authors": [
+      "Deyao Hong",
+      "Jiayi Jiang",
+      "Yuchun Chen",
+      "Yixuan Shi",
+      "Wenyi Li",
+      "Zheng Jiang",
+      "Chengxing Xie",
+      "Mingyu Su",
+      "Qingle Liu",
+      "Mingju Gao",
+      "Yizhe Chi",
+      "Youjie Zheng",
+      "Calvin Xiao",
+      "Kaisen Yang",
+      "Huan-ang Gao"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "此前候选核验来源",
+        "url": "https://arxiv.org/abs/2611.16861"
+      },
+      {
+        "label": "arXiv v1 · 首发记录",
+        "url": "https://arxiv.org/abs/2611.16861v1"
+      },
+      {
+        "label": "原论文 · 方法与结果",
+        "url": "https://arxiv.org/html/2611.16861v1"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://lab.einsia.ai/visual-cipher-bench/"
+      },
+      {
+        "label": "作者公开仓库",
+        "url": "https://github.com/Einsia/Visual-Cipher-Bench"
+      },
+      {
+        "label": "固定提交 · 评测协议",
+        "url": "https://github.com/Einsia/Visual-Cipher-Bench/blob/ebdd39e1de5105c5f00ee8073c2f43e4819a3a79/docs/EVALUATION.md"
+      },
+      {
+        "label": "固定提交 · 数据与隔离约定",
+        "url": "https://github.com/Einsia/Visual-Cipher-Bench/blob/ebdd39e1de5105c5f00ee8073c2f43e4819a3a79/docs/SCHEMA.md"
+      },
+      {
+        "label": "固定提交 · 代表性任务评分器",
+        "url": "https://github.com/Einsia/Visual-Cipher-Bench/blob/ebdd39e1de5105c5f00ee8073c2f43e4819a3a79/tasks/knowledge-decoding/closed-stock/tests/grade.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Visual Cipher Bench用40道原创视觉谜题，考察Agent能否从图像自行发现规则，再用代码执行与交叉检验。8模型的29种配置共3480次独立尝试，最佳配置平均准确率26.7%；10题提示对照中，提供机制线索后7.8%升至55.6%，提示规则发现值得单独评测。",
+      "motivation": "代码任务通常给明确文字规格和运行反馈，视觉问题却可能连状态表示与规则都未说明。研究希望测量Agent能否反复看图、保留规则假设、用工具推演，并用多个线索检验，而不是只执行已知规则。",
+      "novelty": "作者主张：长程代码能力未自动迁移为视觉规则发现能力。本站判断：最有价值的是把“发现规则”与“按规则执行”拆开。提示实验每条件只有10题×3个GPT配置×3次=90次，7/90变50/90，超时51次降至18次；不能与全40题最佳配置的26.7%直接混比分母。机制提示缩小假设空间并给出表示方式，支持规则搜索是瓶颈之一，但不是排除感知、知识或执行问题的因果证明。",
+      "evidenceScope": "已读arXiv v1 §2、§3.1–3.4、结论与附录A，核对任务规模、提示条件、预算和分母；首发2026-11-12T14:33:46Z。核验作者项目页及公开仓库固定提交ebdd39e1de5105c5f00ee8073c2f43e4819a3a79，静态阅读EVALUATION/SCHEMA/任务目录与Closed Stock的Dockerfile、task.toml、grade.py。未逐图检查全部67张题图、未验证所有参考资源或运行容器。verified仅指来源核验。",
+      "limits": "已读原文方法、结果及附录A，并静态核对固定代码提交；未执行Agent、容器或复现实验。40题为手工构建，含英语词汇、摩斯与盲文等外部知识；作者原创声明不等于训练污染审计。每配置120次是三次独立运行的平均准确率，不是pass@3；模型使用不同runner和不同effort配置数，且未等算力/令牌预算，不能据此作普遍模型排名。两位专家与oracle 40/40是作者按预设机制的检查，不是独立盲测人类基线或完备唯一性证明。提示对照仅10题、3个GPT配置，未给置信区间；代表性失败轨迹无系统编码分母，不能量化某类失败占比。代码与参考答案可公开读取不等于隔离在实际运行中已验证，评测时须避免把完整仓库或答案挂给Agent。",
+      "method": [
+        "设计四类各10题：空间模拟、逻辑规划、规则归纳、知识解码；40题共67张图，每题1–3张，只配统一提交指令，不把类别或参考解交给Agent。两位专家按作者机制复核题目，参考求解器全部通过；这不替代独立人类作答实验。",
+        "每次使用固定图像、1小时、2核/4GB、无GPU的隔离任务环境；允许裁剪、变换图像和写运行代码，因而仍有工具执行结果，但没有答案正确性反馈。Harbor 0.24.0统一外层，GPT配置用Codex 0.163.0，其余用Claude Code 2.1.296，runner差异须随成绩报告。",
+        "最终写answer.txt，由独立验证器做二值精确匹配：NFKC、去空白、转大写，字母数字答案允许限定分隔符；无答案、超时或非法文件记0。固定代码将参考材料放在solution/tests，任务镜像只复制图片；本站仅静态查验此设计，未验证运行时隔离。",
+        "对8模型的29种effort配置，每配置40题×3次独立运行，共3480次；准确率分母120，类别分母30。另在随机抽出的10题上，对3个GPT配置各跑3次，对照一句机制提示与无提示，保持1小时预算，并定性检查代表性错误和超时轨迹。"
+      ],
+      "inspirations": [
+        "给视觉Agent评测增设“无提示、表示提示、机制提示、已知规则执行”四级对照，并固定题目、模型和工具预算；记录准确率、超时与提示信息量，避免把得到更强规格后的提升全归因于推理能力。",
+        "构建跨线索假设表：保留多个局部可行规则，逐项用未参与拟合的线索否证，再调用程序搜索。Closed Stock的局部词义歧义需全局闭环约束才能消除，启发把“写出代码”与“证明规则覆盖全部线索”分开验收。",
+        "发布逐题三次结果、全部失败与预算，区分平均准确率、pass@3和最佳一次；将规则发现失败、知识缺口、表示错误、执行失败分别标注，并报告标注分母。后续扩题时保留原始40题快照，避免难度或答案泄漏变化被误算成模型进步。"
+      ],
+      "reviewedAt": "2026-11-14T16:29:35.626385+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.16861v1",
+        "https://arxiv.org/html/2611.16861v1",
+        "https://lab.einsia.ai/visual-cipher-bench/",
+        "https://github.com/Einsia/Visual-Cipher-Bench",
+        "https://github.com/Einsia/Visual-Cipher-Bench/blob/ebdd39e1de5105c5f00ee8073c2f43e4819a3a79/docs/EVALUATION.md",
+        "https://github.com/Einsia/Visual-Cipher-Bench/blob/ebdd39e1de5105c5f00ee8073c2f43e4819a3a79/docs/SCHEMA.md",
+        "https://github.com/Einsia/Visual-Cipher-Bench/blob/ebdd39e1de5105c5f00ee8073c2f43e4819a3a79/tasks/knowledge-decoding/closed-stock/tests/grade.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.16861",
+      "status": "pending",
+      "checkedAt": "2026-11-14T16:31:09.707688+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.40333",
+    "url": "https://arxiv.org/abs/2610.40333",
+    "id": "paper-rfw-a-2610-40333",
+    "title": "RFW-A：让Agent先写类别生成器，再批量生产可编辑关节资产",
+    "summary": "RFW-A让Agent先把零件程序整理成可复用的类别生成器，再按种子采样关节资产；作者报告402,410个资产、500多个类别。真正可借鉴的是把推理成本前置到生成器与回归测试：同一程序还能改结构、数量、尺寸和材质，但公开网站的演示不等于完整生成器已开放。",
+    "insight": "作者主张：将逐资产Agent建模改为“Agent构造类别程序＋程序化批量采样”，通过组件复用、结构蓝图和失败回归兼顾规模与有效性。本站判断：值得迁移的是把一次性创作结果变成参数化资产工厂，并把修复积累成测试集；优势取决于同类资产能否共享规则及后续有效产量，不能外推为任意物体零成本生成。",
+    "limits": "所有分数为作者报告，本站未运行、渲染或复现。本文是10/29首发的30天窗口补读，不是11/15新发表。402,410资产的100%运动学通过只覆盖规定的21态/关节检查，不证明所有参数组合、联合运动或真实动力学正确。Core-200预先筛选1–20可动关节、每源抽200且失败不替换；84.846%是逐资产平均的9态单关节扫描“无新增碰撞”比例，其他关节静止、相对休止态测侵入增长并屏蔽局部连接接触，不能说全程无碰撞。四引擎交集100%导入/99.8%DoF映射/99.5%稳定分别有资产或关节分母；稳定只指固定根、零驱动力1秒有限状态，另有Genesis10秒检查，不能合并成通用sim-ready保证。$10.62生成器API成本按200输出摊为$0.053，与10类别各20条成功Articraft记录均值$1.237比较；程序执行/渲染计算未计，成功记录基线与真实失败成本不完整，规模和修复成本改变结论。六种材质物性由模型估计并做范围筛选，非实验测量。下游固定模型/更新数但训练源大小和重复频率不同；PM抽样占比0.1，跨源近重复及对全部PM/RFW训练几何的排重未完成；OOD旧结果与新Articraft在不同机器评测，未重跑数值一致性，且OOD来自发布语料。OOD整体物体Chamfer为0.02403，差于Articraft的0.02343，不能说所有指标都提升。真实迁移只有5任务×10次/配置，31/50→40/50为小样本观察，未建立多策略种子或显著性。作者项目动态资源有ModelScope数据链接，但研究Code仍为null/SOON；固定网站代码只证明预制GLB切换与浏览器MuJoCo接口，不能证明完整Agent生成/验证实现开放。ModelScope仅取到HTTP200壳，未核文件清单、授权或全量下载。",
+    "dateLabel": "2026-10-29 · arXiv v1；11月15日补全解读",
+    "evidence": "原论文方法/实验/附录与固定网站源码静态核验，未运行或复现",
+    "originalTitle": "RFW-A: Agentic Procedural Generation of 400K Articulated Assets over 500 Categories",
+    "date": "2026-10-29",
+    "checkedAt": "2026-11-14T16:29:55.493291+00:00",
+    "originalDate": "2026-10-29",
+    "paperOriginalDate": "2026-10-29T15:58:15Z",
+    "paperUpdatedAt": "2026-10-29T15:58:15Z",
+    "updatedAt": "2026-10-29T15:58:15Z",
+    "firstSeenAt": "2026-11-14T16:29:55.493291+00:00",
+    "tags": [
+      "程序化资产",
+      "类别生成器",
+      "关节验证",
+      "成本摊销",
+      "数据增广"
+    ],
+    "authors": [
+      "Lyu, Yuanbo",
+      "Pan, Changjian",
+      "Zhang, Saining",
+      "Yang, Yi",
+      "Li, Peishuo",
+      "Li, Zhiheng",
+      "Liu, Jialu",
+      "Chen, Junhao",
+      "Weng, Jiawei",
+      "Gao, Yupeng",
+      "Xiao, Weiqing",
+      "Li, Wenyi",
+      "Guo, Jiarui",
+      "Zhang, Rui",
+      "Du, Jingrun",
+      "Lin, Weiyi",
+      "Meng, Zenan",
+      "Wei, Hu",
+      "Qu, Lin",
+      "Zhang, Zongzheng",
+      "Zhao, Hao",
+      "Li, Chaojian"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "sources": [
+      {
+        "label": "arXiv原始入口",
+        "url": "https://arxiv.org/abs/2610.40333"
+      },
+      {
+        "label": "arXiv v1方法与实验",
+        "url": "https://arxiv.org/html/2610.40333v1"
+      },
+      {
+        "label": "作者项目与公开资产说明",
+        "url": "https://brain-labbb.github.io/RFW_A_web/"
+      },
+      {
+        "label": "固定网站发布说明",
+        "url": "https://github.com/brain-labbb/RFW_A_web/blob/f33565cc66b67a7f5aa3665cae2b9c5efc7379cc/README.md"
+      },
+      {
+        "label": "固定资源入口与Code状态",
+        "url": "https://github.com/brain-labbb/RFW_A_web/blob/f33565cc66b67a7f5aa3665cae2b9c5efc7379cc/public/data/resources.json"
+      },
+      {
+        "label": "固定编辑比较实现",
+        "url": "https://github.com/brain-labbb/RFW_A_web/blob/f33565cc66b67a7f5aa3665cae2b9c5efc7379cc/src/editing.js"
+      },
+      {
+        "label": "固定编辑预制资产元数据",
+        "url": "https://github.com/brain-labbb/RFW_A_web/blob/f33565cc66b67a7f5aa3665cae2b9c5efc7379cc/public/data/editing.json"
+      },
+      {
+        "label": "固定浏览器仿真接口",
+        "url": "https://github.com/brain-labbb/RFW_A_web/blob/f33565cc66b67a7f5aa3665cae2b9c5efc7379cc/src/simulation.js"
+      },
+      {
+        "label": "固定180例浏览元数据",
+        "url": "https://github.com/brain-labbb/RFW_A_web/blob/f33565cc66b67a7f5aa3665cae2b9c5efc7379cc/public/data/explorer.json"
+      },
+      {
+        "label": "作者链接的数据门户（本轮仅核入口）",
+        "url": "https://modelscope.cn/datasets/RoboFlywheel/RoboFlywheel-Articulation"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "RFW-A让Agent先把零件程序整理成可复用的类别生成器，再按种子采样关节资产；作者报告402,410个资产、500多个类别。真正可借鉴的是把推理成本前置到生成器与回归测试：同一程序还能改结构、数量、尺寸和材质，但公开网站的演示不等于完整生成器已开放。",
+      "motivation": "逐个资产调用Agent重复规划、建模和修复，成本随数量增长；同类物体却常共享零件构造、连接与参数依赖。作者希望让Agent先总结一套能覆盖类别变体的可执行规则，再把规模化生产和定向修改交给确定性程序。",
+      "novelty": "作者主张：将逐资产Agent建模改为“Agent构造类别程序＋程序化批量采样”，通过组件复用、结构蓝图和失败回归兼顾规模与有效性。本站判断：值得迁移的是把一次性创作结果变成参数化资产工厂，并把修复积累成测试集；优势取决于同类资产能否共享规则及后续有效产量，不能外推为任意物体零成本生成。",
+      "evidenceScope": "实际阅读原论文§3–6、附录A.1–A.3、A.5–A.9、A.13–A.14、A.16–A.17与C，核表2/4/6/9/15–16及统计口径。匿名读取作者项目并由仓库HTML currentOid固定网站提交f33565cc66b67a7f5aa3665cae2b9c5efc7379cc；静态读README、resources、editing.js/JSON、explorer JSON和simulation.js，未执行脚本或打开仿真。资源JSON与初始HTML占位文案不同，按实际资源确认Paper/Dataset链接而Code仍为空。网站展示30类别×6种子=180例，编辑JSON列5个对象（README仍称4个），均为已生成GLB对照；未把其当完整研究代码或402,410全量下载。未播放视频、加载权重或下载全量资产。verified仅指来源核验。",
+      "limits": "所有分数为作者报告，本站未运行、渲染或复现。本文是10/29首发的30天窗口补读，不是11/15新发表。402,410资产的100%运动学通过只覆盖规定的21态/关节检查，不证明所有参数组合、联合运动或真实动力学正确。Core-200预先筛选1–20可动关节、每源抽200且失败不替换；84.846%是逐资产平均的9态单关节扫描“无新增碰撞”比例，其他关节静止、相对休止态测侵入增长并屏蔽局部连接接触，不能说全程无碰撞。四引擎交集100%导入/99.8%DoF映射/99.5%稳定分别有资产或关节分母；稳定只指固定根、零驱动力1秒有限状态，另有Genesis10秒检查，不能合并成通用sim-ready保证。$10.62生成器API成本按200输出摊为$0.053，与10类别各20条成功Articraft记录均值$1.237比较；程序执行/渲染计算未计，成功记录基线与真实失败成本不完整，规模和修复成本改变结论。六种材质物性由模型估计并做范围筛选，非实验测量。下游固定模型/更新数但训练源大小和重复频率不同；PM抽样占比0.1，跨源近重复及对全部PM/RFW训练几何的排重未完成；OOD旧结果与新Articraft在不同机器评测，未重跑数值一致性，且OOD来自发布语料。OOD整体物体Chamfer为0.02403，差于Articraft的0.02343，不能说所有指标都提升。真实迁移只有5任务×10次/配置，31/50→40/50为小样本观察，未建立多策略种子或显著性。作者项目动态资源有ModelScope数据链接，但研究Code仍为null/SOON；固定网站代码只证明预制GLB切换与浏览器MuJoCo接口，不能证明完整Agent生成/验证实现开放。ModelScope仅取到HTTP200壳，未核文件清单、授权或全量下载。",
+      "method": [
+        "从已有带可执行CAD/3D建模程序的资产开始：Source Agent按类别提取组件代码并记录来源；Architect Agent把可选/重复组件、参数、连接和关节规则组织为类别蓝图图，显式写出尺寸与位置依赖。",
+        "Code Agent将蓝图编译为类别生成器。给定种子先选择组件并采样自由参数，再解析相关尺寸/放置/关节参数，最后执行组件程序装配，导出视觉/碰撞几何、刚体、关节和URDF，保留程序版本、种子与配置。",
+        "发布前同时检查蓝图分支覆盖与可执行性：先在不建几何时多次覆盖每项选择，再逐步扩大确定种子测试并补参数边界/部分组合。检查几何、连通、URDF和多个关节状态；失败定位到零件/关节/构造步骤，Repair Agent分别修改蓝图或实现，保留失败和已通过案例重测。通过的是保留测试集与声明分支覆盖，不是穷举证明。",
+        "冻结程序后不再逐资产调用模型。离线把视觉表面绑定材质类别，按种子从8,295个PBR条目/124叶类/18族中取样，并带出六种估计物性。结构、数量、尺寸和材质编辑修改配置后重跑同一生成器，相关参数重新解析。",
+        "分层评估资产与下游用途：全量检查文件/运动学，Core-200做几何、关节扫描与四仿真器测试；Particulate-B固定150K检查点比较数据增广，255域内/774类别OOD、3训练×5评估种子。机器人每任务固定500条仿真示范，比较单检索资产、加4或9个程序编辑变体，最后各做10次真实任务。"
+      ],
+      "inspirations": [
+        "把code2-3d创作从“每次生成成品”升级为“类别生成器＋显式参数依赖＋失败回归集”：先衡量有效种子产出、修复次数与复杂参数组合覆盖，再决定是否值得批量采样。",
+        "验收可编辑资产时分开记录编译/URDF通过、关节运动、碰撞、材质物性准确性与真实任务成绩；编辑后复跑原通过种子，防止改尺寸时破坏连接或把有限状态检查当物理保证。",
+        "用固定预算区分“更多数量”与“更好变化”：匹配训练样本数/类别覆盖并建立独立实物或外部数据留出；成本同时记生成器失败与修复、模型调用、几何执行和渲染，报告在不同有效产量下的摊销拐点。"
+      ],
+      "reviewedAt": "2026-11-14T16:29:55.493291+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2610.40333",
+        "https://arxiv.org/html/2610.40333v1",
+        "https://brain-labbb.github.io/RFW_A_web/",
+        "https://github.com/brain-labbb/RFW_A_web/blob/f33565cc66b67a7f5aa3665cae2b9c5efc7379cc/README.md",
+        "https://github.com/brain-labbb/RFW_A_web/blob/f33565cc66b67a7f5aa3665cae2b9c5efc7379cc/public/data/resources.json",
+        "https://github.com/brain-labbb/RFW_A_web/blob/f33565cc66b67a7f5aa3665cae2b9c5efc7379cc/src/editing.js",
+        "https://github.com/brain-labbb/RFW_A_web/blob/f33565cc66b67a7f5aa3665cae2b9c5efc7379cc/public/data/editing.json",
+        "https://github.com/brain-labbb/RFW_A_web/blob/f33565cc66b67a7f5aa3665cae2b9c5efc7379cc/src/simulation.js",
+        "https://github.com/brain-labbb/RFW_A_web/blob/f33565cc66b67a7f5aa3665cae2b9c5efc7379cc/public/data/explorer.json",
+        "https://modelscope.cn/datasets/RoboFlywheel/RoboFlywheel-Articulation"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.40333",
+      "status": "pending",
+      "checkedAt": "2026-11-14T16:31:09.707688+00:00"
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://huggingface.co/papers/2611.16409",
+    "url": "https://huggingface.co/papers/2611.16409",
+    "id": "live-926722468f01c0a8",
+    "title": "ACE-RL：让反思和笔记接受下一次尝试的检验",
+    "summary": "ACE-RL在固定ACE流程中，让同一模型分别执行任务、提取反思和编辑任务内笔记；每份候选笔记交给重置环境中的下一次真实尝试，用任务验证器的结果训练写笔记的角色。它把“下次用起来是否有效”变成经验交接的监督，但没有证明跨任务记忆迁移或开放式持续自我改进。",
+    "insight": "作者主张：把可执行的经验交接产物及分角色比较组纳入RL，可改善固定harness下的后续尝试。作者表2中，AppWorld的57个dev任务上RSI@3为0.667，同流程GRPO为0.597；MiniSWEBench前100个Verified实例为0.340对0.260。本站判断：可迁移的是为反思/笔记建立下游效果归因、环境重置与删除笔记对照；这些是单run、小模型、限定任务的报告，不能据此宣称分角色分组已被单独因果证实或全面优于critic。",
+    "limits": "已读47页v1中的完整方法、主结果和相关附录，并核固定公开仓库；未执行模型或复现。Qwen3-0.6B/4B、四基准主比较每方法一次训练，误差条是任务间1 SEM，不是多seed置信区间；图4的MiniSWEBench少数早期点另取一个seed，不构成完整独立复验。Mastermind及MBPP报最高分数奖励，不能全部当二值成功率；MBPP只测测试集前100题，失败反馈直接显示用于评分的断言，作者承认部分解会硬编码断言。早期delayed-joint PPO曾用零退出码钻评分漏洞而被排除；其重跑及delayed-joint ACE-RL在修复后评估，其余所报MBPP评估早于修复，作者仅说明若干ACE-RL/PPO检查点轨迹未含exit调用。AppWorld使用57题dev集；MiniSWEBench是Verified前100题，不是全基准。所谓等训练compute只计actor/critic更新FLOPs，排除生成；RSI还多K次反思和K次编辑调用，不能宣称总算力或时延相等。本v1 F.1只列相对更新开销，未列主表各run完整预算与检查点映射，待公开运行表补证。单候选仅一次验证，选择高奖励笔记有噪声，不保证笔记真实或长期有用。附录D明确当前actor奖励、省采样、只平均可用编辑、混合actor输入、组标准化及token权重使实现成为局部GRPO代理，不等价完整未来回报梯度。链式消融还改变actor采样/信用和提示，未隔离分组作用。删笔记对照在Mastermind的K≥5反而略优，AppWorld该对照仅在超出compute预算后评估；不能把全部收益归为笔记改进。仅任务内记忆、固定权重测试、固定harness，无跨任务迁移。当前固定仓库只有README和论文PDF，README仍称代码将发布；无训练/评测实现或checkpoint可供核验。",
+    "organization": "New York University / KAIST AI",
+    "dateLabel": "2026-11-12 · arXiv v1首发；HF于11月13日收录",
+    "evidence": "原论文方法/结果/附录与固定仓库发布范围核验；未复现",
+    "originalTitle": "Experience-Handoff Reinforcement Learning for Recursive Self-Improvement",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-14T16:29:57.269373+00:00",
+    "paperOriginalDate": "2026-11-12T07:18:30Z",
+    "paperUpdatedAt": "2026-11-12T07:18:30Z",
+    "updatedAt": "2026-11-12T07:18:30Z",
+    "firstSeenAt": "2026-11-13T10:00:01Z",
+    "lastSeenAt": "2026-11-14T16:00:00Z",
+    "dailySubmittedAt": "2026-11-13T00:00:00.000Z",
+    "tags": [
+      "经验交接",
+      "分角色信用",
+      "任务内记忆",
+      "评测反馈边界"
+    ],
+    "authors": [
+      "Doyoung Kim",
+      "Byeongguk Jeon",
+      "Kailin Zhang",
+      "Sherry Yang"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.16409"
+      },
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.16409v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.16409"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/doyoungkim-ml/ehrl"
+      },
+      {
+        "label": "arXiv v1 PDF · 方法、结果、附录",
+        "url": "https://arxiv.org/pdf/2611.16409v1"
+      },
+      {
+        "label": "作者固定仓库 · 代码尚未发布说明",
+        "url": "https://github.com/doyoungkim-ml/ehrl/blob/f2d04dc4c8be112db0456b423a8518903ab80fab/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "ACE-RL在固定ACE流程中，让同一模型分别执行任务、提取反思和编辑任务内笔记；每份候选笔记交给重置环境中的下一次真实尝试，用任务验证器的结果训练写笔记的角色。它把“下次用起来是否有效”变成经验交接的监督，但没有证明跨任务记忆迁移或开放式持续自我改进。",
+      "motivation": "错误日志、工具回复和约束虽然进入当次行动上下文，常规结果奖励不会直接教模型怎样留下可用的经验。作者将“反思写得好不好”落到下一次任务执行的验证结果，并共同训练读笔记与写笔记的行为；harness本身保持固定。",
+      "novelty": "作者主张：把可执行的经验交接产物及分角色比较组纳入RL，可改善固定harness下的后续尝试。作者表2中，AppWorld的57个dev任务上RSI@3为0.667，同流程GRPO为0.597；MiniSWEBench前100个Verified实例为0.340对0.260。本站判断：可迁移的是为反思/笔记建立下游效果归因、环境重置与删除笔记对照；这些是单run、小模型、限定任务的报告，不能据此宣称分角色分组已被单独因果证实或全面优于critic。",
+      "evidenceScope": "本轮匿名读取arXiv v1摘要及47页原PDF；重点正文§2–5、附录B分组对照、D算法近似/过滤/更新、E任务奖励、F算力与诊断、G案例、H限制，并抽读C角色提示；渲染核对PDF第7/43/44页表2、表5/6与F.1。arXiv HTML返回404，未以第三方镜像充作原文。核HF论文页作者说明与仓库关联，并固定Git提交f2d04dc4c8be112db0456b423a8518903ab80fab的根目录和README；根目录仅README.md与ehrl.pdf，未核PDF镜像内容，不声称已有训练代码或权重。verified只指公开来源与元数据核验，所有实验数值为作者报告，未执行作者代码/模型。",
+      "limits": "已读47页v1中的完整方法、主结果和相关附录，并核固定公开仓库；未执行模型或复现。Qwen3-0.6B/4B、四基准主比较每方法一次训练，误差条是任务间1 SEM，不是多seed置信区间；图4的MiniSWEBench少数早期点另取一个seed，不构成完整独立复验。Mastermind及MBPP报最高分数奖励，不能全部当二值成功率；MBPP只测测试集前100题，失败反馈直接显示用于评分的断言，作者承认部分解会硬编码断言。早期delayed-joint PPO曾用零退出码钻评分漏洞而被排除；其重跑及delayed-joint ACE-RL在修复后评估，其余所报MBPP评估早于修复，作者仅说明若干ACE-RL/PPO检查点轨迹未含exit调用。AppWorld使用57题dev集；MiniSWEBench是Verified前100题，不是全基准。所谓等训练compute只计actor/critic更新FLOPs，排除生成；RSI还多K次反思和K次编辑调用，不能宣称总算力或时延相等。本v1 F.1只列相对更新开销，未列主表各run完整预算与检查点映射，待公开运行表补证。单候选仅一次验证，选择高奖励笔记有噪声，不保证笔记真实或长期有用。附录D明确当前actor奖励、省采样、只平均可用编辑、混合actor输入、组标准化及token权重使实现成为局部GRPO代理，不等价完整未来回报梯度。链式消融还改变actor采样/信用和提示，未隔离分组作用。删笔记对照在Mastermind的K≥5反而略优，AppWorld该对照仅在超出compute预算后评估；不能把全部收益归为笔记改进。仅任务内记忆、固定权重测试、固定harness，无跨任务迁移。当前固定仓库只有README和论文PDF，README仍称代码将发布；无训练/评测实现或checkpoint可供核验。",
+      "method": [
+        "固定ACE控制流和三套角色提示，同一模型依次actor→reflector→curator。actor读取任务及笔记；reflector看轨迹、奖励和环境错误，最长20k token历史保留末次反馈；curator生成ADD/UPDATE/REMOVE。每次actor重置环境，跨尝试只传任务自己的笔记，不继承环境状态或跨任务经验。",
+        "每题先采4条seed，均匀选1条生成2份反思，再均匀选一份可用反思生成3份编辑，另一份生成1份。编辑须可解析、实际改变笔记且不超过2,048 token；不合法或不改变的编辑记0且不产生候选。最多4份候选各用一次新actor执行评分，这些执行同时回到actor训练组，因此最多8条actor、14份总输出；并非与GRPO相同总生成量。",
+        "curator领取对应候选执行奖励，reflector领取其可用候选的均值（无可用候选为0），actor各领自己的任务奖励；反思组共享seed、主编辑组共享反思，actor组却混合旧笔记和候选笔记输入。训练另选分数至少达到seed的最高分候选保留，平局随机，拒绝保留不抹掉其训练奖励；每题第3、6等次训练遭遇前清空笔记。",
+        "按角色组标准化优势，广播到生成token，三角色一次联合PPO式截断更新并按有效token总数求均值，无显式角色等权、critic或KL项。附录D补充阈值过滤会让Mastermind/MBPP的分数奖励单样本组保留，此时用均值0/尺度1成为奖励加权；MiniSWEBench改查非零组内range。不能把正文“常数组全丢弃”当完整实现，亦不能将稀疏代理称无偏完整梯度。",
+        "测试冻结权重：无harness从8次独立尝试计算K次的期望最佳奖励pass@K；有harness顺序8次访问，RSI@K取前K次最高奖励，后续笔记直接应用、无需额外候选评分。主表K=3，并跟踪到8次；Mastermind/MBPP为分数奖励，AppWorld/MiniSWEBench为二值成功。另固定actor丢弃每次笔记编辑作对照，检验收益是否来自笔记，同时披露额外调用、分母及对照预算差异。"
+      ],
+      "inspirations": [
+        "把Agent的反思、工单摘要或技能笔记作为可归因产物：记录来源轨迹、候选编辑和下游执行ID，固定起始环境与任务预算，在相同actor上做保留/丢弃笔记配对；验证一次高分后仍需重复执行并检查负迁移，而不是凭文字质量给奖。",
+        "训练账本同时记录episode、角色输出和有效token：角色分组内比较有助于定位信用来源，但混合输入、可用分支数量与token均值会改变权重。用固定提示/actor采样的独立消融验证分组效应，并同时报总生成token、工具调用、更新FLOPs及延迟。",
+        "代码创作可把编辑意图/失败定位交给下一轮可编辑工程验证，拆开执行成功、视觉质量和后续修改回归；把可见调试断言与未暴露验收集分离，避免学会复述或硬编码评测。此为本站迁移建议，本文未评视频、动画或3D创作。"
+      ],
+      "reviewedAt": "2026-11-14T16:29:57.269373+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.16409v1",
+        "https://huggingface.co/papers/2611.16409",
+        "https://arxiv.org/abs/2611.16409",
+        "https://github.com/doyoungkim-ml/ehrl",
+        "https://arxiv.org/pdf/2611.16409v1",
+        "https://github.com/doyoungkim-ml/ehrl/blob/f2d04dc4c8be112db0456b423a8518903ab80fab/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.16409",
+      "status": "pending",
+      "checkedAt": "2026-11-14T16:31:09.707688+00:00"
+    }
   }
 ]
