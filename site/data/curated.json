@@ -16915,5 +16915,457 @@
         "https://nvidia.github.io/simready-foundation/latest/features/FET_022_PHYSX.html"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.16867v1",
+    "url": "https://arxiv.org/abs/2611.16867v1",
+    "id": "paper-controlharbor-2611-16867",
+    "title": "ControlHarbor：达到回报门槛，还要逐扰动验收",
+    "summary": "ControlHarbor把控制设计Agent的产物固定为可读Python控制器，再按名义性能、逐种物理扰动和指定结构条件分别验收。44任务/13种被控对象的报告显示：少数程序能达到RL参考回报门槛，但仅优化回报的程序常在扰动下失效；鲁棒要求必须写进任务。",
+    "insight": "作者主张：以Harbor任务格式统一控制设计与学习控制器的验收，将设计表述为带概率约束的可行性问题。本站判断：最值得迁移的是“每种扰动都达标”的合取式门槛与分层失败诊断。论文名义回报对齐任务中，hopper、walker、humanoid分别仅1/9、3/9、3/9次Agent会话通过，不能把存在最佳成功程序写成稳定胜率；humanoid鲁棒对齐2/9通过，而100N推力任务0/9，域随机化RL在后者达到0.95。",
+    "limits": "已读原论文全文方法与结果，未执行控制器、模拟器或复现实验。结论仅覆盖仿真、指定扰动和有限种子，不是形式安全证明或实机可靠性；车队证书是频率扫描。RL比较仅单检查点/训练种子，Agent禁止神经网络与梯度学习但可黑箱调参，训练预算与目标不同，不能归因成普遍算法优越或成本优势。humanoid鲁棒对齐的扰动选择还要求参考RL能过相应基础门槛。§3称每任务每模型3次，表中却有2次或4次分母，本文所读段落未解释；保留各项原始分母，不重算总体模型排名。当前作者展示页57任务混有旧harness与论文后任务，其累计计数不能替换论文44任务报告。论文称发布代码/任务，本站本轮访问仓库返回404、GitHub API限流403，未核到固定提交或可下载实现；网页展示与发布声明不等于已独立复现。",
+    "organization": "EQT / Redpine 等",
+    "dateLabel": "2026-11-12 · arXiv v1",
+    "evidence": "全文方法/结果及作者页面核验；代码入口未可读，未运行或复现",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-14T10:22:24.791821+00:00",
+    "paperOriginalDate": "2026-11-12T14:37:35Z",
+    "paperUpdatedAt": "2026-11-12T14:37:35Z",
+    "updatedAt": "2026-11-12T14:37:35Z",
+    "firstSeenAt": "2026-11-14T10:25:41.632559+00:00",
+    "tags": [
+      "控制设计Agent",
+      "鲁棒性评测",
+      "可执行程序",
+      "规格验收"
+    ],
+    "authors": [
+      "Jieqiang Wei",
+      "Fahad Ali",
+      "Jonny Reichwald",
+      "Silun Zhang"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "此前候选核验来源",
+        "url": "https://arxiv.org/abs/2611.16867"
+      },
+      {
+        "label": "arXiv v1 · 首发记录",
+        "url": "https://arxiv.org/abs/2611.16867v1"
+      },
+      {
+        "label": "原论文 · 方法与结果",
+        "url": "https://arxiv.org/html/2611.16867v1"
+      },
+      {
+        "label": "作者公开展示页 · 含额外任务，计数不与论文混用",
+        "url": "https://jq-wei.github.io/hl-control/"
+      },
+      {
+        "label": "作者声明代码入口 · 本轮404，未核验实现",
+        "url": "https://github.com/jq-wei/hl-control"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "ControlHarbor把控制设计Agent的产物固定为可读Python控制器，再按名义性能、逐种物理扰动和指定结构条件分别验收。44任务/13种被控对象的报告显示：少数程序能达到RL参考回报门槛，但仅优化回报的程序常在扰动下失效；鲁棒要求必须写进任务。",
+      "motivation": "平均回报容易掩盖某种扰动下一贯失败，代码能运行也不能说明控制规格已满足。研究希望同时要求可读控制器、明确验收门槛、名义性能与扰动鲁棒性，并让Agent设计和RL控制器在同一评分器下接受检查。",
+      "novelty": "作者主张：以Harbor任务格式统一控制设计与学习控制器的验收，将设计表述为带概率约束的可行性问题。本站判断：最值得迁移的是“每种扰动都达标”的合取式门槛与分层失败诊断。论文名义回报对齐任务中，hopper、walker、humanoid分别仅1/9、3/9、3/9次Agent会话通过，不能把存在最佳成功程序写成稳定胜率；humanoid鲁棒对齐2/9通过，而100N推力任务0/9，域随机化RL在后者达到0.95。",
+      "evidenceScope": "已读arXiv v1 §2–5及附录A/B/D/G，核对任务、评分、预算、RL参考与分母；首发2026-11-12T14:37:35Z。作者公开展示页可读，声明视频在公开种子重跑并附留出评分，但本站仅核验页面文字与计数，未观看所有视频、检查运行产物或复现实验。作者仓库404、API403的失败分别记录，不能据论文“已发布”声明确认代码可下载。verified只指来源核验。",
+      "limits": "已读原论文全文方法与结果，未执行控制器、模拟器或复现实验。结论仅覆盖仿真、指定扰动和有限种子，不是形式安全证明或实机可靠性；车队证书是频率扫描。RL比较仅单检查点/训练种子，Agent禁止神经网络与梯度学习但可黑箱调参，训练预算与目标不同，不能归因成普遍算法优越或成本优势。humanoid鲁棒对齐的扰动选择还要求参考RL能过相应基础门槛。§3称每任务每模型3次，表中却有2次或4次分母，本文所读段落未解释；保留各项原始分母，不重算总体模型排名。当前作者展示页57任务混有旧harness与论文后任务，其累计计数不能替换论文44任务报告。论文称发布代码/任务，本站本轮访问仓库返回404、GitHub API限流403，未核到固定提交或可下载实现；网页展示与发布声明不等于已独立复现。",
+      "method": [
+        "将任务封装成Harbor环境：Agent从零动作文件出发，在无网络沙箱中编辑单文件controller(obs)，输出动作数组。主报告设1小时、2核/2GB；禁止神经网络和梯度学习，但允许自写程序或工具做非梯度参数搜索。最终评分仅运行提交文件，单独评分容器设15分钟预算。",
+        "用可见种子开发、另用隐藏种子验收，运动控制任务典型为5个可见/40个留出种子。每个任务指定从基本存活到更高速度的门槛；对名义系统和每种扰动分别要求成功率至少0.9，必要时再加RL参考回报90%的下界或结构证书，不能用跨扰动均值抵消失败。",
+        "将环境、评分指标、门槛、扰动和任务生成集中到注册表，按论文设计从同一规格生成说明与评分脚本，检查零动作失败、参考控制器成功及隐藏种子隔离。论文给出Clopper–Pearson解释：40/40全通过时95%单侧失败概率上界约0.072；这只适用于全通过条件，不能套到所有0.9达标题或当形式证明。",
+        "主协议报告330次会话，Opus和Fable覆盖44任务，Sonnet仅覆盖22个MuJoCo任务；RL参考控制器用同一评分器验收。将跌倒、边缘通过、某扰动失败、回报不足与超时分开；另做取消现成调参工具、前级控制器接力和更强扰动测试。取消工具仍允许自写搜索，早期不同harness的七模型试验只作背景。"
+      ],
+      "inspirations": [
+        "为代码Agent设计三层独立验收：程序能执行、目标约束达标、每个扰动场景都达标；保留失败场景与种子，避免把平均分提升写成鲁棒性提升。迁移到视频或3D工具时可对应可渲染、编辑目标、分辨率/素材变化后的稳定性，但本文未测试这些创作任务。",
+        "同时发布最佳程序和每条件成功次数、总尝试、时间/资源与超时数。本文115次失败中42次曾在5个可见种子达0.9、却在留出种子未达标，启发增加独立留出与开发集过拟合诊断；不把单次最佳回报或少量种子当稳定能力。",
+        "把规格、生成器与评分器联动并设置零动作/参考解两种校验，再独立审查评分容器隔离；展示页、追加任务与论文冻结快照分别标识，避免同名任务不断累积后改变分母。接力实验应单列“有现成控制器”条件，不能与从零设计混算。"
+      ],
+      "reviewedAt": "2026-11-14T10:22:24.791821+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.16867v1",
+        "https://arxiv.org/html/2611.16867v1",
+        "https://jq-wei.github.io/hl-control/",
+        "https://github.com/jq-wei/hl-control"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.16867",
+      "status": "pending",
+      "checkedAt": "2026-11-14T10:23:39.533773+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.543",
+    "url": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.543",
+    "id": "update-remotion-v40543-20261111",
+    "title": "Remotion 4.0.543：让代码视频交付可编辑工程，导入边界仍需验收",
+    "summary": "Remotion 4.0.543把“代码生成后还能手工改”推进到具体工程接口：Agent技能默认按Studio可编辑结构写视频，新CLI可把OpenTimelineIO剪辑或带原始metadata的Canvas Capture录屏导入为TSX composition。本轮核验官方发行与固定源码；这是可编辑交付链路的改进，尚无独立成功率、往返保真或视觉质量测试。",
+    "insight": "官方更新：增加open-timeline/canvas-capture导入命令，让创作技能默认输出Studio可编辑结构。本站判断：值得关注的是把编辑单位、媒体依赖、时间结构和能力不支持项显式化，使Agent交付可继续修改的工程。把代码放在仓库里还不够：独立片段要有独立JSX实例、可编辑属性需能被Studio解析，导入时也应把损失和错误暴露出来。",
+    "limits": "来源核验不等于实际导入、渲染或编辑复现；未安装技能、运行CLI或导入用户素材。官方支持表允许轨道/嵌套、片段/间隙、源裁剪、混合帧率、正向变速/冻结及内部SMPTE_Dissolve；逆放、轨道/stack变速、自定义或边界转场等会报错，其他活动effect可能警告后忽略。marker/metadata可保留但不产生渲染行为，应用特定crop/scale/color/effect不解释；视频轨的嵌入音频静音，需独立audio轨。录屏导入要求REMOTION_CAPTURE_DATA，普通转码后丢metadata的录屏不等价；Canvas Capture官方仍标experimental、未正式发布。任意计算变量、数据驱动循环和未暴露schema属性不保证可在Studio编辑；inline/interpolate也只支持规定形式。源码有文件冲突保护和失败清理，但依赖安装发生在文件事务前，没有完整依赖回滚保证；未实测崩溃/并发。Studio内编辑与另售Remotion Timeline组件是不同产品，不把后者当本版本免费能力。此处发布日期为主仓4.0.543发行的11/11，不是插件首次发布，也不把文档11/14更新时间当新版本；插件当前main API限流，沿用此前固定提交而不声称当前HEAD已核。OTIO底层generateOpenTimelineComposition()自4.0.542已有，固定文档标Draft API/experimental；4.0.543新增的是CLI导入入口，不能说OTIO转换首次出现或所有相关接口已稳定。",
+    "dateLabel": "2026-11-11 · 官方4.0.543发行；11月14日核验",
+    "evidence": "官方发行、固定源码及支持范围核验；未运行产品或测量效果",
+    "originalTitle": "Remotion v4.0.543",
+    "date": "2026-11-11",
+    "checkedAt": "2026-11-14T10:21:01Z",
+    "updatedAt": "2026-11-11T19:24:21Z",
+    "firstSeenAt": "2026-11-14T10:25:41.632559+00:00",
+    "tags": [
+      "Remotion",
+      "代码视频",
+      "可编辑工程",
+      "OTIO",
+      "Studio",
+      "Agent技能"
+    ],
+    "topics": [
+      "code2motion",
+      "code2video",
+      "video-editing"
+    ],
+    "featured": true,
+    "sources": [
+      {
+        "label": "Remotion v4.0.543 · 官方发行与时间",
+        "url": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.543"
+      },
+      {
+        "label": "固定CLI · 导入计划、诊断与dry-run分支",
+        "url": "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/cli/src/import-composition-command.ts"
+      },
+      {
+        "label": "固定CLI · 录屏metadata检查",
+        "url": "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/cli/src/import-canvas-capture.ts"
+      },
+      {
+        "label": "固定CLI · 文件冲突与写入逻辑",
+        "url": "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/cli/src/apply-composition-import.ts"
+      },
+      {
+        "label": "固定媒体解析 · 本地文件及缺失素材",
+        "url": "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/studio-server/src/codemods/prepare-open-timeline-import.ts"
+      },
+      {
+        "label": "固定文档 · OTIO导入与支持边界",
+        "url": "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/docs/docs/codemods/generate-open-timeline-composition.mdx"
+      },
+      {
+        "label": "固定文档 · OTIO命令新增版本",
+        "url": "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/docs/docs/cli/open-timeline/import.mdx"
+      },
+      {
+        "label": "固定文档 · Canvas Capture命令新增版本",
+        "url": "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/docs/docs/cli/canvas-capture/import.mdx"
+      },
+      {
+        "label": "固定技能文本 · 新创作默认可编辑",
+        "url": "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/skills/skills/remotion-create/SKILL.md"
+      },
+      {
+        "label": "固定技能文本 · 可编辑值和只读边界",
+        "url": "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/skills/skills/remotion-interactivity/SKILL.md"
+      },
+      {
+        "label": "固定技能文本 · 独立实例与轨道",
+        "url": "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/skills/skills/remotion-interactivity/timeline-structure.md"
+      },
+      {
+        "label": "Canvas Capture官方页 · 仍属实验性",
+        "url": "https://www.remotion.dev/docs/canvas-capture"
+      },
+      {
+        "label": "Remotion Timeline官方页 · 独立付费组件",
+        "url": "https://www.remotion.dev/docs/timeline"
+      },
+      {
+        "label": "此前候选已核验来源 · 保留",
+        "url": "https://github.com/remotion-dev/claude-code-plugin"
+      },
+      {
+        "label": "此前候选已核验来源 · 保留",
+        "url": "https://www.remotion.dev/docs/ai/claude-code-plugin"
+      },
+      {
+        "label": "此前候选已核验来源 · 保留",
+        "url": "https://github.com/remotion-dev/claude-code-plugin/blob/1c7a3546fd2a2ea195a38e8ddb737291f08cbe52/.claude-plugin/plugin.json"
+      },
+      {
+        "label": "此前候选已核验来源 · 保留",
+        "url": "https://github.com/remotion-dev/claude-code-plugin/blob/1c7a3546fd2a2ea195a38e8ddb737291f08cbe52/skills/remotion-interactivity/timeline-structure.md"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Remotion 4.0.543把“代码生成后还能手工改”推进到具体工程接口：Agent技能默认按Studio可编辑结构写视频，新CLI可把OpenTimelineIO剪辑或带原始metadata的Canvas Capture录屏导入为TSX composition。本轮核验官方发行与固定源码；这是可编辑交付链路的改进，尚无独立成功率、往返保真或视觉质量测试。",
+      "motivation": "用Agent生成一段能播放的视频，和交给人继续裁剪、挪动、换字幕的工程，是两种验收。整段代码混在循环或计算属性里，视觉上独立的元素未必能单独选择；既有剪辑或录屏转入代码创作，还会遇到媒体路径、帧率、转场和元数据丢失。",
+      "novelty": "官方更新：增加open-timeline/canvas-capture导入命令，让创作技能默认输出Studio可编辑结构。本站判断：值得关注的是把编辑单位、媒体依赖、时间结构和能力不支持项显式化，使Agent交付可继续修改的工程。把代码放在仓库里还不够：独立片段要有独立JSX实例、可编辑属性需能被Studio解析，导入时也应把损失和错误暴露出来。",
+      "evidenceScope": "已读官方v4.0.543发行页，relative-time为2026-11-11T19:24:21Z；release链接固定主仓4190c2add7b019b4a06deef6e66f9e1d60aae3bc，固定CLI package版本为4.0.543。匿名取得13个固定文本文件：精读导入入口、Canvas Capture解析、媒体准备和文件写入；阅读两份CLI文档、OTIO支持表与技能中的编辑结构/属性限制。另读当前官方技能/插件、Canvas Capture与Timeline说明。此前插件commit 1c7a3546fd2a2ea195a38e8ddb737291f08cbe52及其来源原样保留；本轮GitHub main API403后未重试，未重新证明插件HEAD。只读作者代码和技能文本，外部技能内容作为研究材料而未执行。没有任务样本、重复运行、失败分母、耗时/视觉对照或真实编辑工程产物；verified只表示来源核验。 已核固定OTIO文档首部：AvailableFrom 4.0.542、Draft API/experimental，版本区别已保留。",
+      "limits": "来源核验不等于实际导入、渲染或编辑复现；未安装技能、运行CLI或导入用户素材。官方支持表允许轨道/嵌套、片段/间隙、源裁剪、混合帧率、正向变速/冻结及内部SMPTE_Dissolve；逆放、轨道/stack变速、自定义或边界转场等会报错，其他活动effect可能警告后忽略。marker/metadata可保留但不产生渲染行为，应用特定crop/scale/color/effect不解释；视频轨的嵌入音频静音，需独立audio轨。录屏导入要求REMOTION_CAPTURE_DATA，普通转码后丢metadata的录屏不等价；Canvas Capture官方仍标experimental、未正式发布。任意计算变量、数据驱动循环和未暴露schema属性不保证可在Studio编辑；inline/interpolate也只支持规定形式。源码有文件冲突保护和失败清理，但依赖安装发生在文件事务前，没有完整依赖回滚保证；未实测崩溃/并发。Studio内编辑与另售Remotion Timeline组件是不同产品，不把后者当本版本免费能力。此处发布日期为主仓4.0.543发行的11/11，不是插件首次发布，也不把文档11/14更新时间当新版本；插件当前main API限流，沿用此前固定提交而不声称当前HEAD已核。OTIO底层generateOpenTimelineComposition()自4.0.542已有，固定文档标Draft API/experimental；4.0.543新增的是CLI导入入口，不能说OTIO转换首次出现或所有相关接口已稳定。",
+      "method": [
+        "把可编辑单位写进代码结构：新创作技能要求默认遵循交互规范；每个需独立移动、裁剪或换样式的实例拥有自己的JSX节点、名称和inline属性。独立时间用Track，连续相邻剪辑用TransitionSeries，共同时钟的层放在同一边界。",
+        "把人工编辑入口限定为可解析属性：Interactive/Interactive.create及schema提供选择、属性与关键帧控制；未进入schema的props、复杂计算或嵌套/计算children仍可能只读。连接composition支持单独编辑，但不能保证父时间线行数更少。",
+        "把已有剪辑导入代码：4.0.543新增OTIO CLI导入，解析时间线、源范围与素材引用，生成新的composition/component，复制本地媒体或复用public资产；远端URL保留。遇到不支持项给诊断，不能按“导入成功”推断所有效果保真。",
+        "把带结构信息的录屏导入：Canvas Capture分支读取原始metadata、视频轨与有效尺寸/时长，生成源文件并规划媒体和依赖；两种命令都提供dry-run预览。实际执行分支再安装依赖、创建新文件和更新根注册文件，冲突检查与失败清理可从静态源码核到，但本轮未运行。"
+      ],
+      "inspirations": [
+        "为代码视频交付补一个编辑验收表：指定字幕、镜头和音乐各改一次，观察是否能独立选择、是否只改变目标时间段；把源码可见与编辑UI可用分开计数。这是本站建议，发布说明没有提供通过率。",
+        "建立OTIO往返小集，覆盖混合FPS、带timecode素材、嵌套、dissolve、缺失媒体和独立音轨；同时核画面/音频/时间线差异，并保留warning。输出文件可生成不代表效果无损。",
+        "让Agent先交导入/依赖计划，再做用户需要的工程变更；把unsupported警告升级为明确的降级清单，并验证失败后素材、源文件和依赖是否都可恢复。源码现有清理范围不能替代完整回滚测试。"
+      ],
+      "reviewedAt": "2026-11-14T10:21:01Z",
+      "sourceUrls": [
+        "https://github.com/remotion-dev/remotion/releases/tag/v4.0.543",
+        "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/cli/src/import-composition-command.ts",
+        "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/cli/src/import-canvas-capture.ts",
+        "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/cli/src/apply-composition-import.ts",
+        "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/studio-server/src/codemods/prepare-open-timeline-import.ts",
+        "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/docs/docs/codemods/generate-open-timeline-composition.mdx",
+        "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/docs/docs/cli/open-timeline/import.mdx",
+        "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/docs/docs/cli/canvas-capture/import.mdx",
+        "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/skills/skills/remotion-create/SKILL.md",
+        "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/skills/skills/remotion-interactivity/SKILL.md",
+        "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/skills/skills/remotion-interactivity/timeline-structure.md",
+        "https://www.remotion.dev/docs/canvas-capture",
+        "https://www.remotion.dev/docs/timeline",
+        "https://github.com/remotion-dev/claude-code-plugin",
+        "https://www.remotion.dev/docs/ai/claude-code-plugin",
+        "https://github.com/remotion-dev/claude-code-plugin/blob/1c7a3546fd2a2ea195a38e8ddb737291f08cbe52/.claude-plugin/plugin.json",
+        "https://github.com/remotion-dev/claude-code-plugin/blob/1c7a3546fd2a2ea195a38e8ddb737291f08cbe52/skills/remotion-interactivity/timeline-structure.md"
+      ]
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.16206v1",
+    "url": "https://arxiv.org/abs/2611.16206v1",
+    "id": "live-f3830f965257c25c",
+    "title": "OPSD4MAS：后续对话能提供token信用，但要先筛反馈、审验证集",
+    "summary": "OPSD4MAS把后续Agent对话提炼为事实，再按结果关联和逐条移除后的token概率变化筛选，用同一角色策略的特权上下文视图补充GRPO。作者报告六套数学题等权平均pass@1比GRPO高8.87个百分点；但公开代码说明历史验证集与三套报告测试重叠，收益不能直接视为独立测试泛化。",
+    "insight": "作者主张：未来通信不必压成一个标量奖励，可以经过关联排序和目标响应的LOO筛选，形成token级自蒸馏信号，再逐步减小其训练权重。本站判断：最值得借鉴的是先检查某条反馈对当前响应的学习方向，而非看到“纠错”就全部学习；三套竞赛题消融中，直接用未来对话反而使平均pass@1从49.63%降到33.24%，完整过滤为64.91%。这支持过滤组合的价值，但不是事实真伪或单条反馈因果贡献的认证。",
+    "limits": "全部分数为作者报告，本站未执行代码或复现。六数据集均为Qwen3-4B非thinking数学推理；8.87/9.54个百分点是六数据集等权pass@1/pass@4均值增益，20.00个百分点是AIME24/25的pass@4增益，不能当单次成功率。每题4条完整独立轨迹，非同一对话内4个Agent；公开聚合器按轨迹去重。固定DATA.md和prepare_data.py说明默认历史验证集为AMC23+AIME24+AIME25共143题，与报告测试重叠；未确立独立验证拆分，完整checkpoint到表1映射也未恢复，不能宣称严格独立选择后的泛化。六套精确测试快照只有身份指纹、无已发布下载；AMC23为83题、Olympiad为675题，不能静默换成常见40/674题版本。公开发布未重跑完整GPU训练，缺原模型checkpoint、完整历史环境与外部服务配置，比较基线训练和完整消融/注入研究也不在发布范围。Minerva的单位、多答案与科学自由文本判分仍需审计。注入诊断在训练题、固定权重与冻结历史上只重新生成最终Solver，四checkpoint来自同一run且未做显著性检验，不是多种子或无特权测试。关联分数不是因果，LOO是局部token概率变化；两提示分别截断时可能同时改变历史/其他事实。外部模型仍可能提错事实，论文未证明过滤降低错误传播。24张A100是项目可用资源，不是每次run分配；公开4卡参考配置不等于历史等算力对照，训练额外抽取/重评分成本未量化为效率收益。",
+    "dateLabel": "2026-11-12 · arXiv v1；11月14日补全方法与代码解读",
+    "evidence": "方法/结果/附录及固定公开代码静态核验；未运行或复现",
+    "originalTitle": "Turning Multi-Agent Communication into Token-Level Credit with On Policy Self Distillation",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-14T10:22:36+00:00",
+    "originalDate": "2026-11-12",
+    "paperOriginalDate": "2026-11-12T02:57:08Z",
+    "paperUpdatedAt": "2026-11-12T02:57:08Z",
+    "updatedAt": "2026-11-12T02:57:08Z",
+    "firstSeenAt": "2026-11-13T10:00:01Z",
+    "lastSeenAt": "2026-11-14T10:00:01Z",
+    "tags": [
+      "多Agent训练",
+      "自蒸馏",
+      "token信用分配",
+      "LOO筛选",
+      "验证集重叠"
+    ],
+    "authors": [
+      "Zixu Wang",
+      "Yu Zhao",
+      "Xing Zheng",
+      "Bingbing Xu",
+      "Tian Xueyun",
+      "JiaTang Luo",
+      "Weiqiang Wang",
+      "Bowen Song",
+      "Huawei Shen",
+      "Xueqi Cheng"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · 上轮候选原始入口",
+        "url": "https://arxiv.org/abs/2611.16206"
+      },
+      {
+        "label": "arXiv v1 · 原始元数据",
+        "url": "https://arxiv.org/abs/2611.16206v1"
+      },
+      {
+        "label": "arXiv v1 · 全文方法与附录",
+        "url": "https://arxiv.org/html/2611.16206v1"
+      },
+      {
+        "label": "arXiv v1 · 原始PDF",
+        "url": "https://arxiv.org/pdf/2611.16206v1"
+      },
+      {
+        "label": "作者公开仓库 · 固定提交",
+        "url": "https://github.com/Camel-Prince/OPSD4MAS/tree/a32ff3058f25f1447872a0ed51a99e19f73865a7"
+      },
+      {
+        "label": "固定代码 · 两类优势与LOO度量",
+        "url": "https://github.com/Camel-Prince/OPSD4MAS/blob/a32ff3058f25f1447872a0ed51a99e19f73865a7/verl/trainer/ppo/core_algos.py"
+      },
+      {
+        "label": "固定代码 · 事实关联与筛选",
+        "url": "https://github.com/Camel-Prince/OPSD4MAS/blob/a32ff3058f25f1447872a0ed51a99e19f73865a7/verl/trainer/ppo/opd_fact_cards.py"
+      },
+      {
+        "label": "固定代码 · 上下文截断",
+        "url": "https://github.com/Camel-Prince/OPSD4MAS/blob/a32ff3058f25f1447872a0ed51a99e19f73865a7/verl/trainer/ppo/opd_teacher.py"
+      },
+      {
+        "label": "固定代码 · pass@1/pass@4聚合",
+        "url": "https://github.com/Camel-Prince/OPSD4MAS/blob/a32ff3058f25f1447872a0ed51a99e19f73865a7/scripts/evaluation_records.py"
+      },
+      {
+        "label": "数据说明 · 验证集重叠与未发布快照",
+        "url": "https://github.com/Camel-Prince/OPSD4MAS/blob/a32ff3058f25f1447872a0ed51a99e19f73865a7/docs/DATA.md"
+      },
+      {
+        "label": "来源记录 · 公开配置并非历史完整重放",
+        "url": "https://github.com/Camel-Prince/OPSD4MAS/blob/a32ff3058f25f1447872a0ed51a99e19f73865a7/docs/REPRODUCIBILITY.md"
+      },
+      {
+        "label": "评测协议与Minerva判分限制",
+        "url": "https://github.com/Camel-Prince/OPSD4MAS/blob/a32ff3058f25f1447872a0ed51a99e19f73865a7/docs/EVALUATION.md"
+      },
+      {
+        "label": "发布验证范围 · CPU静态检查非GPU复现",
+        "url": "https://github.com/Camel-Prince/OPSD4MAS/blob/a32ff3058f25f1447872a0ed51a99e19f73865a7/docs/VALIDATION.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "OPSD4MAS把后续Agent对话提炼为事实，再按结果关联和逐条移除后的token概率变化筛选，用同一角色策略的特权上下文视图补充GRPO。作者报告六套数学题等权平均pass@1比GRPO高8.87个百分点；但公开代码说明历史验证集与三套报告测试重叠，收益不能直接视为独立测试泛化。",
+      "motivation": "多Agent的最终正确/错误奖励只能粗略告诉每个响应该加强还是抑制；后续讨论往往说明具体哪一步错了或何种事实有用，但也可能包含错误和无关建议。作者希望把这种训练时才存在的反馈转为token级监督，同时保留可验证结果作为方向约束。",
+      "novelty": "作者主张：未来通信不必压成一个标量奖励，可以经过关联排序和目标响应的LOO筛选，形成token级自蒸馏信号，再逐步减小其训练权重。本站判断：最值得借鉴的是先检查某条反馈对当前响应的学习方向，而非看到“纠错”就全部学习；三套竞赛题消融中，直接用未来对话反而使平均pass@1从49.63%降到33.24%，完整过滤为64.91%。这支持过滤组合的价值，但不是事实真伪或单条反馈因果贡献的认证。",
+      "evidenceScope": "已阅读全文§3–5、局限与附录A–D；PDF第6/7页核对主表、消融表和注入图。匿名读取作者公开仓库，HTML currentOid固定为a32ff3058f25f1447872a0ed51a99e19f73865a7，并下载该提交仅作静态审阅；重点读事实目标/关联/筛选、两种优势与联合loss、teacher上下文构造、LOO缺失回退、指标聚合、数据准备及DATA/EVALUATION/REPRODUCIBILITY/VALIDATION文档。未运行仓库测试、训练、模型、API或下载权重/完整数据；仓库自报CPU检查不作为本站复现。verified仅表示来源核验。",
+      "limits": "全部分数为作者报告，本站未执行代码或复现。六数据集均为Qwen3-4B非thinking数学推理；8.87/9.54个百分点是六数据集等权pass@1/pass@4均值增益，20.00个百分点是AIME24/25的pass@4增益，不能当单次成功率。每题4条完整独立轨迹，非同一对话内4个Agent；公开聚合器按轨迹去重。固定DATA.md和prepare_data.py说明默认历史验证集为AMC23+AIME24+AIME25共143题，与报告测试重叠；未确立独立验证拆分，完整checkpoint到表1映射也未恢复，不能宣称严格独立选择后的泛化。六套精确测试快照只有身份指纹、无已发布下载；AMC23为83题、Olympiad为675题，不能静默换成常见40/674题版本。公开发布未重跑完整GPU训练，缺原模型checkpoint、完整历史环境与外部服务配置，比较基线训练和完整消融/注入研究也不在发布范围。Minerva的单位、多答案与科学自由文本判分仍需审计。注入诊断在训练题、固定权重与冻结历史上只重新生成最终Solver，四checkpoint来自同一run且未做显著性检验，不是多种子或无特权测试。关联分数不是因果，LOO是局部token概率变化；两提示分别截断时可能同时改变历史/其他事实。外部模型仍可能提错事实，论文未证明过滤降低错误传播。24张A100是项目可用资源，不是每次run分配；公开4卡参考配置不等于历史等算力对照，训练额外抽取/重评分成本未量化为效率收益。",
+      "method": [
+        "采样普通上下文的Solver–Verifier交互：两角色分别训练，Qwen3-4B非thinking、DAPO-MATH-17k。对每个目标响应读取后续2或4个响应，外部模型提取带来源/目标身份的原子纠错、警告、已验证主张或策略；最后一条响应可给前面提供信息，但自身没有未来信息。外部模型只构造事实与关系，不提供teacher logits。",
+        "先做同题关联排序：外部模型把每条事实与同题各条轨迹标成遵循、违背或无关；按“一条轨迹一次”的结果标准化优势加权计算关联，取候选而非强制关联分数为正。它与GRPO按题目和角色汇总每次响应、重复轮次单独计数的优势不同；全失败组的validated_claim会排除，重复事实去重。",
+        "再做目标响应的逐条移除检查：缓存更新前策略分数，比较全部候选与删去一个事实时，对同一批已生成token的log概率差；乘目标响应的GRPO优势，计算RMS影响、同向质量占比与净同向影响后筛选。P是影响质量占比而非正向token数量比例；公开FW4参考阈值为E≥0.02、P≥0.50、N>−0.001，最多10候选/8入选，不等同于附录注入诊断的Strict/Relaxed阈值。",
+        "重评分最终入选事实并联合更新：把事实加入最后一个user消息，同一角色策略成为特权teacher，其对已生成token的log概率减普通上下文分数，停止梯度后作为OPSD系数；只有普通上下文策略获得梯度。GRPO保留比率裁剪并按响应均值聚合，OPSD无比率/裁剪、按有效token均值聚合；公开参考权重max(0.1−0.0004×step,0.02)，无事实或无teacher分数时OPSD为零。",
+        "推理恢复普通上下文，不用未来事实或外部抽取器。结果按四条完整交互轨迹/题计算pass@1与pass@4，再分别在六套主表或三套消融数据上等权汇总。附加注入诊断只在冻结的训练历史里替换/加入事实并重新生成最终Solver，用同槽位、同可见事实数量且近似长度匹配的异题事实作对照；它是内容效用诊断，不是部署协议。"
+      ],
+      "inspirations": [
+        "在代码/工具Agent反馈蒸馏中，先保留未来报错或审阅意见的来源与目标步，再用“结果方向×当前动作概率改变量”筛出值得学习的反馈；同时保留无蒸馏、原反馈、仅提炼、完整过滤四组对照，避免把更长反馈直接当更好监督。这是迁移建议，本文只验证数学域。",
+        "为LOO配对额外存储两次序列化后实际保留的历史与事实hash，要求除目标事实外上下文一致再解释为单事实效应；另统计截断、空teacher、错事实、外部调用与重评分成本，避免把截断引起的概率差当反馈贡献。",
+        "先划出与六套测试身份不重叠的验证集，并发布每次checkpoint选择与题目hash；在固定训练预算下比较多种子、统一判分、每题四轨迹及单次成功率，再开展相同数量/长度的错题事实对照。公开指纹和CPU测试只能辅助审计，不能替代精确数据与完整run证据。"
+      ],
+      "reviewedAt": "2026-11-14T10:22:36+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.16206",
+        "https://arxiv.org/abs/2611.16206v1",
+        "https://arxiv.org/html/2611.16206v1",
+        "https://arxiv.org/pdf/2611.16206v1",
+        "https://github.com/Camel-Prince/OPSD4MAS/tree/a32ff3058f25f1447872a0ed51a99e19f73865a7",
+        "https://github.com/Camel-Prince/OPSD4MAS/blob/a32ff3058f25f1447872a0ed51a99e19f73865a7/verl/trainer/ppo/core_algos.py",
+        "https://github.com/Camel-Prince/OPSD4MAS/blob/a32ff3058f25f1447872a0ed51a99e19f73865a7/verl/trainer/ppo/opd_fact_cards.py",
+        "https://github.com/Camel-Prince/OPSD4MAS/blob/a32ff3058f25f1447872a0ed51a99e19f73865a7/verl/trainer/ppo/opd_teacher.py",
+        "https://github.com/Camel-Prince/OPSD4MAS/blob/a32ff3058f25f1447872a0ed51a99e19f73865a7/scripts/evaluation_records.py",
+        "https://github.com/Camel-Prince/OPSD4MAS/blob/a32ff3058f25f1447872a0ed51a99e19f73865a7/docs/DATA.md",
+        "https://github.com/Camel-Prince/OPSD4MAS/blob/a32ff3058f25f1447872a0ed51a99e19f73865a7/docs/REPRODUCIBILITY.md",
+        "https://github.com/Camel-Prince/OPSD4MAS/blob/a32ff3058f25f1447872a0ed51a99e19f73865a7/docs/EVALUATION.md",
+        "https://github.com/Camel-Prince/OPSD4MAS/blob/a32ff3058f25f1447872a0ed51a99e19f73865a7/docs/VALIDATION.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.16206",
+      "status": "pending",
+      "checkedAt": "2026-11-14T10:23:39.533773+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.16493v1",
+    "url": "https://arxiv.org/abs/2611.16493v1",
+    "id": "live-9342b6890eb214be",
+    "title": "ReA-Bench：审计要找出漏报，也要识别已授权操作",
+    "summary": "ReA-Bench以587条原始及对照轨迹，区分审计器不知道操作含义、没关联证据、误信来源和缺少运行信息等六类问题。它同时放入看似危险却已获授权的困难良性任务，揭示提高检出率可能同时增加误拦；关键收益是把证据核查和授权条件纳入评测，而非只数危险关键词。",
+    "insight": "作者主张：按审计所需证据组织六类诊断任务，并用轨迹缩短、补充规则/运行记录及GSA信息抽取定位失败。本站判断：最值得迁移的是在相同误报预算下比较漏报，另报哪些合法任务被误拦。作者四种常规方法平均下，GPT-sol固定阈值召回88.5%、误报54.0%；将经验误报率限制到10%后，其四方法最佳召回为47.3%。这是该诊断样本与单次配置结果，不是线上受影响用户比例或模型通用排名。",
+    "limits": "已读原论文方法、主结果和相关附录，未运行模型或独立复现。587总轨迹含106个对照版本；主评测仅L1–L5的277风险/177良性，L6另测，不能将全部587当独立风险样本。每配置仅一次，细类样本数不均，服务安全拦截形成缺失，仅统计有效且比较时共有的结果；不足以证明小差异稳定。困难良性分布刻意富集，阈值在同一评测样本上扫描，未建立跨业务留出校准，不能把FPR直接换算线上误拦率。作者描述LLM辅助、人工检查与数值重算，但所读质检章节未报告独立标注人数、盲审/仲裁协议或一致性系数；不能称已有独立标注复验。六类不是独立能力或严格难度阶梯。GSA只评4种配置，事后使用完整历史，不能当在线监控或上下文压缩；累计输入超过千万token不是单请求上下文长度，费用依赖缓存。L6直接补入可信信息，并未验证现实采集的完整性与可信度。v1明确数据仍待脱敏和发布审核；本轮未核到作者公开数据/代码仓库；另测的200条生产良性轨迹不随基准发布。",
+    "organization": "Alibaba AAIG",
+    "dateLabel": "2026-11-12 · arXiv v1",
+    "evidence": "原论文方法/结果/评测协议核验；未执行或复现",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-14T10:20:01.087547+00:00",
+    "paperOriginalDate": "2026-11-12T09:01:24Z",
+    "paperUpdatedAt": "2026-11-12T09:01:24Z",
+    "updatedAt": "2026-11-12T09:01:24Z",
+    "firstSeenAt": "2026-11-13T10:00:01Z",
+    "lastSeenAt": "2026-11-14T10:00:01Z",
+    "tags": [
+      "Agent审计",
+      "漏报与误报",
+      "证据核查",
+      "授权条件"
+    ],
+    "authors": [
+      "Zipeng Ye",
+      "Shenyu Dai",
+      "Yong Xie",
+      "Kun Wang",
+      "Jiyang Guan",
+      "Zhikai Chen",
+      "Jiaqi Weng",
+      "Jialing Tao",
+      "Hui Xue"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "此前候选核验来源",
+        "url": "https://arxiv.org/abs/2611.16493"
+      },
+      {
+        "label": "arXiv v1 · 首发记录",
+        "url": "https://arxiv.org/abs/2611.16493v1"
+      },
+      {
+        "label": "原论文 · 方法、结果与附录",
+        "url": "https://arxiv.org/html/2611.16493v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "ReA-Bench以587条原始及对照轨迹，区分审计器不知道操作含义、没关联证据、误信来源和缺少运行信息等六类问题。它同时放入看似危险却已获授权的困难良性任务，揭示提高检出率可能同时增加误拦；关键收益是把证据核查和授权条件纳入评测，而非只数危险关键词。",
+      "motivation": "高召回可能只是更容易报警；合法维护、已更新授权和明确标为建议的研究，也可能被误判。另一方面，成功的工具响应和漂亮终稿未必支持结论。作者把这些差异做成可比较的轨迹条件，帮助区分证据缺失、证据没找到和证据没用对。",
+      "novelty": "作者主张：按审计所需证据组织六类诊断任务，并用轨迹缩短、补充规则/运行记录及GSA信息抽取定位失败。本站判断：最值得迁移的是在相同误报预算下比较漏报，另报哪些合法任务被误拦。作者四种常规方法平均下，GPT-sol固定阈值召回88.5%、误报54.0%；将经验误报率限制到10%后，其四方法最佳召回为47.3%。这是该诊断样本与单次配置结果，不是线上受影响用户比例或模型通用排名。",
+      "evidenceScope": "已匿名读取arXiv v1摘要与正文§1–§8，重点§2.3–2.5构造/质检、§3协议指标、§4结果和§6限制，并读附录E1/E2/E4/E5/F1关于调用范围、推理配置、缺失、累计token与生产良性样本。首发2026-11-12T09:01:24Z；正文称基准待脱敏发布审核。检查正文公开外链与GitHub/Hugging Face关键词搜索，未核到作者基准资产；未完整逐例审阅附录A全部个案、取得原始生产数据、运行任何作者代码或测试模型。verified仅表示来源核验，结果均为作者报告。",
+      "limits": "已读原论文方法、主结果和相关附录，未运行模型或独立复现。587总轨迹含106个对照版本；主评测仅L1–L5的277风险/177良性，L6另测，不能将全部587当独立风险样本。每配置仅一次，细类样本数不均，服务安全拦截形成缺失，仅统计有效且比较时共有的结果；不足以证明小差异稳定。困难良性分布刻意富集，阈值在同一评测样本上扫描，未建立跨业务留出校准，不能把FPR直接换算线上误拦率。作者描述LLM辅助、人工检查与数值重算，但所读质检章节未报告独立标注人数、盲审/仲裁协议或一致性系数；不能称已有独立标注复验。六类不是独立能力或严格难度阶梯。GSA只评4种配置，事后使用完整历史，不能当在线监控或上下文压缩；累计输入超过千万token不是单请求上下文长度，费用依赖缓存。L6直接补入可信信息，并未验证现实采集的完整性与可信度。v1明确数据仍待脱敏和发布审核；本轮未核到作者公开数据/代码仓库；另测的200条生产良性轨迹不随基准发布。",
+      "method": [
+        "从多平台真实生产及少量红队轨迹人工选种，必要时适配或受控构造，保留工具响应、失败重试和业务约束。合计304风险、177良性与106对照，共587条；六类覆盖操作知识、上下文矛盾、长上下文证据稀释、来源/事实/推理核查、间接引导和信息缺失。人工检查授权链、风险因果和配对一致性，程序核对消息/工具对应与数值；尚无公开可下载数据可供本站重标。",
+        "用L1–L5的277条原始风险与177条良性做主评测；L3的79个缩短版本保持风险及必要证据，另做配对比较。L6有27组缺信息/补信息版本，其中17组补业务规则、10组补运行记录；补充前仅叫报警阈值超限率，补充后才报告召回，避免把无证据猜测等同可判定检出。",
+        "八种模型配置比较FA终点全量、miniCoT先列风险、FHA每15消息读全历史、WA同间隔读最近20消息加窗外用户要求四种方法；多检查点取最大分。GSA仅在四配置追加试验：对非重叠20消息窗提取线索，但每次抽取仍可见完整历史，最终也读原历史加全部线索，属于事后分析。",
+        "各方法输出0–10风险分，固定阈值5并扫描ROC/AP；同时报告经验FPR≤10%内最高召回，不在阈值间插值。配对比较只使用双方有效结果，供应商安全拦截不填零；另统计新增/丢失检出和新增/消除误报。每配置仅运行一次，需避免将单次差异解释为稳定胜出。",
+        "用缩短、补信息与误判案例分析解释边界：缩短后87.1%–89.2%的配对判断仍在阈值同侧；GSA相对各配置最高召回基线同时提高召回和误报，AUROC/AP只在四配置中的三种改善。另按每模型基准误报最高方法检查200条由应用方判为合规的生产轨迹，作者明确这批不公开且不能替代跨业务校准。"
+      ],
+      "inspirations": [
+        "给Agent验收增加困难良性对照：保留相似操作，改变有效授权、目标或约束；分别记录漏报、误报和新出现的失败样本，并在业务留出集校准误报预算，避免只优化报警数量。",
+        "把审计输出变成可核查的证据关系：记录用户约束、实际动作、原始观察和最终主张，针对集合/数量/时间窗口重新计算；仅有引用、成功退出码或Agent自检不能证明完成。代码创作可分别核源码、执行结果和视觉证据，这是本站迁移建议。",
+        "对长轨迹先做同风险/同证据的缩短对照，再决定投入检索还是推理；对缺信息任务显式保留未知状态，并从可信来源补授权与运行记录。GSA须另报累计输入、缓存与延迟，不能把全历史辅助抽取当成节省上下文的已证方案。"
+      ],
+      "reviewedAt": "2026-11-14T10:20:01.087547+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.16493v1",
+        "https://arxiv.org/html/2611.16493v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.16493",
+      "status": "pending",
+      "checkedAt": "2026-11-14T10:23:39.533773+00:00"
+    }
   }
 ]
