@@ -17716,5 +17716,309 @@
       "status": "pending",
       "checkedAt": "2026-11-14T16:31:09.707688+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.14949v1",
+    "url": "https://arxiv.org/abs/2611.14949v1",
+    "id": "live-0c88a182f7c6ac12",
+    "title": "RSI-PDEbench：识别方程之后，还要独立验收数值解",
+    "summary": "RSI-PDEbench要求Agent从256个观测点、已知外力/初边条件和有限方程库中识别方程与系数，再提交可执行求解器。RSI-PDE先用残差筛选候选，再用公开数值误差与验收门槛保留程序、策略文本和记忆；模型权重及监督程序不变。",
+    "insight": "作者主张：结构化实验和经验证保留的更新，能提高数值求解成绩并减少汇总模型调用。本站判断：可迁移的是“候选假设筛选—数值验收—冻结测试”的分层流程及逐版本账本。四模型平均相对原生harness的提升在Full/Noisy/Hard-OOD分别为2.4/10.5/4.0个百分点；Full的Opus差3/210，小于原生三次运行187–198的跨度，不能当显著优势。论文没有单独验证残差前五筛选、记忆或策略更新各自贡献。",
+    "limits": "已读原论文方法、主结果、限制及相关附录，未运行或复现。1001例是发布库存声明，三种评测分母分别210/160/278，不能合并为全量1001例通过率；大多合成、1/2维，42模板不等于42独立物理定律。Noisy从固定探针最容易的200例中选取，160例测试来自可再生公开库存，非新秘密留出；Hard-OOD带可行性筛选且完整候选库仍可见，“未见”仅未入开发集。维护者看过测试结果并据此选择设计，报告属于开发性证据；Noisy的噪声强度对部分模型可见，对GPT-6.1/Sonnet隐藏，不能混为完全一致条件。多数harness单次运行，原生Opus Full三次、单次响应基线样本数和输出限制不等；总预算上限相同也不等于工具、提示或实际用量相同。调用数3547→1884只在12组合汇总下降46.9%，4组合反而增加，调用少不等于令牌、费用或耗时更低；部分美元成本用事后停止规则回放却配完整运行准确率，非同一次实际早停结果。Full GPT-6.1/Sonnet更新总分189/183与旧诊断199/193不同，旧资源/残差不可当新版同run证据。低残差不保证真实方程保留或系数准确；图4后续系数为示意，事后真方程残差不是Agent可用oracle，参考自收敛亦非统一误差上界。作者声明代码与数据公开，但本轮仓库404、HF数据页401，只核到项目文字，未核实现、文件清单、固定提交或下载。",
+    "organization": "Purdue University / UIUC / Utah State 等",
+    "dateLabel": "2026-11-11 · arXiv v1",
+    "evidence": "原论文方法/结果与作者页面核验；代码/数据入口不可读，未复现",
+    "originalTitle": "RSI-PDEbench: A Benchmark for Self-Improving Agents in PDE Solving",
+    "date": "2026-11-11",
+    "checkedAt": "2026-11-14T22:18:16.466275+00:00",
+    "paperOriginalDate": "2026-11-11T02:55:14Z",
+    "paperUpdatedAt": "2026-11-11T02:55:14Z",
+    "updatedAt": "2026-11-11T02:55:14Z",
+    "firstSeenAt": "2026-11-13T04:00:00Z",
+    "lastSeenAt": "2026-11-13T04:00:00Z",
+    "tags": [
+      "科学计算Agent",
+      "方程识别",
+      "数值验收",
+      "测试复用边界"
+    ],
+    "authors": [
+      "Binghang Lu",
+      "Lang Cao",
+      "Changhong Mou",
+      "Yige Sun",
+      "Cindy Xiangrui Kong",
+      "Zheyuan Deng",
+      "Tian Yuan",
+      "Bing Hu",
+      "Runyu Zhang",
+      "Na Lu",
+      "Guang Lin"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "此前候选核验来源",
+        "url": "https://arxiv.org/abs/2611.14949"
+      },
+      {
+        "label": "arXiv v1 · 发表记录",
+        "url": "https://arxiv.org/abs/2611.14949v1"
+      },
+      {
+        "label": "原文 · 方法与结果",
+        "url": "https://arxiv.org/html/2611.14949v1"
+      },
+      {
+        "label": "作者项目页 · 演示与结果说明",
+        "url": "https://jeremylu916.github.io/RSI-PDE/"
+      },
+      {
+        "label": "作者声明代码入口 · 本轮404",
+        "url": "https://github.com/jeremylu916/RSI-PDE"
+      },
+      {
+        "label": "作者声明公开数据入口 · 本轮401",
+        "url": "https://huggingface.co/datasets/JeremyLu1017/PDE-RSI"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "RSI-PDEbench要求Agent从256个观测点、已知外力/初边条件和有限方程库中识别方程与系数，再提交可执行求解器。RSI-PDE先用残差筛选候选，再用公开数值误差与验收门槛保留程序、策略文本和记忆；模型权重及监督程序不变。",
+      "motivation": "科学数据往往没有已知方程和系数，代码能执行也可能算对了错误模型。研究把方程选择、参数估计、离散求解和最终数值精度分开，考察Agent能否把公开误差反馈沉淀成适用于新实例的求解程序。",
+      "novelty": "作者主张：结构化实验和经验证保留的更新，能提高数值求解成绩并减少汇总模型调用。本站判断：可迁移的是“候选假设筛选—数值验收—冻结测试”的分层流程及逐版本账本。四模型平均相对原生harness的提升在Full/Noisy/Hard-OOD分别为2.4/10.5/4.0个百分点；Full的Opus差3/210，小于原生三次运行187–198的跨度，不能当显著优势。论文没有单独验证残差前五筛选、记忆或策略更新各自贡献。",
+      "evidenceScope": "已读arXiv v1 §2–6与附录C/D，核表1–4、预算、split、门控、复制次数、调用/成本和残差解释；发表2026-11-11T02:55:14Z，论文结果快照标为11月7日。作者项目页HTTP200，读取正文、结果说明与演示图注，未播放动画或运行求解器。仓库HTTP404、HF数据页HTTP401，不能由“公开发布”声明代替实现核验；没有固定代码审计。verified仅指来源核验，数字均为作者报告。",
+      "limits": "已读原论文方法、主结果、限制及相关附录，未运行或复现。1001例是发布库存声明，三种评测分母分别210/160/278，不能合并为全量1001例通过率；大多合成、1/2维，42模板不等于42独立物理定律。Noisy从固定探针最容易的200例中选取，160例测试来自可再生公开库存，非新秘密留出；Hard-OOD带可行性筛选且完整候选库仍可见，“未见”仅未入开发集。维护者看过测试结果并据此选择设计，报告属于开发性证据；Noisy的噪声强度对部分模型可见，对GPT-6.1/Sonnet隐藏，不能混为完全一致条件。多数harness单次运行，原生Opus Full三次、单次响应基线样本数和输出限制不等；总预算上限相同也不等于工具、提示或实际用量相同。调用数3547→1884只在12组合汇总下降46.9%，4组合反而增加，调用少不等于令牌、费用或耗时更低；部分美元成本用事后停止规则回放却配完整运行准确率，非同一次实际早停结果。Full GPT-6.1/Sonnet更新总分189/183与旧诊断199/193不同，旧资源/残差不可当新版同run证据。低残差不保证真实方程保留或系数准确；图4后续系数为示意，事后真方程残差不是Agent可用oracle，参考自收敛亦非统一误差上界。作者声明代码与数据公开，但本轮仓库404、HF数据页401，只核到项目文字，未核实现、文件清单、固定提交或下载。",
+      "method": [
+        "用42模板构造案例；Agent看到256个样本点、有限候选库、定义域和已知外力/初边函数，输出solve(problem)。开发训练诊断可显示真类别/系数，验证只返数值诊断；冻结测试时不得查询隐藏参考或误差，类别名猜对本身不计通过。",
+        "在沙箱内由Agent写程序重建/平滑观测场，拟合各候选的允许系数，按归一化方程残差最多保留5个假设，再做前向求解、公开训练相对L2检查及系数/网格修正。残差是所假设方程下的计算，不是监督器透露真实类别；噪声下低残差仍可能选错。",
+        "每轮先有训练实验，再提程序、策略文本和记忆更新。标准门槛要求宏观误差降超过0.5%，并限制类别/单例退化和失去通过；另可按公开训练+验证的新增通过且无丢失规则接收。训练回归守卫连续阻断两轮后可豁免一轮，但仍须经过验证/公开通过门槛；这不是无条件单调改进。",
+        "三组开发子运行各限2小时、400调用、4000万输入token、150万输出token和30次验证，合计最高1200调用/90次验证；数值求解资源为每组1 CPU与1 H100。最终冻结程序再评分，隐藏评测不计开发预算，曲线轮次是验证提交序号而非共同墙钟时间。",
+        "验收输出契约、资源、初边条件与解误差：一般时空和末时刻相对L2均≤0.002，初边条件检查≤1e-10，Elliptic另用0.05。Full有42/42/210训练/验证/测试；Noisy22/18/160、50% RMS噪声；Hard-OOD20/20/278、1%噪声，测试再拆188未见模板与90系数范围迁移，分别报告，避免不同分布混算。"
+      ],
+      "inspirations": [
+        "为科学或工具Agent分别设置假设选择、参数恢复、可执行性、最终输出误差四张诊断表；残差用于提候选，独立参考用于验收，并加“真实类别是否进前五”的召回测试，不拿低残差直接当正确解证明。",
+        "将每个程序/策略/记忆版本绑定到同一run的评分、token、调用、耗时和费用；事后早停模拟单列，随后用相同起点重新跑真实早停实验，禁止把完整预算成绩配估算低成本展示。",
+        "为自我改进流程保留完全未用于设计的新测试抽样，并做同起点、同预算的成对续跑：仅程序、程序+记忆、再加策略更新逐层比较。控制可见噪声、训练标签和验证反馈，区分求解器变好与“改进器更会改进”的证据。"
+      ],
+      "reviewedAt": "2026-11-14T22:18:16.466275+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.14949v1",
+        "https://arxiv.org/html/2611.14949v1",
+        "https://jeremylu916.github.io/RSI-PDE/",
+        "https://github.com/jeremylu916/RSI-PDE",
+        "https://huggingface.co/datasets/JeremyLu1017/PDE-RSI"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.14949",
+      "status": "pending",
+      "checkedAt": "2026-11-14T22:19:22.999213+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.33060",
+    "url": "https://arxiv.org/abs/2610.33060",
+    "id": "paper-marc-2610-33060",
+    "title": "MARC：让关节机构“真能动”，用同一张机制图生成、诊断和修复",
+    "summary": "MARC让Agent生成带连接、闭环与坐标耦合的关节机构程序，用同一运动学图定位“看着像、动起来却卡住”的原因，再同步改几何与连接。作者在20对象上报告有效运动覆盖67.8%、整体成功12/20；价值在可追踪的机制修复，而非生成一段看似会动的录像。",
+    "insight": "作者主张：把几何上的局部连接坐标系、运动约束、求解诊断与程序修复共用一个可执行运动学图，支持闭链和耦合机构。本站判断：关键是让失败证据指向可编辑的实体和参数，并按原运动路径做回归检查；它是推理时harness与数值工具设计，未为各角色单独训练模型。",
+    "limits": "所有结果为作者报告，本站未执行、渲染或复现。本文10/19首发，属近30天代表作补读，不是11/15新发布。主评测只有20个策划的复杂机构，图像与人工功能要求组成参考；标注人数、盲法和一致性未充分披露。VMC先在路径内平均再在对象间平均，67.8%不是成功对象占比；OSR另为12/20，95% Wilson区间38.7%–78.1%。CMC只对有耦合要求的19对象计算，98.2%不代表完整运动无碰撞。另一GPT-6 Astra实验19对象、CMC18对象，报告19/19成功，不能与Kimi的20对象直接排名；视觉补充明确行星齿轮组未提供。缺失/不可执行/不可达样本计失败，不能只算已成功输出。完整采样路径通过不证明样本间连续无碰撞，也不验证动力学、载荷、材料、真实制造或机器人任务。静态/动态几何指标来自人工参考模型、固定角色对应与一次全局对齐，动态输入近似匹配；几何相似不是功能正确。无反思比较使用同初始候选，OSR从8/20到12/20；无图配置则重新生成并同时移除表示、Solver、接口与SDK指导，不能把收益单归于图记法；Direct API对照也比较整套harness而非等工具/等调用预算。置信区间只在对象独立且可比的假设下估计，不涵盖重复生成或标注误差；数值seed=0不是多次生成复验。内层执行24turn/3次审查虽有说明，但外层修复次数只记Bcorr、实际值及端到端延时/调用费用未报告。本轮公开固定仓库只有论文、网页与录制图片/视频等展示资产，未见研究生成器、SDK、求解器或评分实现；浏览器滑块切换预录帧且只按归一化进度同步，不是实时求解、可编辑源工程开放或同物理驱动量的实测对比。",
+    "organization": "Shanghai Jiao Tong University / Meituan",
+    "dateLabel": "2026-10-19 · arXiv v1；11月15日代表作补读",
+    "evidence": "原论文完整方法/附录与固定公开展示源码核验，未复现",
+    "originalTitle": "MARC: Mechanism-Aware Reflective Correction for Articulated Object Code Generation",
+    "date": "2026-10-19",
+    "checkedAt": "2026-11-14T22:20:47.524723+00:00",
+    "paperOriginalDate": "2026-10-19T10:38:34Z",
+    "paperUpdatedAt": "2026-10-19T10:38:34Z",
+    "updatedAt": "2026-10-19T10:38:34Z",
+    "firstSeenAt": "2026-11-14T22:20:47.524723+00:00",
+    "tags": [
+      "机制图",
+      "程序化3D",
+      "闭链约束",
+      "修复回归",
+      "采样验证"
+    ],
+    "authors": [
+      "Yang, Xiong",
+      "Hao, Junkun",
+      "Xiao, Zijian",
+      "Ye, Zipeng",
+      "Xie, Yuchen",
+      "Yi, Ran"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "sources": [
+      {
+        "label": "arXiv原始入口",
+        "url": "https://arxiv.org/abs/2610.33060"
+      },
+      {
+        "label": "arXiv v1完整方法与附录",
+        "url": "https://arxiv.org/html/2610.33060v1"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://demianmusk.github.io/MARC-Home/"
+      },
+      {
+        "label": "作者视觉补充入口",
+        "url": "https://demianmusk.github.io/MARC-Home/supplement/index.html"
+      },
+      {
+        "label": "固定网站README",
+        "url": "https://github.com/DemianMusk/MARC-Home/blob/8bc2e6b6586d50175b84c8e5d1bf831b42933925/README.md"
+      },
+      {
+        "label": "固定视觉补充说明",
+        "url": "https://github.com/DemianMusk/MARC-Home/blob/8bc2e6b6586d50175b84c8e5d1bf831b42933925/supplement/README.txt"
+      },
+      {
+        "label": "固定录制序列清单",
+        "url": "https://github.com/DemianMusk/MARC-Home/blob/8bc2e6b6586d50175b84c8e5d1bf831b42933925/supplement/data.js"
+      },
+      {
+        "label": "固定回放界面实现",
+        "url": "https://github.com/DemianMusk/MARC-Home/blob/8bc2e6b6586d50175b84c8e5d1bf831b42933925/supplement/app.js"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "MARC让Agent生成带连接、闭环与坐标耦合的关节机构程序，用同一运动学图定位“看着像、动起来却卡住”的原因，再同步改几何与连接。作者在20对象上报告有效运动覆盖67.8%、整体成功12/20；价值在可追踪的机制修复，而非生成一段看似会动的录像。",
+      "motivation": "闭链和传动机构里，一个关节能转不代表整机能按要求运动：连接位置、关节范围或几何间隙的局部错误会让其他部分卡住、分离或碰撞。作者希望把可编辑程序中的部件与连接同数值执行中的异常对应起来，使修复能同时维护机构的拓扑、几何和动作要求。",
+      "novelty": "作者主张：把几何上的局部连接坐标系、运动约束、求解诊断与程序修复共用一个可执行运动学图，支持闭链和耦合机构。本站判断：关键是让失败证据指向可编辑的实体和参数，并按原运动路径做回归检查；它是推理时harness与数值工具设计，未为各角色单独训练模型。",
+      "evidenceScope": "实际阅读全文§3–4与附录A.1–A.7、B.1–B.5、C.1–C.6，核表1–4、8、10及VMC/CMC/OSR分母和失效处理。匿名读取作者项目，固定MARC-Home提交8bc2e6b6586d50175b84c8e5d1bf831b42933925；树接口3291项且未截断，静态读README、index、前端app/showcase数据、supplement说明/data/app，核20对象元数据及Astra两个配置各1项not_provided。下载的8个固定源码/元数据blob与Git tree SHA1一致；未运行JS/Python、打开仿真、播放视频或下载全部图像。README仍写arXiv未分配，但原arXiv已有10/19 v1，日期与身份以原论文为准；作者元数据Hao,Junkun与正文/网站Jinkun拼写不同，authors保留arXiv元数据。verified仅指来源核验，不是实验复现。",
+      "limits": "所有结果为作者报告，本站未执行、渲染或复现。本文10/19首发，属近30天代表作补读，不是11/15新发布。主评测只有20个策划的复杂机构，图像与人工功能要求组成参考；标注人数、盲法和一致性未充分披露。VMC先在路径内平均再在对象间平均，67.8%不是成功对象占比；OSR另为12/20，95% Wilson区间38.7%–78.1%。CMC只对有耦合要求的19对象计算，98.2%不代表完整运动无碰撞。另一GPT-6 Astra实验19对象、CMC18对象，报告19/19成功，不能与Kimi的20对象直接排名；视觉补充明确行星齿轮组未提供。缺失/不可执行/不可达样本计失败，不能只算已成功输出。完整采样路径通过不证明样本间连续无碰撞，也不验证动力学、载荷、材料、真实制造或机器人任务。静态/动态几何指标来自人工参考模型、固定角色对应与一次全局对齐，动态输入近似匹配；几何相似不是功能正确。无反思比较使用同初始候选，OSR从8/20到12/20；无图配置则重新生成并同时移除表示、Solver、接口与SDK指导，不能把收益单归于图记法；Direct API对照也比较整套harness而非等工具/等调用预算。置信区间只在对象独立且可比的假设下估计，不涵盖重复生成或标注误差；数值seed=0不是多次生成复验。内层执行24turn/3次审查虽有说明，但外层修复次数只记Bcorr、实际值及端到端延时/调用费用未报告。本轮公开固定仓库只有论文、网页与录制图片/视频等展示资产，未见研究生成器、SDK、求解器或评分实现；浏览器滑块切换预录帧且只按归一化进度同步，不是实时求解、可编辑源工程开放或同物理驱动量的实测对比。",
+      "method": [
+        "输入参考图像、文本与规定驱动域/路径。Topology角色用Python/CadQuery机制SDK写刚体、几何、局部socket连接帧、树关节、额外闭环连接和坐标耦合；Socket与孔位、销长、层间距共享构造参数，便于联动修改。",
+        "Solver先装配初始机构，固定驱动坐标，在关节上下限内以加权非线性最小二乘求从动坐标。上一采样解初始化下一采样，追踪同一运动分支；逐点检查连接残差、限位、连续性和禁止碰撞，将失败附上程序版本及部件/关节/socket名称。",
+        "Evaluate结合参考要求、多视角与数值证据分层看结构、功能、几何。Judge围绕异常连接做定点探查，例如临时放宽限位测试闭环受阻原因；产出注明证据、编辑范围、依赖和必须保留关系的修复计划。",
+        "Executor按计划修改代码，Reviewer核对改动与连接保持，再回Solver沿原路径重测整机；不能事后缩短任务运动域。内部最多24执行turn和3轮实现审查，外层修复另受Bcorr约束。记录原/改程序、探查与诊断，使局部改善和其他位置退化都可追踪。",
+        "独立于生成内评的终评按人工参考要求评分：可执行ER、结构SC、有效路径采样覆盖VMC、从动关系CMC及二值整体成功OSR；先对象内聚合再宏平均。对同初稿比较无反思/完整修复，并另做整套harness、无图支持、无图引导修复等不同对照，不混为单一因果消融。"
+      ],
+      "inspirations": [
+        "把code2-3d的验收单元从“代码不报错”换成“连接约束＋驱动路径＋从动语义”：分别存编译、几何、运动覆盖和整体成功，禁止用可播放预览替代机构有效性。",
+        "将编辑关联显式化：改变间距时同时更新销长、socket深度和孔位，并用原输入域复跑回归；把探查动作限定为定位假设，修复必须恢复任务要求，避免靠扩大限位或忽略碰撞“通过”。",
+        "做可归因的修复实验时冻结初稿、模型与预算，记录修好/修坏的成对对象；另报每次模型调用、数值求解时间、外层修复次数和独立新对象表现，区别机制图、额外工具和更多推理各自带来的收益。"
+      ],
+      "reviewedAt": "2026-11-14T22:20:47.524723+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2610.33060",
+        "https://arxiv.org/html/2610.33060v1",
+        "https://demianmusk.github.io/MARC-Home/",
+        "https://demianmusk.github.io/MARC-Home/supplement/index.html",
+        "https://github.com/DemianMusk/MARC-Home/blob/8bc2e6b6586d50175b84c8e5d1bf831b42933925/README.md",
+        "https://github.com/DemianMusk/MARC-Home/blob/8bc2e6b6586d50175b84c8e5d1bf831b42933925/supplement/README.txt",
+        "https://github.com/DemianMusk/MARC-Home/blob/8bc2e6b6586d50175b84c8e5d1bf831b42933925/supplement/data.js",
+        "https://github.com/DemianMusk/MARC-Home/blob/8bc2e6b6586d50175b84c8e5d1bf831b42933925/supplement/app.js"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.33060",
+      "status": "pending",
+      "checkedAt": "2026-11-14T22:19:22.999213+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.16816v1",
+    "url": "https://arxiv.org/abs/2611.16816v1",
+    "id": "live-56c7f4ba10ebfc0c",
+    "title": "OMA：别让同一次Agent尝试因拆成更多行而改变训练权重",
+    "summary": "OMA指出：一个Agent回合拆成多行训练数据后，同一次结果可能被重复计入优势统计，较长轨迹又可能因token更多而获得更大目标权重。它分别按唯一源轨迹统计结果、按轨迹汇总原生目标再分配权重；价值在于把训练账目显式化，效果仍取决于长度与结果、梯度的关系。",
+    "insight": "作者主张：Outcome Alignment（OA）和Mass Alignment（MA）可独立组合，并保留GRPO/GiGPO/GSPO原生信用、比率和截断。主表单seed中，ALFWorld的Qwen2.5-1.5B/3B终点成功率从73.4%/74.2%升至82.8%/81.2%；普通WebShop-3B却从64.8%降至57.0%。本站判断：最值得采用的是源轨迹—响应行—有效token三层审计和分组件对照，而不是把等轨迹权重当成普适更优目标；OA单独启用也可能明显退化。",
+    "limits": "已读18页v1的完整方法、结果与附录A–G，核原始LaTeX表格并视觉检查关键PDF页；未训练或复现。主表每格仅1条seed-0训练谱系，恢复日志不算新seed；附录另有12次训练、仅ALFWorld-3B四变体及WebShop-1.5B两变体各2seed，验证温度由主表0.4改为0，不能合并成同配置3seed。均值±SD是两次训练的描述统计，无置信区间/显著性检验；作者排除了bug影响run、额外ALFWorld-1.5B和全部7B run，未在当前包提供逐run排除清单。训练每更新16任务组×8轨迹；评测配置列validation batch=128，ALFWorld用分布内验证，未给可核验任务ID、完整样本分母清单及训练/评测去重证明，不应称官方全量或OOD结果。终点是第150更新；nAUC是0–150更新间线性插值积分再除区间长度，不是另一种成功率。主表ALFWorld的MA总体nAUC高于OMA，普通WebShop-3B终点反降；附录WebShop两seed平均成功终点47.27%→58.20%，平均成功nAUC却30.29%→29.15%。WebShop-SOL另改成功奖励、失败购买惩罚与仅成功终止，不能据普通WebShop/SOL差异单独因果证明奖励几何作用。等更新数不等于等生成token、环境交互、GPU算力或时间，硬件/软件亦不同。轨迹等系数不保证梯度范数相等或真实回报最优；严格1/K权重及表示不变性只适用于完整组，独立归一化部分microbatch不对任意重新切分保持不变。梯度审计仅7个选定冻结组、每组8轨迹，令old logprob为当前值的detach使ratio=1且截断不激活，无优化步；原历史token ID缺失后重新分词，不能当历史训练重放或GiGPO原生目标复验。本轮原文及精确搜索未定位作者公开训练实现、权重或审计原始记录下载；v1源码包只有论文源/图表，附录给出的审计摘要e43e8937b62a不能替代独立核验。HF对应论文页404，X未取得可核作者帖。",
+    "organization": "中国科学院大学/软件所、Lenovo Research、UNC Chapel Hill等",
+    "dateLabel": "2026-11-12 · arXiv v1首发",
+    "evidence": "原论文方法/主结果/附录及v1论文源码范围核验；未复现",
+    "originalTitle": "Outcome-Mass Alignment: Controlling Length-Dependent Trajectory Influence in Multi-Turn LLM Agent Reinforcement Learning",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-14T22:19:42.688180+00:00",
+    "paperOriginalDate": "2026-11-12T13:52:12Z",
+    "paperUpdatedAt": "2026-11-12T13:52:12Z",
+    "updatedAt": "2026-11-12T13:52:12Z",
+    "firstSeenAt": "2026-11-13T10:00:01Z",
+    "lastSeenAt": "2026-11-14T22:00:00Z",
+    "tags": [
+      "轨迹权重",
+      "多轮RL",
+      "统计口径",
+      "GRPO"
+    ],
+    "authors": [
+      "Dawei Zhang",
+      "Yubin Huangfu",
+      "Jessica Fan",
+      "Boyu Wei",
+      "Likang Wu",
+      "Hongke Zhao",
+      "Ming He",
+      "Zhu Teng"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.16816v1"
+      },
+      {
+        "label": "arXiv v1 HTML · 方法、主结果与附录",
+        "url": "https://arxiv.org/html/2611.16816v1"
+      },
+      {
+        "label": "arXiv v1 PDF · 18页原文",
+        "url": "https://arxiv.org/pdf/2611.16816v1"
+      },
+      {
+        "label": "arXiv v1论文源码 · 固定表格与资产范围",
+        "url": "https://arxiv.org/src/2611.16816v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "OMA指出：一个Agent回合拆成多行训练数据后，同一次结果可能被重复计入优势统计，较长轨迹又可能因token更多而获得更大目标权重。它分别按唯一源轨迹统计结果、按轨迹汇总原生目标再分配权重；价值在于把训练账目显式化，效果仍取决于长度与结果、梯度的关系。",
+      "motivation": "长轨迹为限制上下文而拆成多条训练行，可能在两个不同环节悄悄改变样本贡献：统计优势时反复计算同一结果，汇总目标时又因token多而扩大权重。正确分配轨迹内信用并不能自动解决这两种轨迹间记账偏差；但等轨迹权重也是一种需要实验检验的设计选择。",
+      "novelty": "作者主张：Outcome Alignment（OA）和Mass Alignment（MA）可独立组合，并保留GRPO/GiGPO/GSPO原生信用、比率和截断。主表单seed中，ALFWorld的Qwen2.5-1.5B/3B终点成功率从73.4%/74.2%升至82.8%/81.2%；普通WebShop-3B却从64.8%降至57.0%。本站判断：最值得采用的是源轨迹—响应行—有效token三层审计和分组件对照，而不是把等轨迹权重当成普适更优目标；OA单独启用也可能明显退化。",
+      "evidenceScope": "本轮直接读取arXiv 2611.16816v1摘要、HTML全文、18页原PDF及v1论文源码归档；精读正文§2–4、§6/限制、附录A–G，读取generated主表/新增seed/梯度表与方法LaTeX，渲染核PDF第6、12、15、18页。v1源码包SHA256为5fe075fc2041307f8d199d6924fc68aa038021640db2b7e2be630b43276c4f32，29个文件只含论文LaTeX/参考文献/样式/图表；未找到训练代码、模型、原始run日志或附录G审计包。作者实验与审计数值均属报告，本轮只核来源和内部一致性，未执行作者代码/模型，verified不表示实验复现。",
+      "limits": "已读18页v1的完整方法、结果与附录A–G，核原始LaTeX表格并视觉检查关键PDF页；未训练或复现。主表每格仅1条seed-0训练谱系，恢复日志不算新seed；附录另有12次训练、仅ALFWorld-3B四变体及WebShop-1.5B两变体各2seed，验证温度由主表0.4改为0，不能合并成同配置3seed。均值±SD是两次训练的描述统计，无置信区间/显著性检验；作者排除了bug影响run、额外ALFWorld-1.5B和全部7B run，未在当前包提供逐run排除清单。训练每更新16任务组×8轨迹；评测配置列validation batch=128，ALFWorld用分布内验证，未给可核验任务ID、完整样本分母清单及训练/评测去重证明，不应称官方全量或OOD结果。终点是第150更新；nAUC是0–150更新间线性插值积分再除区间长度，不是另一种成功率。主表ALFWorld的MA总体nAUC高于OMA，普通WebShop-3B终点反降；附录WebShop两seed平均成功终点47.27%→58.20%，平均成功nAUC却30.29%→29.15%。WebShop-SOL另改成功奖励、失败购买惩罚与仅成功终止，不能据普通WebShop/SOL差异单独因果证明奖励几何作用。等更新数不等于等生成token、环境交互、GPU算力或时间，硬件/软件亦不同。轨迹等系数不保证梯度范数相等或真实回报最优；严格1/K权重及表示不变性只适用于完整组，独立归一化部分microbatch不对任意重新切分保持不变。梯度审计仅7个选定冻结组、每组8轨迹，令old logprob为当前值的detach使ratio=1且截断不激活，无优化步；原历史token ID缺失后重新分词，不能当历史训练重放或GiGPO原生目标复验。本轮原文及精确搜索未定位作者公开训练实现、权重或审计原始记录下载；v1源码包只有论文源/图表，附录给出的审计摘要e43e8937b62a不能替代独立核验。HF对应论文页404，X未取得可核作者帖。",
+      "method": [
+        "为每条rollout保留稳定source trajectory ID、统一回合结果、每个响应行的有效token mask及该源总token数D_i。当前实现每回合步骤产生一行；原生token均值使源权重正比D_i，原生行均值正比行数，不能把行数当独立episode数量。先记录成功/失败轨迹扩张与原生目标的关系。",
+        "OA仅把优化器指定的回合结果归一化人口改成唯一源轨迹，再将该回合信号广播回所属响应行。GRPO按轨迹组均值/标准差计算；GiGPO只换episode项、保留anchor分组和step优势。如果实现原本就按唯一轨迹归一化，OA应退化为原操作，而不是重复校正。",
+        "MA在原生优势、重要性比率、detach和截断之后处理未归约目标：每源有效token目标之和除以D_i，再对完整K条轨迹取均值，使每源总系数为1/K。源跨部分microbatch时，以当前token占源总token的比例累加分母M_B；这保留局部比例，但不保证任意独立分批重排后的全局不变性，也不使各源梯度范数相同。",
+        "分别比较Base、OA-only、MA-only、两者结合的OMA；Base在本文特定stepwise实现中使用行展开统计+token均值。常规环境不由OMA额外生成反馈或改变信用分配；训练另有0.1非法动作惩罚。WebShop-SOL作为独立设置，把成功奖励设为10、失败购买扣0.1、无购买失败为−0.05并仅成功终止，仍用标准WebShop成功/部分得分评测，不能与普通WebShop混作同一干预。",
+        "固定150次更新，每更新16任务组、每组8轨迹、1个PPO epoch，Qwen2.5-1.5B/3B在ALFWorld/WebShop评测；起点及每5更新观察一次，分别报终点和0–150归一化曲线面积。主表1seed与附录新增2seed分开报告；冻结批次另做行复制/token量复制的正负对照，但该ratio-one审计不执行优化、不等于端到端因果验证。"
+      ],
+      "inspirations": [
+        "在自己的多轮训练数据里固定episode ID，同时输出每源行数、有效token数、结果和梯度贡献；做整源复制、响应行复制与分批重排审计，先确认预期权重没有被数据展开、padding或microbatch归一化改变。",
+        "用Base/OA/MA/OMA四组对照，并同时报终点、曲线面积、全部生成token及环境调用。本文OA单独退化、MA早中期更强及WebShop反例提醒：不能只挑终点或一个环境，亦不能从失败轨迹更长直接推出梯度纠正必然有利。",
+        "对代码/动画Agent可沿用原任务与回归检查反馈，分别统计执行失败、视觉验收失败及长修复链的权重；再验证稳定源ID和完整token计数。这是本站迁移建议，OMA没有直接评测代码创作或视觉质量。"
+      ],
+      "reviewedAt": "2026-11-14T22:19:42.688180+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.16816v1",
+        "https://arxiv.org/html/2611.16816v1",
+        "https://arxiv.org/pdf/2611.16816v1",
+        "https://arxiv.org/src/2611.16816v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.16816",
+      "status": "pending",
+      "checkedAt": "2026-11-14T22:19:22.999213+00:00"
+    }
   }
 ]
