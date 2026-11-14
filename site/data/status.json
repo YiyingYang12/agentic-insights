@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "partial",
+  "status": "ok",
   "total": 956,
   "intervalHours": 6,
   "timezone": "Asia/Shanghai",
@@ -12,8 +12,8 @@
       "url": "https://export.arxiv.org/api/query",
       "status": "ok",
       "count": 70,
-      "checkedAt": "2026-11-14T04:00:01Z",
-      "lastSuccessAt": "2026-11-14T04:00:01Z"
+      "checkedAt": "2026-11-14T10:00:01Z",
+      "lastSuccessAt": "2026-11-14T10:00:01Z"
     },
     {
       "id": "hf_papers",
@@ -22,8 +22,8 @@
       "url": "https://huggingface.co/papers",
       "status": "ok",
       "count": 43,
-      "checkedAt": "2026-11-14T04:00:01Z",
-      "lastSuccessAt": "2026-11-14T04:00:01Z"
+      "checkedAt": "2026-11-14T10:00:01Z",
+      "lastSuccessAt": "2026-11-14T10:00:01Z"
     },
     {
       "id": "hf_blog",
@@ -32,8 +32,8 @@
       "url": "https://huggingface.co/blog",
       "status": "ok",
       "count": 10,
-      "checkedAt": "2026-11-14T04:00:01Z",
-      "lastSuccessAt": "2026-11-14T04:00:01Z"
+      "checkedAt": "2026-11-14T10:00:01Z",
+      "lastSuccessAt": "2026-11-14T10:00:01Z"
     },
     {
       "id": "openai",
@@ -42,18 +42,18 @@
       "url": "https://openai.com/news/",
       "status": "ok",
       "count": 33,
-      "checkedAt": "2026-11-14T04:00:01Z",
-      "lastSuccessAt": "2026-11-14T04:00:01Z"
+      "checkedAt": "2026-11-14T10:00:01Z",
+      "lastSuccessAt": "2026-11-14T10:00:01Z"
     },
     {
       "id": "deepmind",
       "label": "Google DeepMind · 官方更新",
       "sourceType": "official",
       "url": "https://deepmind.google/blog/",
-      "status": "error",
-      "count": 0,
-      "checkedAt": "2026-11-14T04:00:01Z",
-      "lastSuccessAt": "2026-11-13T16:00:01Z"
+      "status": "ok",
+      "count": 25,
+      "checkedAt": "2026-11-14T10:00:01Z",
+      "lastSuccessAt": "2026-11-14T10:00:01Z"
     },
     {
       "id": "x",
@@ -62,59 +62,59 @@
       "url": "https://x.com/",
       "status": "unconfigured",
       "count": 0,
-      "checkedAt": "2026-11-14T04:00:01Z"
+      "checkedAt": "2026-11-14T10:00:01Z"
     },
     {
       "id": "arxiv_video_editing",
       "label": "arXiv · 视频剪辑",
       "sourceType": "arxiv",
       "url": "https://export.arxiv.org/api/query",
-      "status": "error",
-      "count": 0,
-      "checkedAt": "2026-11-14T04:00:01Z",
-      "lastSuccessAt": "2026-11-13T22:00:01Z"
+      "status": "ok",
+      "count": 15,
+      "checkedAt": "2026-11-14T10:00:01Z",
+      "lastSuccessAt": "2026-11-14T10:00:01Z"
     },
     {
       "id": "arxiv_code2video",
       "label": "arXiv · Code2Video",
       "sourceType": "arxiv",
       "url": "https://export.arxiv.org/api/query",
-      "status": "error",
-      "count": 0,
-      "checkedAt": "2026-11-14T04:00:01Z",
-      "lastSuccessAt": "2026-11-13T22:00:01Z"
+      "status": "ok",
+      "count": 5,
+      "checkedAt": "2026-11-14T10:00:01Z",
+      "lastSuccessAt": "2026-11-14T10:00:01Z"
     },
     {
       "id": "arxiv_code2motion",
       "label": "arXiv · Code2Motion",
       "sourceType": "arxiv",
       "url": "https://export.arxiv.org/api/query",
-      "status": "error",
-      "count": 0,
-      "checkedAt": "2026-11-14T04:00:01Z",
-      "lastSuccessAt": "2026-11-13T22:00:01Z"
+      "status": "ok",
+      "count": 5,
+      "checkedAt": "2026-11-14T10:00:01Z",
+      "lastSuccessAt": "2026-11-14T10:00:01Z"
     },
     {
       "id": "arxiv_code2_3d",
       "label": "arXiv · Code2 3D",
       "sourceType": "arxiv",
       "url": "https://export.arxiv.org/api/query",
-      "status": "error",
-      "count": 0,
-      "checkedAt": "2026-11-14T04:00:01Z",
-      "lastSuccessAt": "2026-11-13T22:00:01Z"
+      "status": "ok",
+      "count": 20,
+      "checkedAt": "2026-11-14T10:00:01Z",
+      "lastSuccessAt": "2026-11-14T10:00:01Z"
     }
   ],
-  "successCount": 4,
-  "errorCount": 5,
+  "successCount": 9,
+  "errorCount": 0,
   "topicCounts": {
     "code2-3d": 13,
     "code2motion": 7,
     "code2video": 5,
     "video-editing": 13
   },
-  "lastRunAt": "2026-11-14T04:00:01Z",
-  "completedAt": "2026-11-14T04:03:00Z",
-  "updatedAt": "2026-11-14T04:03:00Z",
-  "lastSuccessAt": "2026-11-14T04:03:00Z"
+  "lastRunAt": "2026-11-14T10:00:01Z",
+  "completedAt": "2026-11-14T10:00:27Z",
+  "updatedAt": "2026-11-14T10:00:27Z",
+  "lastSuccessAt": "2026-11-14T10:00:27Z"
 }
