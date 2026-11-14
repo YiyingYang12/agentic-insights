@@ -16527,5 +16527,393 @@
         "https://developers.openai.com/commerce/agent-access"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.15831v1",
+    "url": "https://arxiv.org/abs/2611.15831v1",
+    "id": "live-16ac033f1873e318",
+    "title": "NIBench：能复现自己的数值，仍需单独验收科学判断",
+    "summary": "NIBench把神经影像Agent拆成执行给定流程、独立重建流程、提炼可迁移技能、判断科学证据四个问题。56个工作流任务与36条科学主张显示：能重跑出自己报告的数值，不代表对证据不确定性的判断正确；熟悉任务上的技能收益也不能直接当成泛化收益。",
+    "insight": "作者主张：在统一Agent框架内联测神经影像执行、技能演化与科学判断。本站判断：可迁移的设计是固定目标/输入/评分只撤去流程提示，以及把数值再现、分析检查和结论判断分别评分。两模型在18次带数据运行中均通过数值再现与预定分析检查，却各仅79/108（73.1%）主张判断与专家参考一致；这不是所有科学判断的准确率，也不是成功复现原论文结论。",
+    "limits": "已读原论文方法与结果，未执行工具、接触参与者原始数据或复现实验。19模型的工作流比较每条件仅一次，技能蒸馏和迁移每格也仅一次，微小差异不能视为稳定排名或显著收益。科学判断仅两模型、单一ADNI队列的三项研究/36条主张，每题各三次运行；参考答案依赖专家和特定敏感性分析，不能推广为医学判断能力或临床结论。固定输出参考可能惩罚合理替代分析；通过预定错误检查不等于排除所有错误。共享框架仍包含模型服务与配置差异，不能由闭源/开源分组因果归因。正文未提供经本站核验的NIBench专属公开代码、评分器和完整数据发布入口，未确认可独立复现；无数据基线不能区分记忆与文字线索推断。",
+    "organization": "USC 等",
+    "dateLabel": "2026-11-11 · arXiv v1",
+    "evidence": "原论文全文方法与结果核验；未运行或复现实验",
+    "date": "2026-11-11",
+    "checkedAt": "2026-11-14T04:24:13.921120+00:00",
+    "paperOriginalDate": "2026-11-11T18:44:56Z",
+    "paperUpdatedAt": "2026-11-11T18:44:56Z",
+    "updatedAt": "2026-11-11T18:44:56Z",
+    "firstSeenAt": "2026-11-13T10:00:01Z",
+    "lastSeenAt": "2026-11-14T04:00:01Z",
+    "tags": [
+      "科学Agent",
+      "技能蒸馏",
+      "泛化评测",
+      "证据不确定性"
+    ],
+    "authors": [
+      "Lujia Zhong",
+      "Yihao Xia",
+      "Jianwei Zhang",
+      "Shuo Huang",
+      "Xinyu Nie",
+      "Mingyang Xia",
+      "Zhiwei Deng",
+      "Jiaxin Yue",
+      "Xinkai Wang",
+      "Junhan Zhao",
+      "Yonggang Shi"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "此前候选核验来源",
+        "url": "https://arxiv.org/abs/2611.15831"
+      },
+      {
+        "label": "arXiv v1 · 首发记录",
+        "url": "https://arxiv.org/abs/2611.15831v1"
+      },
+      {
+        "label": "原论文 · 完整方法与结果",
+        "url": "https://arxiv.org/html/2611.15831v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "NIBench把神经影像Agent拆成执行给定流程、独立重建流程、提炼可迁移技能、判断科学证据四个问题。56个工作流任务与36条科学主张显示：能重跑出自己报告的数值，不代表对证据不确定性的判断正确；熟悉任务上的技能收益也不能直接当成泛化收益。",
+      "motivation": "现有工具使用评测容易把“照步骤做对”当成独立分析能力，也容易把熟悉任务上的技能积累当成泛化，把脚本可重跑当成结论可靠。该工作为这些能力设置不同对照和验收标准。",
+      "novelty": "作者主张：在统一Agent框架内联测神经影像执行、技能演化与科学判断。本站判断：可迁移的设计是固定目标/输入/评分只撤去流程提示，以及把数值再现、分析检查和结论判断分别评分。两模型在18次带数据运行中均通过数值再现与预定分析检查，却各仅79/108（73.1%）主张判断与专家参考一致；这不是所有科学判断的准确率，也不是成功复现原论文结论。",
+      "evidenceScope": "已匿名读取arXiv v1全文§1.1–1.4、§2讨论和§3.1–3.5方法，含重复次数、技能泄漏探针、原始正确率和科学判断计分；首发2026-11-11T18:44:56Z，当前所读为v1。论文正文外链未出现专属实现发布入口；公开GitHub/Hugging Face关键词检索未得到可验证作者发布，不能据此断言不存在。全文来源可读，未运行代码或独立复现；verified仅表示来源核验。",
+      "limits": "已读原论文方法与结果，未执行工具、接触参与者原始数据或复现实验。19模型的工作流比较每条件仅一次，技能蒸馏和迁移每格也仅一次，微小差异不能视为稳定排名或显著收益。科学判断仅两模型、单一ADNI队列的三项研究/36条主张，每题各三次运行；参考答案依赖专家和特定敏感性分析，不能推广为医学判断能力或临床结论。固定输出参考可能惩罚合理替代分析；通过预定错误检查不等于排除所有错误。共享框架仍包含模型服务与配置差异，不能由闭源/开源分组因果归因。正文未提供经本站核验的NIBench专属公开代码、评分器和完整数据发布入口，未确认可独立复现；无数据基线不能区分记忆与文字线索推断。",
+      "method": [
+        "构造56个工作流任务，覆盖7个工具生态、35名参与者的公开影像输入，含16个单操作、23条多步流程、5个组分析与12个对抗输入任务。每题目标、输入、输出、容差和评分保持一致，仅移除工具/步骤/参数提示；会改变科学答案的阈值等仍保留。共享NeuroAgent/Claude Agent SDK提供技能目录和版本化Apptainer工具，参考答案对Agent隐藏。",
+        "用确定性检查验收产物：形状与仿射、掩码Dice阈值0.95、数值容差、表格和失败报告等；不用LLM评分正确性。大多数题按通过全部检查的参与者比例给分，另有组分析计分规则，超时记0。任务通过阈值为0.5，而总correctness是56题得分均值，不能把均分当全题成功率；流程合规另外统计。",
+        "将任务按层级、模态和工具生态分成28个技能获取题及28个留出题；从获取题轨迹提炼可编辑技能文件，最多三轮且不改模型权重。蒸馏器不见答案、容差或评分诊断，失败仅得到未满足契约的反馈；冻结环境配置技能，筛除题目标识和私有产物，并用无数据/无工具探针相对空技能检测答案泄漏。仅按获取集选择最佳轮次，再测留出与跨模型迁移。",
+        "另用36条已发表研究主张测试科学判断，Agent从未预组队列的ADNI表选择参与者、测量与分析，提交支持/反驳/不确定标签、数值、样本量和可执行代码。专家参考结合效应、区间与敏感性分析；评分分结论一致性0.45、数值再现0.35、分析路线0.20，并对照无数据/工具回答。每模型每科学问题三次运行，保留过度确定和过度谨慎两类错误。"
+      ],
+      "inspirations": [
+        "给工具Agent评测增加配对撤提示条件：保留目标、科学阈值、输入和评分，只撤去操作步骤；将均分、完全成功、超时、合理失败报告和合规分别统计，定位依赖提示还是缺少工具执行能力。",
+        "做轨迹技能蒸馏时冻结获取/留出划分，按获取集选轮次，另测跨模型迁移和专家手写技能。本文五模型获取收益0.071–0.250、留出变化−0.024至+0.131且继续蒸馏会回退，适合启发迁移与退化检查；单次结果不能当稳定收益预期。",
+        "为科研或代码创作Agent设置“产物可重跑”和“结论/创作目标有证据”两层验收；前者检查数值、脚本、渲染，后者独立测不确定性或叙事意图。若判定依赖同一批数据的多种分析，不能把相关的重复分析误当独立证据；创作迁移为本站建议，本文未测视频。"
+      ],
+      "reviewedAt": "2026-11-14T04:24:13.921120+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.15831v1",
+        "https://arxiv.org/html/2611.15831v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.15831",
+      "status": "pending",
+      "checkedAt": "2026-11-14T04:25:29.490433+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.12605v1",
+    "url": "https://arxiv.org/abs/2611.12605v1",
+    "id": "paper-videomaker-2611-12605",
+    "title": "VideoMaker：把创作意图带过六个阶段，局部修改仍需隔离",
+    "summary": "VideoMaker把创作意图拆成用户可确认、修改的“种子”，让同一个Agent把它们从故事带到分镜、角色、生成素材和剪辑整合。30人的短时配对研究显示，参与者更认可意图保留与叙事转换；但AI主动性是否可协商未达显著，局部修改仍会影响别的镜头。它提供的是视频创作交互设计证据，尚未证明意图被生成模型可靠执行。",
+    "insight": "作者主张：把创作意图作为跨阶段不断演变的共享状态，通过Seed Panel、叙事/镜头知识库与统一Agent协作，连接发散构思和具体视听表达。本站判断：最值得借鉴的是把“已确认、可修改、尚未规定”做成显式工作状态；论文同时暴露了提示层保留与工程层强制约束之间的缺口。研究只比较整套系统与简化基线，不能单独归因Seed Panel、知识库或共享记忆，也不是新训练算法或代码视频生成模型。",
+    "limits": "主要证据是30位18–26岁、均用过生成AI且以高校人群为主的参与者，在每系统30分钟、目标至少15秒的短视频任务中的自评；不是长期专业生产或自动执行成功率。作者自建基线只有对话、图像和视频生成，缺少知识增强、显式种子及跨阶段状态传播；未做组件消融，文中未充分列明两条件全部模型/调用预算等价性。意图保留5.33 vs 3.90（7分，Holm校正p=.046）；意图表达p=.058、可协商AI主动性p=.056未显著，不能说所有协作能力都提高。3位专家只评VideoMaker叙事作品，得到约5.30/7意图实现、5.60/7粗剪完整性；论文称评全部此类作品但未另列作品分母，无baseline成片盲评或评审一致性统计，不足以证明成片质量更好。15/30提到全局不一致、8/30希望局部隔离和回滚，属于访谈主题人数，不是漂移或编辑失败率。正文称支持基本时间线修改与项目文件导出，未给可核导出格式/文件；高级多轨拖拽、局部重绘和版本回滚仍是用户期望。JSON快照存储不等于用户可用版本历史；提示中的保留要求不等于硬约束。附录B只是浓缩提示，本轮未定位可归属于作者的公开源码、完整素材/日志或可运行系统，未调用模型或复现研究。",
+    "dateLabel": "2026-11-09 · arXiv v1；11月14日补齐解读",
+    "evidence": "原论文方法、用户研究、结果及附录核验；作者自报研究，未运行系统或复现",
+    "originalTitle": "Creative Intent as an Evolving Shared State: Supporting Cross-Stage Human-AI Video Co-Creation",
+    "date": "2026-11-09",
+    "checkedAt": "2026-11-14T04:23:34Z",
+    "originalDate": "2026-11-09",
+    "paperOriginalDate": "2026-11-09T15:48:17Z",
+    "paperUpdatedAt": "2026-11-09T15:48:17Z",
+    "updatedAt": "2026-11-09T15:48:17Z",
+    "firstSeenAt": "2026-11-13T22:26:12Z",
+    "lastSeenAt": "2026-11-14T04:23:34Z",
+    "tags": [
+      "视频创作Agent",
+      "创作意图",
+      "分镜",
+      "共享状态",
+      "人机共创",
+      "用户研究"
+    ],
+    "authors": [
+      "Yuhang Jin",
+      "Mengfei Chen",
+      "Hanwei Zheng",
+      "Songruoyao Wu",
+      "Kejun Zhang"
+    ],
+    "topics": [
+      "video-editing"
+    ],
+    "featured": true,
+    "sources": [
+      {
+        "label": "arXiv · 上轮候选原始入口",
+        "url": "https://arxiv.org/abs/2611.12605"
+      },
+      {
+        "label": "arXiv v1 · 作者、首发日期和摘要",
+        "url": "https://arxiv.org/abs/2611.12605v1"
+      },
+      {
+        "label": "原论文全文 · 系统、用户研究与浓缩提示",
+        "url": "https://arxiv.org/html/2611.12605v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "VideoMaker把创作意图拆成用户可确认、修改的“种子”，让同一个Agent把它们从故事带到分镜、角色、生成素材和剪辑整合。30人的短时配对研究显示，参与者更认可意图保留与叙事转换；但AI主动性是否可协商未达显著，局部修改仍会影响别的镜头。它提供的是视频创作交互设计证据，尚未证明意图被生成模型可靠执行。",
+      "motivation": "把想法直接交给视频模型，容易在故事、分镜、人物、风格和剪辑之间反复解释同一件事；一次局部调整还可能改写前面已经确认的设定。论文解决的是创作者怎样让意图随作品发展而保持可见、可改、可协商，而不是单次生成更清晰的视频。",
+      "novelty": "作者主张：把创作意图作为跨阶段不断演变的共享状态，通过Seed Panel、叙事/镜头知识库与统一Agent协作，连接发散构思和具体视听表达。本站判断：最值得借鉴的是把“已确认、可修改、尚未规定”做成显式工作状态；论文同时暴露了提示层保留与工程层强制约束之间的缺口。研究只比较整套系统与简化基线，不能单独归因Seed Panel、知识库或共享记忆，也不是新训练算法或代码视频生成模型。",
+      "evidenceScope": "已读arXiv v1 §3需求与共设计、§4全部系统方法、§5研究设计、§6结果、§7局限，以及附录B浓缩提示、C量表与D访谈协议。原始首发2026-11-09T15:48:17Z，与本轮checkedAt分开。主要统计单位为30名参与者的配对回答：DG1探索5.93/4.43（p=.002）、差异化5.83/4.20（p=.007）；叙事转换5.87/4.47（p=.028）；意图保留5.33/3.90（p=.046），均为7分且按原文Holm校正；意图表达与主动性协商未显著。80%使用意愿、73.3%总体偏好是对VideoMaker的相对偏好比例，非完成率。专家评价约5.30/5.60只支持可用粗剪的描述。论文报告FastAPI/React/TypeScript、SQLite与JSON快照，Qwen3.6-35B-A3B、Agnes图像/视频和Qwen3-TTS服务；这里只核作者说明，不确认服务部署或代码可运行。原文未链接作者代码，限定标题/作者/arXiv ID的GitHub/HF公开搜索未定位可归属资产，因此没有虚构固定代码commit或开源发布。verified仅指来源核验。",
+      "limits": "主要证据是30位18–26岁、均用过生成AI且以高校人群为主的参与者，在每系统30分钟、目标至少15秒的短视频任务中的自评；不是长期专业生产或自动执行成功率。作者自建基线只有对话、图像和视频生成，缺少知识增强、显式种子及跨阶段状态传播；未做组件消融，文中未充分列明两条件全部模型/调用预算等价性。意图保留5.33 vs 3.90（7分，Holm校正p=.046）；意图表达p=.058、可协商AI主动性p=.056未显著，不能说所有协作能力都提高。3位专家只评VideoMaker叙事作品，得到约5.30/7意图实现、5.60/7粗剪完整性；论文称评全部此类作品但未另列作品分母，无baseline成片盲评或评审一致性统计，不足以证明成片质量更好。15/30提到全局不一致、8/30希望局部隔离和回滚，属于访谈主题人数，不是漂移或编辑失败率。正文称支持基本时间线修改与项目文件导出，未给可核导出格式/文件；高级多轨拖拽、局部重绘和版本回滚仍是用户期望。JSON快照存储不等于用户可用版本历史；提示中的保留要求不等于硬约束。附录B只是浓缩提示，本轮未定位可归属于作者的公开源码、完整素材/日志或可运行系统，未调用模型或复现研究。",
+      "method": [
+        "从需求形成工作流：先访谈12名创作者，再与3位专家共设计，提炼意图扩展、跨阶段转换和人机协商三个目标。系统把创作拆为输入想法、共创故事、共创分镜、设定风格/角色、生成图像/片段、剪辑整合六步。",
+        "给Agent可检索的创作参照：叙事库包含15种故事结构、15种叙事风格和87个关联案例；镜头知识库有39条条目，覆盖景别、角度、运镜、焦距/景深、色彩及光线。它们帮助把抽象情绪变成可供生成服务理解的分镜描述，论文未把这些描述变成可执行3D/动画代码。",
+        "把确认的意图外显为种子：在故事、单镜头、风格/角色和生成阶段，Seed Panel展示Seed Space、Agent建议和结果预览。用户能增删改种子；Agent可为未规定部分提候选，确认后才进入当前意图状态。每轮上下文组合用户输入、已确认种子、前阶段输出、故事、分镜和相关知识。",
+        "逐步生成并整合：故事转成含画面、配音、音效、时长及镜头参数的分镜；角色/风格参考用于后续图像，动作和运镜种子再组成视频提示。共享Agent最后建议配音、音乐、转场；正文称用户可在基本时间线上调整并导出编辑工程，但本轮未获得真实导出文件验证其格式或可编辑性。",
+        "用配对用户研究检验整套设计：30人分别使用VideoMaker和自建基线，系统顺序随机，每条件随机题目、30分钟内完成至少15秒可播短片。12项7分量表用双侧配对Wilcoxon并跨12项作Holm校正；另6项偏好用相对中点4的检验。专家仅评价VideoMaker产物，访谈补充状态漂移、隔离和编辑需求。"
+      ],
+      "inspirations": [
+        "把创作状态做成可审阅的约束清单：每项记录作用域（整片/角色/单镜头）、确认者、版本及允许变化的字段；生成新镜头前展示会继承和覆盖哪些设定。可以先用用户确认接口实现，不把提示中的“必须保留”当成执行保证。",
+        "为剪辑Agent设计修改隔离测试：锁住镜头A，修改镜头B的时长/角色细节，检查A的素材hash、台词、时间线与确认种子是否变化；记录影响范围并提供可恢复版本。此为本站建议，论文并未报告这项测试已通过。",
+        "评价时将创作体验与产物正确性分开：保留相同模型/调用预算，逐项消融知识库、种子面板和跨阶段状态；再做双条件盲评、意图约束逐条核对、局部编辑泄漏率和耗时统计，避免把偏好百分比当执行成功率。"
+      ],
+      "reviewedAt": "2026-11-14T04:23:34Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.12605",
+        "https://arxiv.org/abs/2611.12605v1",
+        "https://arxiv.org/html/2611.12605v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.12605",
+      "status": "pending",
+      "checkedAt": "2026-11-14T04:25:29.490433+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.17041v1",
+    "url": "https://arxiv.org/abs/2611.17041v1",
+    "id": "paper-lead-rl-2611-17041",
+    "title": "LEAD-RL：团队答对，不该奖励每一份子Agent报告",
+    "summary": "LEAD-RL联合训练主Agent与子Agent，让报告的证据效用决定子Agent能否继承团队优势：有用报告不因团队失败受罚，有害报告不因团队答对获奖，中性报告照常学习。作者在受控BrowseComp比较中报告准确率71.00%→73.49%，关键路径工具步数323.30→244.22；后者降低24.5%，不是实测延迟下降，也不是所有token成本都降低。",
+    "insight": "作者主张：将委派报告作为信用分配单位，用训练时的helpful/neutral/harmful标签门控团队优势，联合优化共享参数的主/子Agent，而最终答案正确性仍是唯一团队奖励。本站判断：可借鉴点是只屏蔽明显方向错误的学习信号，并保留不确定报告的普通监督；标签衡量报告潜在效用，不是通过移除子Agent测出的因果贡献。“减少补救搜索”是作者解释假说，尚未直接测量，不能归结为已证明的协调机制。",
+    "limits": "所有分数为作者报告，未复现。24.5%对应表3的共享信用联合RL对照；相对SFT的准确率仅72.50%→73.49%（+0.99个百分点），不能把基座58.0%→73.5%的全流程增益全归于信用门控。表2基座到训练模型的总token反而330.7k→336.9k/题；关键路径步数与1.71×理想并行比均不计真实工具延迟、通信、资源争用或训练judge开销。共享信用/主Agent单独训练的记录长度为34/35次更新，LEAD为60次；同验证集选checkpoint不等于训练算力完全匹配。未见多种子误差条、独立人评校准或judge间一致性；0.8是judge自报置信度过滤阈值，不是校准概率。训练与评测都使用DeepSeek V4 Pro作judge，报告标签也由它评估，仍需独立审计。贡献judge的证据截断及参考答案可能影响中间事实判断，且标签不表示主Agent实际利用了报告。附录C约50次更新后关键路径重新增长，不能声称训练越久越省。公开检索未核到作者对应的LEAD训练代码、数据或checkpoint；正文仅链接基座/他人模型，不能据此声称LEAD已开源。已读完整方法与附录，未执行作者代码、调用模型或复现实验。",
+    "dateLabel": "2026-11-12 · arXiv v1；11月14日新增完整解读",
+    "evidence": "完整方法/结果/附录与PDF关键图表核验；未核到LEAD对应公开实现，未复现实验",
+    "originalTitle": "From Delegation to Coordination: Learning Efficient Multi-Agent Deep Research",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-14T04:28:14Z",
+    "originalDate": "2026-11-12",
+    "paperOriginalDate": "2026-11-12T16:26:27Z",
+    "paperUpdatedAt": "2026-11-12T16:26:27Z",
+    "updatedAt": "2026-11-12T16:26:27Z",
+    "firstSeenAt": "2026-11-14T04:31:32.079216+00:00",
+    "tags": [
+      "多Agent强化学习",
+      "信用分配",
+      "深度研究",
+      "GSPO",
+      "关键路径",
+      "贡献判别"
+    ],
+    "authors": [
+      "Yuyang Wu",
+      "Yang Liu",
+      "Zequn Xie",
+      "Junjie Wang",
+      "Dan Yang",
+      "Zhehao Tan",
+      "Ding-Chu Zhang",
+      "Junming Yang",
+      "Yue Shen",
+      "Jian Wang",
+      "Jinjie Gu"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "arXiv · 上轮候选原始入口",
+        "url": "https://arxiv.org/abs/2611.17041"
+      },
+      {
+        "label": "arXiv v1 · 摘要与首发时间",
+        "url": "https://arxiv.org/abs/2611.17041v1"
+      },
+      {
+        "label": "完整论文 · 方法、实验及附录A–D",
+        "url": "https://arxiv.org/html/2611.17041v1"
+      },
+      {
+        "label": "原始PDF · 表3与训练动态图复核",
+        "url": "https://arxiv.org/pdf/2611.17041v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "LEAD-RL联合训练主Agent与子Agent，让报告的证据效用决定子Agent能否继承团队优势：有用报告不因团队失败受罚，有害报告不因团队答对获奖，中性报告照常学习。作者在受控BrowseComp比较中报告准确率71.00%→73.49%，关键路径工具步数323.30→244.22；后者降低24.5%，不是实测延迟下降，也不是所有token成本都降低。",
+      "motivation": "团队最后答对，不代表每个子Agent都提供了可靠信息；答错也可能只是主Agent没用好正确证据。给所有分支复制相同奖励会奖励误导性报告、惩罚有用研究。只训练主Agent还让委派策略与固定子Agent难以共同适应。论文把独立上下文中的报告当成可审查边界，试图同时学好“分什么任务”和“返回什么证据”。",
+      "novelty": "作者主张：将委派报告作为信用分配单位，用训练时的helpful/neutral/harmful标签门控团队优势，联合优化共享参数的主/子Agent，而最终答案正确性仍是唯一团队奖励。本站判断：可借鉴点是只屏蔽明显方向错误的学习信号，并保留不确定报告的普通监督；标签衡量报告潜在效用，不是通过移除子Agent测出的因果贡献。“减少补救搜索”是作者解释假说，尚未直接测量，不能归结为已证明的协调机制。",
+      "evidenceScope": "已逐段读arXiv v1 §3全部方法、§4实验、结论及附录A–D；重新取得HTML并确认SHA256与上轮一致，独立解析表1–3，并看PDF第9页表3/图2、第15页图3。表1覆盖Ling-3-Flash与Qwen3.6-35B-A3B两族、BrowseComp/BrowseComp-ZH/GAIA/HLE/DeepSearchQA五基准；前四列为准确率，DeepSearchQA为每题答案集合F1均值。基座到训练模型的比较含完整流程，外部模型行使用各自报告协议，不能混作受控门控消融。表3共享信用→LEAD的有用报告率21.15%→31.52%、有害13.84%→9.87%均为judge标签率；SFT关键步数403.37→244.22约减39.5%。图2在固定验证集、0至30次记录更新内报告+6.78准确率点且关键路径近似不变，step0已经完成首个RL更新；附录C的35/34/60次on-policy批次曲线不是泛化指标。训练披露每更新32题×4 rollout、每主Agent最多16个子Agent、KL系数0.001、前10%权重0.4并在70%进度降到0.2；本次未见完整训练语料清单、验证集大小、种子或可固定的LEAD实现。精确题名/ID/LEAD-RL公开搜索及GitHub/HF匿名API未核到作者对应代码/模型；HF paper API返回404，仅表示该接口无条目。verified表示来源核验，不表示实验复现。",
+      "limits": "所有分数为作者报告，未复现。24.5%对应表3的共享信用联合RL对照；相对SFT的准确率仅72.50%→73.49%（+0.99个百分点），不能把基座58.0%→73.5%的全流程增益全归于信用门控。表2基座到训练模型的总token反而330.7k→336.9k/题；关键路径步数与1.71×理想并行比均不计真实工具延迟、通信、资源争用或训练judge开销。共享信用/主Agent单独训练的记录长度为34/35次更新，LEAD为60次；同验证集选checkpoint不等于训练算力完全匹配。未见多种子误差条、独立人评校准或judge间一致性；0.8是judge自报置信度过滤阈值，不是校准概率。训练与评测都使用DeepSeek V4 Pro作judge，报告标签也由它评估，仍需独立审计。贡献judge的证据截断及参考答案可能影响中间事实判断，且标签不表示主Agent实际利用了报告。附录C约50次更新后关键路径重新增长，不能声称训练越久越省。公开检索未核到作者对应的LEAD训练代码、数据或checkpoint；正文仅链接基座/他人模型，不能据此声称LEAD已开源。已读完整方法与附录，未执行作者代码、调用模型或复现实验。",
+      "method": [
+        "共享策略、分角色研究：主Agent可以直接搜索，或批量发送含目标、已有证据和未决约束的brief；子Agent在隔离上下文中搜索，只返回带引用和不确定性的报告。局部与全局verifier也是共享策略的角色调用，分别检查报告和最终综合答案，推理时不看参考答案。",
+        "采样完整团队轨迹并给答案奖励：每题生成4条完整swarm rollout，以独立最终答案judge对参考答案的语义判断产生二元团队奖励，再做题内组相对归一化；主Agent直接继承团队优势。没有token、步数、并行比或委派次数奖励。",
+        "单独判断报告效用：训练时贡献judge读取原问题、参考答案、brief、报告和该子Agent实际取得的工具证据，不读主Agent最终答案或成败。优先保留访问页面而非搜索摘要；各字段有字符预算，截断会标记。支持性排除错误候选也可判有用，猜中答案但缺证据仍是中性。",
+        "只门控信用方向：helpful仅保留正团队优势，harmful仅保留负优势，neutral保留原优势；有用/有害标签自报置信度低于0.8转中性。每条rollout按非零门控优势的可训练子Agent数归一化，防止分支越多更新越大；子Agent总权重从0.4逐步退火到0.2。",
+        "联合GSPO更新并区分失败：主/子Agent共享参数，以各自完整交互作为训练样本，工具观测不算语言模型损失，KL项约束同一参考策略。模型限制或缺报告时给中性信用，基础设施故障子轨迹排除；贡献judge重试失败则回退中性并保留主Agent奖励，中性且有可训练token的分支仍参与普通团队优势更新。"
+      ],
+      "inspirations": [
+        "可以在自己的多Agent训练中先做报告级错配审计：逐条保留brief、已访问证据、报告与团队结果，检查“答对但误导”和“答错但有效”两类。再以共享信用、仅分支归一化、随机打乱标签、真实标签门控作对照，分清收益来自标签内容还是更新权重变化；这是本站建议，论文未完成这组因果消融。",
+        "把不确定性保留在学习链路：报告应区分证据、猜测、候选排除和未解决问题；judge失败或低置信时走中性回退，而不是把困难搜索直接当有害。另建人工标注的中间事实/候选排除集合，核验judge是否因参考答案或证据截断误判，不能用同一judge的“有用率”自证质量。",
+        "同时记录答案质量、所有分支token、最长分支工具步数、真实耗时和judge训练成本，并在固定验证集上按质量/成本选择checkpoint。并行比变高可能只是多开冗余分支；附录后期成本回升提醒不要默认最后一步最好。"
+      ],
+      "reviewedAt": "2026-11-14T04:28:14Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.17041",
+        "https://arxiv.org/abs/2611.17041v1",
+        "https://arxiv.org/html/2611.17041v1",
+        "https://arxiv.org/pdf/2611.17041v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.17041",
+      "status": "pending",
+      "checkedAt": "2026-11-14T04:25:29.490433+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place",
+    "url": "https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place",
+    "id": "update-simready-pick-place-20261113",
+    "title": "SimReady抓放教程：先核资产型号，再验收物理动作",
+    "summary": "NVIDIA用Isaac Sim 6.2与Agent生成的Python，把公开机械臂、夹爪和饮料罐资产组装成可编辑抓放场景。该教程的价值是把资产属性、程序化组装和物理动作验收分开；本轮核验同时发现夹爪下载链接型号及机械臂报告版本与正文不一致，不能把演示当成直接可复现的整套工程。",
+    "insight": "作者主张：带仿真属性和验证证据的OpenUSD资产能降低搭建机器人任务的成本，再由Agent补场景和控制代码。本站判断：值得借鉴的是先锁资产身份，再分别验证结构、接触和释放后物体状态；固定源码中的关节结构检查与抓取技能支持这种分层，但它们并不证明教程那次运行的代码、控制策略或成功率。",
+    "limits": "这是官方单场景教程及静态源码/资产核验，不是新论文、完整benchmark或本站复现。正文写Robotiq 2F-140，但四处资产下载链接固定指向2F-85；机械臂报告正文称Robot-Body 4.0.0，链接JSON实际为3.0.0。2F-140报告为Robot-Gripper 3.0.0；两份FET_022_PHYSX确为passed=true，但还存在非阻断的未通过特性，不能概括为全部检查通过。教程只给提示词，未提供可核验的该次Agent生成控制脚本、完整场景工程、逐阶段数值误差或多次运行分母；通用6.2.0技能/助手源码不能充当该次运行轨迹。USD根层引用其他文件，机械臂默认PhysX变体为Disabled，完整依赖及实际启用状态仍须在加载时验证；本轮未组合USD、运行仿真或复现实验。示例假设已知罐子位置、固定航点、无视觉、有限碰撞检查且不重规划；2 N·m只是仿真选定的驱动力矩上限，非厂家推荐夹持力；视频4倍速不代表真实耗时，未验证随机位置、不同载荷或实机。远程技能在仿真进程内执行Python，其权限不能等同于Agent工具白名单隔离。",
+    "organization": "NVIDIA / SimReady Central",
+    "dateLabel": "2026-11-13 · 官方教程（HF feed时间）",
+    "evidence": "官方全文、版本固定源码/资产和验证JSON静态核验；未运行或复现",
+    "date": "2026-11-13",
+    "checkedAt": "2026-11-14T04:29:17.519206+00:00",
+    "firstSeenAt": "2026-11-14T04:31:32.079216+00:00",
+    "tags": [
+      "仿真资产",
+      "程序化场景",
+      "Isaac Sim",
+      "可编辑性与物理验收"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "sources": [
+      {
+        "label": "NVIDIA官方教程 · 2026-11-13",
+        "url": "https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place"
+      },
+      {
+        "label": "Isaac Sim 6.2 · Agent Skills机制与边界",
+        "url": "https://docs.isaacsim.omniverse.nvidia.com/6.2.0/development_tools/agent_skills.html"
+      },
+      {
+        "label": "6.2.0固定提交 · 技能索引",
+        "url": "https://github.com/isaac-sim/IsaacSim/blob/74a9356b20250dd60337d90b4b4d913c9454d32b/skills/SKILLS.md"
+      },
+      {
+        "label": "固定源码 · 远程Python传递客户端",
+        "url": "https://github.com/isaac-sim/IsaacSim/blob/74a9356b20250dd60337d90b4b4d913c9454d32b/skills/isaac-sim-remote/scripts/isaacsim_send.py"
+      },
+      {
+        "label": "固定源码 · 结构验证器",
+        "url": "https://github.com/isaac-sim/IsaacSim/blob/74a9356b20250dd60337d90b4b4d913c9454d32b/skills/usd-articulation/scripts/validate_articulation.py"
+      },
+      {
+        "label": "固定技能 · 接触抓取与物体状态验收",
+        "url": "https://github.com/isaac-sim/IsaacSim/blob/74a9356b20250dd60337d90b4b4d913c9454d32b/skills/manipulation-ik/SKILL.md"
+      },
+      {
+        "label": "固定技能 · 物理配置与状态读回",
+        "url": "https://github.com/isaac-sim/IsaacSim/blob/74a9356b20250dd60337d90b4b4d913c9454d32b/skills/physics-simulation/SKILL.md"
+      },
+      {
+        "label": "固定机械臂资产 · 变体和依赖",
+        "url": "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/d5d8eb795a487a5c929909bc337ee4834d62b0da/ur17g_1300/simready_usd/ur17g_1300.usda"
+      },
+      {
+        "label": "固定机械臂报告 · 实为Robot-Body 3.0.0",
+        "url": "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/d5d8eb795a487a5c929909bc337ee4834d62b0da/ur17g_1300/.metadata/ur17g_1300_validation.json"
+      },
+      {
+        "label": "教程下载链接 · 实指2F-85，存在型号不一致",
+        "url": "https://huggingface.co/datasets/Robotiq-Official/simready-assets/blob/9c6b0cedf0066efd474b3bf473e7eaf7ae7e569f/Robotiq_2F_85/simready_usd/Robotiq_2F_85.usda"
+      },
+      {
+        "label": "固定2F-140资产 · 与验证报告同一提交",
+        "url": "https://huggingface.co/datasets/Robotiq-Official/simready-assets/blob/c7fa7615a353ebac03990208cbc2aa57426f4c48/Robotiq_2F_140/simready_usd/Robotiq_2F_140.usda"
+      },
+      {
+        "label": "固定2F-140验证报告",
+        "url": "https://huggingface.co/datasets/Robotiq-Official/simready-assets/blob/c7fa7615a353ebac03990208cbc2aa57426f4c48/Robotiq_2F_140/.metadata/Robotiq_2F_140_validation.json"
+      },
+      {
+        "label": "固定饮料罐资产 · 二进制仅核可下载",
+        "url": "https://huggingface.co/datasets/nvidia/simready-assets/blob/653d91e182011f357cf1644013cc94ddf194d349/food_beverage_can_n01/simready_usd/sm_food_beverage_can_n01_01.usd"
+      },
+      {
+        "label": "SimReady Foundation · 驱动关节检查范围",
+        "url": "https://nvidia.github.io/simready-foundation/latest/features/FET_022_PHYSX.html"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "NVIDIA用Isaac Sim 6.2与Agent生成的Python，把公开机械臂、夹爪和饮料罐资产组装成可编辑抓放场景。该教程的价值是把资产属性、程序化组装和物理动作验收分开；本轮核验同时发现夹爪下载链接型号及机械臂报告版本与正文不一致，不能把演示当成直接可复现的整套工程。",
+      "motivation": "漂亮的静态机器人模型不保证关节能驱动、接触可靠或物体真的被放到目标位置。教程尝试用带质量、碰撞、关节与驱动元数据的资产减少重复建模，再让Agent写可修改的组装和控制代码；验收必须覆盖运行状态而非只看截图。",
+      "novelty": "作者主张：带仿真属性和验证证据的OpenUSD资产能降低搭建机器人任务的成本，再由Agent补场景和控制代码。本站判断：值得借鉴的是先锁资产身份，再分别验证结构、接触和释放后物体状态；固定源码中的关节结构检查与抓取技能支持这种分层，但它们并不证明教程那次运行的代码、控制策略或成功率。",
+      "evidenceScope": "已读NVIDIA官方HF教程全文、其Isaac Sim 6.2技能/组装/操纵文档相关章节；固定v6.2.0标签所指提交74a9356b20250dd60337d90b4b4d913c9454d32b，读取技能索引、remote与usd-articulation技能全文、manipulation-ik抓取验收和physics-simulation驱动/状态读回章节，以及两个Python助手源码。读取固定机械臂、2F-85与2F-140 USD根层和两份验证JSON；饮料罐二进制只核匿名可下载及哈希，未解析碰撞/质量。未取得或执行教程那次生成的控制脚本，未加载完整资产、运行Isaac Sim、观看动态视频并测量或测试实机。verified仅表示来源和静态内容核验。",
+      "limits": "这是官方单场景教程及静态源码/资产核验，不是新论文、完整benchmark或本站复现。正文写Robotiq 2F-140，但四处资产下载链接固定指向2F-85；机械臂报告正文称Robot-Body 4.0.0，链接JSON实际为3.0.0。2F-140报告为Robot-Gripper 3.0.0；两份FET_022_PHYSX确为passed=true，但还存在非阻断的未通过特性，不能概括为全部检查通过。教程只给提示词，未提供可核验的该次Agent生成控制脚本、完整场景工程、逐阶段数值误差或多次运行分母；通用6.2.0技能/助手源码不能充当该次运行轨迹。USD根层引用其他文件，机械臂默认PhysX变体为Disabled，完整依赖及实际启用状态仍须在加载时验证；本轮未组合USD、运行仿真或复现实验。示例假设已知罐子位置、固定航点、无视觉、有限碰撞检查且不重规划；2 N·m只是仿真选定的驱动力矩上限，非厂家推荐夹持力；视频4倍速不代表真实耗时，未验证随机位置、不同载荷或实机。远程技能在仿真进程内执行Python，其权限不能等同于Agent工具白名单隔离。",
+      "method": [
+        "先固定资产和版本：教程选UR17G机械臂、Robotiq 2F-140夹爪与饮料罐，要求保留完整资产目录。本轮逐项读取固定USD根层与验证JSON，发现下载链接实际指2F-85、机械臂报告版本不符；这一步应先澄清身份，不能静默替换后称按原文复现。",
+        "通过Isaac Sim技能驱动程序化组装：官方描述由GPT-6 Sol加载远程Python与关节技能，在运行中的Isaac Sim内连接机械臂、夹爪和工作台。固定6.2.0源码可见Python发送客户端和关节图结构检查；可编辑的USD引用、变体与组装层应随场景保存，源码存在不等于本次组装已成功。",
+        "从小动作到抓放分段验证：先检查关节范围/驱动、夹爪开合和饮料罐支撑接触，再按接近、抓取、抬起、保持、转移、释放执行。固定manipulation-ik技能要求用物体真实物理状态核验接触、抬升保持和释放后位置，而非仅看机械臂末端到达；严格接触任务不得用隐藏附着或直接改物体位姿替代抓取。",
+        "把静态报告与动态证据分开：两份报告的PhysX驱动关节特性通过，只说明对应配置检查；实际任务还需控制脚本、所选物理变体、运行数值/视频和失败记录。按相同起点重置后再比较，扩展到位置扰动、摩擦与载荷时重新验收；教程未给这些鲁棒性结果。"
+      ],
+      "inspirations": [
+        "为代码生成3D任务保存资产清单：型号、固定提交、USD依赖、物理变体、验证profile及版本全部入清单；先自动比对正文与下载目标，再评可编辑性，避免2F-85/2F-140这类身份错配被漂亮演示掩盖。",
+        "把执行成功拆成加载/关节连接、接触抓取、抬升保持、释放落位四个阶段；从物理状态读取位置和速度，并保留失败阶段与重试分母，截图可作补充但不能替代数值验收。",
+        "对Agent控制器设计禁止捷径的对照：明确区分真实接触与辅助固定连接，检测直接写物体位姿等实现，固定资产和起点后再测扰动泛化；这是本站建议，教程没有报告这样的对照实验。"
+      ],
+      "reviewedAt": "2026-11-14T04:29:17.519206+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place",
+        "https://docs.isaacsim.omniverse.nvidia.com/6.2.0/development_tools/agent_skills.html",
+        "https://github.com/isaac-sim/IsaacSim/blob/74a9356b20250dd60337d90b4b4d913c9454d32b/skills/SKILLS.md",
+        "https://github.com/isaac-sim/IsaacSim/blob/74a9356b20250dd60337d90b4b4d913c9454d32b/skills/isaac-sim-remote/scripts/isaacsim_send.py",
+        "https://github.com/isaac-sim/IsaacSim/blob/74a9356b20250dd60337d90b4b4d913c9454d32b/skills/usd-articulation/scripts/validate_articulation.py",
+        "https://github.com/isaac-sim/IsaacSim/blob/74a9356b20250dd60337d90b4b4d913c9454d32b/skills/manipulation-ik/SKILL.md",
+        "https://github.com/isaac-sim/IsaacSim/blob/74a9356b20250dd60337d90b4b4d913c9454d32b/skills/physics-simulation/SKILL.md",
+        "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/d5d8eb795a487a5c929909bc337ee4834d62b0da/ur17g_1300/simready_usd/ur17g_1300.usda",
+        "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/d5d8eb795a487a5c929909bc337ee4834d62b0da/ur17g_1300/.metadata/ur17g_1300_validation.json",
+        "https://huggingface.co/datasets/Robotiq-Official/simready-assets/blob/9c6b0cedf0066efd474b3bf473e7eaf7ae7e569f/Robotiq_2F_85/simready_usd/Robotiq_2F_85.usda",
+        "https://huggingface.co/datasets/Robotiq-Official/simready-assets/blob/c7fa7615a353ebac03990208cbc2aa57426f4c48/Robotiq_2F_140/simready_usd/Robotiq_2F_140.usda",
+        "https://huggingface.co/datasets/Robotiq-Official/simready-assets/blob/c7fa7615a353ebac03990208cbc2aa57426f4c48/Robotiq_2F_140/.metadata/Robotiq_2F_140_validation.json",
+        "https://huggingface.co/datasets/nvidia/simready-assets/blob/653d91e182011f357cf1644013cc94ddf194d349/food_beverage_can_n01/simready_usd/sm_food_beverage_can_n01_01.usd",
+        "https://nvidia.github.io/simready-foundation/latest/features/FET_022_PHYSX.html"
+      ]
+    }
   }
 ]
