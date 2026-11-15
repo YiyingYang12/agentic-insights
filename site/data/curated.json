@@ -18704,5 +18704,306 @@
         "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/8973eb1c36fa517d236a875e1879999f24270913/ur5e/simready_usd/runnables/physics/physx.usda"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.15178v1",
+    "url": "https://arxiv.org/abs/2611.15178v1",
+    "id": "paper-hyperskill-2611-15178",
+    "title": "HyperSkill：技能库的收益，要和执行协议分开算",
+    "summary": "HyperSkill用外部技能库改进冻结模型；作者报11个小样本数据集平均评分29.0→42.0，但只3项启用技能检索，且预算、投票和执行协议不同，不能把13分归因于超图。",
+    "insight": "作者主张：反事实筛技能、优势加权超图检索与执行协议联合优化。本站判断：可审计技能增删值得借鉴，但主要增益混入执行协议及额外推理预算，尚未隔离超图本身收益。",
+    "limits": "作者报告，未复现。单骨干、636题、每格单次运行；仅3/11项检索技能，预算/投票不等，13分不是超图独立收益；AIME也用含子串规则评分，不能当标准准确率。 主骨干gemini-2.5-flash-lite；每项128训练题、AIME各30测试题、其余各64题。评分混合选项匹配、短实体包含和CJK token F1，数学整数也走包含分支；代码的选项分支还允许文本F1回退。五项领先的题目bootstrap区间跨0，多seed方差未充分覆盖；一次重建库均分变化+0.08、单项最多3.2分。附录E.7仅InfoSeek、SimpleVQA、OmniVideoBench启用检索，其余用协议或纯C3，AIME2025/WebWalkerQA/MMLongBench-Doc连协议技能也关闭。对照没有C3，AIME预算增至8192、部分项5次投票、预搜索不计工具预算；不能将总收益解释为等算力或超图相对平库优势。w/o C2包含w/o C1，属于嵌套消融，不是独立因素效应。反事实准入是同一LLM看金答案作YES/NO判断，并非每个候选都真实重跑救回失败；实测一票筛选的有用率仅6/22。零技能回退的理论不劣性依赖准入技能本来就不降低期望奖励的假设。text_search由另一模型提供知识而非真实网页搜索，不能视为开放网页端到端证据。无权重更新仍需带答案训练集、验证调参、API构库和测试调用；作者$5.56构库/$2.34单轮测试不是跨供应商全成本保证，延迟只测3项各16题。已读固定源码与配置，未执行、未逐图检查、未验证数据完整性及训练测试污染。X仅搜索索引，无可核作者原帖。",
+    "dateLabel": "2026-11-11 · arXiv v1首发",
+    "evidence": "原论文方法、配置及评分源码核验；未复现",
+    "originalTitle": "HyperSkill: Training-Free Omnimodal GRPO via Hypergraph-Indexed Skill-Library Evolution",
+    "date": "2026-11-11",
+    "checkedAt": "2026-11-15T16:23:15.036491+00:00",
+    "paperOriginalDate": "2026-11-11T08:20:21Z",
+    "paperUpdatedAt": "2026-11-11T08:20:21Z",
+    "updatedAt": "2026-11-11T08:20:21Z",
+    "firstSeenAt": "2026-11-15T16:29:06.158370+00:00",
+    "tags": [
+      "技能库",
+      "冻结模型",
+      "超图检索",
+      "实验边界"
+    ],
+    "authors": [
+      "Haoran Luo",
+      "Shangkai Lin",
+      "Jinyang Wu",
+      "Xinliang Zhou",
+      "Luu Anh Tuan"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 · 首发与作者",
+        "url": "https://arxiv.org/abs/2611.15178v1"
+      },
+      {
+        "label": "原论文全文 · 方法与附录",
+        "url": "https://arxiv.org/html/2611.15178v1"
+      },
+      {
+        "label": "作者实现 · 固定提交",
+        "url": "https://github.com/LHRLAB/HyperSkill/tree/740ff366cd9e998f83c75db484fda150b5e00eb6"
+      },
+      {
+        "label": "主表逐数据集配置",
+        "url": "https://github.com/LHRLAB/HyperSkill/blob/740ff366cd9e998f83c75db484fda150b5e00eb6/configs/final_configs.json"
+      },
+      {
+        "label": "CJK与包含规则评分源码",
+        "url": "https://github.com/LHRLAB/HyperSkill/blob/740ff366cd9e998f83c75db484fda150b5e00eb6/hyperskill/grpo/rewards_cjk.py"
+      },
+      {
+        "label": "作者HF数据集",
+        "url": "https://huggingface.co/datasets/LHRLAB/HyperSkill"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "HyperSkill用外部技能库改进冻结模型；作者报11个小样本数据集平均评分29.0→42.0，但只3项启用技能检索，且预算、投票和执行协议不同，不能把13分归因于超图。",
+      "motivation": "外部经验库常把整条成功轨迹压成规则，混入无效经验；作者尝试将技能筛选、组合检索和执行失败修复拆开，让冻结模型的改进可追踪。",
+      "novelty": "作者主张：反事实筛技能、优势加权超图检索与执行协议联合优化。本站判断：可审计技能增删值得借鉴，但主要增益混入执行协议及额外推理预算，尚未隔离超图本身收益。",
+      "evidenceScope": "精读arXiv v1方法§3、实验§4、附录B.3/D/E及表2、配置表；读取作者固定commit 740ff366cd9e998f83c75db484fda150b5e00eb6 的README、启动/训练/评估入口、final_configs与CJK评分实现，核HF数据集公开页。未运行训练或评估，未逐图视觉复核，未下载核查全部数据。verified表示来源核验而非复现。",
+      "limits": "作者报告，未复现。单骨干、636题、每格单次运行；仅3/11项检索技能，预算/投票不等，13分不是超图独立收益；AIME也用含子串规则评分，不能当标准准确率。 主骨干gemini-2.5-flash-lite；每项128训练题、AIME各30测试题、其余各64题。评分混合选项匹配、短实体包含和CJK token F1，数学整数也走包含分支；代码的选项分支还允许文本F1回退。五项领先的题目bootstrap区间跨0，多seed方差未充分覆盖；一次重建库均分变化+0.08、单项最多3.2分。附录E.7仅InfoSeek、SimpleVQA、OmniVideoBench启用检索，其余用协议或纯C3，AIME2025/WebWalkerQA/MMLongBench-Doc连协议技能也关闭。对照没有C3，AIME预算增至8192、部分项5次投票、预搜索不计工具预算；不能将总收益解释为等算力或超图相对平库优势。w/o C2包含w/o C1，属于嵌套消融，不是独立因素效应。反事实准入是同一LLM看金答案作YES/NO判断，并非每个候选都真实重跑救回失败；实测一票筛选的有用率仅6/22。零技能回退的理论不劣性依赖准入技能本来就不降低期望奖励的假设。text_search由另一模型提供知识而非真实网页搜索，不能视为开放网页端到端证据。无权重更新仍需带答案训练集、验证调参、API构库和测试调用；作者$5.56构库/$2.34单轮测试不是跨供应商全成本保证，延迟只测3项各16题。已读固定源码与配置，未执行、未逐图检查、未验证数据完整性及训练测试污染。X仅搜索索引，无可核作者原帖。",
+      "method": [
+        "每题采两条轨迹，以金答案评分0.5分组；对齐成功/失败步骤，提取候选技能，并从工具/答案格式失败统计协议指令。",
+        "同一冻结模型结合金答案判断技能能否救回失败，多数YES才收录；这属于反事实判断，真实注入重跑仅在另做的有效性实验中检查。",
+        "把技能存成带优势EMA的节点，将组合存为超边；相似度与优势排序后限最多3项，门槛按验证集选择，低匹配时不注入。",
+        "以32或64个训练内留出题选择配置后，在全部128训练题重建库；测试冻结库。每项分别启用答案补全、宽容解析、定位证据、投票或更长输出预算。",
+        "在11项共636题用统一自定义评分对照六个重实现基线；同时报告嵌套消融、准入有用率与调用成本，源码配置仅3项实际启用技能检索。"
+      ],
+      "inspirations": [
+        "做技能库实验时固定模型、工具、token与投票预算，用平库/超图×协议开关的完整对照，并单独报告实际注入比例与空库回退率。",
+        "用独立留出失败题真实重跑检验技能是否救回，避免只靠模型自评；同时测误准入、错误泛化与规则冲突，保留每次技能变更可回滚记录。",
+        "把格式遵从与任务正确率分开验收；数学用严格答案匹配、网页任务核真实引用。记录构库/调参/测试全部API成本，再判断是否适合持续更新。"
+      ],
+      "reviewedAt": "2026-11-15T16:23:15.036491+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.15178v1",
+        "https://arxiv.org/html/2611.15178v1",
+        "https://github.com/LHRLAB/HyperSkill/tree/740ff366cd9e998f83c75db484fda150b5e00eb6",
+        "https://github.com/LHRLAB/HyperSkill/blob/740ff366cd9e998f83c75db484fda150b5e00eb6/configs/final_configs.json",
+        "https://github.com/LHRLAB/HyperSkill/blob/740ff366cd9e998f83c75db484fda150b5e00eb6/hyperskill/grpo/rewards_cjk.py",
+        "https://huggingface.co/datasets/LHRLAB/HyperSkill"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.15178",
+      "status": "pending",
+      "checkedAt": "2026-11-15T16:23:54.005624+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://github.com/OpenShot/openshot-qt/releases/tag/v4.1.1",
+    "url": "https://github.com/OpenShot/openshot-qt/releases/tag/v4.1.1",
+    "id": "openshot-41-agent-cli-project-review",
+    "title": "30天内补读｜OpenShot 4.1：让Agent与人共用可编辑时间线",
+    "summary": "OpenShot 4.1将现有剪辑工程暴露为可查询、批量修改和导出的CLI接口。固定v4.1.1源码显示，Agent可修改片段、特效与关键帧，再保存为人能继续编辑的.osp工程；批量操作有预检和版本冲突检查，但不保证运行失败时自动回滚。",
+    "insight": "值得借鉴的是可编辑工程与失败状态的接口，而非把“命令成功”当“成片合格”。研究可分别测保存重开后的结构保留、局部修改误伤、部分提交恢复及最终视听质量，并检验超时后查状态是否减少重复剪辑。",
+    "limits": "仅静态核验v4.1.1源码与测试定义，未运行；没有端到端成功率、可编辑性通过率或视觉质量评测分母。批量运行失败可部分提交，超时后须查操作/导出状态；.osp引用素材，不是自包含打包。CLI仍属实验性；dry-run不能证明运行阶段或视觉结果正确。操作记录仅存活于当前会话，不能防止重复命令，也不恢复崩溃。保存的撤销历史受用户设置上限约束；无显示服务器的会话不能直接转为GUI。公告、正式版及维护版日期不同，本条是30天窗口内旧公告的固定实现补读，非本轮新发布。",
+    "organization": "OpenShot",
+    "dateLabel": "10/25 公告；10/31 v4.1.0；11/02 v4.1.1维护版（UTC）",
+    "evidence": "官方公告、发布页与固定提交源码已核验；测试定义只读，未运行或复现。",
+    "date": "2026-10-25",
+    "checkedAt": "2026-11-15T16:25:00+00:00",
+    "firstSeenAt": "2026-11-15T16:29:06.158370+00:00",
+    "tags": [
+      "OpenShot",
+      "剪辑Agent",
+      "可编辑工程",
+      "CLI",
+      "静态源码解读"
+    ],
+    "topics": [
+      "video-editing"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "官方4.1公告（2026-10-25）",
+        "url": "https://www.openshot.org/blog/2026/10/25/openshot-41-direct-text-editing-auto-optimize-command-line-editing/"
+      },
+      {
+        "label": "v4.1.0正式发布（2026-10-31 UTC）",
+        "url": "https://github.com/OpenShot/openshot-qt/releases/tag/v4.1.0"
+      },
+      {
+        "label": "v4.1.1维护发布（2026-11-02 UTC）",
+        "url": "https://github.com/OpenShot/openshot-qt/releases/tag/v4.1.1"
+      },
+      {
+        "label": "固定版本CLI文档",
+        "url": "https://github.com/OpenShot/openshot-qt/blob/eead0c71dcb323f6befa7d5935daeb1bedf95cd2/doc/agent_cli.rst"
+      },
+      {
+        "label": "固定实现：预检、版本冲突、修改与错误结果",
+        "url": "https://github.com/OpenShot/openshot-qt/blob/eead0c71dcb323f6befa7d5935daeb1bedf95cd2/src/classes/agent/service.py"
+      },
+      {
+        "label": "固定实现：工程保存及资源引用",
+        "url": "https://github.com/OpenShot/openshot-qt/blob/eead0c71dcb323f6befa7d5935daeb1bedf95cd2/src/classes/project_data.py"
+      },
+      {
+        "label": "固定实现：快照渲染、导出检查与任务状态",
+        "url": "https://github.com/OpenShot/openshot-qt/blob/eead0c71dcb323f6befa7d5935daeb1bedf95cd2/src/classes/agent/render.py"
+      },
+      {
+        "label": "固定测试定义：保存重开、撤销和部分失败（未运行）",
+        "url": "https://github.com/OpenShot/openshot-qt/blob/eead0c71dcb323f6befa7d5935daeb1bedf95cd2/src/tests/test_agent_keyframes_bulk.py"
+      },
+      {
+        "label": "固定README确认官方站点",
+        "url": "https://github.com/OpenShot/openshot-qt/blob/eead0c71dcb323f6befa7d5935daeb1bedf95cd2/README.md"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "OpenShot 4.1把剪辑时间线开放给Agent：可批改片段、效果和关键帧，并保存为可继续编辑的.osp工程；预检与撤销有实现依据，运行成功率和视觉质量尚未验证。",
+      "motivation": "只交付视频文件会丢失后续修改的结构，直接驱动GUI又难判断命令是否完成。OpenShot沿用已有项目模型，把查询、修改、保存、撤销与导出状态提供为CLI接口，使Agent与创作者能够围绕同一剪辑工程协作。",
+      "novelty": "官方主张实验性CLI让脚本与Agent直接编辑和检查项目。本站判断：关键价值是可编辑工程、版本检查与可查询失败状态共同暴露；这不是已经证明自主剪辑质量提高的模型结果。",
+      "evidenceScope": "已读官方10/25公告、10/31与11/2 GitHub发布页，并静态核验v4.1.1固定提交eead0c71dcb323f6befa7d5935daeb1bedf95cd2的CLI文档、service.py预检/提交/工程分派、project_data.py保存、render.py快照导出及相关测试定义。方法中的步骤为工具接口工作流，不冒充论文算法。未安装或执行作者代码、测试和导出；无实测样本或性能/视觉评测分母。verified仅表示来源核验。",
+      "limits": "仅静态核验v4.1.1源码与测试定义，未运行；没有端到端成功率、可编辑性通过率或视觉质量评测分母。批量运行失败可部分提交，超时后须查操作/导出状态；.osp引用素材，不是自包含打包。CLI仍属实验性；dry-run不能证明运行阶段或视觉结果正确。操作记录仅存活于当前会话，不能防止重复命令，也不恢复崩溃。保存的撤销历史受用户设置上限约束；无显示服务器的会话不能直接转为GUI。公告、正式版及维护版日期不同，本条是30天窗口内旧公告的固定实现补读，非本轮新发布。",
+      "method": [
+        "先建立或选择持久会话，查询项目、素材、片段及关键帧；剪辑修改落在同一项目结构中。片段在时间线的位置与素材裁入/裁出点采用不同坐标，不能混用；具有桌面能力的会话可显示同一工程窗口。",
+        "把明确的片段、特效或关键帧修改组成批次。固定service.py先深拷贝项目并用独立更新器预检，dry-run只返回检查结果；提交时可携带expect_revision拒绝已被其他操作改动的项目，展开后的批次上限为256条命令。",
+        "实际执行把批次放入同一撤销组，并回传版本号、已完成结果和操作ID。预检失败不修改原工程；引擎或界面监听器在提交阶段失败时仍可能留下部分修改，调用方须据completed和当前状态决定恢复。",
+        "单独保存.osp工程及受设置约束的撤销历史，保留片段、效果和关键帧结构。源码中的保存重开测试定义比较这些字段并检查撤销/重做；我们仅阅读该测试，未验证真实平台运行或素材迁移成功。",
+        "用缩略图、联系表或时间线预览辅助检查，再对导出设置做兼容性验证并从项目快照启动独立导出任务。导出不等于保存工程；超时后查询操作/任务状态再决定下一步，最终成片仍需完整视听验收。"
+      ],
+      "inspirations": [
+        "设计工程往返评测：编辑后保存、重开，再比较片段ID、时间区间、效果与关键帧；同时检查缺失素材，分别报告结构保留率和可重渲染率。",
+        "做失败恢复对照：注入提交中断、版本冲突和响应超时，比较直接重试与先查operation/job的重复剪辑率、部分修改恢复率和调用成本。",
+        "把成功拆成三关：命令及导出完成、局部修改符合意图且其他片段不变、完整视频视听质量合格；报告各关分母，避免以JSON成功或预览截图代替成片评价。"
+      ],
+      "reviewedAt": "2026-11-15T16:25:00+00:00",
+      "sourceUrls": [
+        "https://www.openshot.org/blog/2026/10/25/openshot-41-direct-text-editing-auto-optimize-command-line-editing/",
+        "https://github.com/OpenShot/openshot-qt/releases/tag/v4.1.0",
+        "https://github.com/OpenShot/openshot-qt/releases/tag/v4.1.1",
+        "https://github.com/OpenShot/openshot-qt/blob/eead0c71dcb323f6befa7d5935daeb1bedf95cd2/doc/agent_cli.rst",
+        "https://github.com/OpenShot/openshot-qt/blob/eead0c71dcb323f6befa7d5935daeb1bedf95cd2/src/classes/agent/service.py",
+        "https://github.com/OpenShot/openshot-qt/blob/eead0c71dcb323f6befa7d5935daeb1bedf95cd2/src/classes/project_data.py",
+        "https://github.com/OpenShot/openshot-qt/blob/eead0c71dcb323f6befa7d5935daeb1bedf95cd2/src/classes/agent/render.py",
+        "https://github.com/OpenShot/openshot-qt/blob/eead0c71dcb323f6befa7d5935daeb1bedf95cd2/src/tests/test_agent_keyframes_bulk.py",
+        "https://github.com/OpenShot/openshot-qt/blob/eead0c71dcb323f6befa7d5935daeb1bedf95cd2/README.md"
+      ]
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.11450v1",
+    "url": "https://arxiv.org/abs/2611.11450v1",
+    "id": "paper-opd-mismatch-budget-2611-11450",
+    "title": "OPD失配预算：先测采样器偏差，再决定量化和异步幅度",
+    "summary": "OPD可容忍有限采样失配：7B数学配对在8张GH200上，FP8加异步达到同教师KL用时5.980→3.694小时（1.62倍）；这是单次200步范围结果，非全流程成本或准确率等价，未复现。",
+    "insight": "作者主张：把量化、迟滞和噪声统一成KL失配预算，用小样本筛选便宜采样器。本站判断：价值是可测的准入流程；0.184–0.39只是特定配对的观测区间，8次命中未覆盖边界，不能转成通用安全阈值。",
+    "limits": "作者结果未复现；主预算仅1个7B数学配对，多数配置1次200步。KL评估530题含38题被标记与训练池重叠。1.62倍自首训练步计时，含生成、教师评分及存档，未覆盖前置校准/量化准备；同KL不等于同准确率。本轮补读2026年11月8日v1既有队列，已略超严格7×24小时边界、仍在30天范围，不是本轮新发布。主预算在DeepSeek-R1-Distill-Qwen-7B与Skywork-OR1-Math-7B上测量；1.5B和Llama 3B只补充量化验证，不能写成三组完整预算。Qwen3配对因标准OPD未满足学习条件而提前停止，不构成该模型完整训练结果。0.184–0.39 nats/token是20%同教师KL退化规则下“最大已测通过/最小已测失败”的括区，区间内部未测；阈值改为25%时括区改变。迟滞最多8个权重版本的失配仍很小，未找到迟滞的耐受上限。主评估每题等权：AIME24每题8个响应，MATH500每题1个；先按题内响应token取均值，再平均530题。次要正确率是AIME24、AIME25与AMC23非重叠子集28题的三任务平均，各题16样本，并非530题总正确率。离线准入16题取自主KL评估集，二者不是完全独立选择/评测集。8项预先指定判断中仅5项来自纯离线检查，其他有短训练估计；通过估计≤0.030、失败≥0.408，未验证临界区分辨率。实际训练/离线失配比1.56–1.68超过预设1.5安全系数；回看后收紧阈值不是新的独立验证。六配置24分钟单GPU的筛选成本发生在模型特定预算已校准后；建立预算仍需完整训练。论文计时从首训练步开始，不代表含模型下载、导出、校准和实验探索的总成本。1.62倍比较同8张GH200、相同EAGLE-3草稿设置、每25步保存checkpoint的单次配置：同步BF16最后KL为0.047643，异步k=8加FP8为0.047602，最终正确率分别61.54%和60.46%。k=4的1.69倍针对90% KL改善目标，不是达到同步最终KL；其最终KL高约0.8%。1.93倍指KV缓存可容纳token数，不是总显存减少率或端到端加速。1536响应/步为64响应主训练批量的24倍，只测短8步吞吐且未验证训练质量；NVFP4在GH200上以BF16模拟，只支持质量分析，不能当原生低比特速度证据。FP8具体保护范围不能混写：Model Optimizer保留首尾整层BF16；vLLM缓存方案只保留首层KV BF16。7B首层贡献93%–99%的失配是七种已测缓存配方结果，不是跨架构规律；其他模型需重新测量。多数配置仅1次运行；95%区间按问题bootstrap，不是训练seed置信区间。少量重复及可能的k=4 FP8运行使用不同驱动，不能将小差值作为控制充分的显著性结论。实验计划、逐步日志、分析输出和生成图表的脚本在核验时仍承诺后续公开，无法独立重算全部结果；部分规则在试验后调整，见附录B7。RL对照的标准REINFORCE/GRPO没有通过最初学习条件，该条件随后取消；其奖励、批量与更新次数亦不同。故不能把失配容忍倍数写成OPD普遍比RL更会学习，score centering也能修复已测RL失配。固定前缀理论仅给局部梯度性质，不给全局收敛或通用安全阈值。本轮静态读取作者固定提交的README及少量测量/评估文件；未运行代码、训练、推理或重算数据，未做PDF页面视觉核验。X仅查公开搜索索引，未取得可核作者原帖，不声称读取时间线或API。",
+    "organization": "Aalto University / Nanyang Technological University / Independent / Beijing Institute of Technology / University of Cambridge / Shenzhen University of Advanced Technology",
+    "dateLabel": "2026-11-08 · arXiv v1首发；既有队列补读",
+    "evidence": "原论文方法/实验/关键附录及LaTeX表格核验；固定提交静态检查；未复现",
+    "originalTitle": "How Much Training–Inference Mismatch Can On-Policy Distillation Tolerate?",
+    "date": "2026-11-08",
+    "checkedAt": "2026-11-15T16:25:21.495770+00:00",
+    "paperOriginalDate": "2026-11-08T15:22:47Z",
+    "paperUpdatedAt": "2026-11-08T15:22:47Z",
+    "updatedAt": "2026-11-08T15:22:47Z",
+    "firstSeenAt": "2026-11-15T16:29:06.158370+00:00",
+    "tags": [
+      "Distillation",
+      "On-policy",
+      "量化",
+      "异步训练",
+      "失配预算",
+      "既有队列补读"
+    ],
+    "authors": [
+      "Cong Yu",
+      "Ziting Wang",
+      "Songlin Jiang",
+      "Sitong Zhang",
+      "Chengliang Chai",
+      "Youhe Jiang",
+      "Eiko Yoneki",
+      "Tuo Shi"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 · 原论文与首发时间",
+        "url": "https://arxiv.org/abs/2611.11450v1"
+      },
+      {
+        "label": "arXiv v1 HTML · 方法、实验及附录",
+        "url": "https://arxiv.org/html/2611.11450v1"
+      },
+      {
+        "label": "arXiv v1 · 原文PDF",
+        "url": "https://arxiv.org/pdf/2611.11450v1"
+      },
+      {
+        "label": "arXiv v1 · 论文LaTeX源资产",
+        "url": "https://arxiv.org/src/2611.11450v1"
+      },
+      {
+        "label": "Hugging Face · 论文索引",
+        "url": "https://huggingface.co/papers/2611.11450"
+      },
+      {
+        "label": "作者公开实现 · 训练与数据准备",
+        "url": "https://github.com/benyucong/train-inference-mismatch-opd"
+      },
+      {
+        "label": "作者README · 本轮固定提交静态核验",
+        "url": "https://github.com/benyucong/train-inference-mismatch-opd/blob/1fc4571cc5cb07173193fec546827956ae647fe5/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "OPD可容忍有限采样失配：7B数学配对在8张GH200上，FP8加异步达到同教师KL用时5.980→3.694小时（1.62倍）；这是单次200步范围结果，非全流程成本或准确率等价，未复现。",
+      "motivation": "OPD用当前学生生成的响应训练学生，但节省推理成本的量化或异步采样会让采样器q偏离训练器p。把是否“足够on-policy”只归结为位宽或权重迟滞步数，会忽视不同模型/层/运行内核带来的实际概率差异；论文希望先测失配，再判断便宜采样器能否保持同教师KL训练质量。",
+      "novelty": "作者主张：把量化、迟滞和噪声统一成KL失配预算，用小样本筛选便宜采样器。本站判断：价值是可测的准入流程；0.184–0.39只是特定配对的观测区间，8次命中未覆盖边界，不能转成通用安全阈值。",
+      "evidenceScope": "直接读取arXiv 2611.11450v1摘要、正文§2–6与附录B的计划/规则/调整、C的引擎及敏感层分析、D的固定前缀与梯度分析、E–G的速度/先导实验/复现说明及I限制；对关键定义、预算表、准入表和逐checkpoint时间表交叉读取原始LaTeX。PDF已下载，仅作原文入口，本轮未做页面视觉验收或从曲线像素估数。原论文源归档SHA256=1c8fc741ca3dd2877b52c765bba2ff9bd2578d485ca4299a16cb4a1ac46c0775，共41文件。HF核论文索引，原文和作者仓库相互链接；作者仓库固定提交1fc4571cc5cb07173193fec546827956ae647fe5，静态读README及部分测量/评估文件，未执行代码。作者明确实验计划、逐步日志和图表分析资产待后续公开。所有实验数字均为作者报告；verified只表示来源与口径核验，不表示实验复现。",
+      "limits": "作者结果未复现；主预算仅1个7B数学配对，多数配置1次200步。KL评估530题含38题被标记与训练池重叠。1.62倍自首训练步计时，含生成、教师评分及存档，未覆盖前置校准/量化准备；同KL不等于同准确率。本轮补读2026年11月8日v1既有队列，已略超严格7×24小时边界、仍在30天范围，不是本轮新发布。主预算在DeepSeek-R1-Distill-Qwen-7B与Skywork-OR1-Math-7B上测量；1.5B和Llama 3B只补充量化验证，不能写成三组完整预算。Qwen3配对因标准OPD未满足学习条件而提前停止，不构成该模型完整训练结果。0.184–0.39 nats/token是20%同教师KL退化规则下“最大已测通过/最小已测失败”的括区，区间内部未测；阈值改为25%时括区改变。迟滞最多8个权重版本的失配仍很小，未找到迟滞的耐受上限。主评估每题等权：AIME24每题8个响应，MATH500每题1个；先按题内响应token取均值，再平均530题。次要正确率是AIME24、AIME25与AMC23非重叠子集28题的三任务平均，各题16样本，并非530题总正确率。离线准入16题取自主KL评估集，二者不是完全独立选择/评测集。8项预先指定判断中仅5项来自纯离线检查，其他有短训练估计；通过估计≤0.030、失败≥0.408，未验证临界区分辨率。实际训练/离线失配比1.56–1.68超过预设1.5安全系数；回看后收紧阈值不是新的独立验证。六配置24分钟单GPU的筛选成本发生在模型特定预算已校准后；建立预算仍需完整训练。论文计时从首训练步开始，不代表含模型下载、导出、校准和实验探索的总成本。1.62倍比较同8张GH200、相同EAGLE-3草稿设置、每25步保存checkpoint的单次配置：同步BF16最后KL为0.047643，异步k=8加FP8为0.047602，最终正确率分别61.54%和60.46%。k=4的1.69倍针对90% KL改善目标，不是达到同步最终KL；其最终KL高约0.8%。1.93倍指KV缓存可容纳token数，不是总显存减少率或端到端加速。1536响应/步为64响应主训练批量的24倍，只测短8步吞吐且未验证训练质量；NVFP4在GH200上以BF16模拟，只支持质量分析，不能当原生低比特速度证据。FP8具体保护范围不能混写：Model Optimizer保留首尾整层BF16；vLLM缓存方案只保留首层KV BF16。7B首层贡献93%–99%的失配是七种已测缓存配方结果，不是跨架构规律；其他模型需重新测量。多数配置仅1次运行；95%区间按问题bootstrap，不是训练seed置信区间。少量重复及可能的k=4 FP8运行使用不同驱动，不能将小差值作为控制充分的显著性结论。实验计划、逐步日志、分析输出和生成图表的脚本在核验时仍承诺后续公开，无法独立重算全部结果；部分规则在试验后调整，见附录B7。RL对照的标准REINFORCE/GRPO没有通过最初学习条件，该条件随后取消；其奖励、批量与更新次数亦不同。故不能把失配容忍倍数写成OPD普遍比RL更会学习，score centering也能修复已测RL失配。固定前缀理论仅给局部梯度性质，不给全局收敛或通用安全阈值。本轮静态读取作者固定提交的README及少量测量/评估文件；未运行代码、训练、推理或重算数据，未做PDF页面视觉核验。X仅查公开搜索索引，未取得可核作者原帖，不声称读取时间线或API。",
+      "method": [
+        "以p为当前BF16学生、q为采样器、pT为固定教师；优势用log pT−log p。量化/迟滞/噪声只改q，沿其采样记录log q−log p，训练均值D估计KL(q||p)，不是评估教师KL。",
+        "在一个7B数学配对上训练200步，以530题教师KL退化≥20%且配对区间排除零判失败。评估含38题训练池重叠；0.184–0.39 nats/token仅是已测通过/失败括区，内部未测。",
+        "预算校准后，每候选用16题各2响应，由BF16学生重评分，无需教师。以alpha×离线估计<L准入并监测训练。8项预定判断仅5项纯离线、均远离边界，实际比值超过1.5裕量，不保证安全。",
+        "vLLM FP8缓存保首层KV为BF16，7B离线失配0.52→0.0037；Model Optimizer FP8保首尾整层BF16。异步用2GPU训练、2GPU采样及4GPU教师，迟滞最多8版本。",
+        "同8张GH200及草稿设置，BF16同步5.980h与FP8异步k8 3.694h达同教师KL，约1.62倍；从首训练步计时含教师评分，非全流程成本。正确率61.54%与60.46%，不等价。"
+      ],
+      "inspirations": [
+        "把每批生成日志里的采样器logprob与当前训练器logprob做成独立监测量，同时记录前缀分布变化。准入集、阈值校准集和最终评测集分离并排查题目重叠；在边界附近补配置和多seed，才适合把观测括区用于上线决策。这是本站后续实验建议。",
+        "选择混合精度时先逐层测失配、保留敏感组件，再以同目标质量实测收益；不要跨架构照搬“保留第一层”。若迁移到长程代码或工具Agent，还应按任务长度、验证器质量和分支变化重新估预算；本文没有这些任务的直接证据。",
+        "为每个加速方案同时列同GPU/驱动下的完整准备成本、达到目标的墙钟、更新吞吐、缓存容量和正确率。只有瓶颈是采样或缓存时，低精度才可能转化为训练收益；以同一草稿模型和checkpoint选择规则配对，防止把缓存扩容或排除热身后的吞吐当总成本下降。"
+      ],
+      "reviewedAt": "2026-11-15T16:25:21.495770+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.11450v1",
+        "https://arxiv.org/html/2611.11450v1",
+        "https://arxiv.org/pdf/2611.11450v1",
+        "https://arxiv.org/src/2611.11450v1",
+        "https://huggingface.co/papers/2611.11450",
+        "https://github.com/benyucong/train-inference-mismatch-opd",
+        "https://github.com/benyucong/train-inference-mismatch-opd/blob/1fc4571cc5cb07173193fec546827956ae647fe5/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.11450",
+      "status": "pending",
+      "checkedAt": "2026-11-15T16:23:54.005624+00:00"
+    }
   }
 ]
