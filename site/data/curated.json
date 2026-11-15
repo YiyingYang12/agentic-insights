@@ -18020,5 +18020,321 @@
       "status": "pending",
       "checkedAt": "2026-11-14T22:19:22.999213+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.17267v1",
+    "url": "https://arxiv.org/abs/2611.17267v1",
+    "id": "live-a11a1dbf5d261832",
+    "title": "LiveGeo：答案曾经正确，环境改变后还成立吗？",
+    "summary": "LiveGeo在149道配对地理题上，九模型静态平均成功率19.1%，仅任务相关事件时5.7%，共享事件时4.0%。动态评分还要求完整抄录事件、匹配参考目标；这是模拟环境评分，非真实出行成功率。",
+    "insight": "作者主张：用统一实体、虚拟时钟和状态记录构建可重放动态地理评测。本站判断：应把答案有效性连同时间与依赖验收，分开检查取得更新、报告更新和修改决定；这是可控模拟，不是实时城市运行实测。",
+    "limits": "仅核原文和固定文档，未运行或复现。动态评分混合事件观察、逐字报告与参考目标匹配，不等于约束全满足或旧计划修复成功。两动态设置复用同149题。数值均为作者报告，未运行或复现。1,237=1,088静态+149动态，动态两种事件范围复用同149题，不能算298个独立任务；九模型各3次运行，每个动态设置4,023次执行。六城市分布不均，动态仅涵盖五类任务；309个任务绑定事件中188个改变用户约束，111/149题只有1–2个事件，不代表任意现实城市变化。地理底座是固定版本缓存，事件预设且由Agent显式推进虚拟时间，非墙钟流式更新。任务先选目标再构造约束/事件并三人一致审核，属于可解性筛选后的模拟题。不同静态类别成功定义不齐：Multi-Entity仅选对地点即整体通过，通知等五项只是诊断；Mobility必须可行性正确且七项过五项，非所有约束全过；部分时间窗诊断无最终提交也可能默认通过，不能据跨类别分数直接排难度。动态初始P0不要求正确，最终需观察并逐字完整报告所有绑定事件、匹配更新后的参考目标，另满足结构化输出及适用检查通过百分比经取整后q≥70；重规划指标不逐项独立重验所有公开约束，故不证明从正确旧计划成功修复，也可能混入格式/抄录与参考答案限制。Explicit Update仅三模型，其21.9%→16.3%→7.2%→5.4%不能与九模型均值混算；迟查与成功的模型级相关不是因果效果，事件数量分组也非随机干预。论文称3次独立运行并报均值±标准误，未核原始逐run结果及标准误聚合实现，不能据此宣布模型排名显著。失败归因由GPT-5.6提出、Opus 5复核并人工筛查；无支持候选时仍可保留低置信主因，格式/证据检查两次修正仍失败的分析被排除，79.4%监控失败只指已归因失败，非全部运行且可能遮盖下游错误。案例也保留了容量上限与预订成功相矛盾的环境反馈，不能全归于模型。公开GeoWorld有工程目录，本轮仅静态读固定文档，未审运行器/评分代码或复算样本；固定Benchmark仓库可见根目录仅README、其内容仅标题。文档明确小型演示和两条来自不同运行的结果摘录不替代完整冻结评测资产，未核全量1,237题、城市快照、评分与逐run清单可下载。",
+    "dateLabel": "2026-11-12 · arXiv v1",
+    "evidence": "原论文方法/评测细则与固定公开文档核验；未运行或复现",
+    "originalTitle": "LiveGeo: Benchmarking Geographic Agents in Continuously Evolving Worlds",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-15T04:29:41.352617+00:00",
+    "paperOriginalDate": "2026-11-12T18:45:58Z",
+    "paperUpdatedAt": "2026-11-12T18:45:58Z",
+    "updatedAt": "2026-11-12T18:45:58Z",
+    "firstSeenAt": "2026-11-13T10:00:01Z",
+    "lastSeenAt": "2026-11-14T22:00:00Z",
+    "tags": [
+      "动态环境",
+      "证据时效",
+      "配对评测",
+      "地理Agent"
+    ],
+    "authors": [
+      "Pengcheng Zhou",
+      "Xuanyu Liu",
+      "Yanchen Yin",
+      "Tianjie Ju",
+      "Bobo Li",
+      "Shengqiong Wu",
+      "Hao Fei",
+      "Mong-Li Lee",
+      "Wynne Hsu"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 · 原始发表记录",
+        "url": "https://arxiv.org/abs/2611.17267v1"
+      },
+      {
+        "label": "原论文 · 方法与评测细则",
+        "url": "https://arxiv.org/html/2611.17267v1"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://livegeoworld.github.io/"
+      },
+      {
+        "label": "固定GeoWorld说明",
+        "url": "https://github.com/LiveGeoWorld/GeoWorld/blob/0630bf8daeafa9e095491f70f9e8bd2f3b75ba92/README.md"
+      },
+      {
+        "label": "固定评测说明 · 示例不等于完整基准",
+        "url": "https://github.com/LiveGeoWorld/GeoWorld/blob/0630bf8daeafa9e095491f70f9e8bd2f3b75ba92/docs/evaluation.md"
+      },
+      {
+        "label": "固定数据范围",
+        "url": "https://github.com/LiveGeoWorld/GeoWorld/blob/0630bf8daeafa9e095491f70f9e8bd2f3b75ba92/data/README.md"
+      },
+      {
+        "label": "固定演示与记录范围",
+        "url": "https://github.com/LiveGeoWorld/GeoWorld/blob/0630bf8daeafa9e095491f70f9e8bd2f3b75ba92/docs/demo_data.md"
+      },
+      {
+        "label": "固定Benchmark仓库README · 本轮仅标题",
+        "url": "https://github.com/LiveGeoWorld/LiveGeo-benchmark/blob/e092617511e91c0d5280f488a93590e4b9ea18a4/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "LiveGeo在149道配对地理题上，九模型静态平均成功率19.1%，仅任务相关事件时5.7%，共享事件时4.0%。动态评分还要求完整抄录事件、匹配参考目标；这是模拟环境评分，非真实出行成功率。",
+      "motivation": "开放环境里，原先可行的计划会因路况、场所状态或用户要求改变而失效。仅在静态快照上选对地点，无法证明Agent会主动重查受影响信息，或把已理解的变化落实到最终计划和提交字段。",
+      "novelty": "作者主张：用统一实体、虚拟时钟和状态记录构建可重放动态地理评测。本站判断：应把答案有效性连同时间与依赖验收，分开检查取得更新、报告更新和修改决定；这是可控模拟，不是实时城市运行实测。",
+      "evidenceScope": "直接读取arXiv v1正文§3–5及相关结论，精读附录A、B.2构造/事件保护/验证、B.3全部成功公式、B.4分母、C.1协议、C.2归因流程和C.3/C.4相关分析文字；核表3/4/5/15/16/18，未逐图视觉检查或播放项目视频。作者项目匿名HTTP200；GitHub API两请求因限额403，普通公开仓库页和固定文档可读。GeoWorld固定0630bf8daeafa9e095491f70f9e8bd2f3b75ba92下README/evaluation/data/demo文档与Benchmark固定e092617511e91c0d5280f488a93590e4b9ea18a4的19字节README已存内容哈希；没有读取完整代码树或执行代码。HF论文页404，X索引无可核作者帖。verified仅指来源核验，不是实验复现。",
+      "limits": "仅核原文和固定文档，未运行或复现。动态评分混合事件观察、逐字报告与参考目标匹配，不等于约束全满足或旧计划修复成功。两动态设置复用同149题。数值均为作者报告，未运行或复现。1,237=1,088静态+149动态，动态两种事件范围复用同149题，不能算298个独立任务；九模型各3次运行，每个动态设置4,023次执行。六城市分布不均，动态仅涵盖五类任务；309个任务绑定事件中188个改变用户约束，111/149题只有1–2个事件，不代表任意现实城市变化。地理底座是固定版本缓存，事件预设且由Agent显式推进虚拟时间，非墙钟流式更新。任务先选目标再构造约束/事件并三人一致审核，属于可解性筛选后的模拟题。不同静态类别成功定义不齐：Multi-Entity仅选对地点即整体通过，通知等五项只是诊断；Mobility必须可行性正确且七项过五项，非所有约束全过；部分时间窗诊断无最终提交也可能默认通过，不能据跨类别分数直接排难度。动态初始P0不要求正确，最终需观察并逐字完整报告所有绑定事件、匹配更新后的参考目标，另满足结构化输出及适用检查通过百分比经取整后q≥70；重规划指标不逐项独立重验所有公开约束，故不证明从正确旧计划成功修复，也可能混入格式/抄录与参考答案限制。Explicit Update仅三模型，其21.9%→16.3%→7.2%→5.4%不能与九模型均值混算；迟查与成功的模型级相关不是因果效果，事件数量分组也非随机干预。论文称3次独立运行并报均值±标准误，未核原始逐run结果及标准误聚合实现，不能据此宣布模型排名显著。失败归因由GPT-5.6提出、Opus 5复核并人工筛查；无支持候选时仍可保留低置信主因，格式/证据检查两次修正仍失败的分析被排除，79.4%监控失败只指已归因失败，非全部运行且可能遮盖下游错误。案例也保留了容量上限与预订成功相矛盾的环境反馈，不能全归于模型。公开GeoWorld有工程目录，本轮仅静态读固定文档，未审运行器/评分代码或复算样本；固定Benchmark仓库可见根目录仅README、其内容仅标题。文档明确小型演示和两条来自不同运行的结果摘录不替代完整冻结评测资产，未核全量1,237题、城市快照、评分与逐run清单可下载。",
+      "method": [
+        "把六城市的区域、地点和路线缓存固定成版本化地理底座，再叠加带生效时间、持续区间与依赖的事件。世界按预设日程变化，Agent通过8类App、31个工具查询同一时刻的状态，显式推进虚拟时钟；查询、观察与决定均留时间/状态记录。",
+        "先从真实地理记录选参考目标，构造有证据和单位的约束，程序验证可行性、目标区分及可观测性，再由LLM写请求、三位审核者一致通过。动态题保留初始条件，另选后续目标并构造事件；事件保护检查时空交叠和身份依赖，避免新增事件破坏已验证旧题。",
+        "将149题分别放入配对静态、Task-Only和Shared环境；后者增加共享世界其他事件，任务成员不变。动态Agent先提交P0及下次查询时间，随后主动查App并更新P1；额外Explicit Update设置直接向三模型提供必要事件，用于区分信息获取与决策更新问题。",
+        "用统一ReAct、每步至多一次工具调用、完整可见历史和每题200步上限评九模型，每题3次，温度0.1、每回合最多10K生成token。分别记录观察全部必要事件、忠实报告、最终决定与整体通过，不把多查几次等同于查对变化。",
+        "逐类使用公开定义的输出契约评分。动态要求P0检查点之后真实观察且完整逐字报告所有绑定事件、P1匹配事件后参考目标、结构化提交有效及适用检查通过百分比经取整后q≥70。失败轨迹再经提因、独立复核、引用/完整性/格式检查和人工筛查，保留低置信与分析失败边界。"
+      ],
+      "inspirations": [
+        "给长程Agent建立“决定—依赖事实—观测时间—失效事件”表；时间或相关实体状态改变时定向重查，再检查最终选择、数值计算和结构化提交字段是否同步更新。迁移到代码创作可对应素材、依赖版本、时间线与渲染规格变化，但本文未评创作场景。",
+        "用同初始任务与事件日程做静态/主动查更新/直接给更新三组对照，另报查询成本和允许重规划预算；先确定失败来自未观察、误报告还是未修订，避免只堆检索调用。",
+        "把业务可行性、参考答案匹配和证据抄录分别报分，并增加独立约束复验与等价答案检查；审计未提交默认通过、阈值允许的漏项及环境反馈矛盾，防止评分规则本身改变“成功”的含义。"
+      ],
+      "reviewedAt": "2026-11-15T04:29:41.352617+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.17267v1",
+        "https://arxiv.org/html/2611.17267v1",
+        "https://livegeoworld.github.io/",
+        "https://github.com/LiveGeoWorld/GeoWorld/blob/0630bf8daeafa9e095491f70f9e8bd2f3b75ba92/README.md",
+        "https://github.com/LiveGeoWorld/GeoWorld/blob/0630bf8daeafa9e095491f70f9e8bd2f3b75ba92/docs/evaluation.md",
+        "https://github.com/LiveGeoWorld/GeoWorld/blob/0630bf8daeafa9e095491f70f9e8bd2f3b75ba92/data/README.md",
+        "https://github.com/LiveGeoWorld/GeoWorld/blob/0630bf8daeafa9e095491f70f9e8bd2f3b75ba92/docs/demo_data.md",
+        "https://github.com/LiveGeoWorld/LiveGeo-benchmark/blob/e092617511e91c0d5280f488a93590e4b9ea18a4/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.17267",
+      "status": "pending",
+      "checkedAt": "2026-11-15T04:29:12.396814+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://github.com/hormuz-labs/agentshot",
+    "url": "https://github.com/hormuz-labs/agentshot",
+    "id": "creative-agentshot-editor-handoff",
+    "title": "AgentShot：对话剪辑与代码动效，工程交接要分清可编辑范围",
+    "summary": "AgentShot把自然语言和画面批注转成可修改的剪辑时间线，也能生成HTML+GSAP动效。固定源码已确认三格式工程交接与文本版本历史；但标题/字幕/动效导出到其他剪辑器时会烘焙成媒体，不能把“可导出”理解为所有图层仍可编辑。",
+    "insight": "作者定位：在本机看成片、提修改、比较版本，再把剪辑交给专业软件。本站判断：更有研究价值的是把编辑状态、局部代码与交付损失显式保存；其FCPXML/Premiere XML/OTIO并非等价保真，值得做逐属性往返验收，而不是凭格式数量判断专业交付能力。",
+    "limits": "这是30天内工具补读，非本轮新论文或已复现实验。公开发行页显示0.4.48于2026-11-03T09:25:55Z发布；本轮核的是11/14的main提交bda575…，没有核二进制与该源码完全对应，也没确定各功能首发日，故date=null。源码package.json写0.0.1，发版脚本另从tag注入版本，不能用开发值否定release。未安装、运行测试/skills、渲染视频、调用模型或在Premiere/Resolve/Final Cut实测；测试文件可读不等于测试已通过，更不提供编辑成功率、视觉质量或互通成功分母。导出保留原媒体片段范围、轨道等信息，但标题、字幕和其他叠层是含透明度的渲染文件，动效同样是成片而非原文字/代码；摄像头圆形/边框及非1倍同步速度会降级。OTIO的音量、音量关键帧和位置写入agentshot私有metadata，effects为空，通用编辑器是否应用未验证。导出用绝对媒体路径，移动目录需重新链接；复制已有文件只比较存在与大小，且按顺序写出文件，未见本函数内容哈希或整套原子提交保证，不能由此承诺无损重导出/故障回滚。git历史只记录project.json与clip.html，不备份原素材或渲染文件；恢复改过的动效仍需重渲染。README的本地/不上传宣传有边界：模型可见转录文字与抽帧，另有可选Cloud/worker路径；本轮没有审计完整网络流量、沙箱或隐私承诺，不称全离线/素材信息绝不外发。GitHub API三次403限流，本轮改读公开HTML与固定raw文件，不推断release API内容。",
+    "organization": "hormuz-labs",
+    "dateLabel": "首发日未核实 · 11/3发行记录、11/14固定源码；本轮补读",
+    "evidence": "官方发行记录与固定实现静态核验；未运行或验收成片",
+    "originalTitle": "AgentShot — The video editor you talk to.",
+    "date": null,
+    "checkedAt": "2026-11-15T04:29:00.172Z",
+    "firstSeenAt": "2026-11-15T04:33:39.078334+00:00",
+    "tags": [
+      "剪辑Agent",
+      "GSAP",
+      "工程交接",
+      "版本历史",
+      "工具补读"
+    ],
+    "topics": [
+      "code2motion",
+      "code2video",
+      "video-editing"
+    ],
+    "sources": [
+      {
+        "label": "作者公开仓库",
+        "url": "https://github.com/hormuz-labs/agentshot"
+      },
+      {
+        "label": "固定README · 产品范围与数据边界",
+        "url": "https://github.com/hormuz-labs/agentshot/blob/bda575305e7573668a9b34fe4afdf1a962dc8d2b/README.md"
+      },
+      {
+        "label": "官方发行记录 · 0.4.48发布于11/3",
+        "url": "https://github.com/hormuz-labs/agentshot/releases"
+      },
+      {
+        "label": "固定HEAD提交 · 11/14源码快照",
+        "url": "https://github.com/hormuz-labs/agentshot/commit/bda575305e7573668a9b34fe4afdf1a962dc8d2b"
+      },
+      {
+        "label": "三格式导出映射与降级说明",
+        "url": "https://github.com/hormuz-labs/agentshot/blob/bda575305e7573668a9b34fe4afdf1a962dc8d2b/src/shared/handoff.ts"
+      },
+      {
+        "label": "导出目录、媒体复制与写入实现",
+        "url": "https://github.com/hormuz-labs/agentshot/blob/bda575305e7573668a9b34fe4afdf1a962dc8d2b/src/main/handoff.ts"
+      },
+      {
+        "label": "项目文本历史与恢复范围",
+        "url": "https://github.com/hormuz-labs/agentshot/blob/bda575305e7573668a9b34fe4afdf1a962dc8d2b/src/main/history.ts"
+      },
+      {
+        "label": "HTML动效逐帧渲染实现",
+        "url": "https://github.com/hormuz-labs/agentshot/blob/bda575305e7573668a9b34fe4afdf1a962dc8d2b/src/main/clips.ts"
+      },
+      {
+        "label": "Agent编辑、帧查看与动效工具",
+        "url": "https://github.com/hormuz-labs/agentshot/blob/bda575305e7573668a9b34fe4afdf1a962dc8d2b/src/main/agent.ts"
+      },
+      {
+        "label": "作者交接测试源码 · 本轮未运行",
+        "url": "https://github.com/hormuz-labs/agentshot/blob/bda575305e7573668a9b34fe4afdf1a962dc8d2b/test/handoff.test.ts"
+      },
+      {
+        "label": "时间线数据与编辑操作",
+        "url": "https://github.com/hormuz-labs/agentshot/blob/bda575305e7573668a9b34fe4afdf1a962dc8d2b/src/shared/timeline.ts"
+      },
+      {
+        "label": "发版时从tag注入版本",
+        "url": "https://github.com/hormuz-labs/agentshot/blob/bda575305e7573668a9b34fe4afdf1a962dc8d2b/scripts/version-from-tag.mjs"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "AgentShot把自然语言和画面批注转成可修改的剪辑时间线，也能生成HTML+GSAP动效。固定源码已确认三格式工程交接与文本版本历史；但标题/字幕/动效导出到其他剪辑器时会烘焙成媒体，不能把“可导出”理解为所有图层仍可编辑。",
+      "motivation": "把“这句话剪掉、标题晚一点、这个位置改一下”连接到同一工程里的片段范围、时间线和代码，而不是每次重新生成整条视频；同时让创作者比较提案并把剪辑带到其他软件继续处理。",
+      "novelty": "作者定位：在本机看成片、提修改、比较版本，再把剪辑交给专业软件。本站判断：更有研究价值的是把编辑状态、局部代码与交付损失显式保存；其FCPXML/Premiere XML/OTIO并非等价保真，值得做逐属性往返验收，而不是凭格式数量判断专业交付能力。",
+      "evidenceScope": "匿名读取作者仓库和release页，以currentOid及commit页固定bda575305e7573668a9b34fe4afdf1a962dc8d2b；完整静态读shared/main handoff、history、clips、inspection、handoff测试与版本脚本，按职责读agent的transcript/look/create_clip/edit_timeline/handoff/proposal段及timeline类型/操作，另读README、package和workspace说明。原始下载URL、状态、时间与SHA256保存于本轮证据；未执行任何作者代码、安装程序或技能。固定源码支持代码动效与剪辑归类；只核实现与声明，不把静态实现当运行验收。",
+      "limits": "这是30天内工具补读，非本轮新论文或已复现实验。公开发行页显示0.4.48于2026-11-03T09:25:55Z发布；本轮核的是11/14的main提交bda575…，没有核二进制与该源码完全对应，也没确定各功能首发日，故date=null。源码package.json写0.0.1，发版脚本另从tag注入版本，不能用开发值否定release。未安装、运行测试/skills、渲染视频、调用模型或在Premiere/Resolve/Final Cut实测；测试文件可读不等于测试已通过，更不提供编辑成功率、视觉质量或互通成功分母。导出保留原媒体片段范围、轨道等信息，但标题、字幕和其他叠层是含透明度的渲染文件，动效同样是成片而非原文字/代码；摄像头圆形/边框及非1倍同步速度会降级。OTIO的音量、音量关键帧和位置写入agentshot私有metadata，effects为空，通用编辑器是否应用未验证。导出用绝对媒体路径，移动目录需重新链接；复制已有文件只比较存在与大小，且按顺序写出文件，未见本函数内容哈希或整套原子提交保证，不能由此承诺无损重导出/故障回滚。git历史只记录project.json与clip.html，不备份原素材或渲染文件；恢复改过的动效仍需重渲染。README的本地/不上传宣传有边界：模型可见转录文字与抽帧，另有可选Cloud/worker路径；本轮没有审计完整网络流量、沙箱或隐私承诺，不称全离线/素材信息绝不外发。GitHub API三次403限流，本轮改读公开HTML与固定raw文件，不推断release API内容。",
+      "method": [
+        "以项目时间线保存原媒体in/out范围、动效片段、叠层、配乐和配音；Agent可读转录与时间戳、按需抽帧，接受文字和时空批注后修改编辑状态并提出新版本。",
+        "create_clip接收HTML+GSAP并保存clip.html；渲染器按帧调用时间定位、捕获画面并交给FFmpeg，普通动效输出MP4，透明叠层输出MOV。代码源仍留在本地工程，可再次改写和渲染。",
+        "项目内isomorphic-git记录project.json与各clip.html的文本变化。恢复历史时识别改动过的HTML并要求重新渲染；该机制不等于对原素材、全部生成媒体做完整快照备份。",
+        "导出先把时间线转成统一片段/轨道计划，复制相关媒体，再分别写FCPXML、Premiere FCP7 XML、OTIO及说明。原片段时间范围与音轨可被映射；无法原样交付的视觉属性写入降级提示。",
+        "区分三类可编辑性：本站源时间线、HTML动效源、其他剪辑器导入后的轨道。标题/字幕/动效在交接时被渲染为媒体；OTIO部分属性仅在私有metadata，仍需目标软件逐项验收。"
+      ],
+      "inspirations": [
+        "把交付验收拆成源片段范围、媒体重链接、文字可改、音量自动化、画面位置/遮罩与帧率六项；对每种导出格式分别记录保留、降级、未知，避免以文件可打开代替可继续编辑。",
+        "借鉴文本版本历史保留修改意图，但另管理媒体哈希和依赖清单；用删除素材、同大小替换、导出中断等情形验证恢复能力，不把git文本回退当完整项目可恢复。",
+        "给剪辑Agent建立局部回归集：只改一句字幕或一个时间区间，检查其他片段/音轨/元素是否保持；同时检查渲染结果，而不只验证时间线JSON与模型自述。"
+      ],
+      "reviewedAt": "2026-11-15T04:29:00.172Z",
+      "sourceUrls": [
+        "https://github.com/hormuz-labs/agentshot",
+        "https://github.com/hormuz-labs/agentshot/blob/bda575305e7573668a9b34fe4afdf1a962dc8d2b/README.md",
+        "https://github.com/hormuz-labs/agentshot/releases",
+        "https://github.com/hormuz-labs/agentshot/commit/bda575305e7573668a9b34fe4afdf1a962dc8d2b",
+        "https://github.com/hormuz-labs/agentshot/blob/bda575305e7573668a9b34fe4afdf1a962dc8d2b/src/shared/handoff.ts",
+        "https://github.com/hormuz-labs/agentshot/blob/bda575305e7573668a9b34fe4afdf1a962dc8d2b/src/main/handoff.ts",
+        "https://github.com/hormuz-labs/agentshot/blob/bda575305e7573668a9b34fe4afdf1a962dc8d2b/src/main/history.ts",
+        "https://github.com/hormuz-labs/agentshot/blob/bda575305e7573668a9b34fe4afdf1a962dc8d2b/src/main/clips.ts",
+        "https://github.com/hormuz-labs/agentshot/blob/bda575305e7573668a9b34fe4afdf1a962dc8d2b/src/main/agent.ts",
+        "https://github.com/hormuz-labs/agentshot/blob/bda575305e7573668a9b34fe4afdf1a962dc8d2b/test/handoff.test.ts",
+        "https://github.com/hormuz-labs/agentshot/blob/bda575305e7573668a9b34fe4afdf1a962dc8d2b/src/shared/timeline.ts",
+        "https://github.com/hormuz-labs/agentshot/blob/bda575305e7573668a9b34fe4afdf1a962dc8d2b/scripts/version-from-tag.mjs"
+      ]
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.16246v1",
+    "url": "https://arxiv.org/abs/2611.16246v1",
+    "id": "live-d1f656b248aa796f",
+    "title": "H2E：把规划器帮忙走过的路，蒸馏给独立导航的VLA",
+    "summary": "H2E把规划器帮助过的导航会话蒸馏给VLA，测试不再调用高层LLM。3,189回合中SR35.0%→44.9%，但OSR52.0%→50.1%；主要收益是到达后正确停止，非规划能力全面转移。",
+    "insight": "作者主张：把规划器帮助蒸馏给VLA、免去测试时LLM调用。本站判断：主收益是正确停止；等配方504会话、双方3,000更新时，H2E成功率43.2%，几何适配34.9%，但标签消融同时减少数据，不能纯归因于指令。免去LLM调用也不等于免训练或VLA计算。",
+    "limits": "作者报告，未复现：REVERIE-CE共3,189回合，SR升而OSR降。主表H2E9,000更新、几何适配3,000更新，预算不等；另有504会话/同3,000更新对照。仅单VLA/单导航基准，不能代表全面规划或真实机器人能力。已读11页v1方法、结果、附录A–D和原始LaTeX表格，视觉核PDF第5、6、11页；未运行训练、推理或复现实验。主表为同一8B NavGPT、REVERIE-CE的10个未见场景共3,189回合；H2E用2,395会话/9,000更新，几何适配用3,000更新，不是等训练预算主表。另有504会话/双方3,000更新的对照，按30个其他训练回合选择每500更新保存的checkpoint；主结果评最终checkpoint。作者称训练场景与val-unseen分离，未公开逐episode清单供独立去重。附录使用同回合、同seed评测及10场景10,000次cluster bootstrap，成功率提升95%区间为3.9–16.3个百分点；未报告独立多seed训练重复，区间不代表训练随机性。OSR下降而SR上升：新增到达401个base从未到达的目标不意味着净到达率提高；SR/OSR的代数分解也不是机制因果证明。100回合开发集来自26个对相应模型留出的training-split场景，不能写成官方val-unseen或真实机器人：表6是仅63会话蒸馏版本，SR57/100对agent53/100，时间中位数114秒对423秒，约3.7倍仅限该配置；H2E的OSR64%低于agent70%，NE5.96米高于5.50米，未给这4例差异的显著性，亦未把采集和训练摊入成本。表8/9另用504会话配方，H2E53/100，不能与表6的57混合。去任务级标签时可训练agent步骤55,504→39,013、stop标签7,322→4,744；自模仿用935训练回合中的362个成功run，样本量不等，消融不是纯语义干预。标签用训练环境的目标测地距离、1米stop阈值和局部几何专家补尾，学生测试不接收距离或规划器地图/全历史；因此并非无特权监督的纯日志模仿。L1的零输出命题要求固定可观测历史下零目标条件概率超过1/2，是人口最优性质，不保证有限LoRA网络在未见状态精确输出零、连续两次停机或成功恢复。作者明确未学会偏航恢复；附录恢复为6/40对base5/39，集合和分母不同。外部Dynam3D报告用50次waypoint决策及末位置评分，本文最多500低层步/2,400秒且要求自主停止，传感器和训练数据也不同，不能作同协议排行榜胜出。原文/精确检索未定位H2E作者训练实现、权重或会话发布；v1源码27个文件仅论文文本/图表/样式。HF论文页404，X只查公开搜索索引，无可核作者帖。",
+    "organization": "清华大学深圳国际研究生院",
+    "dateLabel": "2026-11-12 · arXiv v1首发",
+    "evidence": "原论文方法/结果/附录与v1论文资产核验；未复现",
+    "originalTitle": "What Can a VLA Learn from the Agent That Calls It? Task-Level Experience Distillation for Embodied Navigation",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-15T04:29:51.914135+00:00",
+    "paperOriginalDate": "2026-11-12T03:42:58Z",
+    "paperUpdatedAt": "2026-11-12T03:42:58Z",
+    "updatedAt": "2026-11-12T03:42:58Z",
+    "firstSeenAt": "2026-11-13T10:00:01Z",
+    "lastSeenAt": "2026-11-14T22:00:00Z",
+    "tags": [
+      "Distillation",
+      "任务级蒸馏",
+      "导航VLA",
+      "停止监督"
+    ],
+    "authors": [
+      "Jinze Tao",
+      "Yuxiao Han",
+      "Kangkang Dong",
+      "Yancong Wei",
+      "Xiaojun Zhu",
+      "Bokui Chen",
+      "Houde Liu"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.16246v1"
+      },
+      {
+        "label": "arXiv v1 HTML · 方法、结果及附录",
+        "url": "https://arxiv.org/html/2611.16246v1"
+      },
+      {
+        "label": "arXiv v1 PDF · 11页原文",
+        "url": "https://arxiv.org/pdf/2611.16246v1"
+      },
+      {
+        "label": "arXiv v1论文源码 · 固定表格与资产范围",
+        "url": "https://arxiv.org/src/2611.16246v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "H2E把规划器帮助过的导航会话蒸馏给VLA，测试不再调用高层LLM。3,189回合中SR35.0%→44.9%，但OSR52.0%→50.1%；主要收益是到达后正确停止，非规划能力全面转移。",
+      "motivation": "高层规划器能用地图、长历史和工具纠正低层VLA，却在每次部署持续消耗LLM调用。直接复制会话有两类错配：工具或子指令产生的动作与学生测试输入不同，绕路和穿过目标不停又形成不合适监督。论文尝试在数据标注阶段消除这些错配，把部署阶段的帮助提前转入执行模型。",
+      "novelty": "作者主张：把规划器帮助蒸馏给VLA、免去测试时LLM调用。本站判断：主收益是正确停止；等配方504会话、双方3,000更新时，H2E成功率43.2%，几何适配34.9%，但标签消融同时减少数据，不能纯归因于指令。免去LLM调用也不等于免训练或VLA计算。",
+      "evidenceScope": "直接读取arXiv 2611.16246v1摘要、HTML全文、11页PDF及v1原始论文源码归档；精读正文§3–5、附录A–D，核9表的原LaTeX，视觉检查PDF第5、6、11页。固定v1源归档SHA256=c67a94c4430a998c55307cc286895346208d2956aa7a7c7990b4a5d1048ebe4d，30个成员中27个文件，仅含论文/参考文献/图表/样式，无作者训练代码、权重或会话原始数据。精确论文ID/标题/H2E作者检索未定位作者公开实现；没有把被引用NavGPT或第三方转载当H2E代码。数值为作者实验报告，verified仅表示来源及内部口径核验，未复现。",
+      "limits": "作者报告，未复现：REVERIE-CE共3,189回合，SR升而OSR降。主表H2E9,000更新、几何适配3,000更新，预算不等；另有504会话/同3,000更新对照。仅单VLA/单导航基准，不能代表全面规划或真实机器人能力。已读11页v1方法、结果、附录A–D和原始LaTeX表格，视觉核PDF第5、6、11页；未运行训练、推理或复现实验。主表为同一8B NavGPT、REVERIE-CE的10个未见场景共3,189回合；H2E用2,395会话/9,000更新，几何适配用3,000更新，不是等训练预算主表。另有504会话/双方3,000更新的对照，按30个其他训练回合选择每500更新保存的checkpoint；主结果评最终checkpoint。作者称训练场景与val-unseen分离，未公开逐episode清单供独立去重。附录使用同回合、同seed评测及10场景10,000次cluster bootstrap，成功率提升95%区间为3.9–16.3个百分点；未报告独立多seed训练重复，区间不代表训练随机性。OSR下降而SR上升：新增到达401个base从未到达的目标不意味着净到达率提高；SR/OSR的代数分解也不是机制因果证明。100回合开发集来自26个对相应模型留出的training-split场景，不能写成官方val-unseen或真实机器人：表6是仅63会话蒸馏版本，SR57/100对agent53/100，时间中位数114秒对423秒，约3.7倍仅限该配置；H2E的OSR64%低于agent70%，NE5.96米高于5.50米，未给这4例差异的显著性，亦未把采集和训练摊入成本。表8/9另用504会话配方，H2E53/100，不能与表6的57混合。去任务级标签时可训练agent步骤55,504→39,013、stop标签7,322→4,744；自模仿用935训练回合中的362个成功run，样本量不等，消融不是纯语义干预。标签用训练环境的目标测地距离、1米stop阈值和局部几何专家补尾，学生测试不接收距离或规划器地图/全历史；因此并非无特权监督的纯日志模仿。L1的零输出命题要求固定可观测历史下零目标条件概率超过1/2，是人口最优性质，不保证有限LoRA网络在未见状态精确输出零、连续两次停机或成功恢复。作者明确未学会偏航恢复；附录恢复为6/40对base5/39，集合和分母不同。外部Dynam3D报告用50次waypoint决策及末位置评分，本文最多500低层步/2,400秒且要求自主停止，传感器和训练数据也不同，不能作同协议排行榜胜出。原文/精确检索未定位H2E作者训练实现、权重或会话发布；v1源码27个文件仅论文文本/图表/样式。HF论文页404，X只查公开搜索索引，无可核作者帖。",
+      "method": [
+        "在训练场景从原起点运行“高层LLM规划器＋8B NavGPT VLA”，记录位姿、四视角RGB、局部指令与动作来源，规划器工具移动拆为环境步并补渲染观测。只保留到达目标的成功会话：2,395条来自57场景，含1,538条首轮VLA到达及857条经规划器帮助的会话，共332,405个标注步。学生仅使用最近16帧观测和原任务指令，规划器另有地点图与完整历史。",
+        "统一任务级标签：不论是VLA按子指令移动，还是规划器工具接管，都用原任务指令配上随后8个位姿在当前机器人坐标系下的waypoint目标；预测8个但运行时每次只执行首个。原文附录另说明504会话子集中，121条最后stop之后的状态用几何专家目标，53条未到1米的会话尾部补到1米边界，不能把所有目标都说成未经修改的真实轨迹。",
+        "构建进度mask：若当前至未来第8步任一位姿进入1米目标区，或第8步测地距离不超过当前距离＋0.25米，则计入loss；否则仅屏蔽该目标，保留历史观测。它衡量8步窗口进度并容许小幅退让/原地转向，不是逐帧删除所有后退，更不是测试时调用目标距离。",
+        "对所有数据源，当前位姿距目标不超过1米就把整个动作目标置零，补上“经过目标但未停止”的监督；评测成功区仍为3米。无独立stop头的VLA按连续两次全零输出停止。agent/DART几何专家/R2R-CE数据按0.60/0.25/0.15混合，以带mask的L1回归训练LoRA和完整动作头，冻结视觉编码器及原LLM权重；LoRA rank16、scale32。",
+        "主配方每更新16样本，4张L40训练9,000更新约28小时并评最终checkpoint；部署合并LoRA后只运行VLA。分开报告3,189回合全量结果、504会话公平配方、63会话的100开发回合agent成本比较，以及到达率OSR/正确停止率SR/OSR；这些数据量与评测分母不能混合。"
+      ],
+      "inspirations": [
+        "为层级Agent训练保留动作来源、子指令、全局任务和前后状态四类信息，再测试能否把工具动作转换成学生可执行的同一动作空间；同时做等样本量、等stop标签数的任务级/子指令对照，避免把额外示范量误认成接口对齐收益。",
+        "把“到达可成功状态”和“及时结束任务”分开验收，记录共同到达集合与各自新增/丢失到达集合。对代码或视频编辑Agent，可设计构建通过、视觉检查通过和最终提交三个不同状态；这是本站迁移建议，本文没有验证代码执行、可编辑性或视觉质量。",
+        "部署前单列训练特权信息：测地距离、几何补尾与stop标签只能用于训练；测试应删去这些信息并增加偏航/纠错评测。进一步比较全量会话、被接管前缀、恢复会话，在同交互/训练预算下核训练成本能否由省去的LLM调用摊平。"
+      ],
+      "reviewedAt": "2026-11-15T04:29:51.914135+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.16246v1",
+        "https://arxiv.org/html/2611.16246v1",
+        "https://arxiv.org/pdf/2611.16246v1",
+        "https://arxiv.org/src/2611.16246v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.16246",
+      "status": "pending",
+      "checkedAt": "2026-11-15T04:29:12.396814+00:00"
+    }
   }
 ]
