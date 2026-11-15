@@ -18336,5 +18336,373 @@
       "status": "pending",
       "checkedAt": "2026-11-15T04:29:12.396814+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.14960v1",
+    "url": "https://arxiv.org/abs/2611.14960v1",
+    "id": "live-ce415ec1f0162fbb",
+    "title": "Termination Lag：代码已经改对，Agent为什么还没停？",
+    "summary": "编码Agent何时已解题、何时停机并不相同。本文核心四组成功轨迹中，首次正确补丁之后的步数占比中位数为35–60%；但正确性来自事后隐藏测试，尚无可部署的停止规则，不能把这当实际省时比例。",
+    "insight": "作者主张：用逐步补丁回放量化解对与停机之间的间隔。本站判断：把首次通过、后续退化和最终提交分开记录很有价值；它给出理想停止的潜在空间，不证明测试或复查可以安全省略。",
+    "limits": "作者报告，未复现。35–60%是核心四组最终成功轨迹的步数占比中位数，不是全任务平均节省、token成本或墙钟加速；事后隐藏测试不能用于真实在线停机。每任务只跑一次，未报多seed重复或不确定性；三基准、五模型、两框架不是完整交叉设计。Qwen3-Coder与Laguna的步数预算为100/250、上下文131K/256K，商业模型预算100步、Seed-OSS 150步，不能据不同协议比较模型效率排名。1–4%的成功运行到步数或上下文上限，作者以最后一步计，S并非全部自主停机事件。表1的TTFCP、S、TL分别取中位数，不能用两列中位数相减代替TL，也不能用中位数比值替代NTL。38–82%“第一改就对”与1–8%“改坏并最终失败”以曾出现正确补丁的运行作分母，不是所有任务；表1/表3上半部则条件于最终成功，不能混用。Verified500题、Multilingual300题被明确报告，SWE-bench Pro本轮未定位确切评测题数；Seed-OSS成功样本很少，论文也说明其统计脆弱。表3按工具及参数规则分类，没有在已读正文中报告标注规则实现、抽检一致性或逐轨迹明细；验证占48–63%并不意味着这些验证在当时都可避免。正确仅指官方任务测试通过，不涵盖全部真实需求、未测回归、维护性或安全性。临时Git索引和代理记录不改工作树是论文描述，未独立审计捕获覆盖、最后动作处理及工具副作用；未运行容器或作者代码。未在论文正文/链接或精确检索定位作者实现、补丁轨迹及评测资产；被引用OpenHands等框架不是本文公开实现。HF对应论文页404；X仅公开索引，无可核作者原帖或时间线。",
+    "organization": "Pennsylvania State University",
+    "dateLabel": "2026-11-11 · arXiv v1首发",
+    "evidence": "原论文方法/表格/附录核验；仅事后观测，未复现",
+    "originalTitle": "Termination Lag: Coding Agents Solve Early but Stop Late",
+    "date": "2026-11-11",
+    "checkedAt": "2026-11-15T10:27:39.391542+00:00",
+    "paperOriginalDate": "2026-11-11T03:11:00Z",
+    "paperUpdatedAt": "2026-11-11T03:11:00Z",
+    "updatedAt": "2026-11-11T03:11:00Z",
+    "firstSeenAt": "2026-11-13T04:00:00Z",
+    "lastSeenAt": "2026-11-13T04:00:00Z",
+    "tags": [
+      "Evaluation",
+      "编码Agent",
+      "停止判断",
+      "逐步补丁"
+    ],
+    "authors": [
+      "Musa Cim",
+      "Burak Topcu",
+      "Mahmut Taylan Kandemir"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 · 首发与作者",
+        "url": "https://arxiv.org/abs/2611.14960v1"
+      },
+      {
+        "label": "原论文HTML · 方法、表1–4与附录",
+        "url": "https://arxiv.org/html/2611.14960v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "编码Agent何时已解题、何时停机并不相同。本文核心四组成功轨迹中，首次正确补丁之后的步数占比中位数为35–60%；但正确性来自事后隐藏测试，尚无可部署的停止规则，不能把这当实际省时比例。",
+      "motivation": "最终提交是否通过，掩盖了何时第一次做对，以及做对以后继续探索、测试或编辑是否保住成果。作者用不影响Agent的事后补丁验收，拆开解题能力与停止行为。",
+      "novelty": "作者主张：用逐步补丁回放量化解对与停机之间的间隔。本站判断：把首次通过、后续退化和最终提交分开记录很有价值；它给出理想停止的潜在空间，不证明测试或复查可以安全省略。",
+      "evidenceScope": "直接读取arXiv2611.14960v1摘要及HTML全文，精读§3记录与评测方法、§4–5四组核心结果/行为分母、Limitations及附录A/B文字，核表1–4。未逐图视觉检查图1–9，未读取作者实现或执行任何代码。arXiv正文HTTP200及内容哈希已保存；无作者实现/原始轨迹发布证据。verified表示来源与统计口径核验，不表示实验复现。",
+      "limits": "作者报告，未复现。35–60%是核心四组最终成功轨迹的步数占比中位数，不是全任务平均节省、token成本或墙钟加速；事后隐藏测试不能用于真实在线停机。每任务只跑一次，未报多seed重复或不确定性；三基准、五模型、两框架不是完整交叉设计。Qwen3-Coder与Laguna的步数预算为100/250、上下文131K/256K，商业模型预算100步、Seed-OSS 150步，不能据不同协议比较模型效率排名。1–4%的成功运行到步数或上下文上限，作者以最后一步计，S并非全部自主停机事件。表1的TTFCP、S、TL分别取中位数，不能用两列中位数相减代替TL，也不能用中位数比值替代NTL。38–82%“第一改就对”与1–8%“改坏并最终失败”以曾出现正确补丁的运行作分母，不是所有任务；表1/表3上半部则条件于最终成功，不能混用。Verified500题、Multilingual300题被明确报告，SWE-bench Pro本轮未定位确切评测题数；Seed-OSS成功样本很少，论文也说明其统计脆弱。表3按工具及参数规则分类，没有在已读正文中报告标注规则实现、抽检一致性或逐轨迹明细；验证占48–63%并不意味着这些验证在当时都可避免。正确仅指官方任务测试通过，不涵盖全部真实需求、未测回归、维护性或安全性。临时Git索引和代理记录不改工作树是论文描述，未独立审计捕获覆盖、最后动作处理及工具副作用；未运行容器或作者代码。未在论文正文/链接或精确检索定位作者实现、补丁轨迹及评测资产；被引用OpenHands等框架不是本文公开实现。HF对应论文页404；X仅公开索引，无可核作者原帖或时间线。",
+      "method": [
+        "在OpenHands中评估五个模型，核心为Qwen3-Coder-30B-A3B和Laguna-XS.2各跑SWE-bench Verified的500题与Multilingual的300题；另用两商业模型、Seed-OSS/Pro及Qwen/mini-SWE-agent作扩展，各任务每配置只运行一次。",
+        "在Agent与模型端点之间加记录代理；每个步骤包含推理、所选动作和工具执行，在下一次请求前保存当前仓库相对任务base commit的补丁。用临时Git索引构造差分，按论文设计不改Agent工作树。",
+        "运行结束后在隔离容器用官方任务测试检查各个不同补丁，相同补丁只评一次，测试结果不回传Agent。以首次通过的步骤F定义TTFCP，以最终步骤S定义TL=S−F、NTL=(S−F)/S。",
+        "分别在最终成功轨迹统计停机滞后，在所有曾经通过的轨迹统计首个源码改动是否正确、到首次通过前有多少不同补丁，以及始终正确、改坏后恢复、改坏后最终失败三个结果。按工具与参数将成功轨迹的后续步骤分成验证、探索、源码编辑、收尾及其他。",
+        "用一个仅供事后比较的理想停止器，在首次正确补丁处截断、从未正确的轨迹保持不变，估计可减少的步骤。另比较框架与输入上下文增长，明确真实停止器仍需只靠在线可见证据验证，本文没有实现这样的可用停止策略。"
+      ],
+      "inspirations": [
+        "为代码Agent增加只读补丁快照和离线独立验收，分别记录首次通过F、最终提交S及中间退化；按“最终成功”“曾经成功”“从未成功”三个集合报分，避免只看最终成功率漏掉修复被覆盖的问题。",
+        "训练停止判断时将隐藏测试仅用于离线标签，在线输入限制为当时可见的测试、diff和任务要求。在独立任务上比较误停导致的成功率损失、额外验证成本与实际墙钟/token，而不直接把事后oracle当可上线策略。",
+        "给已验证检查点保留可回退版本；后续修改先隔离并跑受影响项的回归测试，再决定接受。迁移到视频/3D创作时还需独立视觉、可编辑性和时间线验收，本文的仓库测试证据不能替代这些验证。"
+      ],
+      "reviewedAt": "2026-11-15T10:27:39.391542+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.14960v1",
+        "https://arxiv.org/html/2611.14960v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.14960",
+      "status": "pending",
+      "checkedAt": "2026-11-15T10:31:09.473581+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.12411v1",
+    "url": "https://arxiv.org/abs/2611.12411v1",
+    "id": "paper-physopsd-2611-12411",
+    "title": "PhysOPSD：用可执行物理场景教视频模型，代码只留在训练侧",
+    "summary": "PhysOPSD把可执行物理仿真草图作为自蒸馏教师的训练提示，在两个视频骨干上提升物理评分；推理仍输出普通视频，不交付可编辑代码，训练代码也尚未发布。",
+    "insight": "作者主张：用代码的抽象层级与参数控制构造物理特权，再做同噪声成对自蒸馏。本站判断：价值在可控训练监督，不是代码视频创作；指标增益不能证明模型学到普遍物理规律。",
+    "limits": "作者报告，未复现；最终输出普通生成视频，不是可编辑代码工程。3K含派生草图和参数变体，非3K独立场景；引擎未报执行成功率分母，训练代码待审批、权重未发布。VideoPhy-2的All为GPT-5.5判定语义与物理两项均≥4的比例；200是行动类别数，已读正文未明确总视频数、每提示采样数、重复种子与置信区间。PhyGround为250场景、13物理定律，Overall是一般合理性与物理合规的等权分数；VBench为16维通用质量，均非人类盲测或形式化物理保证。两骨干相对自身基线改善不等于覆盖所有模型；3K对80K SFT/21K离线偏好优化是不同数据构造与预算，不证明等算力或总成本更低。训练的参考视频、数值求解器及过滤仍带偏差，正文未提供可逐项审计的失败场景分母；混沌多物理过程和热力学相变明确排除。项目页案例草图标为重建演示而非原训练产物，展示样例不能替代执行/视觉通过率；本轮未播放或逐帧验收视频。推理不再输入模拟器和草图是架构描述，未独立测延迟、能耗或零开销。固定README仅确认开放状态，未获训练实现或数据完整公开证据；不将公开仓库当可复现实现。",
+    "organization": "HKUST / Alibaba Token Hub",
+    "dateLabel": "2026-11-09 · arXiv v1首发",
+    "evidence": "原论文方法/算法/评测口径及固定README核验；未复现，不纳入代码创作专题",
+    "originalTitle": "PhysOPSD: Code as Privilege for Physically Plausible Video Generation",
+    "date": "2026-11-09",
+    "checkedAt": "2026-11-15T10:30:47.768Z",
+    "paperOriginalDate": "2026-11-09T13:43:37Z",
+    "paperUpdatedAt": "2026-11-09T13:43:37Z",
+    "updatedAt": "2026-11-09T13:43:37Z",
+    "firstSeenAt": "2026-11-15T10:33:00.128085+00:00",
+    "tags": [
+      "自蒸馏",
+      "物理视频",
+      "特权上下文",
+      "可执行仿真"
+    ],
+    "authors": [
+      "Harold Haodong Chen",
+      "Rui Peng",
+      "Lingteng Qiu",
+      "Kejie Qiu",
+      "Chao Xu",
+      "Zilong Dong"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 · 首发与作者",
+        "url": "https://arxiv.org/abs/2611.12411v1"
+      },
+      {
+        "label": "原论文HTML · 方法、算法1与表1",
+        "url": "https://arxiv.org/html/2611.12411v1"
+      },
+      {
+        "label": "作者项目页 · 重建演示与推理边界",
+        "url": "https://haroldchen19.github.io/PhysOPSD-site/"
+      },
+      {
+        "label": "作者仓库 · 开放状态",
+        "url": "https://github.com/aigc3d/PhysOPSD"
+      },
+      {
+        "label": "固定README · 训练代码待审批、权重未发布",
+        "url": "https://github.com/aigc3d/PhysOPSD/blob/491ef691c68e691b655e5d33daa41ec5671b2f1e/README.md"
+      },
+      {
+        "label": "Hugging Face · 论文索引与作者提交",
+        "url": "https://huggingface.co/papers/2611.12411"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "PhysOPSD把可执行物理仿真草图作为自蒸馏教师的训练提示，在两个视频骨干上提升物理评分；推理仍输出普通视频，不交付可编辑代码，训练代码也尚未发布。",
+      "motivation": "真实参考视频把动力学、材质和背景混在一起，纯文字又难表达连续物理过程。作者希望让同一视频模型的教师看到可控、去外观干扰的额外上下文，对学生实际经过的去噪状态给出密集监督，而不依赖稀疏物理奖励。",
+      "novelty": "作者主张：用代码的抽象层级与参数控制构造物理特权，再做同噪声成对自蒸馏。本站判断：价值在可控训练监督，不是代码视频创作；指标增益不能证明模型学到普遍物理规律。",
+      "evidenceScope": "直接读取arXiv2611.12411v1摘要和HTML，精读§4代码场景引擎、双层特权与同噪声成对训练，§5/表1/消融文字，§7范围，附录A方法及算法1、B评测协议；未逐图视觉验收。读取作者项目页文字与固定README(491ef691c68e691b655e5d33daa41ec5671b2f1e)，保存HTTP状态、原始响应和SHA256；未运行作者代码、训练、生成视频或复现实验。verified仅指来源、日期和指标口径核验。",
+      "limits": "作者报告，未复现；最终输出普通生成视频，不是可编辑代码工程。3K含派生草图和参数变体，非3K独立场景；引擎未报执行成功率分母，训练代码待审批、权重未发布。VideoPhy-2的All为GPT-5.5判定语义与物理两项均≥4的比例；200是行动类别数，已读正文未明确总视频数、每提示采样数、重复种子与置信区间。PhyGround为250场景、13物理定律，Overall是一般合理性与物理合规的等权分数；VBench为16维通用质量，均非人类盲测或形式化物理保证。两骨干相对自身基线改善不等于覆盖所有模型；3K对80K SFT/21K离线偏好优化是不同数据构造与预算，不证明等算力或总成本更低。训练的参考视频、数值求解器及过滤仍带偏差，正文未提供可逐项审计的失败场景分母；混沌多物理过程和热力学相变明确排除。项目页案例草图标为重建演示而非原训练产物，展示样例不能替代执行/视觉通过率；本轮未播放或逐帧验收视频。推理不再输入模拟器和草图是架构描述，未独立测延迟、能耗或零开销。固定README仅确认开放状态，未获训练实现或数据完整公开证据；不将公开仓库当可复现实现。",
+      "method": [
+        "从WISA和公开视频抽取刚体接触、弹性形变或流体事件，编码Agent生成物体、初始状态、物理参数和相机的场景规格，再写成MuJoCo、Genesis或Blender仿真程序。执行日志、运动学遥测和预览关键帧反馈用于迭代修正；检查能执行、动力学非硬编码动画、事件可见及参数可控四项。",
+        "成功仿真后冻结同一条状态轨迹，再用完整几何/材质与简化线框/质心轨迹渲染dense、abstract两级草图，避免重跑造成动力学偏移；根据草图和实测事实卡生成T2V描述及V2V细化指令。默认3K是基础程序、不同抽象层草图及参数变体合计实例。",
+        "建立dense→abstract→text两条相邻蒸馏路径；学生在较少条件下进行20步on-policy去噪，EMA教师在相同学生状态、较丰富草图条件下预测速度，用停止梯度的教师预测训练学生LoRA，逐层缩小训练特权与文字推理的差距。",
+        "为同一场景只改变摩擦、质量、弹性或初速度等一个目标参数，固定几何、相机、光照等其他因素；两分支共用初始高斯噪声和特权层级，各自rollout并做速度匹配，汇总梯度后更新学生和EMA教师。提示也描述物理条件差异，避免学生没有足够可见条件。",
+        "在UniVideo13B、OmniWeaving8.3B上与各自基线及移植的SFT/PhyT2V/PhysHPO比较。表1报告VideoPhy-2 All从63.1%到67.3%、62.9%到67.0%；PhyGround从64.9到66.5、64.9到68.3；VBench总分83.5到84.0、83.1到83.3。部署去掉教师、模拟器与草图，仍做T2V/TI2V，未评测代码创作交付。"
+      ],
+      "inspirations": [
+        "在训练物理视频模型前把场景程序、冻结状态轨迹、物理参数和渲染配置绑定版本，并分别统计程序执行、物理判据、画面可见性和参数响应的失败率；先公开各阶段分母，再讨论数据质量或规模。",
+        "把同一物理轨迹渲染成写实、线框等不同外观，只在保持状态一致时比较特权层级；加入跨材质、跨相机和未见参数范围测试，区分学到动力学还是利用外观捷径。",
+        "将同噪声成对参数干预用于低方差训练设计，但另设独立物理遥测、人类视频盲测和多种子评测核验泛化。若扩展到代码创作，必须新增程序交付、局部修改可保持性和执行成功率评测，不能沿用视频物理分数代替。"
+      ],
+      "reviewedAt": "2026-11-15T10:30:47.768Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.12411v1",
+        "https://arxiv.org/html/2611.12411v1",
+        "https://haroldchen19.github.io/PhysOPSD-site/",
+        "https://github.com/aigc3d/PhysOPSD",
+        "https://github.com/aigc3d/PhysOPSD/blob/491ef691c68e691b655e5d33daa41ec5671b2f1e/README.md",
+        "https://huggingface.co/papers/2611.12411"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.12411",
+      "status": "pending",
+      "checkedAt": "2026-11-15T10:31:09.473581+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.25973v1",
+    "url": "https://arxiv.org/abs/2610.25973v1",
+    "id": "paper-apsd-2610-25973",
+    "title": "APSD：成功少扰动、失败加强纠正的自蒸馏目标",
+    "summary": "APSD按成败调整自教师目标并保留学生侧梯度。Qwen3-8B在LCBv6的Avg@4为49.62%，SDPO为45.04%；作者所称2.6倍仅指训练步数收益，非实测时间加速，结果未复现。",
+    "insight": "作者主张：按成败对自蒸馏目标插值或外推，并让梯度穿过目标的学生分支。本站判断：关键在目标几何与求导路径共同变化；只改目标数值后整体detach，会丢掉额外梯度，不能视为等价实现。",
+    "limits": "作者结果未复现。2.6倍是同表现所需训练步数比，非墙钟加速；RLVR取5小时内最高Avg@16，RLRF训练80更新。未核训练实现、原始运行与逐题划分。仅科学、工具和代码任务，不能外推视觉创作或长程Agent。本文2026年10月19日v1，本轮属于30天范围补读，不是本周新发布。RLVR使用Olmo3-7B-Instruct与Qwen3-8B、SciKnowEval四科及ToolAlpaca，报告的是限时内最高值而非统一最终checkpoint；不同方法的学习率、更新协议并非全部相同。RLRF使用Qwen3-1.7B/4B/8B与LCBv6，80次更新、每批32题且每题8条rollout，每5更新评估4个解；未独立核实训练/评测逐题成员和主表选checkpoint的实现。Avg@4是4个解的平均成功率，Pass@4是至少一个解成功的题目比例；1.7B的APSD Pass@4为34.35%，低于SRPO的35.11%，不能写成所有模型和指标均胜出。RLVR的五任务平均也不代表逐任务全胜。图4训练曲线阴影为3个随机seed的标准差，不能据此把所有主表差值写成显著提升；未核原始逐seed数据。2.6倍是作者跨三个Qwen规模给出的达到同表现所需更新数比较，不包含teacher前向、生成token数、每步延迟、额外反传或设备成本。保留前半响应后重采样后半的控制实验固定模型且按原始成败分组，仅支持局部续写分布的方向性；不是完整训练收益的单独因果证明。理论固定解码上下文、自教师和alpha，假设有限词表严格正概率并求精确全词表KL；整体detach等于每条共同alpha轨迹的加权SDPO梯度，混合成败batch不是统一学习率缩放。所谓trust-region半径是目标诱导的KL距离，不是实际优化器施加的固定硬约束，也不保证完整参数更新后每个token或任务正确率提高。外推有益依赖自教师确实提供可用替代，错误验证器、噪声反馈或自教师共同犯错的鲁棒性未在本轮证据中得到验证。原文匿名代码链接只返回JavaScript页面壳，本轮未读取仓库文件或运行作者代码；不能据此断言代码未发布。arXiv源归档29个文件是论文、图表、参考文献与样式，不能当训练实现。X仅查公开搜索索引，未取得可核作者原帖；没有声称读取时间线或全文抓取。",
+    "organization": "Korea University / Chung-Ang University",
+    "dateLabel": "2026-10-19 · arXiv v1首发；30天内补读",
+    "evidence": "原论文方法/实验/附录与原始LaTeX核验；30天内补读，未复现",
+    "originalTitle": "Correctness-Dependent Asymmetric Target Distributions for Self-Distillation Policy Optimization",
+    "date": "2026-10-19",
+    "checkedAt": "2026-11-15T10:31:25.752162+00:00",
+    "paperOriginalDate": "2026-10-19T08:03:09Z",
+    "paperUpdatedAt": "2026-10-19T08:03:09Z",
+    "updatedAt": "2026-10-19T08:03:09Z",
+    "firstSeenAt": "2026-11-15T10:33:00.128085+00:00",
+    "tags": [
+      "Distillation",
+      "自蒸馏",
+      "可验证反馈",
+      "目标梯度",
+      "30天内补读"
+    ],
+    "authors": [
+      "Suwan Yoon",
+      "Seongryong Jung",
+      "Changhee Lee"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · 既有待解读入口",
+        "url": "https://arxiv.org/abs/2610.25973"
+      },
+      {
+        "label": "Hugging Face · 论文索引",
+        "url": "https://huggingface.co/papers/2610.25973"
+      },
+      {
+        "label": "arXiv v1 · 原始论文与首发时间",
+        "url": "https://arxiv.org/abs/2610.25973v1"
+      },
+      {
+        "label": "arXiv v1 HTML · 方法、实验、消融及附录",
+        "url": "https://arxiv.org/html/2610.25973v1"
+      },
+      {
+        "label": "arXiv v1 · 原文PDF",
+        "url": "https://arxiv.org/pdf/2610.25973v1"
+      },
+      {
+        "label": "arXiv v1 · 论文LaTeX与图表源资产",
+        "url": "https://arxiv.org/src/2610.25973v1"
+      },
+      {
+        "label": "作者项目页 · APSD",
+        "url": "https://jungseongryong.github.io/apsd/"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "APSD按成败调整自教师目标并保留学生侧梯度。Qwen3-8B在LCBv6的Avg@4为49.62%，SDPO为45.04%；作者所称2.6倍仅指训练步数收益，非实测时间加速，结果未复现。",
+      "motivation": "反馈条件化的同一模型可以当自教师，但更多信息不必然带来更合适的目标：成功轨迹可能被改坏，失败轨迹的教师又可能保留原错误偏好。论文把“已成功应保留多少、失败应纠正多强”放进逐token目标分布，而不只对整条轨迹乘一个正负奖励。",
+      "novelty": "作者主张：按成败对自蒸馏目标插值或外推，并让梯度穿过目标的学生分支。本站判断：关键在目标几何与求导路径共同变化；只改目标数值后整体detach，会丢掉额外梯度，不能视为等价实现。",
+      "evidenceScope": "直接读取arXiv 2610.25973v1摘要与HTML正文，精读§3问题设定、§4方法/三项分析、§5实验、§6消融、限制及附录A–C；以原始LaTeX核方法、证明前提和6张表。PDF已成功下载作原文入口，本轮未做PDF页面视觉验收；未从曲线像素估算数值。v1源归档SHA256=2b11394782678a5adbb9b1dbc8684259a461cf67aba7b9311ca7807dd7e7bbb3，共29个文件，仅论文源资产。HF论文页和作者项目页互证题名/作者/论文ID，匿名代码入口只读到页面壳。所有实验数字均为作者报告；verified表示公开来源与表格口径核验，不表示代码复现或独立实验。",
+      "limits": "作者结果未复现。2.6倍是同表现所需训练步数比，非墙钟加速；RLVR取5小时内最高Avg@16，RLRF训练80更新。未核训练实现、原始运行与逐题划分。仅科学、工具和代码任务，不能外推视觉创作或长程Agent。本文2026年10月19日v1，本轮属于30天范围补读，不是本周新发布。RLVR使用Olmo3-7B-Instruct与Qwen3-8B、SciKnowEval四科及ToolAlpaca，报告的是限时内最高值而非统一最终checkpoint；不同方法的学习率、更新协议并非全部相同。RLRF使用Qwen3-1.7B/4B/8B与LCBv6，80次更新、每批32题且每题8条rollout，每5更新评估4个解；未独立核实训练/评测逐题成员和主表选checkpoint的实现。Avg@4是4个解的平均成功率，Pass@4是至少一个解成功的题目比例；1.7B的APSD Pass@4为34.35%，低于SRPO的35.11%，不能写成所有模型和指标均胜出。RLVR的五任务平均也不代表逐任务全胜。图4训练曲线阴影为3个随机seed的标准差，不能据此把所有主表差值写成显著提升；未核原始逐seed数据。2.6倍是作者跨三个Qwen规模给出的达到同表现所需更新数比较，不包含teacher前向、生成token数、每步延迟、额外反传或设备成本。保留前半响应后重采样后半的控制实验固定模型且按原始成败分组，仅支持局部续写分布的方向性；不是完整训练收益的单独因果证明。理论固定解码上下文、自教师和alpha，假设有限词表严格正概率并求精确全词表KL；整体detach等于每条共同alpha轨迹的加权SDPO梯度，混合成败batch不是统一学习率缩放。所谓trust-region半径是目标诱导的KL距离，不是实际优化器施加的固定硬约束，也不保证完整参数更新后每个token或任务正确率提高。外推有益依赖自教师确实提供可用替代，错误验证器、噪声反馈或自教师共同犯错的鲁棒性未在本轮证据中得到验证。原文匿名代码链接只返回JavaScript页面壳，本轮未读取仓库文件或运行作者代码；不能据此断言代码未发布。arXiv源归档29个文件是论文、图表、参考文献与样式，不能当训练实现。X仅查公开搜索索引，未取得可核作者原帖；没有声称读取时间线或全文抓取。",
+      "method": [
+        "从当前学生对每个prompt采样一组轨迹，以任务验证结果判定正确或错误。学生分布p只看原问题和响应前缀；同一当前模型额外看到训练反馈f后形成自教师q，并只对q停止梯度。RLVR在同组有成功轨迹时用其作反馈，RLRF还用执行错误和失败测试；这些反馈用于训练教师输入。",
+        "按轨迹成败选择alpha：正确轨迹用0<alpha<1，错误轨迹用alpha>1。逐token构造归一化乘积目标t(v)=p(v)^(1-alpha)×q(v)^alpha/Z；这是几何插值/外推，不是把两个概率向量作可产生负概率的线性混合。RLVR配方用0.9/1.1，RLRF用0.5/1.5。",
+        "最小化逐token的反向KL(p||t)，保留t中p及归一化项Z的求导路径。精确词表KL下，整体detach目标会退化为单轨迹alpha倍SDPO梯度；完整版本多出目标与学生耦合项，其logit梯度为(1-alpha)×(t-p)。混合不同alpha的batch应理解为加权求和，不能简化成全局学习率变化。",
+        "分别测成功轨迹的保留与失败轨迹的恢复：冻结Qwen3-8B、保留前半响应再重采后半，成功组插值准确率83.93%对学生78.57%；失败组外推23.21%对教师19.64%。另做只在成功组插值、只在失败组外推及整体detach目标的消融，避免把目标数值与梯度变化混为一项。",
+        "以两种预算分开评估：RLVR在4张H200、5小时内取最高Avg@16，Qwen3-8B五任务均值75.67%，SDPO70.65%；RLRF训练80更新，Qwen3-8B的LCBv6 Avg@4为49.62%，SDPO45.04%。三个模型规模的平均2.6倍更新数收益单独报告，不能当实测墙钟加速。"
+      ],
+      "inspirations": [
+        "实现自蒸馏时把“目标值相同”和“梯度相同”作为两项检查：固定同一批轨迹、反馈、alpha与KL近似，比较仅自教师detach、整体目标detach及普通SDPO，并记录学生侧目标梯度范数；这是具体实现审计建议，本文代码尚未独立核验。",
+        "为可验证代码Agent分开记录成功解被改坏率、失败解修复率和验证器错误率，再加噪声反馈或故意错误的成功示范测试外推是否放大偏差。若迁移到时间线编辑或CAD，应同时检验可执行性、可编辑结构和视觉目标；APSD没有提供这些创作任务的证据。",
+        "将等更新数、等生成token、等墙钟和同目标性能下的总成本列成不同对照，并明确最佳checkpoint选择规则。对成功/失败比例变化做分层分析，才能分辨收益来自更合适的纠正方向、样本重加权还是额外训练计算。"
+      ],
+      "reviewedAt": "2026-11-15T10:31:25.752162+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2610.25973",
+        "https://arxiv.org/abs/2610.25973v1",
+        "https://arxiv.org/html/2610.25973v1",
+        "https://arxiv.org/pdf/2610.25973v1",
+        "https://arxiv.org/src/2610.25973v1",
+        "https://huggingface.co/papers/2610.25973",
+        "https://jungseongryong.github.io/apsd/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.25973",
+      "status": "pending",
+      "checkedAt": "2026-11-15T10:31:09.473581+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/commit/8973eb1c36fa517d236a875e1879999f24270913",
+    "url": "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/commit/8973eb1c36fa517d236a875e1879999f24270913",
+    "id": "update-ur5e-simready-20261115",
+    "title": "UR5e SimReady新资产：验证侧车也要读失败项",
+    "summary": "Universal Robots公开资产库新增UR5e SimReady包，含USD层、PhysX/Newton变体和验证侧车。值得关注的是证据随资产发布：27条动态结果为21通过、1超时失败、5跳过，总passed=false；不能把“有验证报告”读成“全部可用”。",
+    "insight": "作者提供：把机械臂的外观、关节与物理配置、引擎变体和验证结果打包。本站判断：这次是UR5e资产增量，不是新Agent或新仿真方法；适合借鉴“资产版本—静态声明—逐项运行结果”三层记录，让训练环境接入先发现缺项和失败，再决定复用。",
+    "limits": "仅核公开固定提交和文本/JSON，未下载全部几何依赖、组合或渲染USD、运行仿真或实机。作者动态报告总passed=false；Newton的drive_gain_validation因超过声明的300秒上限、重试耗尽而失败，不能据此断言机械结构必然错误。5项skipped包含固定基座不适用的落地/斜坡测试及无mimic关节，不能算通过或一概当失败；27条也不是27个独立任务、重复试验或抓放成功率。部分渲染检查标为pass但日志仍有摄像机异常，未视觉验收。静态报告有非阻断未通过特性，不能推成所有引擎、材质或ROS接口均支持。根层默认PhysX/Newton都Disabled，启用和依赖解析仍需实测。包声明引用Package-Candidate与root_usds两个元数据文件名，但该固定提交文件树未见相应文件；目录里的Package合规报告虽标通过，不能代替实际打包/加载验收。README资产表仍只列UR17g；本条以新增提交与UR5e文件为准。NOTICE区分外观/几何的UR图形文档条款与其他结构数据的BSD-3-Clause，不把整包概括为CC-BY或无限制开放。USD生成/内嵌验证日期为11月4日，动态报告与公开提交为11月15日，checkedAt是本站读取时间。",
+    "organization": "Universal Robots / Teradyne Robotics",
+    "dateLabel": "2026-11-15 · UR5e资产包公开提交（非论文）",
+    "evidence": "固定提交、USD配置与验证JSON静态核验；未加载或复现",
+    "date": "2026-11-15",
+    "checkedAt": "2026-11-15T10:32:12.592061+00:00",
+    "firstSeenAt": "2026-11-15T10:33:00.128085+00:00",
+    "tags": [
+      "仿真资产",
+      "环境接入",
+      "USD",
+      "验证证据"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "官方固定提交 · 11月15日新增UR5e包",
+        "url": "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/commit/8973eb1c36fa517d236a875e1879999f24270913"
+      },
+      {
+        "label": "UR5e根USD · 物理变体与引用",
+        "url": "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/8973eb1c36fa517d236a875e1879999f24270913/ur5e/simready_usd/ur5e.usda"
+      },
+      {
+        "label": "动态检查结果 · 总体未通过",
+        "url": "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/8973eb1c36fa517d236a875e1879999f24270913/ur5e/.metadata/ur5e_benchmark.json"
+      },
+      {
+        "label": "静态特性验证 · Robot-Body 3.0.0",
+        "url": "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/8973eb1c36fa517d236a875e1879999f24270913/ur5e/.metadata/ur5e_validation.json"
+      },
+      {
+        "label": "包声明 · 元数据名称需核对",
+        "url": "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/8973eb1c36fa517d236a875e1879999f24270913/ur5e/com.nvidia.simready.packaging.json"
+      },
+      {
+        "label": "包内容清单 · 文件与哈希",
+        "url": "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/8973eb1c36fa517d236a875e1879999f24270913/ur5e/.metadata/com.nvidia.simready.packaging.bom.json"
+      },
+      {
+        "label": "NOTICE · 内容分别适用不同许可",
+        "url": "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/8973eb1c36fa517d236a875e1879999f24270913/ur5e/NOTICE.txt"
+      },
+      {
+        "label": "Newton变体 · 关节属性",
+        "url": "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/8973eb1c36fa517d236a875e1879999f24270913/ur5e/simready_usd/runnables/physics/newton.usda"
+      },
+      {
+        "label": "PhysX变体 · 关节属性",
+        "url": "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/8973eb1c36fa517d236a875e1879999f24270913/ur5e/simready_usd/runnables/physics/physx.usda"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Universal Robots公开资产库新增UR5e SimReady包，含USD层、PhysX/Newton变体和验证侧车。值得关注的是证据随资产发布：27条动态结果为21通过、1超时失败、5跳过，总passed=false；不能把“有验证报告”读成“全部可用”。",
+      "motivation": "机器人训练或控制环境复用资产时，几何能显示并不保证关节能驱动、引擎配置可解析或测试已覆盖。发布包把这些声明与验证结果放在一起，接入者仍须按使用场景审查。",
+      "novelty": "作者提供：把机械臂的外观、关节与物理配置、引擎变体和验证结果打包。本站判断：这次是UR5e资产增量，不是新Agent或新仿真方法；适合借鉴“资产版本—静态声明—逐项运行结果”三层记录，让训练环境接入先发现缺项和失败，再决定复用。",
+      "evidenceScope": "本轮匿名读取HF公开仓库元数据、提交记录和新旧固定提交文件树，确认新增21个ur5e文件、旧资产文件无改动，另有.gitattributes变更。已读README、NOTICE、包声明/BOM、Package合规报告、Robot-Body静态报告、内嵌验证JSON、根USD引用/变体、PhysX/Newton配置层及动态报告全部27项的状态/说明；核对动态汇总与失败/跳过原因。未读全部几何/材质依赖或逐项复算数值阈值，未执行作者代码、仿真、图像验收或实验复现。verified仅表示公开来源和静态证据核验。",
+      "limits": "仅核公开固定提交和文本/JSON，未下载全部几何依赖、组合或渲染USD、运行仿真或实机。作者动态报告总passed=false；Newton的drive_gain_validation因超过声明的300秒上限、重试耗尽而失败，不能据此断言机械结构必然错误。5项skipped包含固定基座不适用的落地/斜坡测试及无mimic关节，不能算通过或一概当失败；27条也不是27个独立任务、重复试验或抓放成功率。部分渲染检查标为pass但日志仍有摄像机异常，未视觉验收。静态报告有非阻断未通过特性，不能推成所有引擎、材质或ROS接口均支持。根层默认PhysX/Newton都Disabled，启用和依赖解析仍需实测。包声明引用Package-Candidate与root_usds两个元数据文件名，但该固定提交文件树未见相应文件；目录里的Package合规报告虽标通过，不能代替实际打包/加载验收。README资产表仍只列UR17g；本条以新增提交与UR5e文件为准。NOTICE区分外观/几何的UR图形文档条款与其他结构数据的BSD-3-Clause，不把整包概括为CC-BY或无限制开放。USD生成/内嵌验证日期为11月4日，动态报告与公开提交为11月15日，checkedAt是本站读取时间。",
+      "method": [
+        "固定公开提交8973eb1…：与10月19日旧提交比较，确认此次新增UR5e目录21个文件。它包含根USD、几何/材质/结构层、两种引擎配置、内容清单、许可和验证结果；不把旧UR17g教程重新当作新发布。",
+        "沿根USD检查组合接口：/ur5e引用base.usda，并提供PhysX与Newton的Enabled/Disabled变体，默认均Disabled；配置层写入各关节速度/状态与关节组属性。它是可组合的资产结构，尚不是已运行的任务环境或控制器。",
+        "分开读静态与动态侧车：Robot-Body 3.0.0报告中的部分特性通过、部分为非阻断未通过；动态JSON另列27条测试/引擎结果，21通过、1失败、5跳过，总passed=false。不要用合规报告的通过标记覆盖动态失败或跳过。",
+        "把异常留在接入记录：Newton驱动增益测试因超时失败；固定基座与无mimic关节导致部分测试跳过。另核对包声明所指元数据与文件树，保留缺名疑点、默认变体状态和按内容区分的许可，等待完整加载与目标任务验证。"
+      ],
+      "inspirations": [
+        "环境资产注册表按“固定提交、文件依赖、启用变体、静态profile、测试/引擎/版本”保存证据；动态测试fail、timeout、skipped分别计数，不能汇成一个未经解释的ready标记。",
+        "把整包清单解析与仿真接入列为独立验收：先核元数据引用存在且哈希匹配，再在目标引擎检查六关节运动、驱动参数与目标控制任务；这是本站建议，并非本次已复现的结果。",
+        "训练/RL环境报告除策略得分外附带资产诊断：固定基座不适用的drop测试可单列，但驱动超时应进入失败队列。之后再测重置一致性、扰动和任务成功率，不能用资产测试数量替代任务样本量。"
+      ],
+      "reviewedAt": "2026-11-15T10:32:12.592061+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/commit/8973eb1c36fa517d236a875e1879999f24270913",
+        "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/8973eb1c36fa517d236a875e1879999f24270913/ur5e/simready_usd/ur5e.usda",
+        "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/8973eb1c36fa517d236a875e1879999f24270913/ur5e/.metadata/ur5e_benchmark.json",
+        "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/8973eb1c36fa517d236a875e1879999f24270913/ur5e/.metadata/ur5e_validation.json",
+        "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/8973eb1c36fa517d236a875e1879999f24270913/ur5e/com.nvidia.simready.packaging.json",
+        "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/8973eb1c36fa517d236a875e1879999f24270913/ur5e/.metadata/com.nvidia.simready.packaging.bom.json",
+        "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/8973eb1c36fa517d236a875e1879999f24270913/ur5e/NOTICE.txt",
+        "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/8973eb1c36fa517d236a875e1879999f24270913/ur5e/simready_usd/runnables/physics/newton.usda",
+        "https://huggingface.co/datasets/TeradyneRobotics/UniversalRobots/blob/8973eb1c36fa517d236a875e1879999f24270913/ur5e/simready_usd/runnables/physics/physx.usda"
+      ]
+    }
   }
 ]
