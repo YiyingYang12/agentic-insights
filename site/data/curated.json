@@ -19005,5 +19005,314 @@
       "status": "pending",
       "checkedAt": "2026-11-15T16:23:54.005624+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.13946v1",
+    "url": "https://arxiv.org/abs/2611.13946v1",
+    "id": "paper-treeagent-2611-13946",
+    "title": "TreeAgent：按输入层级安排切段与历史记忆回流",
+    "summary": "TreeAgent按输入树切段，并在父节点读完时取回子节点历史记忆。四代理、四格式平均得分39.49→43.10，增3.61个百分点；分段数接近不代表调用或总token严格等预算。",
+    "insight": "作者主张：结构切段、路径标注与父子残差记忆联合改善长输入理解。本站判断：把“何时能检索哪些旧记忆”绑定输入结构值得借鉴，但并非一般自主Agent或等算力优势证据。",
+    "limits": "作者报告，未复现。仅显式层次数据、八类检索聚合题，每条件单次运行；平均增3.61个百分点，非相对增幅。JSON调用增3.7%–7.6%，不属严格等预算。 四种格式为JSON、HTML、YAML与静态JavaScript，未执行JS或验证视觉创作，不归入代码创作专题。12800道独立测试题在四代理、两方案下形成102400个输出，并非102400道独立题；温度0、支持时seed42，不反映多次训练或解码方差。JSON配对置信区间只衡量3200题的样本差异；其74.8%分段数匹配率与成本比例不能外推四格式。累计输入token变化−5.7%至+4.0%，未给跨格式全成本或时延保证；保存T段、每段M的记忆需O(TM)存储。切段定理限可加正整数叶长度模型，实际tokenizer计数可非单调，原子语法单元可超内容预算，包装、路径、残差与原生上下文须另计请求总量。公开包仅62条示例/回归记录，包含28条来源示例与34条fixtures，非完整12800题；CLI默认字符计数器，模型服务、原生控制与tokenizer由宿主提供。固定配置中ReMemR1请求上限32768，与论文附录C.3的40960不一致，尚未核作者修正或完整运行配置；源码已读范围仅README、契约、配置及评分说明，未逐文件执行审计。附录额外GRPO训练仅探索InfMem+JSON，不能混入无需训练的主表结论。未复现、未逐图核验、未验证数据污染与安全鲁棒性；X仅公开索引，未读作者原帖。",
+    "dateLabel": "2026-11-10 · arXiv v1首发",
+    "evidence": "原论文方法、实验与作者配置核验；未复现",
+    "originalTitle": "TreeAgent: Structure-Aware Memory Agent for Processing Long Hierarchical Data",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-15T22:30:25.619596+00:00",
+    "paperOriginalDate": "2026-11-10T11:33:05Z",
+    "paperUpdatedAt": "2026-11-10T11:33:05Z",
+    "updatedAt": "2026-11-10T11:33:05Z",
+    "firstSeenAt": "2026-11-11T04:00:01Z",
+    "lastSeenAt": "2026-11-13T04:00:00Z",
+    "tags": [
+      "结构化输入",
+      "长期记忆",
+      "切段预算",
+      "残差检索"
+    ],
+    "authors": [
+      "Wei Gu",
+      "Weiwei Qi",
+      "Jiajun Tang",
+      "Tianhang Zheng",
+      "Bo Chen",
+      "Zhibo Zhang",
+      "Jinfei Liu",
+      "Kui Ren"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "此前候选核验来源",
+        "url": "https://arxiv.org/abs/2611.13946"
+      },
+      {
+        "label": "arXiv v1 · 首发与作者",
+        "url": "https://arxiv.org/abs/2611.13946v1"
+      },
+      {
+        "label": "原论文全文 · 方法、实验及附录",
+        "url": "https://arxiv.org/html/2611.13946v1"
+      },
+      {
+        "label": "作者代码与示例 · 固定提交",
+        "url": "https://github.com/ZJU-LLM-Safety/TreeAgent/tree/7adab60e8930a0b574602d74857ffbc77f531ccf"
+      },
+      {
+        "label": "公开实现方法契约",
+        "url": "https://github.com/ZJU-LLM-Safety/TreeAgent/blob/7adab60e8930a0b574602d74857ffbc77f531ccf/METHOD_CONTRACT.md"
+      },
+      {
+        "label": "模型与请求上限配置",
+        "url": "https://github.com/ZJU-LLM-Safety/TreeAgent/blob/7adab60e8930a0b574602d74857ffbc77f531ccf/configs/agent_settings.json"
+      },
+      {
+        "label": "分段与残差检索配置",
+        "url": "https://github.com/ZJU-LLM-Safety/TreeAgent/blob/7adab60e8930a0b574602d74857ffbc77f531ccf/configs/www_method.json"
+      },
+      {
+        "label": "公开答案评分说明",
+        "url": "https://github.com/ZJU-LLM-Safety/TreeAgent/blob/7adab60e8930a0b574602d74857ffbc77f531ccf/code/evaluation/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "TreeAgent按输入树切段，并在父节点读完时取回子节点历史记忆。四代理、四格式平均得分39.49→43.10，增3.61个百分点；分段数接近不代表调用或总token严格等预算。",
+      "motivation": "平坦token切段会拆散同一记录字段、丢失层级位置，并让早期兄弟记录在反复压缩中遗失。作者尝试利用输入自带的树结构，改进冻结记忆代理看到的观测。",
+      "novelty": "作者主张：结构切段、路径标注与父子残差记忆联合改善长输入理解。本站判断：把“何时能检索哪些旧记忆”绑定输入结构值得借鉴，但并非一般自主Agent或等算力优势证据。",
+      "evidenceScope": "精读arXiv v1正文§2–4、算法1、表1–4及附录A.1–A.3、C.1–C.5、D/E；核首发记录、作者固定提交的README、METHOD_CONTRACT、agent_settings、www_method、evaluation/README及VALIDATION。核对预算、得分汇总、配对区间与公开样例范围，发现ReMemR1请求上限文码差异。未运行作者代码或模型，未逐图核验；verified仅表示来源核验。",
+      "limits": "作者报告，未复现。仅显式层次数据、八类检索聚合题，每条件单次运行；平均增3.61个百分点，非相对增幅。JSON调用增3.7%–7.6%，不属严格等预算。 四种格式为JSON、HTML、YAML与静态JavaScript，未执行JS或验证视觉创作，不归入代码创作专题。12800道独立测试题在四代理、两方案下形成102400个输出，并非102400道独立题；温度0、支持时seed42，不反映多次训练或解码方差。JSON配对置信区间只衡量3200题的样本差异；其74.8%分段数匹配率与成本比例不能外推四格式。累计输入token变化−5.7%至+4.0%，未给跨格式全成本或时延保证；保存T段、每段M的记忆需O(TM)存储。切段定理限可加正整数叶长度模型，实际tokenizer计数可非单调，原子语法单元可超内容预算，包装、路径、残差与原生上下文须另计请求总量。公开包仅62条示例/回归记录，包含28条来源示例与34条fixtures，非完整12800题；CLI默认字符计数器，模型服务、原生控制与tokenizer由宿主提供。固定配置中ReMemR1请求上限32768，与论文附录C.3的40960不一致，尚未核作者修正或完整运行配置；源码已读范围仅README、契约、配置及评分说明，未逐文件执行审计。附录额外GRPO训练仅探索InfMem+JSON，不能混入无需训练的主表结论。未复现、未逐图核验、未验证数据污染与安全鲁棒性；X仅公开索引，未读作者原帖。",
+      "method": [
+        "将JSON、HTML、YAML及静态JS解析成有序树；保留装得下的完整子树，合并相邻兄弟，过大子树递归，原子语法不强拆。",
+        "以Flat的5000 token为基准，在5000–9999间探查预算，尽量匹配段数；附加祖先路径或兄弟索引区间，包装与路径另算总预算。",
+        "每读一段保存累积记忆；仅在父节点最后一段，将已完成子节点的历史记忆接入，合并去重来源，禁止读取尚未产生的状态。",
+        "按问题与旧记忆片段的词项重合排序，取最多4段、各96 token；与当前段、路径和原生上下文一起交给原代理更新及作答。",
+        "保持各代理权重和原生流程不变，在四格式、八任务、8K–1M共12800题比较；分层等权汇总得分，另报JSON实际调用和输入token。"
+      ],
+      "inspirations": [
+        "处理大型工具JSON或DOM时，将原始节点ID、段范围和记忆版本一起留存；比较平切/树切/路径/残差四组，逐项测实体错绑与跨兄弟聚合错误。",
+        "先固定总调用与输入输出token，再做等段数对照；记录原子溢出、包装开销与全部历史记忆存储，避免把接近的段数当成相同推理成本。",
+        "在中文字段、同义问法和低词面重合问题上测残差召回，并对照BM25/语义检索；所有召回候选仍需满足先前已生成与父节点到期两个条件。"
+      ],
+      "reviewedAt": "2026-11-15T22:30:25.619596+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.13946v1",
+        "https://arxiv.org/html/2611.13946v1",
+        "https://github.com/ZJU-LLM-Safety/TreeAgent/tree/7adab60e8930a0b574602d74857ffbc77f531ccf",
+        "https://github.com/ZJU-LLM-Safety/TreeAgent/blob/7adab60e8930a0b574602d74857ffbc77f531ccf/METHOD_CONTRACT.md",
+        "https://github.com/ZJU-LLM-Safety/TreeAgent/blob/7adab60e8930a0b574602d74857ffbc77f531ccf/configs/agent_settings.json",
+        "https://github.com/ZJU-LLM-Safety/TreeAgent/blob/7adab60e8930a0b574602d74857ffbc77f531ccf/configs/www_method.json",
+        "https://github.com/ZJU-LLM-Safety/TreeAgent/blob/7adab60e8930a0b574602d74857ffbc77f531ccf/code/evaluation/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.13946",
+      "status": "pending",
+      "checkedAt": "2026-11-15T22:31:18.573509+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://github.com/blender/blender/releases/tag/v5.3.0",
+    "url": "https://github.com/blender/blender/releases/tag/v5.3.0",
+    "id": "blender-53-otio-editable-timeline-review",
+    "title": "Blender 5.3：可编辑时间线的OTIO交接与丢失边界",
+    "summary": "Blender 5.3在视频序列编辑器中加入初步OpenTimelineIO导入导出。固定版本源码可见：它交换片段、音视频轨道、时间范围与元数据，让剪辑结构可继续修改；同时对不支持类型、跨通道转场和缺失引用设有明确警告。",
+    "insight": "对剪辑Agent有价值的是工程交接层：以可检查的时间线结构连接自动规划与人工修订。评测应把结构保留、素材解析、可重渲染和最终视听质量分开，并要求Agent识别“文件写出但内容部分丢失”的结果。",
+    "limits": "仅静态读源码，未运行；无导入导出成功率、可编辑性通过率或视觉质量分母。OTIO引用素材，不嵌入媒体；不支持的片段或跨通道转场会丢失，写出成功仍可伴随警告，不能视为无损交接。场景摄像机片段在其他软件成为缺失引用，回到Blender也依赖同名场景存在；命名不规则的图像序列同样可能成为缺失引用。源码中的19个测试定义不是19次测试通过，也不覆盖所有外部编辑器。官方站与文档直接访问403，仅核公开搜索索引；实现依据来自可读的固定GitHub源码。未验证Python模块运行或任何模型自主剪辑能力。",
+    "organization": "Blender",
+    "dateLabel": "官方发布日 11/10；GitHub 标签时间 11/09 22:11 UTC，与核验时间分开",
+    "evidence": "官方公开搜索索引、固定GitHub版本源码与测试定义核验；未执行或复现。",
+    "date": "2026-11-10",
+    "checkedAt": "2026-11-15T22:31:48.170627+00:00",
+    "firstSeenAt": "2026-11-15T22:33:04.101567+00:00",
+    "tags": [
+      "Blender",
+      "OpenTimelineIO",
+      "可编辑时间线",
+      "跨工具交接",
+      "静态源码解读"
+    ],
+    "topics": [
+      "video-editing"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "官方 5.3 发布索引：11月10日（仅搜索索引可读）",
+        "url": "https://www.blender.org/releases/5-3/"
+      },
+      {
+        "label": "官方 5.3 功能公告（仅搜索索引可读）",
+        "url": "https://www.blender.org/download/releases/5-3/"
+      },
+      {
+        "label": "v5.3.0 固定版本入口",
+        "url": "https://github.com/blender/blender/releases/tag/v5.3.0"
+      },
+      {
+        "label": "Sequencer 发布说明（仅搜索索引可读）",
+        "url": "https://developer.blender.org/docs/release_notes/5.3/sequencer/"
+      },
+      {
+        "label": "Python API 发布说明（仅搜索索引可读）",
+        "url": "https://developer.blender.org/docs/release_notes/5.3/python_api/"
+      },
+      {
+        "label": "固定源码：OTIO 导出和部分丢失警告",
+        "url": "https://github.com/blender/blender/blob/02f0899d78e374b63e7181d9061e1f7ab03419cc/source/blender/io/otio/exporter/otio_export.cc"
+      },
+      {
+        "label": "固定源码：OTIO 导入与工程结构恢复",
+        "url": "https://github.com/blender/blender/blob/02f0899d78e374b63e7181d9061e1f7ab03419cc/source/blender/io/otio/importer/otio_import.cc"
+      },
+      {
+        "label": "固定源码：往返测试定义，未运行",
+        "url": "https://github.com/blender/blender/blob/02f0899d78e374b63e7181d9061e1f7ab03419cc/source/blender/io/otio/tests/otio_round_trip_test.cc"
+      },
+      {
+        "label": "固定版本号 5.3.0 release",
+        "url": "https://github.com/blender/blender/blob/02f0899d78e374b63e7181d9061e1f7ab03419cc/source/blender/blenkernel/BKE_blender_version.h"
+      },
+      {
+        "label": "固定 README 确认官方域名",
+        "url": "https://github.com/blender/blender/blob/02f0899d78e374b63e7181d9061e1f7ab03419cc/README.md"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Blender 5.3新增OTIO时间线交换：以片段、轨道和元数据交接可编辑结构。固定源码能确认映射与丢失警告，但文件写出成功不代表无损，也没有运行成功率或成片质量实测。",
+      "motivation": "剪辑Agent若只输出MP4，创作者难继续修改；若只依赖某个编辑器私有工程，又难跨工具接力。OTIO把剪辑结构与媒体引用分开，适合研究“自动规划—人工修订—再导出”的接口，但需要显式识别交换过程丢失了什么。",
+      "novelty": "官方主张5.3提供初步OTIO导入导出，并内置Python的opentimelineio模块。本站判断：价值在可编辑时间线与明确丢失边界的交换接口；这不是新模型，也未证明Agent剪辑或视觉质量提升。",
+      "evidenceScope": "官方5.3公告、发布索引、Sequencer与Python发布说明只能读取公开搜索索引，直接HTTPS访问均403；因此Python模块声明仅属官方索引核验。已直接读取GitHub v5.3.0页面并用匿名git ls-remote固定到提交02f0899d78e374b63e7181d9061e1f7ab03419cc；版本头明确503、patch 0、release。完整静态阅读该提交的OTIO导入/导出主实现，阅读往返测试的结构比较、转场、场景、元数据及图像序列断言。19是测试定义数量，不是已执行样本数。未运行软件、测试、导出或作者代码，未测成功率、可编辑率、性能或视觉质量；verified只指来源核验。",
+      "limits": "仅静态读源码，未运行；无导入导出成功率、可编辑性通过率或视觉质量分母。OTIO引用素材，不嵌入媒体；不支持的片段或跨通道转场会丢失，写出成功仍可伴随警告，不能视为无损交接。场景摄像机片段在其他软件成为缺失引用，回到Blender也依赖同名场景存在；命名不规则的图像序列同样可能成为缺失引用。源码中的19个测试定义不是19次测试通过，也不覆盖所有外部编辑器。官方站与文档直接访问403，仅核公开搜索索引；实现依据来自可读的固定GitHub源码。未验证Python模块运行或任何模型自主剪辑能力。",
+      "method": [
+        "导入先解析OTIO时间线并处理旧Marker模式；解析失败返回错误。当前剪辑场景已有片段时新建场景，按全局起点和帧率设置时间范围，避免直接混入既有剪辑。",
+        "把轨道、Clip、Gap和嵌套Stack映射为通道、片段、空隙及Meta；按媒体引用加载音视频或图像，恢复支持的静音与元数据。不支持的媒体或缺失效果输入会告警并跳过。",
+        "导出按通道整理片段并拆分音频、视频轨道，以有理时间记录裁切区间、间隙和支持的同通道转场；保存原通道号、Blender属性及外来元数据，保留后续编辑所需结构。",
+        "素材作为路径引用，不写入OTIO文件。可选Resolve元数据增强对应编辑器交接；场景摄像机片段和不规则图像序列可能写成缺失引用，跨通道转场则跳过并报告。",
+        "写出JSON使用Marker旧模式以兼容部分编辑器；写失败返回错误，写成功仍可能随后警告。固定源码列有19个往返及兼容测试定义，本文只读，不据此宣称测试通过。"
+      ],
+      "inspirations": [
+        "给剪辑Agent增加结构往返门槛：编辑后导出、导入，再比较片段类型、通道、裁切点、静音和元数据；把结构保留率、素材可解析率与可重渲染率分开报分母。",
+        "把导出警告视为交接协议的一部分：构造跨通道转场、缺失场景和不规则图像序列案例，检验Agent能否识别部分丢失并请求人工修订，而非把文件存在当任务完成。",
+        "分别验收命令完成、编辑意图满足和完整成片视听质量；对支持与不支持类型分层统计，并保留原工程及修改差异，不用内部往返测试推断跨编辑器无损。"
+      ],
+      "reviewedAt": "2026-11-15T22:31:48.170627+00:00",
+      "sourceUrls": [
+        "https://www.blender.org/releases/5-3/",
+        "https://www.blender.org/download/releases/5-3/",
+        "https://github.com/blender/blender/releases/tag/v5.3.0",
+        "https://developer.blender.org/docs/release_notes/5.3/sequencer/",
+        "https://developer.blender.org/docs/release_notes/5.3/python_api/",
+        "https://github.com/blender/blender/blob/02f0899d78e374b63e7181d9061e1f7ab03419cc/source/blender/io/otio/exporter/otio_export.cc",
+        "https://github.com/blender/blender/blob/02f0899d78e374b63e7181d9061e1f7ab03419cc/source/blender/io/otio/importer/otio_import.cc",
+        "https://github.com/blender/blender/blob/02f0899d78e374b63e7181d9061e1f7ab03419cc/source/blender/io/otio/tests/otio_round_trip_test.cc",
+        "https://github.com/blender/blender/blob/02f0899d78e374b63e7181d9061e1f7ab03419cc/source/blender/blenkernel/BKE_blender_version.h",
+        "https://github.com/blender/blender/blob/02f0899d78e374b63e7181d9061e1f7ab03419cc/README.md"
+      ]
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.12012v1",
+    "url": "https://arxiv.org/abs/2611.12012v1",
+    "id": "paper-2611.12012",
+    "title": "RDS-MOPD：按噪声与本域退步分配多教师蒸馏预算",
+    "summary": "RDS按噪声与本域退步调度三教师预算。3B模型三种子、最佳整体检查点的AIME24 avg@64为26.72%，D3为24.77%；IFBench不占优。同提示数非同token预算，未复现。",
+    "insight": "作者主张：用噪声温度下限、对数尖峰截断和相对本域历史最佳的回退，稳健分配多教师预算。本站判断：价值是区分真实退步与噪声；DRO证明约束调度份额，不保证最弱任务准确率或跨模型普遍提升。",
+    "limits": "作者结果未复现；仅3B模型、三教师、3种子，训练150×1024提示。同提示数非同教师token或墙钟预算。BO按六基准择单检查点，BB逐基准择优并非单模型；未见独立验证集择点说明。IFBench不占优。学生为SmolLM3-3B的MixSFT版本，教师RL-Math/RL-Code/RL-IF均从同一学生底座做域内RL；只测试数学、代码生成与指令遵循，未验证长程Agent、视频或代码创作。训练池86931提示：数学17917、代码23667、指令45347。每步1024提示、150步、mini-batch256、学习率1.5e-6、响应上限16k；相同提示预算不控制实际采样token、教师评分token或FLOPs。训练基线也不只差一个开关：Vanilla MOPD按池比例，Open-MOPD重加权/刷新奖励，Vanilla DRO固定采样而重加权损失，RDS与D3改变采样比例。六评估分母分别为AIME24/25各30题×64响应，LCB v5为167题、v6为175题，各10响应，IFEval541题和IFBench300题各4响应。avg@64/10/4估计单样本pass@1，不是多次尝试至少一次成功的pass@k；指令任务采用严格提示级正确率，逐响应独立判分。未独立核训练/测试逐题交叉去重。每种子评估90、100、120、150四个checkpoint，BO选三个域分数均值最高的同一checkpoint，各域先平均其两个基准；BB对各基准分别选最好，不能作为一个可部署模型的六项成绩。主表3种子均值±标准差不等于所有诊断都三次重复。BO中AIME24为26.72±0.16%，D3为24.77±0.81%；IFBench为23.08±0.30%，低于Open-MOPD的23.72±0.09%。BB中同样落后IFBench。所谓118.1% Recovery是相对SFT与路由教师增益归一化，不是118.1%正确率；RouteRL依赖已知域的路由与三教师，不是单模型。论文将六基准×三种子的18个配对视为独立，做单侧Wilcoxon；这些配对共享模型与相关基准，不可当18次独立训练或直接据此宣称泛化显著。消融只有seed0且用8张A800，主结果用16张；完整RDS列为主表均值，删除模块不保证逐项下降，例如去WDR的IFEval更高。噪声稳定性/超参分析重放同一已记录KL轨迹，只隔离调度决策，不包含重调预算后学生训练轨迹的闭环反馈。尖峰单次替换、H≥3且发生在窗口之后的理论有界性，不等于任意连续错误或warm-up污染都被消除；持续错误会被当作真实趋势，历史最低EMA也可能受早期统计误差影响。NRC的份额变化界要求连续两次非负进展分数在各自正噪声尺度界内；WDR的唯一解与倍率界要求p严格正、超额损失截断及可行下限。KL球半径是解的KL(q||p)，不是证明训练过程不退步。默认WDR给名义调度份额q/p在1/2到2之间、q至少0.1；实际每批还乘±30%抖动并按最大余数取整，不能把该界直接当每批实际采样份额或任务性能保证。坏教师压力测仅60步、同seed与数据流、4GPU，从30步向代码教师的top16 token logprob注入零均值噪声，KL约膨胀2.5倍；报告训练KL与域份额，不是坏教师下独立终局准确率。未证明可抵抗持续系统性偏置、错误标注、服务中断或对抗教师。调度0.039毫秒/步和复杂度O(K²)是三域标量计算，不能等同全训练加速。16张A800的2–84步平均747.5秒/步对D3 764.5秒；全150步作者报告5.6%更快，响应平均7130对8127 token，成本改变与生成长度相关。未核完整原始计时、教师开销分解或等token预算下收益，不能改写为普遍免费提效。原文HTML、LaTeX和公开精确搜索未定位可核作者实现仓库；论文源归档只有文本、图表和样式，不是训练代码。HF论文页本轮404；只据arXiv方法/附录分析，不推断代码未公开。PDF已下载但未做页面视觉验收，未执行代码或复现。X仅公开搜索索引，未取得可核作者原帖，不声称时间线或全文抓取。",
+    "organization": "McGill University / MBZUAI / HKUST / CUHK / New York University / University of Illinois Chicago / University of Massachusetts Boston",
+    "dateLabel": "2026-11-09 · arXiv v1首发；既有队列补读",
+    "evidence": "原论文方法/实验/附录与LaTeX口径核验；未取得可核作者实现，未复现",
+    "originalTitle": "Robust Domain-Mixture Scheduling for Multi-Teacher On-Policy Distillation",
+    "date": "2026-11-09",
+    "checkedAt": "2026-11-15T22:29:43.217522+00:00",
+    "paperOriginalDate": "2026-11-09T07:51:00Z",
+    "paperUpdatedAt": "2026-11-09T07:51:00Z",
+    "updatedAt": "2026-11-09T07:51:00Z",
+    "firstSeenAt": "2026-11-15T22:33:04.101567+00:00",
+    "tags": [
+      "Distillation",
+      "多教师",
+      "域混合调度",
+      "DRO",
+      "鲁棒统计",
+      "待解读补齐"
+    ],
+    "authors": [
+      "Yankai Chen",
+      "Sida Lin",
+      "Yifan Li",
+      "Hanjun Luo",
+      "Hanrong Zhang",
+      "Zhuohan Xie",
+      "Bowei He",
+      "Wei-Chieh Huang",
+      "Meng Ding",
+      "Wei Xue",
+      "Yike Guo",
+      "Philip S. Yu",
+      "Xue Liu"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 · 原论文与首发时间",
+        "url": "https://arxiv.org/abs/2611.12012v1"
+      },
+      {
+        "label": "arXiv v1 HTML · 方法、实验及附录",
+        "url": "https://arxiv.org/html/2611.12012v1"
+      },
+      {
+        "label": "arXiv v1 · 原文PDF",
+        "url": "https://arxiv.org/pdf/2611.12012v1"
+      },
+      {
+        "label": "arXiv v1 · 论文LaTeX与图表源资产",
+        "url": "https://arxiv.org/src/2611.12012v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "RDS按噪声与本域退步调度三教师预算。3B模型三种子、最佳整体检查点的AIME24 avg@64为26.72%，D3为24.77%；IFBench不占优。同提示数非同token预算，未复现。",
+      "motivation": "多教师蒸馏让数学、代码和指令域共享有限训练预算，但每域只由少量当前rollout估计KL。大KL可能来自教师尺度、偶发尖峰或真实能力退步；若直接追最高损失或最快进展，会持续偏向噪声域，也可能饿死已经开始退步的域。本文把“何时调整、统计怎样稳健、保护谁”拆成三个可检验机制。",
+      "novelty": "作者主张：用噪声温度下限、对数尖峰截断和相对本域历史最佳的回退，稳健分配多教师预算。本站判断：价值是区分真实退步与噪声；DRO证明约束调度份额，不保证最弱任务准确率或跨模型普遍提升。",
+      "evidenceScope": "直接读取arXiv 2611.12012v1元数据、HTML全文，精读§2–4方法与实验、附录A–G数据/实现/择点/重放及H三项证明；用原始LaTeX交叉核主表、消融表、算法与证明前提。原论文源归档SHA256=68e7d035880329f5cb5793ab8d7c29bcd9f52e4d05cff6197f4a66fcdee4647b，24条目（22文件、2目录），仅论文源资产。PDF成功下载作原文入口，未做页面视觉验收、未从图像像素估数。未取得可核作者训练实现、原始逐步日志或评测输出，未执行代码。HF页404；X仅公开搜索索引。所有数字为作者报告，verified表示原文与表格口径核验，不表示实验复现。",
+      "limits": "作者结果未复现；仅3B模型、三教师、3种子，训练150×1024提示。同提示数非同教师token或墙钟预算。BO按六基准择单检查点，BB逐基准择优并非单模型；未见独立验证集择点说明。IFBench不占优。学生为SmolLM3-3B的MixSFT版本，教师RL-Math/RL-Code/RL-IF均从同一学生底座做域内RL；只测试数学、代码生成与指令遵循，未验证长程Agent、视频或代码创作。训练池86931提示：数学17917、代码23667、指令45347。每步1024提示、150步、mini-batch256、学习率1.5e-6、响应上限16k；相同提示预算不控制实际采样token、教师评分token或FLOPs。训练基线也不只差一个开关：Vanilla MOPD按池比例，Open-MOPD重加权/刷新奖励，Vanilla DRO固定采样而重加权损失，RDS与D3改变采样比例。六评估分母分别为AIME24/25各30题×64响应，LCB v5为167题、v6为175题，各10响应，IFEval541题和IFBench300题各4响应。avg@64/10/4估计单样本pass@1，不是多次尝试至少一次成功的pass@k；指令任务采用严格提示级正确率，逐响应独立判分。未独立核训练/测试逐题交叉去重。每种子评估90、100、120、150四个checkpoint，BO选三个域分数均值最高的同一checkpoint，各域先平均其两个基准；BB对各基准分别选最好，不能作为一个可部署模型的六项成绩。主表3种子均值±标准差不等于所有诊断都三次重复。BO中AIME24为26.72±0.16%，D3为24.77±0.81%；IFBench为23.08±0.30%，低于Open-MOPD的23.72±0.09%。BB中同样落后IFBench。所谓118.1% Recovery是相对SFT与路由教师增益归一化，不是118.1%正确率；RouteRL依赖已知域的路由与三教师，不是单模型。论文将六基准×三种子的18个配对视为独立，做单侧Wilcoxon；这些配对共享模型与相关基准，不可当18次独立训练或直接据此宣称泛化显著。消融只有seed0且用8张A800，主结果用16张；完整RDS列为主表均值，删除模块不保证逐项下降，例如去WDR的IFEval更高。噪声稳定性/超参分析重放同一已记录KL轨迹，只隔离调度决策，不包含重调预算后学生训练轨迹的闭环反馈。尖峰单次替换、H≥3且发生在窗口之后的理论有界性，不等于任意连续错误或warm-up污染都被消除；持续错误会被当作真实趋势，历史最低EMA也可能受早期统计误差影响。NRC的份额变化界要求连续两次非负进展分数在各自正噪声尺度界内；WDR的唯一解与倍率界要求p严格正、超额损失截断及可行下限。KL球半径是解的KL(q||p)，不是证明训练过程不退步。默认WDR给名义调度份额q/p在1/2到2之间、q至少0.1；实际每批还乘±30%抖动并按最大余数取整，不能把该界直接当每批实际采样份额或任务性能保证。坏教师压力测仅60步、同seed与数据流、4GPU，从30步向代码教师的top16 token logprob注入零均值噪声，KL约膨胀2.5倍；报告训练KL与域份额，不是坏教师下独立终局准确率。未证明可抵抗持续系统性偏置、错误标注、服务中断或对抗教师。调度0.039毫秒/步和复杂度O(K²)是三域标量计算，不能等同全训练加速。16张A800的2–84步平均747.5秒/步对D3 764.5秒；全150步作者报告5.6%更快，响应平均7130对8127 token，成本改变与生成长度相关。未核完整原始计时、教师开销分解或等token预算下收益，不能改写为普遍免费提效。原文HTML、LaTeX和公开精确搜索未定位可核作者实现仓库；论文源归档只有文本、图表和样式，不是训练代码。HF论文页本轮404；只据arXiv方法/附录分析，不推断代码未公开。PDF已下载但未做页面视觉验收，未执行代码或复现。X仅公开搜索索引，未取得可核作者原帖，不声称时间线或全文抓取。",
+      "method": [
+        "学生生成响应后按数学/代码/指令域路由教师，以学生top16候选上的反向KL作逐token负奖励；先对各响应取token均值，再按域平均，复用作调度信号，不增教师前向。",
+        "SAE把每步域KL截在前5步原始观测中位数的exp(±0.5)倍内，再算EMA与下降速度；每次重建名义配额p，避免沿用旧权重累积尖峰。持续变化仍会进入统计，不能过滤任意坏教师。",
+        "NRC用剩余KL差距乘下降速度得进展分数，再设温度为0.5×max(最高分,4×其标准误)。softmax加每域0.1份额下限；接近噪声时减少无依据的大幅换域。",
+        "WDR以当前EMA相对本域历史最低值的对数比定义退步，并截到log2。按p×exp(退步)倾斜、保留min(p,0.2)下限并归一化；这是调度份额保护，不是准确率保证。",
+        "用SmolLM3-3B三教师训练150×1024提示、3种子，评估90/100/120/150步。BO按六基准综合分选同一检查点，BB逐基准择优；分别看域表现、波动和实际token成本。"
+      ],
+      "inspirations": [
+        "为多域训练同时记录原始KL、稳健平滑KL、噪声估计、历史最佳比和实际提示/token份额。用单次尖峰、连续偏置、warm-up污染与真实分布变化分开扰动，比较检测延迟和恢复后的最差域分数；不要仅凭配额曲线平滑判断学得更好。",
+        "比较固定预算策略时同时锁总提示、实际学生生成token、教师评分token和GPU小时，并设置独立验证集选checkpoint、最终留出集只验一次。把单一BO模型与逐基准BB上界分开，重点检查IFBench等未提升域，而非只报平均名次或恢复率。",
+        "把教师可靠性与域退步分开：某域退步应增加有效学习机会，但其教师若持续错误，继续保护预算可能放大坏监督。可在调度器外增加教师故障检测/替代源，并在相同训练反馈闭环与多seed下验证；这属于本站研究建议，论文没有证明该扩展有效。"
+      ],
+      "reviewedAt": "2026-11-15T22:29:43.217522+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.12012v1",
+        "https://arxiv.org/html/2611.12012v1",
+        "https://arxiv.org/pdf/2611.12012v1",
+        "https://arxiv.org/src/2611.12012v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.12012",
+      "status": "pending",
+      "checkedAt": "2026-11-15T22:31:18.573509+00:00"
+    }
   }
 ]
