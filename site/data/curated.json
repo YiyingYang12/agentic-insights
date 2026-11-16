@@ -19661,5 +19661,319 @@
       "status": "pending",
       "checkedAt": "2026-11-16T04:31:46.618592+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.17955v1",
+    "url": "https://arxiv.org/abs/2611.17955v1",
+    "id": "paper-webarena-pro-2611-17955",
+    "title": "WebArena-Pro：跨站与音视频任务怎样做到可重置、可审计",
+    "summary": "WebArena-Pro以20个可重置网站和300测试任务评估网页代理，最强两套配置成功率62.3%。统一50步不等于等算力；音视频工具增益须看依赖内容的子集。",
+    "insight": "作者主张：把异构网站、跨站任务、音视频访问和可重置评估整合起来。本站判断：最值得借鉴的是环境隔离与可审计的评分依赖图；不能把不同模型和代理框架的组合榜单当成纯模型排名。",
+    "limits": "作者报告，未复现。50浏览器步不等于等算力或同框架；89.5%是rubric级人类一致率，非任务正确率。音视频消融43题为事后筛选子集。主实验300测试题；另100开发题不可混入测试分母。62.3%对应Codex/GPT-6.1 Sol与Claude Code/Opus 5.5两套配置，模型、工具、推理策略和框架均有差异。裁判验证抽样50任务、每题6种旧代理轨迹，合计300轨迹约每代理130条rubric；并非对新编码代理榜首配置单独校准，也没有证明每个任务评分可靠。43题子集上Claude配置14.0%无媒体→48.8%有媒体，不等于所有79音视频题的26.6%→57.0%；不能混用分母。论文主表未给重复运行区间。网站是自托管替身，重置解决跨任务状态污染，不证明训练数据无污染。媒体为预录音视频观察，不是实时对话、视频剪辑或代码创作。当前固定仓库文档细化了三值裁判及trust策略，不能据此断言论文每次历史运行都使用同一提交。未启动容器、运行代理或复算成绩，未逐图核验。",
+    "dateLabel": "2026-11-13 · arXiv v1；项目11月16日发布",
+    "evidence": "原论文方法与固定版本公开文档核验；未复现",
+    "originalTitle": "WebArena-Pro: A Heterogeneous, Multimodal, Reproducible Benchmark for Web Agents",
+    "date": "2026-11-13",
+    "checkedAt": "2026-11-16T10:29:40.699014+00:00",
+    "paperOriginalDate": "2026-11-13T09:44:48Z",
+    "paperUpdatedAt": "2026-11-13T09:44:48Z",
+    "updatedAt": "2026-11-13T09:44:48Z",
+    "firstSeenAt": "2026-11-16T10:00:01Z",
+    "lastSeenAt": "2026-11-16T10:00:01Z",
+    "tags": [
+      "网页代理",
+      "可重置环境",
+      "跨站任务",
+      "多模态评测"
+    ],
+    "authors": [
+      "Imene Kerboua",
+      "Fatemeh Pesaran Zadeh",
+      "Xing Han Lù",
+      "Weijian Qi",
+      "Alexander Miller",
+      "Junyi Song",
+      "Yunjia Tian",
+      "Dongjin Kang",
+      "Seyeon Choi",
+      "Marzia Nouri",
+      "Ewen Gueguen",
+      "Matteo Boglioni",
+      "Fengyuan Liu",
+      "Zeyi Liao",
+      "Mengqi Yuan",
+      "Yue Li",
+      "Alexandre Lacoste",
+      "Alexandre Drouin",
+      "Spandana Gella",
+      "Huan Sun",
+      "Gunhee Kim",
+      "Siva Reddy"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 首发记录",
+        "url": "https://arxiv.org/abs/2611.17955v1"
+      },
+      {
+        "label": "原论文方法、主表与附录",
+        "url": "https://arxiv.org/html/2611.17955v1"
+      },
+      {
+        "label": "作者项目页 · 11月16日发布",
+        "url": "https://webarena-pro.github.io/"
+      },
+      {
+        "label": "作者开源仓库 · 固定提交",
+        "url": "https://github.com/McGill-NLP/webarena-pro/tree/8c771645431d656917152a477be5003a86bb47ec"
+      },
+      {
+        "label": "作者公开 Hugging Face 组织",
+        "url": "https://huggingface.co/WebArena-Pro"
+      },
+      {
+        "label": "任务划分与框架文档",
+        "url": "https://github.com/McGill-NLP/webarena-pro/blob/8c771645431d656917152a477be5003a86bb47ec/docs/source/benchmark.md"
+      },
+      {
+        "label": "分层裁判与证据可信策略",
+        "url": "https://github.com/McGill-NLP/webarena-pro/blob/8c771645431d656917152a477be5003a86bb47ec/docs/source/evaluators.md"
+      },
+      {
+        "label": "音视频工具文档",
+        "url": "https://github.com/McGill-NLP/webarena-pro/blob/8c771645431d656917152a477be5003a86bb47ec/docs/source/media.md"
+      },
+      {
+        "label": "环境重置文档",
+        "url": "https://github.com/McGill-NLP/webarena-pro/blob/8c771645431d656917152a477be5003a86bb47ec/docs/source/reset.md"
+      },
+      {
+        "label": "Harbor集成文档",
+        "url": "https://github.com/McGill-NLP/webarena-pro/blob/8c771645431d656917152a477be5003a86bb47ec/docs/source/harbor.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "WebArena-Pro以20个可重置网站和300测试任务评估网页代理，最强两套配置成功率62.3%。统一50步不等于等算力；音视频工具增益须看依赖内容的子集。",
+      "motivation": "真实网页任务往往跨越多个网站、需要理解音视频，并会改变应用状态。仅凭文本网页、单站任务和不透明终局裁判，很难分辨代理是理解失败、操作失败，还是环境状态与评分出了问题。",
+      "novelty": "作者主张：把异构网站、跨站任务、音视频访问和可重置评估整合起来。本站判断：最值得借鉴的是环境隔离与可审计的评分依赖图；不能把不同模型和代理框架的组合榜单当成纯模型排名。",
+      "evidenceScope": "精读arXiv v1 §3–5、任务构建、主结果/消融表及附录A、D、E；核验首发时间、作者项目页与仓库固定提交8c77164。阅读该提交的README、benchmark与Harbor文档、任务配置及evaluators/media/reset相关段落。已区分论文叙述与当前文档的三值裁判策略；未执行作者代码、复现成绩或观看全部媒体案例。verified仅指公开来源核验。",
+      "limits": "作者报告，未复现。50浏览器步不等于等算力或同框架；89.5%是rubric级人类一致率，非任务正确率。音视频消融43题为事后筛选子集。主实验300测试题；另100开发题不可混入测试分母。62.3%对应Codex/GPT-6.1 Sol与Claude Code/Opus 5.5两套配置，模型、工具、推理策略和框架均有差异。裁判验证抽样50任务、每题6种旧代理轨迹，合计300轨迹约每代理130条rubric；并非对新编码代理榜首配置单独校准，也没有证明每个任务评分可靠。43题子集上Claude配置14.0%无媒体→48.8%有媒体，不等于所有79音视频题的26.6%→57.0%；不能混用分母。论文主表未给重复运行区间。网站是自托管替身，重置解决跨任务状态污染，不证明训练数据无污染。媒体为预录音视频观察，不是实时对话、视频剪辑或代码创作。当前固定仓库文档细化了三值裁判及trust策略，不能据此断言论文每次历史运行都使用同一提交。未启动容器、运行代理或复算成绩，未逐图核验。",
+      "method": [
+        "固定20个自托管网站和初始数据，每任务重置、并行工作实例隔离。任务合计400个，划分100开发题与300测试题。",
+        "人工编写独立任务模板并二次审核；测试集含204单站/96跨站任务，另一维度为221文本视觉/79音视频任务。",
+        "通过可访问性树与截图操作浏览器，媒体源节点提供转录、抽帧，支持的模型还可读原生音视频；这是观察工具而非剪辑工具。",
+        "把评分项组织成依赖图，前置失败使后续项失败；综合后端、操作证据与LLM判断，全部评分项通过才计任务成功。",
+        "在50浏览器动作预算下比较模型与框架组合，再拆跨站/媒体条件；43题内容依赖子集的消融另报，不与全部79媒体题混算。"
+      ],
+      "inspirations": [
+        "评测先固定任务种子、环境镜像、模型与工具配置，再分别控制动作数、token、时长和成本；保存每条评分项证据与依赖，区分状态污染和能力失败。",
+        "给媒体任务配标题/缩略图可解与必须听看两组对照，预先规定子集；同模型同框架做工具消融，并用独立盲审检查新代理配置的裁判误报与漏报。",
+        "程序化创作评测可借鉴其重置与评分依赖：先验工程能否打开和执行，再验编辑是否保留结构，最后评视觉质量；网页媒体观察成绩不能直接迁移为创作能力。"
+      ],
+      "reviewedAt": "2026-11-16T10:29:40.699014+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.17955v1",
+        "https://arxiv.org/html/2611.17955v1",
+        "https://webarena-pro.github.io/",
+        "https://github.com/McGill-NLP/webarena-pro/tree/8c771645431d656917152a477be5003a86bb47ec",
+        "https://huggingface.co/WebArena-Pro",
+        "https://github.com/McGill-NLP/webarena-pro/blob/8c771645431d656917152a477be5003a86bb47ec/docs/source/benchmark.md",
+        "https://github.com/McGill-NLP/webarena-pro/blob/8c771645431d656917152a477be5003a86bb47ec/docs/source/evaluators.md",
+        "https://github.com/McGill-NLP/webarena-pro/blob/8c771645431d656917152a477be5003a86bb47ec/docs/source/media.md",
+        "https://github.com/McGill-NLP/webarena-pro/blob/8c771645431d656917152a477be5003a86bb47ec/docs/source/reset.md",
+        "https://github.com/McGill-NLP/webarena-pro/blob/8c771645431d656917152a477be5003a86bb47ec/docs/source/harbor.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.17955",
+      "status": "pending",
+      "checkedAt": "2026-11-16T10:30:53.386938+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.18078v1",
+    "url": "https://arxiv.org/abs/2611.18078v1",
+    "id": "paper-telephysica-2611-18078",
+    "title": "TelePhysica：先把3D程序世界站稳，再用轨迹约束视频",
+    "summary": "TelePhysica把单图重建写成可执行3D场景，用轮廓差和无外力重力预检反复修正，再以检查点状态支持施力、续接和反事实分叉，渲染结构轨迹引导预训练视频模型。固定v1报告100刚体场景81个平衡通过、49个完整五秒施力通过，视频另为53条。",
+    "insight": "可复用的重点是把可修改程序、仿真状态和最终视频分成不同验收层：图像像、物体站稳、施力执行和成片动作正确不能互相替代。双门槛提供可诊断的反馈，但仍需单独检验修改保持和真实物理质量。",
+    "limits": "81/100只指刚体场景平衡通过，完整五秒受力通过为49/100；v1视频仅7主场景和2反事实共53条。未复现、未测编辑保持或视觉质量；作者代码链接本轮404。质量指标不等于人类偏好或真实物理正确。100场景视觉通过85/100；首次物理预检另用95个视觉通过候选，正文与最终85的统计衔接未充分说明，不能混算。7次场景提交、17次工具调用的中位数仅针对验证成功包，不能当全量平均成本。3个可变形/混合重建仅2/3自主达到小于1毫米节点漂移；海绵堆先出现68.3毫米下落，另经阻尼松弛才平衡。质量、弹性模量和摩擦取先验，未由真实交互识别；单张图不能唯一恢复深度与材质物理参数。视频指标以仿真轨迹和原图为参照，近静止输出也可有高PSNR；主表7场景平均不保证每例方向正确，A14B RGB笔记本方向余弦为−0.3003。MiniMax仅3刚体场景，768方形124帧、8张H100；VACE为512方形81帧，时间不能作等算力速度排行。原文未给出可复核的多种子方差、完整Agent模型/预算配置或人类画质评测；0.000毫米回放误差是报告精度，不是本站验证的位级一致。项目页另宣称60配置480视频扩展实验，本解读以arXiv v1固定全文为准，未把扩展数字并入53条。",
+    "organization": "China Telecom TeleAI",
+    "dateLabel": "arXiv v1首次提交 2026-11-13；项目扩展版与v1分开核验",
+    "evidence": "方法与附录全文核验；未运行复现，作者代码链接本轮404。",
+    "originalTitle": "TelePhysica: Agentic Reconstruction of Physically Interactive Scenes",
+    "date": "2026-11-13",
+    "checkedAt": "2026-11-16T10:31:42.973712+00:00",
+    "paperOriginalDate": "2026-11-13T12:02:43Z",
+    "paperUpdatedAt": "2026-11-13T12:02:43Z",
+    "updatedAt": "2026-11-13T12:02:43Z",
+    "firstSeenAt": "2026-11-16T10:00:01Z",
+    "lastSeenAt": "2026-11-16T10:00:01Z",
+    "tags": [
+      "TelePhysica",
+      "程序化3D",
+      "物理验证",
+      "状态续接",
+      "轨迹控制"
+    ],
+    "authors": [
+      "Ruiqi Shu",
+      "Xufeng Zhan",
+      "Yuanzhi Liang",
+      "Haibin Huang",
+      "Chi Zhang",
+      "Xuelong Li"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2video"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1：11月13日首次提交",
+        "url": "https://arxiv.org/abs/2611.18078v1"
+      },
+      {
+        "label": "v1全文：方法、100场景审计与53条视频附表",
+        "url": "https://arxiv.org/html/2611.18078v1"
+      },
+      {
+        "label": "作者项目：扩展结果另列，代码链接本轮不可达",
+        "url": "https://telephysica.vercel.app/"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "TelePhysica让Agent先写可执行3D场景，经轮廓和静止平衡检查后，按力重演并渲染轨迹来引导视频。100刚体场景有81个平衡通过、49个完整受力通过；v1视频53条，不能把81%当成片成功率。",
+      "motivation": "单图直接生成视频难以保留可修改物体、接触状态和中途施力；仅让Agent写一个外观相似的3D脚本，又可能留下悬空、穿透或错误惯性。研究把视觉相似与物理初态验证分开，使后续动作能从同一场景状态出发比较。",
+      "novelty": "作者主张以视觉批评和重力平衡双门槛，从单图构建可持续交互的程序世界。本站判断：价值在可编辑场景与推理期轨迹控制相连；它既非纯视频扩散，也未证明任意场景或任意编辑可靠。",
+      "evidenceScope": "已读arXiv 2611.18078v1 HTML及原始LaTeX方法第3节、实验第4节、附录A验证阈值和附录B逐场景视频账本；核对日期与项目页。方法输出程序化3D脚本和可恢复的显式机械状态，且推理时渲染轨迹控制视频，故标code2-3d与code2video，未标剪辑或网页动效。项目另有480视频扩展叙述；仅核项目文字及PDF可下载，未解析或完整审读扩展报告。项目View code指向Xufeng-Zhan/Interactive_4D，匿名页/README均404、git读取失败，API403限流；不声称已审或已开放实现。未运行作者代码、求解器或生成器，未播放视频作独立画质验收；verified仅来源核验。",
+      "limits": "81/100只指刚体场景平衡通过，完整五秒受力通过为49/100；v1视频仅7主场景和2反事实共53条。未复现、未测编辑保持或视觉质量；作者代码链接本轮404。质量指标不等于人类偏好或真实物理正确。100场景视觉通过85/100；首次物理预检另用95个视觉通过候选，正文与最终85的统计衔接未充分说明，不能混算。7次场景提交、17次工具调用的中位数仅针对验证成功包，不能当全量平均成本。3个可变形/混合重建仅2/3自主达到小于1毫米节点漂移；海绵堆先出现68.3毫米下落，另经阻尼松弛才平衡。质量、弹性模量和摩擦取先验，未由真实交互识别；单张图不能唯一恢复深度与材质物理参数。视频指标以仿真轨迹和原图为参照，近静止输出也可有高PSNR；主表7场景平均不保证每例方向正确，A14B RGB笔记本方向余弦为−0.3003。MiniMax仅3刚体场景，768方形124帧、8张H100；VACE为512方形81帧，时间不能作等算力速度排行。原文未给出可复核的多种子方差、完整Agent模型/预算配置或人类画质评测；0.000毫米回放误差是报告精度，不是本站验证的位级一致。项目页另宣称60配置480视频扩展实验，本解读以arXiv v1固定全文为准，未把扩展数字并入53条。",
+      "method": [
+        "输入单张照片和场景描述，Agent生成程序化网格、材质、相机及物体角色；用前景IoU、72方向轮廓和内部边缘反馈修订脚本，先校准外观。",
+        "将声明式物理模型编入求解器，在有重力、无外部施力下预检1秒；检查穿透、位置或节点漂移、末速和警告，将失败轨迹返回Agent；遮挡支撑间隙可另经阻尼松弛修复。",
+        "以统一状态表示刚体、关节链、薄壳和四面体软体；屏幕笔画经射线定位施力点，构造力矩或局部面片载荷，支持冲量与规定边界运动。",
+        "保存坐标、速度、接触热启动状态及施力日程，从检查点重放、中途续接或分叉反事实；用绑定权重和厚度偏移把仿真节点映射回细网格，渲染结构轨迹。",
+        "推理时把轨迹Canny边缘或RGB渲染与原图交给预训练VACE，刚体另试MiniMax双参考；分别量运动掩码、轨迹误差和外观相似，避免把仿真通过当成片合格。"
+      ],
+      "inspirations": [
+        "把代码创作成功拆成脚本执行、图像对齐、静止平衡、施力完成、视频动作和画质六层，统一保留100场景总分母；单独报成功包的重试成本与全部失败预算。",
+        "对同一可编辑场景做修改前后局部对象、材料或施力变更，核对象ID、未编辑区域和检查点状态保持；分别保存程序、物理状态与成片，不能只保视频来声称可编辑。",
+        "把方向反转、中途施力和静止负例纳入评测：同时看瞬时轨迹与整段动作方向，防止高原图相似分奖励不动视频；再以真实观测或盲评检验仿真外的物理与视觉质量。"
+      ],
+      "reviewedAt": "2026-11-16T10:31:42.973712+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.18078v1",
+        "https://arxiv.org/html/2611.18078v1",
+        "https://telephysica.vercel.app/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.18078",
+      "status": "pending",
+      "checkedAt": "2026-11-16T10:30:53.386938+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.18533v1",
+    "url": "https://arxiv.org/abs/2611.18533v1",
+    "id": "paper-2611.18533",
+    "title": "ModHarness-RL：固定压缩程序、演化纠偏规则，联合训练Agent与harness",
+    "summary": "把上下文压缩固定为程序、让纠偏规则随RL演化：288题代码定位的四组设置F1相对提升14–24%。结果非修复成功率，成本含估算，代码待发布。",
+    "insight": "作者主张把harness变为可学习程序并随策略更新；本站判断可借鉴点是“压缩稳定、纠偏演化”的分工，以及先回放失败趋势再做隔离验证，尚非通用自改写Agent证明。",
+    "limits": "作者结果未复现；288题测定位F1，非修复率。误差线来自同一检查点评估，非多训练种子。仅CodeSearch完整对照；教师成本含估算，非端到端提速。代码待发布。完整系统在Qwen3-4B/8B、两种历史预算共4设置优于固定harness，总体F1的14–24%是相对增幅，不是百分点；并非每个子集或单模块组合都最优，例如4B受限预算Pro的0.282低于SkillRL的0.308。总体按100道Lite、100道Verified、88道Pro的实例数加权，再取每题文件/模块/实体三粒度F1均值；不是三基准等权平均，也不是SWE-bench补丁通过率。作者重复评估为CodeSearch 10次、ALFWorld/BIRD各3次，不能替代独立训练重复。ALFWorld的274个评估游戏和BIRD的1534个dev问题只检验各模块分别加入基线，未给完整双模块系统及全部第三方基线的跨域对照。模型族按RL能出现学习信号选择，推理关闭；ALFWorld 1.5B先用288个专家获胜游戏SFT，不能宣称全程无示范。隔离训练门控集CodeSearch/ALFWorld各128题，BIRD充足预算128、受限预算256题；门控反复使用小集合且仅严格胜过当前分数，不构成统计显著或永不退化保证。论文只给两个终局未提交答案的裁判案例，Case1两组各2次延续训练、Case2各1次，不能推广为裁判普遍可靠。每法训练200步、单节点8张H100和相同环境内GRPO配置，只匹配策略训练配置；程序搜索、教师生成/审查与候选门控另耗预算。基线均移植到作者trainer，HarnessForge以GRPO替代原SFT阶段并把模块改写成提示或历史重写，不是原产品端到端排名。表2对比压缩模块与在线GPT压缩，仅4格且双方各胜2格；教师调用/输入输出token量的百倍级节省和受限设置每轮附加耗时的千倍级比值含差分估计、跨活动缩放或下界，不能解释成整个训练便宜或快100/1000倍。表内未完整核算Steering与门控开销。prefill比较重放已录轨迹并取消双方动态驱逐，让基础harness保留完整缓存；压缩在4格中3格减少prefill、最多35%，并非实际预算受限部署的直接吞吐实测。充足预算末轮上下文74%/10%减少也不是全程prefill或总GPU时间减少。确定性规则只覆盖State中能检测的行为或结构；执行不再调用教师不等于不消耗策略提示token、CPU或内存，指导文本仍占上下文。完整状态保留不等于模型每轮都能看见删去内容。已读原文受限执行、允许导入和超时说明及简化提示，但公开项目仍标Code pending release，固定公开仓库仅见文档，未核真实沙箱、训练实现或权重。原文超过零样本creator的成绩不单独证明不存在知识迁移；可确认的区别是指导文本不被设为监督loss目标。",
+    "organization": "Pennsylvania State University / LinkedIn / University of California, Santa Barbara",
+    "dateLabel": "2026-11-13 首发（UTC；北京时间11月14日02:45）",
+    "evidence": "已读原论文方法、实验、附录与固定项目文档；代码待发布、实验未复现。",
+    "originalTitle": "ModHarness-RL: Recasting Harnesses as Learnable and Evolving Programs for Agentic RL",
+    "date": "2026-11-13",
+    "checkedAt": "2026-11-16T10:31:19.130306+00:00",
+    "paperOriginalDate": "2026-11-13T18:45:49Z",
+    "paperUpdatedAt": "2026-11-13T18:45:49Z",
+    "updatedAt": "2026-11-13T18:45:49Z",
+    "firstSeenAt": "2026-11-16T10:00:01Z",
+    "lastSeenAt": "2026-11-16T10:00:01Z",
+    "tags": [
+      "Agentic RL",
+      "Harness learning",
+      "Context management",
+      "GRPO"
+    ],
+    "authors": [
+      "Zelin He",
+      "Siyu Zhu",
+      "Jacob Helwig",
+      "Yujian Liu",
+      "Li An",
+      "Rohit Jain",
+      "Shiyu Chang",
+      "Alborz Geramifard"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 原始摘要与首发时间",
+        "url": "https://arxiv.org/abs/2611.18533v1"
+      },
+      {
+        "label": "arXiv v1 方法、实验与附录全文",
+        "url": "https://arxiv.org/html/2611.18533v1"
+      },
+      {
+        "label": "作者项目页：代码待发布",
+        "url": "https://zlhe0.github.io/ModHarness-RL/"
+      },
+      {
+        "label": "作者项目页固定提交（仅文档）",
+        "url": "https://github.com/ZLHe0/ModHarness-RL/blob/7afa6adfecc660fda7925eaab91fa3ed226c9d96/docs/index.html"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把上下文压缩固定为程序、让纠偏规则随RL演化：288题代码定位的四组设置F1相对提升14–24%。结果非修复成功率，成本含估算，代码待发布。",
+      "motivation": "固定手写harness未必适合不同任务、模型及上下文预算；更重要的是模型会通过RL自行修好部分错误，若继续堆提示会占用上下文并干扰学习。作者把问题拆成稳定的信息保留程序与只针对持久失败的动态纠偏。",
+      "novelty": "作者主张把harness变为可学习程序并随策略更新；本站判断可借鉴点是“压缩稳定、纠偏演化”的分工，以及先回放失败趋势再做隔离验证，尚非通用自改写Agent证明。",
+      "evidenceScope": "直接读取arXiv v1摘要、HTML全文及公开TeX源中的§3方法、§4实验、限制、附录A训练/基线/门控/历史预算、附录C更新间隔/成本/缓存/裁判案例、附录D实例文字、附录E简化提示，以及表1–3和逐粒度表；未对PDF图像做像素检查，图中未列数值不推算。表1四组CodeSearch总体F1为4B受限0.303→0.368、4B充足0.361→0.424、8B受限0.333→0.412、8B充足0.403→0.460；由288个任务实例加权，任务训练用SWE-Smith，测试来自Lite/Verified/Pro。每步8题×8条轨迹、200步，即策略训练计划12800条轨迹，另有拟合及门控rollout，不等价总预算。历史预算不含题面：受限1024 tokens，CodeSearch/BIRD充足8192，ALFWorld充足12288；压缩后超限仍逐整轮删除最早历史并保留题面/省略标记。两种程序每轮均可读完整State。压缩只在训练前拟合；每10步更新的是纠偏。表3每10步再拟合压缩的4格F1为0.336/0.279/0.360/0.398，均低于固定压缩完整方案0.368/0.412/0.424/0.460。门控集合与策略训练和最终评估题按任务身份隔离；程序候选用同一当前策略、相同题集/预算比较。运行时只执行程序，但GPT-5-mini（medium effort）承担生成及裁判，且提案和门控存在额外成本。项目页由arXiv原文直接链出；公开仓库固定提交7afa6adfecc660fda7925eaab91fa3ed226c9d96的docs/index.html与当前项目页逐字节一致，仅静态读取文档，项目Paper按钮仍为占位符、代码明确待发。作者字段依arXiv的Siyu Zhu保存，项目页显示Jason Zhu未擅自合并身份。verified仅为公开来源核验，不代表复现、代码可运行或实现安全。",
+      "limits": "作者结果未复现；288题测定位F1，非修复率。误差线来自同一检查点评估，非多训练种子。仅CodeSearch完整对照；教师成本含估算，非端到端提速。代码待发布。完整系统在Qwen3-4B/8B、两种历史预算共4设置优于固定harness，总体F1的14–24%是相对增幅，不是百分点；并非每个子集或单模块组合都最优，例如4B受限预算Pro的0.282低于SkillRL的0.308。总体按100道Lite、100道Verified、88道Pro的实例数加权，再取每题文件/模块/实体三粒度F1均值；不是三基准等权平均，也不是SWE-bench补丁通过率。作者重复评估为CodeSearch 10次、ALFWorld/BIRD各3次，不能替代独立训练重复。ALFWorld的274个评估游戏和BIRD的1534个dev问题只检验各模块分别加入基线，未给完整双模块系统及全部第三方基线的跨域对照。模型族按RL能出现学习信号选择，推理关闭；ALFWorld 1.5B先用288个专家获胜游戏SFT，不能宣称全程无示范。隔离训练门控集CodeSearch/ALFWorld各128题，BIRD充足预算128、受限预算256题；门控反复使用小集合且仅严格胜过当前分数，不构成统计显著或永不退化保证。论文只给两个终局未提交答案的裁判案例，Case1两组各2次延续训练、Case2各1次，不能推广为裁判普遍可靠。每法训练200步、单节点8张H100和相同环境内GRPO配置，只匹配策略训练配置；程序搜索、教师生成/审查与候选门控另耗预算。基线均移植到作者trainer，HarnessForge以GRPO替代原SFT阶段并把模块改写成提示或历史重写，不是原产品端到端排名。表2对比压缩模块与在线GPT压缩，仅4格且双方各胜2格；教师调用/输入输出token量的百倍级节省和受限设置每轮附加耗时的千倍级比值含差分估计、跨活动缩放或下界，不能解释成整个训练便宜或快100/1000倍。表内未完整核算Steering与门控开销。prefill比较重放已录轨迹并取消双方动态驱逐，让基础harness保留完整缓存；压缩在4格中3格减少prefill、最多35%，并非实际预算受限部署的直接吞吐实测。充足预算末轮上下文74%/10%减少也不是全程prefill或总GPU时间减少。确定性规则只覆盖State中能检测的行为或结构；执行不再调用教师不等于不消耗策略提示token、CPU或内存，指导文本仍占上下文。完整状态保留不等于模型每轮都能看见删去内容。已读原文受限执行、允许导入和超时说明及简化提示，但公开项目仍标Code pending release，固定公开仓库仅见文档，未核真实沙箱、训练实现或权重。原文超过零样本creator的成绩不单独证明不存在知识迁移；可确认的区别是指导文本不被设为监督loss目标。",
+      "method": [
+        "把每轮思考、工具调用、结果及提示存成有类型的完整State；压缩程序只重排模型所见视图，原记录仍可再读。工具集与动作格式保持固定。",
+        "先用基座轨迹让GPT-5-mini生成并修复压缩程序，检查删错信息或压不动的问题；在隔离训练题上选优，随后200步RL期间固定压缩程序。",
+        "策略在当前harness下做GRPO；200步中每10步旁路更新一次纠偏，共20轮。新轨迹按题进入历史库，提案生成和验证另用教师与rollout。",
+        "从有成有败的轨迹组归纳行为失败，分别写终局失败检查、当前前缀触发器和简短指导；两种检查不可混用，运行时触发器不能看未来结果。",
+        "把候选检查回放到历史轨迹，裁判区分干预、观察或继续学习；获准规则整组用同一策略在隔离训练题测试，严格胜过现用版本才安装，并输出模型与harness。"
+      ],
+      "inspirations": [
+        "将训练中的“给模型看什么”与“何时提醒模型”分开试验：先固定压缩规则，再比较固定/动态纠偏和同时动态压缩，记录门控分数、最终任务分数及回退次数；表3提醒我们，更多在线变化并不自动更好。",
+        "对每个纠偏点分别维护终局失败检查和运行时触发器，回放跨检查点的失败比例，并统计触发但成功/未触发却失败两类错误；先让正在自然下降的失败继续学习，再把持续失败的规则整组送入独立验证集。",
+        "评估上下文方法时同时报任务分数、缓存未命中的prefill、端到端episode耗时，以及教师生成/候选验证/CPU执行总成本；按任务身份冻结门控与测试集合，避免仅凭上下文变短或单次小集合胜出就宣称提速与稳定提升。"
+      ],
+      "reviewedAt": "2026-11-16T10:31:19.130306+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.18533v1",
+        "https://arxiv.org/html/2611.18533v1",
+        "https://zlhe0.github.io/ModHarness-RL/",
+        "https://github.com/ZLHe0/ModHarness-RL/blob/7afa6adfecc660fda7925eaab91fa3ed226c9d96/docs/index.html"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.18533",
+      "status": "pending",
+      "checkedAt": "2026-11-16T10:30:53.386938+00:00"
+    }
   }
 ]
