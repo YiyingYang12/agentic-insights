@@ -20348,5 +20348,372 @@
         "https://github.com/cvs-health/cua-agent-kit/blob/965ee258bfb778cad4e7077301974d4e83d97916/SECURITY.md"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.16312v1",
+    "url": "https://arxiv.org/abs/2611.16312v1",
+    "id": "paper-alloy-2611-16312",
+    "title": "Alloy：让编码Agent搭建多材料仿真，也暴露物理健康边界",
+    "summary": "Alloy把机器人、布料、缆绳和液体接进同一仿真循环，并让编码Agent通过文档与MCP建场景、训练和检查健康。作者倒水测试为118/128成功，但健康OK并不保证物理正确。",
+    "insight": "作者主张：材料自动选求解器、跨求解器耦合与逐世界健康分级组成面向Agent的引擎。本站判断：研究价值在把仿真故障显式反馈给代理；不能将数值健康等同任务成功或现实可信度。",
+    "limits": "作者报告，未复现；单次训练、仅仿真，无实机迁移证据。倒水118/128按入碗水量≥75%计；健康OK仍可能漏掉穿透和溢水。论文描述0.1.2而训练表使用0.1.0rc2。冷启动测试为八个独立Claude Opus 5.5会话，各自编写训练和评估代码，仅换随机种子的held-out回合，不是八种Agent横评。行走两项成绩来自同一次训练的不同检查点；时间排除首次GPU编译。吞吐为预发布开发版、暖启动、单次点测且只算物理；深度图吞吐不含物理。十项闭式校验使用作者自定容差，部分使用专用步长；不能证明任意多材料组合可靠。当前官方限制页仍列共享交换时钟导致世界间影响、布料不吸水、液体与颗粒不渗透，以及健康漏报；不要外推严格批量独立性。封面部分画面由Blender Cycles渲染，未测视觉质量或可编辑资产交付。早期0.x接口可能变化。",
+    "dateLabel": "2026-11-12 · arXiv v1",
+    "evidence": "原论文方法和实验、官方已知限制核验；未复现",
+    "originalTitle": "Alloy: A Multi-Material Physics Engine for Robot Learning",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-16T22:22:17.189982+00:00",
+    "paperOriginalDate": "2026-11-12T05:14:10Z",
+    "paperUpdatedAt": "2026-11-12T05:14:10Z",
+    "updatedAt": "2026-11-12T05:14:10Z",
+    "firstSeenAt": "2026-11-16T22:00:01Z",
+    "lastSeenAt": "2026-11-16T22:00:01Z",
+    "tags": [
+      "多材料仿真",
+      "机器人学习",
+      "环境健康",
+      "编码Agent"
+    ],
+    "authors": [
+      "Pranay Gupta",
+      "Deepanshu Rohilla"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "公开feed原始来源",
+        "url": "https://huggingface.co/papers/2611.16312"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.16312"
+      },
+      {
+        "label": "arXiv v1首发记录",
+        "url": "https://arxiv.org/abs/2611.16312v1"
+      },
+      {
+        "label": "原论文方法与实验表1–4",
+        "url": "https://arxiv.org/html/2611.16312v1"
+      },
+      {
+        "label": "作者开源仓库README",
+        "url": "https://github.com/argonrobotics-ai/alloy"
+      },
+      {
+        "label": "作者官方文档",
+        "url": "https://alloy.argonrobotics.ai/docs/"
+      },
+      {
+        "label": "作者列出的已知物理与渲染限制",
+        "url": "https://alloy.argonrobotics.ai/docs/keep-in-mind/"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Alloy把机器人、布料、缆绳和液体接进同一仿真循环，并让编码Agent通过文档与MCP建场景、训练和检查健康。作者倒水测试为118/128成功，但健康OK并不保证物理正确。",
+      "motivation": "机器人任务往往混合刚体、软体、液体和颗粒；编码代理不仅要写训练代码，还要选择求解器与步长、识别仿真失真。若只返回奖励，代理容易把数值故障误判为策略失败，甚至学会利用物理漏洞。",
+      "novelty": "作者主张：材料自动选求解器、跨求解器耦合与逐世界健康分级组成面向Agent的引擎。本站判断：研究价值在把仿真故障显式反馈给代理；不能将数值健康等同任务成功或现实可信度。",
+      "evidenceScope": "已读arXiv v1 §3.1–3.7材料路由、耦合、步长、健康与Agent接口，§4.1–4.5全部实验及§5范围；交叉核验公开GitHub README、官方文档与已知限制页。版本与实验口径、暖启动成本、健康漏报及共享时钟限制分别记录。未安装或运行作者代码，未复现成绩、未验证实机或逐图画质；verified仅指来源核验。",
+      "limits": "作者报告，未复现；单次训练、仅仿真，无实机迁移证据。倒水118/128按入碗水量≥75%计；健康OK仍可能漏掉穿透和溢水。论文描述0.1.2而训练表使用0.1.0rc2。冷启动测试为八个独立Claude Opus 5.5会话，各自编写训练和评估代码，仅换随机种子的held-out回合，不是八种Agent横评。行走两项成绩来自同一次训练的不同检查点；时间排除首次GPU编译。吞吐为预发布开发版、暖启动、单次点测且只算物理；深度图吞吐不含物理。十项闭式校验使用作者自定容差，部分使用专用步长；不能证明任意多材料组合可靠。当前官方限制页仍列共享交换时钟导致世界间影响、布料不吸水、液体与颗粒不渗透，以及健康漏报；不要外推严格批量独立性。封面部分画面由Blender Cycles渲染，未测视觉质量或可编辑资产交付。早期0.x接口可能变化。",
+      "method": [
+        "用形状与带来源的材料卡描述对象；路由器按相态、几何和估计形变选择刚体、VBD、MPM或液体求解器，输出路由理由并允许覆盖。",
+        "以代理刚体交换位姿、速度和接触力；根据质量比及强耦合关系选择单向、交错迭代或ADMM耦合，用残差检查收敛。",
+        "把控制周期拆成二次幂交换步，按接触刚度和有效质量选择步长；能量或界面异常触发更细步长重算，逐世界标记OK、DEGRADED、INVALID。",
+        "通过Python、JSON CLI及MCP提供建场景、步进、读状态和健康工具；错误携带修复建议，包内附版本匹配的文档与示例。",
+        "八个冷启动编码会话仅读随包资料，在单张L4上各自训练和评估；另测暖启动吞吐、深度图速度、十项闭式校验和1024世界积木稳定性。"
+      ],
+      "inspirations": [
+        "为训练环境同时记录任务达成、物理健康和独立物理约束三类结果；加入健康OK但穿透/溢水的反例，防止代理把引擎自检当成奖励真值。",
+        "把建场景到训练的冷启动评测拆成安装、接口调用、有效仿真、策略学习四段；固定模型和总预算，计入首次编译与奖励修改成本。",
+        "扩展多材料场景时先测耦合边界：单世界与批量结果一致性、无效世界对其他世界的影响、接触力守恒；达到阈值再研究策略迁移。"
+      ],
+      "reviewedAt": "2026-11-16T22:22:17.189982+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.16312v1",
+        "https://arxiv.org/html/2611.16312v1",
+        "https://github.com/argonrobotics-ai/alloy",
+        "https://alloy.argonrobotics.ai/docs/",
+        "https://alloy.argonrobotics.ai/docs/keep-in-mind/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.16312",
+      "status": "pending",
+      "checkedAt": "2026-11-16T22:22:17.189982+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.544",
+    "url": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.544",
+    "id": "update-remotion-v40544-export-20261116",
+    "title": "Remotion 4.0.544：把代码视频交给剪辑师，先说清哪些已烘焙",
+    "summary": "Remotion 4.0.544把OTIO导出接入Studio与Agent技能：媒体尽量保留为可剪片段，复杂动效和混音局部烘焙。入口转交Agent，尚非已验证的自动无损转换；本轮未运行。",
+    "insight": "将代码生成视频交给剪辑师，需要把“能生成文件、能导入、能局部修改、音画像原作”分开验收。新入口把这些要求交给Agent配方；真正值得借鉴的是逐贡献核对和显式降级，实际成功率还需独立往返实验。",
+    "limits": "本轮实际导出、编辑往返与画质测试均为0例。Studio入口把任务交给Agent，并非确定性无损转换器；动画、效果及复杂音频可能烘焙，像素或声音保留不等于参数仍可编辑。所读源码与配方未给出成功率、失败分母、耗时或人工视觉对照。UI导出提示仅带composition ID，不能据此保证携带当前所有props；配方要求确认实际props、calculateMetadata及运行时分支，否则明确默认情形或停止。导出弹窗受本地可渲染、非只读及非Browser Studio条件限制，Agent未就绪时仍可能只提供复制提示。原生片段只适用于可忠实表达的媒体与处理；字幕、spring、变换、Canvas/Three/Lottie等通常需局部渲染，复杂混音可合成音轨且丧失内部可分离性。素材缺失、无法本地化、时长不足、遗漏贡献或重复音画替代按配方应判失败，但这是给Agent的验收约定，不等于所有检查已由强制程序实现。浮点音频建议依赖实际编码链路与编辑器支持；文档明示Remotion WAV为16位，转成浮点不能恢复已失精度。未验证Resolve/Premiere导入、移动目录后的重连、混合帧率或往返保真；4.0.543已存在长导出配方，本次新增UI与技能入口不等于首次支持OTIO。",
+    "organization": "Remotion",
+    "dateLabel": "2026-11-16官方发行；本轮补齐固定源码与交付边界",
+    "evidence": "官方发行、固定UI源码、完整OTIO配方及旧版文档比较；未运行或验证往返",
+    "originalTitle": "Remotion v4.0.544 — Studio OpenTimelineIO export and remotion-render skill",
+    "date": "2026-11-16",
+    "checkedAt": "2026-11-16T22:23:04.283410+00:00",
+    "updatedAt": "2026-11-16T08:16:37Z",
+    "firstSeenAt": "2026-11-16T22:23:45.971214+00:00",
+    "tags": [
+      "Remotion",
+      "OTIO",
+      "Agent技能",
+      "可编辑时间线",
+      "局部烘焙"
+    ],
+    "topics": [
+      "code2motion",
+      "code2video",
+      "video-editing"
+    ],
+    "featured": true,
+    "sources": [
+      {
+        "label": "4.0.544官方发行：11月16日08:16:37 UTC",
+        "url": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.544"
+      },
+      {
+        "label": "官方发行列表：保留待核队列原来源",
+        "url": "https://github.com/remotion-dev/remotion/releases"
+      },
+      {
+        "label": "固定Studio：导出菜单及composition ID",
+        "url": "https://github.com/remotion-dev/remotion/blob/dd33bbdcacac5087c8e338c6cae529d0a1ad5663/packages/studio/src/components/RenderButton.tsx"
+      },
+      {
+        "label": "固定Studio：导出弹窗转为Agent提示",
+        "url": "https://github.com/remotion-dev/remotion/blob/dd33bbdcacac5087c8e338c6cae529d0a1ad5663/packages/studio/src/components/Modals.tsx"
+      },
+      {
+        "label": "固定Studio：提示组件桥接",
+        "url": "https://github.com/remotion-dev/remotion/blob/dd33bbdcacac5087c8e338c6cae529d0a1ad5663/packages/studio/src/components/CodeChangeModal.tsx"
+      },
+      {
+        "label": "固定Studio：Agent可用性与复制提示分支",
+        "url": "https://github.com/remotion-dev/remotion/blob/dd33bbdcacac5087c8e338c6cae529d0a1ad5663/packages/studio/src/components/AgentPrompt.tsx"
+      },
+      {
+        "label": "固定技能文本：OTIO入口与props说明",
+        "url": "https://github.com/remotion-dev/remotion/blob/dd33bbdcacac5087c8e338c6cae529d0a1ad5663/packages/skills/skills/remotion-render/SKILL.md"
+      },
+      {
+        "label": "固定导出协议：原生片段、烘焙、素材和失败验收",
+        "url": "https://github.com/remotion-dev/remotion/blob/dd33bbdcacac5087c8e338c6cae529d0a1ad5663/packages/skills/skills/remotion-render/opentimeline.md"
+      },
+      {
+        "label": "固定文档：4.0.544转入Agent技能",
+        "url": "https://github.com/remotion-dev/remotion/blob/dd33bbdcacac5087c8e338c6cae529d0a1ad5663/packages/docs/docs/export-opentimeline.mdx"
+      },
+      {
+        "label": "4.0.543固定旧文档：此前已有OTIO导出配方",
+        "url": "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/docs/docs/export-opentimeline.mdx"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Remotion 4.0.544把OTIO导出接入Studio与Agent技能：媒体尽量保留为可剪片段，复杂动效和混音局部烘焙。入口转交Agent，尚非已验证的自动无损转换；本轮未运行。",
+      "motivation": "代码视频能播放，不代表剪辑师能继续移动镜头、替换素材或单改字幕。React动态树与编辑器时间线并不等价，交付需要同时说明哪些片段仍可编辑、哪些效果已烘焙，以及素材能否完整搬运。",
+      "novelty": "官方新增Studio导出菜单及remotion-render的OTIO入口。本站判断：价值在将可编辑片段与烘焙损失、失败条件写成明确交付协议；长配方在4.0.543已存在，不能宣传为首次OTIO能力或无损转换突破。",
+      "evidenceScope": "已读11月16日官方4.0.544发行、匿名解析tag对应dd33bbdcacac5087c8e338c6cae529d0a1ad5663，静态精读RenderButton、Modals、CodeChangeModal、AgentPrompt及完整OTIO技能配方；另核modal状态、package版本和短文档。读取4.0.543固定旧导出文档及PR13327/13334差异，区分已有配方与新增UI/技能入口。方法中的“核验/停止”是官方配方要求，不是本站已经执行的导出步骤。研究产物面向代码视频、动效进入可编辑剪辑工程，因此保留队列的video-editing、code2video、code2motion；没有3D场景代码生成新增，不加code2-3d。本站执行样本、输出工程、往返导入、视觉和音频实测均为0；来源未给针对该新入口的基准成功分母。只读官方技能文本，未执行其中命令、安装依赖或使用用户素材。verified仅表示来源核验。",
+      "limits": "本轮实际导出、编辑往返与画质测试均为0例。Studio入口把任务交给Agent，并非确定性无损转换器；动画、效果及复杂音频可能烘焙，像素或声音保留不等于参数仍可编辑。所读源码与配方未给出成功率、失败分母、耗时或人工视觉对照。UI导出提示仅带composition ID，不能据此保证携带当前所有props；配方要求确认实际props、calculateMetadata及运行时分支，否则明确默认情形或停止。导出弹窗受本地可渲染、非只读及非Browser Studio条件限制，Agent未就绪时仍可能只提供复制提示。原生片段只适用于可忠实表达的媒体与处理；字幕、spring、变换、Canvas/Three/Lottie等通常需局部渲染，复杂混音可合成音轨且丧失内部可分离性。素材缺失、无法本地化、时长不足、遗漏贡献或重复音画替代按配方应判失败，但这是给Agent的验收约定，不等于所有检查已由强制程序实现。浮点音频建议依赖实际编码链路与编辑器支持；文档明示Remotion WAV为16位，转成浮点不能恢复已失精度。未验证Resolve/Premiere导入、移动目录后的重连、混合帧率或往返保真；4.0.543已存在长导出配方，本次新增UI与技能入口不等于首次支持OTIO。",
+      "method": [
+        "Studio在可渲染的本地工程显示OTIO导出入口，弹窗生成含composition ID的remotion-render提示，转交可用Agent或供复制；此入口本身不生成时间线文件。",
+        "Agent按固定配方读Composition、实际props与calculateMetadata，累加Sequence/Series时间，列清全部音画贡献、裁剪和源时长；运行时分支不能擅自猜测。",
+        "可忠实表示的媒体保留为原生片段；优先只烘焙不支持属性，再退到透明叠层、局部不透明替代或音频stem，避免替代物与原贡献同时生效。",
+        "把素材与派生文件放在OTIO旁，核非空、可读和可用时长；以RationalTime、Gap及分轨表达时间，重叠片段另开轨，缺素材或覆盖不足则停止。",
+        "核JSON、素材引用和每项音画的唯一归属，报告原生、烘焙及遗漏清单；配方要求缺项或重复贡献判失败，实际编辑器导入与画质仍需另外验收。"
+      ],
+      "inspirations": [
+        "为代码视频导出建立逐贡献账本：每段视频、字幕、动效与音轨标记原生、派生或烘焙，并绑定时间区间；用缺项和双重音轨注入检验Agent是否会拒绝虚假成功。",
+        "制作带实际props、嵌套时间、混合FPS、变速、静音和叠层的小型往返集；分别报告文件生成率、目标编辑器导入率、指定元素可编辑率、音画误差和总耗时，不能合成一个成功率。",
+        "将“只改一个字幕或镜头”作为二次编辑任务，对比最小局部烘焙与全片扁平化；记录未修改区域保持、可重用源素材比例及渲染成本，量化交付可编辑性而非只看最终画面。"
+      ],
+      "reviewedAt": "2026-11-16T22:23:04.283410+00:00",
+      "sourceUrls": [
+        "https://github.com/remotion-dev/remotion/releases/tag/v4.0.544",
+        "https://github.com/remotion-dev/remotion/releases",
+        "https://github.com/remotion-dev/remotion/blob/dd33bbdcacac5087c8e338c6cae529d0a1ad5663/packages/studio/src/components/RenderButton.tsx",
+        "https://github.com/remotion-dev/remotion/blob/dd33bbdcacac5087c8e338c6cae529d0a1ad5663/packages/studio/src/components/Modals.tsx",
+        "https://github.com/remotion-dev/remotion/blob/dd33bbdcacac5087c8e338c6cae529d0a1ad5663/packages/studio/src/components/CodeChangeModal.tsx",
+        "https://github.com/remotion-dev/remotion/blob/dd33bbdcacac5087c8e338c6cae529d0a1ad5663/packages/studio/src/components/AgentPrompt.tsx",
+        "https://github.com/remotion-dev/remotion/blob/dd33bbdcacac5087c8e338c6cae529d0a1ad5663/packages/skills/skills/remotion-render/SKILL.md",
+        "https://github.com/remotion-dev/remotion/blob/dd33bbdcacac5087c8e338c6cae529d0a1ad5663/packages/skills/skills/remotion-render/opentimeline.md",
+        "https://github.com/remotion-dev/remotion/blob/dd33bbdcacac5087c8e338c6cae529d0a1ad5663/packages/docs/docs/export-opentimeline.mdx",
+        "https://github.com/remotion-dev/remotion/blob/4190c2add7b019b4a06deef6e66f9e1d60aae3bc/packages/docs/docs/export-opentimeline.mdx"
+      ]
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.17287v1",
+    "url": "https://arxiv.org/abs/2611.17287v1",
+    "id": "paper-2611.17287",
+    "title": "NOPO：只抑制可信失败，把未证伪答案留作组支持",
+    "summary": "NOPO只压可信失败，未证伪答案仅用于组权重。Qwen3-4B五任务平均pass@16为52.86%（GRPO48.93%）；主表在各自测试题上训练再评测，非独立留出泛化。",
+    "insight": "作者主张用参考相对负例抑制及组支持权重适配单边验证。本站判断：关键是把“没查出错”与“正确”分开；未证伪样本仍参与权重，方法不保证概率移向真解，也不是无需评估真值。",
+    "limits": "未复现；依赖负判定可信。主表同测试题训练再评测；512采样分母为CodeContests239题、LCB175题。无多种子区间或等总费用证据，pass@1并非更优。主表为两种Qwen3非思考模型分别在五个benchmark上训练，不是单一模型跨五域通用成绩；平均是五列宏平均，非按题数加权。训练只用单边检查，评测仍使用公开+隐藏测试或标准答案；无完整训练真值不等于无监督信号，也不等于无需真实正确性评估。Qwen3-4B主表52.86%对GRPO48.93%是pass@16，差3.93个百分点；8B为52.13%对48.27%，差3.86个百分点。十个模型×任务单元中NOPO九项最优，8B OlympiadBench76.52%低于GRPO76.97%。CodeContests和LCB的512次采样覆盖表明确总数239和175；虽配置写LCB release_v6，未完整解释175题筛选映射，不能称完整v6榜单。TACO还排除64道解析不到公开测试的题；正文/附录未完整列齐其余各实验题数与固定样本ID。大k收益不能换成单次成功：4B LCB的pass@1为25.33%，低于Base26.03%和GRPO29.40%；CodeContests为26.87%，亦低于GRPO37.23%。固定512次采样覆盖更多题只是该预算下的操作性能力边界，不证明基础模型永远不能解、没有遗忘或更省推理。公开测试与逻辑必要条件的负例精度100%依赖检查器和执行环境正确；真实程序超时、环境差异及错误规范仍可能误杀。逻辑检查器不读谜题线索，仅核格式和取值域，不能等同完整逻辑求解验证。数学自验证器没有结构性保证：训练前负判定精度95.8%/97.4%，意味着被拒绝者仍含4.2%/2.6%真实正确回答；这不是以全部正确回答为分母的误杀率。负类召回仅12.5%/8.8%，即大多数真实错误未被发现；高负例精度不能代替高错误覆盖。组权重来自未证伪数量而非真实正确率，若未证伪池主要是漏检错误，概率仍可能移向未知失败；全失败组零更新也不能扩展当前无可见支持的难题。NPO自衰减与组权重并非单调改进或完全防奖励投机的理论保证。默认γ=1；γ=0退化为NPO，γ=0.5/1/2消融主要在4B TACO及三个迁移目标，另有8B五任务NPO对照。未直接以受控误杀率和漏检率网格证明对任意验证器噪声鲁棒。最长150步为上限；负优化方法按熵发散前最近检查点评估，未给统一数值发散阈值、完整各run实际步数和多次训练方差。每组16、每步256生成量相同不等于实际总token、更新步数、评测查询或费用相同。代码回答上限8192 tokens，逻辑/数学16384；温度0.8、top_p0.8、top_k20。八张80GB A100的典型训练约12小时，512次评估扫描也约12小时；这些是典型资源描述，不是逐方法总GPU小时和验证器token账单。自验证器用相同Qwen骨干，但公开描述未完整说明验证器检查点是否随策略刷新及其独立生成预算；本轮未找到作者来源确认的公开实现/权重，无法静态核损失归一化、数据列表及评测实现。已读原始TeX方法、实验和完整附录，HTML与HF单篇页404不影响原文阅读；PDF仅下载核格式，未作图像/曲线独立验收。arXiv备注称NeurIPS2026 Spotlight，但本轮未核官方会议记录，不作为已独立确认事实。",
+    "organization": "Nanyang Technological University / Skywork AI",
+    "dateLabel": "2026-11-12 首发（UTC；北京时间11月13日02:52）",
+    "evidence": "已读原TeX方法、实验及完整附录；HTML/HF单篇不可用；未复现。",
+    "originalTitle": "Negative-Only Policy Optimization for One-Sided Verifiable Rewards",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-16T22:21:45.472961+00:00",
+    "paperOriginalDate": "2026-11-12T18:52:33Z",
+    "paperUpdatedAt": "2026-11-12T18:52:33Z",
+    "updatedAt": "2026-11-12T18:52:33Z",
+    "firstSeenAt": "2026-11-16T22:23:45.971214+00:00",
+    "tags": [
+      "RLVR",
+      "Negative-only learning",
+      "Verifier noise",
+      "NOPO"
+    ],
+    "authors": [
+      "Jiacheng Xu",
+      "Shuo He",
+      "Fuxiang Zhang",
+      "Chaojie Wang",
+      "Bo An"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "arXiv v1摘要、作者与原始提交时间",
+        "url": "https://arxiv.org/abs/2611.17287v1"
+      },
+      {
+        "label": "原论文PDF（已下载，全文分析据原TeX）",
+        "url": "https://arxiv.org/pdf/2611.17287v1"
+      },
+      {
+        "label": "arXiv v1原TeX：方法、实验与完整附录",
+        "url": "https://arxiv.org/src/2611.17287v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "NOPO只压可信失败，未证伪答案仅用于组权重。Qwen3-4B五任务平均pass@16为52.86%（GRPO48.93%）；主表在各自测试题上训练再评测，非独立留出泛化。",
+      "motivation": "便宜检查常能证伪错误，却不能认证通过者正确。把通过部分单元测试或未被模型找出错误的回答直接奖励，会强化漏检捷径；问题是如何只利用可靠拒绝，同时避免把概率无方向地推向新的错误。",
+      "novelty": "作者主张用参考相对负例抑制及组支持权重适配单边验证。本站判断：关键是把“没查出错”与“正确”分开；未证伪样本仍参与权重，方法不保证概率移向真解，也不是无需评估真值。",
+      "evidenceScope": "直接读取arXiv v1摘要、作者和提交记录，以及原始TeX的Preliminaries、OSV、NOPO、Experiments、Conclusion、完整附录算法与表；非根据二手解读重建方法，未执行作者代码或复现。NPO损失为(2/β)log(1+exp(βΔ))，Δ=logπθ(y|x)−logπref(y|x)，参考为冻结base；导数为2σ(βΔ)。NOPO乘(c/G)^γ，β=.1、γ=1、G=16，标签及权重不反传。γ>0时全失败组零权重，全通过组没有负项；γ=0的NPO仍抑制全失败组。若负例比例p，则默认总权重与p(1−p)成正比。训练前q_neg=P(真实错误|检查拒绝)、q_pos=P(真实错误|检查通过)、r_neg=P(检查拒绝|真实错误)，三者分母不同；q_pos不是所有真实错误被误判通过的频率。4B CodeContests训练后NOPO的q_pos16.6%，GRPO25.2%，Base20.7%，只说明该已测检查器条件比例变化。主表4B各任务NOPO为TACO19.52、CodeContests50.47、LCB39.61、ZebraLogic79.37、Olympiad75.33；8B为19.98/55.04/42.86/66.25/76.52。训练奖励平均公开测试数TACO1.7、CodeContests1.9、LCB2.6，完整评测平均204/12/40条，并非训练题数。512样本扫描中CodeContests：Base122/239题至少一解(51.05%)、NOPO160/239(66.95%)，共同120，丢失2、新增40；LCB：Base74/175(42.29%)、NOPO89/175(50.86%)，共同73、丢失1、新增16。没有把这两个分母移植给所有主表单元。跨基准迁移只核4B：CodeContests训练至未见TACO/LCB/CodeForces宏平均29.49%，Base23.66、GRPO23.30；LCB训练至未见TACO/CodeContests/CodeForces为31.93%，Base25.90、GRPO24.91。目标未用于本轮训练不代表预训练无污染。TACO训练的4B消融，未见三目标平均NPO38.53、NSR38.67、γ=.5与2均39.55、γ=1为41.44；8B五任务NPO平均49.35对NOPO52.13。只报告这些受测配置，不推广为任意任务γ=1最优。方法类比NPO遗忘损失，但没有证明去掉负样本概率必然增加真实正确答案；本站把“能力边界扩张”限定为已报告固定预算的题目覆盖。",
+      "limits": "未复现；依赖负判定可信。主表同测试题训练再评测；512采样分母为CodeContests239题、LCB175题。无多种子区间或等总费用证据，pass@1并非更优。主表为两种Qwen3非思考模型分别在五个benchmark上训练，不是单一模型跨五域通用成绩；平均是五列宏平均，非按题数加权。训练只用单边检查，评测仍使用公开+隐藏测试或标准答案；无完整训练真值不等于无监督信号，也不等于无需真实正确性评估。Qwen3-4B主表52.86%对GRPO48.93%是pass@16，差3.93个百分点；8B为52.13%对48.27%，差3.86个百分点。十个模型×任务单元中NOPO九项最优，8B OlympiadBench76.52%低于GRPO76.97%。CodeContests和LCB的512次采样覆盖表明确总数239和175；虽配置写LCB release_v6，未完整解释175题筛选映射，不能称完整v6榜单。TACO还排除64道解析不到公开测试的题；正文/附录未完整列齐其余各实验题数与固定样本ID。大k收益不能换成单次成功：4B LCB的pass@1为25.33%，低于Base26.03%和GRPO29.40%；CodeContests为26.87%，亦低于GRPO37.23%。固定512次采样覆盖更多题只是该预算下的操作性能力边界，不证明基础模型永远不能解、没有遗忘或更省推理。公开测试与逻辑必要条件的负例精度100%依赖检查器和执行环境正确；真实程序超时、环境差异及错误规范仍可能误杀。逻辑检查器不读谜题线索，仅核格式和取值域，不能等同完整逻辑求解验证。数学自验证器没有结构性保证：训练前负判定精度95.8%/97.4%，意味着被拒绝者仍含4.2%/2.6%真实正确回答；这不是以全部正确回答为分母的误杀率。负类召回仅12.5%/8.8%，即大多数真实错误未被发现；高负例精度不能代替高错误覆盖。组权重来自未证伪数量而非真实正确率，若未证伪池主要是漏检错误，概率仍可能移向未知失败；全失败组零更新也不能扩展当前无可见支持的难题。NPO自衰减与组权重并非单调改进或完全防奖励投机的理论保证。默认γ=1；γ=0退化为NPO，γ=0.5/1/2消融主要在4B TACO及三个迁移目标，另有8B五任务NPO对照。未直接以受控误杀率和漏检率网格证明对任意验证器噪声鲁棒。最长150步为上限；负优化方法按熵发散前最近检查点评估，未给统一数值发散阈值、完整各run实际步数和多次训练方差。每组16、每步256生成量相同不等于实际总token、更新步数、评测查询或费用相同。代码回答上限8192 tokens，逻辑/数学16384；温度0.8、top_p0.8、top_k20。八张80GB A100的典型训练约12小时，512次评估扫描也约12小时；这些是典型资源描述，不是逐方法总GPU小时和验证器token账单。自验证器用相同Qwen骨干，但公开描述未完整说明验证器检查点是否随策略刷新及其独立生成预算；本轮未找到作者来源确认的公开实现/权重，无法静态核损失归一化、数据列表及评测实现。已读原始TeX方法、实验和完整附录，HTML与HF单篇页404不影响原文阅读；PDF仅下载核格式，未作图像/曲线独立验收。arXiv备注称NeurIPS2026 Spotlight，但本轮未核官方会议记录，不作为已独立确认事实。",
+      "method": [
+        "先定义能发现错误的检查器：代码跑公开测试，逻辑只查格式和取值域，数学由同规模模型找具体错误；通过者视作未标注，不能当正确示范。",
+        "每提示从当前旧策略采16个回答，记录检查结果；令c为未证伪数量，默认组权重c/16。全失败组不更新；全通过组无负例，也不产生该损失。",
+        "只对失败回答计算相对冻结初始模型的NPO损失：2/β乘softplus(β乘序列对数概率差)，β=0.1；负例被压低后梯度逐渐减弱，不额外加KL。",
+        "将负例损失按组大小平均并乘固定组权重，梯度只穿过负例概率；每步16提示共256回答，最多150步，监测熵并选发散前最近检查点。",
+        "用隐藏测试或标准答案评估pass@16，另做每题512次采样及跨基准迁移；主表同题训练评测、未见目标迁移和推理采样成本分别报告。"
+      ],
+      "inspirations": [
+        "给验证器分别建立“拒绝中真错比例、通过中真错比例、真错被发现比例”的人工抽检账本，持续审误杀与漏检；自验证器应测试随训练分布变化后的校准，而非沿用训练前精度。",
+        "对代码创作中的编译失败、类型错误和必要约束违例尝试负例抑制，但将通过编译视为未标注；保留冻结参考，记录全失败组被跳过比例，另设真实功能与视觉正确性评测。",
+        "把同题适应与未见任务泛化拆成两个协议，锁定训练提示、验证器和检查点规则；分别等生成token、等验证器查询、等GPU时间比较pass@1与大k覆盖，并报告新增与丢失题目。"
+      ],
+      "reviewedAt": "2026-11-16T22:21:45.472961+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.17287v1",
+        "https://arxiv.org/pdf/2611.17287v1",
+        "https://arxiv.org/src/2611.17287v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.17287",
+      "status": "pending",
+      "checkedAt": "2026-11-16T22:22:17.189982+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/openrouter",
+    "url": "https://huggingface.co/blog/openrouter",
+    "id": "official-hf-openrouter-routing-20261116",
+    "title": "HF接入OpenRouter：评测Agent时也要固定推理路由",
+    "summary": "HF宣布语言模型请求改由OpenRouter选择provider并在失败时回退，支持会话缓存粘性；同时取消语言模型的自带provider key路径。相同模型名背后的推理环境可能改变，Agent评测应记录实际路由。",
+    "insight": "本站判断：把provider、路由策略、缓存命中与失败重试纳入实验条件，才能区分模型能力变化和服务基础设施变化。默认路由追求速度、价格与可靠性的综合权衡，不能当成最低价或固定执行环境。",
+    "limits": "仅核公开文档，未发模型请求、未跑Agent或复现路由实验。博客宣布三种协议支持，不等于所有模型参数、工具调用和SDK行为已逐项兼容；总览中仍有“Chat Only”措辞，需按端点与模型核验。46%更少429、TTFT中位数下降16.9%来自OpenRouter 10/28报告的一周switchback实验，非HF本次迁移评测；同一实验每请求成本上升6.0%，不能宣称全面降价。provider级错误减少不等于任务成功、答案正确或工具副作用恰好一次；缓存与回退也不保证每轮相同provider。旧算法实验与11/16接入发布日期分开。",
+    "organization": "Hugging Face / OpenRouter",
+    "dateLabel": "2026-11-16 · HF博客发布日期；00:00 UTC为RSS时间，路由算法实验另发表于10/28",
+    "evidence": "官方博客、路由/缓存/计费/接入文档及合作方原始实验说明核验；未调用模型或复现。",
+    "date": "2026-11-16",
+    "checkedAt": "2026-11-16T22:23:01.281809+00:00",
+    "firstSeenAt": "2026-11-16T22:23:45.971214+00:00",
+    "tags": [
+      "Hugging Face",
+      "OpenRouter",
+      "Agent基础设施",
+      "推理路由",
+      "缓存与重试",
+      "证据边界"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "Hugging Face：11/16路由切换与自带key变更",
+        "url": "https://huggingface.co/blog/openrouter"
+      },
+      {
+        "label": "Hugging Face：路由与provider选择",
+        "url": "https://huggingface.co/docs/inference-providers"
+      },
+      {
+        "label": "Hugging Face：会话缓存与UUID约束",
+        "url": "https://huggingface.co/docs/inference-providers/prompt-caching"
+      },
+      {
+        "label": "Hugging Face：按provider计费与组织限制",
+        "url": "https://huggingface.co/docs/inference-providers/pricing"
+      },
+      {
+        "label": "Hugging Face：Responses接入及固定provider说明",
+        "url": "https://huggingface.co/docs/inference-providers/integrations/codex"
+      },
+      {
+        "label": "OpenRouter：10/28路由机制与switchback实验",
+        "url": "https://openrouter.ai/blog/announcements/how-we-rebuilt-provider-routing/"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "HF语言模型路由切到OpenRouter，加入自动回退与会话缓存粘性，并取消自带provider key路径。评测Agent时需同时记录模型、provider与路由策略。",
+      "motivation": "多轮Agent反复发送长上下文，还要等待工具调用前的模型输出。只固定模型名，可能混入provider速度、容量、缓存与重试差异，导致成功率和成本难以归因。",
+      "novelty": "官方主张是把HF语言模型服务迁入OpenRouter路由体系；该路由算法已有10/28说明。本站判断：新意在接入和行为变更，应把路由视为Agent实验条件，而非新模型能力。",
+      "evidenceScope": "已读HF发布全文及公开路由、prompt-caching、pricing、Codex接入文档，另读OpenRouter路由机制与实验结果。OpenRouter报告以3小时块交替新旧算法、每次切换丢弃1小时预热数据，覆盖一周逾2400万请求；这些是合作方报告，不是本站复现或HF迁移后的实测。未读后端实现、登录账户或调用付费接口。",
+      "limits": "仅核公开文档，未发模型请求、未跑Agent或复现路由实验。博客宣布三种协议支持，不等于所有模型参数、工具调用和SDK行为已逐项兼容；总览中仍有“Chat Only”措辞，需按端点与模型核验。46%更少429、TTFT中位数下降16.9%来自OpenRouter 10/28报告的一周switchback实验，非HF本次迁移评测；同一实验每请求成本上升6.0%，不能宣称全面降价。provider级错误减少不等于任务成功、答案正确或工具副作用恰好一次；缓存与回退也不保证每轮相同provider。旧算法实验与11/16接入发布日期分开。",
+      "method": [
+        "HF博客宣布聊天模型可经Chat Completions、Responses或Messages接口访问，由HF token统一鉴权计费；本站仅核文档，未测所有协议参数。",
+        "默认路由综合实测价格、速度和可靠性，失败时尝试其他provider；可用fastest、cheapest或指定provider后缀控制选择，固定provider会牺牲自动回退空间。",
+        "为同一会话发送稳定UUID形式的X-HF-Session-Id以保留provider缓存，并从usage中的cached_tokens观察命中；无效格式会被忽略，缓存并不等于结果缓存。",
+        "用实际provider拆分用量和账单，并遵守被计费组织的provider限制。语言模型不再支持自带provider key；图像、视频和音频生成仍走原HF路径，博客明确图像/视频自带key保留。"
+      ],
+      "inspirations": [
+        "同一任务集比较默认、最低价与固定provider，冻结模型版本、token预算和工具环境，分别报告任务成功、首token延迟、端到端时间与总账单。",
+        "做冷热缓存与故障注入对照，记录每轮provider、缓存token、重试次数和最终失败原因，检查服务级提升是否传递到多轮Agent。",
+        "把模型请求回退与有副作用的工具执行分开编号和去重；仅凭推理服务重试成功，不能判定写入、发送等动作只执行一次。"
+      ],
+      "reviewedAt": "2026-11-16T22:23:01.281809+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/blog/openrouter",
+        "https://huggingface.co/docs/inference-providers",
+        "https://huggingface.co/docs/inference-providers/prompt-caching",
+        "https://huggingface.co/docs/inference-providers/pricing",
+        "https://huggingface.co/docs/inference-providers/integrations/codex",
+        "https://openrouter.ai/blog/announcements/how-we-rebuilt-provider-routing/"
+      ]
+    }
   }
 ]
