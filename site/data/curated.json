@@ -19314,5 +19314,352 @@
       "status": "pending",
       "checkedAt": "2026-11-15T22:31:18.573509+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.17811v1",
+    "url": "https://arxiv.org/abs/2611.17811v1",
+    "id": "paper-review-appendix-2611-17811",
+    "title": "AI审稿的附录偏向：先区分批评位置与批评质量",
+    "summary": "该研究发现LLM审稿更常把批评关联到附录。表1人类8.40%与LLM62.00%含正文和附录混合归因；两组论文与年份不同，不能据此判定批评错误或审稿质量更差。",
+    "insight": "作者主张：把审稿批评的章节位置与主题分开分析，发现附录关注差异。本站判断：可用作审稿流程诊断，但位置统计不能替代正确性、严重性和核心贡献相关性的评价。",
+    "limits": "作者报告，未复现。批评位置不等于批评正确性；人类与LLM样本非配对，附录筛选阈值分别10/15页。62%含混合归因，不是62%只批评附录。 研究集中于长附录机器学习论文：近期ACL/EMNLP/COLM为录用终稿、ICLR2027为投稿稿；人类对照来自ICLR2021–2024，LLM来自不同的2027论文。模型自行归因其生成审稿，人类审稿由GPT-6.1 Sol归因；人工抽查未给可核的一致性或误判率。表1均值跨人类四年或四个模型，±不可自行解释为置信区间。公开统计脚本分母只含成功定位的条目，排除not_found；LLM与human目录的同名脚本内容相同且仍使用year/review_id的人类数据模式，尚未确认其如何直接对应各LLM主表。没有运行代码或重算数据。正文未给正文/附录等长度曝光或内容交换的受控实验；两组页位置分析的筛选条件也不同。历史增长仅相关性，不能归因为AI使用率上升。作者未验证每项批评的正确性、有用性或数值评分；附录里的问题仍可能实质影响结论。仅核原文与部分实现，未逐图核验，未核完整X作者帖。",
+    "dateLabel": "2026-11-13 · arXiv v1首发",
+    "evidence": "原论文方法与公开归因实现核验；未复现",
+    "originalTitle": "AI Reviews Are Biased Towards the Appendix",
+    "date": "2026-11-13",
+    "checkedAt": "2026-11-16T04:31:23.655060+00:00",
+    "paperOriginalDate": "2026-11-13T06:47:34Z",
+    "paperUpdatedAt": "2026-11-13T06:47:34Z",
+    "updatedAt": "2026-11-13T06:47:34Z",
+    "firstSeenAt": "2026-11-16T04:00:00Z",
+    "lastSeenAt": "2026-11-16T04:00:00Z",
+    "tags": [
+      "AI审稿",
+      "章节归因",
+      "评估偏差",
+      "配对对照"
+    ],
+    "authors": [
+      "Saptarshi Ghosh",
+      "Mohammad Saim",
+      "Tianyu Jiang"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "Hugging Face 论文页",
+        "url": "https://huggingface.co/papers/2611.17811"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.17811"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/cincynlp/review_appendix"
+      },
+      {
+        "label": "arXiv v1 · 首发记录",
+        "url": "https://arxiv.org/abs/2611.17811v1"
+      },
+      {
+        "label": "原论文全文 · 方法、结果与局限",
+        "url": "https://arxiv.org/html/2611.17811v1"
+      },
+      {
+        "label": "作者代码 · 固定提交",
+        "url": "https://github.com/cincynlp/review_appendix/tree/f0426b55a5e4fa775fef5b98fbc4f1f60cd4fad0"
+      },
+      {
+        "label": "审稿与章节归因提示",
+        "url": "https://github.com/cincynlp/review_appendix/blob/f0426b55a5e4fa775fef5b98fbc4f1f60cd4fad0/scripts/llm_review/review_codex.py"
+      },
+      {
+        "label": "公开归因统计脚本",
+        "url": "https://github.com/cincynlp/review_appendix/blob/f0426b55a5e4fa775fef5b98fbc4f1f60cd4fad0/scripts/llm_review/weakness_location_result.py"
+      },
+      {
+        "label": "人类审稿统计脚本",
+        "url": "https://github.com/cincynlp/review_appendix/blob/f0426b55a5e4fa775fef5b98fbc4f1f60cd4fad0/scripts/human_review/weakness_location_result.py"
+      },
+      {
+        "label": "长附录筛选实现",
+        "url": "https://github.com/cincynlp/review_appendix/blob/f0426b55a5e4fa775fef5b98fbc4f1f60cd4fad0/scripts/download_papers/extract_long_appendix_iclr.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "该研究发现LLM审稿更常把批评关联到附录。表1人类8.40%与LLM62.00%含正文和附录混合归因；两组论文与年份不同，不能据此判定批评错误或审稿质量更差。",
+      "motivation": "LLM生成的审稿可能大量讨论附录，却未说明这些意见是否触及论文核心。作者先研究批评在论文中的定位分布，再讨论它与人类审稿关注点的差异。",
+      "novelty": "作者主张：把审稿批评的章节位置与主题分开分析，发现附录关注差异。本站判断：可用作审稿流程诊断，但位置统计不能替代正确性、严重性和核心贡献相关性的评价。",
+      "evidenceScope": "阅读arXiv v1正文§1–7、表1–3、实验设置、讨论和局限；核arXiv首发、HF及作者仓库固定提交README、审稿/归因提示、长附录筛选及两份统计脚本。对照了混合归因、样本阈值、定位失败分母和人类/模型对照范围。未运行作者代码、未复算公开审稿数据、未逐图核验；verified仅表示来源核验。",
+      "limits": "作者报告，未复现。批评位置不等于批评正确性；人类与LLM样本非配对，附录筛选阈值分别10/15页。62%含混合归因，不是62%只批评附录。 研究集中于长附录机器学习论文：近期ACL/EMNLP/COLM为录用终稿、ICLR2027为投稿稿；人类对照来自ICLR2021–2024，LLM来自不同的2027论文。模型自行归因其生成审稿，人类审稿由GPT-6.1 Sol归因；人工抽查未给可核的一致性或误判率。表1均值跨人类四年或四个模型，±不可自行解释为置信区间。公开统计脚本分母只含成功定位的条目，排除not_found；LLM与human目录的同名脚本内容相同且仍使用year/review_id的人类数据模式，尚未确认其如何直接对应各LLM主表。没有运行代码或重算数据。正文未给正文/附录等长度曝光或内容交换的受控实验；两组页位置分析的筛选条件也不同。历史增长仅相关性，不能归因为AI使用率上升。作者未验证每项批评的正确性、有用性或数值评分；附录里的问题仍可能实质影响结论。仅核原文与部分实现，未逐图核验，未核完整X作者帖。",
+      "method": [
+        "筛选四个近期会议各200篇长附录论文，附录至少15页；移除作者、单位与链接，关闭主实验浏览检索，再让四个模型生成审稿。",
+        "给同一模型论文与其审稿，将每条批评定位到最多两个顶层章节；区分正文、附录、混合及无法定位，附录相关包括混合项。",
+        "对100篇ICLR2027稿件，用同一模型比较代理、全文API、PDF API和网页四种访问方式，检查附录关注是否仅来自读取界面。",
+        "取ICLR2021–2024每年200篇、附录至少10页的论文，各抽一份人类审稿，由GPT-6.1 Sol定位；与不同的2027论文上LLM审稿对照。",
+        "再做历年趋势和八类批评主题归因；报告附录相关与附录独占比例，公开脚本仅在成功定位条目内计算比例，不评判批评真伪。"
+      ],
+      "inspirations": [
+        "审稿评估把“批评位置、事实正确性、结论影响、可行动性”拆成四列；让独立人类盲评核查事实，并保留无法定位项及其比例。",
+        "做同文内容在正文/附录间随机交换的实验，匹配篇幅、年份、录用状态和推理预算；分别测位置偏好与有效核心问题召回。",
+        "比较审稿助手前后，不能奖励少读附录；先按严重性排序有效问题，再检查是否遗漏核心假设，并报告混合证据与审稿成本。"
+      ],
+      "reviewedAt": "2026-11-16T04:31:23.655060+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.17811v1",
+        "https://arxiv.org/html/2611.17811v1",
+        "https://huggingface.co/papers/2611.17811",
+        "https://github.com/cincynlp/review_appendix/tree/f0426b55a5e4fa775fef5b98fbc4f1f60cd4fad0",
+        "https://github.com/cincynlp/review_appendix/blob/f0426b55a5e4fa775fef5b98fbc4f1f60cd4fad0/scripts/llm_review/review_codex.py",
+        "https://github.com/cincynlp/review_appendix/blob/f0426b55a5e4fa775fef5b98fbc4f1f60cd4fad0/scripts/llm_review/weakness_location_result.py",
+        "https://github.com/cincynlp/review_appendix/blob/f0426b55a5e4fa775fef5b98fbc4f1f60cd4fad0/scripts/human_review/weakness_location_result.py",
+        "https://github.com/cincynlp/review_appendix/blob/f0426b55a5e4fa775fef5b98fbc4f1f60cd4fad0/scripts/download_papers/extract_long_appendix_iclr.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.17811",
+      "status": "pending",
+      "checkedAt": "2026-11-16T04:31:46.618592+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://github.com/videodraft-ai/cli/releases/tag/v0.38.1",
+    "url": "https://github.com/videodraft-ai/cli/releases/tag/v0.38.1",
+    "id": "videodraft-038-cloud-session-blender-review",
+    "title": "VideoDraft 0.38：让Blender脚本创作保留工程与云会话",
+    "summary": "VideoDraft 0.38将持续云GPU会话向全部账号开放，支持上传脚本、建改Blender场景、回拉小样、保存工程并暂停恢复；0.38.1补充Spot与成本提示。固定CLI可见按内容去重上传、命令状态轮询和已保存场景转最终渲染的接口。",
+    "insight": "对code2-3d Agent有价值的是保留可继续修改的工程和执行上下文。评测可从一次出图扩展为跨暂停恢复的连续修改任务，并分别验证命令成功、工程结构保持与完整成片质量。",
+    "limits": "仅静态读CLI与官方说明；未调用付费云服务，执行成功率、可编辑性通过率和视觉质量均无实测分母。服务端保存、计费与Spot恢复未独立验证；运行中命令会被中断，不代表续算。文件持久化不保证场景结构或修改意图正确。指南称仅命令完成后保存，运行中需sync；回拉、快照及最终渲染只看已保存文件，符号链接不保存。最终渲染须打包外部素材，并只处理所交的.blend。11个辅助测试定义不等于11次通过或端到端覆盖。启动、独立渲染尾部空闲与存储仍可能计费；30天保留期和额度边界来自官方说明。账号级render stop会影响其他项目与Agent，不能视为单会话停止。",
+    "organization": "VideoDraft",
+    "dateLabel": "v0.38.1 GitHub发布于11/15 21:19 UTC（北京11/16）；CHANGELOG标11/16",
+    "evidence": "官方发布、固定提交CLI与说明核验；未运行或复现。",
+    "date": "2026-11-15",
+    "checkedAt": "2026-11-16T04:34:15.680033+00:00",
+    "firstSeenAt": "2026-11-16T04:34:35.850747+00:00",
+    "tags": [
+      "VideoDraft",
+      "Blender脚本",
+      "可编辑工程",
+      "云会话",
+      "静态源码解读"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "v0.38.1 官方发布：11/15 21:19 UTC，即北京11/16",
+        "url": "https://github.com/videodraft-ai/cli/releases/tag/v0.38.1"
+      },
+      {
+        "label": "固定变更日志：0.37早期访问、0.38开放云会话、0.38.1状态提示",
+        "url": "https://github.com/videodraft-ai/cli/blob/f688e4cc5dcdb65c11b7aede086fd8a2f40d4551/CHANGELOG.md"
+      },
+      {
+        "label": "固定源码：云会话、增量文件、命令与渲染衔接",
+        "url": "https://github.com/videodraft-ai/cli/blob/f688e4cc5dcdb65c11b7aede086fd8a2f40d4551/src/commands/session.ts"
+      },
+      {
+        "label": "固定云会话说明：脚本建场景、保存与恢复边界",
+        "url": "https://github.com/videodraft-ai/cli/blob/f688e4cc5dcdb65c11b7aede086fd8a2f40d4551/skills/videodraft/references/cloud-sessions.md"
+      },
+      {
+        "label": "固定辅助函数测试定义，未运行",
+        "url": "https://github.com/videodraft-ai/cli/blob/f688e4cc5dcdb65c11b7aede086fd8a2f40d4551/test/cloud-session.test.ts"
+      },
+      {
+        "label": "固定版本号 0.38.1",
+        "url": "https://github.com/videodraft-ai/cli/blob/f688e4cc5dcdb65c11b7aede086fd8a2f40d4551/package.json"
+      },
+      {
+        "label": "固定README：单次云渲染模式，与云会话区分",
+        "url": "https://github.com/videodraft-ai/cli/blob/f688e4cc5dcdb65c11b7aede086fd8a2f40d4551/README.md"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "VideoDraft 0.38把云GPU变为可持续修改Blender工程的会话：脚本、场景和结果可同步、暂停再恢复。0.38.1补足成本与Spot状态提示；源码说明了控制流程，尚无运行、可编辑性或画质实测。",
+      "motivation": "代码创作往往需要反复建场景、改材质、渲染小样并保留工程。每次只提交最终文件会重复上传、丢失中间上下文；持续云会话把脚本执行和工程保存连起来，但需要明确哪些状态已保存、哪些中断仍待恢复。",
+      "novelty": "官方主张0.38将持续云会话向全部账号开放，0.38.1改进成本与状态可见性。本站判断：新价值是脚本、可编辑工程和渲染反馈的连续工作环境；这不是新生成模型，也未证明质量或效率提升。",
+      "evidenceScope": "已直接读取官方GitHub发布页并匿名核验v0.38.1标签，固定到提交f688e4cc5dcdb65c11b7aede086fd8a2f40d4551，package.json为0.38.1。完整静态阅读1075行session.ts及cloud-sessions说明，读取cloud-session.test.ts的11个辅助测试定义；核查0.37/0.38/0.38.1变更日志和README。脚本建改.blend及小样—最终渲染流程有明确官方说明，故只标code2-3d；不因通用GPU或VideoDraft名称加其他专题。命令执行、文件持久化、Spot和计费的服务端实现未核验；未安装、运行测试、调用云API或付费。README描述的单次render blender禁网/不运行内嵌脚本，与可执行脚本的云会话是不同模式；不能混用两者边界。verified仅指公开来源核验。",
+      "limits": "仅静态读CLI与官方说明；未调用付费云服务，执行成功率、可编辑性通过率和视觉质量均无实测分母。服务端保存、计费与Spot恢复未独立验证；运行中命令会被中断，不代表续算。文件持久化不保证场景结构或修改意图正确。指南称仅命令完成后保存，运行中需sync；回拉、快照及最终渲染只看已保存文件，符号链接不保存。最终渲染须打包外部素材，并只处理所交的.blend。11个辅助测试定义不等于11次通过或端到端覆盖。启动、独立渲染尾部空闲与存储仍可能计费；30天保留期和额度边界来自官方说明。账号级render stop会影响其他项目与Agent，不能视为单会话停止。",
+      "method": [
+        "按项目命名启动云会话，可从快照恢复，并设置闲置暂停、预算和Spot选项；客户端等待ready，暂停后的run默认请求新机器恢复，不能据此认定旧进程续算。",
+        "push先遍历文件并计算SHA256，向服务端查询缺失内容，仅上传缺项，再提交路径、哈希和权限映射；路径提交不自动重试，避免旧内容覆盖并发的新结果。",
+        "run把命令与工作目录交给云会话服务，可执行Blender脚本建改工程，并轮询状态与日志；非done使CLI退出1。指南要求脚本失败显式返回错误，命令完成才保存文件。",
+        "从已保存文件回拉工程或小样，也可sync、创建快照；最终.blend先转为scene_sha，再提交独立帧区间渲染。只有done且返回视频链接才下载成片，文件存在不等于视觉合格。",
+        "pause与release保存文件后关闭机器，快照供后续新会话使用；0.38.1显示Spot及短GPU用时。客户端仅对可安全重复的查询等请求重试，不自动重复start、run等创建操作。"
+      ],
+      "inspirations": [
+        "把程序化3D创作评测拆为脚本退出、工程可重新打开并修改、完整成片质量三层；保留失败次数、场景数与渲染样本数，不能用一个退出码代替全部成功率。",
+        "设计“暂停—换机器—重开工程—局部修改—重渲染”任务，记录文件哈希、对象结构和修改意图保持率；额外测试Spot中断时已完成与未完成命令的恢复差异。",
+        "将增量上传和安全重试纳入Agent工具协议：命令提交丢回复时先查询，避免重复执行；成本统计覆盖启动、空闲尾部和存储，固定模型与任务后再比较用时。"
+      ],
+      "reviewedAt": "2026-11-16T04:34:15.680033+00:00",
+      "sourceUrls": [
+        "https://github.com/videodraft-ai/cli/releases/tag/v0.38.1",
+        "https://github.com/videodraft-ai/cli/blob/f688e4cc5dcdb65c11b7aede086fd8a2f40d4551/CHANGELOG.md",
+        "https://github.com/videodraft-ai/cli/blob/f688e4cc5dcdb65c11b7aede086fd8a2f40d4551/src/commands/session.ts",
+        "https://github.com/videodraft-ai/cli/blob/f688e4cc5dcdb65c11b7aede086fd8a2f40d4551/skills/videodraft/references/cloud-sessions.md",
+        "https://github.com/videodraft-ai/cli/blob/f688e4cc5dcdb65c11b7aede086fd8a2f40d4551/test/cloud-session.test.ts",
+        "https://github.com/videodraft-ai/cli/blob/f688e4cc5dcdb65c11b7aede086fd8a2f40d4551/package.json",
+        "https://github.com/videodraft-ai/cli/blob/f688e4cc5dcdb65c11b7aede086fd8a2f40d4551/README.md"
+      ]
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.16402v1",
+    "url": "https://arxiv.org/abs/2611.16402v1",
+    "id": "paper-2611.16402",
+    "title": "BlinkOPD：让教师有图/闭眼双读，缓解学生前缀带偏视觉蒸馏",
+    "summary": "BlinkOPD让同一教师有图/去图双读学生前缀。4B、500图的六基准均分79.1%，优于6220图OPD-Aha的77.9%；这是独立图像效率，非12倍算力节省。单种子、依赖证据框，未复现。",
+    "insight": "作者主张：保留视觉标记与位置的去图参照，加首瞥冲突增益，减少语言前缀带偏教师。本站判断：价值在隔离视觉证据与前缀影响；仍有残余漂移，首瞥非真值，不能由均分提升推出逐题纠错保证。",
+    "limits": "作者结果未复现；限Qwen3.5-4B/9B、seed42、带证据框与聚焦提示。79.1%是六基准等权均分；500对6220仅独立图像数，非12倍计算节省。双教师前向及首瞥另有成本，未给等GPU小时比较。去重仅报告移除Vision-OPD池中与V*的191幅图重合的21图/题，从6241到6220；未独立验证全部训练与测试污染。固定CSV可数出500个选择索引和6220条池记录，未下载图像核哈希；选集脚本把500条重复6次成3000训练行，38×96×8为29184条采样轨迹预算，不是29184独立图像。论文称4B在4张B200上少于3小时，未给原始计时、教师开销拆分、各方法同总token或同墙钟成本；闭眼分支虽省视觉编码，仍需额外语言前向，首瞥也需预计算。主表4B的0.5K为79.1%，基座70.0%、重现OPD-Aha 6.2K为77.9%；6.2K本法79.6%。9B对应79.6/80.4%，非所有单项最好：0.5K的4B V*低于VAD、MME-CN低于OPD-Aha，9B ZoomBench低于Vision-OPD。灰色他作/闭源模型引用数只作参考，未同协议重评，不能据此宣称已严格超越所有大模型。主结果只列seed42，未给多次训练方差或置信区间。十项留出测试的All列是连同原六项共16项均分，不是十项均分；十项留出并非逐项优于所有蒸馏基线：9B 0.5K的MathVerse为75.0，低于OPD-Aha的77.4；6.2K的9B CV-Bench为85.5，低于基座87.0。分析探针是768训练问题×4轨迹=3072条，其中1732错误、1340正确；follow rate/纠错密度分母是1732错误轨迹，survival分母为其中首瞥正确的1181条。它是截断前缀后加选项答案提示的读出，不是独立开放生成成功率。完整前缀下错误追随率仍38.4%，不能说语言动量完全消除；首瞥判错或解析失败都会影响增益。300题“无法判断/不存在”探针测选项概率，不是所有真实场景幻觉率。附录命题只是对数比漂移的代数恒等式，不证明最终正确率。移除首瞥增益的4B均分78.5%对79.1%，并非所有样本都获益。闭眼输入删除内容token而非只遮attention；三路M-RoPE保持、打包文本行重编号，不能概括成所有位置完全不变。跨样本状态重置是全student/teacher/reference共同实施的训练工程条件，不应独占归因于对比目标。当前固定代码与论文简化设置存在待对齐细节：README/prepare_data为9B采用证据框宽高3倍上下文裁剪，而首瞥CSV仍来自原紧裁剪；训练脚本9B跳过首个响应token损失，4B不跳，且Vision-OPD基线脚本9B默认100提示、本法96。论文说9B同超参/裁剪的笼统描述不足以重建全部比较，应索取真实run配置与日志后再作严格公平性结论。代码不等于实验已复现。论文修正原评估器把Answer中的A等早期字母误当答案，统一重评分；静态代码实际在原first-letter命中、且能解析出与真值冲突的最终选项时拒绝，不是评估器零错误证明。十项留出测试按附录官方版本；MMVP保留有两对后来修正答案的旧官方真值，DynaMath为501种子×10变体，不是5010独立源题。未读图像定性示例像素、未运行代码/训练/模型/测试，未下载权重，未验证发布权重对应表格checkpoint。X仅公开搜索索引，无可核作者原帖或全文覆盖。",
+    "organization": "King’s College London / Cornell University / Aalto University / Huawei Noah’s Ark Lab / Imperial College London",
+    "dateLabel": "2026-11-12 · arXiv v1首发；既有队列补读",
+    "evidence": "原方法、实验及附录与固定作者代码静态核验；未执行或复现",
+    "originalTitle": "Teach with Blinks: Breaking Linguistic Momentum in On-Policy Distillation for Fine-Grained Multimodal Perception",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-16T04:31:40.599257+00:00",
+    "paperOriginalDate": "2026-11-12T07:11:20Z",
+    "paperUpdatedAt": "2026-11-12T07:11:20Z",
+    "updatedAt": "2026-11-12T07:11:20Z",
+    "firstSeenAt": "2026-11-16T04:34:35.850747+00:00",
+    "tags": [
+      "Distillation",
+      "多模态感知",
+      "On-Policy",
+      "首瞥门控",
+      "数据效率",
+      "待解读补齐"
+    ],
+    "authors": [
+      "Tangzheng Lian",
+      "Hang Zhang",
+      "Guanyu Hu",
+      "Renjiu Hu",
+      "Zhensong Zhang",
+      "Jiankang Deng",
+      "Jifei Song"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 · 原论文与首发时间",
+        "url": "https://arxiv.org/abs/2611.16402v1"
+      },
+      {
+        "label": "arXiv v1 HTML · 方法、实验和附录",
+        "url": "https://arxiv.org/html/2611.16402v1"
+      },
+      {
+        "label": "arXiv v1 · 原始LaTeX与图表资产",
+        "url": "https://arxiv.org/src/2611.16402v1"
+      },
+      {
+        "label": "Hugging Face · 公开论文页",
+        "url": "https://huggingface.co/papers/2611.16402"
+      },
+      {
+        "label": "作者固定README · 论文反链与代码口径",
+        "url": "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/README.md"
+      },
+      {
+        "label": "固定训练入口 · 预算、首token与超参",
+        "url": "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/scripts/train_blinkopd.sh"
+      },
+      {
+        "label": "固定数据准备 · 9B裁剪与首瞥来源",
+        "url": "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/scripts/prepare_data.py"
+      },
+      {
+        "label": "固定图像选择 · 重复行与seed",
+        "url": "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/scripts/select_k500.py"
+      },
+      {
+        "label": "固定闭眼输入 · 删除token与位置",
+        "url": "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/verl/utils/cut_reference.py"
+      },
+      {
+        "label": "固定首瞥门控 · 解析失败亦计冲突",
+        "url": "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/verl/utils/first_glance_gate.py"
+      },
+      {
+        "label": "固定actor · 两次教师前向",
+        "url": "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/verl/workers/actor/dp_actor.py"
+      },
+      {
+        "label": "固定loss · top100加尾桶与对比目标",
+        "url": "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/verl/trainer/ppo/core_algos.py"
+      },
+      {
+        "label": "固定trainer · 首瞥与闭眼输入接线",
+        "url": "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/verl/trainer/ppo/ray_trainer.py"
+      },
+      {
+        "label": "固定评估 · 最终选项冲突校正",
+        "url": "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/eval/score.py"
+      },
+      {
+        "label": "固定基线脚本 · 9B默认批量",
+        "url": "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/baselines/vision_opd.sh"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "BlinkOPD让同一教师有图/去图双读学生前缀。4B、500图的六基准均分79.1%，优于6220图OPD-Aha的77.9%；这是独立图像效率，非12倍算力节省。单种子、依赖证据框，未复现。",
+      "motivation": "视觉OPD让教师借局部放大图纠正看整图的学生，但教师也要沿学生已写出的前缀评分，可能顺着错误叙述而忽略图像。直接用灰图或无图文本作参照，又会改变输入结构或引入“物体不存在”的偏见；本文尝试只剥离视觉内容，并按与教师首瞥是否冲突控制纠正强度。",
+      "novelty": "作者主张：保留视觉标记与位置的去图参照，加首瞥冲突增益，减少语言前缀带偏教师。本站判断：价值在隔离视觉证据与前缀影响；仍有残余漂移，首瞥非真值，不能由均分提升推出逐题纠错保证。",
+      "evidenceScope": "直接读取arXiv 2611.16402v1元数据和HTML，精读§3分析、§4方法、§5实验及附录A–K与M；原始LaTeX交叉核目标公式、主表/消融、探针分母、seed42和判分协议。未做PDF页面或定性图像像素审阅。匿名git ls-remote固定作者公开仓库到60e603faf19f8b1b1f6e8f7025016ee222cd301c，静态读README、训练/选集/准备/评分脚本、闭眼/首瞥工具和actor/trainer/loss相关分支；CSV仅计数，不下载数据或运行作者代码。GitHub API限流403，改用可读公开GitHub网页与固定raw源码，无登录；HF论文页可读。数字均为作者报告；verified指来源核验，不表示复现。",
+      "limits": "作者结果未复现；限Qwen3.5-4B/9B、seed42、带证据框与聚焦提示。79.1%是六基准等权均分；500对6220仅独立图像数，非12倍计算节省。双教师前向及首瞥另有成本，未给等GPU小时比较。去重仅报告移除Vision-OPD池中与V*的191幅图重合的21图/题，从6241到6220；未独立验证全部训练与测试污染。固定CSV可数出500个选择索引和6220条池记录，未下载图像核哈希；选集脚本把500条重复6次成3000训练行，38×96×8为29184条采样轨迹预算，不是29184独立图像。论文称4B在4张B200上少于3小时，未给原始计时、教师开销拆分、各方法同总token或同墙钟成本；闭眼分支虽省视觉编码，仍需额外语言前向，首瞥也需预计算。主表4B的0.5K为79.1%，基座70.0%、重现OPD-Aha 6.2K为77.9%；6.2K本法79.6%。9B对应79.6/80.4%，非所有单项最好：0.5K的4B V*低于VAD、MME-CN低于OPD-Aha，9B ZoomBench低于Vision-OPD。灰色他作/闭源模型引用数只作参考，未同协议重评，不能据此宣称已严格超越所有大模型。主结果只列seed42，未给多次训练方差或置信区间。十项留出测试的All列是连同原六项共16项均分，不是十项均分；十项留出并非逐项优于所有蒸馏基线：9B 0.5K的MathVerse为75.0，低于OPD-Aha的77.4；6.2K的9B CV-Bench为85.5，低于基座87.0。分析探针是768训练问题×4轨迹=3072条，其中1732错误、1340正确；follow rate/纠错密度分母是1732错误轨迹，survival分母为其中首瞥正确的1181条。它是截断前缀后加选项答案提示的读出，不是独立开放生成成功率。完整前缀下错误追随率仍38.4%，不能说语言动量完全消除；首瞥判错或解析失败都会影响增益。300题“无法判断/不存在”探针测选项概率，不是所有真实场景幻觉率。附录命题只是对数比漂移的代数恒等式，不证明最终正确率。移除首瞥增益的4B均分78.5%对79.1%，并非所有样本都获益。闭眼输入删除内容token而非只遮attention；三路M-RoPE保持、打包文本行重编号，不能概括成所有位置完全不变。跨样本状态重置是全student/teacher/reference共同实施的训练工程条件，不应独占归因于对比目标。当前固定代码与论文简化设置存在待对齐细节：README/prepare_data为9B采用证据框宽高3倍上下文裁剪，而首瞥CSV仍来自原紧裁剪；训练脚本9B跳过首个响应token损失，4B不跳，且Vision-OPD基线脚本9B默认100提示、本法96。论文说9B同超参/裁剪的笼统描述不足以重建全部比较，应索取真实run配置与日志后再作严格公平性结论。代码不等于实验已复现。论文修正原评估器把Answer中的A等早期字母误当答案，统一重评分；静态代码实际在原first-letter命中、且能解析出与真值冲突的最终选项时拒绝，不是评估器零错误证明。十项留出测试按附录官方版本；MMVP保留有两对后来修正答案的旧官方真值，DynaMath为501种子×10变体，不是5010独立源题。未读图像定性示例像素、未运行代码/训练/模型/测试，未下载权重，未验证发布权重对应表格checkpoint。X仅公开搜索索引，无可核作者原帖或全文覆盖。",
+      "method": [
+        "从去除21个V*重合图后的6220图池选500图。学生看完整图上的证据框和聚焦提示，冻结同底座教师看局部裁剪；学生自己采样轨迹，训练不直接用标准答案作奖励。",
+        "教师沿同一学生前缀读取两次。闭眼分支删除图像内容token，保留视觉标记与三路M-RoPE位置，重编号打包用文本位置并跳过视觉编码器；各样本边界重置线性注意力状态。",
+        "训练前缓存教师无学生前缀的首瞥答案。学生答案与它冲突时，将增益β从3.4升至6.8；固定代码把答案解析失败也算冲突。该信号不需真值，但会继承教师误判。",
+        "目标为softmax(logp有图+β×(logp有图−logp闭眼))。在学生top100加尾桶上最小化JSD，α=0.5；每步96提示×8轨迹，共38步，双次教师前向另计成本。",
+        "以贪心、关闭thinking和修正答案判分测六个细粒度基准，并测十个留出基准。分别看等权均分、逐任务退化与首瞥消融；带框训练及单种子结果不代表任意图像或模型都有效。"
+      ],
+      "inspirations": [
+        "做视觉蒸馏时，将证据依赖与语言前缀依赖分别测量：固定同一图和前缀，对比紧裁剪、去内容但保位置、纯文本、同长度错配前缀。报告错误轨迹追随率、首瞥正确子集的证据保留以及学生正确轨迹的误伤率，不能只看训练loss。",
+        "验证小数据优势时同时锁独立图像数、重复次数、学生生成token、双教师评分token和GPU小时；明确证据框由谁提供。用多seed和未触碰的验证/测试划分，区分500图重用、门控收益与硬件/裁剪细节带来的收益。",
+        "把首瞥门控当有噪声诊断而非真值：分别统计教师首瞥错误、答案无法解析、图像裁剪变化和长前缀条件下的纠错/误伤。同步冻结判分器与packed状态重置，再比较4B/9B及其他家族，避免把实现修正误归因给新目标。"
+      ],
+      "reviewedAt": "2026-11-16T04:31:40.599257+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.16402v1",
+        "https://arxiv.org/html/2611.16402v1",
+        "https://arxiv.org/src/2611.16402v1",
+        "https://huggingface.co/papers/2611.16402",
+        "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/README.md",
+        "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/scripts/train_blinkopd.sh",
+        "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/scripts/prepare_data.py",
+        "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/scripts/select_k500.py",
+        "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/verl/utils/cut_reference.py",
+        "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/verl/utils/first_glance_gate.py",
+        "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/verl/workers/actor/dp_actor.py",
+        "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/verl/trainer/ppo/core_algos.py",
+        "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/verl/trainer/ppo/ray_trainer.py",
+        "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/eval/score.py",
+        "https://github.com/Supltz/BlinkOPD/blob/60e603faf19f8b1b1f6e8f7025016ee222cd301c/baselines/vision_opd.sh"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.16402",
+      "status": "pending",
+      "checkedAt": "2026-11-16T04:31:46.618592+00:00"
+    }
   }
 ]
