@@ -19975,5 +19975,378 @@
       "status": "pending",
       "checkedAt": "2026-11-16T10:30:53.386938+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.17323v1",
+    "url": "https://arxiv.org/abs/2611.17323v1",
+    "id": "paper-agentssl-2611-17323",
+    "title": "AgentSSL：能生成好程序，不等于能从中选对",
+    "summary": "AgentSSL把少标签学习改写成程序搜索；测试集最优候选在12设置中胜出8个，最大+21.81个百分点。但按实际反馈选程序可损失47.29个百分点，生成与选择须分开评测。",
+    "insight": "作者主张：以代理搜索半监督程序，并发布ProgramSelectBench研究选择瓶颈。本站判断：价值在显式区分能发现好程序与能挑中好程序；oracle胜出不能当成可部署增益。",
+    "limits": "作者报告，未复现。8/12与+21.81个百分点是测试集oracle最优；47.29个百分点是反馈选型regret。16,977为跨划分评估实例，非同数量独立算法。主实验限六个分类数据集、两档标签与CLIP/DINOv2；每程序在三个划分评估。主动选型使用额外查询标签，训练/选型各分一半预算只在部分数据集占优。828 GPU小时为搜索预算，计其他划分重跑后作者列2,484 GPU小时；异构GPU与API费用未统一，不能据此断言更省钱。附录A.3公式已含3种子，却称single seed，文字口径不一致，本站不外推成本。生态任务两例中AgentSL与AgentSSL相近，不能证明无标签数据普遍有效。论文所述预计算结果支持选择器离线研究；HF数据卡README为空，发布完备性未逐文件核验，未下载全部tensor、执行代码或复算成绩。",
+    "dateLabel": "2026-11-12 · arXiv v1",
+    "evidence": "原论文方法、评估口径与公开项目核验；未复现",
+    "originalTitle": "AgentSSL: Can MLE Agents Leverage Unlabeled Data?",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-16T16:30:27.501303+00:00",
+    "paperOriginalDate": "2026-11-12T18:59:06Z",
+    "paperUpdatedAt": "2026-11-12T18:59:06Z",
+    "updatedAt": "2026-11-12T18:59:06Z",
+    "firstSeenAt": "2026-11-13T10:00:01Z",
+    "lastSeenAt": "2026-11-16T16:00:00Z",
+    "tags": [
+      "半监督学习",
+      "程序搜索",
+      "选型后悔值",
+      "标注预算"
+    ],
+    "authors": [
+      "Ethan Lin",
+      "Akanksha Sarkar",
+      "Ziang Liu",
+      "Kristin Branson",
+      "Jennifer J. Sun"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 首发记录",
+        "url": "https://arxiv.org/abs/2611.17323v1"
+      },
+      {
+        "label": "原论文方法、表1–3与附录A–C",
+        "url": "https://arxiv.org/html/2611.17323v1"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://codiscovery.ai/agentssl/"
+      },
+      {
+        "label": "作者公开程序选择数据集",
+        "url": "https://huggingface.co/datasets/ethan-y-lin/ProgramSelectBench"
+      },
+      {
+        "label": "作者开源仓库",
+        "url": "https://github.com/akanksha-sarkar/AgentSSL"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "AgentSSL把少标签学习改写成程序搜索；测试集最优候选在12设置中胜出8个，最大+21.81个百分点。但按实际反馈选程序可损失47.29个百分点，生成与选择须分开评测。",
+      "motivation": "少量标签时，代理既缺训练监督，也缺可靠验证信号。即使搜索产生高质量候选，如果无法在部署前识别它，最佳测试成绩也不会转化为实际收益；标注预算应同时考虑训练与选择。",
+      "novelty": "作者主张：以代理搜索半监督程序，并发布ProgramSelectBench研究选择瓶颈。本站判断：价值在显式区分能发现好程序与能挑中好程序；oracle胜出不能当成可部署增益。",
+      "evidenceScope": "已读arXiv v1 §3–9方法、实验与分析，表1–5及附录A.1–A.3、B.1、C.1–C.3；核验作者项目页、公开Hugging Face数据集页面与GitHub README；HF页面显示README为空，仅核可访问性与样本预览。区分oracle发现能力、反馈选型regret、标签分配以及按训练划分计数的程序实例。未复现实验、未运行作者代码、未逐图验证；verified仅指公开来源核验。",
+      "limits": "作者报告，未复现。8/12与+21.81个百分点是测试集oracle最优；47.29个百分点是反馈选型regret。16,977为跨划分评估实例，非同数量独立算法。主实验限六个分类数据集、两档标签与CLIP/DINOv2；每程序在三个划分评估。主动选型使用额外查询标签，训练/选型各分一半预算只在部分数据集占优。828 GPU小时为搜索预算，计其他划分重跑后作者列2,484 GPU小时；异构GPU与API费用未统一，不能据此断言更省钱。附录A.3公式已含3种子，却称single seed，文字口径不一致，本站不外推成本。生态任务两例中AgentSL与AgentSSL相近，不能证明无标签数据普遍有效。论文所述预计算结果支持选择器离线研究；HF数据卡README为空，发布完备性未逐文件核验，未下载全部tensor、执行代码或复算成绩。",
+      "method": [
+        "把少量标注集和大量无标注集交给AIRA-Dojo代理，从监督暖启动程序开始，在CLIP ViT-B/16与DINOv2-B范围内生成、改进和调试学习代码。",
+        "在隔离Apptainer中执行候选，返回日志、错误与适应度；主实验用贪心搜索，反馈为无监督指标或小标签集交叉验证，验证折数按数据集人工设定。",
+        "六数据集各设两档标签、三个随机划分；所有候选跨划分重跑，分别报告测试集oracle最优与按可用反馈选中程序的性能损失。",
+        "汇集35个选择任务、16,977个已评估程序实例，提供预测与无监督指标；不同训练划分算不同实例，抽取特征因体积未随数据集发布。",
+        "固定标签总额，比较全用于训练与训练/主动选型各用一半；再以两项生态检测检查是否真需无标注数据，并保留纯监督代理对照。"
+      ],
+      "inspirations": [
+        "创作或代码代理评测同时报告候选池最佳、实际选择结果及两者差距；固定生成预算后单独替换选择器，避免把多次试错的oracle成绩当产品成功率。",
+        "把有限人工审查预算拆成样本标注与候选核验，画出最终表现随两类预算变化的曲线；预先规定分配策略，保留未参与选择的最终测试集。",
+        "先用预计算预测和程序族做选择器对照，再检验跨数据集、跨程序族及候选池扩大的稳定性；冻结特征的不同程序也要比较输出，不能只凭表示质量打分。"
+      ],
+      "reviewedAt": "2026-11-16T16:30:27.501303+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.17323v1",
+        "https://arxiv.org/html/2611.17323v1",
+        "https://codiscovery.ai/agentssl/",
+        "https://huggingface.co/datasets/ethan-y-lin/ProgramSelectBench",
+        "https://github.com/akanksha-sarkar/AgentSSL"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.17323",
+      "status": "pending",
+      "checkedAt": "2026-11-16T16:32:15.931730+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.17797v1",
+    "url": "https://arxiv.org/abs/2611.17797v1",
+    "id": "paper-vaat-2611-17797",
+    "title": "Vision-as-a-Tool：把视觉自检变成五种可调用工具",
+    "summary": "VaaT将通用视觉模型封装为五种按需调用的MCP工具，让编码Agent依据定位、断言和差异反馈修改HTML、SVG及Blender脚本。三任务主实验各100例；GPT-5.6-sol的3D几何距离由0.0157降到0.0035，同时编码输出token增至约5.83倍。",
+    "insight": "研究启发是把“看出哪里不对”变成可追踪的工具反馈，再连接具体代码修改。评估必须把结构可编辑、程序能运行与视觉像分别计分，并在完整模型成本下比较停止策略，避免把更多迭代误当成工具拆分的独立优势。",
+    "limits": "未复现，作者实现尚未公开。主实验每任务100例，纯文本GLM另用50例；无等总预算。3D编码输出token增至约5.83倍，未含外部视觉成本；相似度提升不是执行成功率、可编辑性或人类画质通过率。主表四个多模态模型分别做有无工具对照，外部工具均为Gemini 3.8 Flash；不能把50例GLM结果与100例主表直接当同一测试集，附录另提供共享50例对照。200K是上下文窗口并可自动压缩，不是总token上限；双方自主停机，工具臂既增加反馈又延长推理，未隔离总计算量效应。GPT-5.6-sol的3D平均编码输出17,918→104,543 token，视觉工具调用平均242.6次；这些不是完整输入输出成本、耗时或价格。HTML任务提供人工核验的预裁剪素材，SVG禁止嵌入位图；不代表端到端素材发现。3D参考图由官方脚本重新生成以修正原数据图网不一致，不能直接冒充未经改动的官方榜单协议。Chamfer先按质心和半径归一化，再取四种90度偏航旋转中的最优值，未衡量绝对尺度、位置或朝向准确度。Freestyle与五工具的对照仅100例3D；同模型视觉工具消融仅100例SVG且仍多出模型调用，不能证明任意任务或等成本下五工具必需。正文与附录未报告独立重复运行的方差、置信区间或人工盲评，也未单列完整执行失败分母与后续编辑保持率。项目视频是代码迭代展示，本轮未播放作画质验收；只静态读论文及固定README，未运行MCP、Blender或生成代码。",
+    "organization": "Peking University / Microsoft 等",
+    "dateLabel": "arXiv v1首次提交 2026-11-13；本轮补齐方法解读",
+    "evidence": "已读方法、指标、成本及原始LaTeX附录；固定仓库仅README，实现待公开，未复现。",
+    "originalTitle": "Vision-as-a-Tool: Visual Harness for Multimodal Agentic Coding",
+    "date": "2026-11-13",
+    "checkedAt": "2026-11-16T16:33:42.355307+00:00",
+    "paperOriginalDate": "2026-11-13T06:23:19Z",
+    "paperUpdatedAt": "2026-11-13T06:23:19Z",
+    "updatedAt": "2026-11-13T06:23:19Z",
+    "firstSeenAt": "2026-11-16T10:00:01Z",
+    "lastSeenAt": "2026-11-16T16:00:00Z",
+    "tags": [
+      "VaaT",
+      "VHarness",
+      "视觉反馈",
+      "Blender脚本",
+      "工具调用成本"
+    ],
+    "authors": [
+      "Haolin Yang",
+      "Wenshan Wu",
+      "Jin Jiang",
+      "Yu Cheng",
+      "Yan Xia",
+      "Ting Song",
+      "Yangyu Huang",
+      "Zhiliang Peng",
+      "Wenhui Wang",
+      "Hangbo Bao",
+      "Yuzhe Zhang",
+      "Wen-Da Wei",
+      "Tengchao Lv",
+      "Li Dong",
+      "Lei Cui",
+      "Furu Wei"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1：11月13日首次提交",
+        "url": "https://arxiv.org/abs/2611.17797v1"
+      },
+      {
+        "label": "v1方法全文、三任务评测与成本附表",
+        "url": "https://arxiv.org/html/2611.17797v1"
+      },
+      {
+        "label": "作者项目：视觉工具框架与迭代示例",
+        "url": "https://vision-as-a-tool.github.io/"
+      },
+      {
+        "label": "作者仓库固定README：实现仍待公开",
+        "url": "https://github.com/TidalHarley/Vision-as-a-Tool/blob/7ae2705dee8c957f8e375adc6ab48e06074c11ff/README.md"
+      },
+      {
+        "label": "Hugging Face论文索引",
+        "url": "https://huggingface.co/papers/2611.17797"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "VaaT把看图拆成五种工具，让Agent修改HTML、SVG和Blender脚本。100例3D中GPT-5.6-sol的Chamfer由0.0157降至0.0035，编码输出token增至约5.83倍，并非等成本提升。",
+      "motivation": "视觉编码Agent常能写出可运行程序，却看漏细小布局、缺失轮廓或3D结构错误并过早停止。论文把感知从写代码模型中拆出来，让外部视觉模型提供可定位的反馈，也使纯文本模型能够通过工具处理图像任务。",
+      "novelty": "作者主张把通用视觉模型封装为五种原子工具，解耦感知与代码生成。本站判断：可定位反馈值得迁移到可编辑3D流程；但收益同时伴随更多调用和更长推理，尚不能归因于工具拆分本身或宣称等成本更强。",
+      "evidenceScope": "已读arXiv 2611.17797v1 HTML及原始LaTeX方法、实验主表、附录A工具提示与运行环境、B指标定义、C成本与共享50例设置，并核作者项目、HF索引和固定仓库README。3D任务明确输出Blender Python并导出GLB，故仅标code2-3d；HTML/SVG为静态复刻，不自动归网页动效或视频创作。主实验报告GPT-5.6-sol在100例3D上Chamfer 0.0157→0.0035、Uni3D 0.7738→0.8496；Freestyle对应Chamfer 0.0070。同模型消融在100例SVG上以GPT-6-astra同时作编码和视觉工具，仍未匹配总调用预算。作者仓库固定7ae2705dee8c957f8e375adc6ab48e06074c11ff仅有README，说明代码仍待隐私审核；没有审到实现、没有执行或复现实验。verified只表示来源核验，不代表代码开放、实验复现或独立画质验收。",
+      "limits": "未复现，作者实现尚未公开。主实验每任务100例，纯文本GLM另用50例；无等总预算。3D编码输出token增至约5.83倍，未含外部视觉成本；相似度提升不是执行成功率、可编辑性或人类画质通过率。主表四个多模态模型分别做有无工具对照，外部工具均为Gemini 3.8 Flash；不能把50例GLM结果与100例主表直接当同一测试集，附录另提供共享50例对照。200K是上下文窗口并可自动压缩，不是总token上限；双方自主停机，工具臂既增加反馈又延长推理，未隔离总计算量效应。GPT-5.6-sol的3D平均编码输出17,918→104,543 token，视觉工具调用平均242.6次；这些不是完整输入输出成本、耗时或价格。HTML任务提供人工核验的预裁剪素材，SVG禁止嵌入位图；不代表端到端素材发现。3D参考图由官方脚本重新生成以修正原数据图网不一致，不能直接冒充未经改动的官方榜单协议。Chamfer先按质心和半径归一化，再取四种90度偏航旋转中的最优值，未衡量绝对尺度、位置或朝向准确度。Freestyle与五工具的对照仅100例3D；同模型视觉工具消融仅100例SVG且仍多出模型调用，不能证明任意任务或等成本下五工具必需。正文与附录未报告独立重复运行的方差、置信区间或人工盲评，也未单列完整执行失败分母与后续编辑保持率。项目视频是代码迭代展示，本轮未播放作画质验收；只静态读论文及固定README，未运行MCP、Blender或生成代码。",
+      "method": [
+        "在同一编码Agent框架中输入参考图；HTML提供人工核验素材，SVG仅给图，3D给四个固定视角。Agent分别产出HTML、纯矢量SVG或Blender Python脚本。",
+        "外部视觉模型经MCP暴露五个工具：transcribe提结构、grep定位、inspect读细节、align判匹配、diff找差异；结构工具返回规格而非代码。",
+        "Agent自主选工具，将目标图与当前渲染的局部差异转为代码修改，再渲染复查；没有固定调用顺序。多模态模型可结合原生视觉，纯文本模型全依赖工具感知。",
+        "3D脚本在固定相机和灯光下生成四视图并导出GLB；两实验臂均自行判断完成，不强制最低轮数或总token预算。工具判断只是模型反馈，不是真值。",
+        "分别评价视觉相似和几何距离：三任务主实验各100例，纯文本模型另用50例；记录编码输出token与工具调用，并比较自由问答接口和同模型视觉工具消融。"
+      ],
+      "inspirations": [
+        "给代码创作Agent保存每次视觉差异、定位框、对应代码补丁和渲染结果，再用人工标注检验“报错区域—修改对象”是否一致，避免模型批评正确但修错对象。",
+        "做等总token、等费用和等延迟三组预算实验，计入外部视觉输入输出；对照原生自检、自由视觉问答和五工具，单独比较停止策略，分离工具结构与额外推理的贡献。",
+        "保留HTML/SVG/Blender源文件及对象结构，追加“只改某对象”的任务，分别报执行通过、未编辑区域保持、几何误差和人工画质；3D还应增加不消除尺度与朝向的指标。"
+      ],
+      "reviewedAt": "2026-11-16T16:33:42.355307+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.17797v1",
+        "https://arxiv.org/html/2611.17797v1",
+        "https://vision-as-a-tool.github.io/",
+        "https://github.com/TidalHarley/Vision-as-a-Tool/blob/7ae2705dee8c957f8e375adc6ab48e06074c11ff/README.md",
+        "https://huggingface.co/papers/2611.17797"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.17797",
+      "status": "pending",
+      "checkedAt": "2026-11-16T16:32:15.931730+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.17790v1",
+    "url": "https://arxiv.org/abs/2611.17790v1",
+    "id": "paper-2611.17790",
+    "title": "AutoRL：以监测、提案和受控续训维护RL，收益主要来自配方修复",
+    "summary": "AutoRL用四路监测、三方提案和热更新/检查点续训维护RL。同273累计步内，Qwen3-4B监测峰值41.58%，通用Agent为32.11%；分母190题各两答，非九榜均分或等费用比较。",
+    "insight": "作者主张把持续监督与研究嵌入正在运行的RL。本站判断：价值在证据快照、反例检查和生效回执；131候选合并部署20项既有配方改进，其中4项后撤回，未证明发现新学习算法。",
+    "limits": "未复现；41.58%为190题×2答的监测峰值，非九榜均分。273步非等GPU小时或API费；训练种子方差、组件消融未报告，编码评估总题数未明。新学习规则3候选、0采纳。监测集由AIME2024/2025、HMMT2025各30题及Beyond AIME100题组成，380条回答按正确比例汇总；额外九基准每题4次采样，两类协议不可混用。Qwen静态配方每10步评估，Qwen3-4B AutoRL每5步，峰值比较存在观测机会差异；附加九榜选定检查点的确切选择规则未完整说明。273为完成的rollout+训练迭代数，包含随后被检查点回滚丢弃的已完成步；不是相同保留步号、token总量、墙钟或算力费用。每Qwen迭代1024条响应、4个256响应优化小批次，回答长度、评估和监督开销另计。通用Agent151个首次到达步号、122次重访；AutoRL273个首次步号、0重访不等于从未停机，20项干预中仍有3次COLD续训。131为完整研究记录中的首轮新改动候选，20为讨论合并后在273步内实际部署的计划且含4次后来撤回；不能用20/131作统一候选通过率，也不能把20当20个有效创新。110候选用于评分/数据修复，3项学习规则改造均未部署。通用Agent同截点6部署、3撤回；全程343步8项的口径另列。论文比较的是完整角色分工、专门工具、记忆与执行控制系统；没有分别关闭观察者、提案者、辩论或HOT/COLD的受控消融，不能因果归功于多Agent或投票单一组件。平台期修复评分、增熵与数据更正先后发生，先后关系不能隔离各改动的因果贡献。监督LLM影响明显：同Qwen3-4B/273累计步下GLM-5.2峰值32.89%，低于GPT-6.1的41.58%；未报告独立训练多种子及区间。Qwen1.7B并非所有任务优于通用Agent，其AIME24和IMO-AnswerBench分别低1.67、0.37个百分点；不由局部结果推导通用研究能力。LongCat训练用私有9340道数学题和700+仓库任务；编码监测仅称SWE-related tasks，附录为每任务1条轨迹，未给完整评估题数或标准SWE-bench版本，不能当标准榜单成绩。11次失败包含检查点自动续训与定向修复，并非11个独立故障修复测试；某次FP32残差修复还引入dtype错误后被撤回。长期编码运行352.5小时，峰值65.13%在step55，最后63.20%在step75，训练到step79；从52.29%起点算最后增10.91个百分点、峰值增12.84，不能把峰值当最终成绩或把14.7天当零停机。恢复时间覆盖中间重试至重进学习循环，而非维修代码耗时。初始资源为Qwen每run8张H800、LongCat推理64张、编码224张/28节点；论文没有完整GPU小时和监督API账单。私有数据、长轨迹和特定后端运行控制限制外推；本轮未找到作者公开实现/权重链接，未审真实控制器或安全执行实现。评估输入、评分器和采样协议据作者保持固定，在线可见汇总及去敏诊断，但持续据此改配方仍属适应性使用该监测集；泛化需看另行评估，不能仅由监测曲线排除过拟合。CPU奖励hook示例是运行后用4个合成fixture回放，不是所有提案的预上线验证覆盖率。讨论31/43因缺发布元数据未正式定稿，曾由编排者直接审阅后执行；流程描述不等于无例外的自动门控证明。",
+    "organization": "Meituan / The Chinese University of Hong Kong / ShanghaiTech University / Fudan University",
+    "dateLabel": "2026-11-13 首发（UTC；北京时间14:06）",
+    "evidence": "已读原论文方法、实验、分析及完整附录；公开实现未取得，实验未复现。",
+    "originalTitle": "AutoRL: A Multi-Agent System towards Autonomous Reinforcement Learning",
+    "date": "2026-11-13",
+    "checkedAt": "2026-11-16T16:30:24.023410+00:00",
+    "paperOriginalDate": "2026-11-13T06:06:36Z",
+    "paperUpdatedAt": "2026-11-13T06:06:36Z",
+    "updatedAt": "2026-11-13T06:06:36Z",
+    "firstSeenAt": "2026-11-16T10:00:01Z",
+    "lastSeenAt": "2026-11-16T16:00:00Z",
+    "tags": [
+      "Agentic RL",
+      "AutoRL",
+      "Training supervision",
+      "Checkpoint recovery"
+    ],
+    "authors": [
+      "Simon Tang",
+      "Wenjie Shi",
+      "Yongjing Yin",
+      "Keheng Wang",
+      "Jialin Liu",
+      "Zheng Zhang",
+      "Linvo Lin",
+      "Xiangyuan Xue",
+      "Kan Ren",
+      "Jingang Wang",
+      "Xunliang Cai"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1 摘要、作者与原始提交时间",
+        "url": "https://arxiv.org/abs/2611.17790v1"
+      },
+      {
+        "label": "arXiv v1 方法、实验、附录与训练账本",
+        "url": "https://arxiv.org/html/2611.17790v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "AutoRL用四路监测、三方提案和热更新/检查点续训维护RL。同273累计步内，Qwen3-4B监测峰值41.58%，通用Agent为32.11%；分母190题各两答，非九榜均分或等费用比较。",
+      "motivation": "RL配方在运行中会随策略分布变化而失效：评分错误、熵下降、训练停滞和分布式故障需要持续诊断。只在整轮实验结束后重新搜索超参，容易浪费已训练进度；作者把观察、研究和执行分开，让维护工作跟随同一训练运行进行。",
+      "novelty": "作者主张把持续监督与研究嵌入正在运行的RL。本站判断：价值在证据快照、反例检查和生效回执；131候选合并部署20项既有配方改进，其中4项后撤回，未证明发现新学习算法。",
+      "evidenceScope": "已直接读取arXiv v1摘要/提交记录、HTML全文及原TeX方法、实验、分析、完整附录A和表1–9；未以搜索二手解读作事实来源，未把PDF图像逐帧或像素核验。来源核验不等于运行复现。Qwen3-4B的同273累计步峰值为AutoRL41.58%、通用Agent32.11%；最后五次监测均值39.37%对29.16%。额外九基准上AutoRL均高于静态配方和该通用Agent运行；AIME24为66.67%对静态46.67%（+20个百分点），MMLU-Pro59.73对57.93、GPQA47.22对44.70、MBPP65.25对63.55、LiveCodeBench v6 Hard6.79对5.71。额外评测为每题4响应均值/编码pass@1：MMLU-Pro是固定分科平衡1000题、5-shot；GPQA198题、0-shot；MBPP任务11–510、至多3示例；LiveCodeBench为v6共1055题中的350道Hard；IMO-AnswerBench v2全400题。Qwen训练与评测关闭thinking；监测与额外评测的最大响应预算分别31744和32768 tokens，不能把训练8192上限当统一推理预算。研究账本共168讨论×3=504首轮提交，其中372无候选，132有动作，去掉1纯回滚得131；51联合动作建议由编排者批准28、暂缓21、拒绝2，最终273步截点部署20（17 HOT、3 COLD），后撤回4。元数据口径不同，未把这些计数当同一二项成功率。LongCat缺陷配方数学试验有33次监测（step0至64每2步），约115.5小时；AutoRL65.53→73.16%，静态末56.05%。6个代表性热更新包括4次训练评分器修复及2次KL系数调整，评估评分器不变，但没有逐组件因果消融。长期编码记录11次故障（7 NaN、1 dtype、3 worker/communication）；附录列恢复38.9/39.1/59.1/36.6/295.1/106.5/101.2/40.6/46.4/38.1/37.1分钟。此为同一运行故障与重试账本，非11次独立重现实验。私有任务池按训练阶段从700+变656、453、456，最终执行选择271，显示数据组成亦变化。已核HOT只限后端实际消费的完整在线控制，未支持的文件/数据加载器变化应走COLD；热控制替换要继承仍需启用的覆盖项，置None会恢复启动值；冷恢复记录父run、参数/优化器/训练器/rollout及可用随机/数据消费状态。以上仅作者公开方法与提示规范，未找到并运行实现。",
+      "limits": "未复现；41.58%为190题×2答的监测峰值，非九榜均分。273步非等GPU小时或API费；训练种子方差、组件消融未报告，编码评估总题数未明。新学习规则3候选、0采纳。监测集由AIME2024/2025、HMMT2025各30题及Beyond AIME100题组成，380条回答按正确比例汇总；额外九基准每题4次采样，两类协议不可混用。Qwen静态配方每10步评估，Qwen3-4B AutoRL每5步，峰值比较存在观测机会差异；附加九榜选定检查点的确切选择规则未完整说明。273为完成的rollout+训练迭代数，包含随后被检查点回滚丢弃的已完成步；不是相同保留步号、token总量、墙钟或算力费用。每Qwen迭代1024条响应、4个256响应优化小批次，回答长度、评估和监督开销另计。通用Agent151个首次到达步号、122次重访；AutoRL273个首次步号、0重访不等于从未停机，20项干预中仍有3次COLD续训。131为完整研究记录中的首轮新改动候选，20为讨论合并后在273步内实际部署的计划且含4次后来撤回；不能用20/131作统一候选通过率，也不能把20当20个有效创新。110候选用于评分/数据修复，3项学习规则改造均未部署。通用Agent同截点6部署、3撤回；全程343步8项的口径另列。论文比较的是完整角色分工、专门工具、记忆与执行控制系统；没有分别关闭观察者、提案者、辩论或HOT/COLD的受控消融，不能因果归功于多Agent或投票单一组件。平台期修复评分、增熵与数据更正先后发生，先后关系不能隔离各改动的因果贡献。监督LLM影响明显：同Qwen3-4B/273累计步下GLM-5.2峰值32.89%，低于GPT-6.1的41.58%；未报告独立训练多种子及区间。Qwen1.7B并非所有任务优于通用Agent，其AIME24和IMO-AnswerBench分别低1.67、0.37个百分点；不由局部结果推导通用研究能力。LongCat训练用私有9340道数学题和700+仓库任务；编码监测仅称SWE-related tasks，附录为每任务1条轨迹，未给完整评估题数或标准SWE-bench版本，不能当标准榜单成绩。11次失败包含检查点自动续训与定向修复，并非11个独立故障修复测试；某次FP32残差修复还引入dtype错误后被撤回。长期编码运行352.5小时，峰值65.13%在step55，最后63.20%在step75，训练到step79；从52.29%起点算最后增10.91个百分点、峰值增12.84，不能把峰值当最终成绩或把14.7天当零停机。恢复时间覆盖中间重试至重进学习循环，而非维修代码耗时。初始资源为Qwen每run8张H800、LongCat推理64张、编码224张/28节点；论文没有完整GPU小时和监督API账单。私有数据、长轨迹和特定后端运行控制限制外推；本轮未找到作者公开实现/权重链接，未审真实控制器或安全执行实现。评估输入、评分器和采样协议据作者保持固定，在线可见汇总及去敏诊断，但持续据此改配方仍属适应性使用该监测集；泛化需看另行评估，不能仅由监测曲线排除过拟合。CPU奖励hook示例是运行后用4个合成fixture回放，不是所有提案的预上线验证覆盖率。讨论31/43因缺发布元数据未正式定稿，曾由编排者直接审阅后执行；流程描述不等于无例外的自动门控证明。",
+      "method": [
+        "研究者先固定任务、数据权限、预算和评估协议；编排者启动训练，四个观察者分别看优化、生成轨迹、评估及效率，按运行ID、步数和时间窗固化异常证据。",
+        "调参者、创新者与审阅者从同一证据独立提案，再交叉质疑、查代码并在隔离CPU副本回放训练样本；超时或缺依赖记不确定，修订、合并或撤回后再排序。",
+        "最多讨论五轮，Borda排序选至多两案，三人投票形成建议并保留异议；编排者可采纳、拒绝、暂缓或索取证据，先定义预期变化、实施条件与回退方式。",
+        "完整改动受运行后端支持才走HOT热更新；改训练代码或数据加载器走COLD，保存兼容完整检查点、停机修改后续训，保留需要继承的在线配置。",
+        "以运行回执核对控制是否真实生效，记录父检查点与继承步数；继续用固定评估复查收益、退化和数值健康，必要时撤回改动，区分撤回与回滚重走训练。"
+      ],
+      "inspirations": [
+        "先给训练维护建立可审计的事件链：每条异常绑定run、step、样本窗和源hash，每次改动绑定真实生效回执及父检查点；分别记录累计完成步、保留步、重访步、墙钟和GPU/API费用，避免用“没回滚”代替省钱。",
+        "把提案做成明确反例检查：改奖励解析时同时回放旧错例与原本正确例，改采样时检查完整组和补样行为；保留超时/依赖缺失为不确定，验证控制器确实读取新配置后才归因于该改动。",
+        "评估研究Agent时，将固定任务内调参/评分修复与学习规则创新分栏；另做角色消融、相同监测频率和独立训练种子，报告预先选定终点与额外盲评。把131候选/20计划/4撤回分别计数，防止提案数量变成能力指标。"
+      ],
+      "reviewedAt": "2026-11-16T16:30:24.023410+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.17790v1",
+        "https://arxiv.org/html/2611.17790v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.17790",
+      "status": "pending",
+      "checkedAt": "2026-11-16T16:32:15.931730+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://openai.com/index/advancing-computer-use-for-healthcare-teams/",
+    "url": "https://openai.com/index/advancing-computer-use-for-healthcare-teams/",
+    "id": "official-openai-healthcare-computer-use-20261116",
+    "title": "医疗界面Agent：把探索、人审与代码重放分开",
+    "summary": "OpenAI更新医疗界面代理、证据检索与插件，并给出EHR工作与行政评测。同期CVS开源说明呈现另一条路径：先由Agent探索并留轨迹，再把稳定步骤转为无模型调用的代码；临床判断和提交仍需审核。",
+    "insight": "官方展示跨系统执行；本站更关注“探索—审核—固化—再验证”的分工。评测宜分别报告任务完成、评分项得分、人工评价与总成本，不能将某层高分合成为自主可靠性。",
+    "limits": "未复现。99%安全评定的分母为325任务，93%有帮助的分母为646次评价；均非临床结局。HealthAdminBench的94.3%/91.8%是rubric分数，不是全任务成功率；98%成本差为官方配置结果。未审代码实现或真实患者数据。 Astra/Luna在行政基准均为maximum reasoning effort；Luna每任务8.5美分及98%降低是同一官方报道，非本站总成本测量。项目说明存在确定性与LLM评分，本站未读完基准论文、评分器或可交互榜单底层结果，不能独立确认榜单数字。临床检索1300余次评价属于另一项产品评估，不能并入EHR分母。CVS仅文档核验，未证明每个生产流程都由该公开版本实现；生产案例与试点、计划、演示区分。无模型调用仅指固化后执行，探索和维护仍用模型；未核验自主成功率、安全合规或部署可用性。",
+    "organization": "OpenAI / CVS Health",
+    "dateLabel": "2026-11-16 · 两篇官方发布；06:00 UTC为RSS时间",
+    "evidence": "公开官方正文、基准项目页及固定README核验；未复现，不提供医疗建议。",
+    "date": "2026-11-16",
+    "checkedAt": "2026-11-16T16:32:07.386682+00:00",
+    "firstSeenAt": "2026-11-16T16:00:00Z",
+    "lastSeenAt": "2026-11-16T16:00:00Z",
+    "tags": [
+      "OpenAI",
+      "computer-use",
+      "可审计工作流",
+      "轨迹转代码",
+      "证据边界"
+    ],
+    "topics": [],
+    "featured": false,
+    "sourceId": "openai",
+    "sources": [
+      {
+        "label": "公开feed原始来源",
+        "url": "https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare"
+      },
+      {
+        "label": "公开feed原始来源",
+        "url": "https://openai.com/index/advancing-computer-use-for-healthcare-teams"
+      },
+      {
+        "label": "OpenAI：界面代理评测、审核与客户案例",
+        "url": "https://openai.com/index/advancing-computer-use-for-healthcare-teams/"
+      },
+      {
+        "label": "OpenAI：医疗产品更新（同一事件合并）",
+        "url": "https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare/"
+      },
+      {
+        "label": "HealthAdminBench：任务和评分结构原页",
+        "url": "https://som-shahlab.github.io/health-admin-bench-website/"
+      },
+      {
+        "label": "CVS Health：公开CUA Agent Kit",
+        "url": "https://github.com/cvs-health/cua-agent-kit"
+      },
+      {
+        "label": "固定提交README：探索、固化、重放与证据边界",
+        "url": "https://github.com/cvs-health/cua-agent-kit/blob/965ee258bfb778cad4e7077301974d4e83d97916/README.md"
+      },
+      {
+        "label": "固定提交SECURITY：维护范围说明",
+        "url": "https://github.com/cvs-health/cua-agent-kit/blob/965ee258bfb778cad4e7077301974d4e83d97916/SECURITY.md"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "医疗界面代理新增评测与审核工作流；CVS方案把稳定探索轨迹转成代码重放。评分项得分、人工安全评价和实际任务成功须分开。",
+      "motivation": "跨系统工作常需手工转移信息；每次重新让模型寻找相同步骤也增加波动。问题是哪些步骤可固定、哪些判断必须停下来交人确认。",
+      "novelty": "官方主张更可用的界面代理与医疗工具集成；本站判断，可复用启发是用成功轨迹辅助编程并保留人审，不是通用自治或临床正确性的证明。",
+      "evidenceScope": "读取11月16日两篇OpenAI正文、HealthAdminBench项目说明，以及CVS固定提交965ee258的README和SECURITY。未运行工具、阅读全部实现、审计临床评分原始数据或复现成本；verified仅指来源核验。",
+      "limits": "未复现。99%安全评定的分母为325任务，93%有帮助的分母为646次评价；均非临床结局。HealthAdminBench的94.3%/91.8%是rubric分数，不是全任务成功率；98%成本差为官方配置结果。未审代码实现或真实患者数据。 Astra/Luna在行政基准均为maximum reasoning effort；Luna每任务8.5美分及98%降低是同一官方报道，非本站总成本测量。项目说明存在确定性与LLM评分，本站未读完基准论文、评分器或可交互榜单底层结果，不能独立确认榜单数字。临床检索1300余次评价属于另一项产品评估，不能并入EHR分母。CVS仅文档核验，未证明每个生产流程都由该公开版本实现；生产案例与试点、计划、演示区分。无模型调用仅指固化后执行，探索和维护仍用模型；未核验自主成功率、安全合规或部署可用性。",
+      "method": [
+        "OpenAI用合成患者场景演示跨EHR与授权门户的草稿生成，并把审核置于提交之前；演示不等于真实诊疗验收。",
+        "EHR评价检查动作与产物；行政评测另用HealthAdminBench。该基准原页列135任务、1698子任务和4个界面环境，两组评价不能合并。",
+        "CVS工具包记录成功探索的截图、动作、目标与轨迹，再由Codex辅助生成Playwright或pywinauto流程；重复运行阶段不调用模型。",
+        "当界面或步骤失效，借轨迹辅助修订，再经工程师审查、测试与验收；公开README强调轨迹可能保留敏感内容，不能当已脱敏导出。"
+      ],
+      "inspirations": [
+        "在同一任务集比较持续模型执行和代码重放，计入探索失败、编程、人审、界面变更维护成本；低推理费用不等于低总成本。",
+        "让每条操作保留状态断言与证据，分别测脚本退出、最终业务状态和需人工判断的错误；用异常与变更任务测试是否及时停手。"
+      ],
+      "reviewedAt": "2026-11-16T16:32:07.386682+00:00",
+      "sourceUrls": [
+        "https://openai.com/index/advancing-computer-use-for-healthcare-teams/",
+        "https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare/",
+        "https://som-shahlab.github.io/health-admin-bench-website/",
+        "https://github.com/cvs-health/cua-agent-kit",
+        "https://github.com/cvs-health/cua-agent-kit/blob/965ee258bfb778cad4e7077301974d4e83d97916/README.md",
+        "https://github.com/cvs-health/cua-agent-kit/blob/965ee258bfb778cad4e7077301974d4e83d97916/SECURITY.md"
+      ]
+    }
   }
 ]
