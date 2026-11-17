@@ -21352,5 +21352,302 @@
         "https://safeguards.anthropic.com/2026/automated-red-teaming/"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.20218v1",
+    "url": "https://arxiv.org/abs/2611.20218v1",
+    "id": "paper-swe-cowork-2611-20218",
+    "title": "SWE-CoWork：问到需求之后，距离可靠交付还有多远",
+    "summary": "SWE-CoWork让Agent在101个仓库中向同事澄清需求再交付代码。领先配置约63%的新测试节点通过，整项成功却不足8%；完整需求前置仍未提高整项成功率。",
+    "insight": "作者主张把组织内需求获取、协作、实现与交付联合评测。本站判断：有价值的是区分“拿到需求”和“完成交付”；论文与公开包口径不一致，需锁定版本后再复现。",
+    "limits": "未复现；论文与公开README/清单的测试数量及聚合口径不一致，榜单仅按论文报告。模型使用不同harness；需求前置同时省去探索成本，不能纯因果归因为澄清能力。详细行为诊断只覆盖101次Claude-Opus-5.5运行，LLM模拟同事并非真人团队。论文§5.1为2699个F2P、562个P2P，跨任务汇总节点计分；本轮GitHub固定提交7c99bf9与HF数据卡写2701/561，并明确F2P先任务内算分再平均，同提交MANIFEST静态求和为2700/562。上述差异尚未对齐，不能把当前包视作论文榜单的已核等价复现。论文26位同事含组织邻近人员，而README写4–6位，统计范围也不能直接等同。测试节点不与需求一一对应，63%不是整项成功率或全部需求完成比例。GPT-6 Astra用Codex，其余10模型用Claude Code；统一8小时上限不代表等工具、token或实际成本，不构成受控基础模型排名。Oracle-Spec只有Seed Evolving和GPT-6 Astra两配置配对，同时给全需求并取消同事交互，无法区分信息收益与节省探索预算。11模型的相关性、单模型轨迹的获取/实现分解均为观察性诊断，不能证明追问或需求台账能因果提高成功率。GPT-6 Astra xhigh在附私有评分前评轨迹，仍是模型标注，未核人类一致性；不同维度按可评估运行计算。31%指826项被报告完成的需求中255项测试失败，不是31%全部任务或故意欺骗率。只静态读代码说明与清单，未拉镜像、执行harness、逐条重评轨迹或重建完整数据；公开资源的可下载性不等于环境可运行。",
+    "organization": "TokenWave AI",
+    "dateLabel": "2026-11-15 · arXiv v1（UTC）",
+    "evidence": "全文方法、实验、轨迹附录与公开资源对照；未复现",
+    "originalTitle": "SWE-CoWork: Benchmarking Coding Agents as Digital Employees in Organizations",
+    "date": "2026-11-15",
+    "checkedAt": "2026-11-17T16:31:27.753816+00:00",
+    "paperOriginalDate": "2026-11-15T19:39:01Z",
+    "paperUpdatedAt": "2026-11-15T19:39:01Z",
+    "updatedAt": "2026-11-15T19:39:01Z",
+    "firstSeenAt": "2026-11-17T10:00:01Z",
+    "lastSeenAt": "2026-11-17T16:00:00Z",
+    "tags": [
+      "组织协作",
+      "需求澄清",
+      "编码Agent",
+      "完整交付",
+      "版本口径"
+    ],
+    "authors": [
+      "Xinping Lei",
+      "Minghao Liu",
+      "Ruijie Zhu",
+      "Xiaohui Hu",
+      "Xingqiao Li",
+      "Ao Zhang",
+      "Wenhao Chai",
+      "Han Li",
+      "Tao Wang",
+      "Jingyuan Zhang",
+      "Enduo Zhao",
+      "Yunfeng Shi",
+      "Yiming Liang",
+      "Zetao Yang",
+      "Xingjian Wang",
+      "Yifan Yao",
+      "Xinkai Ma",
+      "Yingru Li",
+      "Tianhan Yang",
+      "Huan Zhou",
+      "Weiran Shi",
+      "Shen Yan",
+      "Jiaheng Liu",
+      "Stephen Huang",
+      "Eli Cheung",
+      "Weihao Xuan"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv首发与版本记录",
+        "url": "https://arxiv.org/abs/2611.20218v1"
+      },
+      {
+        "label": "公开feed原始来源",
+        "url": "https://huggingface.co/papers/2611.20218"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.20218"
+      },
+      {
+        "label": "Project",
+        "url": "https://tokenwave-ai.github.io/swe-cowork-page"
+      },
+      {
+        "label": "作者公开代码与运行说明",
+        "url": "https://github.com/TokenWave-AI/swe-cowork-bench"
+      },
+      {
+        "label": "原文方法、实验与附录H",
+        "url": "https://arxiv.org/html/2611.20218v1"
+      },
+      {
+        "label": "本轮固定代码版本的README",
+        "url": "https://github.com/TokenWave-AI/swe-cowork-bench/blob/7c99bf98fbf5db9295fb97547f68f6658f28f8ee/README.md"
+      },
+      {
+        "label": "同版本发布清单",
+        "url": "https://github.com/TokenWave-AI/swe-cowork-bench/blob/7c99bf98fbf5db9295fb97547f68f6658f28f8ee/release/MANIFEST.json"
+      },
+      {
+        "label": "作者Hugging Face数据卡",
+        "url": "https://huggingface.co/datasets/Tokenwave-AI/swe-cowork"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "SWE-CoWork让Agent在101个仓库中向同事澄清需求再交付代码。领先配置约63%的新测试节点通过，整项成功却不足8%；完整需求前置仍未提高整项成功率。",
+      "motivation": "现实工程需求分散在同事、文档版本和历史消息中；即使Agent找到负责人、做出局部正确补丁，也可能遗漏条件、破坏回归，或把未验证内容报告为完成。只测给定完整issue后的修复不足以覆盖这一过程。",
+      "novelty": "作者主张把组织内需求获取、协作、实现与交付联合评测。本站判断：有价值的是区分“拿到需求”和“完成交付”；论文与公开包口径不一致，需锁定版本后再复现。",
+      "evidenceScope": "已直接读取arXiv v1版本史、正文§3方法、§4任务流程、§5实验、§6诊断与附录F–H，核对作者GitHub README/HF数据卡，并从仓库页面currentOid固定提交7c99bf98fbf5db9295fb97547f68f6658f28f8ee静态读取README及MANIFEST；非仅摘要。论文101题/101仓库、11语言、12领域，每组织26位模拟同事。所有模型完整101题分母，仅验证器确认通过计分。Claude-Opus-5.5 F2P63.84/P2P93.24/整项6.93%，GPT-6 Astra62.91/89.15/7.92%；整项须同次运行全部F2P与P2P通过。两配置Oracle-Spec的F2P分别39.09→55.76和62.91→78.84，整项0.99/7.92均不变。Claude轨迹中450个首次延后答复的owner-card线程，297个被跟进、205个最终披露；153个未跟进，剩余预算中位7.1小时。失败关联节点按最早操作阶段分为实现56%、追问42%、发现2%，为分析标签而非因果归因。需求到达后的测试成功率与未到达组不同，仍可能受任务难度混杂。公开包与论文测试数量和聚合口径不一致，当前数据卡还报告2217个同事持有需求，而论文轨迹分析是2176；本站未强行合并这些分母。verified仅指原来源核验，不指实验复现或当前代码等价于论文版本。",
+      "limits": "未复现；论文与公开README/清单的测试数量及聚合口径不一致，榜单仅按论文报告。模型使用不同harness；需求前置同时省去探索成本，不能纯因果归因为澄清能力。详细行为诊断只覆盖101次Claude-Opus-5.5运行，LLM模拟同事并非真人团队。论文§5.1为2699个F2P、562个P2P，跨任务汇总节点计分；本轮GitHub固定提交7c99bf9与HF数据卡写2701/561，并明确F2P先任务内算分再平均，同提交MANIFEST静态求和为2700/562。上述差异尚未对齐，不能把当前包视作论文榜单的已核等价复现。论文26位同事含组织邻近人员，而README写4–6位，统计范围也不能直接等同。测试节点不与需求一一对应，63%不是整项成功率或全部需求完成比例。GPT-6 Astra用Codex，其余10模型用Claude Code；统一8小时上限不代表等工具、token或实际成本，不构成受控基础模型排名。Oracle-Spec只有Seed Evolving和GPT-6 Astra两配置配对，同时给全需求并取消同事交互，无法区分信息收益与节省探索预算。11模型的相关性、单模型轨迹的获取/实现分解均为观察性诊断，不能证明追问或需求台账能因果提高成功率。GPT-6 Astra xhigh在附私有评分前评轨迹，仍是模型标注，未核人类一致性；不同维度按可评估运行计算。31%指826项被报告完成的需求中255项测试失败，不是31%全部任务或故意欺骗率。只静态读代码说明与清单，未拉镜像、执行harness、逐条重评轨迹或重建完整数据；公开资源的可下载性不等于环境可运行。",
+      "method": [
+        "围绕101个真实仓库构造组织情境，将固定可执行需求分布到公开记录与有边界知识的模拟同事；加入历史修订、延后回复和邻近项目干扰。",
+        "Agent从简短交接出发，通过工作区工具查来源、问负责人、提供复现条件并持续追问；在最多8小时内交错修改、验证和最终交接。",
+        "以固定私有F2P/P2P节点验收补丁；论文按测试节点池化统计局部完成，只有同次运行全部节点通过才计整项成功。",
+        "为两种模型配对Oracle-Spec：起始提供完整需求并取消同事交互；观察局部得分、回归保持与整项完成如何变化。",
+        "对Claude-Opus-5.5的101次轨迹结合披露日志与评分前LLM标注，检查需求在哪一步流失、延后问题是否跟进，以及完成声明是否有测试支持。"
+      ],
+      "inspirations": [
+        "实现一份可持续更新的需求台账，逐项连到负责人、版本证据、待追问点、代码与测试；以等预算消融检验是否减少“已问未得答”和“得答未实现”，不先假定有效。",
+        "同时公开测试节点池化、按任务平均及整项成功，并把最终交接声明关联到测试证据；固定发布清单和运行版本，先解决论文与公开包口径差异再比较方法。"
+      ],
+      "reviewedAt": "2026-11-17T16:31:27.753816+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.20218v1",
+        "https://arxiv.org/html/2611.20218v1",
+        "https://github.com/TokenWave-AI/swe-cowork-bench",
+        "https://github.com/TokenWave-AI/swe-cowork-bench/blob/7c99bf98fbf5db9295fb97547f68f6658f28f8ee/README.md",
+        "https://github.com/TokenWave-AI/swe-cowork-bench/blob/7c99bf98fbf5db9295fb97547f68f6658f28f8ee/release/MANIFEST.json",
+        "https://huggingface.co/datasets/Tokenwave-AI/swe-cowork"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.20218",
+      "status": "pending",
+      "checkedAt": "2026-11-17T16:31:27.753816+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.21152v1",
+    "url": "https://arxiv.org/abs/2611.21152v1",
+    "id": "paper-2611.21152",
+    "title": "RepoFactory：把真实仓库演化成重建训练环境，代理难度何时有用？",
+    "summary": "RepoFactory演化真实仓库并做SFT：35B-A3B在NL2Repo由23.8→46.4，较未演化再高5.1点。公开仅200个演化前环境；代理指标不等于训练价值，未复现。",
+    "insight": "作者主张用有效性、调用图耦合及代码/依赖规模替代求解反馈来演化环境。本站判断：可运行与训练价值被分开验证，但代理可被人为放大；现有对照未建立等token或抗钻空子的保证。",
+    "limits": "未复现；各榜评测题数、重复次数未列清。公开仅200个演化前环境。代理值可被放大，同轨迹数不等token/费用；五榜宏平均非合并成功率。论文构造10,159环境、17领域，教师每环境5次采样；SFT只保留reward严格大于0.5且通过质量检查的10,947条、覆盖5,577环境，不能称全部成功轨迹。模糊违规交给模型裁判，未见裁判准确率审计。基座、未演化、演化后的NL2Repo分别23.8/41.3/46.4%；五榜原分均值45.08/51.48/53.54%，所以相对基座提升8.46点约8.5、演化额外2.06点约2.1。主表已四舍五入的均值相减会给2.0，不是矛盾；不同模型缺榜时按已报榜平均，不能跨行直接排名。169/500→347/500即33.8%→69.4%是同500个候选仓库经零次或最多3次修复的有效环境产出率，不是训练后Agent成功率，也非全量10,159环境的筛选通过率。S/C两项消融各从同1000环境出发，3/6/9/12轮为四级，每级2000条；S的NL2Repo 30.2→32.9同时增加监督token，C为30.2→32.5且中间波动，不能说每轮单调改善或已证明普遍因果关系。六个公开数据对照各11,000条，与本法10,947条接近并共享教师、清理与学生框架，但轨迹长度、总token和采样费用未配平；扩大环境数也增加数据与算力。本文未列主比较无演化组的精确保留条数，未提供逐榜评测题数/重复次数、训练多种子区间、总GPU小时或环境建设费用，不能据代理反馈便宜推断端到端加速比例。A只检原实现满分/空工作区零分，不能排除弱测试或规格歧义；构造Agent可联合改测试、实现与规格。C来自静态调用图，S可受冗余代码/依赖影响；所选指标提高并非强制Q及另一指标都提高。2.09百万是静态识别的测试定义数，不是已执行测试数或覆盖率；规格导入符号对齐也不保证语义覆盖。论文称排除既有基准仓库，但未见完整排除清单，不能据此认证无污染。固定GitHub提交133f7cd998a049c94f86d420491e462456478320提供说明与资源，固定HF数据提交efdcaa8f6ea1bfa55eed2263e39186b928c7da88列200个任务包及200个镜像包；均明确为演化前环境，未核到完整演化代码、10,159全量环境、10,947条SFT数据或训练权重已公开。仅静态抽查任务000001：配置89个测试，分数为passed/max(配置数,观测通过失败错误数)，上限1，并含pytest摘要回退；这只是该样本实现，不是对全部环境执行的认证。start.sh对列举代码站修改hosts，验证脚本会移除这层屏蔽；未检查运行时网络策略/镜像，不能把它当完整断网的实现证明。Dockerfile另依赖base镜像，未下载镜像或执行作者代码、安装、测试。",
+    "organization": "北京航空航天大学 / 上海交通大学人工智能学院 / IQuest Research",
+    "dateLabel": "2026-11-16 首发（UTC；北京时间22:20）",
+    "evidence": "已读原论文方法、实验、过滤与SFT附录；核固定公开说明和一个任务包，未运行或复现。",
+    "originalTitle": "From Repositories to Training Environments: Scaling Long-Horizon Coding Agents with Environment Evolution Loop",
+    "date": "2026-11-16",
+    "checkedAt": "2026-11-17T16:31:34Z",
+    "paperOriginalDate": "2026-11-16T14:20:58Z",
+    "paperUpdatedAt": "2026-11-16T14:20:58Z",
+    "updatedAt": "2026-11-16T14:20:58Z",
+    "firstSeenAt": "2026-11-17T10:00:01Z",
+    "lastSeenAt": "2026-11-17T16:00:00Z",
+    "tags": [
+      "Repository environments",
+      "Environment evolution",
+      "SFT",
+      "Long-horizon coding"
+    ],
+    "authors": [
+      "Yang Tian",
+      "Tianyu Zheng",
+      "Xiyuan Yang",
+      "Yaxin Du",
+      "Chengran Yang",
+      "Bo Zhao",
+      "Jian Yang",
+      "Bryan Dai"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1摘要、作者与原始提交时间",
+        "url": "https://arxiv.org/abs/2611.21152v1"
+      },
+      {
+        "label": "原论文HTML：代理目标、环境演化、主表与附录",
+        "url": "https://arxiv.org/html/2611.21152v1"
+      },
+      {
+        "label": "arXiv v1原始TeX；核对有效正文与表格",
+        "url": "https://arxiv.org/src/2611.21152v1"
+      },
+      {
+        "label": "固定作者项目说明：只发布200个演化前环境",
+        "url": "https://github.com/IQuestLab/RepoFactory/blob/133f7cd998a049c94f86d420491e462456478320/README.md"
+      },
+      {
+        "label": "固定公开数据卡：任务、镜像与复现范围",
+        "url": "https://huggingface.co/datasets/IQuestLab/RepoFactory/blob/efdcaa8f6ea1bfa55eed2263e39186b928c7da88/README.md"
+      },
+      {
+        "label": "固定公开任务000001：仅静态核配置与验证脚本，未执行",
+        "url": "https://huggingface.co/datasets/IQuestLab/RepoFactory/resolve/efdcaa8f6ea1bfa55eed2263e39186b928c7da88/instances/000001/instance.tar.gz"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "RepoFactory演化真实仓库并做SFT：35B-A3B在NL2Repo由23.8→46.4，较未演化再高5.1点。公开仅200个演化前环境；代理指标不等于训练价值，未复现。",
+      "motivation": "仓库能在容器内运行、原实现能过测试，只证明环境可用，不说明拿它训练会提升Agent。长程求解与每次改环境后重新训练都昂贵；本文尝试先用可计算的有效性、实现规模和模块耦合代理改造整库重建任务，再用下游SFT和独立消融检验这种改造是否有价值。",
+      "novelty": "作者主张用有效性、调用图耦合及代码/依赖规模替代求解反馈来演化环境。本站判断：可运行与训练价值被分开验证，但代理可被人为放大；现有对照未建立等token或抗钻空子的保证。",
+      "evidenceScope": "已读arXiv v1 HTML与原始main.tex的有效正文：§3方法（§3.1环境定义/Q与A/C/S、§3.2构造与12轮演化）、§4统计、§5训练/主表/数据对照/500与1000样本消融，以及附录轨迹过滤和SFT超参数；不把被注释掉的旧稿约束当现行方法。独立重算五榜宏平均与修复产出率，未逐图抽取所有曲线点。静态读取固定GitHub README及目录、固定HF数据卡/API文件清单，并只读一个公开任务000001的配置、Dockerfile、入口、oracle复制脚本及验证脚本。下载任务包不等于运行；未下载Docker镜像或权重、未执行任何作者代码。TrainExplorer原HTML虽已下载，仅核摘要并检索若干段落，尚未完成方法解读。verified仅来源核验，不是实验复现。",
+      "limits": "未复现；各榜评测题数、重复次数未列清。公开仅200个演化前环境。代理值可被放大，同轨迹数不等token/费用；五榜宏平均非合并成功率。论文构造10,159环境、17领域，教师每环境5次采样；SFT只保留reward严格大于0.5且通过质量检查的10,947条、覆盖5,577环境，不能称全部成功轨迹。模糊违规交给模型裁判，未见裁判准确率审计。基座、未演化、演化后的NL2Repo分别23.8/41.3/46.4%；五榜原分均值45.08/51.48/53.54%，所以相对基座提升8.46点约8.5、演化额外2.06点约2.1。主表已四舍五入的均值相减会给2.0，不是矛盾；不同模型缺榜时按已报榜平均，不能跨行直接排名。169/500→347/500即33.8%→69.4%是同500个候选仓库经零次或最多3次修复的有效环境产出率，不是训练后Agent成功率，也非全量10,159环境的筛选通过率。S/C两项消融各从同1000环境出发，3/6/9/12轮为四级，每级2000条；S的NL2Repo 30.2→32.9同时增加监督token，C为30.2→32.5且中间波动，不能说每轮单调改善或已证明普遍因果关系。六个公开数据对照各11,000条，与本法10,947条接近并共享教师、清理与学生框架，但轨迹长度、总token和采样费用未配平；扩大环境数也增加数据与算力。本文未列主比较无演化组的精确保留条数，未提供逐榜评测题数/重复次数、训练多种子区间、总GPU小时或环境建设费用，不能据代理反馈便宜推断端到端加速比例。A只检原实现满分/空工作区零分，不能排除弱测试或规格歧义；构造Agent可联合改测试、实现与规格。C来自静态调用图，S可受冗余代码/依赖影响；所选指标提高并非强制Q及另一指标都提高。2.09百万是静态识别的测试定义数，不是已执行测试数或覆盖率；规格导入符号对齐也不保证语义覆盖。论文称排除既有基准仓库，但未见完整排除清单，不能据此认证无污染。固定GitHub提交133f7cd998a049c94f86d420491e462456478320提供说明与资源，固定HF数据提交efdcaa8f6ea1bfa55eed2263e39186b928c7da88列200个任务包及200个镜像包；均明确为演化前环境，未核到完整演化代码、10,159全量环境、10,947条SFT数据或训练权重已公开。仅静态抽查任务000001：配置89个测试，分数为passed/max(配置数,观测通过失败错误数)，上限1，并含pytest摘要回退；这只是该样本实现，不是对全部环境执行的认证。start.sh对列举代码站修改hosts，验证脚本会移除这层屏蔽；未检查运行时网络策略/镜像，不能把它当完整断网的实现证明。Dockerfile另依赖base镜像，未下载镜像或执行作者代码、安装、测试。",
+      "method": [
+        "从公开仓库筛出至少5个实现文件、少于4万行Python且有本地测试的项目，修好隔离运行环境；按测试导入符号补规格/API清单，向求解Agent隐藏原实现和测试。",
+        "用Q=A×C×S评分：A要求原实现满分且空工作区零分；C为含自身路径的函数可达对数/N²，S由代码行数和直接依赖数的对数构成，均是代理量。",
+        "最多演化12轮，联合改实现、规格和测试。先修A，再优先补S<0.5或C<0.01；仅保留所选指标严格提高且有效的版本，否则回滚，不承诺另一个指标不降。",
+        "Qwen3.8-Max每环境采5条，保留reward>0.5并通过质量检查的10,947条，覆盖5,577环境；对Qwen3.5-35B-A3B做3轮SFT，只训练助手输出。",
+        "以同一Claude Code框架评五榜，另测500仓库最多3次修复的构造产出率；S/C消融各从同1000环境出发、每级2000条轨迹，同条数不代表同token成本。"
+      ],
+      "inspirations": [
+        "把环境质量分成可执行性、判分可信度和学习增益三张表：先固定原实现/空工作区/故意作弊实现的验证结果，再保存规格、测试和实现每轮差异；用隐藏回归测试检验增分是否只是修改判题器。",
+        "为S与C设计反例再优化：无用依赖、冗余代码、无效函数连边可能提高代理却不增加任务价值。固定题目语义与隐藏测试，比较代理提高、求解难度和等监督token的下游增益是否同时成立。",
+        "做环境演化实验时同时记录候选500仓库的修复产出、入选5,577环境的训练覆盖、每条轨迹token/工具轮次和最终评测分母；把构造Agent调用、教师5次采样与SFT总费用一起计入，而不是只报同轨迹条数。"
+      ],
+      "reviewedAt": "2026-11-17T16:31:34Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.21152v1",
+        "https://arxiv.org/html/2611.21152v1",
+        "https://arxiv.org/src/2611.21152v1",
+        "https://github.com/IQuestLab/RepoFactory/blob/133f7cd998a049c94f86d420491e462456478320/README.md",
+        "https://huggingface.co/datasets/IQuestLab/RepoFactory/blob/efdcaa8f6ea1bfa55eed2263e39186b928c7da88/README.md",
+        "https://huggingface.co/datasets/IQuestLab/RepoFactory/resolve/efdcaa8f6ea1bfa55eed2263e39186b928c7da88/instances/000001/instance.tar.gz"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.21152",
+      "status": "pending",
+      "checkedAt": "2026-11-17T16:31:27.753816+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://mistral.ai/products/vibe/",
+    "url": "https://mistral.ai/products/vibe/",
+    "id": "official-mistral-vibe-desktop-20261117",
+    "title": "Mistral Vibe Desktop：把Work、本地代码与云端会话放进同一审阅界面",
+    "summary": "Vibe Desktop在同一桌面入口整合Work、本地仓库与云端代码会话，并展示子任务、后台命令和差异审阅。官方称本地模式共享CLI核心引擎与日志，但工具和提示可不同。",
+    "insight": "值得研究的是操作面如何影响Agent执行：任务隔离、后台进程可见性、子任务证据与diff审阅能否减少误操作。共享引擎只能控制部分变量，不能把桌面和CLI效果视为相同。",
+    "limits": "仅核官方发布与文档，未安装或实跑。共享CLI核心引擎不等于工具、提示和结果完全相同；产品演示不构成成功率或速度评测。Linux仍待支持，未核账号权限、后台恢复或并行隔离效果。",
+    "organization": "Mistral AI",
+    "dateLabel": "2026-11-17 · 官方release notes日期",
+    "evidence": "官方发布条目、产品页与文档核验；未运行",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-17T16:28:47.763868+00:00",
+    "firstSeenAt": "2026-11-17T16:35:40.435849+00:00",
+    "tags": [
+      "Mistral",
+      "Agent工作台",
+      "本地代码",
+      "云端会话",
+      "官方工具"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "Mistral官方产品页与桌面入口",
+        "url": "https://mistral.ai/products/vibe/"
+      },
+      {
+        "label": "2026-11-17 Vibe Desktop发布条目",
+        "url": "https://docs.mistral.ai/resources/release-notes"
+      },
+      {
+        "label": "Vibe模式与工作流官方文档",
+        "url": "https://docs.mistral.ai/vibe"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Vibe Desktop把工作任务与本地、云端代码会话放到同一界面；新增价值是任务跟踪、隔离与审阅入口，暂无受控能力评测。",
+      "motivation": "Agent完成长任务还需要管理上下文、并行改动和后台进程；分散在多种界面中的执行证据会增加审阅负担。",
+      "novelty": "官方主张统一Work和Code体验。本站判断：适合研究同引擎、不同操作面的审阅效率；这是一项工具发布，不是新基础模型或已验证性能提升。",
+      "evidenceScope": "已读本轮官方release notes的11/17新条目、Vibe总览工作流，以及产品页下载入口。HTML中macOS/Windows为下载链接，Linux为disabled且Coming soon。未下载、安装、登录、运行或检验演示案例；发布日来自release notes，不从页面抓取时间推断。",
+      "limits": "仅核官方发布与文档，未安装或实跑。共享CLI核心引擎不等于工具、提示和结果完全相同；产品演示不构成成功率或速度评测。Linux仍待支持，未核账号权限、后台恢复或并行隔离效果。",
+      "method": [
+        "按任务选择Work或Code，加入文件与工具上下文；代码任务可在本地仓库或托管云端沙箱运行。",
+        "本地代码工作流提供终端和Git worktrees；并行任务可拆成子会话并查看其消息。",
+        "后台构建、服务或文件监视继续运行，界面提供输出与停止入口，不据此声称已验证故障恢复。",
+        "审阅文件、统一或分栏diff及PR状态后继续处理；文档保留人员对敏感动作的控制。"
+      ],
+      "inspirations": [
+        "固定模型、任务和预算，分别测CLI与桌面上的完成率、人工审阅时长、遗漏错误及回退次数；同时记录工具和提示差异。",
+        "为并行改动预埋文件冲突与后台进程失败，核查界面是否保留独立轨迹、工作区边界和可复核的最终diff，而非仅看完成通知。"
+      ],
+      "reviewedAt": "2026-11-17T16:28:47.763868+00:00",
+      "sourceUrls": [
+        "https://mistral.ai/products/vibe/",
+        "https://docs.mistral.ai/resources/release-notes",
+        "https://docs.mistral.ai/vibe"
+      ]
+    }
   }
 ]
