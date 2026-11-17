@@ -20979,5 +20979,378 @@
       "status": "pending",
       "checkedAt": "2026-11-17T04:26:25.874199+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.20535v1",
+    "url": "https://arxiv.org/abs/2611.20535v1",
+    "id": "paper-vahbench-2611-20535",
+    "title": "VAHBench：长视频不能靠循环与静帧凑完成度",
+    "summary": "VAHBench把长视频文件交付与真正完成的镜头分开计分，并扣除循环、静帧与拖慢填充。240次单次运行显示加剪辑工具并非总有益；过程评分和覆盖率原始字段不全，未复现。",
+    "insight": "作者主张用可审计的成片与轨迹证据评估视频生产harness。本站判断：贡献是防“凑时长”的交付门槛与缺证据规则；当前结果不能认证审美、叙事或可编辑工程质量。",
+    "limits": "未复现；48配置×5剧本均单次运行，无重复区间；过程评分与逐项覆盖率字段未提供。评分有0.05下限，空交付也可能非零；基本质量不是审美或可编辑性。五剧本时长、人物、内容和画幅共同变化，不能把长剧本降分单独归因为时长。240次包含6原生harness×4模型×5剧本、3种OpenMontage增强×4×5、3种专用系统×4×5；同名模型/工具记录仅按论文报告，不作为官方新型号独立核验。native与专用系统保留的composer不同，部分基线还作后端、超时、导入和交互适配，并非直接等价比较现成产品。统一生成端不代表等token、等实际成本或等迭代预算。进程判结束只需预期文件大于100KB，不等于通过解码或完整性评分。LLM协助抽取轨迹证据但不直接打分，仍有抽取误差；缺证据项排除并降低覆盖率，不得当通过或0分。实证表未给process字段和逐叶覆盖率，7行缺质量子项且原因不可从表恢复，因此不能独立重建完整评分或证明诚实度改善。静帧、循环和减速的证据区间先求并集；信息不全时完整性是保守扣罚所得上界，而非已确认完整。624组时长与64组根评分的合成检查是算式一致性控制，不是人工标注下检测器准确率。阈值和权重是评测政策选择，未校准成人类偏好。定性轨迹来自留存生产运行，后端配置及续接对话可不同于240条评分运行，不能据案例估计发生率或把示例画面绑定到榜单分数。未获得并独立检查逐条运行工件，未执行代码、生成视频或做视听验收；未报告NLE工程互通、修改后非目标保持率或审美盲评。",
+    "dateLabel": "2026-11-16 · arXiv v1（UTC）",
+    "evidence": "原文方法、实验与相关附录核验；未复现",
+    "originalTitle": "VAHBench: A Harness Benchmark for Agentic Long-Video Generation",
+    "date": "2026-11-16",
+    "checkedAt": "2026-11-17T10:33:09.140303+00:00",
+    "paperOriginalDate": "2026-11-16T05:11:08Z",
+    "paperUpdatedAt": "2026-11-16T05:11:08Z",
+    "updatedAt": "2026-11-16T05:11:08Z",
+    "firstSeenAt": "2026-11-17T10:00:01Z",
+    "lastSeenAt": "2026-11-17T10:00:01Z",
+    "tags": [
+      "长视频交付",
+      "防填充评测",
+      "Harness",
+      "证据覆盖率"
+    ],
+    "authors": [
+      "Hongbo Zhang",
+      "Liuyang Song",
+      "Hang Zhou",
+      "Xinchen Liu",
+      "Wei He",
+      "Kai Han",
+      "Yunhe Wang"
+    ],
+    "topics": [
+      "video-editing"
+    ],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv首发与摘要",
+        "url": "https://arxiv.org/abs/2611.20535v1"
+      },
+      {
+        "label": "方法、实验与评分附录",
+        "url": "https://arxiv.org/html/2611.20535v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "VAHBench把长视频文件交付与真正完成的镜头分开计分，并扣除循环、静帧与拖慢填充。240次单次运行显示加剪辑工具并非总有益；过程评分和覆盖率原始字段不全，未复现。",
+      "motivation": "长视频Agent可能产出能播放且时长足够的文件，却用循环镜头、静帧动画或减速填空。单看生成器画质和文件存在，会漏掉整季交付、真实镜头覆盖、跨集一致性及工具失败。",
+      "novelty": "作者主张用可审计的成片与轨迹证据评估视频生产harness。本站判断：贡献是防“凑时长”的交付门槛与缺证据规则；当前结果不能认证审美、叙事或可编辑工程质量。",
+      "evidenceScope": "已直接读取arXiv v1摘要与提交历史、正文§3.1–3.3方法及§4.1–4.3实验、结论/复现说明，并核附录A的归一化与5个brief配置、B的区间并集/覆盖率和根评分、B末尾合成控制、C.5权重敏感性、D.1–D.2定性案例、E运行适配及F限制；非仅摘要分析，未逐项重做数学证明或播放样例。48配置各跑B1–B5一次，共240条；每配置22集目标69分钟。原生ClaudeCode20次均值S47.86/C.814/Q.513，Codex S8.47/C.136/Q.616，说明完整性与基本质量不可互换，不用于通用模型排名。OpenMontage只在共享3种文本模型的每harness15个匹配对作比较：Codex/OpenClaw的S分别+14.40/+14.91，ClaudeCode−11.17，三者均C升Q降；没有跨DeepSeek变体强作配对。B1平均C.647、B5.284，但内容和时长混杂。评分C用g真实内容、d交付时长、T目标，先求坏区间并集再扣填充；误差1−min(g,T)/(d+T−min(g,T))同时惩罚不足和超时长，容差2秒且限定比例，单集被g/d上限约束，未组装素材加性扣0.1（单集截断不低于0），缺集0，分母取请求与实际集数较大者；汇总后floor=.05。Q由规格、一致性、合理性三面组成；P含终态工具可靠性与可核声明诚实度，未支持声明不作诚实或欺骗判定。根分S=100×max(Craw,.05)×Q^.75×max(Praw,.05)^.25；缺证据时对观测分支重归一化，不能与全覆盖排名混用。数据233条有完整质量面，缺一致性7/合理性4；保留作者已报告的逐次S再平均，不从舍入分量反算。verified仅指来源核验，不是实验复现。",
+      "limits": "未复现；48配置×5剧本均单次运行，无重复区间；过程评分与逐项覆盖率字段未提供。评分有0.05下限，空交付也可能非零；基本质量不是审美或可编辑性。五剧本时长、人物、内容和画幅共同变化，不能把长剧本降分单独归因为时长。240次包含6原生harness×4模型×5剧本、3种OpenMontage增强×4×5、3种专用系统×4×5；同名模型/工具记录仅按论文报告，不作为官方新型号独立核验。native与专用系统保留的composer不同，部分基线还作后端、超时、导入和交互适配，并非直接等价比较现成产品。统一生成端不代表等token、等实际成本或等迭代预算。进程判结束只需预期文件大于100KB，不等于通过解码或完整性评分。LLM协助抽取轨迹证据但不直接打分，仍有抽取误差；缺证据项排除并降低覆盖率，不得当通过或0分。实证表未给process字段和逐叶覆盖率，7行缺质量子项且原因不可从表恢复，因此不能独立重建完整评分或证明诚实度改善。静帧、循环和减速的证据区间先求并集；信息不全时完整性是保守扣罚所得上界，而非已确认完整。624组时长与64组根评分的合成检查是算式一致性控制，不是人工标注下检测器准确率。阈值和权重是评测政策选择，未校准成人类偏好。定性轨迹来自留存生产运行，后端配置及续接对话可不同于240条评分运行，不能据案例估计发生率或把示例画面绑定到榜单分数。未获得并独立检查逐条运行工件，未执行代码、生成视频或做视听验收；未报告NLE工程互通、修改后非目标保持率或审美盲评。",
+      "method": [
+        "给定五个英文短剧brief，固定图像/视频生成端；原生、OpenMontage增强与专用系统自行规划、生成、剪辑并交付，48配置各跑5题一次。",
+        "定位各集并合并静帧、重复、空白和坏拼接证据区间，扣除填充与已核减速；同时惩罚缺集、未组装素材和超时长，统计真实内容完成度。",
+        "按规格、一致性与合理性汇总基本质量；另从轨迹提取工具最终解决率及可核声明矛盾。LLM只辅助证据抽取，不直接评分。",
+        "按覆盖率标记未知项，几何聚合质量与过程分，再由完整性乘法门控；使用0.05下限，缺证据时重归一权重，不将非零分视作成功。",
+        "比较240条运行和共享文本模型的匹配增强对；用权重敏感性与合成输入检查公式，定性生产案例单列，不冒充相同评分试验。"
+      ],
+      "inspirations": [
+        "创作评测同时记录请求集数、可解码输出、真实内容时长、视觉缺陷与可编辑工程；预埋循环、静帧、慢放和多交废片负对照，并对坏区间求并集避免重复扣罚。",
+        "冻结模型、生成器和总预算作剪辑工具匹配对照；公开process和逐项覆盖率、逐次原始工件，做重复运行与人工盲评，分别检验叙事、画面和后续编辑保持率。"
+      ],
+      "reviewedAt": "2026-11-17T10:33:09.140303+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.20535v1",
+        "https://arxiv.org/html/2611.20535v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.20535",
+      "status": "pending",
+      "checkedAt": "2026-11-17T10:34:39.752324+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.20688v1",
+    "url": "https://arxiv.org/abs/2611.20688v1",
+    "id": "paper-2611.20688",
+    "title": "VIVID：让剪辑Agent回看对应版本的真实成片",
+    "summary": "VIVID给剪辑Agent加按需视听观察、版本化证据和成片复核。100任务每配置3次，Codex平均分38.4→58.6，token增17.9%；分数非成片成功率，未复现。",
+    "insight": "作者主张不训练模型，用版本与时间坐标串起观察、编辑和回看。本站判断：价值是避免拿旧素材证据解释新成片；技术校验、声明映射和内容正确性仍要分开验收。",
+    "limits": "未复现；100任务每配置3次。58.6是归一化任务分，非成功率；token实际增17.9%。抽帧、转录和格式通过均非完整视听验收；映射仅声明时间线，未测工程互通编辑。主表±为三次独立run的标准差，不是95%置信区间或跨任务标准误；修复/选镜/顺序/改编使用不同评分定义，不能把综合分当100个视频中通过数。Assembly还做机会水平校正；Repurpose部分采用Gemini3.1 Pro和Claude Opus4.7裁判与罚分，自动评分不等同客观画质真值。三主对照同时绑定不同模型与原生harness，不能据55.1/58.6/37.1跨行排名harness优劣；较窄同模型对照仅GPT-5.6-sol的Codex与Crayotter环境。文称相同输入、200迭代和30分钟墙钟上限，但不是等实际token或等总成本；Codex、Claude Code、OpenCode加工具后token分别增加17.9%、10.7%、53.3%。论文费用表是API估算而非完整CPU/转录/媒体处理成本账本，未单列缓存token分布，不能据输入输出总量简单反推全部费用或生产性价比。去证据记忆消融还移除任务要求、计划和笔记文件，不能把10.8分差独立归因检索算法；去输出复核同时移除视听反馈和技术检查，组件贡献不是单一因果机制。专家轨迹分析每题从原生与增强各3次中各随机取1次，由3名聘请专家判断，表3分母是适用评价项，未列齐逐特征适用数、盲评和一致性数据；96.2%计划一致性不表示96.2%任务正确。字幕、抽帧、波形与频谱均是局部或派生证据；ASR词时间是估计，不是强制对齐，也不表示Agent听过原音频。声明映射只支持裁剪、拼接和恒定正速率，没有自动推断转场、叠层或任意代码变换；源码明确verified_against_output=false，必须另查实际编码输出。可选托管渲染会生成FFmpeg滤镜、字幕与mapping文件，可继续修改重渲染，但不等于Premiere/Resolve等原生工程互通，论文未给后续编辑保持率、非目标属性保持率或独立可执行通过率。技术verify只核文件身份、指定媒体属性和解码，不认证叙事、画质、字幕语义与音画对齐；复核窗口计划同样不直接宣布成功。固定README称完整托管渲染需要Linux，其他POSIX仅媒体检查；本轮未安装、执行作者代码、下载模型权重、跑剪辑任务、播放成片或作视听质量验收。公开仓库已含实现而非只有占位README，但当前固定树未见完整基准逐任务结果、专家标注或测试目录，论文结果不等于本站复现。",
+    "organization": "Beihang University / Peking University",
+    "dateLabel": "2026-11-16 首发（UTC）",
+    "evidence": "已读完整论文方法、实验与附录；固定实现静态核验，未运行或作视听验收。",
+    "originalTitle": "VIVID: A Visual Harness for Agentic Video Editing",
+    "date": "2026-11-16",
+    "checkedAt": "2026-11-17T10:31:20.181110+00:00",
+    "paperOriginalDate": "2026-11-16T07:52:01Z",
+    "paperUpdatedAt": "2026-11-16T07:52:01Z",
+    "updatedAt": "2026-11-16T07:52:01Z",
+    "firstSeenAt": "2026-11-17T10:00:01Z",
+    "lastSeenAt": "2026-11-17T10:00:01Z",
+    "tags": [
+      "Video editing",
+      "Visual harness",
+      "Evidence memory",
+      "AgenticVBench"
+    ],
+    "authors": [
+      "Wenhan Yu",
+      "Zhaoxi Zhang",
+      "Zhilong Tan",
+      "Weikang Li",
+      "Lei Sha"
+    ],
+    "topics": [
+      "video-editing"
+    ],
+    "featured": true,
+    "sourceId": "arxiv_video_editing",
+    "sources": [
+      {
+        "label": "arXiv v1摘要、作者与原始提交日期",
+        "url": "https://arxiv.org/abs/2611.20688v1"
+      },
+      {
+        "label": "原文完整方法、实验、分析与附录A–C",
+        "url": "https://arxiv.org/html/2611.20688v1"
+      },
+      {
+        "label": "作者固定提交README：公开运行与平台范围",
+        "url": "https://github.com/yuwenhan07/VIVID/blob/d0dcc42a085ec2452fc3f40894fa0d5f0d5b601f/README.md"
+      },
+      {
+        "label": "固定源码：媒体版本与证据存储",
+        "url": "https://github.com/yuwenhan07/VIVID/blob/d0dcc42a085ec2452fc3f40894fa0d5f0d5b601f/src/vivid/memory.py"
+      },
+      {
+        "label": "固定源码：声明时间映射和字幕边界",
+        "url": "https://github.com/yuwenhan07/VIVID/blob/d0dcc42a085ec2452fc3f40894fa0d5f0d5b601f/src/vivid/temporal.py"
+      },
+      {
+        "label": "固定源码：剪辑编译与实际渲染入口",
+        "url": "https://github.com/yuwenhan07/VIVID/blob/d0dcc42a085ec2452fc3f40894fa0d5f0d5b601f/src/vivid/editing.py"
+      },
+      {
+        "label": "固定源码：文件身份与技术校验",
+        "url": "https://github.com/yuwenhan07/VIVID/blob/d0dcc42a085ec2452fc3f40894fa0d5f0d5b601f/src/vivid/verification.py"
+      },
+      {
+        "label": "固定源码：输出复核窗口与非语义保证",
+        "url": "https://github.com/yuwenhan07/VIVID/blob/d0dcc42a085ec2452fc3f40894fa0d5f0d5b601f/src/vivid/review.py"
+      },
+      {
+        "label": "固定源码：ASR估计时间而非强制对齐",
+        "url": "https://github.com/yuwenhan07/VIVID/blob/d0dcc42a085ec2452fc3f40894fa0d5f0d5b601f/src/vivid/transcription.py"
+      },
+      {
+        "label": "固定源码：跨会话累计任务预算",
+        "url": "https://github.com/yuwenhan07/VIVID/blob/d0dcc42a085ec2452fc3f40894fa0d5f0d5b601f/src/vivid/controller.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "VIVID给剪辑Agent加按需视听观察、版本化证据和成片复核。100任务每配置3次，Codex平均分38.4→58.6，token增17.9%；分数非成片成功率，未复现。",
+      "motivation": "剪辑中的证据会随问题、切点和文件版本变化：早期缩略图未必足以定切口，旧字幕也可能不再对应新输出。通用编码Agent能写处理脚本，却需要可回查的视听观察和对实际成片的反馈，才能发现计划与输出的偏差。",
+      "novelty": "作者主张不训练模型，用版本与时间坐标串起观察、编辑和回看。本站判断：价值是避免拿旧素材证据解释新成片；技术校验、声明映射和内容正确性仍要分开验收。",
+      "evidenceScope": "直接读取arXiv v1的§3方法、§4实验与消融、§5行为与token、§6轨迹案例、§7结论以及附录A–C；固定GitHub提交d0dcc42a085ec2452fc3f40894fa0d5f0d5b601f静态核README、memory、temporal、editing、verification、review、transcription及controller关键路径，未执行。主表GPT-5.6-sol/Codex为38.4±6.3→58.6±3.8（+20.2百分点），Claude Fable5/Claude Code32.4±5.1→55.1±3.6（+22.7），GPT-5.5/OpenCode27.4±3.5→37.1±3.5（+9.7）；同GPT-5.6-sol在Crayotter为33.7±2.9。Codex分项Repurpose/Sequencing/Repair/Assembly约58/58/43/77，Claude为56/59/37/66，OpenCode35/41/27/46，OpenCode修复无提升。每task/config三次独立运行，100题分四类；4vCPU/8GB Modal沙箱、200迭代、1800秒，模型temperature/top_p/top_k/seed/max_output_tokens均用供应商默认，不宣称固定随机种子。CodexCLI0.166、ClaudeCode2.1.220、OpenCode1.2.27、Crayotter1.1.0。主表含引用前作的原生基线及历史行，本文匹配设置主张由作者报告，本轮未重核所有历史run。无可用输出记0。Assembly=(正确slot比例−1/k)/(1−1/k)；Repair以损坏输入与golden参考归一化，已知窗口时内外权重0.9/0.1，时间线声明与渲染不一致记0；Sequencing=(1−ND)×LIS×ADJ；Repurpose按任务二元rubric、格式检查及违规罚分归一化。消融58.6对42.6（去按需观察）、47.8（去证据及任务笔记）、44.0（去输出复核），不把三项差值相加。专家F1–F7原生/增强为32.6/57.0、43.0/69.0、21.4/38.1、45.8/62.5、29.4/45.1、60.0/66.7、81.1/96.2，均为适用项满足比例，不是同一个总分母。固定源码compose_segments采用半开区间及Fraction，返回declared_segments且未与输出验证；map_captions遇跨切口时标requires_review，render遇未决字幕返回caption_boundary，不静默烧入。编译渲染默认H.264/yuv420p+AAC并保存mapping与滤镜；不以代码存在认证实际可运行。verify对隔离副本做哈希和全解码，最后检查源文件未变；缓存仅复用相同内容及解码器的成功全解码，仍核当前约束，超120秒报告未完成。review输出semantic_success=null，compare_frames仅比较声明对应点，不能证明定位或感知质量；转录返回ASR估计、非强制对齐。内容版本关联与实际回看互补，均非自动质量保证。",
+      "limits": "未复现；100任务每配置3次。58.6是归一化任务分，非成功率；token实际增17.9%。抽帧、转录和格式通过均非完整视听验收；映射仅声明时间线，未测工程互通编辑。主表±为三次独立run的标准差，不是95%置信区间或跨任务标准误；修复/选镜/顺序/改编使用不同评分定义，不能把综合分当100个视频中通过数。Assembly还做机会水平校正；Repurpose部分采用Gemini3.1 Pro和Claude Opus4.7裁判与罚分，自动评分不等同客观画质真值。三主对照同时绑定不同模型与原生harness，不能据55.1/58.6/37.1跨行排名harness优劣；较窄同模型对照仅GPT-5.6-sol的Codex与Crayotter环境。文称相同输入、200迭代和30分钟墙钟上限，但不是等实际token或等总成本；Codex、Claude Code、OpenCode加工具后token分别增加17.9%、10.7%、53.3%。论文费用表是API估算而非完整CPU/转录/媒体处理成本账本，未单列缓存token分布，不能据输入输出总量简单反推全部费用或生产性价比。去证据记忆消融还移除任务要求、计划和笔记文件，不能把10.8分差独立归因检索算法；去输出复核同时移除视听反馈和技术检查，组件贡献不是单一因果机制。专家轨迹分析每题从原生与增强各3次中各随机取1次，由3名聘请专家判断，表3分母是适用评价项，未列齐逐特征适用数、盲评和一致性数据；96.2%计划一致性不表示96.2%任务正确。字幕、抽帧、波形与频谱均是局部或派生证据；ASR词时间是估计，不是强制对齐，也不表示Agent听过原音频。声明映射只支持裁剪、拼接和恒定正速率，没有自动推断转场、叠层或任意代码变换；源码明确verified_against_output=false，必须另查实际编码输出。可选托管渲染会生成FFmpeg滤镜、字幕与mapping文件，可继续修改重渲染，但不等于Premiere/Resolve等原生工程互通，论文未给后续编辑保持率、非目标属性保持率或独立可执行通过率。技术verify只核文件身份、指定媒体属性和解码，不认证叙事、画质、字幕语义与音画对齐；复核窗口计划同样不直接宣布成功。固定README称完整托管渲染需要Linux，其他POSIX仅媒体检查；本轮未安装、执行作者代码、下载模型权重、跑剪辑任务、播放成片或作视听质量验收。公开仓库已含实现而非只有占位README，但当前固定树未见完整基准逐任务结果、专家标注或测试目录，论文结果不等于本站复现。",
+      "method": [
+        "保留原生编码Agent及完整任务要求，按问题选择视频时间窗、ROI和跨素材对照；音频统计、频谱或ASR补充定位，记录实际返回帧时间。",
+        "以素材相对路径与内容哈希登记版本，把观察、转录和笔记存到模型上下文之外；按证据ID或资产、时间、文本检索，避免同路径重写后混用旧证据。",
+        "Agent自行用代码或Shell编辑，亦可声明裁剪、拼接、固定变速和字幕；计算源片段到输出的时轴映射，跨切口字幕缺可靠词时序则标记复核。",
+        "渲染后对具体文件哈希做格式与解码检查，再计划切口、字幕和要求对应的复核窗口；Agent观察真实输出，回查来源，修改并重渲染。",
+        "用任务要求、工作笔记和证据索引续接新上下文，累计预算不重置；在100个剪辑任务上每配置运行3次，按各任务专用评分并将无可用输出记零。"
+      ],
+      "inspirations": [
+        "把编辑证据表的主键设计成内容哈希、源/输出时坐标与观察ID；文件同名覆盖时自动隔离旧证据，并为每条剪辑决定保存可回到原片的定位，不只保存自然语言总结。",
+        "把验收拆成脚本/文件可执行、时轴与字幕映射、实际视觉听觉内容三层；围绕切口和字幕边界制定回看窗，对抽样未覆盖区间显式记未知，再用后续编辑和非目标保持测试补可编辑性证据。",
+        "做等token、等墙钟和等总费用三组对照；将证据检索、任务笔记续接、输出视听回看与技术解码分别消融，并公开逐任务分母、失败样本、人工盲评一致性，避免混合评分掩盖修复短板。"
+      ],
+      "reviewedAt": "2026-11-17T10:31:20.181110+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.20688v1",
+        "https://arxiv.org/html/2611.20688v1",
+        "https://github.com/yuwenhan07/VIVID/blob/d0dcc42a085ec2452fc3f40894fa0d5f0d5b601f/README.md",
+        "https://github.com/yuwenhan07/VIVID/blob/d0dcc42a085ec2452fc3f40894fa0d5f0d5b601f/src/vivid/memory.py",
+        "https://github.com/yuwenhan07/VIVID/blob/d0dcc42a085ec2452fc3f40894fa0d5f0d5b601f/src/vivid/temporal.py",
+        "https://github.com/yuwenhan07/VIVID/blob/d0dcc42a085ec2452fc3f40894fa0d5f0d5b601f/src/vivid/editing.py",
+        "https://github.com/yuwenhan07/VIVID/blob/d0dcc42a085ec2452fc3f40894fa0d5f0d5b601f/src/vivid/verification.py",
+        "https://github.com/yuwenhan07/VIVID/blob/d0dcc42a085ec2452fc3f40894fa0d5f0d5b601f/src/vivid/review.py",
+        "https://github.com/yuwenhan07/VIVID/blob/d0dcc42a085ec2452fc3f40894fa0d5f0d5b601f/src/vivid/transcription.py",
+        "https://github.com/yuwenhan07/VIVID/blob/d0dcc42a085ec2452fc3f40894fa0d5f0d5b601f/src/vivid/controller.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.20688",
+      "status": "pending",
+      "checkedAt": "2026-11-17T10:34:39.752324+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.21020v1",
+    "url": "https://arxiv.org/abs/2611.21020v1",
+    "id": "paper-2611.21020",
+    "title": "SWE-OPD：缓存修库轨迹能省多少训练资源，截断蒸馏为何仍会失稳？",
+    "summary": "SWE-OPD让教师监督学生自己的修库轨迹：Qwen-9B在731题Pro四次评测均值35.9%→39.4%。离线可省GPU小时但各榜有取舍；公开代码与论文配置尚未逐项对应，未复现。",
+    "insight": "作者主张用最简OPD与离线缓存迁移修库能力，并提出截断损失失稳机制。本站判断：价值在性能、资源和失稳对照；不是新OPD算法，代码归一化与论文分析有差异，机制未被因果验证。",
+    "limits": "未复现；Avg@4是4次评测均值，非pass@4。内部约4K数据及RLE后端限制复现；GPU小时不是墙钟。固定代码归一化与论文停梯度不同，尚未对应到表中各次训练。评测分别为500道SWE-bench Verified、731道Pro、300道Multilingual，各4次独立评测而非4个训练随机种子；未见多训练种子置信区间。ScaleSWE取5K提示、内部数据约4K，匹配提示与训练预算不等于相同轨迹长度或总token数。检查点按1 epoch内最高师生TopK重叠选取，GLM在线约半epoch，不能把所有结果说成固定1 epoch终点。在线Qwen/ScaleSWE的Pro 35.9→39.4%为RKL；内部数据的Qwen离线ST相对在线ST，Verified 61.3→63.7%、Multilingual 43.1→46.0%，但Pro 38.7→36.5%，并非离线全优。跨分词器GLM←DeepSeek仅做离线ST：Pro 35.8→39.7%，Multilingual主表41.6→46.2%；摘要写41.8，与多张主表及固定README不一致，本记录采用主表41.6，不擅自修订论文。成本表只列内部数据上Qwen←Qwen和GLM←GLM两对：1024→416与2808→768 GPU小时（减少59.4%、72.6%），含失败/重试rollout；离线分解176+48+192及368+160+240，顺序复用GPU池使峰值64→32。无跨分词器DeepSeek对应成本，也未列逐目标函数成本、GPU具体型号与利用率，不能外推人民币费用、墙钟加速或整个研发成本。SFT对照使用同一ScaleSWE子集但保留未成功的教师轨迹，缺少成功筛选的强SFT对照；前缀来源与目标形式一起改变，不足以单独证明性能来自学生前缀。GLM RKL出现重复退化且未提供有效榜分，不应当作0%分数。支持集质量梯度只是候选机制：附录是固定前缀/支持集的推导与102词表40步玩具例子，不是移除该项后重训GLM的因果消融，也无ST普遍稳定保证。ST梯度等价全词表反KL要求精确未截断重要性比与完整支持；实际裁剪及教师缓存上界填补不满足严格无偏条件。静态核验固定提交0884a04f4c9e2b4baaa47261b2016d425ac3f63e：在线RKL及离线动态分支均以未detach的logsumexp归一化权重，而论文§3/梯度附录明确分母stop-gradient；两者前向值相同但反向梯度通常不同。在线TopK从batch传入，不能仅凭命名证明逐更新重算。默认token_reverse_kl分支只算logp−logq，另有独立sampled-token PG分支含裁剪与可选anchor/gate，不可混称论文ST。离线入口默认10 epoch/Top1024，而论文主设1 epoch/学生动态Top128；公式文档区分冻结rollout重叠与当前学生重叠。上述差异不直接证明表中实验无效，但公开材料尚不能逐项锁定实验实现与检查点选择口径。未下载或执行权重、未运行作者代码、未验证沙盒服务或完整复现。",
+    "organization": "香港科技大学（广州） / 香港中文大学 / 哈尔滨工业大学 / 百度ERNIE团队",
+    "dateLabel": "2026-11-16 首发（UTC；北京时间20:39）",
+    "evidence": "已读原HTML/TeX方法、实验、成本表和梯度附录；静态核固定作者代码，论文实现对应仍有限，未复现。",
+    "originalTitle": "SWE-OPD: On-Policy Distillation for Agentic Coding",
+    "date": "2026-11-16",
+    "checkedAt": "2026-11-17T10:33:37Z",
+    "paperOriginalDate": "2026-11-16T12:39:52Z",
+    "paperUpdatedAt": "2026-11-16T12:39:52Z",
+    "updatedAt": "2026-11-16T12:39:52Z",
+    "firstSeenAt": "2026-11-17T10:00:01Z",
+    "lastSeenAt": "2026-11-17T10:00:01Z",
+    "tags": [
+      "On-policy distillation",
+      "Coding agents",
+      "Offline teacher cache",
+      "Training stability"
+    ],
+    "authors": [
+      "Yuhang He",
+      "Yanyu Chen",
+      "Chuanzhe Guo",
+      "Jie Zhu",
+      "Zichen Tian",
+      "Hongyu Ge",
+      "Zixuan Ren",
+      "Huang He",
+      "Bingjin Chen",
+      "Junyuan Shang",
+      "Shuohuan Wang",
+      "Yongqi Zhang",
+      "Irwin King",
+      "Jing Liu"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1摘要、作者与提交日期",
+        "url": "https://arxiv.org/abs/2611.21020v1"
+      },
+      {
+        "label": "原论文HTML：方法、成本表与梯度附录",
+        "url": "https://arxiv.org/html/2611.21020v1"
+      },
+      {
+        "label": "arXiv v1原始TeX",
+        "url": "https://arxiv.org/src/2611.21020v1"
+      },
+      {
+        "label": "固定作者提交：项目说明、复现实务范围",
+        "url": "https://github.com/ernie-research/SWE-OPD/blob/0884a04f4c9e2b4baaa47261b2016d425ac3f63e/readme.md"
+      },
+      {
+        "label": "固定实现：在线损失与归一化",
+        "url": "https://github.com/ernie-research/SWE-OPD/blob/0884a04f4c9e2b4baaa47261b2016d425ac3f63e/vanilla_opd/slime/slime/backends/megatron_utils/loss.py"
+      },
+      {
+        "label": "固定实现：离线动态TopK与独立sampled-token PG分支",
+        "url": "https://github.com/ernie-research/SWE-OPD/blob/0884a04f4c9e2b4baaa47261b2016d425ac3f63e/offline_opd/slime/slime/backends/megatron_utils/loss.py"
+      },
+      {
+        "label": "固定离线入口：默认参数并非论文实验配置",
+        "url": "https://github.com/ernie-research/SWE-OPD/blob/0884a04f4c9e2b4baaa47261b2016d425ac3f63e/offline_opd/slime/examples/coding_agent_opd/scripts/offline_opd/start-offline-opd.sh"
+      },
+      {
+        "label": "固定公式说明：缓存诊断与多模式差别",
+        "url": "https://github.com/ernie-research/SWE-OPD/blob/0884a04f4c9e2b4baaa47261b2016d425ac3f63e/offline_opd/slime/examples/coding_agent_opd/scripts/offline_opd/OFFLINE_OPD_FORMULAS.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "SWE-OPD让教师监督学生自己的修库轨迹：Qwen-9B在731题Pro四次评测均值35.9%→39.4%。离线可省GPU小时但各榜有取舍；公开代码与论文配置尚未逐项对应，未复现。",
+      "motivation": "多轮修库的失败动作会改变后续仓库状态；只模仿教师自己的成功路径，未必教会小模型处理自己实际访问的前缀。论文先问不加RL奖励、不筛成功轨迹的OPD能迁移多少能力，再问把初始学生轨迹与教师评分缓存一次能否降低多模型并行成本，并诊断为什么训练loss下降仍会重复失控。",
+      "novelty": "作者主张用最简OPD与离线缓存迁移修库能力，并提出截断损失失稳机制。本站判断：价值在性能、资源和失稳对照；不是新OPD算法，代码归一化与论文分析有差异，机制未被因果验证。",
+      "evidenceScope": "已读取arXiv v1原HTML与原始TeX的§3在线方法、§4支持集实验、§5离线方法/成本表、§6重复退化及梯度分析、实验设置附录和固定前缀梯度/玩具例子附录。按源码文字/表格核对500/731/300任务及Avg@4，独立重算GPU小时减少比例和离线成本分解；未逐图抽取所有曲线点。另静态读取作者固定提交的README、在线/离线loss.py、公式文档及入口参数，发现论文—代码梯度/默认配置差异，未把默认分支当论文实验追溯证明。verified只指来源核验，不是复现；TrainExplorer仅摘要，另入待解读。",
+      "limits": "未复现；Avg@4是4次评测均值，非pass@4。内部约4K数据及RLE后端限制复现；GPU小时不是墙钟。固定代码归一化与论文停梯度不同，尚未对应到表中各次训练。评测分别为500道SWE-bench Verified、731道Pro、300道Multilingual，各4次独立评测而非4个训练随机种子；未见多训练种子置信区间。ScaleSWE取5K提示、内部数据约4K，匹配提示与训练预算不等于相同轨迹长度或总token数。检查点按1 epoch内最高师生TopK重叠选取，GLM在线约半epoch，不能把所有结果说成固定1 epoch终点。在线Qwen/ScaleSWE的Pro 35.9→39.4%为RKL；内部数据的Qwen离线ST相对在线ST，Verified 61.3→63.7%、Multilingual 43.1→46.0%，但Pro 38.7→36.5%，并非离线全优。跨分词器GLM←DeepSeek仅做离线ST：Pro 35.8→39.7%，Multilingual主表41.6→46.2%；摘要写41.8，与多张主表及固定README不一致，本记录采用主表41.6，不擅自修订论文。成本表只列内部数据上Qwen←Qwen和GLM←GLM两对：1024→416与2808→768 GPU小时（减少59.4%、72.6%），含失败/重试rollout；离线分解176+48+192及368+160+240，顺序复用GPU池使峰值64→32。无跨分词器DeepSeek对应成本，也未列逐目标函数成本、GPU具体型号与利用率，不能外推人民币费用、墙钟加速或整个研发成本。SFT对照使用同一ScaleSWE子集但保留未成功的教师轨迹，缺少成功筛选的强SFT对照；前缀来源与目标形式一起改变，不足以单独证明性能来自学生前缀。GLM RKL出现重复退化且未提供有效榜分，不应当作0%分数。支持集质量梯度只是候选机制：附录是固定前缀/支持集的推导与102词表40步玩具例子，不是移除该项后重训GLM的因果消融，也无ST普遍稳定保证。ST梯度等价全词表反KL要求精确未截断重要性比与完整支持；实际裁剪及教师缓存上界填补不满足严格无偏条件。静态核验固定提交0884a04f4c9e2b4baaa47261b2016d425ac3f63e：在线RKL及离线动态分支均以未detach的logsumexp归一化权重，而论文§3/梯度附录明确分母stop-gradient；两者前向值相同但反向梯度通常不同。在线TopK从batch传入，不能仅凭命名证明逐更新重算。默认token_reverse_kl分支只算logp−logq，另有独立sampled-token PG分支含裁剪与可选anchor/gate，不可混称论文ST。离线入口默认10 epoch/Top1024，而论文主设1 epoch/学生动态Top128；公式文档区分冻结rollout重叠与当前学生重叠。上述差异不直接证明表中实验无效，但公开材料尚不能逐项锁定实验实现与检查点选择口径。未下载或执行权重、未运行作者代码、未验证沙盒服务或完整复现。",
+      "method": [
+        "学生每题在可执行仓库采一条轨迹，保留有效的失败与预算截断样本。教师只评分同一前缀；工具观察仅作上下文，损失覆盖全部学生生成位置，不混入任务奖励。",
+        "按论文RKL取当前学生Top128，用原始p/q比及支持集归一化学生权重，分母停梯度；ST用实际采样token的师生log差作停梯度优势，并裁剪新旧学生概率比。",
+        "离线先冻结初始学生轨迹，再缓存教师Top1024；缺项以第1024个概率上界填补。RKL更新学生Top128，ST重算当前优势，训练阶段无需教师常驻。",
+        "跨分词器只测离线ST：重分词同一文本，精确对齐字符段，失配段用简化GOLD合并。全部设1 epoch预算，按师生重叠选点；GLM在线约半epoch。",
+        "以500/731/300题的Verified/Pro/Multilingual各跑4次，报告平均解决率；另分解采样、教师评分、训练GPU小时。论文流程与固定代码配置尚未逐项对应。"
+      ],
+      "inspirations": [
+        "为代码Agent蒸馏建立三轴记录：每题是否测试通过、token/轮次与GPU小时、重复率及支持集外概率质量；保留实际失败和截断分母，避免把下降的截断loss当能力提高。",
+        "把离线缓存当可审计训练数据：同时保存初始轨迹、教师完整TopK定义、遗漏概率填补规则、当前学生命中率和重叠计算版本。先测不同预算下的准确率—成本曲线，再判断是否值得刷新轨迹。",
+        "若研究截断损失失稳，先锁定归一化是否停梯度、支持集来自rollout还是当前模型，以及缓存/裁剪配置；固定轨迹和预算对比梯度实现，再做移除支持集质量项的受控重训，才能检验作者机制。"
+      ],
+      "reviewedAt": "2026-11-17T10:33:37Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.21020v1",
+        "https://arxiv.org/html/2611.21020v1",
+        "https://arxiv.org/src/2611.21020v1",
+        "https://github.com/ernie-research/SWE-OPD/blob/0884a04f4c9e2b4baaa47261b2016d425ac3f63e/readme.md",
+        "https://github.com/ernie-research/SWE-OPD/blob/0884a04f4c9e2b4baaa47261b2016d425ac3f63e/vanilla_opd/slime/slime/backends/megatron_utils/loss.py",
+        "https://github.com/ernie-research/SWE-OPD/blob/0884a04f4c9e2b4baaa47261b2016d425ac3f63e/offline_opd/slime/slime/backends/megatron_utils/loss.py",
+        "https://github.com/ernie-research/SWE-OPD/blob/0884a04f4c9e2b4baaa47261b2016d425ac3f63e/offline_opd/slime/examples/coding_agent_opd/scripts/offline_opd/start-offline-opd.sh",
+        "https://github.com/ernie-research/SWE-OPD/blob/0884a04f4c9e2b4baaa47261b2016d425ac3f63e/offline_opd/slime/examples/coding_agent_opd/scripts/offline_opd/OFFLINE_OPD_FORMULAS.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.21020",
+      "status": "pending",
+      "checkedAt": "2026-11-17T10:34:39.752324+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://safeguards.anthropic.com/2026/automated-red-teaming/",
+    "url": "https://safeguards.anthropic.com/2026/automated-red-teaming/",
+    "id": "official-anthropic-anvil-20261112",
+    "title": "Anvil：把静态回放、自适应压力测试与线上观测分开评估",
+    "summary": "Anthropic公开内部自动红队系统Anvil，说明如何用Agent压力测试改进部署前防护；评测分别保留静态回放、自适应测试和真实流量三种口径。",
+    "insight": "最值得迁移的是评测分层：固定回放便于回归，自适应测试检查新失败方式，独立流量观察检验外推；三者不能混成单一安全成功率。",
+    "limits": "内部未设防模型与精确分类器反馈不等公开API能力；Fable 5.1流量结果是381次抽样尝试中0次成功，不是风险归零。同期多项改进，不能把下降单独归因Anvil；未复现实验。",
+    "organization": "Anthropic",
+    "dateLabel": "官方研究博客发表日期；本轮补充收录",
+    "evidence": "官方原文方法与评测口径已核；未复现",
+    "date": "2026-11-12",
+    "checkedAt": "2026-11-17T10:31:50.974222+00:00",
+    "firstSeenAt": "2026-11-17T10:34:39.804113+00:00",
+    "tags": [
+      "Anthropic",
+      "安全评估",
+      "自适应评测",
+      "Agent",
+      "官方研究"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "Anthropic官方方法与评测报告（2026-11-12）",
+        "url": "https://safeguards.anthropic.com/2026/automated-red-teaming/"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Anvil是内部防护压力测试系统；报告的价值在于区分固定测试、自适应测试与上线观察，而非提供公开模型能力排名。",
+      "motivation": "固定测试改进可能只是适应已有样本；部署前还需要发现防护尚未覆盖的失败方式。",
+      "novelty": "作者主张自动红队有助于加速防护评估；本站判断是多层证据与预算口径更具迁移价值，内部权限优势限制与外部人员直接比较。",
+      "evidenceScope": "已读官方HTML方法、反蒸馏评测及限制段落；未视觉核图、未运行系统，亦未复核未公开流量。属于官方研究项目解读，不冒充论文全文解读。",
+      "limits": "内部未设防模型与精确分类器反馈不等公开API能力；Fable 5.1流量结果是381次抽样尝试中0次成功，不是风险归零。同期多项改进，不能把下降单独归因Anvil；未复现实验。",
+      "method": [
+        "用内部Agent对防护系统开展多轮压力测试，并保留不同评估条件。",
+        "反蒸馏自适应评测固定79个会话，每会话最多200次调用，统计达到泄漏阈值的会话。",
+        "另用固定历史样本做回放；相关样本也参与防护训练和候选选择，需警惕评测适应。",
+        "把静态、自适应结果与上线后抽样观察并列报告，避免将三种分母混用。"
+      ],
+      "inspirations": [
+        "在自己的Agent评估中同时保留固定回归集与隔离的自适应测试集，按调用预算画性能曲线，另报总成本。",
+        "给每次防护变更做版本台账，记录并发改动、样本筛选和分母；真实流量改善先视作相关证据，再做隔离消融。"
+      ],
+      "reviewedAt": "2026-11-17T10:31:50.974222+00:00",
+      "sourceUrls": [
+        "https://safeguards.anthropic.com/2026/automated-red-teaming/"
+      ]
+    }
   }
 ]
