@@ -22616,5 +22616,382 @@
         "https://www.anthropic.com/research/building-strong-safety-evaluations"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.19614v1",
+    "url": "https://arxiv.org/abs/2611.19614v1",
+    "id": "paper-2611.19614",
+    "title": "分层可靠性统计：同题重跑不能替代独立新任务",
+    "summary": "把场景、任务和重复执行分层统计，区分执行噪声与任务差异；同一批任务多跑几次不能替代新增任务。论文还区分单次成功、重试覆盖与连续成功，避免平均分掩盖局部退化。",
+    "insight": "作者主张统一分层不确定性传播与成功指标的有限样本方差。本站判断：价值是明确统计单位和推断目标；全方差与U统计量属既有工具，不能称首次发明新可靠性指标。",
+    "limits": "精确的是给定真实成功率的方差；代入估计值的误差条与正态区间仍有局限。任务独立、执行条件独立是假设；小样本、多重比较与分布代表性未获保证。未复现，verified仅指来源核验。全成功或全失败时plug-in标准误为零，不等于真实概率确定。本文分析固定Agent配置下的二元判定，不能代替严重失败、安全、鲁棒性或判分器误差评估；共享状态、相关任务、自适应重试需另建依赖模型。Thinkingbox训练细节引用另一论文，本轮未复核训练过程或原始运行数据；任务级95% Wald区间不等于控制所有任务的联合误报率。",
+    "dateLabel": "2026-11-14 · arXiv v1",
+    "evidence": "已读原论文方法与实验；统计推导及作者实验未复现",
+    "originalTitle": "A Hierarchical Statistical Framework for Evaluating Agent Reliability",
+    "date": "2026-11-14",
+    "checkedAt": "2026-11-18T16:30:38.112500+00:00",
+    "paperOriginalDate": "2026-11-14T20:45:31Z",
+    "paperUpdatedAt": "2026-11-14T20:45:31Z",
+    "updatedAt": "2026-11-14T20:45:31Z",
+    "firstSeenAt": "2026-11-17T04:00:01Z",
+    "lastSeenAt": "2026-11-17T04:00:01Z",
+    "tags": [
+      "Agent可靠性",
+      "误差条",
+      "分层评估",
+      "pass@k",
+      "任务退化"
+    ],
+    "authors": [
+      "Mirco Milletarì",
+      "Tuhin Kundu"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv版本与发表时间",
+        "url": "https://arxiv.org/abs/2611.19614v1"
+      },
+      {
+        "label": "原论文方法与实验",
+        "url": "https://arxiv.org/html/2611.19614v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把场景、任务和重复执行分层统计，区分执行噪声与任务差异；同一批任务多跑几次不能替代新增任务。论文还区分单次成功、重试覆盖与连续成功，避免平均分掩盖局部退化。",
+      "motivation": "平均成功率相同的Agent可能有不同的任务覆盖、重复失败模式和局部退化。将同一任务的多次运行当成独立新任务，会低估对未见任务总体的推断误差；固定榜单分数的精度又不同于对部署任务总体的精度。",
+      "novelty": "作者主张统一分层不确定性传播与成功指标的有限样本方差。本站判断：价值是明确统计单位和推断目标；全方差与U统计量属既有工具，不能称首次发明新可靠性指标。",
+      "evidenceScope": "已读arXiv v1正文§2层级、§3.1–3.4概率模型/全方差/组合估计、§4 Thinkingbox比较、结论及附录D样本量分析；附录A–C仅核推导位置与关键结论，未逐式重证。非仅摘要。§3.2.1合成例子从Uniform(0,1)抽20个任务成功率，每题100次运行；同一矩阵前20次运行的均值均为0.4825，分层SE0.07329、错误pooled SE0.02502，不能当真实业务性能。§4五场景任务数104/100/101/98/104，共507题；作者所称Qwen-3.8-27b的基座与RLFT比较，各场景平均差值0.093/0.086/0.088/0.039/0.145；总体pass@5和pass@20差值近似95%区间包含0，仅支持“未检出覆盖差异”，不是模型等效证明。连续成功更高为作者报告的点估计。附录D最多40次运行的子采样，不等于额外独立实验。未运行代码或复现数学/模型实验。",
+      "limits": "精确的是给定真实成功率的方差；代入估计值的误差条与正态区间仍有局限。任务独立、执行条件独立是假设；小样本、多重比较与分布代表性未获保证。未复现，verified仅指来源核验。全成功或全失败时plug-in标准误为零，不等于真实概率确定。本文分析固定Agent配置下的二元判定，不能代替严重失败、安全、鲁棒性或判分器误差评估；共享状态、相关任务、自适应重试需另建依赖模型。Thinkingbox训练细节引用另一论文，本轮未复核训练过程或原始运行数据；任务级95% Wald区间不等于控制所有任务的联合误报率。",
+      "method": [
+        "固定模型、harness与环境，保留“场景—任务—运行”层级；每次运行以任务判定器给二元成功/失败，先估计各任务成功率。",
+        "用全方差公式拆分任务内运行噪声与任务间成功率差异，再逐层传播；先说明目标是固定任务集合，还是独立抽样的任务总体。",
+        "对1≤k≤N，以无放回子集组合数估计pass@k至少一次成功与pass^k全部成功，推导各自给定真实成功率的有限样本方差。",
+        "区分无偏点估计、代入式标准误与有偏的成功率k次方；非线性指标先逐任务计算再按权重平均，不能直接对总平均取幂。",
+        "用20任务合成矩阵展示错误扁平化的误差，再分析Thinkingbox五业务场景的基座/RL模型差值、任务级退化及覆盖与连续成功。"
+      ],
+      "inspirations": [
+        "为代码动画评测保存“题目—随机运行—执行/视觉/可编辑性判定”原始矩阵；分别报告固定题集误差和未见任务推断，不把同题重跑扩充成样本量。",
+        "先用试跑估计任务内与任务间方差，再在独立新题和重复运行之间分配预算；同时公布逐题配对差值、退化题及pass@k/pass^k，防止重试覆盖替代一次可靠完成。",
+        "对相关素材、共享仓库状态或自适应修复轨迹按簇处理，并单列判分器一致性；边界概率和少量场景下检验区间覆盖，避免零标准误和正态近似造成虚假确定性。"
+      ],
+      "reviewedAt": "2026-11-18T16:30:38.112500+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.19614v1",
+        "https://arxiv.org/html/2611.19614v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.19614",
+      "status": "pending",
+      "checkedAt": "2026-11-18T16:31:22.941408+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.22307v1",
+    "url": "https://arxiv.org/abs/2611.22307v1",
+    "id": "paper-ifcgym-2611-22307",
+    "title": "IfcGym / IfcEdit：用依赖与保留检查训练可编辑IFC建模Agent",
+    "summary": "IfcGym把IFC编辑的有效性、意图、依赖和无关对象保留写成四类检查器，再筛教师轨迹并训练IfcEdit。论文9B模型在13个真实项目1990题上的严格成功率由SFT的79.15%升至GRPO的86.78%；这衡量任务规格，不等于完整工程合规或视觉质量。公开事务/教师反馈协议与论文存在差异。",
+    "insight": "可将CAD代码创作的奖励从“改到目标”扩展为“目标正确、依赖同步、其他对象不变”，并用合成模型提供可执行训练环境。但检查器必须公开盲区；发布时还需锁定commit/暂存和教师反馈语义，否则同名环境不保证训练与评测一致。",
+    "limits": "未复现；86.78%仅13项目1990题的四门规格成功，非完整BIM合规或视觉质量。模板共用，风格调查触及1测试项目；公开事务与教师反馈协议和论文不一致。IfcEditBench为1500主任务加490门窗/开口补充任务，只有13个建筑项目，不能把1990题当独立场景。训练/验证为3059/340合成建筑上的19141/2270条教师轨迹，真实测试项目未用于任务训练、RL池或检查点选择；但附录披露schependomlaan测试项目参加过表示风格调查，其880面Brep墙影响了合成风格比例，故非完全未接触分布。训练与测试共用任务模板；六个真实项目没有墙连接或空间边界关系，深依赖任务只在可构造子集上成立。严格成功是有效性、意图、依赖、保留四个二值门同时通过，不是Python无异常率、几何渲染成功率或人类设计满意度。有效性仅比较新增schema错误、编辑对象几何可构造与分解环，未启用EXPRESS where-rules，不代表全部IFC规范、建筑结构或法规合格。检查器依赖导出文件中的显式关系，不从几何补推缺失关系；部分几何前提缺失时该规则按不适用通过。保留检查基于IfcProduct及指定关系图，忽略Quantity sets、OwnerHistory、Tag、Description、LongName等，几何子树哈希有深度截断，也会把等价重编码计作变化。未证明所有未提及工程信息不变。9B的79.15%→86.78%是全表边际成功率，相差7.63个百分点；论文配对提升7.75点[5.79,9.47]来自仅双方有结果的样本，不能混写。无结果在总表计失败、配对比较排除。区间为按建筑分层、以目标元素为簇的10000次bootstrap，不是多次独立训练。教师Kimi K3在相同20轮工具预算为88.04%，相对9B配对差1.16点[-0.73,3.36]，区间跨零不证明两者等价。27B从88.29%升至91.76%；训练规模、模板与奖励消融不能替代多种子复现。未提供可比较的全训练成本，不能据小参数量声称费用更低。公开提交ea9f5dabb3be22d9a264350cabbf0b9cf6b57625的sandbox.py优先读work.pending，成功但未commit的调用也把工作态写回pending供下一调用读取；最终评分仍取work提交态。这与论文“每调用从末次commit开始、未提交修改丢弃”的语义不同，代码头注释也与实际逻辑不一致。commit在调用中即时写work，不能声称稍后异常会回滚此前commit。论文教师采集无在线checker反馈，而README/REPRODUCE命令为--feedback all；SFT构建器虽剥掉工具返回的checker report，不能消除教师曾见反馈对轨迹的影响。尚未核出论文实验对应的不同历史提交或完整运行配置，不把当前代码发布等同论文结果可复现。外部BIM-Edit为324题，55.19是作者重实现评分，不是严格成功率。该评分器在两条公开运行上选1024候选配置；另两条留出运行逐题总分MAE仍20.3/20.1分，平均分偏差小不代表逐题一致，也不能直接与原论文官方分数排名。BIBIMBAP仅100题、使用原作者测试，9B全四门奖励54.50，意图加有效性奖励57.75；四门训练并非所有外域都最好。人工检查只有一名BIM从业者：30例刻意按15通过/15失败配额选自有结果文件的主编辑任务，9例无法判断，19/21可判例与检查器一致，不是全体1990题的准确率。20组外部对比也按分数与案例挑选，19组可回答为10偏好学生、7平局、2偏好对照，不能当随机盲测偏好率。人评只看静态视图和实体/关系差异，未完成工程软件交互、保存重开、跨软件往返或视觉设计质量评测。可编辑产物有明确证据：Python/IfcOpenShell直接增删改真实IFC对象、属性和依赖，输出仍为IFC文件；不等于任意CAD/NLE兼容。公开仓库、HF数据卡及1990行任务元数据本轮可读，未下载全部IFC、训练权重或运行训练/测试/渲染；verified仅为公开来源核验。",
+    "organization": "南昌大学、重庆大学、大阪大学",
+    "dateLabel": "2026-11-17 · arXiv v1",
+    "evidence": "原论文方法、实验及关键附录与固定公开实现已核；未复现实验",
+    "originalTitle": "Learning to Edit IFC Building Models: Verifiable Checkers as the Training Signal for Dependency-Aware Editing Agents",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T16:31:35.708971+00:00",
+    "paperOriginalDate": "2026-11-17T07:06:17Z",
+    "paperUpdatedAt": "2026-11-17T07:06:17Z",
+    "updatedAt": "2026-11-17T07:06:17Z",
+    "firstSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T16:00:01Z",
+    "tags": [
+      "IfcGym",
+      "IfcEdit",
+      "IfcEditBench",
+      "IFC",
+      "GRPO",
+      "dependency-aware-editing"
+    ],
+    "authors": [
+      "Jiaxin Zhang",
+      "Yao Luo",
+      "Yuze Dan",
+      "Yunqin Li",
+      "Bowen Wang"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv原论文",
+        "url": "https://arxiv.org/abs/2611.22307v1"
+      },
+      {
+        "label": "arXiv全文HTML",
+        "url": "https://arxiv.org/html/2611.22307v1"
+      },
+      {
+        "label": "arXiv原始LaTeX及附录",
+        "url": "https://arxiv.org/src/2611.22307v1"
+      },
+      {
+        "label": "作者公开代码固定提交",
+        "url": "https://github.com/wbw520/ifcgym/tree/ea9f5dabb3be22d9a264350cabbf0b9cf6b57625"
+      },
+      {
+        "label": "沙盒事务实现",
+        "url": "https://github.com/wbw520/ifcgym/blob/ea9f5dabb3be22d9a264350cabbf0b9cf6b57625/ifcgym/sandbox.py"
+      },
+      {
+        "label": "教师采集与训练复现说明",
+        "url": "https://github.com/wbw520/ifcgym/blob/ea9f5dabb3be22d9a264350cabbf0b9cf6b57625/docs/REPRODUCE.md"
+      },
+      {
+        "label": "SFT轨迹构建器",
+        "url": "https://github.com/wbw520/ifcgym/blob/ea9f5dabb3be22d9a264350cabbf0b9cf6b57625/ifcedit/train/build_sft_data.py"
+      },
+      {
+        "label": "IfcEditBench固定数据卡",
+        "url": "https://huggingface.co/datasets/wbw520wbw520/ifceditbench/blob/887e8e85108ffcf07d4febb9a7ef07a0966211f2/README.md"
+      },
+      {
+        "label": "IfcEditBench固定任务文件",
+        "url": "https://huggingface.co/datasets/wbw520wbw520/ifceditbench/blob/887e8e85108ffcf07d4febb9a7ef07a0966211f2/tasks.jsonl"
+      },
+      {
+        "label": "合成训练材料固定数据卡",
+        "url": "https://huggingface.co/datasets/wbw520wbw520/ifcgym-synthetic/blob/b987abca041257cf0cba0f7666fac7161f51a261/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "IfcEdit用四类检查器训练IFC代码编辑Agent，9B在13项目1990题上严格成功率79.15%→86.78%。这非完整BIM合规；公开事务和教师反馈与论文有差异，未复现。",
+      "motivation": "改一面墙可能牵动开口、相连墙端和空间边界；只检查目标变了或程序跑通，会奖励破坏依赖和误改其他构件的编辑。作者把“请求完成、相关依赖同步、无关对象保留”写成可执行检查，用于生成数据、筛选教师轨迹和强化学习。",
+      "novelty": "作者主张：把依赖与保留纳入可验证奖励，联通IFC环境、教师蒸馏和RL。本站判断：价值在编辑规格与副作用共同训练；证据受模板和检查器范围限制，公开协议差异须先澄清。",
+      "evidenceScope": "已读arXiv v1摘要、正文§3方法和§4实验、Discussion及附录A项目/风格说明、B训练数据、C检查器、D工具、E复现配置、F运行细节、G外部评分器、H补充结果、I人工评价的相关内容；未把全部图像和未逐段检查的J案例称视觉验收。静态核作者固定提交ea9f5dabb3be22d9a264350cabbf0b9cf6b57625的sandbox、ifcgraph、checkers、SFT构建器、RL agent_loop/score_one与复现说明，并核HF两数据卡/元数据及固定tasks.jsonl确有1990个不同task_id、13项目。只读源代码，未安装、执行、调用模型、渲染或复现实验。code2-3d来自生成Python编辑IFC实体和可持久化工程文件，不因普通3D或机器人关键词归类；没有视频或时序动画任务，不加其他三专题。",
+      "limits": "未复现；86.78%仅13项目1990题的四门规格成功，非完整BIM合规或视觉质量。模板共用，风格调查触及1测试项目；公开事务与教师反馈协议和论文不一致。IfcEditBench为1500主任务加490门窗/开口补充任务，只有13个建筑项目，不能把1990题当独立场景。训练/验证为3059/340合成建筑上的19141/2270条教师轨迹，真实测试项目未用于任务训练、RL池或检查点选择；但附录披露schependomlaan测试项目参加过表示风格调查，其880面Brep墙影响了合成风格比例，故非完全未接触分布。训练与测试共用任务模板；六个真实项目没有墙连接或空间边界关系，深依赖任务只在可构造子集上成立。严格成功是有效性、意图、依赖、保留四个二值门同时通过，不是Python无异常率、几何渲染成功率或人类设计满意度。有效性仅比较新增schema错误、编辑对象几何可构造与分解环，未启用EXPRESS where-rules，不代表全部IFC规范、建筑结构或法规合格。检查器依赖导出文件中的显式关系，不从几何补推缺失关系；部分几何前提缺失时该规则按不适用通过。保留检查基于IfcProduct及指定关系图，忽略Quantity sets、OwnerHistory、Tag、Description、LongName等，几何子树哈希有深度截断，也会把等价重编码计作变化。未证明所有未提及工程信息不变。9B的79.15%→86.78%是全表边际成功率，相差7.63个百分点；论文配对提升7.75点[5.79,9.47]来自仅双方有结果的样本，不能混写。无结果在总表计失败、配对比较排除。区间为按建筑分层、以目标元素为簇的10000次bootstrap，不是多次独立训练。教师Kimi K3在相同20轮工具预算为88.04%，相对9B配对差1.16点[-0.73,3.36]，区间跨零不证明两者等价。27B从88.29%升至91.76%；训练规模、模板与奖励消融不能替代多种子复现。未提供可比较的全训练成本，不能据小参数量声称费用更低。公开提交ea9f5dabb3be22d9a264350cabbf0b9cf6b57625的sandbox.py优先读work.pending，成功但未commit的调用也把工作态写回pending供下一调用读取；最终评分仍取work提交态。这与论文“每调用从末次commit开始、未提交修改丢弃”的语义不同，代码头注释也与实际逻辑不一致。commit在调用中即时写work，不能声称稍后异常会回滚此前commit。论文教师采集无在线checker反馈，而README/REPRODUCE命令为--feedback all；SFT构建器虽剥掉工具返回的checker report，不能消除教师曾见反馈对轨迹的影响。尚未核出论文实验对应的不同历史提交或完整运行配置，不把当前代码发布等同论文结果可复现。外部BIM-Edit为324题，55.19是作者重实现评分，不是严格成功率。该评分器在两条公开运行上选1024候选配置；另两条留出运行逐题总分MAE仍20.3/20.1分，平均分偏差小不代表逐题一致，也不能直接与原论文官方分数排名。BIBIMBAP仅100题、使用原作者测试，9B全四门奖励54.50，意图加有效性奖励57.75；四门训练并非所有外域都最好。人工检查只有一名BIM从业者：30例刻意按15通过/15失败配额选自有结果文件的主编辑任务，9例无法判断，19/21可判例与检查器一致，不是全体1990题的准确率。20组外部对比也按分数与案例挑选，19组可回答为10偏好学生、7平局、2偏好对照，不能当随机盲测偏好率。人评只看静态视图和实体/关系差异，未完成工程软件交互、保存重开、跨软件往返或视觉设计质量评测。可编辑产物有明确证据：Python/IfcOpenShell直接增删改真实IFC对象、属性和依赖，输出仍为IFC文件；不等于任意CAD/NLE兼容。公开仓库、HF数据卡及1990行任务元数据本轮可读，未下载全部IFC、训练权重或运行训练/测试/渲染；verified仅为公开来源核验。",
+      "method": [
+        "把IFC视为实体关系图，为每题隐藏目标、可改集合、意图与依赖规格；最终文件必须同时过有效性、意图、依赖、保留四门，才获二值奖励。",
+        "Agent用单个Python/IfcOpenShell工具和28个辅助函数编辑IFC，自行处理依赖；论文以末次commit为最终产物，公开pending工作态差异另列局限。",
+        "从CubiCasa5K合成建筑及任务规格，经静态检查、正确/错误脚本和引用唯一性筛选；用Kimi K3改写提示，按建筑分训练验证，测试来自13个真实项目。",
+        "论文让Kimi K3带编辑配方、40轮预算且无checker反馈采样；只留四门通过轨迹，移除异常调用，去配方后用19141条轨迹SFT，仅对模型生成位置计损失。",
+        "对SFT模型四次试跑筛出5895题；GRPO每步64提示各8轨迹、20轮预算，用严格终态奖励，替换同奖组并以KL约束SFT参考，训练100步。"
+      ],
+      "inspirations": [
+        "给代码建模任务同时标目标、必须联动对象和禁止改动对象，以终态约束代替单一目标文件匹配；对缺失依赖关系单列“不适用”，不要让跳过检查冒充真正成功。",
+        "把commit、暂存工作态、异常、超时及最终评分文件做成小型事务语义回归集，并用同一实现采集教师/SFT/RL数据；删除反馈文本不能替代证明教师没见反馈。",
+        "评测分别报程序可执行、任务四门成功、工程保留/跨软件往返和盲化视觉评价；按建筑及目标元素分簇，另设未见模板与未参与风格设计的项目，核外域评分器逐题误差。"
+      ],
+      "reviewedAt": "2026-11-18T16:31:35.708971+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.22307v1",
+        "https://arxiv.org/html/2611.22307v1",
+        "https://arxiv.org/src/2611.22307v1",
+        "https://github.com/wbw520/ifcgym/tree/ea9f5dabb3be22d9a264350cabbf0b9cf6b57625",
+        "https://github.com/wbw520/ifcgym/blob/ea9f5dabb3be22d9a264350cabbf0b9cf6b57625/ifcgym/sandbox.py",
+        "https://github.com/wbw520/ifcgym/blob/ea9f5dabb3be22d9a264350cabbf0b9cf6b57625/docs/REPRODUCE.md",
+        "https://github.com/wbw520/ifcgym/blob/ea9f5dabb3be22d9a264350cabbf0b9cf6b57625/ifcedit/train/build_sft_data.py",
+        "https://huggingface.co/datasets/wbw520wbw520/ifceditbench/blob/887e8e85108ffcf07d4febb9a7ef07a0966211f2/README.md",
+        "https://huggingface.co/datasets/wbw520wbw520/ifceditbench/blob/887e8e85108ffcf07d4febb9a7ef07a0966211f2/tasks.jsonl",
+        "https://huggingface.co/datasets/wbw520wbw520/ifcgym-synthetic/blob/b987abca041257cf0cba0f7666fac7161f51a261/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.22307",
+      "status": "pending",
+      "checkedAt": "2026-11-18T16:31:22.941408+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.22310v1",
+    "url": "https://arxiv.org/abs/2611.22310v1",
+    "id": "paper-2611.22310",
+    "title": "EviDARL：用可执行表格证据连接双Agent，再交替训练",
+    "summary": "EviDARL让取证Agent执行表格程序、回答Agent读取证据，再交替训练两个LoRA；Qwen3-8B在323题MMQA的EM从SFT后57.28%到67.80%，可执行不等证据正确，未复现。",
+    "insight": "作者：用可执行证据连接双Agent，以冻结伙伴的反馈交替训练。本站：价值在拆开执行、证据充分与答案正确三层；对照的训练顺序和推理模式不同，不能把全部收益归因于交替或称全面省钱。",
+    "limits": "未复现；MMQA323题经模型辅助修标，证据充分率只在取证成功样本上算。55.2%降时混有thinking开关，首token更慢，且不含标注/训练成本；可执行不保证联结与证据正确。MMQA采用多表多跳子集，预处理训练部分2553题中2123用于参数优化、430验证，测试323。作者用DeepSeek-V4-Flash处理空答案及SQL执行与标签冲突，去重并移除超过平均token长度20倍的异常项；没有披露改标数量、独立人工复核或完整跨划分来源审计。不能由去重一词推定完全无污染，也没有证据断言发生泄漏。TQA-Bench训练1400、验证280，8K/64K测试各500；训练使用dbIdx8/9、验证6/7、测试0至5，数据库索引有隔离，但仍覆盖相同十领域与14种问题索引，不是未见领域或问法。8K/64K是表输入规模，不能直接当成每次模型实际读满对应长度。Qwen3-8B的MMQA EM依次为未训练EviDA20.43%、SFT57.28%、SFT+RL67.80%；本条突出最后10.52个百分点，避免把蒸馏SFT收益全部算作RL。8K/64K为88.40%/88.20%，分别高于SFT的79.40%/76.40%，各500题。MMQA Avg按任务数量汇总，不是两表和三表列的简单平均；EM是精确匹配，非所有部署任务的完成率。ECS92.88%表示取证构建/执行成功，不表示取证正确；ES71.33%由DeepSeek裁判在构建成功样本上判断关键行、列、值及跨表关系是否齐全，是条件分母，不是全323题的任务成功率。PM也由DeepSeek-V4-Flash评估，且同型号参与修标，模型偏差未独立排除。列奖励只检查GPT-5.5给出的必要列是否被包含，教师看每表前10行而取证Agent只看代表行；列齐不保证行筛选、联结方向、聚合或数值正确。全表惩罚的具体阈值与格式奖励细节未完全给出。SFT附录明确描述2123条MMQA训练实例，未给每角色最终保留轨迹数及完整TQA冷启动构成。两个Qwen适配器各约87.3M，合计174.6M，不是两个合计仅1%；底座仍是8B。主方法4张A100、基线8张A100仅为硬件配置，未报告可比较的总GPU小时、GPT-5.5蒸馏/列标注调用费、奖励计算量或全生命周期账单，不能据显卡数宣称总训练费用减半。顺序训练对照先训练取证再训练回答一次，而主方法先回答后取证并重复三轮；切换顺序、回访次数和可能的训练预算同时变化，不能当作只改变交替这一因素的因果对照。By-Step变体先完成一轮按epoch交替，再按步切换，并非从第零步开始。单角色消融将另一个角色冻结在未SFT的基础模型，而非主方法的SFT伙伴；Mixture-of-Minds还使用三个完整骨干，容量及有效轨迹覆盖均不同。其423/345/579条有效轨迹统计覆盖2553个处理后训练实例（含430验证），论文未列实际进入训练的ID，不能推定其验证泄漏已发生。同文中EviDA配Claude Sonnet 5在MMQA达到68.73%，高于8B EviDARL的67.80%；GPT-5.5在TQA两档达到94.60%/93.40%，也高于EviDARL。因此不复述跨全部方法/任务的全面最优主张。Llama的三表ES从SFT58.90%到RL57.61%略降，不能称所有中间指标一致提升。论文没有多次训练种子或主表置信区间，不由少量百分点宣称统计显著或一般收敛保证。推理计时限MMQA与Qwen3-8B，同4张A100、同vLLM设置和16K max_model_len；Table-R1启用thinking，EviDARL关闭。端到端12.67→5.67秒、生成1821→523token，含程序执行约0.014秒；但完整流程首token按取证输入到回答者首token计，从31.68毫秒到5670.6毫秒，不能称交互首响更快。论文没有充分给出计时样本数、汇总统计类型和并发信号量数值；不擅称均值、中位数或跨部署固定倍率。该结果不能外推到64K表任务，也不能单独归因于双Agent架构。回退完整表的截断和上下文超限处理未充分报告。证据程序及结果便于诊断，但回答者仍靠语言模型做后续运算；局限于两数据集、两个8B骨干和机器可读表，不覆盖图片/图表或高风险生产数据。本站直接读了方法、主表、消融及A/B/C附录和提示模板，未人工逐图核全部定性例子或重建所有曲线点；未核到可归属公开实现/权重，HF专页404。未执行作者代码、训练、生成轨迹或做推理复现；verified仅指来源核验。",
+    "organization": "浙江大学 / 蚂蚁集团网商银行",
+    "dateLabel": "2026-11-17 首发（UTC；北京时间15:07）",
+    "evidence": "已读原论文方法、主表及数据清洗/奖励/训练/延迟附录；区分执行成功、条件证据充分和答案EM，未复现。",
+    "originalTitle": "EviDARL: Evidence-Centric Dual-Agent Reasoning via Alternating Reinforcement Learning for Multi-Table Question Answering",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T16:29:17.700741+00:00",
+    "paperOriginalDate": "2026-11-17T07:07:41Z",
+    "paperUpdatedAt": "2026-11-17T07:07:41Z",
+    "updatedAt": "2026-11-17T07:07:41Z",
+    "firstSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T16:00:01Z",
+    "tags": [
+      "Multi-table QA",
+      "Alternating RL",
+      "GRPO",
+      "Evidence construction",
+      "LoRA"
+    ],
+    "authors": [
+      "Dunhan Li",
+      "Leilei Gan",
+      "Lirong Gao",
+      "Wenyan Fan",
+      "Yongwei Wang",
+      "Sheng Guo",
+      "Fei Wu"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1：原始提交日期、作者与摘要",
+        "url": "https://arxiv.org/abs/2611.22310v1"
+      },
+      {
+        "label": "原论文HTML：证据构建与交替强化学习",
+        "url": "https://arxiv.org/html/2611.22310v1"
+      },
+      {
+        "label": "原始TeX：主表、数据划分、奖励和延迟附录",
+        "url": "https://arxiv.org/src/2611.22310v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "EviDARL让取证Agent执行表格程序、回答Agent读取证据，再交替训练两个LoRA；Qwen3-8B在323题MMQA的EM从SFT后57.28%到67.80%，可执行不等证据正确，未复现。",
+      "motivation": "多表问答既要找对跨表关系，又要在长表中筛出足够证据。直接长上下文推理难定位错误，顺序优化取证与回答也会使伙伴的输入和反馈脱节；需要把可检查的中间证据与最终答案分开训练和评估。",
+      "novelty": "作者：用可执行证据连接双Agent，以冻结伙伴的反馈交替训练。本站：价值在拆开执行、证据充分与答案正确三层；对照的训练顺序和推理模式不同，不能把全部收益归因于交替或称全面省钱。",
+      "evidenceScope": "直接读取arXiv v1摘要及提交历史、HTML、完整原始TeX：§3方法与目标、§4主实验和消融、A提示模板/SFT/奖励、B数据清洗/划分/裁判/基线/训练、C交替设置与推理延迟。核算关键比例和条件分母；未视觉逐图核定性材料或提取全部曲线点，未核得实现/权重及逐题原始日志，未复现。发表日期取v1提交，checkedAt/reviewedAt仅为本轮核验。",
+      "limits": "未复现；MMQA323题经模型辅助修标，证据充分率只在取证成功样本上算。55.2%降时混有thinking开关，首token更慢，且不含标注/训练成本；可执行不保证联结与证据正确。MMQA采用多表多跳子集，预处理训练部分2553题中2123用于参数优化、430验证，测试323。作者用DeepSeek-V4-Flash处理空答案及SQL执行与标签冲突，去重并移除超过平均token长度20倍的异常项；没有披露改标数量、独立人工复核或完整跨划分来源审计。不能由去重一词推定完全无污染，也没有证据断言发生泄漏。TQA-Bench训练1400、验证280，8K/64K测试各500；训练使用dbIdx8/9、验证6/7、测试0至5，数据库索引有隔离，但仍覆盖相同十领域与14种问题索引，不是未见领域或问法。8K/64K是表输入规模，不能直接当成每次模型实际读满对应长度。Qwen3-8B的MMQA EM依次为未训练EviDA20.43%、SFT57.28%、SFT+RL67.80%；本条突出最后10.52个百分点，避免把蒸馏SFT收益全部算作RL。8K/64K为88.40%/88.20%，分别高于SFT的79.40%/76.40%，各500题。MMQA Avg按任务数量汇总，不是两表和三表列的简单平均；EM是精确匹配，非所有部署任务的完成率。ECS92.88%表示取证构建/执行成功，不表示取证正确；ES71.33%由DeepSeek裁判在构建成功样本上判断关键行、列、值及跨表关系是否齐全，是条件分母，不是全323题的任务成功率。PM也由DeepSeek-V4-Flash评估，且同型号参与修标，模型偏差未独立排除。列奖励只检查GPT-5.5给出的必要列是否被包含，教师看每表前10行而取证Agent只看代表行；列齐不保证行筛选、联结方向、聚合或数值正确。全表惩罚的具体阈值与格式奖励细节未完全给出。SFT附录明确描述2123条MMQA训练实例，未给每角色最终保留轨迹数及完整TQA冷启动构成。两个Qwen适配器各约87.3M，合计174.6M，不是两个合计仅1%；底座仍是8B。主方法4张A100、基线8张A100仅为硬件配置，未报告可比较的总GPU小时、GPT-5.5蒸馏/列标注调用费、奖励计算量或全生命周期账单，不能据显卡数宣称总训练费用减半。顺序训练对照先训练取证再训练回答一次，而主方法先回答后取证并重复三轮；切换顺序、回访次数和可能的训练预算同时变化，不能当作只改变交替这一因素的因果对照。By-Step变体先完成一轮按epoch交替，再按步切换，并非从第零步开始。单角色消融将另一个角色冻结在未SFT的基础模型，而非主方法的SFT伙伴；Mixture-of-Minds还使用三个完整骨干，容量及有效轨迹覆盖均不同。其423/345/579条有效轨迹统计覆盖2553个处理后训练实例（含430验证），论文未列实际进入训练的ID，不能推定其验证泄漏已发生。同文中EviDA配Claude Sonnet 5在MMQA达到68.73%，高于8B EviDARL的67.80%；GPT-5.5在TQA两档达到94.60%/93.40%，也高于EviDARL。因此不复述跨全部方法/任务的全面最优主张。Llama的三表ES从SFT58.90%到RL57.61%略降，不能称所有中间指标一致提升。论文没有多次训练种子或主表置信区间，不由少量百分点宣称统计显著或一般收敛保证。推理计时限MMQA与Qwen3-8B，同4张A100、同vLLM设置和16K max_model_len；Table-R1启用thinking，EviDARL关闭。端到端12.67→5.67秒、生成1821→523token，含程序执行约0.014秒；但完整流程首token按取证输入到回答者首token计，从31.68毫秒到5670.6毫秒，不能称交互首响更快。论文没有充分给出计时样本数、汇总统计类型和并发信号量数值；不擅称均值、中位数或跨部署固定倍率。该结果不能外推到64K表任务，也不能单独归因于双Agent架构。回退完整表的截断和上下文超限处理未充分报告。证据程序及结果便于诊断，但回答者仍靠语言模型做后续运算；局限于两数据集、两个8B骨干和机器可读表，不覆盖图片/图表或高风险生产数据。本站直接读了方法、主表、消融及A/B/C附录和提示模板，未人工逐图核全部定性例子或重建所有曲线点；未核到可归属公开实现/权重，HF专页404。未执行作者代码、训练、生成轨迹或做推理复现；verified仅指来源核验。",
+      "method": [
+        "取证Agent只读问题、每表结构和一条代表行，生成pandas程序；程序在完整表集上执行，输出筛选、联结或聚合后的evidence表，并保留代码与结果。",
+        "回答Agent读取问题、紧凑表表示和执行证据，自行推理作答；执行失败或其判证据不足时退回完整原表。回答阶段不调用计算工具，回退不保证答对。",
+        "先用GPT-5.5轨迹做双角色SFT：取证保留可执行代码，证据回答正确/错误分别权重1/0.4；回答仅保留证据与回退模式的正确轨迹。",
+        "取证奖励由执行成功门控：列覆盖0.20、冻结回答者证据模式正确性0.70、格式0.10，再罚全表和重复。列清单由GPT-5.5看前10行生成；回退答对不奖取证。",
+        "共享冻结骨干与两个独立LoRA，按先回答、后取证交替3轮，每阶段冻结伙伴，共6epoch/396步；GRPO每组8条，回答的证据/回退模式分组归一优势。"
+      ],
+      "inspirations": [
+        "将工具执行、证据充分和最终答案各记一个指标，并同时报告条件分母及全任务分母；保存联结键、筛选条件、输入行数与输出行数，以定位“代码能跑但删错证据”的失败。",
+        "交替训练时分别冻结取证器和回答器，并对证据/回退模式分组归一奖励；补上同初始化、同更新次数、同顺序与总奖励查询预算的对照，再判断交替本身是否有效。",
+        "评估部署时同时量端到端完成时间、用户可见首响应、回退比例和总教师/训练账单；固定thinking开关与并发，并给含大表截断的失败成本，避免短证据与关闭思考的收益混在一起。"
+      ],
+      "reviewedAt": "2026-11-18T16:29:17.700741+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.22310v1",
+        "https://arxiv.org/html/2611.22310v1",
+        "https://arxiv.org/src/2611.22310v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.22310",
+      "status": "pending",
+      "checkedAt": "2026-11-18T16:31:22.941408+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/rumble-2-flash",
+    "url": "https://huggingface.co/blog/rumble-2-flash",
+    "id": "official-rumble2-flash-opd-20261118",
+    "title": "Rumble-2-Flash：跨词表蒸馏的0.5B语音识别项目解读",
+    "summary": "Rumble-2-Flash的11/18博客介绍用GOLD把不同词表教师蒸馏到0.5B语音识别模型；权重清单可见，7000 RTFx是满批吞吐，非单请求低延迟。",
+    "insight": "作者展示跨词表on-policy蒸馏的ASR落地。本站判断：小模型兼容现有推理栈有工程价值，但需把词表对齐、训练收益与批处理吞吐分别验证。",
+    "limits": "未复现；11/18是博客日期，非模型首次出现。7000 RTFx为H200满批吞吐；AppTek是角色扮演非真实客户，302h口径未对齐。45语种标签与config30项不同，WER/CER混合平均不能当准确率。作者模型卡注明Open ASR Leaderboard v1.16.1（11/18）、H200与vLLM：英语6.60%是7个公开分集加2个聚合私有分集的平均，公开表9项简单平均约6.602，未取得私有样本/逐项预测。英语RTFx6338，SPGISpeech为7308；博客超过7000指大数据集满批场景，不代表一小时单文件含加载/分段/网络的完整响应只需半秒，也不证明CPU或手机同等吞吐。多语博客6.96%混合9语言且中文用CER、其他用WER；当前卡列8种非英语的语言均值及英语6.60，简单等权约6.896，与6.96不完全对齐，聚合/版本差异尚未核清，不自行改写成统一WER或排名。博客报告AppTek WER7.86%与Nemotron30B的7.78%，相差0.08个百分点无显著性区间，不称胜出或等价证明；其“302小时真实电话”措辞不可照用：所链数据卡说明角色扮演，默认配置128.6小时语音、1746通道，合并配置151.1小时/873通话，时长可能涉及语音/通道/静音不同口径但本轮未获映射证据。分段与文本归一化显著影响该集分数，卡示例Qwen1.7B为8.3而博客7.4，说明不能拼接不同配置结果。模型卡标45语种、config support_languages只列30，本轮不推定其余不能识别或均已验证；公开分语言表只覆盖9种，不代表45种同等质量。HF元数据列508631552参数、公开未门控、model.safetensors及Apache2.0许可证；只核文件清单/文本，未下载执行权重，未测Transformers/vLLM版本兼容、流式首字延迟、字时间戳、说话人分离或端侧内存。配置含5.21.0.dev0标记，博客“无自定义运行时”是作者支持声明，未以本机安装复验。教师Rumble-2的完整训练语料、算力、蒸馏消融、种子波动和训练测试去重证据未在所读博客/卡公开；跨词表GOLD为借用方法，本轮未读其原论文或实现，只按博客核文本对齐、共享词表与排序概率说明。仓库创建10/14不等公开时点，独立荷兰榜单11/04段已列该模型；本记录日期仅11/18新博客/模型卡评测说明，不声称当天首次开放。该项目是语音转录模型，不是自治语音Agent，更不是代码创作/视频剪辑。verified仅来源核验，未复现。",
+    "organization": "Reson8 / Hugging Face作者博客",
+    "dateLabel": "方法与评测博客发表日；非模型首次公开日期",
+    "evidence": "作者博客、模型卡/配置/许可证、公开元数据与数据集卡已读；未运行模型或复现榜单",
+    "originalTitle": "Rumble-2-Flash: an open 0.5B speech model for 40+ languages",
+    "date": "2026-11-18",
+    "checkedAt": "2026-11-18T16:29:49.224830+00:00",
+    "firstSeenAt": "2026-11-18T16:31:57.594487+00:00",
+    "tags": [
+      "On-policy distillation",
+      "GOLD",
+      "Speech recognition",
+      "Cross-tokenizer",
+      "Batch throughput"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "作者发布博客",
+        "url": "https://huggingface.co/blog/rumble-2-flash"
+      },
+      {
+        "label": "公开模型页",
+        "url": "https://huggingface.co/Reson8/Rumble-2-Flash"
+      },
+      {
+        "label": "固定版本模型卡与榜单说明",
+        "url": "https://huggingface.co/Reson8/Rumble-2-Flash/raw/92ec9141fb1178c5e77fd0020fe86a33c355060b/README.md"
+      },
+      {
+        "label": "固定版本配置",
+        "url": "https://huggingface.co/Reson8/Rumble-2-Flash/raw/92ec9141fb1178c5e77fd0020fe86a33c355060b/config.json"
+      },
+      {
+        "label": "固定版本Apache2.0许可证",
+        "url": "https://huggingface.co/Reson8/Rumble-2-Flash/raw/92ec9141fb1178c5e77fd0020fe86a33c355060b/LICENSE"
+      },
+      {
+        "label": "公开模型元数据与权重清单",
+        "url": "https://huggingface.co/api/models/Reson8/Rumble-2-Flash"
+      },
+      {
+        "label": "AppTek数据卡：分段、时长与角色扮演边界",
+        "url": "https://huggingface.co/datasets/apptek-com/apptek_callcenter_dialogues/raw/main/README.md"
+      },
+      {
+        "label": "独立荷兰榜单日期交叉核验",
+        "url": "https://huggingface.co/spaces/tvosch/Dutch-ASR-Leaderboard/raw/main/CHANGELOG.md"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Rumble-2-Flash的11/18博客介绍用GOLD把不同词表教师蒸馏到0.5B语音识别模型；权重清单可见，7000 RTFx是满批吞吐，非单请求低延迟。",
+      "motivation": "语音Agent的转录前端既要降低模型体量，又要保持口音和多语言质量；选用成熟架构可复用推理栈，但其词表不一定与教师相同。",
+      "novelty": "作者：把跨词表GOLD蒸馏用于小型ASR，并兼容现有推理栈。本站：有价值的是实际模型卡/权重交付；不把GOLD当作者新算法，也不把吞吐当交互延迟。",
+      "evidenceScope": "直接读11/18完整作者博客、固定提交README/config/LICENSE、HF公开模型元数据、AppTek完整数据卡与独立荷兰榜单changelog。GOLD Space仅加载壳，未读其论文/训练实现；未读全部榜单逐项原始输出、未下载音频或权重、未安装调用模型。",
+      "limits": "未复现；11/18是博客日期，非模型首次出现。7000 RTFx为H200满批吞吐；AppTek是角色扮演非真实客户，302h口径未对齐。45语种标签与config30项不同，WER/CER混合平均不能当准确率。作者模型卡注明Open ASR Leaderboard v1.16.1（11/18）、H200与vLLM：英语6.60%是7个公开分集加2个聚合私有分集的平均，公开表9项简单平均约6.602，未取得私有样本/逐项预测。英语RTFx6338，SPGISpeech为7308；博客超过7000指大数据集满批场景，不代表一小时单文件含加载/分段/网络的完整响应只需半秒，也不证明CPU或手机同等吞吐。多语博客6.96%混合9语言且中文用CER、其他用WER；当前卡列8种非英语的语言均值及英语6.60，简单等权约6.896，与6.96不完全对齐，聚合/版本差异尚未核清，不自行改写成统一WER或排名。博客报告AppTek WER7.86%与Nemotron30B的7.78%，相差0.08个百分点无显著性区间，不称胜出或等价证明；其“302小时真实电话”措辞不可照用：所链数据卡说明角色扮演，默认配置128.6小时语音、1746通道，合并配置151.1小时/873通话，时长可能涉及语音/通道/静音不同口径但本轮未获映射证据。分段与文本归一化显著影响该集分数，卡示例Qwen1.7B为8.3而博客7.4，说明不能拼接不同配置结果。模型卡标45语种、config support_languages只列30，本轮不推定其余不能识别或均已验证；公开分语言表只覆盖9种，不代表45种同等质量。HF元数据列508631552参数、公开未门控、model.safetensors及Apache2.0许可证；只核文件清单/文本，未下载执行权重，未测Transformers/vLLM版本兼容、流式首字延迟、字时间戳、说话人分离或端侧内存。配置含5.21.0.dev0标记，博客“无自定义运行时”是作者支持声明，未以本机安装复验。教师Rumble-2的完整训练语料、算力、蒸馏消融、种子波动和训练测试去重证据未在所读博客/卡公开；跨词表GOLD为借用方法，本轮未读其原论文或实现，只按博客核文本对齐、共享词表与排序概率说明。仓库创建10/14不等公开时点，独立荷兰榜单11/04段已列该模型；本记录日期仅11/18新博客/模型卡评测说明，不声称当天首次开放。该项目是语音转录模型，不是自治语音Agent，更不是代码创作/视频剪辑。verified仅来源核验，未复现。",
+      "method": [
+        "采用Qwen3-ASR架构作为0.5B学生，保留现有词表与Transformers/vLLM接入；教师为更大的生产模型Rumble-2。",
+        "学生先对音频生成自己的转录，教师沿学生输出逐token提供下一步概率；不只训练在预写教师转录上。",
+        "按作者说明借用GOLD：把不同切分合到共同文本片段，共享词表直接比较，其余按排序概率对齐，处理不同tokenizer。",
+        "推理接口可指定语言、数字格式、语气词保留和重复词处理；未指定语言时返回识别语言与转录。",
+        "在H200/vLLM的Open ASR榜单及AppTek电话场景分别报告错误率和吞吐；本站对照模型卡、数据卡，保留分母与成本差异。"
+      ],
+      "inspirations": [
+        "训练小型转录前端时，分别比较同词表、跨词表对齐和硬转录蒸馏，固定训练音频与算力；除平均错误率还报告数字、实体名、口音和未见语言分组。",
+        "为语音Agent同时测满批吞吐、单流首字/完结延迟和内存；把分段、静音裁剪、数字/重复词归一化固定，否则转录格式就可能改变榜单结论。",
+        "先对齐数据卡与模型卡的时长/通道/语音分母，再判断真实业务迁移；角色扮演和批量离线成绩仅用于筛候选，不能代替真实会话闭环验证。"
+      ],
+      "reviewedAt": "2026-11-18T16:29:49.224830+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/blog/rumble-2-flash",
+        "https://huggingface.co/Reson8/Rumble-2-Flash",
+        "https://huggingface.co/Reson8/Rumble-2-Flash/raw/92ec9141fb1178c5e77fd0020fe86a33c355060b/README.md",
+        "https://huggingface.co/Reson8/Rumble-2-Flash/raw/92ec9141fb1178c5e77fd0020fe86a33c355060b/config.json",
+        "https://huggingface.co/Reson8/Rumble-2-Flash/raw/92ec9141fb1178c5e77fd0020fe86a33c355060b/LICENSE",
+        "https://huggingface.co/api/models/Reson8/Rumble-2-Flash",
+        "https://huggingface.co/datasets/apptek-com/apptek_callcenter_dialogues/raw/main/README.md",
+        "https://huggingface.co/spaces/tvosch/Dutch-ASR-Leaderboard/raw/main/CHANGELOG.md"
+      ]
+    }
   }
 ]
