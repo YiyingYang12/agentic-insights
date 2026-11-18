@@ -1,6 +1,950 @@
 [
   {
     "sourceType": "arxiv",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.22835v1",
+    "url": "https://arxiv.org/abs/2611.22835v1",
+    "id": "live-658b471647ffa3c3",
+    "title": "When Passing Checks Do Not Establish Completion: Evidence Interpretation in Coding Agents",
+    "summary": "Verification procedures in coding agents must preserve execution facts, interpret their scope and discharge checking obligations. We study these responsibilities through qualified repository checks, controlled evidence consumers and executable workflows. A prospective thirteen-task factorial study finds that correct reported facts need not yield the requested finite verdict. Conversely, all 122 delivered labels in a held-out receipt-supply study are correct, while sixteen responses misreport facts and eleven others exceed authorized scope. Production repair supplies successful controls and finite-supported preservation failures. Across 118…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T14:17:43Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Xueping Gao"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.22835v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.22815v1",
+    "url": "https://arxiv.org/abs/2611.22815v1",
+    "id": "live-2845901090edbf8d",
+    "title": "Visual Harness Scales General VLMs to Medical Images",
+    "summary": "We show that an appropriate visual harness can substantially improve the performance of general vision-language models (VLMs) across diverse medical imaging tasks. We introduce \\ours, a medical visual harness that equips general VLMs with interactive visual tools and systematic diagnostic evidence management. With \\ours, general VLMs interactively explore medical images and progressively acquire diagnostic evidence, which is preserved in a lossless memory for subsequent retrieval and use. After submitting an initial answer, the VLM receives an assessment of potential omissions and the reliability of identified findings. This assessment…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T14:04:55Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Shaowen Wan",
+      "Hanqi Jiang",
+      "Zihao Wu",
+      "Junhao Chen",
+      "Weihang You",
+      "Ruiyu Yan",
+      "Bowen Chen",
+      "Tianming Liu",
+      "Lin Zhao"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.22815v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.23067v1",
+    "url": "https://arxiv.org/abs/2611.23067v1",
+    "id": "live-0697286bcc7c124c",
+    "title": "Values Shape What Self-Improving Coding Agents Build",
+    "summary": "Self-improving agents are typically optimized for the results they produce, with less attention to how they produce them. Their instructions give designers limited ways to shape how they work, especially when the task is open-ended. This paper studies whether a short value statement in an agent's persistent instruction file changes not only how well the agent performs but also what it builds. Four higher-order value types in Schwartz's theory of basic human values were evaluated: openness to change, conservation, self-enhancement, and self-transcendence. Across diverse coding tasks, the values were held fixed within each run over multiple…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T16:56:46Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Distillation"
+    ],
+    "authors": [
+      "Jason Liang",
+      "Dylan Waldner",
+      "Risto Miikkulainen"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.23067v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.22973v1",
+    "url": "https://arxiv.org/abs/2611.22973v1",
+    "id": "live-92fb8b1b6d818edd",
+    "title": "VITAL: A Framework for Validating Agentic AI in Pharmaceutical Drug Development and Clinical Trial Operations",
+    "summary": "Current assurance approaches do not establish whether evidence is sufficient to validate, monitor and govern agentic artificial intelligence (AI) within a pharmaceutical context of use. Plausible outputs may conceal failures in retrieval, reasoning, orchestration or human-control points, where reference standards are unavailable. We developed and operationalised VITAL (Validation by Intended use, Traceability, Autonomy and Lifecycle evidence), a validation framework for agents in clinical development, through landscape analysis, regulatory and standards mapping, expert interviews and multi-stakeholder refinement. VITAL integrates context of…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T15:55:13Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Sandeep Burugupalli",
+      "Pedro Matos-Filipe",
+      "Andrea Hita Ardiaca",
+      "Adam Taylor",
+      "Alex Grigorenko",
+      "Natalia Jakubiak",
+      "Xin Yu",
+      "Raghav Mani",
+      "Sherry Mangla",
+      "Alvi Lai",
+      "Rachel C. Mercado",
+      "Pratik Shah",
+      "Raja Shankar"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.22973v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.23068v1",
+    "url": "https://arxiv.org/abs/2611.23068v1",
+    "id": "live-0859ac5398572032",
+    "title": "The Resolution Hypothesis: Agent Evolution's Key Is Identifying Improvements",
+    "summary": "Agent evolution follows a simple loop: a proposer writes candidate artifacts (prompts, skills, memories) and selection accepts those that score higher. This loop has shown promise, yet practitioners face a puzzle: methods trade wins across papers, and evolution often fails to bootstrap on certain tasks. We trace this puzzle to the Resolution Hypothesis: agent evolution stalls not because methods fail to propose better artifacts, but because noisy evaluations cannot reliably identify them. Across seven evolution methods and six models (over 10M LLM calls), we find support for the hypothesis at both levels where evaluation scores are used. At…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T16:57:03Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Yuanhao Zeng",
+      "Shaocheng Lan",
+      "Ao Lu",
+      "Kuang Yan",
+      "Heng Lin",
+      "Xinang Xu",
+      "Yuan Luo",
+      "Yueting Wang",
+      "Yexin Li",
+      "Ruo Shan",
+      "Kan Ren"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.23068v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.22755v1",
+    "url": "https://arxiv.org/abs/2611.22755v1",
+    "id": "live-a33edce3419b5354",
+    "title": "Teaching What to Look For: Privileged Perception Questions for Agentic On-Policy Distillation in Video Captioning",
+    "summary": "Detailed video captioning requires comprehensive and faithful descriptions of objects, actions, and temporal events. Fixed-frame sampling, however, can miss brief motions, small objects, and other fine-grained evidence, motivating captioning agents that actively seek relevant moments and inspect local regions. Training such behavior is challenging because, unlike video question answering, generic captioning instructions do not specify what visual evidence should be acquired. We propose Perception-Question On-Policy Distillation (PQ-OPD), which uses training-only Perception Questions (PQs) to guide active video perception. PQs specify what…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T13:23:54Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Distillation"
+    ],
+    "authors": [
+      "Yifan Xu",
+      "Ruopeng Gao",
+      "Zhixiao Wang",
+      "Jiafu Tang",
+      "Yichun Yang",
+      "Zihao Wang",
+      "Yuanxing Zhang",
+      "Limin Wang"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.22755v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.22837v1",
+    "url": "https://arxiv.org/abs/2611.22837v1",
+    "id": "live-5fe2b5f087116dcc",
+    "title": "Synergizing Evidence Retrieval and Utilization for Self-Improving Multimodal Scientific Document Reasoning",
+    "summary": "Scientific document reasoning requires an agent to acquire and integrate evidence distributed across text, figures, and tables. Retrieval can identify relevant sources while missing complementary support, and answer-level feedback alone does not reveal whether an error stems from evidence acquisition or evidence use. We present an agentic Retriever--Perceiver--Reasoner framework for multimodal scientific document reasoning. The Retriever sequentially selects source-aligned evidence under a context budget. Given the selected evidence and question, the Perceiver constructs a question-conditioned latent ontology, an implicit organization of…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T14:19:18Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Training / RL"
+    ],
+    "authors": [
+      "Frank Nie",
+      "Ethan B. Liu",
+      "Yuan Zhu",
+      "Jindong Han"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.22837v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.23225v1",
+    "url": "https://arxiv.org/abs/2611.23225v1",
+    "id": "live-eaba7e365057424f",
+    "title": "StringQFT: A Multiuse Textbook Resource for AI-Assisted Theoretical Physics",
+    "summary": "We present StringQFT as a textbook collection for string constructions of quantum field theory and as infrastructure for AI-assisted theoretical physics. The collection comprises 18 volumes, 190 chapters and 3,795 pages, covering brane probes, brane webs, geometric engineering, F-theory constructions, wrapped M5-branes and exact worldsheet constructions. Its open-book benchmark inventory contains 1,073 items, including 499 with automatic finite-answer checking. For retrieval-augmented generation, it provides 1,371 section records linked to textbook sources and PDF locations, together with a local lexical retriever. Training-data preparation…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T18:58:40Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Training / RL"
+    ],
+    "authors": [
+      "Xingyang Yu"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.23225v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.22888v1",
+    "url": "https://arxiv.org/abs/2611.22888v1",
+    "id": "live-5e77778065f78e5a",
+    "title": "Stopping Is Not the Limit: Understanding and Eliciting Agent Capability in Long-Horizon Vulnerability Exploitation",
+    "summary": "Vulnerability exploitation tests whether language model agents can develop working exploits from known software flaws. Sequential test-time scaling can improve exploitation performance, but larger budgets do not ensure sustained exploration: agents often stop with budget remaining. Yet what happens when execution continues beyond stopping remains underexplored. We investigate this gap on ExploitBench using DeepSeek-V4-Flash-0731 and MiMo-V2.6-Pro. We find additional verified gains after the first stop response, but gains diminish over longer execution. We identify two patterns associated with less productive continuation: an increasing…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T14:58:46Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Deokhyung Kang",
+      "Minjae Gwon",
+      "Sangdon Park"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.22888v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.23228v1",
+    "url": "https://arxiv.org/abs/2611.23228v1",
+    "id": "live-d563181435f730d1",
+    "title": "Spool: Low-Latency Streaming Inference for Hybrid Vision-Language Models",
+    "summary": "Applications such as visual accessibility agents and robotics require answering questions about recent video content promptly, over a bounded window of past frames (e.g., the last two minutes). Hybrid vision-language models (VLMs), which interleave attention with linear recurrent layers such as Gated DeltaNet (GDN), are attractive for this setting, but maintaining a sliding window is expensive. The reason is that recurrent layers combine all past frames into a shared state, so expiring old frames normally requires re-running the entire window through the model. We observe that the recurrent update is affine in the state with input-dependent…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T18:59:27Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Training / RL"
+    ],
+    "authors": [
+      "Rui Ning",
+      "Om Chabra",
+      "Hari Balakrishnan"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.23228v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.22971v1",
+    "url": "https://arxiv.org/abs/2611.22971v1",
+    "id": "live-9d517486478b9af7",
+    "title": "SEAM: Computer-Use Agents Know the Harm Between Screens, and Commit It Anyway",
+    "summary": "Safety benchmarks for computer-use agents (CUAs) place the harm either in the intent of the task or on a single screen: a malicious instruction, an injected command, a phishing page. An agent that checks the task and each screen in isolation can pass them, so they do not test whether it combines facts seen on different screens. Yet in delegated work, harm often arises exactly this way: a fact about a person on one screen, a fact about an item on another, and a legitimate task that binds them. We introduce SEAM (Safety Execution Across Multiple screens), a benchmark of such cross-screen compositional harm: 600 multi-step, cross-application…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T15:53:58Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Evaluation"
+    ],
+    "authors": [
+      "Yuxuan Zhou",
+      "Chen Xiong",
+      "Haitong Liu",
+      "Kuofeng Gao",
+      "Yang Bai",
+      "Zhiyuan He",
+      "Tao Dai",
+      "Shu-Tao Xia"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.22971v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.22991v1",
+    "url": "https://arxiv.org/abs/2611.22991v1",
+    "id": "live-f8b626704dcb1bfe",
+    "title": "RagHarnessDebugger: Jev-Guided Agentic RAG in Contract Inference Repair Auditing",
+    "summary": "Agentic systems using retrieval-augmented generation (RAG) must repair their own answers by gathering more evidence, testing alternative policies and deciding if, when, and what repairs are needed. Yet how do we know if a system's repairs are working when metrics like accuracy can be misleading? We present RagHarnessDebugger, a framework that records every repair decision in a Jev-guided harness for contract inference and audits the record to facilitate complete debugging of all decisions taken during a RAG repair journey. RagHarnessDebugger checks that each trace is intact, that each validation applies to the candidate it is counted for…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T16:07:17Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Moriya Dechtiar",
+      "Daniel Martin Katz",
+      "Michael J. Bommarito",
+      "Hongming Wang",
+      "Sylvain Jaume"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.22991v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.23010v1",
+    "url": "https://arxiv.org/abs/2611.23010v1",
+    "id": "live-592817f040928cd7",
+    "title": "PhysScope: Agentic Multimodal Physics Reasoning with Grounded Visual Memory",
+    "summary": "Vision-language models (VLMs) can correctly interpret physics diagrams yet apply constraints outside the states or conditions in which they hold, causing premise errors to propagate through subsequent calculations. We introduce PhysScope, an inference-time visual harness that supports self-correction of these scope mismatches without updating model weights. PhysScope enables the model to link physical scopes directly to its visual observations and explicitly constructs derived views to support reasoning. The harness imposes explicit constraints on state distinctions, conditions, and physical scopes during model reasoning, and checks…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T16:22:21Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Haoyang Liu",
+      "Kecheng Liang",
+      "Xinyu Li",
+      "Weixing Chen",
+      "Yang Liu"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.23010v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.22790v1",
+    "url": "https://arxiv.org/abs/2611.22790v1",
+    "id": "live-f62f0df594ec1dc5",
+    "title": "NexSight: Verifiable Tasks for Fine-Grained Agentic Long-Video Understanding",
+    "summary": "Fine-grained questions about long videos ask how many times an action occurs, in what order events unfold, or exactly when a state changes. Answering them can require finding brief moments scattered across hours of footage. Agentic models that decide when and where to look promise to find these moments, yet this ability is hard both to measure and to learn. Sparse supporting evidence may establish that an action occurred without establishing its total count; verifying timeline-wide claims requires checking for missed occurrences and double counting. Answer-only supervision, in turn, does not explicitly supervise the search for evidence. We…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T13:52:28Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Training / RL"
+    ],
+    "authors": [
+      "Tianci Xie",
+      "Li Chen",
+      "Pinxue Guo",
+      "Rui Zheng"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.22790v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.23142v1",
+    "url": "https://arxiv.org/abs/2611.23142v1",
+    "id": "live-69a16c0ac4bd89b0",
+    "title": "Mind the Gap: A Deployed Multi-Agent System for Documentation Maintenance",
+    "summary": "The \"AI revolution\" has enabled teams across the technology industry to deliver software features at unprecedented velocity. While code evolves faster than ever, customer-facing documentation often struggles to stay up to speed. As users increasingly rely on LLM-based agents that consume documentation as their primary interface, the impact of this documentation gap worsens: stale information propagates and is treated as authoritative. Signals for identifying where documentation has fallen behind already exist in abundance, both explicit (e.g., resolved support tickets revealing what documentation lacks) and implicit (e.g., code-documentation…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T17:59:13Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Lorenzo Masoero"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.23142v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.23174v1",
+    "url": "https://arxiv.org/abs/2611.23174v1",
+    "id": "live-16c5a18bbdc24e66",
+    "title": "Inference after coding agents",
+    "summary": "Empirical research is changing rapidly as AI coding agents are becoming increasingly proficient in every step of it, from writing code to manipulating data. We argue that while the potential of coding agents for science is vast, their use in hypothesis testing poses a substantial threat to classical inference, as these agents enable a supercharged form of selective inference. In particular, we argue that coding agents carrying out empirical research introduce a new type of post-selection inference that combines human-like, open-ended search over an implicit space of estimators with programmatic replayability of both the selection and the…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T18:22:01Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Florian Gunsilius",
+      "David Van Dijcke",
+      "Kaspar Wüthrich"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.23174v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.23203v1",
+    "url": "https://arxiv.org/abs/2611.23203v1",
+    "id": "live-c45758ced615bdef",
+    "title": "Identifying and Repairing Energy Smells with Agent Skills",
+    "summary": "Energy smells are inefficient implementations that waste energy. Once code reaches production, these smells become costlier and riskier to fix, so energy efficiency checks should shift left, i.e., move earlier in the development lifecycle, to where code is written. Existing energy smell tools rely on fixed static rules and do not measure energy savings, whereas LLM-based optimizers mostly target execution time and rarely ground their changes in concrete smell definitions. To address both limitations, we present DR. GREENS, an agent skill that detects and repairs energy smells in Python code within the developer's coding environment. The…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T18:45:42Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Mohammadjavad Mehditabar",
+      "Saurabhsingh Rajput",
+      "Tushar Sharma"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.23203v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.23140v1",
+    "url": "https://arxiv.org/abs/2611.23140v1",
+    "id": "live-bb85b2176979027d",
+    "title": "GameRealm: Grounding Visual Learning in Interactive Games",
+    "summary": "Visual foundation models are central to physical intelligence, yet their development remains constrained by fragmented training datasets, inconsistent annotation quality, and limited multimodal supervision. To address these challenges, we introduce GameRealm, a large-scale, richly annotated dataset that grounds visual observations in synchronized, game-native supervision. GameRealm encompasses over 120 million RGB frames and 1,000 hours of gameplay footage across all views. Beyond its unprecedented scale, GameRealm provides rich multimodal supervision, including metric depth, camera parameters, synchronized audio, control inputs, and 3D…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T17:57:22Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Data"
+    ],
+    "authors": [
+      "Weiguang Zhao",
+      "Yifan Wang",
+      "Ni Yang",
+      "Yating Wang",
+      "Xingyu Miao",
+      "Yankai Jiang",
+      "Mulin Yu",
+      "Tao Lu",
+      "Haoyu Guo",
+      "Junting Dong",
+      "Weinan Zhang",
+      "Chunhua Shen"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.23140v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.23045v1",
+    "url": "https://arxiv.org/abs/2611.23045v1",
+    "id": "live-f94bbe26d083e342",
+    "title": "ForecastGym: A Live, Controlled, and Replayable Benchmark for Forecasting Agents",
+    "summary": "Agents built on large language models (LLMs) increasingly forecast real-world events by searching the Web and reasoning over what they find. How well such an agent forecasts depends on both the retrieved evidence and the model, making control over that evidence essential for evaluation. Live evaluations can mix retrieval with reasoning when each system searches on its own, while retrospective search can leak later information through date filters or today's ranking of historical pages. Comparing models, search sources, and memory strategies requires both fixed evidence and a record of how it evolved before resolution. We introduce…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T16:44:38Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Evaluation"
+    ],
+    "authors": [
+      "Yicheng Tao",
+      "Yuante Li",
+      "Zipei Fan"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.23045v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.23119v1",
+    "url": "https://arxiv.org/abs/2611.23119v1",
+    "id": "live-5af7079eed086a55",
+    "title": "Dynamic Task Allocation with Dialogue",
+    "summary": "Effective multi-agent collaboration requires agents to adapt task allocation as goals and responsibilities evolve. Prior task-allocation frameworks often assume static goals, full observability, or rely on large language models (LLMs) without explicit, verifiable beliefs about task allocation or intent. These assumptions limit their applicability to real-world collaboration, where agents often lack full information about each other's actions, progress, or local environment. To support dynamic task allocation under partial observability, we introduce a communication-augmented Bayesian task-allocation framework. Our agent uses dialogue to…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T17:37:17Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Matthew Groholski",
+      "Weiwei Gu",
+      "Nakul Gopalan"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.23119v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.22901v1",
+    "url": "https://arxiv.org/abs/2611.22901v1",
+    "id": "live-e07d49225d7ef066",
+    "title": "Done, But Still Working: Anytime Evaluation of When Coding Agents Should Stop",
+    "summary": "Coding agents often continue working after their own tests pass. Does this additional work improve the patch, and how much could be saved by stopping earlier? We study these questions through anytime evaluation: replaying recorded runs, scoring intermediate patches with hidden tests, and measuring the cost incurred at each step. For policies that only stop a run or select an earlier patch, this allows paired comparisons without generating new trajectories, provided replay preserves the relevant states. Across about 6,000 runs of eight open models in two scaffolds on SWE-bench Verified, we find substantial differences in the value of…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T15:07:35Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Evaluation"
+    ],
+    "authors": [
+      "Zerui Yang",
+      "Quan Xue",
+      "Miaomiao Dong",
+      "Chaorui Zhang",
+      "Xuanyu Zheng",
+      "Xiyuan Wang",
+      "Haolin Ruan",
+      "Xueyan Niu",
+      "Guangcheng Song",
+      "Weixi Zhang",
+      "Wei Han",
+      "Bo Bai"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.22901v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.22777v1",
+    "url": "https://arxiv.org/abs/2611.22777v1",
+    "id": "live-466735ed1d81fc29",
+    "title": "CrossEnv: Synthesizing Verifiable Cross-Environment Tasks for Long-Horizon Agent Training",
+    "summary": "Executable synthetic environments provide scalable training tasks and verifiable feedback for long-horizon agents. Existing environment synthesis methods primarily generate tasks within individual environments. However, these tasks do not adequately capture real-world interactions across services, where actions in one service depend on information obtained from another. Synthesizing such tasks is challenging because data generated across environments must remain consistent to support executable and verifiable interactions. To address this challenge, we introduce CrossEnv, a framework that uses an entity-tool graph to identify connections…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T13:44:28Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Training / RL"
+    ],
+    "authors": [
+      "Zhengfeng Yu",
+      "Tian Lan",
+      "Zhijing Wu",
+      "Enbo Zhao",
+      "Xuannan Liu",
+      "Feihu Jiang",
+      "Qianghuai Jia",
+      "Longyue Wang",
+      "Zhao Xu",
+      "Weihua Luo",
+      "Xian-Ling Mao"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.22777v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.22967v1",
+    "url": "https://arxiv.org/abs/2611.22967v1",
+    "id": "live-3e5d333a8b2b18fd",
+    "title": "CodeReel: Accelerating Code-to-Video Agents with Exact Frame Reuse and Blocking-Aware Scheduling",
+    "summary": "Coding agents make videos by writing and refining programs in a build--inspect--edit loop. A finished film costs a median of $2.85 in model calls and 11 minutes, over a third of that time in builds that block the agent. We find that much of this time is avoidable, for two reasons. First, 37.5% of the frames of a session's later films were drawn before, many shifted in time or inside an edited scene. Second, half of the builds stop at a check, where the agent needs only the verdict, but which builds stop is unknown until the checks finish. We present CodeReel, a training-free execution layer behind agents' existing commands. Exact frame reuse…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T15:52:15Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Evaluation"
+    ],
+    "authors": [
+      "Junyi Shen",
+      "Yao Lu"
+    ],
+    "topics": [
+      "code2video"
+    ],
+    "sourceId": "arxiv_code2video",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.22967v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.22949v1",
+    "url": "https://arxiv.org/abs/2611.22949v1",
+    "id": "live-97237b5347f30dc1",
+    "title": "Can Decision Models Replace LLMs in Real-World Contact Center Classification and Judging Tasks?",
+    "summary": "Contact center systems often need to make bounded decisions, such as identifying a caller's intent, retrieving the knowledge-base article that answers a query, assessing agent compliance, or judging the output of AI models used in production. Decision models return a typed answer and its probability directly, making them a promising cost-effective alternative to generative Large Language Models (LLMs) in such bounded conversational tasks. However, their effectiveness in real-world contact center applications remains unclear. In this paper, we compare nine decision models against thirteen generative LLMs in zero-shot settings across eight…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T15:39:40Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Md Tahmid Rahman Laskar",
+      "Xue-Yong Fu",
+      "Shashi Bhushan TN"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.22949v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.22897v1",
+    "url": "https://arxiv.org/abs/2611.22897v1",
+    "id": "live-e510d8edf1a22451",
+    "title": "Born for the Task: Rethinking Quantum Chemistry with Foresighted Agentic Computing",
+    "summary": "Quantum chemistry relies on general-purpose software, whose generality leaves many large-scale calculations beyond practical resource budgets. Coding agents make task-specific programs cheap to write, but not efficient ones easy to find: whether a computational strategy is accurate and fast enough becomes clear only after it actually runs at the target scale. We introduce BORN, a foresighted agentic computing framework that synthesizes high performance quantum chemistry programs on demand. BORN anticipates the behavior of each strategy before execution, extrapolating its error from representative small systems and predicting its runtime from…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-17T15:05:38Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Haozhi Han",
+      "Junjie Yang",
+      "Ruge Zhang",
+      "Zihe Huang",
+      "Pengyi Xu",
+      "Bo Zhang",
+      "Yunquan Zhang",
+      "Ting Cao",
+      "Yunxin Liu",
+      "Yifeng Chen",
+      "Kun Li"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.22897v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
     "category": "training",
     "verified": false,
     "originUrl": "https://arxiv.org/abs/2611.22670v1",
@@ -13,10 +957,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T12:24:19Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -48,10 +992,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T05:43:37Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
@@ -83,10 +1027,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T06:48:03Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -166,10 +1110,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T00:55:58Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -200,10 +1144,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T09:06:14Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Data"
     ],
@@ -235,10 +1179,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T04:13:18Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -268,10 +1212,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T12:20:01Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -343,10 +1287,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T09:46:16Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
@@ -397,10 +1341,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T07:40:37Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
@@ -438,10 +1382,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T02:56:43Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -475,10 +1419,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T04:04:11Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Data"
     ],
@@ -513,10 +1457,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T04:16:34Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
@@ -552,10 +1496,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T07:27:08Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -590,10 +1534,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T05:52:52Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -628,10 +1572,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T04:01:28Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -664,10 +1608,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T05:47:01Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
@@ -708,10 +1652,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T10:52:45Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -746,10 +1690,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T09:25:47Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
@@ -787,10 +1731,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T03:30:03Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -824,10 +1768,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T07:06:17Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -861,10 +1805,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T09:00:31Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -896,10 +1840,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T10:05:59Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -932,10 +1876,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T12:50:14Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -966,10 +1910,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T10:30:14Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -1001,10 +1945,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T06:55:41Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -1035,10 +1979,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T03:55:44Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Distillation"
     ],
@@ -1074,10 +2018,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T11:07:31Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -1113,10 +2057,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T02:37:56Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -1152,10 +2096,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T07:07:41Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -1191,10 +2135,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T03:17:14Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -1228,10 +2172,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T05:38:53Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -1272,10 +2216,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T01:55:26Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -1306,10 +2250,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T03:22:21Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -1341,10 +2285,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T07:51:55Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -1376,10 +2320,10 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-17T11:13:12Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -1414,9 +2358,9 @@
     "dateLabel": "2026-11-17",
     "evidence": "自动收录·待解读",
     "date": "2026-11-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-17T22:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -1426,6 +2370,63 @@
       {
         "label": "OpenAI · 官方更新",
         "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "training",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.21152",
+    "url": "https://huggingface.co/papers/2611.21152",
+    "id": "live-f0f34601b7079b6e",
+    "title": "From Repositories to Training Environments: Scaling Long-Horizon Coding Agents with Environment Evolution Loop",
+    "summary": "Training coding agents for long-horizon tasks requires environments with verifiable feedback. Existing pipelines often follow a linear process that ends with validation, establishing usability but providing little guidance on improving training value. Recursive self-improvement (RSI) often requires model rollouts or model training followed by downstream evaluation, with costs and feedback delays amplified on long-horizon tasks. How can we use timely, reliable proxy signals to improve training value and synthesize environments at scale? We present RepoFactory, an automated pipeline that converts real repositories into verifiable environments…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-18T10:00:00Z",
+    "updatedAt": "2026-11-16T14:20:58Z",
+    "firstSeenAt": "2026-11-17T10:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "dailySubmittedAt": "2026-11-18T00:00:00.000Z",
+    "tags": [
+      "Training / RL"
+    ],
+    "authors": [
+      "Yang Tian",
+      "Tianyu Zheng",
+      "Xiyuan Yang",
+      "Yaxin Du",
+      "Chengran Yang",
+      "Bo Zhao",
+      "Jian Yang",
+      "Bryan Dai"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.21152v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.21152"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.21152"
+      },
+      {
+        "label": "Project",
+        "url": "https://huggingface.co/IQuestLab/RepoFactory"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/IQuestLab/RepoFactory"
       }
     ]
   },
@@ -1580,11 +2581,11 @@
     ]
   },
   {
-    "sourceType": "arxiv",
+    "sourceType": "huggingface",
     "category": "training",
     "verified": false,
-    "originUrl": "https://arxiv.org/abs/2611.21791v1",
-    "url": "https://arxiv.org/abs/2611.21791v1",
+    "originUrl": "https://huggingface.co/papers/2611.21791",
+    "url": "https://huggingface.co/papers/2611.21791",
     "id": "live-6754735a5450738f",
     "title": "Regularized Score Centering",
     "summary": "Asynchronous reinforcement learning increases training throughput, but data from stale policies and numerical mismatch between training and inference can destabilize learning. To stabilize off-policy learning, score centering (SC) removes the effect of reward baselines on the expected update. Our gradient diagnostics show less extreme gradients with SC than with importance sampling (IS), but SC can still fail when the learner moves far from the behavior policy that generated the data. To limit this policy mismatch, we introduce Regularized Score Centering (RSC), which adds a reverse Kullback-Leibler (KL) penalty to encourage the learner's…",
@@ -1593,10 +2594,11 @@
     "dateLabel": "2026-11-16",
     "evidence": "自动收录·待解读",
     "date": "2026-11-16",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-16T19:12:50Z",
     "firstSeenAt": "2026-11-18T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "dailySubmittedAt": "2026-11-18T00:00:00.000Z",
     "tags": [
       "Training / RL"
     ],
@@ -1608,11 +2610,19 @@
       "Tong Zhang"
     ],
     "topics": [],
-    "sourceId": "arxiv",
+    "sourceId": "hf_papers",
     "sources": [
       {
         "label": "arXiv · Agentic 论文",
         "url": "https://arxiv.org/abs/2611.21791v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.21791"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.21791"
       }
     ]
   },
@@ -1957,11 +2967,11 @@
     ]
   },
   {
-    "sourceType": "arxiv",
+    "sourceType": "huggingface",
     "category": "training",
     "verified": false,
-    "originUrl": "https://arxiv.org/abs/2611.21392v1",
-    "url": "https://arxiv.org/abs/2611.21392v1",
+    "originUrl": "https://huggingface.co/papers/2611.21392",
+    "url": "https://huggingface.co/papers/2611.21392",
     "id": "live-ae72ac4caab931b8",
     "title": "VideoNexus: Video Perception Beyond the Reasoning Context",
     "summary": "Understanding long videos requires locating evidence, resolving visual details, and integrating observations into an answer. Even when relevant evidence is present, performing these operations within long, dense visual sequences burdens both perception and reasoning. Video agents enable selective inspection, but returning frames to the planner still accumulates visual information in its reasoning context. Delegating perception reduces this burden, yet sparse sampling can miss decisive details, and per-frame descriptions can preserve context growth. We introduce VideoNexus, a training-free framework that separates detailed video perception…",
@@ -1970,10 +2980,11 @@
     "dateLabel": "2026-11-16",
     "evidence": "自动收录·待解读",
     "date": "2026-11-16",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-16T16:49:25Z",
     "firstSeenAt": "2026-11-17T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "dailySubmittedAt": "2026-11-18T00:00:00.000Z",
     "tags": [
       "Training / RL"
     ],
@@ -1987,11 +2998,19 @@
       "Tingting Gao"
     ],
     "topics": [],
-    "sourceId": "arxiv",
+    "sourceId": "hf_papers",
     "sources": [
       {
         "label": "arXiv · Agentic 论文",
         "url": "https://arxiv.org/abs/2611.21392v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.21392"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.21392"
       }
     ]
   },
@@ -2009,10 +3028,10 @@
     "dateLabel": "2026-11-16",
     "evidence": "自动收录·待解读",
     "date": "2026-11-16",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-16T07:52:01Z",
     "firstSeenAt": "2026-11-17T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -3046,10 +4065,10 @@
     "dateLabel": "2026-11-16",
     "evidence": "自动收录·待解读",
     "date": "2026-11-16",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-16T06:22:28Z",
     "firstSeenAt": "2026-11-17T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-17T00:00:00.000Z",
     "tags": [
       "Agent systems"
@@ -3375,46 +4394,6 @@
       {
         "label": "arXiv · Agentic 论文",
         "url": "https://arxiv.org/abs/2611.20755v1"
-      }
-    ]
-  },
-  {
-    "sourceType": "arxiv",
-    "category": "training",
-    "verified": false,
-    "originUrl": "https://arxiv.org/abs/2611.21152v1",
-    "url": "https://arxiv.org/abs/2611.21152v1",
-    "id": "live-f0f34601b7079b6e",
-    "title": "From Repositories to Training Environments: Scaling Long-Horizon Coding Agents with Environment Evolution Loop",
-    "summary": "Training coding agents for long-horizon tasks requires environments with verifiable feedback. Existing pipelines often follow a linear process that ends with validation, establishing usability but providing little guidance on improving training value. Recursive self-improvement (RSI) often requires model rollouts or model training followed by downstream evaluation, with costs and feedback delays amplified on long-horizon tasks. How can we use timely, reliable proxy signals to improve training value and synthesize environments at scale? We present RepoFactory, an automated pipeline that converts real repositories into verifiable environments…",
-    "insight": "自动收录，待人工解读。",
-    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
-    "dateLabel": "2026-11-16",
-    "evidence": "自动收录·待解读",
-    "date": "2026-11-16",
-    "checkedAt": "2026-11-17T22:00:01Z",
-    "updatedAt": "2026-11-16T14:20:58Z",
-    "firstSeenAt": "2026-11-17T10:00:01Z",
-    "lastSeenAt": "2026-11-17T22:00:01Z",
-    "tags": [
-      "Training / RL"
-    ],
-    "authors": [
-      "Yang Tian",
-      "Tianyu Zheng",
-      "Xiyuan Yang",
-      "Yaxin Du",
-      "Chengran Yang",
-      "Bo Zhao",
-      "Jian Yang",
-      "Bryan Dai"
-    ],
-    "topics": [],
-    "sourceId": "arxiv",
-    "sources": [
-      {
-        "label": "arXiv · Agentic 论文",
-        "url": "https://arxiv.org/abs/2611.21152v1"
       }
     ]
   },
@@ -4052,9 +5031,9 @@
     "dateLabel": "2026-11-16",
     "evidence": "自动收录·待解读",
     "date": "2026-11-16",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-16T16:00:00Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -4082,9 +5061,9 @@
     "dateLabel": "2026-11-16",
     "evidence": "自动收录·待解读",
     "date": "2026-11-16",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-16T16:00:00Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -4186,10 +5165,10 @@
     "dateLabel": "2026-11-15",
     "evidence": "自动收录·待解读",
     "date": "2026-11-15",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-15T19:39:01Z",
     "firstSeenAt": "2026-11-17T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-17T00:00:00.000Z",
     "tags": [
       "Evaluation"
@@ -5114,10 +6093,10 @@
     "dateLabel": "2026-11-14",
     "evidence": "自动收录·待解读",
     "date": "2026-11-14",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-14T18:00:49Z",
     "firstSeenAt": "2026-11-17T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-17T00:00:00.000Z",
     "tags": [
       "Training / RL"
@@ -5478,23 +6457,24 @@
     ]
   },
   {
-    "sourceType": "arxiv",
+    "sourceType": "huggingface",
     "category": "distillation",
     "verified": false,
-    "originUrl": "https://arxiv.org/abs/2611.19244v1",
-    "url": "https://arxiv.org/abs/2611.19244v1",
+    "originUrl": "https://huggingface.co/papers/2611.19244",
+    "url": "https://huggingface.co/papers/2611.19244",
     "id": "live-08dac2ff06e738fe",
     "title": "Agentic On-Policy Distillation Implicitly Reshapes LLMs' ReAct Patterns",
-    "summary": "On-policy distillation (OPD) transfers specialized capabilities to language-model agents, but its cross-domain effects on interaction remain unclear. We investigate how OPD reshapes ReAct interaction patterns across mathematics, ALFWorld, and $τ^2$-bench, focusing on reasoning, actions, and observation acquisition. General-reasoning supervision reduces mathematical tool attempts from 70.4% to 14.4% while increasing accuracy from 16.7% to 38.0%; code-interpreter supervision improves household actions and retail queries. In contrast, ALFWorld supervision reduces $τ^2$-bench accuracy from 41.5% to 6.6%, accompanied by frequent tool calls that…",
+    "summary": "On-policy distillation (OPD) transfers specialized capabilities to language-model agents, but its cross-domain effects on interaction remain unclear. We investigate how OPD reshapes ReAct interaction patterns across mathematics, ALFWorld, and τ^2-bench, focusing on reasoning, actions, and observation acquisition. General-reasoning supervision reduces mathematical tool attempts from 70.4% to 14.4% while increasing accuracy from 16.7% to 38.0%; code-interpreter supervision improves household actions and retail queries. In contrast, ALFWorld supervision reduces τ^2-bench accuracy from 41.5% to 6.6%, accompanied by frequent tool calls that…",
     "insight": "自动收录，待人工解读。",
     "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
     "dateLabel": "2026-11-14",
     "evidence": "自动收录·待解读",
     "date": "2026-11-14",
-    "checkedAt": "2026-11-17T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-14T08:18:45Z",
     "firstSeenAt": "2026-11-17T04:00:01Z",
-    "lastSeenAt": "2026-11-17T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
+    "dailySubmittedAt": "2026-11-18T00:00:00.000Z",
     "tags": [
       "Distillation"
     ],
@@ -5509,11 +6489,19 @@
       "Wei Ye"
     ],
     "topics": [],
-    "sourceId": "arxiv",
+    "sourceId": "hf_papers",
     "sources": [
       {
         "label": "arXiv · Agentic 论文",
         "url": "https://arxiv.org/abs/2611.19244v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.19244"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.19244"
       }
     ]
   },
@@ -5964,10 +6952,10 @@
     "dateLabel": "2026-11-13",
     "evidence": "自动收录·待解读",
     "date": "2026-11-13",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-13T09:44:48Z",
     "firstSeenAt": "2026-11-16T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-16T00:00:00.000Z",
     "tags": [
       "Evaluation"
@@ -6424,10 +7412,10 @@
     "dateLabel": "2026-11-13",
     "evidence": "自动收录·待解读",
     "date": "2026-11-13",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-13T09:11:54Z",
     "firstSeenAt": "2026-11-16T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-17T00:00:00.000Z",
     "tags": [
       "Evaluation"
@@ -6512,10 +7500,10 @@
     "dateLabel": "2026-11-13",
     "evidence": "自动收录·待解读",
     "date": "2026-11-13",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-13T00:18:25Z",
     "firstSeenAt": "2026-11-16T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-17T00:00:00.000Z",
     "tags": [
       "Agent systems"
@@ -6645,10 +7633,10 @@
     "dateLabel": "2026-11-13",
     "evidence": "自动收录·待解读",
     "date": "2026-11-13",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-13T05:44:08Z",
     "firstSeenAt": "2026-11-16T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-16T00:00:00.000Z",
     "tags": [
       "Training / RL"
@@ -6951,10 +7939,10 @@
     "dateLabel": "2026-11-13",
     "evidence": "自动收录·待解读",
     "date": "2026-11-13",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-13T06:53:56Z",
     "firstSeenAt": "2026-11-16T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-16T00:00:00.000Z",
     "tags": [
       "Training / RL"
@@ -7401,65 +8389,6 @@
     ]
   },
   {
-    "sourceType": "arxiv",
-    "category": "benchmark",
-    "verified": false,
-    "originUrl": "https://arxiv.org/abs/2611.17621v1",
-    "url": "https://arxiv.org/abs/2611.17621v1",
-    "id": "live-09632a7fccfdccec",
-    "title": "AscendGYM: A Cost-Aware Kernel Optimization Benchmark for Real-World Workloads on Ascend NPUs",
-    "summary": "Kernel optimization is essential for efficient large language model (LLM) training and inference on Ascend NPUs. Existing Ascend kernel benchmarks primarily focus on kernel generation, with less emphasis on the ability of agents to optimize existing implementations under input configurations drawn from real workloads. To address this requirement, we introduce AscendGYM, a benchmark whose initial suite comprises 48 kernels across three difficulty levels. Each kernel is paired with test cases whose data types and tensor shapes are collected from real-world training and inference tasks. Consequently, performance improvements on AscendGYM map…",
-    "insight": "自动收录，待人工解读。",
-    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
-    "dateLabel": "2026-11-13",
-    "evidence": "自动收录·待解读",
-    "date": "2026-11-13",
-    "checkedAt": "2026-11-16T22:00:01Z",
-    "updatedAt": "2026-11-13T00:45:36Z",
-    "firstSeenAt": "2026-11-16T10:00:01Z",
-    "lastSeenAt": "2026-11-16T22:00:01Z",
-    "tags": [
-      "Evaluation"
-    ],
-    "authors": [
-      "AI Training Platform Team",
-      "Bingwei Zhang",
-      "Jing Li",
-      "Amir Abdullin",
-      "Sihang Chen",
-      "Xin Chen",
-      "Liangjun Feng",
-      "Yingmeng Gao",
-      "Tao Guo",
-      "Junjie Huang",
-      "Dongfang Li",
-      "Zhanglian Lin",
-      "Jiajun Liu",
-      "Zekun Liu",
-      "Zhengxuan Lu",
-      "Xiaodong Luo",
-      "Jian Meng",
-      "Ivan Nosov",
-      "Linyuan Qiu",
-      "Weijian Sun",
-      "Wanrui Yan",
-      "Binfan Zheng",
-      "Zhicheng Zhou",
-      "Baotian Hu",
-      "Min Zhang",
-      "Haizhou Li",
-      "Zhiquan Luo"
-    ],
-    "topics": [],
-    "sourceId": "arxiv",
-    "sources": [
-      {
-        "label": "arXiv · Agentic 论文",
-        "url": "https://arxiv.org/abs/2611.17621v1"
-      }
-    ]
-  },
-  {
     "sourceType": "huggingface",
     "category": "models",
     "verified": false,
@@ -7473,10 +8402,10 @@
     "dateLabel": "2026-11-13",
     "evidence": "自动收录·待解读",
     "date": "2026-11-13",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-13T06:57:46Z",
     "firstSeenAt": "2026-11-16T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-16T00:00:00.000Z",
     "tags": [
       "Agent systems"
@@ -7734,10 +8663,10 @@
     "dateLabel": "2026-11-13",
     "evidence": "自动收录·待解读",
     "date": "2026-11-13",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-13T06:47:34Z",
     "firstSeenAt": "2026-11-16T04:00:00Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-16T00:00:00.000Z",
     "tags": [
       "Agent systems"
@@ -7782,9 +8711,9 @@
     "dateLabel": "2026-11-13",
     "evidence": "自动收录·待解读",
     "date": "2026-11-13",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-13T16:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -7811,9 +8740,9 @@
     "dateLabel": "2026-11-12",
     "evidence": "自动收录·待解读",
     "date": "2026-11-12",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-16T22:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-16T00:00:00.000Z",
     "tags": [
       "Training / RL"
@@ -8116,10 +9045,10 @@
     "dateLabel": "2026-11-12",
     "evidence": "自动收录·待解读",
     "date": "2026-11-12",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-12T03:09:18Z",
     "firstSeenAt": "2026-11-13T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-13T00:00:00.000Z",
     "tags": [
       "Evaluation"
@@ -8336,10 +9265,10 @@
     "dateLabel": "2026-11-12",
     "evidence": "自动收录·待解读",
     "date": "2026-11-12",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-12T15:32:47Z",
     "firstSeenAt": "2026-11-13T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-13T00:00:00.000Z",
     "tags": [
       "Training / RL"
@@ -8688,10 +9617,10 @@
     "dateLabel": "2026-11-12",
     "evidence": "自动收录·待解读",
     "date": "2026-11-12",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-12T11:38:21Z",
     "firstSeenAt": "2026-11-13T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-16T00:00:00.000Z",
     "tags": [
       "Training / RL"
@@ -9275,10 +10204,10 @@
     "dateLabel": "2026-11-12",
     "evidence": "自动收录·待解读",
     "date": "2026-11-12",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-12T07:18:30Z",
     "firstSeenAt": "2026-11-13T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-13T00:00:00.000Z",
     "tags": [
       "Training / RL"
@@ -9881,9 +10810,9 @@
     "dateLabel": "2026-11-12",
     "evidence": "自动收录·待解读",
     "date": "2026-11-12",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-13T04:00:00Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -9911,9 +10840,9 @@
     "dateLabel": "2026-11-12",
     "evidence": "自动收录·待解读",
     "date": "2026-11-12",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-13T04:00:00Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -9940,9 +10869,9 @@
     "dateLabel": "2026-11-12",
     "evidence": "自动收录·待解读",
     "date": "2026-11-12",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-12T22:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -9970,9 +10899,9 @@
     "dateLabel": "2026-11-12",
     "evidence": "自动收录·待解读",
     "date": "2026-11-12",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-12T22:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -10030,9 +10959,9 @@
     "dateLabel": "2026-11-12",
     "evidence": "自动收录·待解读",
     "date": "2026-11-12",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-12T16:00:00Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -10059,10 +10988,10 @@
     "dateLabel": "2026-11-11",
     "evidence": "自动收录·待解读",
     "date": "2026-11-11",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-11T18:02:07Z",
     "firstSeenAt": "2026-11-13T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-16T00:00:00.000Z",
     "tags": [
       "Evaluation"
@@ -10974,10 +11903,10 @@
     "dateLabel": "2026-11-11",
     "evidence": "自动收录·待解读",
     "date": "2026-11-11",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-11T03:11:00Z",
     "firstSeenAt": "2026-11-13T04:00:00Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-17T00:00:00.000Z",
     "tags": [
       "Data"
@@ -11771,9 +12700,9 @@
     "dateLabel": "2026-11-11",
     "evidence": "自动收录·待解读",
     "date": "2026-11-11",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-12T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-12T00:00:00.000Z",
     "tags": [
       "Evaluation"
@@ -11816,9 +12745,9 @@
     "dateLabel": "2026-11-11",
     "evidence": "自动收录·待解读",
     "date": "2026-11-11",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-11T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -12257,9 +13186,9 @@
     "dateLabel": "2026-11-10",
     "evidence": "自动收录·待解读",
     "date": "2026-11-10",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-12T16:00:00Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-12T00:00:00.000Z",
     "tags": [
       "Evaluation"
@@ -13058,10 +13987,10 @@
     "dateLabel": "2026-11-10",
     "evidence": "自动收录·待解读",
     "date": "2026-11-10",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-10T00:45:58Z",
     "firstSeenAt": "2026-11-11T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-12T00:00:00.000Z",
     "tags": [
       "Distillation"
@@ -13307,10 +14236,10 @@
     "dateLabel": "2026-11-10",
     "evidence": "自动收录·待解读",
     "date": "2026-11-10",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-10T03:29:29Z",
     "firstSeenAt": "2026-11-11T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-16T00:00:00.000Z",
     "tags": [
       "Training / RL"
@@ -13427,9 +14356,9 @@
     "dateLabel": "2026-11-10",
     "evidence": "自动收录·待解读",
     "date": "2026-11-10",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-11T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -14060,9 +14989,9 @@
     "dateLabel": "2026-11-09",
     "evidence": "自动收录·待解读",
     "date": "2026-11-09",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-12T16:00:00Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-12T00:00:00.000Z",
     "tags": [
       "Agent systems"
@@ -14828,9 +15757,9 @@
     "dateLabel": "2026-11-09",
     "evidence": "自动收录·待解读",
     "date": "2026-11-09",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-10T16:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -16657,9 +17586,9 @@
     "dateLabel": "2026-11-09",
     "evidence": "自动收录·待解读",
     "date": "2026-11-09",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-09T22:00:00Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -17124,10 +18053,10 @@
     "dateLabel": "2026-11-08",
     "evidence": "自动收录·待解读",
     "date": "2026-11-08",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-08T22:27:56Z",
     "firstSeenAt": "2026-11-10T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-17T00:00:00.000Z",
     "tags": [
       "Agent systems"
@@ -18258,10 +19187,10 @@
     "dateLabel": "2026-11-07",
     "evidence": "自动收录·待解读",
     "date": "2026-11-07",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-07T08:59:49Z",
     "firstSeenAt": "2026-11-10T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-10T00:00:00.000Z",
     "tags": [
       "Evaluation"
@@ -18853,10 +19782,10 @@
     "dateLabel": "2026-11-07",
     "evidence": "自动收录·待解读",
     "date": "2026-11-07",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-07T14:56:41Z",
     "firstSeenAt": "2026-11-10T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -19551,10 +20480,10 @@
     "dateLabel": "2026-11-06",
     "evidence": "自动收录·待解读",
     "date": "2026-11-06",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-06T18:59:57Z",
     "firstSeenAt": "2026-11-09T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-09T00:00:00.000Z",
     "tags": [
       "Training / RL"
@@ -19884,10 +20813,10 @@
     "dateLabel": "2026-11-06",
     "evidence": "自动收录·待解读",
     "date": "2026-11-06",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-06T12:35:41Z",
     "firstSeenAt": "2026-11-09T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -20427,60 +21356,6 @@
       {
         "label": "arXiv · Agentic 论文",
         "url": "https://arxiv.org/abs/2611.09161v1"
-      }
-    ]
-  },
-  {
-    "sourceType": "arxiv",
-    "category": "training",
-    "verified": false,
-    "originUrl": "https://arxiv.org/abs/2611.08922v1",
-    "url": "https://arxiv.org/abs/2611.08922v1",
-    "id": "live-0e0fb4c69e38dd97",
-    "title": "Glyph: An Interpretability Engine for AI-Driven Scientific Discovery in Clinical Data",
-    "summary": "Automated scientific discovery has the potential to advance understanding of disease mechanisms and accelerate identification of early disease markers. Manual data annotation is infeasible at population scale, motivating methods that automatically extract pre-defined phenotypes in multimodal and unstructured clinical data. Such pre-defined feature sets determine and limit which associations these approaches can discover. This limitation extends to agentic AI systems that use these tools to query population-scale data. In contrast, foundation models (FMs) trained on large volumes of clinical data can perform tasks beyond their training…",
-    "insight": "自动收录，待人工解读。",
-    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
-    "dateLabel": "2026-11-06",
-    "evidence": "自动收录·待解读",
-    "date": "2026-11-06",
-    "checkedAt": "2026-11-09T22:00:00Z",
-    "updatedAt": "2026-11-06T03:08:38Z",
-    "firstSeenAt": "2026-11-09T10:00:01Z",
-    "lastSeenAt": "2026-11-09T22:00:00Z",
-    "tags": [
-      "Training / RL"
-    ],
-    "authors": [
-      "Robbie Holland",
-      "Ashwin Kumar",
-      "Mateus A. Esmeraldo",
-      "David Le",
-      "Andrea Fisher",
-      "Jiazhen Pan",
-      "Louisa Fay",
-      "Magdalini Paschali",
-      "Vasiliki Sideri-Lampretsa",
-      "Ates Fettahoglu",
-      "Stefania Moroianu",
-      "Philipp Wesp",
-      "Ivan Lopez",
-      "Tom Nuno Wolf",
-      "McKenzie S. White",
-      "Eduardo Pontes Reis",
-      "Fatima Rodriguez",
-      "Curtis P. Langlotz",
-      "Vasilis Syrgkanis",
-      "Imon Banerjee",
-      "Akshay S. Chaudhari",
-      "Sergios Gatidis"
-    ],
-    "topics": [],
-    "sourceId": "arxiv",
-    "sources": [
-      {
-        "label": "arXiv · Agentic 论文",
-        "url": "https://arxiv.org/abs/2611.08922v1"
       }
     ]
   },
@@ -21029,10 +21904,10 @@
     "dateLabel": "2026-11-06",
     "evidence": "自动收录·待解读",
     "date": "2026-11-06",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-06T17:31:09Z",
     "firstSeenAt": "2026-11-09T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
@@ -22044,10 +22919,10 @@
     "dateLabel": "2026-11-05",
     "evidence": "自动收录·待解读",
     "date": "2026-11-05",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-05T16:55:44Z",
     "firstSeenAt": "2026-11-06T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -22081,10 +22956,10 @@
     "dateLabel": "2026-11-05",
     "evidence": "自动收录·待解读",
     "date": "2026-11-05",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-05T17:14:37Z",
     "firstSeenAt": "2026-11-06T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-13T00:00:00.000Z",
     "tags": [
       "Training / RL"
@@ -22353,10 +23228,10 @@
     "dateLabel": "2026-11-05",
     "evidence": "自动收录·待解读",
     "date": "2026-11-05",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-05T16:08:05Z",
     "firstSeenAt": "2026-11-06T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-13T00:00:00.000Z",
     "tags": [
       "Data"
@@ -23538,9 +24413,9 @@
     "dateLabel": "2026-11-05",
     "evidence": "自动收录·待解读",
     "date": "2026-11-05",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-06T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -23824,9 +24699,9 @@
     "dateLabel": "2026-11-05",
     "evidence": "自动收录·待解读",
     "date": "2026-11-05",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-05T22:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -26115,9 +26990,9 @@
     "dateLabel": "2026-11-04",
     "evidence": "自动收录·待解读",
     "date": "2026-11-04",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-05T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -26179,10 +27054,10 @@
     "dateLabel": "2026-11-04",
     "evidence": "自动收录·待解读",
     "date": "2026-11-04",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-04T05:37:16Z",
     "firstSeenAt": "2026-11-05T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -29525,9 +30400,9 @@
     "dateLabel": "2026-11-03",
     "evidence": "自动收录·待解读",
     "date": "2026-11-03",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-04T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -31561,10 +32436,10 @@
     "dateLabel": "2026-11-02",
     "evidence": "自动收录·待解读",
     "date": "2026-11-02",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-02T08:26:08Z",
     "firstSeenAt": "2026-11-03T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-04T00:00:00.000Z",
     "tags": [
       "Evaluation"
@@ -31801,10 +32676,10 @@
     "dateLabel": "2026-11-02",
     "evidence": "自动收录·待解读",
     "date": "2026-11-02",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-02T16:58:42Z",
     "firstSeenAt": "2026-11-03T10:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Data"
     ],
@@ -33342,9 +34217,9 @@
     "dateLabel": "2026-11-02",
     "evidence": "自动收录·待解读",
     "date": "2026-11-02",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T22:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -34860,10 +35735,10 @@
     "dateLabel": "2026-10-31",
     "evidence": "自动收录·待解读",
     "date": "2026-10-31",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-10-31T18:04:23Z",
     "firstSeenAt": "2026-11-03T04:00:01Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -35302,9 +36177,9 @@
     "dateLabel": "2026-10-30",
     "evidence": "自动收录·待解读",
     "date": "2026-10-30",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-12T10:00:00Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-12T00:00:00.000Z",
     "tags": [
       "Agent systems"
@@ -38667,9 +39542,9 @@
     "dateLabel": "2026-10-29",
     "evidence": "自动收录·待解读",
     "date": "2026-10-29",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -38920,9 +39795,9 @@
     "dateLabel": "2026-10-29",
     "evidence": "自动收录·待解读",
     "date": "2026-10-29",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -38983,9 +39858,9 @@
     "dateLabel": "2026-10-29",
     "evidence": "自动收录·待解读",
     "date": "2026-10-29",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -39472,9 +40347,9 @@
     "dateLabel": "2026-10-28",
     "evidence": "自动收录·待解读",
     "date": "2026-10-28",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -39501,10 +40376,10 @@
     "dateLabel": "2026-10-28",
     "evidence": "自动收录·待解读",
     "date": "2026-10-28",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-10-28T06:51:40Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-10-30T00:00:00.000Z",
     "tags": [
       "Evaluation"
@@ -39562,9 +40437,9 @@
     "dateLabel": "2026-10-28",
     "evidence": "自动收录·待解读",
     "date": "2026-10-28",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -40183,10 +41058,10 @@
     "dateLabel": "2026-10-26",
     "evidence": "自动收录·待解读",
     "date": "2026-10-26",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-10-26T14:25:40Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-11-04T00:00:00.000Z",
     "tags": [
       "Training / RL"
@@ -40237,10 +41112,10 @@
     "dateLabel": "2026-10-26",
     "evidence": "自动收录·待解读",
     "date": "2026-10-26",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-10-27T16:22:04Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "dailySubmittedAt": "2026-10-28T00:00:00.000Z",
     "tags": [
       "Evaluation"
@@ -40734,9 +41609,9 @@
     "dateLabel": "2026-10-26",
     "evidence": "自动收录·待解读",
     "date": "2026-10-26",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -40764,9 +41639,9 @@
     "dateLabel": "2026-10-26",
     "evidence": "自动收录·待解读",
     "date": "2026-10-26",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -40794,9 +41669,9 @@
     "dateLabel": "2026-10-26",
     "evidence": "自动收录·待解读",
     "date": "2026-10-26",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -41829,9 +42704,9 @@
     "dateLabel": "2026-10-23",
     "evidence": "自动收录·待解读",
     "date": "2026-10-23",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -41906,9 +42781,9 @@
     "dateLabel": "2026-10-23",
     "evidence": "自动收录·待解读",
     "date": "2026-10-23",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -42122,10 +42997,10 @@
     "dateLabel": "2026-10-21",
     "evidence": "自动收录·待解读",
     "date": "2026-10-21",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-10-21T17:59:56Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -42306,10 +43181,10 @@
     "dateLabel": "2026-10-20",
     "evidence": "自动收录·待解读",
     "date": "2026-10-20",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-10-20T15:51:41Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
@@ -42345,10 +43220,10 @@
     "dateLabel": "2026-10-20",
     "evidence": "自动收录·待解读",
     "date": "2026-10-20",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-10-22T03:08:50Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
@@ -42386,9 +43261,9 @@
     "dateLabel": "2026-10-20",
     "evidence": "自动收录·待解读",
     "date": "2026-10-20",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -42677,9 +43552,9 @@
     "dateLabel": "2026-10-16",
     "evidence": "自动收录·待解读",
     "date": "2026-10-16",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -42707,9 +43582,9 @@
     "dateLabel": "2026-10-16",
     "evidence": "自动收录·待解读",
     "date": "2026-10-16",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -42875,9 +43750,9 @@
     "dateLabel": "2026-10-14",
     "evidence": "自动收录·待解读",
     "date": "2026-10-14",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -42905,9 +43780,9 @@
     "dateLabel": "2026-10-13",
     "evidence": "自动收录·待解读",
     "date": "2026-10-13",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -42935,9 +43810,9 @@
     "dateLabel": "2026-10-13",
     "evidence": "自动收录·待解读",
     "date": "2026-10-13",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -42965,9 +43840,9 @@
     "dateLabel": "2026-10-13",
     "evidence": "自动收录·待解读",
     "date": "2026-10-13",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -43040,10 +43915,10 @@
     "dateLabel": "2026-10-10",
     "evidence": "自动收录·待解读",
     "date": "2026-10-10",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-10-31T15:24:20Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
@@ -43143,9 +44018,9 @@
     "dateLabel": "2026-10-09",
     "evidence": "自动收录·待解读",
     "date": "2026-10-09",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -43173,9 +44048,9 @@
     "dateLabel": "2026-10-08",
     "evidence": "自动收录·待解读",
     "date": "2026-10-08",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -43203,9 +44078,9 @@
     "dateLabel": "2026-10-08",
     "evidence": "自动收录·待解读",
     "date": "2026-10-08",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -43232,10 +44107,10 @@
     "dateLabel": "2026-10-07",
     "evidence": "自动收录·待解读",
     "date": "2026-10-07",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-10-07T08:52:08Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
@@ -43266,9 +44141,9 @@
     "dateLabel": "2026-10-07",
     "evidence": "自动收录·待解读",
     "date": "2026-10-07",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -43296,9 +44171,9 @@
     "dateLabel": "2026-10-06",
     "evidence": "自动收录·待解读",
     "date": "2026-10-06",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -43325,10 +44200,10 @@
     "dateLabel": "2026-10-04",
     "evidence": "自动收录·待解读",
     "date": "2026-10-04",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-10-04T07:54:45Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -43362,10 +44237,10 @@
     "dateLabel": "2026-10-03",
     "evidence": "自动收录·待解读",
     "date": "2026-10-03",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-10-03T03:39:54Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Distillation"
     ],
@@ -43401,9 +44276,9 @@
     "dateLabel": "2026-10-02",
     "evidence": "自动收录·待解读",
     "date": "2026-10-02",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -43430,10 +44305,10 @@
     "dateLabel": "2026-09-30",
     "evidence": "自动收录·待解读",
     "date": "2026-09-30",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-09-30T17:55:29Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
@@ -43471,9 +44346,9 @@
     "dateLabel": "2026-09-30",
     "evidence": "自动收录·待解读",
     "date": "2026-09-30",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -43543,9 +44418,9 @@
     "dateLabel": "2026-09-29",
     "evidence": "自动收录·待解读",
     "date": "2026-09-29",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -43572,10 +44447,10 @@
     "dateLabel": "2026-09-28",
     "evidence": "自动收录·待解读",
     "date": "2026-09-28",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-09-28T13:28:17Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
@@ -43609,9 +44484,9 @@
     "dateLabel": "2026-09-28",
     "evidence": "自动收录·待解读",
     "date": "2026-09-28",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -43639,9 +44514,9 @@
     "dateLabel": "2026-09-28",
     "evidence": "自动收录·待解读",
     "date": "2026-09-28",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -43669,9 +44544,9 @@
     "dateLabel": "2026-09-28",
     "evidence": "自动收录·待解读",
     "date": "2026-09-28",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -43699,9 +44574,9 @@
     "dateLabel": "2026-09-25",
     "evidence": "自动收录·待解读",
     "date": "2026-09-25",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -43729,9 +44604,9 @@
     "dateLabel": "2026-09-24",
     "evidence": "自动收录·待解读",
     "date": "2026-09-24",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -43759,9 +44634,9 @@
     "dateLabel": "2026-09-23",
     "evidence": "自动收录·待解读",
     "date": "2026-09-23",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -43848,9 +44723,9 @@
     "dateLabel": "2026-09-22",
     "evidence": "自动收录·待解读",
     "date": "2026-09-22",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -43998,9 +44873,9 @@
     "dateLabel": "2026-09-15",
     "evidence": "自动收录·待解读",
     "date": "2026-09-15",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -44147,10 +45022,10 @@
     "dateLabel": "2026-09-08",
     "evidence": "自动收录·待解读",
     "date": "2026-09-08",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-09-14T10:16:55Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
@@ -44281,10 +45156,10 @@
     "dateLabel": "2026-09-03",
     "evidence": "自动收录·待解读",
     "date": "2026-09-03",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-09-03T18:19:27Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -44410,9 +45285,9 @@
     "dateLabel": "2026-09-03",
     "evidence": "自动收录·待解读",
     "date": "2026-09-03",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -44470,9 +45345,9 @@
     "dateLabel": "2026-09-02",
     "evidence": "自动收录·待解读",
     "date": "2026-09-02",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -44500,9 +45375,9 @@
     "dateLabel": "2026-09-01",
     "evidence": "自动收录·待解读",
     "date": "2026-09-01",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -44530,9 +45405,9 @@
     "dateLabel": "2026-08-27",
     "evidence": "自动收录·待解读",
     "date": "2026-08-27",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -44559,10 +45434,10 @@
     "dateLabel": "2026-08-26",
     "evidence": "自动收录·待解读",
     "date": "2026-08-26",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-08-26T10:43:26Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -44602,9 +45477,9 @@
     "dateLabel": "2026-08-26",
     "evidence": "自动收录·待解读",
     "date": "2026-08-26",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -44631,10 +45506,10 @@
     "dateLabel": "2026-08-25",
     "evidence": "自动收录·待解读",
     "date": "2026-08-25",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-08-25T07:37:34Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Training / RL"
     ],
@@ -44671,9 +45546,9 @@
     "dateLabel": "2026-08-25",
     "evidence": "自动收录·待解读",
     "date": "2026-08-25",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -44701,9 +45576,9 @@
     "dateLabel": "2026-08-13",
     "evidence": "自动收录·待解读",
     "date": "2026-08-13",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -44730,9 +45605,9 @@
     "dateLabel": "2026-08-10",
     "evidence": "自动收录·待解读",
     "date": "2026-08-10",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:23:45Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -44759,10 +45634,10 @@
     "dateLabel": "2026-08-06",
     "evidence": "自动收录·待解读",
     "date": "2026-08-06",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-08-06T02:36:22Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
@@ -44815,9 +45690,9 @@
     "dateLabel": "2026-07-30",
     "evidence": "自动收录·待解读",
     "date": "2026-07-30",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -44844,10 +45719,10 @@
     "dateLabel": "2026-07-28",
     "evidence": "自动收录·待解读",
     "date": "2026-07-28",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-07-28T05:24:10Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
@@ -44883,9 +45758,9 @@
     "dateLabel": "2026-07-28",
     "evidence": "自动收录·待解读",
     "date": "2026-07-28",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -44913,9 +45788,9 @@
     "dateLabel": "2026-07-21",
     "evidence": "自动收录·待解读",
     "date": "2026-07-21",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -44942,10 +45817,10 @@
     "dateLabel": "2026-07-20",
     "evidence": "自动收录·待解读",
     "date": "2026-07-20",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-09-10T02:58:54Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -44981,9 +45856,9 @@
     "dateLabel": "2026-07-17",
     "evidence": "自动收录·待解读",
     "date": "2026-07-17",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -45010,10 +45885,10 @@
     "dateLabel": "2026-07-16",
     "evidence": "自动收录·待解读",
     "date": "2026-07-16",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-07-20T15:29:48Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Data"
     ],
@@ -45051,10 +45926,10 @@
     "dateLabel": "2026-07-09",
     "evidence": "自动收录·待解读",
     "date": "2026-07-09",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-08-11T22:11:38Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Data"
     ],
@@ -45090,9 +45965,9 @@
     "dateLabel": "2026-06-30",
     "evidence": "自动收录·待解读",
     "date": "2026-06-30",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -45119,10 +45994,10 @@
     "dateLabel": "2026-06-29",
     "evidence": "自动收录·待解读",
     "date": "2026-06-29",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-10-22T04:27:09Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -45163,10 +46038,10 @@
     "dateLabel": "2026-06-26",
     "evidence": "自动收录·待解读",
     "date": "2026-06-26",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-11-08T09:45:39Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
@@ -45206,9 +46081,9 @@
     "dateLabel": "2026-06-24",
     "evidence": "自动收录·待解读",
     "date": "2026-06-24",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -45235,10 +46110,10 @@
     "dateLabel": "2026-06-23",
     "evidence": "自动收录·待解读",
     "date": "2026-06-23",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-06-23T07:11:45Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -45279,10 +46154,10 @@
     "dateLabel": "2026-06-22",
     "evidence": "自动收录·待解读",
     "date": "2026-06-22",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-07-03T09:09:11Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -45320,10 +46195,10 @@
     "dateLabel": "2026-06-16",
     "evidence": "自动收录·待解读",
     "date": "2026-06-16",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-06-16T09:09:59Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Data"
     ],
@@ -45355,10 +46230,10 @@
     "dateLabel": "2026-06-09",
     "evidence": "自动收录·待解读",
     "date": "2026-06-09",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-06-09T06:46:29Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -45396,9 +46271,9 @@
     "dateLabel": "2026-06-09",
     "evidence": "自动收录·待解读",
     "date": "2026-06-09",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "firstSeenAt": "2026-11-02T08:25:32Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Model update"
     ],
@@ -45425,10 +46300,10 @@
     "dateLabel": "2026-06-07",
     "evidence": "自动收录·待解读",
     "date": "2026-06-07",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-06-07T18:53:57Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
@@ -45465,10 +46340,10 @@
     "dateLabel": "2026-05-31",
     "evidence": "自动收录·待解读",
     "date": "2026-05-31",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-07-17T08:44:11Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Agent systems"
     ],
@@ -45514,10 +46389,10 @@
     "dateLabel": "2026-05-31",
     "evidence": "自动收录·待解读",
     "date": "2026-05-31",
-    "checkedAt": "2026-11-18T04:00:01Z",
+    "checkedAt": "2026-11-18T10:00:00Z",
     "updatedAt": "2026-05-31T06:59:49Z",
     "firstSeenAt": "2026-11-02T09:16:49Z",
-    "lastSeenAt": "2026-11-18T04:00:01Z",
+    "lastSeenAt": "2026-11-18T10:00:00Z",
     "tags": [
       "Evaluation"
     ],
