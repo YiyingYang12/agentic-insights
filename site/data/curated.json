@@ -24291,5 +24291,424 @@
       "status": "pending",
       "checkedAt": "2026-11-19T16:32:52.981105+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.24651",
+    "url": "https://arxiv.org/abs/2611.24651",
+    "id": "paper-2611.24651",
+    "title": "Piccolo：让数据切片和模型共同改进，别把loss下降当决策变好",
+    "summary": "Piccolo把候选决策模型、语义数据切片和实验记忆串成研究循环；关键启发是同时追踪概率损失与决策翻转，不能只按loss调配数据。",
+    "insight": "作者主张数据驱动的递归自改进与0.8B–27B决策模型族。本站判断：可复用价值是按切片诊断、保留失败分支与跨任务确认；现有研究轨迹不足以隔离自主编排的因果收益。",
+    "limits": "论文成绩是11月17日快照，非当前全榜排名；混合改动的研究分支非严格因果消融，仍有人类指导。仓库4B/9B成绩与论文不同；647次仅统计27B训练，本站未复现。 论文的27B Full 75.59仅比JDI 75.05高0.54分；不是Public Vision、Data或JevBench各项第一。多数小差值未提供多随机种子方差或置信区间，不能据此确认稳定优势。数据调配研究的4000题调配集被反复用于选方案，2000题分离确认及分组划分由作者报告，本站未独立审计训练/评测污染。约663K联合池、380K/700K配方和累计样本呈现次数属于不同口径，不能混称唯一训练数据量。 仓库明确区分VL视觉检查点与foundation文本检查点：同名参数规模不等于同一权重。固定提交的9B Harness/Data为70.68/69.20，4B为63.22/71.20；论文表8分别为71.53/72.40和66.10/70.20，本站未验证是哪次检查点或协议变更，不合并成一张复现成绩表。公开材料含聚合结果与复现启动器，逐题输出由运行者生成；未恢复600余次研究完整日志。游戏录屏仅showcase，未核交互成功率/时延，GIF播放速度不能当推理速度；不归入代码创作专题。",
+    "dateLabel": "2026-11-18 · 新技术论文；模型更早已发布",
+    "evidence": "已读原文方法、实验、附录与固定仓库资料；未复现",
+    "originalTitle": "Piccolo: Co-Evolving Decision Models and Data through Recursive Self-Improvement",
+    "date": "2026-11-18",
+    "checkedAt": "2026-11-19T22:35:18.691206+00:00",
+    "paperOriginalDate": "2026-11-18T15:53:39Z",
+    "paperUpdatedAt": "2026-11-18T15:53:39Z",
+    "updatedAt": "2026-11-18T15:53:39Z",
+    "firstSeenAt": "2026-11-19T10:00:00Z",
+    "lastSeenAt": "2026-11-19T22:00:01Z",
+    "tags": [
+      "数据工程",
+      "决策模型",
+      "递归自改进",
+      "研究Agent",
+      "跨任务退化"
+    ],
+    "authors": [
+      "Zhenqing Ling",
+      "Qirui Jiao",
+      "Daoyuan Chen",
+      "Cheng Chen",
+      "Xinji Mai",
+      "Haowen Gao",
+      "Zhuo Zhang",
+      "Xuchen Pan",
+      "Mengsu Ding",
+      "Jiaji Deng",
+      "Yuexiang Xie",
+      "Xiaoming Qin",
+      "Weirui Kuang",
+      "Zhaoyang Liu",
+      "Yaliang Li",
+      "Bolin Ding",
+      "Jingren Zhou"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.24651v1"
+      },
+      {
+        "label": "公开feed原始来源",
+        "url": "https://huggingface.co/papers/2611.24651"
+      },
+      {
+        "label": "arXiv版本与发布日期",
+        "url": "https://arxiv.org/abs/2611.24651"
+      },
+      {
+        "label": "Project",
+        "url": "https://decisionplayground.agentscope.io/"
+      },
+      {
+        "label": "作者公开代码",
+        "url": "https://github.com/agentscope-ai/Piccolo"
+      },
+      {
+        "label": "论文方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.24651v1"
+      },
+      {
+        "label": "作者项目与较早模型发布记录",
+        "url": "https://decisionplayground.agentscope.io/piccolo.html"
+      },
+      {
+        "label": "Hugging Face模型集合",
+        "url": "https://huggingface.co/collections/agentscope-ai/piccolo"
+      },
+      {
+        "label": "固定提交评测口径",
+        "url": "https://github.com/agentscope-ai/Piccolo/blob/eec0afc7deee600b7010728b6b3d58876a5472c2/evaluation/README.md"
+      },
+      {
+        "label": "固定提交聚合成绩",
+        "url": "https://github.com/agentscope-ai/Piccolo/blob/eec0afc7deee600b7010728b6b3d58876a5472c2/evaluation/results.json"
+      },
+      {
+        "label": "固定提交推理契约",
+        "url": "https://github.com/agentscope-ai/Piccolo/blob/eec0afc7deee600b7010728b6b3d58876a5472c2/inference/README.md"
+      },
+      {
+        "label": "候选读出与注意力代码",
+        "url": "https://github.com/agentscope-ai/Piccolo/blob/eec0afc7deee600b7010728b6b3d58876a5472c2/inference/reference/piccolo_inference.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Piccolo把候选决策模型、语义数据切片和实验记忆串成研究循环；关键启发是同时追踪概率损失与决策翻转，不能只按loss调配数据。",
+      "motivation": "Agent工具审查、上下文保留和数据筛选常要在少数候选之间低延迟决策；固定数据配方与单个总分掩盖哪些能力正在退化。Piccolo把这些判断统一为概率分布，并让研究Agent用样本级反馈决定下轮数据与训练方案。",
+      "novelty": "作者主张数据驱动的递归自改进与0.8B–27B决策模型族。本站判断：可复用价值是按切片诊断、保留失败分支与跨任务确认；现有研究轨迹不足以隔离自主编排的因果收益。",
+      "evidenceScope": "已读arXiv v1 §2–5方法/实验及附录A–E、作者博客，并静态核对固定代码提交eec0afc7deee600b7010728b6b3d58876a5472c2的评测说明/聚合结果、推理说明与候选读取关键代码，非仅摘要。论文采用2026-11-17 18:35:34 UTC的86项Vision榜单快照：27B Full、Private、Public依次为75.59、70.97、80.22；Full为Public与Private等权平均，Public自身11任务经机会校正加权，不是题级成功率。9B/4B Private=65.04/63.49，2B/0.8B Private尚待提交。应用集为Harness v0.5硬目标295任务303问题、Data 500问题、JevBench 231问题；仓库Harness协议为任务宏平均。论文27B Harness84.41/Data82.60/Jev92.21与仓库对应值一致，但小模型部分成绩不同，见limits。341固定工作流题中KL 2.19→0.66→0.64，净正确先+78后−13，混合权重4.69→5.36→5.14%；这是观测反馈，不是KL必然导致准确率恶化的证明。10%定向替换比同量随机替换高2.11开发分；重配研究的分支起始参数及多个桶同时变化（附录D.4），不能把后续所有差异单独归因于过滤。固定池11检查点累计1.024M次样本呈现后Data+0.60、Text−1.29、Harness−1.69。约6300加速器小时覆盖647次27B训练尝试；后续多模态、小模型、评测、合成和候选搜索另记，2.8×10^21 FLOP是按123TFLOP/s峰值折算而非实测执行量。所有成绩为作者报告；未跑模型、训练或基准，verified只表示来源核验。",
+      "limits": "论文成绩是11月17日快照，非当前全榜排名；混合改动的研究分支非严格因果消融，仍有人类指导。仓库4B/9B成绩与论文不同；647次仅统计27B训练，本站未复现。 论文的27B Full 75.59仅比JDI 75.05高0.54分；不是Public Vision、Data或JevBench各项第一。多数小差值未提供多随机种子方差或置信区间，不能据此确认稳定优势。数据调配研究的4000题调配集被反复用于选方案，2000题分离确认及分组划分由作者报告，本站未独立审计训练/评测污染。约663K联合池、380K/700K配方和累计样本呈现次数属于不同口径，不能混称唯一训练数据量。 仓库明确区分VL视觉检查点与foundation文本检查点：同名参数规模不等于同一权重。固定提交的9B Harness/Data为70.68/69.20，4B为63.22/71.20；论文表8分别为71.53/72.40和66.10/70.20，本站未验证是哪次检查点或协议变更，不合并成一张复现成绩表。公开材料含聚合结果与复现启动器，逐题输出由运行者生成；未恢复600余次研究完整日志。游戏录屏仅showcase，未核交互成功率/时延，GIF播放速度不能当推理速度；不归入代码创作专题。",
+      "method": [
+        "将文本或图像状态、问题、完整候选集和目标分布统一编码；从原生语言头读取候选单token logits并归一化，完整注意力块用双向提示，线性块保持原计算。",
+        "将来源去重、审计与合成数据写入可追溯池，保留父记录和构造族；联合池快照663K；其中约210K语义标注样本用13轴551值追踪切片覆盖及学习变化。",
+        "以持久研究记忆串联提案、父模型、配方、预算与结果；同时测目标分布KL和固定题正确/错误翻转，据此重配、过滤、修标签或定向合成。",
+        "执行候选交叉熵SFT、带监督回放和冻结参考KL的候选动作RL，或参数插值/模块缩放/低秩编辑；失败分支的参数差和诊断也保留供后续利用。",
+        "数据调配研究在约4000调配题与2000分离确认题上比较，再检查视觉、Harness、Data等跨任务变化；研究人员设优先级、预算并审阅重要改动。"
+      ],
+      "inspirations": [
+        "给数据筛选Agent建立双指标台账：固定题概率KL与答对/答错翻转同时记录，按来源、能力和父记录聚合；loss下降却净错增多时，触发切片审查而非自动加权。",
+        "固定父检查点、总呈现量和随机种子，比较随机替换、反馈重配、重配加过滤；冻结确认集并延迟揭示，按构造族计算区间，避免将多项同时改动归因于单一策略。",
+        "把“模型ID、VL或文本、权重修订、输入布局、计分单位”一起冻结；同时测危险操作误放行和人类升级率，不能把候选题准确率当真实工具执行安全率。"
+      ],
+      "reviewedAt": "2026-11-19T22:35:18.691206+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.24651",
+        "https://arxiv.org/html/2611.24651v1",
+        "https://decisionplayground.agentscope.io/piccolo.html",
+        "https://github.com/agentscope-ai/Piccolo/blob/eec0afc7deee600b7010728b6b3d58876a5472c2/evaluation/README.md",
+        "https://github.com/agentscope-ai/Piccolo/blob/eec0afc7deee600b7010728b6b3d58876a5472c2/evaluation/results.json",
+        "https://github.com/agentscope-ai/Piccolo/blob/eec0afc7deee600b7010728b6b3d58876a5472c2/inference/README.md",
+        "https://github.com/agentscope-ai/Piccolo/blob/eec0afc7deee600b7010728b6b3d58876a5472c2/inference/reference/piccolo_inference.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.24651",
+      "status": "pending",
+      "checkedAt": "2026-11-19T22:32:19.890284+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.22563v2",
+    "url": "https://arxiv.org/abs/2611.22563v2",
+    "id": "paper-cadmageddon-2611-22563",
+    "title": "CADMAGEDDON：让模型选几何结构，让工具量数值，再交付可编辑CAD",
+    "summary": "CADMAGEDDON把网格到CAD重建拆成“拟合并命名几何—选择特征—执行—查看残差—修正”的循环。Qwen3.8-27B选择平面、轮廓和操作，工具负责参数拟合，生成CadQuery或FreeCAD程序。主表五组共1960件，MCB的GMS为0.818（CADFather为0.705）；这类质量均值排除无几何项。FreeCAD后端在23件BenchCAD-2公开集上得到0.925，但使用最多5次参考分选优，不能当同预算单次成功率。",
+    "insight": "对可编辑3D Agent，关键启发是把“决定做什么”与“精确量多少”拆开，并让完成声明受局部几何和原生工程检查约束。复用工具链输出FreeCAD特征树比只交付STL更便于接手，但尺寸字面量、BRep/STL告警和缺少改参测试说明：程序可修改、重建准确和设计意图恢复是三种不同能力。",
+    "limits": "未复现；主表质量均值排除无几何项。BenchCAD-2仅23公开件、最多5次按真值分选；榜单用28私有件和图像输入，不是同题同预算。报告实验用4GPU，单48GB及笔电端到端性能未测；代码可改不等于恢复设计意图。主表共1960件：DeepCAD/Fusion360/MCB各300，BenchCAD1000，CADENA-Bench60；前三按面数三分层每层随机100，BenchCAD均匀随机1000，CADENA六族各10并限制面数5%—95%。五方法使用同一题集，但IoU/GMS取各方法产生几何的样本均值，CD为8192采样点的对称距离中位数（×1000），IR单列，无效样本不是质量均值中的0。CADMAGEDDON的IR依序0/0.33/0.67/0.30/0%；其MCB GMS0.818高于同模型CADFather0.705，但CADFather在MCB的IR为0，因此不能称执行成功全面领先。CADFit只导入逐件指标，没有预测网格可用同一代码重算；其超预算不收敛项算invalid，成功子集均值偏乐观；StepCAD用600秒/件模式；StepCAD与CADFit主表均未报BenchCAD。CADENA-Bench有4个参考网格修复；排除这4件的56件附录仍同排名。BenchCAD原生64³体素/STEP重建口径的0.991与主表自定义IoU0.999不能混同；前沿榜单有不同图像/网格输入、子集及厂商自报项，不能据此声称中模型普遍超越前沿模型。BenchCAD-2 part_v1为0.8×机会校正128³体素IoU+0.2×拓扑分，各形状分别包围盒归一化；CADMAGEDDON对23公开件最多5次完成尝试后按参考分选最好，Qwen Code为同模型但最多2次，4视图前沿榜单为28私有件，三组不能视为严格同预算消融。FreeCAD/CadQuery得分0.925/0.933，均20/23达到0.9，只是该重建评分，不是改参成功率或工程往返通过率。1.27/1.05美元每件是按OpenRouter最低列价折算所有未被服务中断截断的尝试，非本地电费、硬件摊销或真实付款账单。模型FP8权重约30GB可放入48GB GPU是作者说明；报告实验实际采用4GPU张量并行、250k上下文，未给单卡/笔电端到端显存峰值、延迟或成功率。30/60是执行命令预算，不等于总API次数；无命令回复不扣预算，截断回复可用更高token上限重试。附录前n步质量曲线用参考指标挑最佳程序并给无程序项0，是上界而不是可部署早停策略；当前发布代码默认按输入网格残差挑选且只重试未完成尝试，不能直接当成论文BenchCAD-2真值选优复现。干净残差与停止/可交付分开：耗尽预算或承认停滞仍可交付有效历史程序，complete仍可为false。细小残差片段有0.01%体积下限及总0.2%容限，局部表面检查也有阈值，未解决所有薄壁/多孔错误。只适用CAD导出干净单件网格，不含真实噪声扫描、缺失区域或装配。输出尺寸多为字面量，倒角/圆角以显式实体近似，不能据可执行/特征树声称恢复原始约束或设计意图。源码检查并保存FreeCAD特征树，可对原生BRep与STL不一致发WARNING，但告警不等于强制拒绝交付；未实测保存重开、改尺寸、保留未改区域。定性图挑选本方法领先幅度最大的样本，不是随机视觉质检；没有独立用户编辑测试。MIT源码公开已核，未安装、运行代码、调用模型、下载权重或复算任何结果；verified只指来源核验。",
+    "organization": "Lomonosov Moscow State University · Innopolis University · FusionBrain Lab · AXXX",
+    "dateLabel": "2026-11-17首次提交 · 2026-11-18修订v2",
+    "evidence": "全文方法、实验及附录已读；固定MIT实现关键路径静态核验，未复现",
+    "originalTitle": "CADMAGEDDON: High-Fidelity CAD Reconstruction with Local Inference",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-19T22:32:54.773778+00:00",
+    "paperOriginalDate": "2026-11-17T10:48:35Z",
+    "paperUpdatedAt": "2026-11-18T18:34:30Z",
+    "updatedAt": "2026-11-18T18:34:30Z",
+    "firstSeenAt": "2026-11-19T22:34:49.165933+00:00",
+    "tags": [
+      "CADMAGEDDON",
+      "CadQuery",
+      "FreeCAD",
+      "Mesh-to-Code",
+      "几何拟合",
+      "本地推理"
+    ],
+    "authors": [
+      "Oleg Pavlov",
+      "Nikita Gavrilov",
+      "Soslan Kabisov",
+      "Gennadii Savrasov",
+      "Andrey Kuznetsov",
+      "Anton Konushin",
+      "Dmitrii Zhemchuzhnikov"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": true,
+    "sources": [
+      {
+        "label": "arXiv v2原论文与首次/修订日期",
+        "url": "https://arxiv.org/abs/2611.22563v2"
+      },
+      {
+        "label": "arXiv v2方法、实验与附录全文",
+        "url": "https://arxiv.org/html/2611.22563v2"
+      },
+      {
+        "label": "作者固定实现README",
+        "url": "https://github.com/kulibinai/cadmageddon/blob/368fb87d5ff4c773c0c9ba79a4743c1ade50e813/README.md"
+      },
+      {
+        "label": "固定实现MIT许可证",
+        "url": "https://github.com/kulibinai/cadmageddon/blob/368fb87d5ff4c773c0c9ba79a4743c1ade50e813/LICENSE"
+      },
+      {
+        "label": "固定Agent循环与停止条件",
+        "url": "https://github.com/kulibinai/cadmageddon/blob/368fb87d5ff4c773c0c9ba79a4743c1ade50e813/agent_run.py"
+      },
+      {
+        "label": "固定残差选择与有效程序交付",
+        "url": "https://github.com/kulibinai/cadmageddon/blob/368fb87d5ff4c773c0c9ba79a4743c1ade50e813/scripts/pick_best.py"
+      },
+      {
+        "label": "固定指标聚合与无效样本计数",
+        "url": "https://github.com/kulibinai/cadmageddon/blob/368fb87d5ff4c773c0c9ba79a4743c1ade50e813/evaluate.py"
+      },
+      {
+        "label": "固定FreeCAD特征状态检查",
+        "url": "https://github.com/kulibinai/cadmageddon/blob/368fb87d5ff4c773c0c9ba79a4743c1ade50e813/freecad/mesh2cad/fc/runtime.py"
+      },
+      {
+        "label": "固定FreeCAD工程/STL交付",
+        "url": "https://github.com/kulibinai/cadmageddon/blob/368fb87d5ff4c773c0c9ba79a4743c1ade50e813/freecad/scripts/export_stl.py"
+      },
+      {
+        "label": "固定局部表面误差门槛",
+        "url": "https://github.com/kulibinai/cadmageddon/blob/368fb87d5ff4c773c0c9ba79a4743c1ade50e813/mesh2cad/surface_gate.py"
+      },
+      {
+        "label": "固定模型服务配置与硬件说明",
+        "url": "https://github.com/kulibinai/cadmageddon/blob/368fb87d5ff4c773c0c9ba79a4743c1ade50e813/serving/serve_vllm.sh"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "CADMAGEDDON让27B模型选择命名几何，拟合工具提供数值，再逐步生成可编辑CAD。MCB的GMS为0.818；BenchCAD-2有真值选优和输入差异，单卡端到端性能未核。",
+      "motivation": "网格保留了零件表面，却通常丢失特征树和设计意图。让模型一次写出所有CAD数值容易受分辨率与数值预测误差限制；纯几何拟合又可能选错构造方式。作者把结构决策交给视觉模型，把精确数值交给几何工具。",
+      "novelty": "作者主张：用命名几何与数值拟合，把网格重建拆成小模型可做的视觉决策。本站判断：结构选择与参数测量分离值得迁移；可编辑程序、几何相似和原生工程可靠性仍须分别验收。",
+      "evidenceScope": "实际完整读取arXiv v2方法§3.1—3.6、实验§4.1—4.5、局限§5与附录A/B，核首次/修订时间。读取原页链接的作者GitHub仓库，固定提交368fb87d5ff4c773c0c9ba79a4743c1ade50e813；静态读完整README、MIT许可、evaluate.py、surface_gate.py、FreeCAD runtime/export及serve_vllm说明，重点读agent_run的DONE/残差/交付/批次路径和pick_best的deliver_best，未声称全库审计。网页图注和表格已读，未独立观看动图或对输出图像打分。未安装、运行任何源码、启动API或复现实验；HJFY由主任务另行提交核验。",
+      "limits": "未复现；主表质量均值排除无几何项。BenchCAD-2仅23公开件、最多5次按真值分选；榜单用28私有件和图像输入，不是同题同预算。报告实验用4GPU，单48GB及笔电端到端性能未测；代码可改不等于恢复设计意图。主表共1960件：DeepCAD/Fusion360/MCB各300，BenchCAD1000，CADENA-Bench60；前三按面数三分层每层随机100，BenchCAD均匀随机1000，CADENA六族各10并限制面数5%—95%。五方法使用同一题集，但IoU/GMS取各方法产生几何的样本均值，CD为8192采样点的对称距离中位数（×1000），IR单列，无效样本不是质量均值中的0。CADMAGEDDON的IR依序0/0.33/0.67/0.30/0%；其MCB GMS0.818高于同模型CADFather0.705，但CADFather在MCB的IR为0，因此不能称执行成功全面领先。CADFit只导入逐件指标，没有预测网格可用同一代码重算；其超预算不收敛项算invalid，成功子集均值偏乐观；StepCAD用600秒/件模式；StepCAD与CADFit主表均未报BenchCAD。CADENA-Bench有4个参考网格修复；排除这4件的56件附录仍同排名。BenchCAD原生64³体素/STEP重建口径的0.991与主表自定义IoU0.999不能混同；前沿榜单有不同图像/网格输入、子集及厂商自报项，不能据此声称中模型普遍超越前沿模型。BenchCAD-2 part_v1为0.8×机会校正128³体素IoU+0.2×拓扑分，各形状分别包围盒归一化；CADMAGEDDON对23公开件最多5次完成尝试后按参考分选最好，Qwen Code为同模型但最多2次，4视图前沿榜单为28私有件，三组不能视为严格同预算消融。FreeCAD/CadQuery得分0.925/0.933，均20/23达到0.9，只是该重建评分，不是改参成功率或工程往返通过率。1.27/1.05美元每件是按OpenRouter最低列价折算所有未被服务中断截断的尝试，非本地电费、硬件摊销或真实付款账单。模型FP8权重约30GB可放入48GB GPU是作者说明；报告实验实际采用4GPU张量并行、250k上下文，未给单卡/笔电端到端显存峰值、延迟或成功率。30/60是执行命令预算，不等于总API次数；无命令回复不扣预算，截断回复可用更高token上限重试。附录前n步质量曲线用参考指标挑最佳程序并给无程序项0，是上界而不是可部署早停策略；当前发布代码默认按输入网格残差挑选且只重试未完成尝试，不能直接当成论文BenchCAD-2真值选优复现。干净残差与停止/可交付分开：耗尽预算或承认停滞仍可交付有效历史程序，complete仍可为false。细小残差片段有0.01%体积下限及总0.2%容限，局部表面检查也有阈值，未解决所有薄壁/多孔错误。只适用CAD导出干净单件网格，不含真实噪声扫描、缺失区域或装配。输出尺寸多为字面量，倒角/圆角以显式实体近似，不能据可执行/特征树声称恢复原始约束或设计意图。源码检查并保存FreeCAD特征树，可对原生BRep与STL不一致发WARNING，但告警不等于强制拒绝交付；未实测保存重开、改尺寸、保留未改区域。定性图挑选本方法领先幅度最大的样本，不是随机视觉质检；没有独立用户编辑测试。MIT源码公开已核，未安装、运行代码、调用模型、下载权重或复算任何结果；verified只指来源核验。",
+      "method": [
+        "修补重复面与裂缝、对齐主平面并缩放过小零件；记录变换，以便将交付几何放回输入坐标系。",
+        "几何工具拟合并命名截面层级、环、直线、圆弧、解析面、孔列与阵列；模型主要按名称引用，也可组合位置或传入数值。",
+        "每轮执行一个命令：检查多视图或截面，选择平面、层级、轮廓和操作；程序构造器将引用解析为拟合值，生成并运行CadQuery特征。",
+        "测量缺失/多余体积及局部表面偏差，提供匹配视图或文字诊断；模型可替换、撤回或删除已有特征，历史输出压缩后可recall。",
+        "按停止规则区分完成、承认停滞与预算耗尽；通常从合格历史程序中按输入网格残差选交付版本。FreeCAD后端复用工具链并输出原生特征树；BenchCAD-2另有真值选优协议。"
+      ],
+      "inspirations": [
+        "在CAD/Blender Agent中先把可测几何编成稳定实体名称，再要求模型选择结构关系；对比自由数值生成，记录尺寸误差、调用成本和无法命名的失败类型。",
+        "将缺失体积、薄壁局部偏差、特征状态和导出坐标分别做硬检查；将conceded、预算耗尽、工程可打开和尺寸修改成功分开统计，避免一个完成标记掩盖问题。",
+        "为双后端交付加同题同预算评测：同时保留模型选择和真值选优结果，核FCStd与STL一致性，再做保存重开、局部改参和未改部分保持测试。"
+      ],
+      "reviewedAt": "2026-11-19T22:32:54.773778+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.22563v2",
+        "https://arxiv.org/html/2611.22563v2",
+        "https://github.com/kulibinai/cadmageddon/blob/368fb87d5ff4c773c0c9ba79a4743c1ade50e813/README.md",
+        "https://github.com/kulibinai/cadmageddon/blob/368fb87d5ff4c773c0c9ba79a4743c1ade50e813/LICENSE",
+        "https://github.com/kulibinai/cadmageddon/blob/368fb87d5ff4c773c0c9ba79a4743c1ade50e813/agent_run.py",
+        "https://github.com/kulibinai/cadmageddon/blob/368fb87d5ff4c773c0c9ba79a4743c1ade50e813/scripts/pick_best.py",
+        "https://github.com/kulibinai/cadmageddon/blob/368fb87d5ff4c773c0c9ba79a4743c1ade50e813/evaluate.py",
+        "https://github.com/kulibinai/cadmageddon/blob/368fb87d5ff4c773c0c9ba79a4743c1ade50e813/freecad/mesh2cad/fc/runtime.py",
+        "https://github.com/kulibinai/cadmageddon/blob/368fb87d5ff4c773c0c9ba79a4743c1ade50e813/freecad/scripts/export_stl.py",
+        "https://github.com/kulibinai/cadmageddon/blob/368fb87d5ff4c773c0c9ba79a4743c1ade50e813/mesh2cad/surface_gate.py",
+        "https://github.com/kulibinai/cadmageddon/blob/368fb87d5ff4c773c0c9ba79a4743c1ade50e813/serving/serve_vllm.sh"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.22563",
+      "status": "pending",
+      "checkedAt": "2026-11-19T22:36:37.418345+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.23673v1",
+    "url": "https://arxiv.org/abs/2611.23673v1",
+    "id": "paper-2611.23673",
+    "title": "COPD：让学生学会向黑盒教师提问，再撤掉顾问独立执行",
+    "summary": "COPD让学生自主向黑盒教师求助，再把成功对话作为特权参考，监督无顾问的新尝试；4B五域均分从45.3升至59.8，含视觉裁判分，非统一成功率。",
+    "insight": "作者：把自主沟通获得的成功经验变成无顾问策略的token级监督。本站：关键是用同题参考评估学生自己的新动作，而非复刻教师轨迹；现有实验支持该组合，但尚缺完整成本和重复训练证据。",
+    "limits": "未复现；640题五域混合指标，Visual是裁判分，非统一成功率。外测仅无网络子集、题数未报；2.46为作者增益倍率，ActionOPD单元有冲突；无多种子置信区间。主实验从Qwen3.5-4B/9B训练100轮，每轮64个episode，共6400次episode曝光，不等6400个独立任务。教师固定DeepSeek-V4.1-Flash；五域等权，主评测每域128题、共640题、关闭顾问。Visual列为平均裁判等级，其余域按各自原生指标，因此59.8是五域宏平均，不是统一二元成功率，也不是人类视觉偏好胜率。4B对底座45.3增14.5点，对CAMP-I54.2增5.6点；General66.4低于CAMP-I68.8，Shop92.2低于ActionOPD93.0，并非每域最优；9B61.3仍低于教师80.7。作者用ActionOPD汇总51.2与底座45.3的5.9点增益作分母，得到14.5/5.9约2.46，不是成功率翻2.46倍。arXiv PDF和活动TeX表1的ActionOPD Visual为39.0，项目页为40.0；按纸表五个显示单元均值为51.04，与汇总51.2不一致，40.0则均值51.24。本站保留作者汇总口径并披露冲突，不替作者修正或把该倍率当独立核算确认。外部评测仅Terminal-Bench2.1和SWE-BenchProV2的network-free子集，论文未给两子集题数、选择清单、评测harness版本、逐题结果和多次独立训练波动；不能当完整榜单成绩或声称统计显著。4B分别23.1→28.0、11.2→16.5；9B分别23.1→33.0、23.1→27.5。9B两套均值30.3接近35B-A3B的30.6只适用于这些子集和本设置，不证明通用能力相当。成功参考来自同题曾经求助的完整轨迹，可能包含答案、最终动作和事后观察；这是训练时特权监督，不能说无需成功解答或完全无标签。新轨迹从新工作区开始且不见顾问，特权自教师才看参考；未提供训练/测试任务清单及独立污染审计。只保留成功参考不意味着RL只训练成功：有顾问/无顾问的合格episode及失败都进入任务PPO，只有可配对无顾问token进入OPSD。方法名为on-policy，实际收集全异步且可来自旧快照；其重要性比率用当前概率/真实采样时概率并截断，不能概括成所有数据严格由当前权重即时生成，或截断比率已经消除全部偏差。特权视图与可部署视图共享当前学生参数，前者停止梯度；外部教师只在采集时给文本，不提供logit，也不替学生直接执行环境动作。无OPSD消融无顾问47.5、有顾问62.4，本法对应59.8/61.4；这支持组合减少本设置的顾问依赖，不等内化了教师全部知识。单次参考对照0.6/0.2/−0.1/0点只是在双方都成功任务上、同一检查点的一次更新，未给配对题数或误差条；不能宣称咨询参考普遍3倍数据效率。删除/错配回复降到56.9/54.6，仍有参考上下文结构与内容变动，不能孤立归因所有因果机制。提问率48.9→55.2→38.9是有顾问episode中至少一次请求的比例，不是每步调用率或总调用量；问题质量51.2→85.8由gpt-6-astra根据请求及请求前上下文打分，未见人类校准和评分可靠性。单个网页有/无顾问案例不是系统性可编辑性或视觉质量评测，也不属代码动效专题。v1发布PDF共13页，方法§4、设置§5.1、结果§5.2、结论/局限和两主表已读；该PDF没有附录。源包中另有未被main.tex输入的配置/奖励表，仅视为源包残留，未当已发布实验附录采用。正文未充分给出顾问配额、参考保留窗/混合比例、OPSD权重/截断超参数、固定token分母的实现及完整调用/token/GPU费用。项目页只链接论文、示意图和slides，未核到可归属训练代码、模型权重或原始日志；第三方“Code released”标签不采信。未运行作者代码或复现实验，verified仅指来源核验。",
+    "organization": "Peking University / JD.com / Sichuan University / Beijing Institute of Technology / Renmin University of China / HKUST",
+    "dateLabel": "2026-11-18 首发（UTC；北京时间08:56）",
+    "evidence": "已读原PDF/TeX方法与实验；混合指标、外测子集及源表冲突已标；无附录、实现和复现。",
+    "originalTitle": "Communicative On-Policy Distillation: Distilling Black-Box Teacher Capabilities through Communication for Long-Horizon Tasks",
+    "date": "2026-11-18",
+    "checkedAt": "2026-11-19T22:34:07.398413+00:00",
+    "paperOriginalDate": "2026-11-18T00:56:10Z",
+    "paperUpdatedAt": "2026-11-18T00:56:10Z",
+    "updatedAt": "2026-11-18T00:56:10Z",
+    "firstSeenAt": "2026-11-19T04:00:01Z",
+    "lastSeenAt": "2026-11-19T22:00:01Z",
+    "tags": [
+      "Distillation",
+      "Black-box teacher",
+      "Communication",
+      "On-policy self-distillation",
+      "Long-horizon agents"
+    ],
+    "authors": [
+      "Lirui Luo",
+      "Kelong Mao",
+      "Xinwei Yang",
+      "Rongqing Li",
+      "Luyu Chen",
+      "Kieran Wong",
+      "Yudong Guo",
+      "Xinrui Wang",
+      "Jiayin Zhu",
+      "Gu Simiu",
+      "Sulong Xu",
+      "Cong Fang"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.23673v1"
+      },
+      {
+        "label": "原论文PDF：沟通、自蒸馏与无顾问评测",
+        "url": "https://arxiv.org/pdf/2611.23673v1"
+      },
+      {
+        "label": "原始TeX：仅活动方法与实验正文",
+        "url": "https://arxiv.org/src/2611.23673v1"
+      },
+      {
+        "label": "作者项目：摘要、结果与展示",
+        "url": "https://liruiluo.github.io/communicative-opsd/"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "COPD让学生自主向黑盒教师求助，再把成功对话作为特权参考，监督无顾问的新尝试；4B五域均分从45.3升至59.8，含视觉裁判分，非统一成功率。",
+      "motivation": "长任务中，学生不知道什么时候需要帮助，也未必能在撤掉帮助后独立成功。黑盒教师又不提供逐token概率；作者让学生学会主动咨询，再以真实成功咨询经验构造训练时可用、部署时移除的监督。",
+      "novelty": "作者：把自主沟通获得的成功经验变成无顾问策略的token级监督。本站：关键是用同题参考评估学生自己的新动作，而非复刻教师轨迹；现有实验支持该组合，但尚缺完整成本和重复训练证据。",
+      "evidenceScope": "直接读取arXiv v1提交史、13页PDF文本、原始TeX活动方法/算法/实验/结论，以及作者项目正文与14页slides文本；对照两份PDF文本仅差arXiv页边标记。未把源包未引用的表当发布附录，未独立审看网页案例图像、核原始日志或执行训练。",
+      "limits": "未复现；640题五域混合指标，Visual是裁判分，非统一成功率。外测仅无网络子集、题数未报；2.46为作者增益倍率，ActionOPD单元有冲突；无多种子置信区间。主实验从Qwen3.5-4B/9B训练100轮，每轮64个episode，共6400次episode曝光，不等6400个独立任务。教师固定DeepSeek-V4.1-Flash；五域等权，主评测每域128题、共640题、关闭顾问。Visual列为平均裁判等级，其余域按各自原生指标，因此59.8是五域宏平均，不是统一二元成功率，也不是人类视觉偏好胜率。4B对底座45.3增14.5点，对CAMP-I54.2增5.6点；General66.4低于CAMP-I68.8，Shop92.2低于ActionOPD93.0，并非每域最优；9B61.3仍低于教师80.7。作者用ActionOPD汇总51.2与底座45.3的5.9点增益作分母，得到14.5/5.9约2.46，不是成功率翻2.46倍。arXiv PDF和活动TeX表1的ActionOPD Visual为39.0，项目页为40.0；按纸表五个显示单元均值为51.04，与汇总51.2不一致，40.0则均值51.24。本站保留作者汇总口径并披露冲突，不替作者修正或把该倍率当独立核算确认。外部评测仅Terminal-Bench2.1和SWE-BenchProV2的network-free子集，论文未给两子集题数、选择清单、评测harness版本、逐题结果和多次独立训练波动；不能当完整榜单成绩或声称统计显著。4B分别23.1→28.0、11.2→16.5；9B分别23.1→33.0、23.1→27.5。9B两套均值30.3接近35B-A3B的30.6只适用于这些子集和本设置，不证明通用能力相当。成功参考来自同题曾经求助的完整轨迹，可能包含答案、最终动作和事后观察；这是训练时特权监督，不能说无需成功解答或完全无标签。新轨迹从新工作区开始且不见顾问，特权自教师才看参考；未提供训练/测试任务清单及独立污染审计。只保留成功参考不意味着RL只训练成功：有顾问/无顾问的合格episode及失败都进入任务PPO，只有可配对无顾问token进入OPSD。方法名为on-policy，实际收集全异步且可来自旧快照；其重要性比率用当前概率/真实采样时概率并截断，不能概括成所有数据严格由当前权重即时生成，或截断比率已经消除全部偏差。特权视图与可部署视图共享当前学生参数，前者停止梯度；外部教师只在采集时给文本，不提供logit，也不替学生直接执行环境动作。无OPSD消融无顾问47.5、有顾问62.4，本法对应59.8/61.4；这支持组合减少本设置的顾问依赖，不等内化了教师全部知识。单次参考对照0.6/0.2/−0.1/0点只是在双方都成功任务上、同一检查点的一次更新，未给配对题数或误差条；不能宣称咨询参考普遍3倍数据效率。删除/错配回复降到56.9/54.6，仍有参考上下文结构与内容变动，不能孤立归因所有因果机制。提问率48.9→55.2→38.9是有顾问episode中至少一次请求的比例，不是每步调用率或总调用量；问题质量51.2→85.8由gpt-6-astra根据请求及请求前上下文打分，未见人类校准和评分可靠性。单个网页有/无顾问案例不是系统性可编辑性或视觉质量评测，也不属代码动效专题。v1发布PDF共13页，方法§4、设置§5.1、结果§5.2、结论/局限和两主表已读；该PDF没有附录。源包中另有未被main.tex输入的配置/奖励表，仅视为源包残留，未当已发布实验附录采用。正文未充分给出顾问配额、参考保留窗/混合比例、OPSD权重/截断超参数、固定token分母的实现及完整调用/token/GPU费用。项目页只链接论文、示意图和slides，未核到可归属训练代码、模型权重或原始日志；第三方“Code released”标签不采信。未运行作者代码或复现实验，verified仅指来源核验。",
+      "method": [
+        "同一学生策略选择环境动作或通过bash发自由文本问题；固定教师只回文本。带顾问与无顾问轨迹共同收集，请求token与后续动作由环境回报联合训练。",
+        "仅将实际求助且通过原生成功检查的完整轨迹存入按环境/任务索引的滚动库；混合原定任务与库内重采任务，在新工作区再次无顾问尝试。",
+        "为无顾问新轨迹配同题成功参考；共享当前学生权重的两视图给同一新采样token打分，只有停止梯度的特权视图能看参考，参考不会交给执行策略。",
+        "截断两视图对该token的log概率差形成蒸馏反馈；异步采样用当前/真实行为概率比及PPO式截断，避免把旧快照轨迹误当完全当前策略数据。",
+        "任务PPO覆盖带/不带顾问的合格episode及失败，OPSD只覆盖有效配对的无顾问token；训练持续联合进行，最终评测关闭顾问，另做参考内容和组件消融。"
+      ],
+      "inspirations": [
+        "把“带顾问完成率”和“撤掉顾问后能力”拆开评测；保持任务与预算相同，记录新增成功与退步，避免把更会求助误当已经学会独立执行。",
+        "比较同题咨询成功、同题独立成功、异题成功和删回复参考；固定新尝试及更新量，报告配对题数、随机种子和区间，检验收益究竟来自咨询信息还是更多成功轨迹。",
+        "落地时将教师文本、学生行动、环境验证与参考读取权限分别记账；同时核顾问调用/token、环境时间和训练算力，再判断无logit方案是否真降低总成本。"
+      ],
+      "reviewedAt": "2026-11-19T22:34:07.398413+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.23673v1",
+        "https://arxiv.org/pdf/2611.23673v1",
+        "https://arxiv.org/src/2611.23673v1",
+        "https://liruiluo.github.io/communicative-opsd/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.23673",
+      "status": "pending",
+      "checkedAt": "2026-11-19T22:36:37.418345+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/",
+    "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/",
+    "id": "official-openai-performance-factory-20261119",
+    "title": "OpenAI Performance Factory：让性能回归调查延续到部署后验收",
+    "summary": "官方披露告警驱动的云端Agent流程：保存任务状态、反证审查诊断、提出修复，工程师部署后再核验性能是否恢复。",
+    "insight": "可将“解释是否成立”和“变更是否有效”设为两个验收关口，并用任务记录连接跨轮次调查与人类判断。",
+    "limits": "官方内部案例，非开放基准；100个人工抽查归因建议中70%准确，不是修复或部署成功率。缺少对照、成本、合并率和公开日志；仍由工程师审核部署，本站未复现。",
+    "organization": "OpenAI",
+    "dateLabel": "2026-11-19 · 官方工程案例",
+    "evidence": "已读官方网页正文；来源核验不等于复现",
+    "date": "2026-11-19",
+    "checkedAt": "2026-11-19T22:32:35.427545+00:00",
+    "firstSeenAt": "2026-11-19T22:34:49.165933+00:00",
+    "tags": [
+      "OpenAI",
+      "Codex",
+      "工程Agent",
+      "持久任务",
+      "因果核验",
+      "官方案例"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "OpenAI官方工程说明",
+        "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/"
+      },
+      {
+        "label": "官方RSS发布日期",
+        "url": "https://openai.com/news/rss.xml"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "以持久任务和事件唤醒组织性能诊断，最终验收落在部署后的实际恢复。",
+      "motivation": "告警、调查、代码审阅和部署分散，单次Agent回复难以追踪未完成工作。",
+      "novelty": "作者主张端到端组织回归处理；本站看重状态与证据的交接，不将它认定为新的模型能力。",
+      "evidenceScope": "官方网页正文的架构、回归流程和评测章节；自报三个多月1700余次调查、600余次归因。HTTP直抓403，web文本可读；未访问内部系统。",
+      "limits": "官方内部案例，非开放基准；100个人工抽查归因建议中70%准确，不是修复或部署成功率。缺少对照、成本、合并率和公开日志；仍由工程师审核部署，本站未复现。",
+      "method": [
+        "配置状态转换与人工关口，调度器分配当前步骤。",
+        "Agent结合指标、日志、代码提出归因，独立会话尝试反证。",
+        "修复提案经工程师审阅部署，事件唤醒后验证恢复；无改善则重新调查。"
+      ],
+      "inspirations": [
+        "建立历史事件回放集，隔离事后答案，分别评分时间定位、归因和交接摘要。",
+        "对比有无反证审查，统计错误归因、人工修改量和部署后恢复，避免只算产出PR数。"
+      ],
+      "reviewedAt": "2026-11-19T22:32:35.427545+00:00",
+      "sourceUrls": [
+        "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast/",
+        "https://openai.com/news/rss.xml"
+      ]
+    }
   }
 ]
