@@ -23344,5 +23344,396 @@
         "https://openai.com/news/rss.xml"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.24098v1",
+    "url": "https://arxiv.org/abs/2611.24098v1",
+    "id": "paper-2611.24098",
+    "title": "RoughCut-Bench：把可执行粗剪计划与成片质量分开评测",
+    "summary": "RoughCut-Bench用101组视觉粗剪与84份ASR清理任务，将片段选择、素材排序、用户约束和成片评分拆开测；输出保留可编辑时间戳计划。",
+    "insight": "作者主张以完整粗剪任务连接结构化计划与成片评估。本站判断：关键是分离选择、排序、清理与画面评价；人工反馈调优后的模型级相关性不等于独立逐片可靠性。",
+    "limits": "101组视觉与84份ASR案例；评审器在同批人工反馈上调优，相关性按模型聚合，未见独立留出验证。结果经过格式修复，不是首试执行成功率；本站未运行或审看成片。 单一共识标注不覆盖全部合理剪法；ASR分支不含语气、声音和互动，不能代表多模态成片效果。视觉素材按来源分组排序，单源片段保留时序，公开格式要求每个标注来源恰好一次且片段非空，不是任意交错、多轨精剪。公开数据卡为810段视频加21张图片，不能把论文831个raw videos直接当发布文件构成。当前gemini-3-pro别名映射3.1-pro-preview，替代模型不能复现原表模型。未验证全量资产、执行成功率、延迟或成本。",
+    "dateLabel": "2026-11-18 · arXiv v1",
+    "evidence": "已读完整论文方法、实验、附录及公开发布文档；未运行或审看成片",
+    "originalTitle": "RoughCut-Bench: A Benchmark for Automatic Video Rough-Cut with Large Vision-Language Models",
+    "date": "2026-11-18",
+    "checkedAt": "2026-11-19T04:29:18.140792+00:00",
+    "paperOriginalDate": "2026-11-18T09:21:18Z",
+    "paperUpdatedAt": "2026-11-18T09:21:18Z",
+    "updatedAt": "2026-11-18T09:21:18Z",
+    "firstSeenAt": "2026-11-19T04:00:01Z",
+    "lastSeenAt": "2026-11-19T04:00:01Z",
+    "tags": [
+      "剪辑Agent",
+      "粗剪",
+      "可执行计划",
+      "多维评测",
+      "ASR清理"
+    ],
+    "authors": [
+      "Ruisi Zhao",
+      "You Li",
+      "Sihan Chen",
+      "Aosong Cheng",
+      "Chixiang Ma",
+      "Sen Pei",
+      "Zhen Yang",
+      "Hehe Fan",
+      "Dongliang He",
+      "Yi Yang"
+    ],
+    "topics": [
+      "video-editing"
+    ],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv版本与发表时间",
+        "url": "https://arxiv.org/abs/2611.24098v1"
+      },
+      {
+        "label": "论文方法、主表与附录",
+        "url": "https://arxiv.org/html/2611.24098v1"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://whalesong-zrs.github.io/RoughCut-Bench-Project-Page/"
+      },
+      {
+        "label": "公开代码仓库与README",
+        "url": "https://github.com/Whalesong-zrs/RoughCut-Bench"
+      },
+      {
+        "label": "公开数据卡与发布范围",
+        "url": "https://huggingface.co/datasets/zhaors00/RoughCut-Bench"
+      },
+      {
+        "label": "可执行剪辑计划格式",
+        "url": "https://github.com/Whalesong-zrs/RoughCut-Bench/blob/main/docs/cut_plan_format.md"
+      },
+      {
+        "label": "当前模型别名与复现边界",
+        "url": "https://github.com/Whalesong-zrs/RoughCut-Bench/blob/main/docs/model_apis.md"
+      },
+      {
+        "label": "运行、渲染与评审器说明",
+        "url": "https://github.com/Whalesong-zrs/RoughCut-Bench/blob/main/docs/usage.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "RoughCut-Bench用101组视觉粗剪与84份ASR清理任务，将片段选择、素材排序、用户约束和成片评分拆开测；输出保留可编辑时间戳计划。",
+      "motivation": "粗剪需要从同一创作场景的原素材里选片段、排顺序并满足时长和保留/移除要求。单独的视频理解或时刻定位分数不能说明剪辑是否连贯；口播清理也须区分口头语、重复表达与低价值段落，不能只看文字改写。",
+      "novelty": "作者主张以完整粗剪任务连接结构化计划与成片评估。本站判断：关键是分离选择、排序、清理与画面评价；人工反馈调优后的模型级相关性不等于独立逐片可靠性。",
+      "evidenceScope": "已读arXiv v1完整正文§3任务/数据/指标/工作流、§4主表/人工反馈/消融、§5边界及附录A；另读作者项目页、GitHub README、cut_plan_format/model_apis/usage文档和HF数据卡，非仅摘要。论文视觉101案例含831个原始素材、1476亮点；公开发布卡细化为810 MP4与21 JPG，口播84案例来自20源组，不含源口播视频。作者报告8模型同工作流：最佳F1为Set-1 0.526、Set-2 0.343；两集合不同题且约束不同，不能据差值归因约束。视觉整体评分为1–5整体判断而非维度平均；三次judge/片加三人评/片，四轮同批反馈后模型级Pearson由0.53到0.98、排序τ由0.50到0.86，未见独立留出校准。语音IM的TP/FN按span而FP按word，D全按word，RM→R须删错且留对，最佳成对成功率0.537。Gemini 3.0 Pro输入消融移除描述使Set-2排序τ 0.692→0.474；附录联合理解提高部分IoU而非所有指标。附录明确缺失/异常结果修复，部分端点只给最长120候选关键帧但保留全部文字。仓库/数据卡本轮200且有结构与格式文档；只核页面和文档，未审全实现、下载全部媒体、运行API或观看成片。可编辑性证据限时间戳/源序JSON，不含专业编辑器工程往返。verified仅指来源核验，所有实验数值为作者报告。",
+      "limits": "101组视觉与84份ASR案例；评审器在同批人工反馈上调优，相关性按模型聚合，未见独立留出验证。结果经过格式修复，不是首试执行成功率；本站未运行或审看成片。 单一共识标注不覆盖全部合理剪法；ASR分支不含语气、声音和互动，不能代表多模态成片效果。视觉素材按来源分组排序，单源片段保留时序，公开格式要求每个标注来源恰好一次且片段非空，不是任意交错、多轨精剪。公开数据卡为810段视频加21张图片，不能把论文831个raw videos直接当发布文件构成。当前gemini-3-pro别名映射3.1-pro-preview，替代模型不能复现原表模型。未验证全量资产、执行成功率、延迟或成本。",
+      "method": [
+        "构建62组通用与39组带约束视觉案例、84份ASR清理案例；一位专业标注者初标、另一位复核协商，仍有歧义的案例剔除。",
+        "每个素材按1 FPS独立理解，生成候选起止时间、理由与描述；取候选中点关键帧，供全局规划Agent选片、排序并调整目标时长。",
+        "ASR分支一次读取完整文本，输出删除/保留关系、清理类型和理由；保留原表达顺序，借ASR时间戳映射回剪辑区间。",
+        "先规范化、校验并修复异常输出；视觉用tIoU≥0.5匹配、平均IoU与排序τ，语音分别计IM、成对RM→R和D，不能混作一个成功率。",
+        "把视觉计划渲染成片，由Gemini 3.0 Pro评审器结合原素材和约束评分；每片评3次，3位专业人员评分，4轮固定人工反馈修订评审提示。"
+      ],
+      "inspirations": [
+        "为剪辑Agent保存独立的素材ID、源时间戳和排列计划，分别验格式、实际渲染与视觉质量；另列首试失败、修复次数和费用，避免修复后分数掩盖执行失败。",
+        "训练可将片段描述与关键帧一起交给规划器，并专测重复动作、跨素材叙事和约束；评审提示只在训练划分上修订，再用独立成片与逐案例一致性验证。",
+        "口播评测把“删错句且保留正确句”作为成对义务；不要只奖励删得多。另扩音频韵律、语义停顿和多轨编辑集，检查文本提升能否转成更自然的成片。"
+      ],
+      "reviewedAt": "2026-11-19T04:29:18.140792+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.24098v1",
+        "https://arxiv.org/html/2611.24098v1",
+        "https://whalesong-zrs.github.io/RoughCut-Bench-Project-Page/",
+        "https://github.com/Whalesong-zrs/RoughCut-Bench",
+        "https://huggingface.co/datasets/zhaors00/RoughCut-Bench",
+        "https://github.com/Whalesong-zrs/RoughCut-Bench/blob/main/docs/cut_plan_format.md",
+        "https://github.com/Whalesong-zrs/RoughCut-Bench/blob/main/docs/model_apis.md",
+        "https://github.com/Whalesong-zrs/RoughCut-Bench/blob/main/docs/usage.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.24098",
+      "status": "pending",
+      "checkedAt": "2026-11-19T04:30:46.354376+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.23950v1",
+    "url": "https://arxiv.org/abs/2611.23950v1",
+    "id": "paper-vol-agent-2611-23950",
+    "title": "VOL-Agent：先检查影片依赖程序，再让技能驱动逐镜头生成",
+    "summary": "VOL-Agent将人物、场景和镜头写成可静态检查的VOL依赖程序，再由技能编排器按镜头调用生成工具，并从实际画面更新记忆。20脚本七维VLM均分无Blender为3.745、可选白模为4.149；这衡量画面代理质量，不是工程执行成功率。",
+    "insight": "作者主张：用可编译VOL分离全局结构与动态技能执行，再以实际镜头状态和修订经验衔接长片。本站判断：结构检查与画面验收分层值得借鉴；现有消融混改工作流，尚不能单独证明DSL或持续自进化收益。",
+    "limits": "未复现；主表仅20脚本、七维VLM评分，非执行成功率。每镜头同为两次视频调用，不等于总成本相同；人工研究只有5名评审，缺题量/票数分母，未核到可归属实现。自采20个长故事来自开放电影剧本网站，生成总时长约4910秒、每片约22镜头；这是输出规模，不是独立样本数，也不是全都通过某个完成验收的证明。未给可核剧本清单、训练/经验库/技能开发与评测的隔离或按原电影分簇去重审计，不能排除现成剧本知识与跨任务经验影响。另用ViMax-Bench和随机抽取20条MovieBench故事，本文未明确ViMax的实际评测条目数；不能相加成一个已知总分母。独立Gemini-3.8-Flash给七维0–5整数评分，主表均分无Blender为3.745、有Blender为4.149，对照CineCrew为3.482；不是百分比、观众评分或可执行率。MovieBench的场景一致性4.166低于CineCrew的4.290，不能说每项皆最好；未报告多独立生成种子、置信区间或按故事聚合的显著性。Agent对比共用GPT-6.1-Sol、Gemini-3.7-Flash、GPT-Image-2、MiniMax-H3，720P；每镜头基线Best-of-2，VOL初稿加一次critic修订，同视频生成调用数不控制全部LLM/VLM token、参考图、Blender渲染、失败重试及端到端耗时。消融w/o VOL同时改成自然语言规划、固定工作流并取消技能加载，不能将3.903→4.149全归因于DSL静态检查。Best-of-N与Refine-N表仅称基准子集，未给条目数；不能把其中4.163与完整主表4.149当同一协议。成本图横轴为Cost per task，约0.20/0.38美元的点没有完整逐项计费、task粒度、价格日期及调用账本，本轮不据此给分钟影片报价或性价比倍数。人工研究5名有影视背景评审将四方法排序、允许并列；图中CineCrew对VOL的Lose=60.0%表示VOL胜出，不能倒读为VOL输，但题数、总票数、盲法和一致性未交代，不把百分比变成总体显著优势。导演技能由参考片生成及自评修订；第二轮对第一轮24.0%胜、57.3%平、18.7%负，且比较数未明，不等于持续自进化或只升不降。程序层可编辑来自entity/scene/shot对象、依赖、时长及局部生成规格；静态检查只覆盖ID唯一、引用和无环，不能保证实际画面符合剧本、所有工具可用或全片完成。附录程序是示意，含未声明king与标点不完整处；没有可运行编译器或样本验证来证明其可直接执行。引言明确Agent构建可执行Blender场景、渲染简化运动与相机参考并审查，方法将白模用于空间条件与末态续接，故加code2-3d；范围仅中间程序化白模，不能称最终3D编辑工程交付。论文未给本轮可核的具体脚本/工程导出契约，不加视频剪辑或网页动效。未量化局部改动对未编辑区域保留率、工程保存重开、时间线往返或准确复放；最终画面仍由生成模型合成。GitHub公开检索找到um-lab/VOL-Agent，但本轮页面为空库，原论文未提供该库链接且未核作者归属；main/master README均404，API元信息/HEAD被403限流。不能据同名空库称官方代码已开源，也不推断所有平台都无实现。HF同词检索只返回无关模型，X限定索引未返回可核原帖。本轮不运行作者代码、不安装、不调用模型、不观看完整生成影片；verified仅指论文来源核验。",
+    "organization": "University of Macau · LIGHTSPEED · CUHK · NUS",
+    "dateLabel": "2026-11-18 · arXiv v1首次提交",
+    "evidence": "原论文方法、三基准表格与附录已读；图表原件已核，未复现或核到可归属公开实现",
+    "originalTitle": "VOL-Agent: Programming Your Film via Video Orchestration Language Agentic System",
+    "date": "2026-11-18",
+    "checkedAt": "2026-11-19T04:30:36.309652+00:00",
+    "paperOriginalDate": "2026-11-18T06:39:30Z",
+    "paperUpdatedAt": "2026-11-18T06:39:30Z",
+    "updatedAt": "2026-11-18T06:39:30Z",
+    "firstSeenAt": "2026-11-19T04:00:01Z",
+    "lastSeenAt": "2026-11-19T04:00:01Z",
+    "tags": [
+      "VOL",
+      "视频编排",
+      "可编程影片",
+      "结构记忆",
+      "技能驱动",
+      "静态检查"
+    ],
+    "authors": [
+      "Hongji Yang",
+      "Yucheng Zhou",
+      "Lingting Zhu",
+      "Shengju Qian",
+      "Xinye Li",
+      "Huan Zheng",
+      "Dongyue Lu",
+      "Wei Chow",
+      "Xin Wang",
+      "Cheng-zhong Xu",
+      "Jianbing Shen"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2video"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv原论文",
+        "url": "https://arxiv.org/abs/2611.23950v1"
+      },
+      {
+        "label": "arXiv全文HTML",
+        "url": "https://arxiv.org/html/2611.23950v1"
+      },
+      {
+        "label": "arXiv原始LaTeX、结果表与附录",
+        "url": "https://arxiv.org/src/2611.23950v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "VOL-Agent把影片写成可检查的依赖程序，再逐镜头调用生成工具。20脚本七维VLM均分由无白模3.745到有白模4.149；同视频调用非同总成本，未复现。",
+      "motivation": "长片生成若把剧情计划、工具调用和模型提示混在一起，早期错误会沿镜头传播，改一个人物也难知道影响哪些片段。作者把可预先检查的全局结构与需要试错的局部画面合成分开，让技能和记忆在执行阶段继续调整。",
+      "novelty": "作者主张：用可编译VOL分离全局结构与动态技能执行，再以实际镜头状态和修订经验衔接长片。本站判断：结构检查与画面验收分层值得借鉴；现有消融混改工作流，尚不能单独证明DSL或持续自进化收益。",
+      "evidenceScope": "已读arXiv v1全文HTML和原始LaTeX：正文引言（含第71行可执行Blender场景/运动与相机渲染）/方法/实验/结论、五张结果表，以及补充Setup、Baseline Implementation、Benchmark、Domain Specified Language示例和定性说明；另查看原始成本图与人工胜平负图。明确20脚本、ViMax分母缺省、MovieBench抽20条、同视频调用不同完整预算；未把注释内删除的结论当正文。静态检查附录示意程序，未执行。公开GitHub检索同名空库不能完成作者归属或实现审查。未观看生成视频或独立视觉评分。",
+      "limits": "未复现；主表仅20脚本、七维VLM评分，非执行成功率。每镜头同为两次视频调用，不等于总成本相同；人工研究只有5名评审，缺题量/票数分母，未核到可归属实现。自采20个长故事来自开放电影剧本网站，生成总时长约4910秒、每片约22镜头；这是输出规模，不是独立样本数，也不是全都通过某个完成验收的证明。未给可核剧本清单、训练/经验库/技能开发与评测的隔离或按原电影分簇去重审计，不能排除现成剧本知识与跨任务经验影响。另用ViMax-Bench和随机抽取20条MovieBench故事，本文未明确ViMax的实际评测条目数；不能相加成一个已知总分母。独立Gemini-3.8-Flash给七维0–5整数评分，主表均分无Blender为3.745、有Blender为4.149，对照CineCrew为3.482；不是百分比、观众评分或可执行率。MovieBench的场景一致性4.166低于CineCrew的4.290，不能说每项皆最好；未报告多独立生成种子、置信区间或按故事聚合的显著性。Agent对比共用GPT-6.1-Sol、Gemini-3.7-Flash、GPT-Image-2、MiniMax-H3，720P；每镜头基线Best-of-2，VOL初稿加一次critic修订，同视频生成调用数不控制全部LLM/VLM token、参考图、Blender渲染、失败重试及端到端耗时。消融w/o VOL同时改成自然语言规划、固定工作流并取消技能加载，不能将3.903→4.149全归因于DSL静态检查。Best-of-N与Refine-N表仅称基准子集，未给条目数；不能把其中4.163与完整主表4.149当同一协议。成本图横轴为Cost per task，约0.20/0.38美元的点没有完整逐项计费、task粒度、价格日期及调用账本，本轮不据此给分钟影片报价或性价比倍数。人工研究5名有影视背景评审将四方法排序、允许并列；图中CineCrew对VOL的Lose=60.0%表示VOL胜出，不能倒读为VOL输，但题数、总票数、盲法和一致性未交代，不把百分比变成总体显著优势。导演技能由参考片生成及自评修订；第二轮对第一轮24.0%胜、57.3%平、18.7%负，且比较数未明，不等于持续自进化或只升不降。程序层可编辑来自entity/scene/shot对象、依赖、时长及局部生成规格；静态检查只覆盖ID唯一、引用和无环，不能保证实际画面符合剧本、所有工具可用或全片完成。附录程序是示意，含未声明king与标点不完整处；没有可运行编译器或样本验证来证明其可直接执行。引言明确Agent构建可执行Blender场景、渲染简化运动与相机参考并审查，方法将白模用于空间条件与末态续接，故加code2-3d；范围仅中间程序化白模，不能称最终3D编辑工程交付。论文未给本轮可核的具体脚本/工程导出契约，不加视频剪辑或网页动效。未量化局部改动对未编辑区域保留率、工程保存重开、时间线往返或准确复放；最终画面仍由生成模型合成。GitHub公开检索找到um-lab/VOL-Agent，但本轮页面为空库，原论文未提供该库链接且未核作者归属；main/master README均404，API元信息/HEAD被403限流。不能据同名空库称官方代码已开源，也不推断所有平台都无实现。HF同词检索只返回无关模型，X限定索引未返回可核原帖。本轮不运行作者代码、不安装、不调用模型、不观看完整生成影片；verified仅指论文来源核验。",
+      "method": [
+        "CODING把剧本写成Python式VOL，声明人物/道具、场景、镜头节拍、时长和依赖；先规定要生成什么，不提前写死每一步工具流程。",
+        "BUILD检查ID唯一、引用有效及依赖无环；通过后由LLM按依赖顺序补全分镜、转场、相机和对白，形成不绑定具体生成模型的执行计划。",
+        "RUN按镜头选择工作流与摄影知识技能；保存人物/场景参考图，可选构建可执行Blender场景，渲染简化运动和相机白模并审查，再作为合成条件。",
+        "每镜头生成后用VLM记录实际世界状态、人物状态和关键帧；有白模则保留末态供连续镜头继承，让下一镜头依赖已生成结果而非只看原计划。",
+        "Critic定位画面与要求的偏差，结合过往修正重写提示并重生成；成功修订写入经验与技能库，也可从参考影片提炼导演技能，评测默认仅一轮修订。"
+      ],
+      "inspirations": [
+        "为代码视频工程建立对象与镜头依赖图，在昂贵渲染前检查引用/环路；另设工具完成、画面符合、叙事连续和局部改动保留四类验收，不用编译通过代替视觉成功。",
+        "让下一镜头读取上一镜头的真实末态与关键帧，并把预期状态、观测状态、白模状态分开存；修订后沿依赖重新检查，测量未修改镜头受影响的比例。",
+        "用按原故事隔离的开发/测试集冻结技能与经验库，对比相同视频调用和相同总费用两种协议；单独消融DSL、技能路由与白模，人工评测公开题数、票数和并列处理。"
+      ],
+      "reviewedAt": "2026-11-19T04:30:36.309652+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.23950v1",
+        "https://arxiv.org/html/2611.23950v1",
+        "https://arxiv.org/src/2611.23950v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.23950",
+      "status": "pending",
+      "checkedAt": "2026-11-19T04:30:46.354376+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.24059v1",
+    "url": "https://arxiv.org/abs/2611.24059v1",
+    "id": "paper-2611.24059",
+    "title": "MRPD：按专家训练顺序回放日志，减少多教师整合的重复采样",
+    "summary": "MRPD按专家训练顺序回放日志，不再采样或调环境，仍由冻结专家提供分布；4B学生三域宏均分58.6，对MOPD+GRPO的58.2。计时来自不同运行，未复现。",
+    "insight": "作者：把专家日志作为有序课程，回放策略梯度并蒸馏最终专家可降低整合开销。本站：日志复用有价值，但收益混有dense损失与样本量差异，近似on-policy仅获同初始化实验支持。",
+    "limits": "未复现；仅同初始化4B三域。58.6是16集合的三域宏均分；主版1536对576样本不等量。9h/29h与主表非同一运行，约8倍来自576版，均不含先训专家成本。学生、三个领域教师及对照都从Qwen3-4B Instruct-2507经2000条ReTool数学工具轨迹SFT后的同一检查点开始；本文实际更新学生参数，最终专家仅前向、无梯度。尚未测试异构模型、不同初始化、更大参数或MoE，不能把小失配外推为任意旧日志都可安全回放。每个专家300步、每步64题乘8条轨迹；学生主版合并三域即1536条/步、总460800条已存轨迹。在线对照每域24题乘8条，共576条/步、总172800条新采样轨迹；这些是带重复题目的轨迹数，不是独立训练问题数。训练题为数学6400、搜索6500、SQL6400；专家约遍历三轮，在线对照约一轮。主表不是等样本、等token或端到端等费用实验。16个评测集合中，数学六集为AIME2024/2025各30题且每题32次、AMC2023的40题乘32次，以及Minerva272、Olympiad675、MATH500各每题4次；搜索六大集各固定抽2500题，Bamboogle125题，每题一次；SQL为Spider dev1034、test2147与BIRD mini-dev500题，各每题4次。BIRD是11数据库的mini-dev且提示包含官方evidence hint，不能称完整BIRD dev或无提示测试。每题先求N次正确比例，再对集合等权、域内集合等权、最后三域等权；avg@N估计单次成功概率，不是pass@N，也不是全部题目或生成轨迹的总成功率。论文称评测题保留、SQL评测数据库与Spider训练库不交，BIRD不用于训练；本站未取得实际训练/评测清单、去重或预训练污染审计，不能据此证明完全无泄漏。数学训练用严格boxed字符串匹配，评测用符号/数值等价；搜索用规范化exact match；SQL比较执行结果，按gold ORDER BY区分有序列表和多重集。SQL执行结果相同不等价于任意数据库上的语义正确。主表MRPD为58.6，MOPD+GRPO58.2、MOPD58.1、GRPO52.5、PPO52.6、TIES56.8，领域GRPO专家均分59.3；MRPD并非超过所有专家或每域最优，数学63.7低于MOPD63.8，搜索42.0低于TIES42.6。采用同为576样本及sampled-token损失的回放只有57.7，低于MOPD+GRPO58.2；作者正文称换dense损失的576版达58.5。因而不能把主表收益纯归因于离线回放或日志顺序。有序全日志SFT、筛选正确轨迹的RAFT、仅策略梯度分别为57.5、57.6、57.7；仅dense蒸馏58.2，加入策略梯度58.6。打乱300个训练步的顺序使dense版本58.6降至58.0，SFT/RAFT/仅策略梯度分别下降3.8/2.6/3.1分；这是当前固定设置的消融，不能证明顺序普遍比数据量和奖励更重要。全对/全错组仅奖励策略梯度为零，dense教师信号仍存在；本文dense项与sampled-token项是替代关系，不能相加描述。论文的dense项实际是教师top256加剩余概率原子，共257项的粗粒化KL，是全词表KL的下界；99.9%指日志中被采样token落入教师top256的位置比例，不是覆盖99.9%概率质量或全部知识。策略梯度的分母是日志采样策略，不是最终教师或上一轮学生；dense项没有重要性比或裁剪，因此不能称完整无偏离策略校正。作者报告有序dense版约第20步最多4% token触发PG裁剪、末端0.07%，只说明当前实验失配较小，不是理论界或其他初始化的稳定性保证。计时附录明确五个计时运行使用8张H100；MRPD的约9小时/110秒每步来自优化实现的第二次运行，其均分58.5；主表58.6是较早实现首次运行，耗179秒/步。576版计时重跑约3.7小时/44秒每步；29小时对照是含任务奖励的MOPD+GRPO，训练历史还跨两个job并从150步恢复。单纯MOPD与主表GRPO原在A100训练，未纳入H100计时图；图中GRPO计时改用按组均值归一化奖励的另一运行。故不能把主表准确率和计时曲线拼成同次严格复现实验，也不能把9小时主版称8倍提速。9/29约为三分之一，29/3.7约7.84倍，但均为专家已训练完后的整合阶段墙钟时间，不是从零训练或模型全生命周期费用；专家训练分别30、32、4.5小时，日志获取并非无代价。MRPD每步还含约24秒专家前向，非完全无需教师计算；完整日志及top256缓存占用、部署和存储费用没有统一货币核算。计时含每50步检查点写出；线上尾时延解释来自这些运行的观测与回归，非随机干预或跨环境保证。除MRPD同日志第二次58.5外，各配置仅一次训练；作者约0.3分标准误假设所有评测轨迹独立，未覆盖同题多采样相关、训练种子与任务簇不确定性，不能据0.4分优势宣称统计显著。附录pass@k另在三数学集及三SQL集计算，不可与主表六数学集宏均分混用。本轮直接读v1 HTML及TeX方法、实验、实现、评测、逐集表、pass@k、计时与局限；未逐图视觉核曲线、未获取原始运行日志。论文声称提供代码，但所链GitHub入口及main/master README本轮均404，API因限流403；未能读取固定实现、模型或数据，不断言仓库永久不存在。未运行作者代码、未独立复现；verified仅指公开来源核验。",
+    "organization": "UIUC / Argonne National Laboratory / Amazon / 独立研究者",
+    "dateLabel": "2026-11-18 首发（UTC；北京时间16:51）",
+    "evidence": "已读原方法、主表及实现/计时附录；仅同初始化4B三域，计时与主表运行不同，代码入口暂不可读，未复现。",
+    "originalTitle": "Replay, Don't Resample: Off-Policy Consolidation of Long-Horizon RL Experts",
+    "date": "2026-11-18",
+    "checkedAt": "2026-11-19T04:29:21.421815+00:00",
+    "paperOriginalDate": "2026-11-18T08:51:39Z",
+    "paperUpdatedAt": "2026-11-18T08:51:39Z",
+    "updatedAt": "2026-11-18T08:51:39Z",
+    "firstSeenAt": "2026-11-19T04:00:01Z",
+    "lastSeenAt": "2026-11-19T04:00:01Z",
+    "tags": [
+      "Training / RL",
+      "Off-policy distillation",
+      "RL log replay",
+      "Multi-teacher",
+      "Ordered curriculum"
+    ],
+    "authors": [
+      "Zhenrui Yue",
+      "Gongxiaohui Chen",
+      "Huimin Zeng",
+      "Honglei Zhuang",
+      "Jiashuo Sun",
+      "Zhen Han",
+      "Dong Wang"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.24059v1"
+      },
+      {
+        "label": "原论文HTML：日志回放与多教师目标",
+        "url": "https://arxiv.org/html/2611.24059v1"
+      },
+      {
+        "label": "原始TeX：实现、分母与计时运行差异",
+        "url": "https://arxiv.org/src/2611.24059v1"
+      },
+      {
+        "label": "论文声明的代码入口（本轮404，未读取实现）",
+        "url": "https://github.com/Yueeeeeeee/MRPD"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "MRPD按专家训练顺序回放日志，不再采样或调环境，仍由冻结专家提供分布；4B学生三域宏均分58.6，对MOPD+GRPO的58.2。计时来自不同运行，未复现。",
+      "motivation": "多领域专家已经通过昂贵的长程RL取得带奖励、采样概率和工具交互的轨迹；常规多教师on-policy整合却让学生重新走一遍所有环境。作者尝试把专家训练过程本身当作有序课程，复用这些历史经验并由最终专家继续提供逐token监督。",
+      "novelty": "作者：把专家日志作为有序课程，回放策略梯度并蒸馏最终专家可降低整合开销。本站：日志复用有价值，但收益混有dense损失与样本量差异，近似on-policy仅获同初始化实验支持。",
+      "evidenceScope": "直接读取arXiv 2611.24059v1摘要、提交历史、HTML与原始TeX的§3方法、§4主结果/损失/顺序消融和附录实现、评测协议、全部逐集表、pass@k、计时运行及局限。核心版本界限：58.6来自首次较早实现，9小时来自第二次优化实现运行，576版3.7小时另计；代码入口404，无法以固定提交验证实现。独立算轨迹数量、宏均分口径与时间比值；未逐图核曲线、未读原始训练日志、未运行作者代码或复现实验。",
+      "limits": "未复现；仅同初始化4B三域。58.6是16集合的三域宏均分；主版1536对576样本不等量。9h/29h与主表非同一运行，约8倍来自576版，均不含先训专家成本。学生、三个领域教师及对照都从Qwen3-4B Instruct-2507经2000条ReTool数学工具轨迹SFT后的同一检查点开始；本文实际更新学生参数，最终专家仅前向、无梯度。尚未测试异构模型、不同初始化、更大参数或MoE，不能把小失配外推为任意旧日志都可安全回放。每个专家300步、每步64题乘8条轨迹；学生主版合并三域即1536条/步、总460800条已存轨迹。在线对照每域24题乘8条，共576条/步、总172800条新采样轨迹；这些是带重复题目的轨迹数，不是独立训练问题数。训练题为数学6400、搜索6500、SQL6400；专家约遍历三轮，在线对照约一轮。主表不是等样本、等token或端到端等费用实验。16个评测集合中，数学六集为AIME2024/2025各30题且每题32次、AMC2023的40题乘32次，以及Minerva272、Olympiad675、MATH500各每题4次；搜索六大集各固定抽2500题，Bamboogle125题，每题一次；SQL为Spider dev1034、test2147与BIRD mini-dev500题，各每题4次。BIRD是11数据库的mini-dev且提示包含官方evidence hint，不能称完整BIRD dev或无提示测试。每题先求N次正确比例，再对集合等权、域内集合等权、最后三域等权；avg@N估计单次成功概率，不是pass@N，也不是全部题目或生成轨迹的总成功率。论文称评测题保留、SQL评测数据库与Spider训练库不交，BIRD不用于训练；本站未取得实际训练/评测清单、去重或预训练污染审计，不能据此证明完全无泄漏。数学训练用严格boxed字符串匹配，评测用符号/数值等价；搜索用规范化exact match；SQL比较执行结果，按gold ORDER BY区分有序列表和多重集。SQL执行结果相同不等价于任意数据库上的语义正确。主表MRPD为58.6，MOPD+GRPO58.2、MOPD58.1、GRPO52.5、PPO52.6、TIES56.8，领域GRPO专家均分59.3；MRPD并非超过所有专家或每域最优，数学63.7低于MOPD63.8，搜索42.0低于TIES42.6。采用同为576样本及sampled-token损失的回放只有57.7，低于MOPD+GRPO58.2；作者正文称换dense损失的576版达58.5。因而不能把主表收益纯归因于离线回放或日志顺序。有序全日志SFT、筛选正确轨迹的RAFT、仅策略梯度分别为57.5、57.6、57.7；仅dense蒸馏58.2，加入策略梯度58.6。打乱300个训练步的顺序使dense版本58.6降至58.0，SFT/RAFT/仅策略梯度分别下降3.8/2.6/3.1分；这是当前固定设置的消融，不能证明顺序普遍比数据量和奖励更重要。全对/全错组仅奖励策略梯度为零，dense教师信号仍存在；本文dense项与sampled-token项是替代关系，不能相加描述。论文的dense项实际是教师top256加剩余概率原子，共257项的粗粒化KL，是全词表KL的下界；99.9%指日志中被采样token落入教师top256的位置比例，不是覆盖99.9%概率质量或全部知识。策略梯度的分母是日志采样策略，不是最终教师或上一轮学生；dense项没有重要性比或裁剪，因此不能称完整无偏离策略校正。作者报告有序dense版约第20步最多4% token触发PG裁剪、末端0.07%，只说明当前实验失配较小，不是理论界或其他初始化的稳定性保证。计时附录明确五个计时运行使用8张H100；MRPD的约9小时/110秒每步来自优化实现的第二次运行，其均分58.5；主表58.6是较早实现首次运行，耗179秒/步。576版计时重跑约3.7小时/44秒每步；29小时对照是含任务奖励的MOPD+GRPO，训练历史还跨两个job并从150步恢复。单纯MOPD与主表GRPO原在A100训练，未纳入H100计时图；图中GRPO计时改用按组均值归一化奖励的另一运行。故不能把主表准确率和计时曲线拼成同次严格复现实验，也不能把9小时主版称8倍提速。9/29约为三分之一，29/3.7约7.84倍，但均为专家已训练完后的整合阶段墙钟时间，不是从零训练或模型全生命周期费用；专家训练分别30、32、4.5小时，日志获取并非无代价。MRPD每步还含约24秒专家前向，非完全无需教师计算；完整日志及top256缓存占用、部署和存储费用没有统一货币核算。计时含每50步检查点写出；线上尾时延解释来自这些运行的观测与回归，非随机干预或跨环境保证。除MRPD同日志第二次58.5外，各配置仅一次训练；作者约0.3分标准误假设所有评测轨迹独立，未覆盖同题多采样相关、训练种子与任务簇不确定性，不能据0.4分优势宣称统计显著。附录pass@k另在三数学集及三SQL集计算，不可与主表六数学集宏均分混用。本轮直接读v1 HTML及TeX方法、实验、实现、评测、逐集表、pass@k、计时与局限；未逐图视觉核曲线、未获取原始运行日志。论文声称提供代码，但所链GitHub入口及main/master README本轮均404，API因限流403；未能读取固定实现、模型或数据，不断言仓库永久不存在。未运行作者代码、未独立复现；verified仅指公开来源核验。",
+      "method": [
+        "从同一SFT检查点训练数学、搜索、SQL三个专家，各跑300步；保存每步轨迹、正负奖励、采样策略旧概率和模型token掩码，工具输出不参与损失。",
+        "学生也从该检查点开始，第k步合并三个专家各自第k步日志，按时间顺序更新一次；主版每步1536条轨迹，共300步，不生成新学生轨迹。",
+        "每题8条样本按奖励均值和标准差计算优势，用当前学生概率除以日志采样概率做裁剪策略梯度；全对或全错组该项为零，并非整组没有蒸馏信号。",
+        "冻结最终专家，在日志前缀取教师top256词及合并尾部概率，直接最小化学生到教师的257项反向KL，系数1；此项不乘重要性比、不经裁剪。",
+        "损失先按每条轨迹的模型token求均值，再按全部轨迹平均，只更新学生权重；整合期不调用环境或奖励模型，但每步仍需冻结专家前向计算。"
+      ],
+      "inspirations": [
+        "把RL日志设计成可复用训练资产：固定采样策略版本、模型token掩码、奖励规则和训练步序；在同一日志池比较有序/打乱及不同初始化，监控重要性比和分组失配，而不只保存最终正确答案。",
+        "比较离线与on-policy整合时，同时配平每步轨迹、总token、教师分布目标和优化实现；分开报告专家获取成本、增量整合成本与最终评测，让8倍计时收益可定位到具体576样本版本。",
+        "对全对/全错组分别检验奖励梯度和dense教师信号的贡献，并用独立任务簇与多训练种子量化小幅增益；输出avg@N、pass@k和三域宏均分时明确各自分母，避免掩盖领域退步。"
+      ],
+      "reviewedAt": "2026-11-19T04:29:21.421815+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.24059v1",
+        "https://arxiv.org/html/2611.24059v1",
+        "https://arxiv.org/src/2611.24059v1",
+        "https://github.com/Yueeeeeeee/MRPD"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.24059",
+      "status": "pending",
+      "checkedAt": "2026-11-19T04:30:46.354376+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://deepmind.google/blog/introducing-gemini-4-neon/",
+    "url": "https://deepmind.google/blog/introducing-gemini-4-neon/",
+    "id": "official-gemini4-neon-20261118",
+    "title": "Gemini 4 Neon：把模型、Agent框架与代码3D展示分开评估",
+    "summary": "Gemini 4 Neon把模型能力与Antigravity工作流一起展示，并给出Blender MCP和WebGL代码创作案例。SWE-sweep的39.0%与12.8%分别来自不同harness的子任务加权奖励，不能直接当作模型成功率或纯模型提升。",
+    "insight": "官方主张兼顾复杂代码、分析推理与高频工作效率。本站判断：最有研究价值的是同一模型在两种harness下的差异及明确的评测协议；3D案例支持追踪程序化创作，但不足以证明普遍可执行、可编辑或高视觉质量。",
+    "limits": "官方自报及引用榜单，未复现。SWE-sweep的39.0%/12.8%是不同harness的子任务加权奖励，非纯模型提升；3D仅精选展示，无执行、可编辑性或视觉通过率。完整安全报告仍待公布。ALE的75.8%是122任务、5小时窗口下平均rubric分数；Terminal-Bench Science的70.5%是每题5次的平均奖励，均非二元任务成功率。LVBench各模型抽帧预算不同。1M为输入输出统一上下文，常规同步输出上限64K，1M输出仅后台长解码路径；渠道、订阅与上线节奏不同。未读Carbon模型卡，不能补写Neon架构、训练数据或训练配方；verified仅指来源核验。",
+    "organization": "Google DeepMind",
+    "dateLabel": "2026-11-18 · 官方模型发布；本轮补完模型卡与评测方法",
+    "evidence": "官方发布正文、HTML模型卡和评测方法文字已核；未调用模型或运行展示产物",
+    "originalTitle": "Introducing Gemini 4 Neon",
+    "date": "2026-11-18",
+    "checkedAt": "2026-11-19T04:30:47.014755+00:00",
+    "firstSeenAt": "2026-11-19T04:00:01Z",
+    "lastSeenAt": "2026-11-19T04:00:01Z",
+    "tags": [
+      "Gemini 4 Neon",
+      "Antigravity",
+      "Blender MCP",
+      "WebGL",
+      "评测协议"
+    ],
+    "authors": [
+      "Koray Kavukcuoglu"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": false,
+    "sourceId": "deepmind",
+    "sources": [
+      {
+        "label": "官方发布入口",
+        "url": "https://deepmind.google/blog/introducing-gemini-4-neon/"
+      },
+      {
+        "label": "官方发布重定向原页",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content="
+      },
+      {
+        "label": "官方模型卡",
+        "url": "https://deepmind.google/models/model-cards/gemini-4-neon/"
+      },
+      {
+        "label": "官方评测方法PDF入口",
+        "url": "https://deepmind.google/models/evals-methodology/gemini-4-neon/"
+      },
+      {
+        "label": "官方RSS日期",
+        "url": "https://deepmind.google/blog/rss.xml"
+      },
+      {
+        "label": "方法入口指向的精确公开PDF",
+        "url": "https://storage.googleapis.com/deepmind-media/gemini/gemini_4_neon_model_evaluation.pdf"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Gemini 4 Neon把模型能力与Antigravity工作流一起展示，并给出Blender MCP和WebGL代码创作案例。SWE-sweep的39.0%与12.8%分别来自不同harness的子任务加权奖励，不能直接当作模型成功率或纯模型提升。",
+      "motivation": "模型排行榜会混合工具、子Agent、思考预算、评分方式和调用渠道。要判断Neon是否适合代码创作，需要知道模型输出、执行工作流与最终作品质量分别由什么证据支持。",
+      "novelty": "官方主张兼顾复杂代码、分析推理与高频工作效率。本站判断：最有研究价值的是同一模型在两种harness下的差异及明确的评测协议；3D案例支持追踪程序化创作，但不足以证明普遍可执行、可编辑或高视觉质量。",
+      "evidenceScope": "已读11月18日官方发布完整正文与3D展示文字、Neon HTML模型卡的模型信息/评测表/限制/安全段，以及6页评测PDF中全部可提取的方法文字；PDF结果图表未作视觉核验，关键数值另核HTML模型卡。PDF说明一般为pass@1但列出多次平均等例外；SWE-sweep明确子任务加权奖励。未读取Carbon模型卡、完整安全报告（原页仍称即将公布）、展示视频或可下载工程，未调用模型、运行代码或独立复现实验。本轮将此前待核队列完成为项目解读，未把本次抓取时间写成发布日期。",
+      "limits": "官方自报及引用榜单，未复现。SWE-sweep的39.0%/12.8%是不同harness的子任务加权奖励，非纯模型提升；3D仅精选展示，无执行、可编辑性或视觉通过率。完整安全报告仍待公布。ALE的75.8%是122任务、5小时窗口下平均rubric分数；Terminal-Bench Science的70.5%是每题5次的平均奖励，均非二元任务成功率。LVBench各模型抽帧预算不同。1M为输入输出统一上下文，常规同步输出上限64K，1M输出仅后台长解码路径；渠道、订阅与上线节奏不同。未读Carbon模型卡，不能补写Neon架构、训练数据或训练配方；verified仅指来源核验。",
+      "method": [
+        "Neon由Gemini 4 Carbon适配，接收文本、图像、音频与视频；输入输出共享1M上下文，默认同步输出最多64K，后台长解码另有路径。",
+        "官方在Antigravity中展示Blender MCP建模与WebGL交互场景；这些是程序化3D创作案例，文字展示未给逐任务执行或编辑验证结果。",
+        "SWE-sweep分别使用Antigravity-CLI 1.5.9及mini-swe-agent vision；前者带默认扇出子Agent工具，两种设置均按子任务加权奖励计分。",
+        "ALE v1.1使用122任务、Antigravity-CLI 1.4.8及5小时窗口，报告平均rubric分数；科学终端评测每题跑5次取平均奖励。",
+        "评测说明逐项交代自测或外部结果、思考档位与例外；视频理解按各API约束抽帧，不能把多种设置汇成同条件统一胜率。"
+      ],
+      "inspirations": [
+        "固定模型后分别控制harness、子Agent数量、总token和墙钟预算，报告任务成功率与加权子任务奖励；用消融确认收益来自何处。",
+        "为Blender/WebGL任务保留源工程、执行日志与修改指令；分别测初次运行、局部编辑后仍可运行、视觉质量，不能用精选演示替代分母。",
+        "比较视频理解或长上下文创作时统一可见帧和上下文预算，并把同步/后台输出与失败重试计入端到端成本。"
+      ],
+      "reviewedAt": "2026-11-19T04:30:47.014755+00:00",
+      "sourceUrls": [
+        "https://deepmind.google/blog/introducing-gemini-4-neon/",
+        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/?utm_source=deepmind.google&utm_medium=referral&utm_campaign=gdm&utm_content=",
+        "https://deepmind.google/models/model-cards/gemini-4-neon/",
+        "https://deepmind.google/models/evals-methodology/gemini-4-neon/",
+        "https://deepmind.google/blog/rss.xml",
+        "https://storage.googleapis.com/deepmind-media/gemini/gemini_4_neon_model_evaluation.pdf"
+      ]
+    }
   }
 ]
