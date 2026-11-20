@@ -56,6 +56,57 @@
     ]
   },
   {
+    "sourceType": "huggingface",
+    "category": "benchmark",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.26248",
+    "url": "https://huggingface.co/papers/2611.26248",
+    "id": "live-f882977190223001",
+    "title": "TwinLab-Bench: Evaluating AI Scientists in Agentic Twins of Real Labs",
+    "summary": "AI agents are increasingly expected to act as AI scientists, which requires three increasingly open abilities: carrying out a given computational workflow correctly, choosing the next measurements from a given design space, and designing their own experiments. Existing benchmarks mainly evaluate the first two abilities, in a terminal or in a closed loop that selects from predefined candidates. Evaluating the third ability requires reliably executing an experiment that an agent designs, with readings grounded in a real laboratory. We introduce TwinLab-Bench, which evaluates AI scientists on self-designed experiments in 52 tasks from…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-19",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-19",
+    "checkedAt": "2026-11-20T10:00:00Z",
+    "updatedAt": "2026-11-19T15:25:34Z",
+    "firstSeenAt": "2026-11-20T10:00:00Z",
+    "lastSeenAt": "2026-11-20T10:00:00Z",
+    "dailySubmittedAt": "2026-11-20T00:00:00.000Z",
+    "tags": [
+      "Evaluation"
+    ],
+    "authors": [
+      "Yang Wan",
+      "Linchao Zhu"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.26248v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.26248"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.26248"
+      },
+      {
+        "label": "Project",
+        "url": "https://twinlab-bench.github.io/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/ZJUSCL/TwinLab-Bench"
+      }
+    ]
+  },
+  {
     "sourceType": "arxiv",
     "category": "models",
     "verified": false,
@@ -768,6 +819,80 @@
   },
   {
     "sourceType": "arxiv",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://arxiv.org/abs/2611.26595v1",
+    "url": "https://arxiv.org/abs/2611.26595v1",
+    "id": "live-d659cbf1984cd3c5",
+    "title": "Coda-DaVinci: Reimagining Video Generation with Code2Video",
+    "summary": "Code2Video uses agent-authored 3D proxies to guide video generation, enabling explicit control over structure and dynamics. However, how to construct proxies and prompts for optimal downstream quality remains underexplored, as do the capabilities and limitations of this paradigm. Through controlled experiments and blinded human evaluation, we study proxy granularity, physics simulation, and prompting. The results reveal task-dependent trade-offs: coarse proxies favor natural motion, while medium-grained proxies favor consistency. Physics simulation and proxy-aligned prompting further improve average quality. Guided by these findings, we…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-19",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-19",
+    "checkedAt": "2026-11-20T10:00:00Z",
+    "updatedAt": "2026-11-19T18:51:58Z",
+    "firstSeenAt": "2026-11-20T10:00:00Z",
+    "lastSeenAt": "2026-11-20T10:00:00Z",
+    "dailySubmittedAt": "2026-11-20T00:00:00.000Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Yiyan Ji",
+      "Qixun Wang",
+      "Yang Shi",
+      "Zhuoran Zhang",
+      "Yifan Xu",
+      "Tengfei Liu",
+      "Yuqi Tang",
+      "Xiaohan Zhang",
+      "Shujie Li",
+      "Jiafu Tang",
+      "Xuanyu Zhu",
+      "Xinyu Liu",
+      "Yan He",
+      "Yushuo Guan",
+      "Zihao Wang",
+      "Xianghua Ying",
+      "Shixuan Liu",
+      "Haotian Wang",
+      "Wenjing Yang",
+      "Zhaoxiang Zhang",
+      "Yuanxing Zhang",
+      "Pengfei Wan",
+      "Jiaheng Liu"
+    ],
+    "topics": [
+      "code2video"
+    ],
+    "sourceId": "arxiv_code2video",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.26595v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.26595"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.26595"
+      },
+      {
+        "label": "Project",
+        "url": "https://coda-davinci.github.io/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/FrankYang-17/Coda"
+      }
+    ]
+  },
+  {
+    "sourceType": "arxiv",
     "category": "benchmark",
     "verified": false,
     "originUrl": "https://arxiv.org/abs/2611.26335v1",
@@ -798,6 +923,61 @@
       {
         "label": "arXiv · Agentic 论文",
         "url": "https://arxiv.org/abs/2611.26335v1"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "training",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.26510",
+    "url": "https://huggingface.co/papers/2611.26510",
+    "id": "live-f381280d15368f17",
+    "title": "AutoMaster: Autonomous Post-Training by Making the Same Model a Better Teacher",
+    "summary": "Task success alone does not specify which behaviors post-training should reinforce. Even successful teacher trajectories can contain unsupported assumptions, unproductive repetition, or superficial verification. We propose Skill-FT (Skill-Guided Fine-Tuning), which uses natural-language skills to suppress undesirable habits and elicit underrepresented effective behaviors during teacher rollouts, then fine-tunes a target model on the resulting trajectories. We introduce AutoMaster, an autonomous post-training system in which an LLM agent develops these interventions through trajectory analysis, skill design, data selection, and feedback from…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-19",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-19",
+    "checkedAt": "2026-11-20T10:00:00Z",
+    "updatedAt": "2026-11-19T17:57:59Z",
+    "firstSeenAt": "2026-11-20T10:00:00Z",
+    "lastSeenAt": "2026-11-20T10:00:00Z",
+    "dailySubmittedAt": "2026-11-20T00:00:00.000Z",
+    "tags": [
+      "Training / RL"
+    ],
+    "authors": [
+      "Guoxin Chen",
+      "Shuang Sun",
+      "Fanzhe Meng",
+      "Xinyu Tang",
+      "Ruihua Song",
+      "Wayne Xin Zhao"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.26510v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.26510"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.26510"
+      },
+      {
+        "label": "Project",
+        "url": "https://aweai-team.github.io/AutoMaster/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/RUCAIBox/AutoMaster"
       }
     ]
   },

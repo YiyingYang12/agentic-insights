@@ -25088,5 +25088,447 @@
         "https://github.com/remotion-dev/remotion/blob/f587adbd69c04c051fb2bd69ce23ae99d23d8634/packages/transitions/src/TransitionSeries.tsx"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.26248v1",
+    "url": "https://arxiv.org/abs/2611.26248v1",
+    "id": "paper-twinlab-bench-2611-26248",
+    "title": "TwinLab-Bench：让实验Agent自己设计测量，再审计读数从哪里来",
+    "summary": "从实验室记录构建52项任务，让Agent自行设计实验并在孪生环境中取数；用隐藏结论、关键证据门槛和环境审计检验报告，揭示“会写计划”与“能解释观测”之间的差距。",
+    "insight": "对创作Agent可借鉴双重验收：既检查交付结果，也追溯每条观测来自真实执行、模型估计还是外推；环境和裁判出错应单列，不能全部归为Agent失败。",
+    "limits": "未复现；45.0是52任务上的平均得分，不是成功率。76%读数含53%原记录与23%同实验室标定计算器；外推仍有假设。多数配置只取首个有效运行，裁判与环境都依赖模型，不能视为真实实验室能力排名。",
+    "dateLabel": "2026-11-19 首次提交v1",
+    "evidence": "全文方法与关键附录已读；公开代码/数据页核验，未运行或复现",
+    "originalTitle": "TwinLab-Bench: Evaluating AI Scientists in Agentic Twins of Real Labs",
+    "date": "2026-11-19",
+    "checkedAt": "2026-11-20T10:29:31.661968+00:00",
+    "paperOriginalDate": "2026-11-19T15:25:34Z",
+    "paperUpdatedAt": "2026-11-19T15:25:34Z",
+    "updatedAt": "2026-11-19T15:25:34Z",
+    "firstSeenAt": "2026-11-20T10:00:00Z",
+    "lastSeenAt": "2026-11-20T10:00:00Z",
+    "tags": [
+      "实验设计",
+      "数字孪生",
+      "环境可信度",
+      "证据审计",
+      "Benchmark"
+    ],
+    "authors": [
+      "Yang Wan",
+      "Linchao Zhu"
+    ],
+    "topics": [],
+    "featured": false,
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv版本与提交时间",
+        "url": "https://arxiv.org/abs/2611.26248v1"
+      },
+      {
+        "label": "公开feed原始来源",
+        "url": "https://huggingface.co/papers/2611.26248"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.26248"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://twinlab-bench.github.io/"
+      },
+      {
+        "label": "公开环境与评测仓库",
+        "url": "https://github.com/ZJUSCL/TwinLab-Bench"
+      },
+      {
+        "label": "原文方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.26248v1"
+      },
+      {
+        "label": "作者公开数据页",
+        "url": "https://huggingface.co/datasets/ZJUSCL/TwinLab-Bench"
+      },
+      {
+        "label": "作者公开榜单页面",
+        "url": "https://huggingface.co/spaces/ZJUSCL/TwinLab-Bench_Leaderboard"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "TwinLab-Bench把52项实验室问题变成有预算、可自行设计实验的孪生环境；难点不仅是提出计划，还包括采到判别证据后正确解释并报告。",
+      "motivation": "固定流程或候选列表难测试Agent自己设计实验的能力；直接让语言模型模拟实验又可能编出数值。需要把开放动作、真实记录锚点和报告证据链放在同一评测里。",
+      "novelty": "作者主张以真实实验记录锚定的Agent孪生支持自主实验设计。本站判断：最有价值的是“环境是否可信”和“Agent是否答对”分开审计，以及逐条标注读数来源；尚不能把有限校准的孪生视作任意实验都可靠的物理世界。",
+      "evidenceScope": "已读arXiv v1全文主方法、实验及附录6–10、13–14相关统计、评分、校准和构建说明，非仅摘要；作者项目页、GitHub README/目录和HF数据/榜单页已核。52题分为20物理、20生命和12工程，任务不全要求新实验。主表Fable5.2平均45.0/100、Opus5.5高推理40.2，均为作者结果；不是通过率或跨任务普适排名。831运行的7808请求审计中，读数53%来自记录、23%来自同实验室标定计算器，合计76%；另有一次隐藏机制泄漏，所在运行得0。12题先导研究的记录偏差率由仅任务描述41%降至使用材料和计算器2%，不是全部52题误差。三项连续条件校准先留出15个读数，插值/外推中位误差0.74%/2.47%；加离散条件后共29读数，19个落在两倍实测重复性范围内，覆盖有限。33个关键数据未在交接材料内的任务上，Opus与DeepSeek零实验基线均无通过；不能扩展为所有任务都需实验。计划已说清却未得满分的11个动作决定中，9个实际做了实验，主要失分于解释或报告。未执行公开代码、重跑基准或复现实验；verified仅指来源核验。",
+      "limits": "未复现；45.0是52任务上的平均得分，不是成功率。76%读数含53%原记录与23%同实验室标定计算器；外推仍有假设。多数配置只取首个有效运行，裁判与环境都依赖模型，不能视为真实实验室能力排名。 GPT使用Codex、其他模型使用Claude Code等不同harness，价格核算与推理设置也不等同；主表大多单次有效运行，仅两个模型重复三次。875次尝试中44次无效约5%，首个有效运行的选择与缺失题应和成功指标一起看。关键项归零使边界措辞影响总分；20例换裁判19例通过判定一致不等于全量人工标定。环境与裁判主要用同一DeepSeek模型，替换角色的检查只覆盖小子集。外推敏感性仅六题、留出校准仅三题；真实记录53%不能写成全部读数皆实测。四题红队阻断9次尝试仍不构成普遍抗攻击证明，审计发现的一次泄漏说明防线不完美。公开数据和实现可访问不代表本站验证了其完整性、可运行性或科研发现的现实效度。",
+      "method": [
+        "从约375个来源筛出52任务，49项直接改编实验室记录、3项为有依据的合成；按历史截点给Agent材料，把后续结论和评分依据隐藏。",
+        "Agent在预算和材料约束下组合实验动作、参数及顺序；环境Agent查原始记录、调用确定性计算器并维护状态，超出可模拟范围的请求明确退回。",
+        "记录内条件优先返回实测值；新条件只在有书面依据的范围内插值或外推，保留噪声、计费和消耗记录，供回放核对。",
+        "按冻结rubric分别核查结论和证据；关键项任一未满分则整题归零，并复核关键项。环境泄漏、矛盾或关键覆盖缺口标为无效运行。",
+        "比较13模型的17种配置，并以零实验、反事实实验室状态、换裁判、外推扰动及留出条件检查可信度；另分析计划、执行、解释和报告各环节。"
+      ],
+      "inspirations": [
+        "给代码视频/3D评测建立观测来源账本：浏览器截图、渲染日志、静态推断和模型估计分开记录；环境或渲染器出错单独判无效，避免污染模型胜负。",
+        "将视觉质量、执行成功、局部编辑保持设为独立验收项，要求提交对应实际渲染证据；同时报告连续分和关键门槛通过率，防止一个总分掩盖交付缺陷。",
+        "用同一任务材料构造不同隐藏资源状态，测Agent是否根据新观测改变判断；再比较只写计划、完整执行、增加预算三组，定位问题出在动作选择还是结果解释。"
+      ],
+      "reviewedAt": "2026-11-20T10:29:31.661968+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.26248v1",
+        "https://arxiv.org/html/2611.26248v1",
+        "https://twinlab-bench.github.io/",
+        "https://github.com/ZJUSCL/TwinLab-Bench",
+        "https://huggingface.co/datasets/ZJUSCL/TwinLab-Bench",
+        "https://huggingface.co/spaces/ZJUSCL/TwinLab-Bench_Leaderboard"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.26248",
+      "status": "pending",
+      "checkedAt": "2026-11-20T10:33:12.106951+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.26595v1",
+    "url": "https://arxiv.org/abs/2611.26595v1",
+    "id": "paper-coda-davinci-2611-26595",
+    "title": "Coda-DaVinci：用代码守住结构，把细动作留给视频模型",
+    "summary": "Coda-DaVinci按任务选择直接生成或代码3D代理，让程序保结构、视频模型补细动作；一致性更好，但细建模可能让运动变僵。",
+    "insight": "作者主张按任务与实体分配代码控制，并结合仿真、代理对齐提示和持续工作区。本站判断：启发是分配控制权并定位代理/合成两类错误；它是混合工作流，成片不是纯代码渲染，最佳粒度也非普适定律。",
+    "limits": "未复现；94个人评任务只保留全部配置均返回有效视频者；可编辑的是3D代理资产，不代表成片可完整编辑。最多3轮修复后仍可交付有遗留问题的视频；Coda-DaVinci实现仍标Coming soon。人评集为33个WorldMemBench、29个VGIF-Bench和32个Principia任务，10名评审每片按0—3评四维后取均值，整体按94样本汇总，非三个基准等权；未报告原始过滤分母，不能把均分当任务成功率。P0并非禁止仿真，而是不强制；PE2同时改变颜色身份编码与提示，PE1只看原始文字且无代理/参考，不能把差异完全归因提示写作能力。最佳固定配置在VGIF虽提高一致性/指令分，却比直接生成降低物理0.173和自然真实感0.552分；自然身体运动仍是短板。Fig.2标P0/P1的两组实际都启用P1且粒度/提示也变，不能当纯物理消融。主表统一Seedance2.5，但Codex系用GPT-6-Astra、Claude系用Opus5.5，只有本法和CodeVideoModel额外用GPT-Image-2；未证明等总生成次数、计算预算或成本公平。VTR为画面文字与场景要求评测，WER不是语音转写；R2M的NMR是相对记忆指标，1.011不是101.1%任务成功率。T2AV随机取200题；本文未明确其余三个主基准本轮实际有效样本数与缺失处理，项目页只说均分来自有效评测，不能自行套用原基准完整规模。33题消融由Gemini3.8Flash按1—5评分，与94题人评不是同一量表或样本；未给多种子置信区间，11/12模型组合平均改善、Gemini4Argon+MiniMaxH3反而-0.030，不是普适模型排名。Blender较Three.js约两倍agent token仅该子集，非总费用/延迟；默认Blender5.2.1/Cycles/CUDA、24fps/720p，音频关闭。长视频仅29个LongAV-Compass的25—90秒逐事件续接与50个WBench案例；转场稳定性和场景设定遵循弱于直接生成，未给统一长时成功率。独立验收者使用只读工具、按固定任务条件给pass/minor/rework/unverified；第三次拒绝后最终修复由生成者自查提交最佳视频，并非所有结果均获独立批准。资产持久化及继承状态不等于已验证人类修改、工程重开或局部编辑保真；最终生成器也可能偏离正确代理。仅静态读论文/README/项目文字，未播放演示、运行代码或做视觉复评；repo的CodeCap代码不能当Coda-DaVinci已发布实现。",
+    "organization": "KlingAI Research / Nanjing University / Peking University 等",
+    "dateLabel": "2026-11-19 UTC首次提交v1；北京时间11月20日",
+    "evidence": "已读方法/实验/附录与公开项目文字；代理可编辑不等于成片可编辑，未复现",
+    "originalTitle": "Coda-DaVinci: Reimagining Video Generation with Code2Video",
+    "date": "2026-11-19",
+    "checkedAt": "2026-11-20T10:28:48.055087+00:00",
+    "paperOriginalDate": "2026-11-19T18:51:58Z",
+    "paperUpdatedAt": "2026-11-19T18:51:58Z",
+    "updatedAt": "2026-11-19T18:51:58Z",
+    "firstSeenAt": "2026-11-20T10:00:00Z",
+    "lastSeenAt": "2026-11-20T10:00:00Z",
+    "dailySubmittedAt": "2026-11-20T00:00:00.000Z",
+    "tags": [
+      "Code2Video",
+      "Blender",
+      "任务路由",
+      "代理粒度",
+      "物理仿真",
+      "持续场景"
+    ],
+    "authors": [
+      "Yiyan Ji",
+      "Qixun Wang",
+      "Yang Shi",
+      "Zhuoran Zhang",
+      "Yifan Xu",
+      "Tengfei Liu",
+      "Yuqi Tang",
+      "Xiaohan Zhang",
+      "Shujie Li",
+      "Jiafu Tang",
+      "Xuanyu Zhu",
+      "Xinyu Liu",
+      "Yan He",
+      "Yushuo Guan",
+      "Zihao Wang",
+      "Xianghua Ying",
+      "Shixuan Liu",
+      "Haotian Wang",
+      "Wenjing Yang",
+      "Zhaoxiang Zhang",
+      "Yuanxing Zhang",
+      "Pengfei Wan",
+      "Jiaheng Liu"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2video"
+    ],
+    "featured": true,
+    "sourceId": "arxiv_code2video",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.26595v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.26595"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.26595"
+      },
+      {
+        "label": "Project",
+        "url": "https://coda-davinci.github.io/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/FrankYang-17/Coda"
+      },
+      {
+        "label": "原论文方法与实验",
+        "url": "https://arxiv.org/html/2611.26595v1"
+      },
+      {
+        "label": "47页论文及附录PDF",
+        "url": "https://arxiv.org/pdf/2611.26595v1"
+      },
+      {
+        "label": "活动TeX与完整提示模板",
+        "url": "https://arxiv.org/src/2611.26595v1"
+      },
+      {
+        "label": "固定提交README：Coda-DaVinci仍待发布",
+        "url": "https://github.com/FrankYang-17/Coda/blob/fa22f8917e29bf4e5f41a771476b971f8bd7c303/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Coda-DaVinci按任务选择直接生成或代码3D代理，让程序保结构、视频模型补细动作；一致性更好，但细建模可能让运动变僵。",
+      "motivation": "代码能精确安排位置、事件和镜头，也会把错误几何或僵硬动作带进成片。问题不只是增加建模细节，而是判断哪些内容需要程序控制、哪些交给视频模型，并追踪错误发生在代理还是生成阶段。",
+      "novelty": "作者主张按任务与实体分配代码控制，并结合仿真、代理对齐提示和持续工作区。本站判断：启发是分配控制权并定位代理/合成两类错误；它是混合工作流，成片不是纯代码渲染，最佳粒度也非普适定律。",
+      "evidenceScope": "已读arXiv v1主文§3经验分析、§4方法、§5实验与附录A案例说明、B设置、C补充分析、D提示模板；核对活动TeX、47页PDF文本中的主表及图7文字，并读作者项目页与固定提交README。未作PDF逐页像素或视频视觉验收。94题人评中G1/P1/PE2汇总C/I/P/N为2.926/2.968/2.436/2.213（0—3），直接生成为2.404/1.819/2.234/2.170。主表本法VTR checklist91.42、画面文字WER11.08%，直接生成为85.15/59.21%；R2M四项NMR为1.011/0.947/0.875/0.966。物理分60.77高于直接47.16，低于Claude+Blender65.52；T2AV真实感70.26高于所比Code2Video但低于直接71.38。33题模型组合消融最高均值3.712对直接3.508，均为作者报告，不是独立复现。",
+      "limits": "未复现；94个人评任务只保留全部配置均返回有效视频者；可编辑的是3D代理资产，不代表成片可完整编辑。最多3轮修复后仍可交付有遗留问题的视频；Coda-DaVinci实现仍标Coming soon。人评集为33个WorldMemBench、29个VGIF-Bench和32个Principia任务，10名评审每片按0—3评四维后取均值，整体按94样本汇总，非三个基准等权；未报告原始过滤分母，不能把均分当任务成功率。P0并非禁止仿真，而是不强制；PE2同时改变颜色身份编码与提示，PE1只看原始文字且无代理/参考，不能把差异完全归因提示写作能力。最佳固定配置在VGIF虽提高一致性/指令分，却比直接生成降低物理0.173和自然真实感0.552分；自然身体运动仍是短板。Fig.2标P0/P1的两组实际都启用P1且粒度/提示也变，不能当纯物理消融。主表统一Seedance2.5，但Codex系用GPT-6-Astra、Claude系用Opus5.5，只有本法和CodeVideoModel额外用GPT-Image-2；未证明等总生成次数、计算预算或成本公平。VTR为画面文字与场景要求评测，WER不是语音转写；R2M的NMR是相对记忆指标，1.011不是101.1%任务成功率。T2AV随机取200题；本文未明确其余三个主基准本轮实际有效样本数与缺失处理，项目页只说均分来自有效评测，不能自行套用原基准完整规模。33题消融由Gemini3.8Flash按1—5评分，与94题人评不是同一量表或样本；未给多种子置信区间，11/12模型组合平均改善、Gemini4Argon+MiniMaxH3反而-0.030，不是普适模型排名。Blender较Three.js约两倍agent token仅该子集，非总费用/延迟；默认Blender5.2.1/Cycles/CUDA、24fps/720p，音频关闭。长视频仅29个LongAV-Compass的25—90秒逐事件续接与50个WBench案例；转场稳定性和场景设定遵循弱于直接生成，未给统一长时成功率。独立验收者使用只读工具、按固定任务条件给pass/minor/rework/unverified；第三次拒绝后最终修复由生成者自查提交最佳视频，并非所有结果均获独立批准。资产持久化及继承状态不等于已验证人类修改、工程重开或局部编辑保真；最终生成器也可能偏离正确代理。仅静态读论文/README/项目文字，未播放演示、运行代码或做视觉复评；repo的CodeCap代码不能当Coda-DaVinci已发布实现。",
+      "method": [
+        "先依据指令和参考判断自然运动、代理僵硬风险及显式控制需求；需要准确轨迹、交互或状态记忆时走3D代理，否则可直接生成，并预先固定可观察的验收条件。",
+        "环境与物体用中粒度结构，人物用整体移动的粗代理；子Agent返回可编辑资产和源码。相关物理事件实际执行或烘焙仿真，保持对象身份、支撑、持有关系与事件后状态。",
+        "先检查代理镜头，修正几何/动作错误；由同一建模Agent按实际代理写提示，将身份颜色、主体和外观参考绑定，细部肢体动作留给视频模型补足。",
+        "核对代理与镜头清单属于同次渲染，再把代理、提示及参考交给视频模型；对照对应帧区分代理错误与合成偏差，交独立只读验收者检查固定条件，最多修复3轮。",
+        "保留场景代码、资产、身份和累积状态，用上一段尾帧或视频辅助续接；达到修复上限后生成者检查并交付最佳结果、记录未解问题，不将交付等同全项验收通过。"
+      ],
+      "inspirations": [
+        "给Code2Video任务标注必须精确控制的状态和可由生成器补足的细节；对同一任务比较直接、全细代理和按实体粗细代理，并分别测自然运动、事件正确及续接状态。",
+        "为每次渲染保存代理视频、镜头清单、主体绑定与生成版本；让评审按同一时刻对齐定位问题，分别统计代理修复、提示修复和生成器仍偏离的比例。",
+        "把可编辑性变成独立任务：要求修改单个对象轨迹或镜头，检查未改区域保持、工程重新打开和重生成成本；同时报告过滤/拒绝/遗留问题，防止只看已成功成片的均分。"
+      ],
+      "reviewedAt": "2026-11-20T10:28:48.055087+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.26595v1",
+        "https://arxiv.org/html/2611.26595v1",
+        "https://arxiv.org/pdf/2611.26595v1",
+        "https://arxiv.org/src/2611.26595v1",
+        "https://coda-davinci.github.io/",
+        "https://github.com/FrankYang-17/Coda/blob/fa22f8917e29bf4e5f41a771476b971f8bd7c303/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.26595",
+      "status": "pending",
+      "checkedAt": "2026-11-20T10:33:12.106951+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.26510v1",
+    "url": "https://arxiv.org/abs/2611.26510v1",
+    "id": "paper-automaster-2611-26510",
+    "title": "AutoMaster：用技能塑造教师轨迹，再检验学生学到了什么",
+    "summary": "AutoMaster用技能改变同一教师的解题过程，再把轨迹与技能上下文一起做SFT；六设置均值增1.42–8.99个百分点，但同一基准参与迭代选型，尚非独立盲测。",
+    "insight": "作者主张：固定教师也可借助技能引导和数据选择成为更有效的示范者，且训练时保留技能上下文有利于内化。本站判断：价值在于主动改造示范过程并追踪学生反馈；这是轨迹SFT与实验编排，不是新RL算法，也未证明跨未见基准的自主改进。",
+    "limits": "未复现；同一基准反馈参与五轮迭代和选型，三次重评不是独立盲测；4B两项区间跨零。512条等量不等成本，未报告重训种子；公开代码仅核到技能与推理配方。附录A.4明确基准分数及执行轨迹供后续实验使用，再按累计反馈选最终检查点；最终三次新运行仍在这些基准上，不能当未见任务的独立确认或排除自适应评测过拟合。每轮学生从原始检查点重训，延续的是实验历史，不是连续五轮在前一学生上训练。均值±SD为固定检查点三次评测，不是独立SFT种子的方差。A.6先对每题三次运行取均值，再对任务ID作10000次配对bootstrap，Doc2Repo以整仓库重采样；区间仅覆盖已选检查点及记录评测的题目变化，不校正选择过程或多重比较。4B的BrowseComp增2.88个百分点，95%CI为[-1.08,6.85]；Doc2Repo增1.42，区间[-1.94,5.33]，不能称六项均显著。9B三项区间均在零以上，仍不代表跨训练种子或跨模型族保证。相同教师、1000任务池、512条示例和3轮SFT配方，不意味着相同生成token、总搜索/训练时间或成本；有最多五轮外循环及未定次内循环，未给等总预算比较。Task-Matched SFT虽匹配任务ID和每题样本数，但保留未引导教师的成功及失败轨迹；终端/搜索8.79–20.70%的配对是失败变成功，因此不是所有对照都同样成功，也未完全隔离成功覆盖与过程质量。SWE的4B/9B所选512配对中仍有36/5条教师得分下降，不能说技能总是改善示范。移除任一组件都低于完整方法，只支持该组合设置；4B终端的两个单组件还低于Vanilla SFT，不能据此宣称任一模块单独稳定有效。Keep/Remove监督输出相同但上下文不同，2.15–4.01均值收益及个案支持解释，不证明具体内化机制，也不是推理时必须加载技能。仅两档Qwen3.5学生、一个教师和一个编排代理，不能外推任意模型或领域。技能案例展示过程差异，未给普适行为错误率降低或安全保证。公开README说明本次释出9个技能和三域推理配方；HF集合列6款模型，已核tb21-9b权重分片元数据，不代表完整后训练MCP平台、所有训练数据与实验日志已公开或复现可运行。GitHub树API本轮被限流，未据此判断仓库不存在；X公开索引无可核验作者原帖，不虚构X全文。",
+    "organization": "Renmin University of China / RUC-AIBOX",
+    "dateLabel": "2026-11-19 首发 · 技能引导轨迹蒸馏与自主后训练",
+    "evidence": "已读原文方法/实验及附录；同基准自适应选型和统计边界已标，未复现",
+    "originalTitle": "AutoMaster: Autonomous Post-Training by Making the Same Model a Better Teacher",
+    "date": "2026-11-19",
+    "checkedAt": "2026-11-20T10:27:46.933973+00:00",
+    "paperOriginalDate": "2026-11-19T17:57:59Z",
+    "paperUpdatedAt": "2026-11-19T17:57:59Z",
+    "updatedAt": "2026-11-19T17:57:59Z",
+    "firstSeenAt": "2026-11-20T10:00:00Z",
+    "lastSeenAt": "2026-11-20T10:00:00Z",
+    "dailySubmittedAt": "2026-11-20T00:00:00.000Z",
+    "tags": [
+      "Training / RL",
+      "SFT",
+      "Trajectory distillation",
+      "Skill-guided demonstrations",
+      "Adaptive evaluation"
+    ],
+    "authors": [
+      "Guoxin Chen",
+      "Shuang Sun",
+      "Fanzhe Meng",
+      "Xinyu Tang",
+      "Ruihua Song",
+      "Wayne Xin Zhao"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.26510v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.26510"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.26510"
+      },
+      {
+        "label": "Project",
+        "url": "https://aweai-team.github.io/AutoMaster/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/RUCAIBox/AutoMaster"
+      },
+      {
+        "label": "原论文方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.26510v1"
+      },
+      {
+        "label": "HF模型集合（6款）",
+        "url": "https://huggingface.co/collections/RUC-AIBOX/automaster"
+      },
+      {
+        "label": "HF tb21-9b模型元数据与权重文件列表",
+        "url": "https://huggingface.co/RUC-AIBOX/AutoMaster-tb21-9b"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "AutoMaster用技能改变同一教师的解题过程，再把轨迹与技能上下文一起做SFT；六设置均值增1.42–8.99个百分点，但同一基准参与迭代选型，尚非独立盲测。",
+      "motivation": "成功轨迹也可能包含无证据假设、重复搜索或表面验证。仅筛“做对”的教师示例，学生仍会模仿这些习惯；作者希望固定教师能力，主动塑造它示范的行为，并检验学生是否真正受益。",
+      "novelty": "作者主张：固定教师也可借助技能引导和数据选择成为更有效的示范者，且训练时保留技能上下文有利于内化。本站判断：价值在于主动改造示范过程并追踪学生反馈；这是轨迹SFT与实验编排，不是新RL算法，也未证明跨未见基准的自主改进。",
+      "evidenceScope": "已读arXiv v1全文§3方法、§4实验、§5分析及附录A.1–A.6与B；包括三域任务数、提示/损失掩码、选择协议、配对语料与bootstrap。89项Terminal-Bench 2.1和185项BrowseComp-Lite测任务准确率，50个Doc2Repo仓库测平均测试通过率，不能混称全部任务成功率。6个配置相对Vanilla SFT均值增1.42–8.99个百分点；9B终端26.59%→35.58%，Keep相对Remove均值增2.15–4.01个百分点。已核作者项目页、公开仓库README、HF六模型集合及tb21-9b权重文件元数据；未下载权重、运行训练/评测或逐页检查PDF。verified仅指来源核验。",
+      "limits": "未复现；同一基准反馈参与五轮迭代和选型，三次重评不是独立盲测；4B两项区间跨零。512条等量不等成本，未报告重训种子；公开代码仅核到技能与推理配方。附录A.4明确基准分数及执行轨迹供后续实验使用，再按累计反馈选最终检查点；最终三次新运行仍在这些基准上，不能当未见任务的独立确认或排除自适应评测过拟合。每轮学生从原始检查点重训，延续的是实验历史，不是连续五轮在前一学生上训练。均值±SD为固定检查点三次评测，不是独立SFT种子的方差。A.6先对每题三次运行取均值，再对任务ID作10000次配对bootstrap，Doc2Repo以整仓库重采样；区间仅覆盖已选检查点及记录评测的题目变化，不校正选择过程或多重比较。4B的BrowseComp增2.88个百分点，95%CI为[-1.08,6.85]；Doc2Repo增1.42，区间[-1.94,5.33]，不能称六项均显著。9B三项区间均在零以上，仍不代表跨训练种子或跨模型族保证。相同教师、1000任务池、512条示例和3轮SFT配方，不意味着相同生成token、总搜索/训练时间或成本；有最多五轮外循环及未定次内循环，未给等总预算比较。Task-Matched SFT虽匹配任务ID和每题样本数，但保留未引导教师的成功及失败轨迹；终端/搜索8.79–20.70%的配对是失败变成功，因此不是所有对照都同样成功，也未完全隔离成功覆盖与过程质量。SWE的4B/9B所选512配对中仍有36/5条教师得分下降，不能说技能总是改善示范。移除任一组件都低于完整方法，只支持该组合设置；4B终端的两个单组件还低于Vanilla SFT，不能据此宣称任一模块单独稳定有效。Keep/Remove监督输出相同但上下文不同，2.15–4.01均值收益及个案支持解释，不证明具体内化机制，也不是推理时必须加载技能。仅两档Qwen3.5学生、一个教师和一个编排代理，不能外推任意模型或领域。技能案例展示过程差异，未给普适行为错误率降低或安全保证。公开README说明本次释出9个技能和三域推理配方；HF集合列6款模型，已核tb21-9b权重分片元数据，不代表完整后训练MCP平台、所有训练数据与实验日志已公开或复现可运行。GitHub树API本轮被限流，未据此判断仓库不存在；X公开索引无可核验作者原帖，不虚构X全文。",
+      "method": [
+        "固定DeepSeek-V4-Pro-Preview教师、每域1000任务池与Qwen3.5-4B/9B初始学生；GPT-6 Astra代理分析教师和学生轨迹，定位行为缺口。",
+        "把条件、步骤和领域知识写成技能，追加到教师系统提示；先做小批试跑，检查预期行为和副作用，再改技能与适用任务范围。",
+        "将有希望的技能扩大到批量生成，结合任务结果和过程行为选512条示例；也允许纳入已经展示有效行为的无技能教师轨迹。",
+        "每轮从同一初始学生重新做3轮全参SFT；保留生成时的技能上下文，只对助手推理、回复和工具调用计算损失，系统/用户/工具消息不计损失。",
+        "学生评测时移除生成技能；把基准分数和轨迹反馈给下一轮，最多探索5轮。按累计反馈选最终检查点，再作3次新评测，并关联技能、数据与检查点记录。"
+      ],
+      "inspirations": [
+        "代码视频/3D训练别只筛执行成功：分别检查视觉主张是否有渲染证据、编辑是否破坏其他部分，再用技能生成同任务的改进示例；保留失败检查，避免为过自测改需求。",
+        "做保留/移除技能的配对训练时固定监督输出，另留从未用于技能修改或模型选择的评测集；分开报告学生收益、训练种子差异及技能长度带来的token成本。",
+        "给每次实验绑定任务ID、技能版本、教师轨迹、选择理由和初始检查点；同时比较等示例数与等总生成/训练预算，避免把多轮试错预算误算成纯数据质量增益。"
+      ],
+      "reviewedAt": "2026-11-20T10:27:46.933973+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.26510v1",
+        "https://arxiv.org/html/2611.26510v1",
+        "https://aweai-team.github.io/AutoMaster/",
+        "https://github.com/RUCAIBox/AutoMaster",
+        "https://huggingface.co/collections/RUC-AIBOX/automaster",
+        "https://huggingface.co/RUC-AIBOX/AutoMaster-tb21-9b",
+        "https://huggingface.co/papers/2611.26510"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.26510",
+      "status": "pending",
+      "checkedAt": "2026-11-20T10:33:12.106951+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html#v1-4-0-november-19-2026",
+    "url": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html#v1-4-0-november-19-2026",
+    "id": "update-kimi-code-ssh-projects-20261119",
+    "title": "Kimi Code SSH项目：先区分远端工具与远端Agent，再验收离线接续",
+    "summary": "Kimi Code Desktop 1.4把文件、工具与会话放到SSH主机，官方称本机离线后任务可继续；CLI2.7补充steer与前台任务可见性。关键是核对Agent实际驻留位置，再验证断线和接续。",
+    "insight": "长程Agent的验收应从“连上远端”推进到“断开客户端后谁继续推理、怎样接续、会不会重复执行”。这次官方区分完整远程项目与远程工具，为隔离生命周期故障提供了具体对照。",
+    "limits": "仅核验官方更新、使用文档及公开CHANGELOG，未安装、连接远端、导入配置或运行断线实验。官方“本机离线仍运行”不证明服务器崩溃后恢复、操作恰好执行一次或无丢失接续；未提供成功率、时延与长时压力数据。Desktop SSH项目与原有--environment工具远程执行是两条路径，不能互套生命周期或权限保证。远端须安装CLI并单独登录；可选provider导入会复制API key且替换远端同名provider，Kimi登录不复制。远程项目采用主机端配置，本地插件/MCP配置不自动等价生效。跨客户端接管前文档要求原客户端退出，否则可能并发写入；steer送达或已读不是任务已取消，停止后台任务仍需相应控制。此项是运行环境与交互更新，不是新模型能力或代码视频画质证明。",
+    "organization": "Moonshot AI / Kimi",
+    "dateLabel": "2026-11-19官方版本日期；11月20日晚核验文档变化",
+    "evidence": "官方发布、项目/输入/远程环境文档与公开CHANGELOG；未执行断线或接管测试",
+    "originalTitle": "Kimi Code Desktop v1.4.0 / CLI v2.7.0 — SSH remote projects and in-turn steering",
+    "date": "2026-11-19",
+    "checkedAt": "2026-11-20T10:28:26.887489+00:00",
+    "updatedAt": null,
+    "firstSeenAt": "2026-11-20T10:30:40.255219+00:00",
+    "tags": [
+      "远程Agent",
+      "SSH",
+      "运行环境",
+      "会话接续",
+      "任务控制"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "11月19日Desktop1.4/CLI2.7正式更新",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html#v1-4-0-november-19-2026"
+      },
+      {
+        "label": "SSH远程项目、主机配置与会话并发边界",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-desktop/project-and-session-management.html"
+      },
+      {
+        "label": "Desktop更新日志",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-desktop/changelog.html"
+      },
+      {
+        "label": "CLI更新日志",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-cli/changelog.html"
+      },
+      {
+        "label": "steer送达状态与任务控制的区别",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-desktop/input-and-context.html"
+      },
+      {
+        "label": "既有远程工具环境：CLI/模型请求仍在本机",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-cli/guides/remote-environment.html"
+      },
+      {
+        "label": "同批Bedrock按模型协议与凭据链",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-cli/configuration/providers.html"
+      },
+      {
+        "label": "公开CHANGELOG的2.7.0段：SSH项目与前台任务状态",
+        "url": "https://github.com/MoonshotAI/kimi-code/blob/main/apps/kimi-code/CHANGELOG.md"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Kimi Code Desktop 1.4把文件、工具与会话放到SSH主机，官方称本机离线后任务可继续；CLI2.7补充steer与前台任务可见性。关键是核对Agent实际驻留位置，再验证断线和接续。",
+      "motivation": "长程代码任务容易把界面连接、工具执行位置与Agent会话驻留混为一谈；电脑离线是否中断推理和后续工作，取决于任务真正运行在哪里，而不只是文件位于远端。",
+      "novelty": "官方新增Desktop SSH远程项目，CLI2.7同时增加SSH主机配置、前台Agent状态和可选择的steer行为。本站判断：与已收录2.5的工具远程执行相比，实质变化是Agent会话驻留和客户端断开后的生命周期；这值得单独评测，但文档不是耐故障实现证明。",
+      "evidenceScope": "本轮重新读取11月19日官方Desktop1.4.0/CLI2.7.0发布条目，精读SSH项目、会话管理、输入/steer及既有remote-environment文档，并读provider的Bedrock段和公开CHANGELOG2.7.0段。与12:18官方快照逐行比较，本轮新增更新条目而非页面抓取时间被当发布时间。CHANGELOG目前还含2.7.1/2.7.2补丁，本文不把滚动main当固定2.7.0源码、也不宣称静态审查了SSH实现。未实际联网配置、运行或读取用户凭据；verified仅表示来源核验。通用Agent运行环境不据关键词加视频/代码创作topics。",
+      "limits": "仅核验官方更新、使用文档及公开CHANGELOG，未安装、连接远端、导入配置或运行断线实验。官方“本机离线仍运行”不证明服务器崩溃后恢复、操作恰好执行一次或无丢失接续；未提供成功率、时延与长时压力数据。Desktop SSH项目与原有--environment工具远程执行是两条路径，不能互套生命周期或权限保证。远端须安装CLI并单独登录；可选provider导入会复制API key且替换远端同名provider，Kimi登录不复制。远程项目采用主机端配置，本地插件/MCP配置不自动等价生效。跨客户端接管前文档要求原客户端退出，否则可能并发写入；steer送达或已读不是任务已取消，停止后台任务仍需相应控制。此项是运行环境与交互更新，不是新模型能力或代码视频画质证明。",
+      "method": [
+        "在Desktop新增SSH主机并选远端目录建立项目；按官方项目文档，文件、工具和会话都在远端主机运行，关闭或离线的本机承担客户端角色。",
+        "在主机安装Kimi Code CLI并独立登录；可选导入自定义模型provider需明确API key迁移及同名覆盖，远程项目使用该主机配置。",
+        "重新打开Desktop并连接主机以查看和接续会话；检查主机状态与失败详情。与2.5已有--environment路径区分：后者只远程执行文件/Shell，CLI、模型请求、凭据与会话仍在本机。",
+        "用新默认steer在正在进行的回合内补充要求，并观察未读、已读及插入状态；若需排队可切回Queue。会话接管与任务停止分别使用对应控制，不能从消息已送达推断后台工作结束。"
+      ],
+      "inspirations": [
+        "用同一固定长任务对比本机Agent+远程工具与远端Agent+桌面客户端：在推理、长Shell、等待审批三个时点断开客户端，记录远端进程、操作ID、产物和接续状态，分别报告继续率与重复操作率。",
+        "把“消息送达、Agent读到、约束生效、后台任务停止”做成四个可观察事件；注入排队与steer切换，检查迟到约束是否导致额外文件修改，而不只检查界面提示。",
+        "远程工程建立主机、会话、工具配置和产物版本对应表；以两客户端接管、插件差异和provider同名冲突作测试，核对执行环境是否一致，并验证接续后的产物而非只确认连接成功。"
+      ],
+      "reviewedAt": "2026-11-20T10:28:26.887489+00:00",
+      "sourceUrls": [
+        "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html#v1-4-0-november-19-2026",
+        "https://www.kimi.com/code/docs/en/kimi-code-desktop/project-and-session-management.html",
+        "https://www.kimi.com/code/docs/en/kimi-code-desktop/changelog.html",
+        "https://www.kimi.com/code/docs/en/kimi-code-cli/changelog.html",
+        "https://www.kimi.com/code/docs/en/kimi-code-desktop/input-and-context.html",
+        "https://www.kimi.com/code/docs/en/kimi-code-cli/guides/remote-environment.html",
+        "https://www.kimi.com/code/docs/en/kimi-code-cli/configuration/providers.html",
+        "https://github.com/MoonshotAI/kimi-code/blob/main/apps/kimi-code/CHANGELOG.md"
+      ]
+    }
   }
 ]
