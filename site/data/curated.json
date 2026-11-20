@@ -24710,5 +24710,383 @@
         "https://openai.com/news/rss.xml"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.25088v1",
+    "url": "https://arxiv.org/abs/2611.25088v1",
+    "id": "paper-buggymle-2611-25088",
+    "title": "BuggyMLE：指标恢复之后，还要确认每个缺陷真的修好",
+    "summary": "在干净ML仓库中注入、单独归因和分级缺陷，再用执行、恢复指标及逐项修复裁判联合验收；据此构造调试基准和SFT/RL课程。",
+    "insight": "把“恢复输出分数”与“修复因果缺陷”拆开，可减少训练奖励和验收被绕过；迁移到渲染工程时还需增加视觉与可编辑性检查。",
+    "limits": "未复现；每档仅22题、单次轨迹，且模型预算不完全相同。“50 Bugs”实际23–60个缺陷并扩大仓库；Full Repair还要求逐缺陷裁判通过，不等于指标恢复率。CCI只在8个基准上标定，非难度普适定律。",
+    "dateLabel": "2026-11-18 首次提交v1",
+    "evidence": "全文方法、评测与关键附录已读；未复现、未核到公开实现",
+    "originalTitle": "BuggyMLE: Scaling Machine Learning Engineering Difficulty with Bug Injection",
+    "date": "2026-11-18",
+    "checkedAt": "2026-11-20T04:24:08.181294+00:00",
+    "paperOriginalDate": "2026-11-18T19:26:15Z",
+    "paperUpdatedAt": "2026-11-18T19:26:15Z",
+    "updatedAt": "2026-11-18T19:26:15Z",
+    "firstSeenAt": "2026-11-20T04:00:01Z",
+    "lastSeenAt": "2026-11-20T04:00:01Z",
+    "tags": [
+      "合成数据",
+      "代码修复",
+      "难度课程",
+      "GRPO",
+      "Benchmark"
+    ],
+    "authors": [
+      "John Wu",
+      "Rushi Qiang",
+      "Yuchen Zhuang",
+      "Guowang Li",
+      "Girish Narayanswamy",
+      "Max Xu",
+      "Sam Schmidgall",
+      "Mark Malhotra",
+      "Shwetak Patel",
+      "Jimeng Sun",
+      "Daniel McDuff",
+      "Bo Dai",
+      "Xin Liu"
+    ],
+    "topics": [],
+    "featured": false,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv版本与提交日期",
+        "url": "https://arxiv.org/abs/2611.25088v1"
+      },
+      {
+        "label": "原文方法、实验及附录",
+        "url": "https://arxiv.org/html/2611.25088v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "BuggyMLE在可运行ML仓库中注入并归因缺陷，以执行、指标恢复和逐缺陷检查共同验收；分级数据可训练修复Agent，但最高难度仍近乎未解。",
+      "motivation": "单文件MLE任务难覆盖真实的多文件调试；只看训练指标回升又可能接受绕过模块或留下隐蔽缺陷的补丁。需要可扩展的难度旋钮与可追溯的修复判据。",
+      "novelty": "作者主张以结构复杂度预测并控制调试难度，用合成缺陷课程提升9B Agent。本站判断：最可迁移的是“指标恢复”和“缺陷消除”分开验收；CCI与课程收益仍是本设置证据，不能推出结构决定所有代码难度。",
+      "evidenceScope": "已读arXiv v1全文§3方法、§4设置、§5结果及附录A/B/C/D/E/F相关统计、划分、Oracle、奖励、harness和OOD说明，非仅摘要。CCI的R²=0.951是8个参考基准上的拟合，留一基准预测MAE=0.048；系数学习使用解题率，不能称无标签难度度量。BuggyMLEBench-Lite是22个MLE-Bench Lite竞赛各构造4档，共88个变体。主表Opus5.5从1 Bug的95.5%降至50 Bugs的9.1%；9B All Difficulties四档Full Repair为72.7/22.7/18.2/0%，10 Bugs高于Opus5.5的13.6%，低于Sonnet5.5的31.8%，不是通用模型排名。SWE-bench Lite300题由24.3%到33.0%；LiveCodeBench v6的1055题、每题两样本估计pass@1由69.3%到71.3%，作者报告配对任务bootstrap区间排除零，未验证跨训练种子稳定性。所有数值来自作者；未运行训练或基准，verified仅指来源核验。",
+      "limits": "未复现；每档仅22题、单次轨迹，且模型预算不完全相同。“50 Bugs”实际23–60个缺陷并扩大仓库；Full Repair还要求逐缺陷裁判通过，不等于指标恢复率。CCI只在8个基准上标定，非难度普适定律。 主表每模型每档22个单次episode，低难度轮数40/60与80混用，部分模型扩大上下文/输出上限，API与thinking设置不同；10/50 Bugs轮数统一80也不等计算成本相同。50档先将仓库扩至约两倍，1068个原始改动中1042个单独导致退化或失败，不是每题恰好50个且全部单独有害。CCI依赖已知补丁结构，只覆盖8个参考基准的聚合统计，未纳入语义复杂度；相关性及合成同库旋钮不是排除全部混杂的因果规律。200训练来源中16个因疑似标签泄漏被预先排除；作者声明训练与22竞赛的仓库/代码/数据分离，本站未独立审计污染。RL验证是在40个熟悉仓库中生成不同缺陷，不等于全部验证都未见仓库。主基准逐缺陷裁判Haiku5.5，在线RL为Gemini3.8Flash，离线整库评审Opus4.8，三者不可混称同一客观测试；30个缺陷的单专家盲评主要校准真实性，不能当所有修复判定的人类一致率。中/难阶段奖励为0.5进度+0.5逐缺陷分，裁判不可用回退进度；首阶段无逐项裁判，未达恢复阈值时还结合干净参考文件相似度和缺陷编辑重叠奖励，并非纯指标信号；这些是训练奖励的特权信息，不是给Solver显示干净参考。不能说所有训练奖励都强制逐缺陷验收。从零生成ML方案的迁移结果有升有降，不能推导自主研究能力全面提高。论文报告6674变体，但附录列出的4431+2152+88合计6671，类别总量尚有3条口径差异；不据此给出独立任务精确数。未在实际可读原文或索引找到可归属公开实现/权重/数据地址，不宣称开源。",
+      "method": [
+        "从仓库规模、依赖和补丁范围提取10项结构特征，用8个公开基准的解题率拟合并固定CCI标尺；挑选运行快、指标稳定且对代码改动敏感的干净仓库。",
+        "Injector按文件、hunk和行数预算改代码；在容器中要求崩溃或指标显著退化，失败则反馈重试，最多5次。",
+        "Oracle按预期影响逐步撤回改动直至恢复基线，再将各改动单独施加于干净代码，区分确实退化、无影响与改进项。",
+        "Solver只得到损坏仓库、工具和预算；修复在新容器运行，检查恢复比≥0.99、入口仍调用受损模块，并由裁判逐项确认真修复而非掩盖。",
+        "以2724条教师轨迹及411条RFT轨迹做LoRA SFT，再在40个仓库做易中难GRPO；首阶段无逐项裁判，融合指标进度与参考代码/编辑奖励，后两阶段加入逐缺陷分。"
+      ],
+      "inspirations": [
+        "在代码视频或3D工程中固定同一素材与仓库，分别注入时间线、资源路径、参数和渲染缺陷；将执行成功、帧级视觉退化和局部编辑保持作为独立门槛，比较单档与混合课程。",
+        "保留干净工程、注入差分、单缺陷退化及恢复记录；评测时藏起这些答案，只把恢复指标用于外部验收，防止Agent换掉测试或绕开出错模块。",
+        "训练奖励从便宜的执行/指标信号起步，再添加局部缺陷检查；用未见仓库与未见缺陷两种切分分别测迁移，并把裁判成本、失败回退和漏检率一起报告。"
+      ],
+      "reviewedAt": "2026-11-20T04:24:08.181294+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.25088v1",
+        "https://arxiv.org/html/2611.25088v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.25088",
+      "status": "pending",
+      "checkedAt": "2026-11-20T04:23:47.675513+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.25340v1",
+    "url": "https://arxiv.org/abs/2611.25340v1",
+    "id": "paper-sceneanything-2611-25340",
+    "title": "SceneAnything：先共享测量，再用程序与独立审图重建可编辑3D场景",
+    "summary": "SceneAnything把单段视频重建为参数化Blender程序：先统一相机、尺度和分割，再分工制作几何、材质与灯光，并用程序检查及独立成对审图接纳修订。30场景直接Agent对比中，LPIPS为0.51，对照为0.66/0.69；视频到3D主表只含10个共同可对齐场景，不能当100场景全量胜率。",
+    "insight": "对代码3D Agent，值得迁移的是共享测量和证据分级：让部件生成器显式区分实测结构、模型估计与未见区域推断；将程序可执行、整场景不退化、视觉更像及后续可编辑分别验收。细节等级由可见性和拟合证据决定，可防止把算力耗在缺乏观测支撑的精雕上。",
+    "limits": "未复现；100是总集，视频基线主表仅10个共同可对齐场景；新视角DINO相似不是真值几何。21/21是该子集交付，非100%全任务成功；编辑仅案例，代码/场景尚未核到公开发布。30场景101输入视角帧的直接Agent对比同时改变了测量、模型、拟合工具及验收流程，不隔离多Agent或独立judge的单独因果收益，也未见同总成本配平。视频基线在21场景运行：本法交付21，Pi3-X/PGSR/COLMAP分别19/15/12可与原相机配准；主表取共同10场景（4实拍、6生成），未对失败或不可配准样本记0分。原视角最多8帧均属于输入帧，不能当持出视角泛化；新视角每场景8个相机，与最佳匹配输入帧算DINOv3内容相似，无法验证未观测背面几何。组件独立、可移动及程序化只是可编辑结构；改光、删物体、移物体为展示，未给编辑成功率、局部修改保真或保存重开测试。运动示例的IoU0.89–0.98和质心2–13像素是所跟踪帧的中位数，不是新视角运动真值；不建人，也不支持水以外的非刚性运动，每次只处理连续镜头。独立judge仍是同类商业模型，双顺序一致、同图控制和符号检验不能代替人类视觉校准；主要组外只禁止显著退化，不保证每帧不变差。183次存储比较的早停回放保留99.1%–99.6%决策，是内部回放统计；未核到前瞻新场景或全流程多种子置信区间。全角色替换实验仅6场景、19小时截断，Nemotron/DeepSeek分别1/6、4/6获接纳，不能据此泛化模型排名。40场景的18–111美元（中位47美元）按输出token单价折算，排除视觉模型、拟合与渲染计算；未给统一端到端延迟或全费用。相机、分割、尺度参考与深度仍会出错，LoD阈值按对象族由owner设定，作者还可因可分离性调整实际等级，非全自动固定阈值最优。主文与S7写计划发布管线、库和场景，S4/S14图注用released措辞；本轮仅核到论文和源包，未找到作者公开实现/场景链接，不采信已开源。来源核验不等于实验复现。",
+    "organization": "NVIDIA · University of Manchester · UC San Diego",
+    "dateLabel": "2026-11-19 首次提交v1",
+    "evidence": "已读主文方法、实验及补充S1–S14；未核到公开实现，未复现",
+    "originalTitle": "SceneAnything: Agentic Reconstruction of Large-Scale Mesh Scenes from a Single Video",
+    "date": "2026-11-19",
+    "checkedAt": "2026-11-20T04:22:39.456756+00:00",
+    "paperOriginalDate": "2026-11-19T01:26:02Z",
+    "paperUpdatedAt": "2026-11-19T01:26:02Z",
+    "updatedAt": "2026-11-19T01:26:02Z",
+    "firstSeenAt": "2026-11-20T04:00:01Z",
+    "lastSeenAt": "2026-11-20T04:00:01Z",
+    "tags": [
+      "SceneAnything",
+      "Blender",
+      "Video-to-Code",
+      "场景重建",
+      "视觉验收",
+      "可编辑3D"
+    ],
+    "authors": [
+      "Bowen Xue",
+      "Saeed Hadadan",
+      "Fabrice Rousselle",
+      "Zahra Montazeri",
+      "Ravi Ramamoorthi",
+      "Milos Hasan"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.25340v1"
+      },
+      {
+        "label": "arXiv首次提交日期",
+        "url": "https://arxiv.org/abs/2611.25340"
+      },
+      {
+        "label": "论文方法与实验HTML",
+        "url": "https://arxiv.org/html/2611.25340v1"
+      },
+      {
+        "label": "完整论文及补充PDF",
+        "url": "https://arxiv.org/pdf/2611.25340v1"
+      },
+      {
+        "label": "公开论文源包与supp.pdf",
+        "url": "https://arxiv.org/src/2611.25340v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "SceneAnything用共享测量约束Blender生成器，再以独立审图接纳整场景修订。视觉比较有改善，但隐藏几何与编辑可靠性还需另验。",
+      "motivation": "一个Agent直接从视频写场景，容易把布局、尺度、材质和照明的错误互相补偿，甚至将原视频贴在代理表面骗过原视角。要交付可改、可换视角的场景，需要统一测量、可解释的组件分工，并避免仅由构建者自行验收。",
+      "novelty": "作者主张：以共享观测组织组件级程序构建，并用证据驱动的细节分配和整场景验收实现可编辑视频重建。本站判断：贡献主要是明确的表示、分工与验收协议；完整系统对比不能证明每个模块独立有效，也不是新3D基础模型。",
+      "evidenceScope": "已读arXiv v1 HTML§3–4，21页完整PDF及源包内10页supp.pdf S1–S14，含方法、设置、主表、LoD/作者替换实验及判断规则。总集100场景由39静态和20运动Wikimedia视频、17生成视频、24照片组/自采构成。30场景101帧直接Agent比较，本法LPIPS/DINOv3=0.51/0.76，Claude Opus 5.5为0.66/0.55，GPT-6 Astra为0.69/0.52。21场景视频重建比较的共同可配准10场景上，本法原视角LPIPS0.50、DINOv3 0.74；Pi3-X为0.56/0.74，PGSR0.61/0.54，COLMAP0.67/0.41；新视角内容相似依次0.53/0.38/0.31/0.27。LoD消融3花坛+1城市区域LPIPS由0.64/0.65/0.70/0.53降至0.55/0.57/0.58/0.49。替换作者的14场景中两种开放模型各交付14个场景，11个重叠对比中DeepSeek/Nemotron/Opus的LPIPS为0.55/0.58/0.47；owner与judge仍保持Opus。所有数字来自作者报告；未运行模型、代码或场景，未作独立视觉评分。",
+      "limits": "未复现；100是总集，视频基线主表仅10个共同可对齐场景；新视角DINO相似不是真值几何。21/21是该子集交付，非100%全任务成功；编辑仅案例，代码/场景尚未核到公开发布。30场景101输入视角帧的直接Agent对比同时改变了测量、模型、拟合工具及验收流程，不隔离多Agent或独立judge的单独因果收益，也未见同总成本配平。视频基线在21场景运行：本法交付21，Pi3-X/PGSR/COLMAP分别19/15/12可与原相机配准；主表取共同10场景（4实拍、6生成），未对失败或不可配准样本记0分。原视角最多8帧均属于输入帧，不能当持出视角泛化；新视角每场景8个相机，与最佳匹配输入帧算DINOv3内容相似，无法验证未观测背面几何。组件独立、可移动及程序化只是可编辑结构；改光、删物体、移物体为展示，未给编辑成功率、局部修改保真或保存重开测试。运动示例的IoU0.89–0.98和质心2–13像素是所跟踪帧的中位数，不是新视角运动真值；不建人，也不支持水以外的非刚性运动，每次只处理连续镜头。独立judge仍是同类商业模型，双顺序一致、同图控制和符号检验不能代替人类视觉校准；主要组外只禁止显著退化，不保证每帧不变差。183次存储比较的早停回放保留99.1%–99.6%决策，是内部回放统计；未核到前瞻新场景或全流程多种子置信区间。全角色替换实验仅6场景、19小时截断，Nemotron/DeepSeek分别1/6、4/6获接纳，不能据此泛化模型排名。40场景的18–111美元（中位47美元）按输出token单价折算，排除视觉模型、拟合与渲染计算；未给统一端到端延迟或全费用。相机、分割、尺度参考与深度仍会出错，LoD阈值按对象族由owner设定，作者还可因可分离性调整实际等级，非全自动固定阈值最优。主文与S7写计划发布管线、库和场景，S4/S14图注用released措辞；本轮仅核到论文和源包，未找到作者公开实现/场景链接，不采信已开源。来源核验不等于实验复现。",
+      "method": [
+        "按连续镜头抽取带时间戳帧，用Lyra 2初始化相机和深度；owner借助重投影、视差等诊断纠正相机，并用两种独立尺寸参照建立统一尺度。",
+        "用语义分割、实例分割和跨帧跟踪关联3D观测；owner按对象族或空间区域发出包含尺寸、坐标、支撑关系和推断区域的组件任务。",
+        "作者Agent编写参数化Blender生成器；根据可见帧、像素覆盖、部件可分离性及轮廓拟合，在程序配方、拟合实例、逐部件建模之间分配细节；无观测细节标为推断。",
+        "在共享场景中组装部件，拟合灯光、材质与受支持运动；检查支撑、穿插与材质，并要求每个运动对象的跟踪掩码IoU中位数降幅不超过0.005，固定相机成像参数后生成原视角和新视角的同条件对比。",
+        "独立judge看双顺序对比和同图控制；普通修订须主视角组显著获胜且其余组不显著退化，声明物理修复另有保留规则。将获接纳生成器和带适用条件的经验入库，后续仍须重新拟合验收。"
+      ],
+      "inspirations": [
+        "把3D资产清单分成直接观察、模型估计、未见推断三类；对相机或尺寸更新记录依赖组件，只重发受影响任务，并用改前改后的相同镜头查连带退化。",
+        "为代码3D评测同时设执行门槛、支撑/穿插门槛和视觉对比；冻结曝光、相机和场景背景，采用双顺序及同图控制，再抽样做人类校准以识别judge偏差。",
+        "将部件独立交付转为真正编辑测试：删除遮挡物、改尺寸、换光和换视角，分别检查未修改区域保持、隐藏区域标记、工程重开及渲染成本；按观测充分程度分组报告。"
+      ],
+      "reviewedAt": "2026-11-20T04:22:39.456756+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.25340v1",
+        "https://arxiv.org/abs/2611.25340",
+        "https://arxiv.org/html/2611.25340v1",
+        "https://arxiv.org/pdf/2611.25340v1",
+        "https://arxiv.org/src/2611.25340v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.25340",
+      "status": "pending",
+      "checkedAt": "2026-11-20T04:23:47.675513+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.25658v1",
+    "url": "https://arxiv.org/abs/2611.25658v1",
+    "id": "paper-2611.25658",
+    "title": "SiliconGym：先封存候选、约束预算、通过验收，再给硬件Agent奖励",
+    "summary": "SiliconGym把候选版本、执行预算和验收评分拆开，让硬件Agent训练与迭代共用协议。首个256答案回放批次快21.9%；跨工具PPA收益有限，不能外推全训练加速或芯片签核。",
+    "insight": "作者主张首个跨任务、跨工具链的通用EDA强化学习环境。本站判断：可迁移之处是把每次奖励绑定到冻结版本和明确验收范围，再对同一输出换后端复评；不是新RL算法，也不证明整个硬件Agent已能自主可靠设计。",
+    "limits": "未复现；21.9%只来自首个256答案批次回放。PPA每工具链仅1次训练，配对主表仅24个共同有效小模块；5件仓库修复与SoC参考流程不能当大规模Agent成功率或签核。3470是目录定义数：3133个CodeV实例通过四项资格，只有跨任务24个通过全部五项（含负控）；不能写成3470个均已完整验收。五个仓库修复是各一个Record内多次Bash动作并通过指定回归，不是整个HWE-Bench；多轮反馈另以仲裁器、3个WaveDebug和1个VeriThoughts案例展示。256答案回放固定生成时间表、32个预热worker和相同逐任务预算：streaming 90.0秒、native 115.3秒，强制batch的Gym为113.7秒，后者与native宿主负载不同；其中255/256奖励一致，另1个差异来自native仅检查float而漏掉整数PPA奖励。流式与强制batch的Gym相差23.7秒且奖励相同，不宜把全部优势归于隔离运行时或宣传无成本开销。首批106个答案进入综合，其余150在综合均时中计0；不是每个候选都完成所有阶段。紧预算为编译/仿真5秒、综合10秒；9项综合超时仅得功能奖励，放宽逐题预算使其中8项在18—34秒完成并拿到PPA奖励，但第9项跑到75秒上限，生成后等待从1.5延至60.2秒。预算会改变可获得奖励覆盖，不能只比较吞吐。508个可比较、仿真通过且有有效PPA的候选中54个表面面积改善超过5%；31个被拒（24形式反例、5初始化合同、2端口接口）。余23个中14个仅过20步有界等价、8个完整组合证明、1个形式超时；余项不能统称完整等价验证通过。六对压力回放在匹配预算下分数一致，只说明这些案例的评分一致性；内存不足时同样可能得0，不证明所有低分都源于候选逻辑错误。功能测试对611个任务/套件组合各采20答案，pass@1对四套件等权平均；切评分器差异小于0.2个百分点不等于逐题判决一致。always_casez与review2015_fsmseq出现相反方向的前端语法差异；训练Icarus13与VerilogEval Icarus12版本不同。PPA实验为Qwen2.5-Coder-7B-Instruct、每链200次CDPO更新、各2张H100和32个EDA槽位；自适应采样分别723/885生成批次，并非相同生成成本。200个NanGate45任务每20更新取每题一个答案；主表筛成初始和两终点在两后端均过仿真且EDAP为正的24设计，并排除2个已知溢出错误，存在共同有效子集选择。指标为后端各自参考归一化P×A×D的几何均值，绝非整体成功率、硅片实测能耗或时序签核。OSS训练在Genus下从101.56%降到101.19%（按未取整值改善0.38个百分点），仍高于参考100%；20/24设计的三个模型在Genus下EDAP相同，改变来自4件。33设计中跨检查点178个OSS相对参考更优且两边可测的答案，Genus仅34仍更优、98在参考±0.1%、46更差；178是答案数不是独立设计数。模块参考中位16行、每后端一个训练种子，无独立多种子方差，不证明通用策略迁移。Earlgrey/OpenTPU使用ASAP7和近似存储器视图，到global placement而非布线/签核；两个后端资源配置不同。Earlgrey仅2个固件测试，OpenTPU为5工作负载及Genus网表1656周期零延迟检查，不是完整硅片验证。论文未给可归属SiliconGym实现仓库或完整训练日志，搜索未核得代码公开；商业工具仍需许可。正文和活动TeX无附录；未运行工具、模型或训练，verified仅表示来源核验。",
+    "organization": "UC San Diego / Georgia Institute of Technology / NVIDIA",
+    "dateLabel": "2026-11-19 首发 · EDA环境与跨工具链训练评测",
+    "evidence": "已读HTML方法、实验与活动TeX；配对子集及证明范围已标，未复现",
+    "originalTitle": "SiliconGym: A Versatile Reinforcement Learning Environment for Agentic EDA",
+    "date": "2026-11-19",
+    "checkedAt": "2026-11-20T04:21:45.472113+00:00",
+    "paperOriginalDate": "2026-11-19T07:40:52Z",
+    "paperUpdatedAt": "2026-11-19T07:40:52Z",
+    "updatedAt": "2026-11-19T07:40:52Z",
+    "firstSeenAt": "2026-11-20T04:00:01Z",
+    "lastSeenAt": "2026-11-20T04:00:01Z",
+    "tags": [
+      "Training / RL",
+      "EDA",
+      "Reward validation",
+      "Versioned workspace",
+      "Cross-toolchain evaluation"
+    ],
+    "authors": [
+      "Hejia Zhang",
+      "Sheng Lu",
+      "Yitong Ma",
+      "Zhongming Yu",
+      "Zhijing Wu",
+      "Wentao Ni",
+      "Chia-Tung Ho",
+      "Jishen Zhao"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.25658v1"
+      },
+      {
+        "label": "原论文：架构、系统评测与工具链敏感性",
+        "url": "https://arxiv.org/html/2611.25658v1"
+      },
+      {
+        "label": "活动TeX与表格定义",
+        "url": "https://arxiv.org/src/2611.25658v1"
+      },
+      {
+        "label": "论文PDF（7页）",
+        "url": "https://arxiv.org/pdf/2611.25658v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "SiliconGym把候选版本、执行预算和验收评分拆开，让硬件Agent训练与迭代共用协议。首个256答案回放批次快21.9%；跨工具PPA收益有限，不能外推全训练加速或芯片签核。",
+      "motivation": "硬件Agent会跨文件、多轮调用仿真和综合工具。若每个任务自写工作区、超时和奖励脚本，资源争用会改变分数，仿真通过也可能奖励违反接口、初始化或形式等价条件的设计。作者希望在保留任务语义的同时更换执行工具，并让奖励可追溯到具体候选。",
+      "novelty": "作者主张首个跨任务、跨工具链的通用EDA强化学习环境。本站判断：可迁移之处是把每次奖励绑定到冻结版本和明确验收范围，再对同一输出换后端复评；不是新RL算法，也不证明整个硬件Agent已能自主可靠设计。",
+      "evidenceScope": "已读arXiv v1 HTML的架构III、系统评测IV、跨工具链V及结论，核对活动TeX方法/实验与三表；PDF元数据确认7页，不把元数据检查称作逐页视觉核验。论文含200步训练、固定首批回放、少量修复案例和参考流程，口径分开；无附录、未核到作者实现公开，未复现。",
+      "limits": "未复现；21.9%只来自首个256答案批次回放。PPA每工具链仅1次训练，配对主表仅24个共同有效小模块；5件仓库修复与SoC参考流程不能当大规模Agent成功率或签核。3470是目录定义数：3133个CodeV实例通过四项资格，只有跨任务24个通过全部五项（含负控）；不能写成3470个均已完整验收。五个仓库修复是各一个Record内多次Bash动作并通过指定回归，不是整个HWE-Bench；多轮反馈另以仲裁器、3个WaveDebug和1个VeriThoughts案例展示。256答案回放固定生成时间表、32个预热worker和相同逐任务预算：streaming 90.0秒、native 115.3秒，强制batch的Gym为113.7秒，后者与native宿主负载不同；其中255/256奖励一致，另1个差异来自native仅检查float而漏掉整数PPA奖励。流式与强制batch的Gym相差23.7秒且奖励相同，不宜把全部优势归于隔离运行时或宣传无成本开销。首批106个答案进入综合，其余150在综合均时中计0；不是每个候选都完成所有阶段。紧预算为编译/仿真5秒、综合10秒；9项综合超时仅得功能奖励，放宽逐题预算使其中8项在18—34秒完成并拿到PPA奖励，但第9项跑到75秒上限，生成后等待从1.5延至60.2秒。预算会改变可获得奖励覆盖，不能只比较吞吐。508个可比较、仿真通过且有有效PPA的候选中54个表面面积改善超过5%；31个被拒（24形式反例、5初始化合同、2端口接口）。余23个中14个仅过20步有界等价、8个完整组合证明、1个形式超时；余项不能统称完整等价验证通过。六对压力回放在匹配预算下分数一致，只说明这些案例的评分一致性；内存不足时同样可能得0，不证明所有低分都源于候选逻辑错误。功能测试对611个任务/套件组合各采20答案，pass@1对四套件等权平均；切评分器差异小于0.2个百分点不等于逐题判决一致。always_casez与review2015_fsmseq出现相反方向的前端语法差异；训练Icarus13与VerilogEval Icarus12版本不同。PPA实验为Qwen2.5-Coder-7B-Instruct、每链200次CDPO更新、各2张H100和32个EDA槽位；自适应采样分别723/885生成批次，并非相同生成成本。200个NanGate45任务每20更新取每题一个答案；主表筛成初始和两终点在两后端均过仿真且EDAP为正的24设计，并排除2个已知溢出错误，存在共同有效子集选择。指标为后端各自参考归一化P×A×D的几何均值，绝非整体成功率、硅片实测能耗或时序签核。OSS训练在Genus下从101.56%降到101.19%（按未取整值改善0.38个百分点），仍高于参考100%；20/24设计的三个模型在Genus下EDAP相同，改变来自4件。33设计中跨检查点178个OSS相对参考更优且两边可测的答案，Genus仅34仍更优、98在参考±0.1%、46更差；178是答案数不是独立设计数。模块参考中位16行、每后端一个训练种子，无独立多种子方差，不证明通用策略迁移。Earlgrey/OpenTPU使用ASAP7和近似存储器视图，到global placement而非布线/签核；两个后端资源配置不同。Earlgrey仅2个固件测试，OpenTPU为5工作负载及Genus网表1656周期零延迟检查，不是完整硅片验证。论文未给可归属SiliconGym实现仓库或完整训练日志，搜索未核得代码公开；商业工具仍需许可。正文和活动TeX无附录；未运行工具、模型或训练，verified仅表示来源核验。",
+      "method": [
+        "用Record管理可编辑工作区及允许读取的上下文；提交时冻结并哈希候选、校验接口，后续修订创建继承允许文件与公开反馈的子Record，私有测试留在工具端。",
+        "任务定义规定验收与奖励，EvaluationPlan选择仿真、等价和综合配置；适配器执行工具，证据收集器把不同日志转成结构化观察，保留证明深度与状态。",
+        "按工具阶段依赖调度并设置内存、进程、时间和日志/工作区预算；分开记录候选失败、预算耗尽、依赖/基础设施失败及取消，避免都当模型能力错误。",
+        "对任务与工具配置做可执行性、参考通过、负控、oracle隔离和Agent可见性资格检查；改定义或工具后重验。只有满足接口、初始化与所要求等价门槛的结果才换算PPA奖励。",
+        "答案到达即流式分发EDA评估，与生成重叠；训练后保存相同输出在开源/商业后端交叉评分，再看网表是否保留RTL改写的收益，并把模块训练、修复示例和SoC参考流程分开报告。"
+      ],
+      "inspirations": [
+        "给代码/渲染RL环境加候选快照哈希和反馈谱系；负控分别注入接口变化、缺依赖、超预算和隐藏测试可见性问题，检查评分错误会不会被误学成成功。",
+        "将可执行/合同通过设为质量奖励前置条件，并保留有界证明、完整证明和超时三种状态；对可编辑CAD或视频也分别验工程可打开、局部改参成功与最终视觉质量。",
+        "用同一批生成物跨渲染器、浏览器或工具版本复评，再另做多种子重训；记录收益保留、打平和反转，以及预算改变丢失的质量奖励，避免把后端漏洞当能力进步。"
+      ],
+      "reviewedAt": "2026-11-20T04:21:45.472113+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.25658v1",
+        "https://arxiv.org/html/2611.25658v1",
+        "https://arxiv.org/src/2611.25658v1",
+        "https://arxiv.org/pdf/2611.25658v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.25658",
+      "status": "pending",
+      "checkedAt": "2026-11-20T04:23:47.675513+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.545",
+    "url": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.545",
+    "id": "update-remotion-v40545-motion-blur-20261118",
+    "title": "Remotion 4.0.545：把运动模糊拆成时间采样、媒体复用和合成验收",
+    "summary": "Remotion 4.0.545新增转场运动模糊、GPU合成、媒体帧跨样本复用与预览禁用选项；代码动画仍按时间采样，视频像素复用当前帧。可借鉴成本拆分，但画质和加速尚待实测。",
+    "insight": "对代码视频Agent，运动模糊不是加一个滤镜就算完成：时间采样、素材像素复用和GPU合成分别改变成本与画面。更有价值的评测是让Agent保留可编辑参数，并单独证明执行成功、正确的运动表现和实际耗时收益。",
+    "limits": "本站未运行渲染、播放demo或做像素/性能测试。媒体当前帧复用不等于对素材内部运动做曝光积分；不能泛称所有内容都获得真实运动模糊。GPU PR作者在2样本时观察到WebGPU略慢于Canvas2D，单样本绕过合成才是其部分场景的主要收益，无普适加速证据。HTML-in-canvas预览依赖受支持Chrome配置，禁用预览会有意造成预览与导出差异；转场motionBlur不支持相邻转场重叠。当前滚动文档包含4.0.546的style属性及5.0预告，本条仅采用4.0.545发行与固定源码确认内容。通用wrapper始于4.0.529，此次并非首次支持HTML运动模糊；编辑器参数入口不等于已验证工程往返或画面保持。",
+    "organization": "Remotion",
+    "dateLabel": "2026-11-18官方发行；11月20日核验方法与证据边界",
+    "evidence": "官方发行、文档、PR验证记录及固定源码静态核验；本站未运行",
+    "originalTitle": "Remotion v4.0.545 — transition motion blur, GPU compositing and media-frame reuse",
+    "date": "2026-11-18",
+    "checkedAt": "2026-11-20T04:25:23.602809+00:00",
+    "updatedAt": null,
+    "firstSeenAt": "2026-11-20T04:27:53.104611+00:00",
+    "tags": [
+      "Remotion",
+      "运动模糊",
+      "程序化渲染",
+      "媒体帧复用",
+      "GPU合成"
+    ],
+    "topics": [
+      "code2motion",
+      "code2video"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "4.0.545官方发行与11月18日时间",
+        "url": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.545"
+      },
+      {
+        "label": "此前候选核验来源",
+        "url": "https://github.com/remotion-dev/remotion/releases"
+      },
+      {
+        "label": "官方运动模糊入口与Studio参数说明",
+        "url": "https://www.remotion.dev/docs/motion-blur"
+      },
+      {
+        "label": "HTML-in-canvas参数、媒体复用与预览边界",
+        "url": "https://www.remotion.dev/docs/motion-blur/html-in-canvas-motion-blur"
+      },
+      {
+        "label": "TransitionSeries motionBlur及限制",
+        "url": "https://www.remotion.dev/docs/transitions/transitionseries"
+      },
+      {
+        "label": "GPU合成PR：作者测试及性能反例",
+        "url": "https://github.com/remotion-dev/remotion/pull/13452"
+      },
+      {
+        "label": "媒体帧复用PR：实现说明与作者验证",
+        "url": "https://github.com/remotion-dev/remotion/pull/13498"
+      },
+      {
+        "label": "固定4.0.545：采样、合成、预览禁用源码",
+        "url": "https://github.com/remotion-dev/remotion/blob/f587adbd69c04c051fb2bd69ce23ae99d23d8634/packages/motion-blur/src/HtmlInCanvasMotionBlur.tsx"
+      },
+      {
+        "label": "固定4.0.545：转场关联与重叠检查源码",
+        "url": "https://github.com/remotion-dev/remotion/blob/f587adbd69c04c051fb2bd69ce23ae99d23d8634/packages/transitions/src/TransitionSeries.tsx"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Remotion 4.0.545新增转场运动模糊、GPU合成、媒体帧跨样本复用与预览禁用选项；代码动画仍按时间采样，视频像素复用当前帧。可借鉴成本拆分，但画质和加速尚待实测。",
+      "motivation": "运动模糊需要多个子帧的画面；若每个样本都独立解码视频、运行媒体效果并拷贝合成，成本会随样本数增长。代码视频还需要把转场、透明叠层、参数编辑与最终渲染保持在同一时间模型中。",
+      "novelty": "官方新增转场motionBlur、GPU合成、媒体帧复用和disabledInPreview。本站判断：可借鉴的变化是将时间采样、媒体处理和合成成本分别管理；不能据此认定GPU普遍更快、视频内部运动被正确积分，或把4.0.529已有wrapper当成新发明。",
+      "evidenceScope": "已读11月18日4.0.545官方发行、运动模糊及TransitionSeries文档、GPU合成PR13452和媒体复用PR13498的作者说明与验证记录；读取release链接固定提交f587adbd69c04c051fb2bd69ce23ae99d23d8634的完整HtmlInCanvasMotionBlur及TransitionSeries相关分支，静态核对采样、单样本绕过、预览禁用和转场限制。未静态审完媒体解码器与GPU内核；媒体复用细节来自官方文档/PR。作者报告的参考帧与浏览器测试不是本站复现。未运行工程、安装依赖、读取用户素材或验收真实渲染；verified仅表示来源核验。发布日期为11月18日，checkedAt为本轮11月20日。",
+      "limits": "本站未运行渲染、播放demo或做像素/性能测试。媒体当前帧复用不等于对素材内部运动做曝光积分；不能泛称所有内容都获得真实运动模糊。GPU PR作者在2样本时观察到WebGPU略慢于Canvas2D，单样本绕过合成才是其部分场景的主要收益，无普适加速证据。HTML-in-canvas预览依赖受支持Chrome配置，禁用预览会有意造成预览与导出差异；转场motionBlur不支持相邻转场重叠。当前滚动文档包含4.0.546的style属性及5.0预告，本条仅采用4.0.545发行与固定源码确认内容。通用wrapper始于4.0.529，此次并非首次支持HTML运动模糊；编辑器参数入口不等于已验证工程往返或画面保持。",
+      "method": [
+        "对普通代码动画使用HtmlInCanvasMotionBlur；对转场使用新增motionBlur属性。子组件按useCurrentFrame计算动画，以shutterAngle定义曝光范围、samples控制采样数。",
+        "固定源码保留当前帧代表样本用于交互和媒体，另外截取曝光范围内的子帧HTML画面进行加权；通用wrapper默认180度/8样本，转场文档默认180度/16样本。",
+        "视频、GIF与AnimatedImage在多个运动模糊样本间复用当前帧媒体像素及效果结果；布局和变换仍随样本时间变化，以避免重复媒体处理，但不采集素材内部多个时刻的画面。",
+        "多样本交给WebGPU合成及WebGL2回退，单样本直接绘制并释放合成器；disabledInPreview仅在非渲染环境退成单样本。转场另检查两侧序列及相邻转场不可重叠。"
+      ],
+      "inspirations": [
+        "为code2motion构建平移文字、旋转透明图形、快速运动视频、嵌套与循环片段的对照集；分别评分变换模糊、素材内部运动、透明边缘和首尾帧，不用一个观感分数掩盖媒体复用差异。",
+        "在1/8/16样本及不同后端记录解码次数、效果调用、峰值内存与总渲染耗时；把单样本绕过、媒体复用、GPU合成分开消融，检验成本是否随样本数增长。",
+        "让创作Agent保留角度、样本数和转场参数的可编辑代码，再执行指定参数的二次修改；分别检查编辑成功、未改区域保持及最终输出。预览关闭模糊时必须以导出帧验收画质。"
+      ],
+      "reviewedAt": "2026-11-20T04:25:23.602809+00:00",
+      "sourceUrls": [
+        "https://github.com/remotion-dev/remotion/releases/tag/v4.0.545",
+        "https://www.remotion.dev/docs/motion-blur",
+        "https://www.remotion.dev/docs/motion-blur/html-in-canvas-motion-blur",
+        "https://www.remotion.dev/docs/transitions/transitionseries",
+        "https://github.com/remotion-dev/remotion/pull/13452",
+        "https://github.com/remotion-dev/remotion/pull/13498",
+        "https://github.com/remotion-dev/remotion/blob/f587adbd69c04c051fb2bd69ce23ae99d23d8634/packages/motion-blur/src/HtmlInCanvasMotionBlur.tsx",
+        "https://github.com/remotion-dev/remotion/blob/f587adbd69c04c051fb2bd69ce23ae99d23d8634/packages/transitions/src/TransitionSeries.tsx"
+      ]
+    }
   }
 ]
