@@ -25530,5 +25530,382 @@
         "https://github.com/MoonshotAI/kimi-code/blob/main/apps/kimi-code/CHANGELOG.md"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.26311v1",
+    "url": "https://arxiv.org/abs/2611.26311v1",
+    "id": "paper-swe-recreation-2611-26311",
+    "title": "SWE-Recreation：只看像素探索软件，再用隐藏工作流验收功能副本",
+    "summary": "构建54个应用与1446条隐藏需求，让Agent自行探索原软件后生成可运行副本；主实验在共同42应用上分开记录功能实现、探索证据和持久化，揭示有界面不等于有完整工作流。",
+    "insight": "对创作与代码Agent，最可迁移的是需求ID关联的两本证据账：看过/试过的输入，与实际实现/重载验证的输出；视觉质量、编辑成功和功能正确应独立计分。",
+    "limits": "未复现；主实验42应用、每系统每应用一次，非摘要所称54个均评测；0.530是加权功能分，22.9%是需求全实现比例，均非应用成功率。覆盖判断不是探索真值，视觉相似度受覆盖门控；仓库README与论文实验协议有差异。",
+    "dateLabel": "2026-11-19 首次提交v1",
+    "evidence": "原文方法、实验及附录已读；作者仓库README核验，协议差异已标注，未运行或复现",
+    "originalTitle": "SWE-Recreation: Benchmarking Coding Agents for Software Recreation",
+    "date": "2026-11-19",
+    "checkedAt": "2026-11-20T16:22:49.678538+00:00",
+    "paperOriginalDate": "2026-11-19T16:00:09Z",
+    "paperUpdatedAt": "2026-11-19T16:00:09Z",
+    "updatedAt": "2026-11-19T16:00:09Z",
+    "firstSeenAt": "2026-11-20T10:00:00Z",
+    "lastSeenAt": "2026-11-20T16:00:01Z",
+    "tags": [
+      "自主探索",
+      "功能重建",
+      "像素交互",
+      "证据审计",
+      "Benchmark"
+    ],
+    "authors": [
+      "Zhiyao Xu",
+      "Zhanjie Ding",
+      "Hongyao Yu",
+      "Jingyu Xiao"
+    ],
+    "topics": [],
+    "featured": false,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "此前候选核验来源",
+        "url": "https://arxiv.org/abs/2611.26311"
+      },
+      {
+        "label": "arXiv版本及提交日期",
+        "url": "https://arxiv.org/abs/2611.26311v1"
+      },
+      {
+        "label": "原文方法、指标、实验及附录",
+        "url": "https://arxiv.org/html/2611.26311v1"
+      },
+      {
+        "label": "作者公开代码与数据仓库（未运行）",
+        "url": "https://github.com/nologistic/recreate-anything"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "让Agent只看原软件像素并点击，自行发现功能、写出副本，再用隐藏工作流验收；可借鉴的是把“看到过什么”和“真正实现了什么”分开记录。",
+      "motivation": "给出明确需求、设计稿或操作轨迹会跳过需求发现。自主重建软件还需识别跨页面状态、持久化和依赖关系，因此应同时留下探索证据与副本执行证据，避免把外观可点击当成功能完成。",
+      "novelty": "作者主张将自主探索与功能重建合为像素交互基准。本站判断：需求级证据、明确排除项及覆盖缺失单列最可复用；这些描述性分解尚不能因果解释失败源于未看见、未理解还是未实现。",
+      "evidenceScope": "已读arXiv v1正文方法§3–5、实验§6及附录A–C，非仅摘要；已核作者链接GitHub目录与README，未安装或运行。完整集合54应用/1446需求；§6.1均衡主实验为16个共同Web加26个Android，共42应用、1111需求、210次运行、5555个需求评分，应用等权隐含Web:Android=16:26。摘要仍称54个已评测，与正文不一致，本解读采用正文分母。作者报告最高WFS为0.530、需求全实现比例22.9%，均为应用等权均值。裁判人工复核仅20个样本、4位专家，称超过95%正确，不能外推全部需求。Web覆盖分析2565对中2503对有判断，62对缺失；583对有到达证据，不代表完整工作流被理解。Android公开导出缺部分理由、截图、规范ID映射和原始轨迹；其持久化分沿用导出值。VSim按覆盖与非broken等级门控，不是独立视觉质量。README另列57清单、结构化笔记条件和无网络复现环境，与论文自由探索/54应用/开发网络可用的协议存在差异，未核固定代码提交与论文实验一一对应。verified仅指来源核验。",
+      "limits": "未复现；主实验42应用、每系统每应用一次，非摘要所称54个均评测；0.530是加权功能分，22.9%是需求全实现比例，均非应用成功率。覆盖判断不是探索真值，视觉相似度受覆盖门控；仓库README与论文实验协议有差异。 单次运行无重复方差，模型与harness合并比较；活动网站无确定性复位，可能存在预训练暴露。事后覆盖裁判只看抽样关键帧，缺失不能当零，正判断也可能仅见入口；D2I不证明探索的因果收益。需求清单与评分可能共享模型偏差；15条Squoosh规范存在文字冲突，原评分保留，敏感性剔除不代表其余已独立验证。平台应用类型及运行时不匹配，不能解释为Web/Android因果难度差。没有测试任意生产级产品等价性、完整工程可编辑性或纯视觉保真。",
+      "method": [
+        "整理54个Web/Android应用的1446条隐藏工作流需求及排除项；人先探索，模型草拟清单，再由另一位人工核验，区分持久化和多用户行为。",
+        "原软件只暴露截图、光标和坐标级输入，屏蔽DOM、源码和网络等特权信息；Agent自由探索，不给隐藏需求或规定笔记模板。",
+        "Agent在开发环境生成可运行副本并自行复查；功能等价实现可得分，视觉布局、文案和框架不要求照搬。",
+        "固定GPT-6-Astra裁判实际操作副本，按证据帧给需求满分、部分、占位或失败，权重为1、0.5、0.25、0；持久化满分需修改前后及重载证据。",
+        "另用事后裁判估计探索覆盖，再分别报告功能分、已见需求实现分及过程指标；主实验只在共同42应用上比较五个模型与harness组合，各运行一次。"
+      ],
+      "inspirations": [
+        "给代码创作Agent设置隐藏的编辑验收：改参数后实际渲染、导出重开、局部修改保持，分别记录执行成功、编辑可用性和视觉质量，避免一张截图替代工作流。",
+        "将素材/界面探索证据与交付实现证据按需求ID关联；未录到关键帧、确实未到达、到了但失败分开标注，并公布各指标分母与缺失量。",
+        "在同一任务集固定harness、预算和裁判，重复运行，并做独立人工需求复核；单独报告应用等权与需求等权，避免长清单决定模型排名。"
+      ],
+      "reviewedAt": "2026-11-20T16:22:49.678538+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.26311v1",
+        "https://arxiv.org/html/2611.26311v1",
+        "https://github.com/nologistic/recreate-anything"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.26311",
+      "status": "pending",
+      "checkedAt": "2026-11-20T16:24:50.744347+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.22418v1",
+    "url": "https://arxiv.org/abs/2611.22418v1",
+    "id": "paper-cutagent-2611-22418",
+    "title": "CutAgent：先规划叙事，再把剪辑失败变成可复用约束",
+    "summary": "CutAgent先学“叙事单元＋制作规则”，再检索素材、配音并定向修正。作者一周随机分流实验CTR为2.21%，比AutoCut高0.23个百分点；缺逐组曝光与统计区间，尚不能外推通用收益。",
+    "insight": "作者主张：把广告策略显式化为创意基因，用CTR代理奖励优化规划，再让失败—修正记忆约束制作。本站判断：值得研究的是把“要讲什么”与“如何剪出来”拆开，并让局部修正留下可复用证据；不是新的视频扩散模型，也不能仅凭FFmpeg渲染归入代码创作。",
+    "limits": "未复现；2.21%是单平台点击率，非转化率或提升幅度，缺逐组分母与置信区间；反思共用评分协议、记忆评测隔离不明，未证工程可编辑导出，未核到本文代码开放。线上为一周、43类430商品、总计超过1000万曝光，作者称各方法随机分流，但未披露各方法/商品的点击与曝光、随机化单位、重复用户处理、分层结果、显著性或多次训练种子。2.21%对AutoCut 1.98%为+0.23个百分点，不能写成提升2.21%；点击也不等于购买、收入或长期效果。70K历史CTR受商品、价格和投放条件等共同影响，LightGBM是三档类别代理且仅用于训练；其Eval准确率76.9%不证明新创意的真实CTR因果收益。论文称独立5K商品未用于SFT/奖励模型训练/GRPO，但未充分说明近重复素材、SKU家族及历史广告的跨集合隔离；不据此推断已泄漏。自动质量评分由Qwen3.5-397B-A17B及CLAP等协议得到，反思又使用同一协议，缺独立反思外裁判和具体验收阈值/耗尽三轮后的完整失败统计；记忆在Eval内是否冻结、执行顺序与跨商品写回隔离未交代，不能把记忆增益当作严格冻结测试的泛化证明。人工60.4%是200商品、8个对手、1600次二选一判断的跨对手平均，不是60.4%的真实用户购买率或对AutoCut单独胜率；30参与者的分配、盲法与一致性/区间未详述。加入记忆CTR从2.14%到2.21%，但MQA从89.7降到89.6；完整模型MSS 88.5低于FireRed的90.2，不能说全部指标领先或每个组件均稳定改善。可控性证据是结构化基因、逐镜头脚本和局部替换流程；字幕最终烧入视频，系统界面与时间线描述不证明原生工程导出、二次编辑往返保真或未改区域保持。未给总体执行成功率、独立人类剪辑效率或等预算成本比较。TB测可信感，不等于证书、评论与产品功效已事实核验。论文未链接对应代码/数据发行；搜索到的同名CutAgent商业产品和GitHub仓库与本文无已核作者关联，不作为本文实现。",
+    "organization": "JD.com / Tsinghua University / Tianjin University / Zhejiang University",
+    "dateLabel": "2026-11-17 首发 · 本轮补齐方法解读",
+    "evidence": "已读原文方法、实验及关键附录；CTR、反思评测与可编辑性边界明确，未复现",
+    "originalTitle": "CutAgent: Creative-Gene-Driven Planning and Experience-Guided Self-Refinement for High-CTR E-commerce Advertising Video Creation",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-20T16:22:36.053341+00:00",
+    "paperOriginalDate": "2026-11-17T08:54:39Z",
+    "paperUpdatedAt": "2026-11-17T08:54:39Z",
+    "updatedAt": "2026-11-17T08:54:39Z",
+    "firstSeenAt": "2026-11-20T16:24:50.799405+00:00",
+    "tags": [
+      "Video editing",
+      "Creative planning",
+      "GRPO",
+      "Failure memory",
+      "CTR evaluation"
+    ],
+    "authors": [
+      "Xuyue Huang",
+      "Guanbo Huang",
+      "Jiasong Feng",
+      "Run Ling",
+      "Ao Ma",
+      "Xi Zhao",
+      "Yaoyu Li",
+      "Jie Gao",
+      "Ke Cao",
+      "Wei Feng",
+      "Zhanjie Zhang",
+      "Hao Wang",
+      "Jinghe Hu"
+    ],
+    "topics": [
+      "video-editing"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv 原论文及版本日期",
+        "url": "https://arxiv.org/abs/2611.22418v1"
+      },
+      {
+        "label": "原文方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.22418v1"
+      },
+      {
+        "label": "arXiv TeX 原始稿",
+        "url": "https://arxiv.org/src/2611.22418v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "CutAgent先学“叙事单元＋制作规则”，再检索素材、配音并定向修正。作者一周随机分流实验CTR为2.21%，比AutoCut高0.23个百分点；缺逐组曝光与统计区间，尚不能外推通用收益。",
+      "motivation": "商品信息直接变脚本容易退化成卖点堆叠；素材、配音和音乐中的失败也难复用。作者把叙事顺序与制作规则单独表示，希望商业反馈能优化规划，同时把已定位的制作错误转成以后可检索的约束。",
+      "novelty": "作者主张：把广告策略显式化为创意基因，用CTR代理奖励优化规划，再让失败—修正记忆约束制作。本站判断：值得研究的是把“要讲什么”与“如何剪出来”拆开，并让局部修正留下可复用证据；不是新的视频扩散模型，也不能仅凭FFmpeg渲染归入代码创作。",
+      "evidenceScope": "已读arXiv v1全文§3方法、§4实验、附录A.1–A.7训练与奖励、B.1–B.5制作/反思、C数据、D.1–D.7指标及E定性说明，并下载TeX核对活动主文/附录来源。作者报告独立5K商品自动评测；线上一周43类430商品、总曝光>1000万；人工200商品×8方法共1600次判断、30参与者。五项自动指标最高，MSS不是最高；记忆消融与CTR分母、二选一口径已区分。未逐页视觉检查PDF/图中完整提示词，未播放演示、运行系统、下载训练数据或复现实验。verified仅指来源核验。",
+      "limits": "未复现；2.21%是单平台点击率，非转化率或提升幅度，缺逐组分母与置信区间；反思共用评分协议、记忆评测隔离不明，未证工程可编辑导出，未核到本文代码开放。线上为一周、43类430商品、总计超过1000万曝光，作者称各方法随机分流，但未披露各方法/商品的点击与曝光、随机化单位、重复用户处理、分层结果、显著性或多次训练种子。2.21%对AutoCut 1.98%为+0.23个百分点，不能写成提升2.21%；点击也不等于购买、收入或长期效果。70K历史CTR受商品、价格和投放条件等共同影响，LightGBM是三档类别代理且仅用于训练；其Eval准确率76.9%不证明新创意的真实CTR因果收益。论文称独立5K商品未用于SFT/奖励模型训练/GRPO，但未充分说明近重复素材、SKU家族及历史广告的跨集合隔离；不据此推断已泄漏。自动质量评分由Qwen3.5-397B-A17B及CLAP等协议得到，反思又使用同一协议，缺独立反思外裁判和具体验收阈值/耗尽三轮后的完整失败统计；记忆在Eval内是否冻结、执行顺序与跨商品写回隔离未交代，不能把记忆增益当作严格冻结测试的泛化证明。人工60.4%是200商品、8个对手、1600次二选一判断的跨对手平均，不是60.4%的真实用户购买率或对AutoCut单独胜率；30参与者的分配、盲法与一致性/区间未详述。加入记忆CTR从2.14%到2.21%，但MQA从89.7降到89.6；完整模型MSS 88.5低于FireRed的90.2，不能说全部指标领先或每个组件均稳定改善。可控性证据是结构化基因、逐镜头脚本和局部替换流程；字幕最终烧入视频，系统界面与时间线描述不证明原生工程导出、二次编辑往返保真或未改区域保持。未给总体执行成功率、独立人类剪辑效率或等预算成本比较。TB测可信感，不等于证书、评论与产品功效已事实核验。论文未链接对应代码/数据发行；搜索到的同名CutAgent商业产品和GitHub仓库与本文无已核作者关联，不作为本文实现。",
+      "method": [
+        "从历史广告反向提取叙事基因，配合商品文本/图片、真实CTR和每商品约90–120段清洗素材组成约70K样本；覆盖43类，另设5K商品Eval。基因用27类叙事单元及配音、音乐、脚本等规则连接规划与执行。",
+        "GeneAgent以Qwen3-VL-8B为底座，冻结视觉/对齐模块，LoRA先在CTR前20%样本SFT再GRPO；每商品采8个基因，以冻结LightGBM三档CTR代理、格式、多样性计奖，权重0.60/0.25/0.15。",
+        "VideoAgent在扩写脚本前先按商品类选记忆分区，再以BGE-M3检索相近基因的失败—修正经验，将其作为制作约束；Qwen3-235B-A22B把基因展开为含画面、口播、时长与要求的逐镜头脚本。",
+        "从当前商品素材池检索片段，生成CosyVoice 2配音和时间戳字幕，匹配BGM/音效并用FFmpeg合成时间线；时长不合时缩短口播，字幕图像烧入成片。",
+        "对成片按六个维度评分并提供时间定位，诊断到镜头或模块，优先替换素材/改口播/调时长或音乐，再按同一协议复核，最多3轮；验证后的失败—修正对写回记忆供后续商品检索。"
+      ],
+      "inspirations": [
+        "给剪辑Agent增加可审查的“叙事意图→素材证据→时间线片段”映射：先验证每个卖点有对应素材，再允许替换片段；把叙事覆盖、时间线合法与视觉质量分别验收。",
+        "把记忆条目保存为缺陷位置、修改动作、复核证据和评分器版本；先冻结一份记忆做留出测试，再单独报告允许写回的连续任务实验，并用未参与反思的裁判检查评分自我强化。",
+        "将CTR、真实转化、执行成功率和编辑保真分开报告：按商品配对随机分流并保留逐组点击/曝光与区间；局部修改后比较未改镜头/字幕/音轨，另计检索、反思轮次、渲染耗时和成本。"
+      ],
+      "reviewedAt": "2026-11-20T16:22:36.053341+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.22418v1",
+        "https://arxiv.org/html/2611.22418v1",
+        "https://arxiv.org/src/2611.22418v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.22418",
+      "status": "pending",
+      "checkedAt": "2026-11-20T16:24:50.744347+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.26361v1",
+    "url": "https://arxiv.org/abs/2611.26361v1",
+    "id": "paper-self-distilled-memory-2611-26361",
+    "title": "Self-Distilled Memory：保留长尾经验，再按模型控制记忆剂量",
+    "summary": "把自身成败轨迹提炼成带来源和支持次数的规则，再按模型控制注入量；这是提示记忆，最佳剂量在测试集上挑选，不能视为独立盲测。",
+    "insight": "作者主张：贡献是记忆系统的部署经验，而非新算法；长尾经验应保留，注入量需随模型调整。本站判断：最可复用的是来源与支持次数守恒、剂量控制和故障断言；这属于上下文中的经验提炼，不是参数蒸馏或新RL方法。",
+    "limits": "未复现；最佳配置直接在test_normal挑选，多数单次运行，55.4仅两次均值；支持次数不等于正确。固定全量对照另报，DeepSeek收益伴随78%推理token增加；这是提示记忆，不是参数蒸馏。记忆仅从train/dev提取，但dev也被用于挖掘，已无独立配置选择集；DeepSeek试5种、gpt-oss试4种配置，最佳测试分数存在选择偏差。表2同时列出测试前确定的全量注入规则，其收益不能与选出的最佳子集混称独立盲测；Opus只跑12条压缩配置，没有全量对照。AppWorld normal为168任务，TGC是任务全部检查通过率，SGC是场景全部变体通过率，分母不同；Gemma记忆比较仅164任务，不能直接接其168任务基线。gpt-oss检索TGC的55.4来自56.0与54.8两次，SGC 37.5仅来自首轮；作者约5任务的噪声阈值是经验规则，不是置信区间或显著性检验。同一模型负责运行、提炼和合并；支持次数记录重复推导，不校验规则真伪。高支持分页规则曾因默认页长假设而使成功任务退化，修复依靠人工改写；不能把自动提炼无人工标注延伸为维护全自动。本文所测管线缺少正确性、矛盾与时效信号；当前README另宣称冲突处理等功能，未验证这些功能是否解决论文中的故障。所谓无损合并是覆盖与支持次数守恒，不是语义等价或正确性的形式证明。强弱模型、上下文窗口、记忆质量和任务分布未被完全隔离，不能把剂量曲线外推为模型能力定律。与ACE的DeepSeek对照使用不同ReAct提示框架，无记忆基线已是79.8与72.0；最终89.3对80.4不能归因于记忆方法本身，记忆增量分别9.5与8.4个百分点。gpt-oss与ACE的准确率差应视为噪声内相近；116K对777K是每任务推理token比较，不是同框架的因果效率结论，也不是延迟、费用或含离线提炼的总成本。CUGA的GPT-4.1在两基准三轮均值仅约多成功2题，论文承认不足以确定效应大小；GLM-5.3-Flash全量配置87.8到93.2为每组两轮，token增加36%，未给充分重复或置信区间。watsonx跨任务报销案例输入不同，约39%延迟变化只是单例描述，不是受控加速或通用可靠性保证。已核公开仓库README，未安装或执行代码；产品部署是作者报告，未独立验收。8月18日HF旧文的56.0单次分数、train-only与Opus全量口径和本论文不同，本解读按11月19日论文的方法及表注，不将旧文当本轮新发布。X公开搜索索引未找到可核验原帖，未抓取登录后内容。",
+    "organization": "IBM",
+    "dateLabel": "2026-11-19 首发 · 本轮补齐解读 · 提示记忆与部署经验",
+    "evidence": "已读v1方法、实验、七项部署教训及附录；测试集选型边界已标，未复现",
+    "originalTitle": "How Much Should an Agent Remember? Deployment Lessons from Self-Distilled Memory for LLM Agents",
+    "date": "2026-11-19",
+    "checkedAt": "2026-11-20T16:23:30.301939+00:00",
+    "paperOriginalDate": "2026-11-19T16:29:16Z",
+    "paperUpdatedAt": "2026-11-19T16:29:16Z",
+    "updatedAt": "2026-11-19T16:29:16Z",
+    "firstSeenAt": "2026-11-20T10:00:00Z",
+    "lastSeenAt": "2026-11-20T16:00:01Z",
+    "tags": [
+      "Distillation",
+      "Agent memory",
+      "Context learning",
+      "Deployment lessons",
+      "Evaluation limits"
+    ],
+    "authors": [
+      "K. R. Jayaram",
+      "Vatche Isahagian",
+      "Aswath Vaithinathan Aravindan",
+      "Vinod Muthusamy",
+      "Punleuk Oum",
+      "Gaodan Fang",
+      "Michal Ulewicz",
+      "Gegi Thomas",
+      "Evelyn Duesterwald"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.26361v1"
+      },
+      {
+        "label": "原论文方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.26361v1"
+      },
+      {
+        "label": "原论文TeX源（交叉核对方法与表注）",
+        "url": "https://arxiv.org/src/2611.26361v1"
+      },
+      {
+        "label": "作者公开ALTK-Evolve仓库",
+        "url": "https://github.com/AgentToolkit/altk-evolve"
+      },
+      {
+        "label": "公开README（本轮读取）",
+        "url": "https://github.com/AgentToolkit/altk-evolve/blob/main/README.md"
+      },
+      {
+        "label": "IBM作者HF前期文章（2026-08-18，非新发布）",
+        "url": "https://huggingface.co/blog/ibm-research/altk-evolve-hmm"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把自身成败轨迹提炼成带来源和支持次数的规则，再按模型控制注入量；这是提示记忆，最佳剂量在测试集上挑选，不能视为独立盲测。",
+      "motivation": "Agent会反复犯分页、实体定位等程序性错误。把经验压成短清单会丢掉只出现一次的有效提醒，全量塞进上下文又可能淹没较弱模型；作者研究如何保留经验而控制交付剂量，并识别部署中的假改进。",
+      "novelty": "作者主张：贡献是记忆系统的部署经验，而非新算法；长尾经验应保留，注入量需随模型调整。本站判断：最可复用的是来源与支持次数守恒、剂量控制和故障断言；这属于上下文中的经验提炼，不是参数蒸馏或新RL方法。",
+      "evidenceScope": "已读arXiv v1 HTML全文及TeX中的系统、测量设置、七项Insights、表1–6、部署章节与附录A。AppWorld normal 168任务：DeepSeek固定全量191条使TGC 79.8%→89.3%，每任务token 148K→263K；gpt-oss固定全量199条为39.9%→51.2%，约29条检索的最佳配置55.4%为两次均值。后者在test_normal选型，非独立确认。另核公开README及8月作者HF旧文，旧文只作历史交叉核对；未运行代码、模型或基准，未逐页视觉检查PDF。verified只表示公开来源核验，不是实验复现。",
+      "limits": "未复现；最佳配置直接在test_normal挑选，多数单次运行，55.4仅两次均值；支持次数不等于正确。固定全量对照另报，DeepSeek收益伴随78%推理token增加；这是提示记忆，不是参数蒸馏。记忆仅从train/dev提取，但dev也被用于挖掘，已无独立配置选择集；DeepSeek试5种、gpt-oss试4种配置，最佳测试分数存在选择偏差。表2同时列出测试前确定的全量注入规则，其收益不能与选出的最佳子集混称独立盲测；Opus只跑12条压缩配置，没有全量对照。AppWorld normal为168任务，TGC是任务全部检查通过率，SGC是场景全部变体通过率，分母不同；Gemma记忆比较仅164任务，不能直接接其168任务基线。gpt-oss检索TGC的55.4来自56.0与54.8两次，SGC 37.5仅来自首轮；作者约5任务的噪声阈值是经验规则，不是置信区间或显著性检验。同一模型负责运行、提炼和合并；支持次数记录重复推导，不校验规则真伪。高支持分页规则曾因默认页长假设而使成功任务退化，修复依靠人工改写；不能把自动提炼无人工标注延伸为维护全自动。本文所测管线缺少正确性、矛盾与时效信号；当前README另宣称冲突处理等功能，未验证这些功能是否解决论文中的故障。所谓无损合并是覆盖与支持次数守恒，不是语义等价或正确性的形式证明。强弱模型、上下文窗口、记忆质量和任务分布未被完全隔离，不能把剂量曲线外推为模型能力定律。与ACE的DeepSeek对照使用不同ReAct提示框架，无记忆基线已是79.8与72.0；最终89.3对80.4不能归因于记忆方法本身，记忆增量分别9.5与8.4个百分点。gpt-oss与ACE的准确率差应视为噪声内相近；116K对777K是每任务推理token比较，不是同框架的因果效率结论，也不是延迟、费用或含离线提炼的总成本。CUGA的GPT-4.1在两基准三轮均值仅约多成功2题，论文承认不足以确定效应大小；GLM-5.3-Flash全量配置87.8到93.2为每组两轮，token增加36%，未给充分重复或置信区间。watsonx跨任务报销案例输入不同，约39%延迟变化只是单例描述，不是受控加速或通用可靠性保证。已核公开仓库README，未安装或执行代码；产品部署是作者报告，未独立验收。8月18日HF旧文的56.0单次分数、train-only与Opus全量口径和本论文不同，本解读按11月19日论文的方法及表注，不将旧文当本轮新发布。X公开搜索索引未找到可核验原帖，未抓取登录后内容。",
+      "method": [
+        "同一模型运行train/dev任务，并从每条成功或失败轨迹提炼1–3条行动建议；成败来自环境评测器，保留来源任务、触发条件和证据类型。",
+        "将相关经验分组，只合并行动等价的建议；累计支持次数并保留来源，未覆盖的经验原样留下，校验输出支持总和等于原始经验数。",
+        "推理时选择全量注入，或高支持核心加按来源任务相似度检索的补充规则；去除重复，支持阈值只控制交付，不删除长尾存储。",
+        "在AppWorld比较任务完成TGC、场景全变体完成SGC与每任务token；将测试前固定的全量规则和测试集选出的最佳配置分开，另做重复运行及CUGA接入检查。"
+      ],
+      "inspirations": [
+        "代码视频/3D Agent可从执行与渲染检查的真实成败提炼经验，并保留源任务及适用条件；合并后检查条目覆盖和支持守恒，不能把重复出现当成视觉正确或几何正确。",
+        "为每个模型分别在开发集选择记忆数量与检索策略，再冻结配置到独立测试集；同时报告重复运行、任务/场景成功率、推理token及离线提炼成本，避免把最佳测试分数当泛化收益。",
+        "给记忆写入次数和存储增长加断言，再做相互矛盾、过时规则及退化任务的回归检查；让经验可追溯、可撤回，避免写入失败或高频错误被误判为持续学习。"
+      ],
+      "reviewedAt": "2026-11-20T16:23:30.301939+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.26361v1",
+        "https://arxiv.org/html/2611.26361v1",
+        "https://arxiv.org/src/2611.26361v1",
+        "https://github.com/AgentToolkit/altk-evolve",
+        "https://github.com/AgentToolkit/altk-evolve/blob/main/README.md",
+        "https://huggingface.co/blog/ibm-research/altk-evolve-hmm"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.26361",
+      "status": "pending",
+      "checkedAt": "2026-11-20T16:24:50.744347+00:00"
+    }
+  },
+  {
+    "sourceType": "huggingface",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/harness-adapters-at-scale",
+    "url": "https://huggingface.co/blog/harness-adapters-at-scale",
+    "id": "update-harness-adapters-scale-20261120",
+    "title": "Harness adapters最终结果：同一工具框架内训练有效，合并与外域迁移仍要分开验收",
+    "summary": "团队发布Qwen3.8-27B在三种实际Agent框架内RL的最终适配器，并把三个LoRA合成一个跨框架版本；同框架配对评测改善，但测试集选型、不同分母及外域负例限制了泛化结论。",
+    "insight": "值得复制的是固定框架做配对评估、验证器负对照和保留失败任务；训练专用适配器、合并适配器及跨业务迁移应分别验收，效率统计也要说明是否只覆盖双方成功样本。",
+    "limits": "仅核作者博文与模型/数据卡，未训练或复现。合并权重在Terminal-Bench 2.1上选择，OpenCode部分题还参与checkpoint选择；共同可评分子集与双模型配对子集分母不同，不能混表。主要每题单次尝试，工具节省只统计双方都解出的任务；调用少不等于总成本低或更安全。",
+    "organization": "Hugging Face · harness-hub作者团队",
+    "dateLabel": "2026-11-20官方博文；11月6日既有项目的最终训练与合并进展",
+    "evidence": "官方博文全文、模型卡完整结果/训练/合并章节及公开数据卡、插件说明已读；未运行或复现",
+    "originalTitle": "Introducing harness adapters: adapt your favorite model to your harness to improve performance and cost",
+    "date": "2026-11-20",
+    "checkedAt": "2026-11-20T16:23:46.333970+00:00",
+    "firstSeenAt": "2026-11-20T16:24:50.799405+00:00",
+    "tags": [
+      "训练/RL",
+      "Harness",
+      "LoRA合并",
+      "可验证环境",
+      "数据质量",
+      "跨域评测"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "此前11月6日项目说明",
+        "url": "https://huggingface.co/blog/harness-hub/harness-adapters"
+      },
+      {
+        "label": "Hugging Face 11月20日官方技术长文",
+        "url": "https://huggingface.co/blog/harness-adapters-at-scale"
+      },
+      {
+        "label": "Super-adapter模型卡与完整配对结果",
+        "url": "https://huggingface.co/harness-hub/Qwen3.8-27B-super-adapter"
+      },
+      {
+        "label": "Super-adapter模型卡原文",
+        "url": "https://huggingface.co/harness-hub/Qwen3.8-27B-super-adapter/raw/main/README.md"
+      },
+      {
+        "label": "作者发布集合",
+        "url": "https://huggingface.co/collections/harness-hub/qwen38-27b-harness-adapters"
+      },
+      {
+        "label": "任务数据卡与历史资格范围",
+        "url": "https://huggingface.co/datasets/harness-hub/agentic-coding-envs"
+      },
+      {
+        "label": "数据卡原文",
+        "url": "https://huggingface.co/datasets/harness-hub/agentic-coding-envs/raw/main/README.md"
+      },
+      {
+        "label": "调用检查插件说明",
+        "url": "https://huggingface.co/harness-hub/qwen-safeagents-plugin"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "11月20日发布的27B最终结果把旧项目推进到三框架专用LoRA及rank96合并适配器；效果成立于具体框架、预算和任务子集，外域迁移并不稳定。",
+      "motivation": "同一模型会受工具协议、历史保留和循环控制影响；把通用模型直接换进框架不能保证高效。团队希望在真实部署框架中训练，而不是重写一个近似Agent循环。",
+      "novelty": "作者主张在原样运行的部署框架中做RL，可同时提升正确率和效率，并通过LoRA合并兼容多框架。本站判断：本轮新增价值在27B最终检查点、可追溯配对表与外域负例；相较11月6日的smoke阶段属于实质进展，但不能据此断言合并普遍无损或学到通用安全能力。",
+      "evidenceScope": "已直接读取11月20日HF官方博文全文、super-adapter模型卡的训练/合并/评测/限制、发布集合、数据卡及安全插件README；没有下载权重、逐条审训练任务/轨迹或执行代码。模型卡共同可评分表每框架取SWE-bench Pro 50–51题和Terminal-Bench 82–85题，super-adapter在thinking开启时六组合均值55.5%→63.5%，五组提高一组持平；这是作者按表汇总，不是所有单行显著。完整双模型配对表可能纳入更多题，不能拿它的分母替换共同表。模型卡明确单次尝试、温度0.8、100步、131072上下文且不压缩、只服务文本。合并权重用Terminal-Bench选取；专用OpenCode报告另有66题未参与checkpoint选择的子集。效率按双方解出任务的中位数，非所有任务平均成本。300题AutomationBench作者结果：底座23.0%，Pi27.0%、OpenCode25.3%、合并23.7%、Hermes17.7%，不支持普遍跨业务提升。verified仅指来源核验，未复现。",
+      "limits": "仅核作者博文与模型/数据卡，未训练或复现。合并权重在Terminal-Bench 2.1上选择，OpenCode部分题还参与checkpoint选择；共同可评分子集与双模型配对子集分母不同，不能混表。主要每题单次尝试，工具节省只统计双方都解出的任务；调用少不等于总成本低或更安全。 训练数据口径未闭合：博文数据表总量871及qualified总计171，但qualified分项144+27+22合计193；最终750+300训练混合又是不同口径。所链数据卡保留历史quarantine/未完成资格和未执行泄漏审计说明，不能据公开可读、train分片名或mixed成功率替作者保证所有最终任务已满足语义隔离与可训练性。模型卡与博文采用不同共同/配对分母；多数单行区间宽、合并p值不代表各行显著。部分基础设施失败被作者识别后重跑，未能评分的环境被排除；不是完整原始尝试成功率。不同框架保留推理历史的方式不同，不作框架之间排名。训练关闭thinking但文本中仍可能出现推理，作者称thinking leakage；不能解释为模型已停止思考。三次训练共检查约130万工具调用并阻断647次，不等于阻断率下降证明安全；插件有针对正常工作误拦的规则例外。权重/数据/轨迹入口可读不等于已独立验证全部产物可运行；GGUF模型卡明确未重评。",
+      "method": [
+        "从训练用软件任务和PR生成任务构造Harbor环境；作者先排除目标benchmark及其仓库，再用参考解、空操作、错误解和重复执行检查验证器，并测底座的部分成功任务。",
+        "在Pi、Hermes Agent和OpenCode实际框架中分别采样，通过代理记录原始token；用AsyncGRPO训练Qwen3.8-27B的LoRA，奖励组合验证器结果与0.1权重的工具效率项，训练采样关闭thinking。",
+        "最终作者报告混合750个scale800任务与300个TermGrade任务，按任务家族交错；safeagents逐工具检查保留，记录被阻断调用，但阻断率不等同安全结论。",
+        "将三份rank32 LoRA沿rank维拼接成rank96，精确施加三份权重增量之和的二分之一；合并本身没有再训练，权重用较早checkpoint在Terminal-Bench 2.1上比较选出。",
+        "分别比较专用/合并适配器、thinking开/关及跨框架使用；报告同框架配对成功率、双方成功任务的调用/token中位数，再用300题AutomationBench和另一Agent循环测外域表现。"
+      ],
+      "inspirations": [
+        "为代码视频/3D Agent固定框架、渲染器和预算训练适配器，并按素材/项目仓库留出；先用错误成片、空编辑和篡改测试对照验证奖励，避免奖励只学会通过检查器。",
+        "将专用适配器、合并适配器、换框架和换业务域分成四张结果表；把合并权重与checkpoint的开发集单独划出，展示丢失任务和环境失败分母。",
+        "同时保存全部任务的成功率/总资源与双方成功子集的步骤/token中位数；对被阻断调用做误报和漏报审计，不能把动作变少当作安全提升。"
+      ],
+      "reviewedAt": "2026-11-20T16:23:46.333970+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/blog/harness-adapters-at-scale",
+        "https://huggingface.co/harness-hub/Qwen3.8-27B-super-adapter",
+        "https://huggingface.co/harness-hub/Qwen3.8-27B-super-adapter/raw/main/README.md",
+        "https://huggingface.co/collections/harness-hub/qwen38-27b-harness-adapters",
+        "https://huggingface.co/datasets/harness-hub/agentic-coding-envs",
+        "https://huggingface.co/datasets/harness-hub/agentic-coding-envs/raw/main/README.md",
+        "https://huggingface.co/harness-hub/qwen-safeagents-plugin",
+        "https://huggingface.co/blog/harness-hub/harness-adapters"
+      ]
+    }
   }
 ]
