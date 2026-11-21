@@ -26581,5 +26581,353 @@
         "https://developers.openai.com/blog"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.25228v1",
+    "url": "https://arxiv.org/abs/2611.25228v1",
+    "id": "paper-mka-2611-25228",
+    "title": "MKA：把视觉读取、文件交付与评分口径分开验收",
+    "summary": "MKA用200项多文件专业任务评测端到端交付，176题要求生成文件；裁判同时检查渲染外观与文件内部结构。仅针对Gemini 4 Carbon移除view_image后，Climb加权分下降5.94个百分点；这不是整题成功率。",
+    "insight": "将能读取视觉、能生成可执行文件、能保持语义正确与视觉质量拆开验收；多模态任务的裁判也应实际渲染、检查公式或结构，并披露剩余OCR等信息通道。",
+    "limits": "200题评测集未公开；主实验每模型每题一次、裁判一次。96.2%一致性仅属高权重抽样；评分非整题通过率。5.74倍是含缓存的累计token，非推理算力。未复现。",
+    "dateLabel": "2026-11-18 arXiv v1；基准官方发布于11-10",
+    "evidence": "已读v1方法、全部实验与附录A–B，核验公开HF任务元数据；未运行任务或复现",
+    "originalTitle": "MKA: Evaluating Multimodal Knowledge Agents on end-to-end professional tasks",
+    "date": "2026-11-18",
+    "checkedAt": "2026-11-21T10:29:04.281982+00:00",
+    "paperOriginalDate": "2026-11-18T21:59:46Z",
+    "paperUpdatedAt": "2026-11-18T21:59:46Z",
+    "updatedAt": "2026-11-18T21:59:46Z",
+    "firstSeenAt": "2026-11-20T04:00:01Z",
+    "lastSeenAt": "2026-11-21T10:00:01Z",
+    "tags": [
+      "多模态Agent",
+      "专业交付",
+      "文件评测",
+      "视觉工具消融",
+      "Benchmark"
+    ],
+    "authors": [
+      "Anima Singh",
+      "Suhas Yogin",
+      "Weicheng Kuo",
+      "Ivor Rendulic",
+      "Ivan Jurin",
+      "Antoine Yang",
+      "Oran Kelly",
+      "Rohan Doshi",
+      "Hammad Ayyubi",
+      "Ioana Bica",
+      "Sergi Caelles",
+      "Matthew Conniff",
+      "Dan Graur",
+      "Anastasija Ilić",
+      "Ahmet Iscen",
+      "Chao Jia",
+      "Tomasz Kępa",
+      "Chunyuan Li",
+      "Noah Ó Donnaile",
+      "Filip Pavetic",
+      "Goran Petrovic",
+      "Khalid Salama",
+      "Zhicheng Wang",
+      "Polina Zablotskaia",
+      "Yiqian Zhang",
+      "Ming Zhao",
+      "Benjamin Caine",
+      "Mario Lučić",
+      "Melvin Johnson",
+      "Radu Soricut",
+      "Jean-Baptiste Alayrac"
+    ],
+    "topics": [],
+    "featured": false,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv版本与首次提交",
+        "url": "https://arxiv.org/abs/2611.25228v1"
+      },
+      {
+        "label": "此前候选核验来源",
+        "url": "https://arxiv.org/abs/2611.25228"
+      },
+      {
+        "label": "原文方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.25228v1"
+      },
+      {
+        "label": "作者公开Showcase数据仓",
+        "url": "https://huggingface.co/datasets/google/multimodal-knowledge-agent"
+      },
+      {
+        "label": "Google官方基准发布说明",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/multimodal-knowledge-agent-benchmark/"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "MKA要求Agent跨文件理解并交付真实产物。移除图像查看工具后，仅Gemini 4 Carbon的Climb加权分下降5.94个百分点；生成文件、视觉正确和整题完成需分开判断。",
+      "motivation": "知识工作常把图表、扫描件、表格与演示文档混在一起。只检查文本答案会漏掉布局、公式、尺寸和交付格式错误；更强的推理也未必能替代直接读取视觉信息。",
+      "novelty": "作者主张评测依赖视觉的专业端到端任务。本站判断：实际渲染与内部结构联合验收值得借鉴，但私有题集、部分得分和单次运行不足以推出稳定的整题交付成功率。",
+      "evidenceScope": "已读arXiv v1正文§1–4.3、局限与附录A–B，不限摘要；本轮核验arXiv日期、Google官方11月10日发布说明及HF公开仓的10份metadata.json，未下载输入素材或运行模型。200题评测集保持私有，开放10题与其不重合；论文称Showcase每行业一题，但HF提交46bce7ab8768f661750bd1016ec8cbdc517740b5的10份元数据实际只有9种Vertical，Engineering两题、未见Healthcare，应以具体发布快照为准。200题有176题要求文件，14284条标准中4217条有依赖元数据，但WSR不按依赖门控，不等于整题全通过。50题、9行业的人工对照只选权重3–5标准，且平衡通过/失败；专家可见原输入而裁判不可见，96.2%为该抽样的加权判定一致性，95%区间94.7–97.6，非全部任务正确率。主实验每模型每题一次、裁判一次；任务bootstrap不覆盖运行种子方差。前3名Climb差异在配对任务区间内不显著，不能固化排名。Fable到Carbon的5.74倍是跨调用累计输入加输出token，输入中93.7–97.7%为缓存；输出比为2.93倍，不应解释为5.74倍推理算力。Carbon移除view_image的Climb变化为−5.94个百分点，95%区间−7.39至−4.49；依然可用OCR/OpenCV等视觉派生信息，未对其他模型重复该消融。verified仅表示来源核验，不表示复现。",
+      "limits": "200题评测集未公开；主实验每模型每题一次、裁判一次。96.2%一致性仅属高权重抽样；评分非整题通过率。5.74倍是含缓存的累计token，非推理算力。未复现。 一致性抽样有权重筛选和通过/失败平衡，裁判与专家信息访问不对称；交互式交付仅静态查源码可能产生误失败。250轮上限相同不代表上下文、token、时间或成本相同；更高分不能归因于单一模型能力。Climb由冻结旧模型面板和同一类裁判划分，不是独立人类难度真值。HF当前公开示例行业标签与论文一行业一题的描述有出入，未推测原因。论文不专门评测视频编辑、代码动画或代码3D生成，因此不添加创作topics；迁移建议为本站研究设想。",
+      "method": [
+        "专家编制200题，覆盖10个行业、83种职业；1459份输入文件配14284条权重1–5的标准，176题须交付文件。另开放10个独立Showcase。",
+        "各模型使用同版Stirrup、代码执行/图像查看/搜索工具及250轮、8小时上限；完成工具只检查文件存在。主实验每题运行一次。",
+        "独立GPT-6 Luna裁判在新沙箱读取交付、题目与自足评分标准，渲染外观并检查内部结构；它不能访问原输入文件或联网。",
+        "先算题内加权满足率，再对题等权平均；冻结旧模型面板的三次运行，将容易通过项与Climb项分开。依赖图不用于门控得分。",
+        "用50题的高权重标准做三名专家与三次裁判的一致性分析；仅对Carbon移除view_image，仍保留代码、搜索和OCR通道，分报质量与开销。"
+      ],
+      "inspirations": [
+        "为代码视频增加可编辑工程解析、多时刻真实播放、导出回读三类检查；分别记录执行、可编辑性和视觉语义，不让文件存在或单帧截图代替全部验收。",
+        "做看图工具消融时列清OCR、网页图片描述等残余通道；冻结难题划分，并同时报告独立种子、任务重采样区间及累计缓存token，避免把额外预算当能力提升。",
+        "对交互式产物比较静态源码裁判与实际运行裁判；按权重和子域抽样误通过/误失败，检验高权重标准上的一致性能否覆盖低权重视觉细节。"
+      ],
+      "reviewedAt": "2026-11-21T10:29:04.281982+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.25228v1",
+        "https://arxiv.org/html/2611.25228v1",
+        "https://huggingface.co/datasets/google/multimodal-knowledge-agent",
+        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/multimodal-knowledge-agent-benchmark/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.25228",
+      "status": "pending",
+      "checkedAt": "2026-11-21T10:31:18.929358+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2610.37341v1",
+    "url": "https://arxiv.org/abs/2610.37341v1",
+    "id": "paper-codecap-bench-2610-37341",
+    "title": "CodeCap-Bench：用代码描述视频，把能渲染与动态还原分开验收",
+    "summary": "CodeCap-Bench把视频描述写成可执行HTML/CSS/JS，用323个结构化2D视频分开测产出、对象时空对齐和动态保留。它揭示能渲染不等于还原准确，Agent也不总优于单次生成；这是10月27日代表作解读。",
+    "insight": "作者主张：用可执行代码补充自然语言视频描述，以多层指标检验信息保留。本站判断：价值在把渲染成功与时间线、对象和动态细节分开验收；文字对照仍有模态与解码器混杂，不能证明代码在所有视频上天然更优。",
+    "limits": "未复现；仅323个结构化2D视频，生成失败记零，产出率不等于保真度或可编辑性。Agent未必优于单次生成，未证预算配平；文字对照混合输入模态和Seedance解码，非等长表征比较。代码/数据已公开，未跑全量。这是2026年10月27日v1代表作的队列补齐，不是本轮新发布。数据经过筛选，排除复杂3D视角、细密纹理与稠密像素运动，均长19秒；不能泛化到真实拍摄、长叙事视频、任意3D或音频。可修改的单文件HTML/CSS/JS和seek接口是程序表示证据，论文没有测后续指令编辑成功、局部修改保持、工程往返或软件界面真实交互功能。主表统一medium思考设置，失败样本对各指标计零，没有只保留共同成功样本；99.4%渲染成功和73.24保留分是不同量。GPT-6-sol/Codex产出100%，整体保留51.34，低于其单次生成53.08；GPT-5.6-sol也未因Agent必然提升保真。无Agent输入固定2fps、超过GPT图片上限时拼图，Agent则可主动选帧和反复渲染，观察与计算量不同。默认生成3600秒、单次渲染900秒；Qwen3.8-max的xhigh特例有7200秒，不能把思考强度比较当同时间预算。正文未报告完整多次运行方差、置信区间或模型版本稳定性，排名限于所测配置。对象IoU先由GPT-6-sol做目标定位，再用SAM3.1跟踪，计算的是框IoU而非像素mask IoU；目标缺失记零，双方均不可见帧不计。定位或跟踪误差会进入分数。保留分是焦点0–5评审后的视频级汇总，主表以较大数值尺度呈现，不是事件正确率；可读实现保留原始0–5值。动态焦点评审用低采样率帧/拼图，极短事件可能漏检。人工校验只选50个参考视频、每类10个及4模型的输出，视频级相关r=0.942不能证明每个焦点正确或无模型偏好；第二裁判仅比较GPT-6-sol与DeepSeek两个生成模型，且GPT读帧/拼图、Gemini读原分辨率视频，不能推出完整榜单对所有裁判稳定。未报告完整标注者人数、一致性和逐类不确定性。文字对照QA来自另外3个数据集的100个视频：回答器看代码渲染视频或文字描述，既换表征也换输入模态；原文没有给等token/长度/预算约束。重建对照是代码直接渲染对文字经Seedance2.5生成，结果共同依赖解码器，并非只测描述载体；未证对所有自然语言压缩/解码方案普遍占优。公开仓库可读推理、seek逐帧渲染和3类评估实现，GitHub内置单个246样例；HF公开无门槛目录含323个MP4和两类标注，本站仅核目录及仓库样例，未下载全部媒体或审所有标签。SAM3.1权重另需上游访问授权，评估需模型服务及GPU。公开代码单题执行会区分media完成和generation状态；指标调用失败保留error/coverage而不是有效低分，不能丢掉这些项后直接声称复现论文全量均分。",
+    "organization": "NJU / Kling AI / TJU / SJTU / CASIA / PKU",
+    "dateLabel": "2026-10-27 首发 · 30天范围代表作解读",
+    "evidence": "已读v1全文方法、实验、A–D附录及TeX；静态核作者公开代码和HF数据目录，未运行或复现",
+    "originalTitle": "CodeCap-Bench: Can Code Serve as a Good Video Caption?",
+    "date": "2026-10-27",
+    "checkedAt": "2026-11-21T10:29:06.009252+00:00",
+    "paperOriginalDate": "2026-10-27T14:47:31Z",
+    "paperUpdatedAt": "2026-10-27T14:47:31Z",
+    "updatedAt": "2026-10-27T14:47:31Z",
+    "firstSeenAt": "2026-11-21T10:31:18.966922+00:00",
+    "tags": [
+      "Code as Video Caption",
+      "Executable video representation",
+      "Visual evaluation",
+      "HTML/CSS/JS",
+      "Temporal fidelity"
+    ],
+    "authors": [
+      "Jiafu Tang",
+      "Yifan Xu",
+      "Eric Tang",
+      "Junjie Zhao",
+      "Shipeng Luo",
+      "Te Sun",
+      "Haoxuan Hu",
+      "Yiyan Ji",
+      "Xinlong Chen",
+      "Zihao Wang",
+      "Yang Shi",
+      "Yuanxing Zhang",
+      "Pengfei Wan",
+      "Jiaheng Liu"
+    ],
+    "topics": [
+      "code2motion",
+      "code2video"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv 版本与首发日期",
+        "url": "https://arxiv.org/abs/2610.37341v1"
+      },
+      {
+        "label": "原队列固定README来源",
+        "url": "https://github.com/FrankYang-17/Coda/blob/fa22f8917e29bf4e5f41a771476b971f8bd7c303/README.md"
+      },
+      {
+        "label": "原队列固定代码目录",
+        "url": "https://github.com/FrankYang-17/Coda/tree/fa22f8917e29bf4e5f41a771476b971f8bd7c303/CodeCap-Bench"
+      },
+      {
+        "label": "原论文方法、实验与附录",
+        "url": "https://arxiv.org/html/2610.37341v1"
+      },
+      {
+        "label": "arXiv TeX 原稿",
+        "url": "https://arxiv.org/src/2610.37341v1"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://codecap-bench.github.io/"
+      },
+      {
+        "label": "项目页所链作者代码仓库",
+        "url": "https://github.com/kevin236-max/CodeCap-Bench"
+      },
+      {
+        "label": "当前固定版本运行与评估说明",
+        "url": "https://github.com/FrankYang-17/Coda/blob/c4edeea4cfe03727f335df43275c9585ec228b41/CodeCap-Bench/README.md"
+      },
+      {
+        "label": "固定版本seek渲染实现",
+        "url": "https://github.com/FrankYang-17/Coda/blob/c4edeea4cfe03727f335df43275c9585ec228b41/CodeCap-Bench/agent/docker/tools/render.mjs"
+      },
+      {
+        "label": "固定版本框IoU汇总实现",
+        "url": "https://github.com/FrankYang-17/Coda/blob/c4edeea4cfe03727f335df43275c9585ec228b41/CodeCap-Bench/eval/object_st_iou/metrics.py"
+      },
+      {
+        "label": "固定版本焦点评估实现",
+        "url": "https://github.com/FrankYang-17/Coda/blob/c4edeea4cfe03727f335df43275c9585ec228b41/CodeCap-Bench/eval/visual_retention/evaluate.py"
+      },
+      {
+        "label": "作者公开数据目录",
+        "url": "https://huggingface.co/datasets/kevintank/CodeCap-Dataset"
+      },
+      {
+        "label": "Hugging Face论文页（非独立实验）",
+        "url": "https://huggingface.co/papers/2610.37341"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "CodeCap-Bench把视频描述写成可执行HTML/CSS/JS，用323个结构化2D视频分开测产出、对象时空对齐和动态保留。它揭示能渲染不等于还原准确，Agent也不总优于单次生成；这是10月27日代表作解读。",
+      "motivation": "自然语言能说出发生了什么，却难精确给出每个对象的位置、布局和随时间变化的规则。作者把视频描述改成可执行程序，让信息保留能够通过渲染逐时刻核对，并用评测区分画面看起来像、对象位置对齐和动态过程真正保留。",
+      "novelty": "作者主张：用可执行代码补充自然语言视频描述，以多层指标检验信息保留。本站判断：价值在把渲染成功与时间线、对象和动态细节分开验收；文字对照仍有模态与解码器混杂，不能证明代码在所有视频上天然更优。",
+      "evidenceScope": "已读arXiv v1 §3任务/构建/指标、§4主实验与思考/工具/裁判/文字对照、附录A运行预算、B失败分析、C提示及D代表案例文字；下载TeX核活动正文。读取Coda固定提交c4edeea4cfe03727f335df43275c9585ec228b41的README、Agent运行/渲染、三种评估和示例标注；核项目所链另一作者仓库与HF公开数据API目录。HF数据快照e11b4548cb66e13aa3d2fce33bb2f0dd48f95f58含323个MP4及两类JSONL。未逐页视觉核验PDF、播放全部媒体、执行代码、申请SAM权重或重新评测；verified仅来源核验。",
+      "limits": "未复现；仅323个结构化2D视频，生成失败记零，产出率不等于保真度或可编辑性。Agent未必优于单次生成，未证预算配平；文字对照混合输入模态和Seedance解码，非等长表征比较。代码/数据已公开，未跑全量。这是2026年10月27日v1代表作的队列补齐，不是本轮新发布。数据经过筛选，排除复杂3D视角、细密纹理与稠密像素运动，均长19秒；不能泛化到真实拍摄、长叙事视频、任意3D或音频。可修改的单文件HTML/CSS/JS和seek接口是程序表示证据，论文没有测后续指令编辑成功、局部修改保持、工程往返或软件界面真实交互功能。主表统一medium思考设置，失败样本对各指标计零，没有只保留共同成功样本；99.4%渲染成功和73.24保留分是不同量。GPT-6-sol/Codex产出100%，整体保留51.34，低于其单次生成53.08；GPT-5.6-sol也未因Agent必然提升保真。无Agent输入固定2fps、超过GPT图片上限时拼图，Agent则可主动选帧和反复渲染，观察与计算量不同。默认生成3600秒、单次渲染900秒；Qwen3.8-max的xhigh特例有7200秒，不能把思考强度比较当同时间预算。正文未报告完整多次运行方差、置信区间或模型版本稳定性，排名限于所测配置。对象IoU先由GPT-6-sol做目标定位，再用SAM3.1跟踪，计算的是框IoU而非像素mask IoU；目标缺失记零，双方均不可见帧不计。定位或跟踪误差会进入分数。保留分是焦点0–5评审后的视频级汇总，主表以较大数值尺度呈现，不是事件正确率；可读实现保留原始0–5值。动态焦点评审用低采样率帧/拼图，极短事件可能漏检。人工校验只选50个参考视频、每类10个及4模型的输出，视频级相关r=0.942不能证明每个焦点正确或无模型偏好；第二裁判仅比较GPT-6-sol与DeepSeek两个生成模型，且GPT读帧/拼图、Gemini读原分辨率视频，不能推出完整榜单对所有裁判稳定。未报告完整标注者人数、一致性和逐类不确定性。文字对照QA来自另外3个数据集的100个视频：回答器看代码渲染视频或文字描述，既换表征也换输入模态；原文没有给等token/长度/预算约束。重建对照是代码直接渲染对文字经Seedance2.5生成，结果共同依赖解码器，并非只测描述载体；未证对所有自然语言压缩/解码方案普遍占优。公开仓库可读推理、seek逐帧渲染和3类评估实现，GitHub内置单个246样例；HF公开无门槛目录含323个MP4和两类标注，本站仅核目录及仓库样例，未下载全部媒体或审所有标签。SAM3.1权重另需上游访问授权，评估需模型服务及GPU。公开代码单题执行会区分media完成和generation状态；指标调用失败保留error/coverage而不是有效低分，不能丢掉这些项后直接声称复现论文全量均分。",
+      "method": [
+        "从公开视频筛323个可程序化2D片段，排除复杂3D、纹理和稠密像素运动；人工复核静态/动态焦点及对象可见区间、逐帧框，覆盖5类内容。",
+        "模型只用HTML/CSS/JS重建画面与时间函数，禁用原图和外部视觉资产；交付单文件并暴露seek时间接口，以24fps逐时刻截图编码，先验收视频能否产出。",
+        "分别测V-JEPA2.1特征余弦、对象时空框IoU和焦点保留；对象定位由GPT-6-sol引导SAM3.1，焦点由GPT-6-sol按0–5分评审后逐视频汇总。",
+        "对7种模型比较Agent主动选帧/渲染修订与无Agent固定2fps单次生成；失败计零，静态和动态分开报，再分析思考强度、花费、时长与工具使用。",
+        "抽50个参考视频及4模型输出核人机评分相关；另用100个视频做渲染视频与文字QA，并将代码直接渲染对比文字经Seedance重建，明确对照同时改变输入或解码器。"
+      ],
+      "inspirations": [
+        "给Code2Motion回归集同时保留执行状态、对象绝对时间框与静态/动态焦点；先报告全部任务分母和失败，再看保真分，避免把生成MP4当任务完成。",
+        "围绕转场、状态变化和协同运动增加短事件密集采样，用固定时间轴对照起点、中间态和终点；同时抽查定位、跟踪和VLM裁判，让总分下降能定位到误差来源。",
+        "比较Agent收益时固定模型、可见帧和总预算，并区分观察增益与修订增益；要证明代码的表征优势，再补同长度信息预算和同回答器输入条件，单独测试代码修改后的局部保持。"
+      ],
+      "reviewedAt": "2026-11-21T10:29:06.009252+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2610.37341v1",
+        "https://github.com/FrankYang-17/Coda/blob/fa22f8917e29bf4e5f41a771476b971f8bd7c303/README.md",
+        "https://github.com/FrankYang-17/Coda/tree/fa22f8917e29bf4e5f41a771476b971f8bd7c303/CodeCap-Bench",
+        "https://arxiv.org/html/2610.37341v1",
+        "https://arxiv.org/src/2610.37341v1",
+        "https://codecap-bench.github.io/",
+        "https://github.com/kevin236-max/CodeCap-Bench",
+        "https://github.com/FrankYang-17/Coda/blob/c4edeea4cfe03727f335df43275c9585ec228b41/CodeCap-Bench/README.md",
+        "https://github.com/FrankYang-17/Coda/blob/c4edeea4cfe03727f335df43275c9585ec228b41/CodeCap-Bench/agent/docker/tools/render.mjs",
+        "https://github.com/FrankYang-17/Coda/blob/c4edeea4cfe03727f335df43275c9585ec228b41/CodeCap-Bench/eval/object_st_iou/metrics.py",
+        "https://github.com/FrankYang-17/Coda/blob/c4edeea4cfe03727f335df43275c9585ec228b41/CodeCap-Bench/eval/visual_retention/evaluate.py",
+        "https://huggingface.co/datasets/kevintank/CodeCap-Dataset",
+        "https://huggingface.co/papers/2610.37341"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2610.37341",
+      "status": "pending",
+      "checkedAt": "2026-11-21T10:31:18.929358+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.26069v1",
+    "url": "https://arxiv.org/abs/2611.26069v1",
+    "id": "paper-sheetalign-2611-26069",
+    "title": "SheetAlign：先补表格观测，再分训生成与复审；四候选一致不等于正确",
+    "summary": "SheetAlign先补工作簿观测与API依据，再分训生成和复审策略。4B模型表格正确率由13.5%到29.2%主要靠免训练接口；训练到30.4%，四候选执行一致性与复审到32.8%。",
+    "insight": "作者主张：把任务定位、编辑进度奖励、生成/复审分训和工作簿一致性选样结合。本站判断：最大收益来自接口；RL与多候选各有增益，但一致输出仍可能一致出错，不能等同正确性验证。",
+    "limits": "未复现；任务已提供目标位置。四候选加复审非单次推理，98.6%执行成功≠32.8%正确；评估只比目标单元格。代码未公开，未给训练/测试去重清单，正文与表格有数值冲突，本文按表格。主模型仅Qwen3-4B-Thinking-2507，SpreadsheetBench为912任务，Domain-Spreadsheet为1660任务；不能据此泛化所有本地模型或完整Excel功能。Avg是各任务实例正确率的平均，Hard要求同题全部实例正确，最终32.8%与27.1%不可混用。作者报告三随机种子均值，最终Avg标准差分别0.4和0.3个百分点；未明确均涵盖独立训练，也未给显著性或配对置信区间。主要增益不能归给RL：表1的基座13.5→免训练接口29.2（+15.7点），学习30.4（再+1.2点），四候选32.8（再+2.4点）；Domain对应24.9→26.2→30.1。正文主结果却写29.5及+16.0；表3移除任务观测/API后21.4/25.2，对29.2实际差7.8/4.0，正文却写6.7/3.2；表4common为29.3，正文一处写29.7，均未获作者勘误。分阶段实验同时改变任务筛选、进度奖励与专用策略，未提供充分正交消融，不能将所有增益归因于分训本身。表5在相同四候选池中比较选择器：First-valid30.7、learned31.4、一致性32.8；这支持选样策略收益，但没有总token、运行时、费用或等预算单策略对照，不能宣称整体更省。四条候选各含观测/生成与最多两次故障修复，再对选中的程序做一次语义复审。一致性按工作簿存储内容及公式字符串、结构、样式指纹判同，不重算公式；同错可获多数，不同但等价公式可不一致。指纹最多检查20万单元格/64MiB解压内容，不可指纹化输出退出投票；没有至少两票时按固定顺序取首个可检查输出，均无效则取首候选。参考答案选样仅用于oracle上界39.7/40.7%，不属于实际系统能力。最终评价才用Windows Microsoft Excel重算公式，比较器对目标单元格值归一（数值保留两位小数、日期转序号、时间HH:MM、空串等同缺失），公式比重算值；不是整个工作簿无副作用、格式保真或外部系统安全的完备验收。重算不用于训练、故障修复或候选选择，局部观测与openpyxl也未覆盖所有专业Excel特性。训练来自Spreadsheet-RL的5925任务池，先选1200，1136训练/64验证，超长过滤后1127可用；生成与复审各256任务池，未公开具体名单、语义去重、池间关系和检查点选择依据。原文称参考工作簿只用于奖励/标签，不进入策略输入；本站未独立验证数据污染。附录给两分支40次更新、每次4提示×4响应、LoRA16、无独立KL；未完整披露通用策略训练预算、输出质量计分及零编辑边界的精确实现。代码承诺正式发表后公开；本轮未找到可核的SheetAlign作者仓库，HF精确论文API404，X公开索引无精确作者帖子。不将源码TeX可读写成算法已开源，也未运行训练或工作簿任务。",
+    "organization": "The University of Melbourne",
+    "dateLabel": "2026-11-19 首发 · 本轮补齐方法解读",
+    "evidence": "已读方法、主实验、全部附录与TeX；分开接口/RL/多候选收益及目标区评价边界；未复现",
+    "originalTitle": "SheetAlign: Grounded Interaction and Stage-Isolated Learning for Spreadsheet Agents",
+    "date": "2026-11-19",
+    "checkedAt": "2026-11-21T10:28:43Z",
+    "paperOriginalDate": "2026-11-19T13:13:12Z",
+    "paperUpdatedAt": "2026-11-19T13:13:12Z",
+    "updatedAt": "2026-11-19T13:13:12Z",
+    "firstSeenAt": "2026-11-20T10:00:00Z",
+    "lastSeenAt": "2026-11-21T10:00:01Z",
+    "tags": [
+      "Spreadsheet agents",
+      "Grounded interface",
+      "Stage-isolated GRPO",
+      "Edit-progress reward",
+      "Execution consistency"
+    ],
+    "authors": [
+      "Yuxiang Wang",
+      "Junhao Gan",
+      "Jianzhong Qi"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.26069v1"
+      },
+      {
+        "label": "原文方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.26069v1"
+      },
+      {
+        "label": "arXiv TeX表格与方法细节",
+        "url": "https://arxiv.org/src/2611.26069v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "SheetAlign先补工作簿观测与API依据，再分训生成和复审策略。4B模型表格正确率由13.5%到29.2%主要靠免训练接口；训练到30.4%，四候选执行一致性与复审到32.8%。",
+      "motivation": "小型本地表格代理不仅要推理任务，还要看清现有工作簿和可用API。能运行的程序也可能改错位置或只完成部分编辑，整题二元奖难以指出剩余工作，生成与语义复审又是不同决策。",
+      "novelty": "作者主张：把任务定位、编辑进度奖励、生成/复审分训和工作簿一致性选样结合。本站判断：最大收益来自接口；RL与多候选各有增益，但一致输出仍可能一致出错，不能等同正确性验证。",
+      "evidenceScope": "已读arXiv v1全文第3节方法、第4节实验、全部方法/实验附录及活动TeX表格与提示模板；核对摘要与提交历史。主表SpreadsheetBench 13.5/29.2/30.4/32.8%，Hard最终27.1%，Exec98.6%；Domain 24.9/26.2/30.1%，Exec最终99.5%。核查同候选池选择对照、训练数据规模/LoRA配置、指纹边界及Excel最终比较器；正文表格冲突已披露，以表格为准。论文仅承诺发表后发布代码，本轮精确公开搜索未找到SheetAlign实现；参考工作簿只作奖励是作者声明，未独立核训练数据。本轮推进11月19日论文待解读队列，不称11月21日新首发；verified仅指来源与表述已核验，不表示实验复现。",
+      "limits": "未复现；任务已提供目标位置。四候选加复审非单次推理，98.6%执行成功≠32.8%正确；评估只比目标单元格。代码未公开，未给训练/测试去重清单，正文与表格有数值冲突，本文按表格。主模型仅Qwen3-4B-Thinking-2507，SpreadsheetBench为912任务，Domain-Spreadsheet为1660任务；不能据此泛化所有本地模型或完整Excel功能。Avg是各任务实例正确率的平均，Hard要求同题全部实例正确，最终32.8%与27.1%不可混用。作者报告三随机种子均值，最终Avg标准差分别0.4和0.3个百分点；未明确均涵盖独立训练，也未给显著性或配对置信区间。主要增益不能归给RL：表1的基座13.5→免训练接口29.2（+15.7点），学习30.4（再+1.2点），四候选32.8（再+2.4点）；Domain对应24.9→26.2→30.1。正文主结果却写29.5及+16.0；表3移除任务观测/API后21.4/25.2，对29.2实际差7.8/4.0，正文却写6.7/3.2；表4common为29.3，正文一处写29.7，均未获作者勘误。分阶段实验同时改变任务筛选、进度奖励与专用策略，未提供充分正交消融，不能将所有增益归因于分训本身。表5在相同四候选池中比较选择器：First-valid30.7、learned31.4、一致性32.8；这支持选样策略收益，但没有总token、运行时、费用或等预算单策略对照，不能宣称整体更省。四条候选各含观测/生成与最多两次故障修复，再对选中的程序做一次语义复审。一致性按工作簿存储内容及公式字符串、结构、样式指纹判同，不重算公式；同错可获多数，不同但等价公式可不一致。指纹最多检查20万单元格/64MiB解压内容，不可指纹化输出退出投票；没有至少两票时按固定顺序取首个可检查输出，均无效则取首候选。参考答案选样仅用于oracle上界39.7/40.7%，不属于实际系统能力。最终评价才用Windows Microsoft Excel重算公式，比较器对目标单元格值归一（数值保留两位小数、日期转序号、时间HH:MM、空串等同缺失），公式比重算值；不是整个工作簿无副作用、格式保真或外部系统安全的完备验收。重算不用于训练、故障修复或候选选择，局部观测与openpyxl也未覆盖所有专业Excel特性。训练来自Spreadsheet-RL的5925任务池，先选1200，1136训练/64验证，超长过滤后1127可用；生成与复审各256任务池，未公开具体名单、语义去重、池间关系和检查点选择依据。原文称参考工作簿只用于奖励/标签，不进入策略输入；本站未独立验证数据污染。附录给两分支40次更新、每次4提示×4响应、LoRA16、无独立KL；未完整披露通用策略训练预算、输出质量计分及零编辑边界的精确实现。代码承诺正式发表后公开；本轮未找到可核的SheetAlign作者仓库，HF精确论文API404，X公开索引无精确作者帖子。不将源码TeX可读写成算法已开源，也未运行训练或工作簿任务。",
+      "method": [
+        "接收指令、任务给定目标位置与工作簿预览，先生成where/from/what、写入模式、风险、API需求；按需查看邻近单元格、公式、表头，确定性检索openpyxl签名与说明。",
+        "用Qwen3-4B-Thinking-2507加LoRA/GRPO训练通用策略，奖励组合实例/整题正确性、执行与输出质量；两分支从同一策略独立继续，无额外KL。",
+        "生成分支优先采样既能做对又常做错的题；复审分支用固定的正确/错误可执行程序学习保留或修改。正确性项换成0.75×编辑F1+0.25×整题正确，参考表只用于奖励。",
+        "每条候选生成Python/openpyxl变换并独立运行；异常或无效输出触发最多两次诊断修复，每次从原表重跑。此阶段修实现故障，之后的专用复审才查语义偏差。",
+        "通用与生成策略各采两条候选，以输出表结构、存储值、公式字符串和样式指纹投票；选最大至少两票组，无一致则取首个有效输出。再由复审策略单次决定保留或改写。"
+      ],
+      "inspirations": [
+        "先固定模型与任务，分别移除目标区域观测、API检索、故障修复，并同时报目标正确率与越界编辑率；避免把接口补全的收益记到RL上。",
+        "将代码生成、故障修复、可执行但语义错误三类样本分别建池；用编辑F1奖励部分完成，再独立验收整题与无关单元格不变，检查奖励是否鼓励少改或错改。",
+        "以相同候选池和总token预算比较首个有效、学习选择器与结果指纹投票；另外测同错一致、公式语义等价、复审误改率，给投票失败设置可解释的回退规则。"
+      ],
+      "reviewedAt": "2026-11-21T10:28:43Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.26069v1",
+        "https://arxiv.org/html/2611.26069v1",
+        "https://arxiv.org/src/2611.26069v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.26069",
+      "status": "pending",
+      "checkedAt": "2026-11-21T10:31:18.929358+00:00"
+    }
   }
 ]
