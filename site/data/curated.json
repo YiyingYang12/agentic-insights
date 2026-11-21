@@ -26929,5 +26929,316 @@
       "status": "pending",
       "checkedAt": "2026-11-21T10:31:18.929358+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.22841v1",
+    "url": "https://arxiv.org/abs/2611.22841v1",
+    "id": "paper-bvb-gandalf-2611-22841",
+    "title": "BVB / Gandalf：先校准裁判，再相信Agent交付得分",
+    "summary": "BVB用2464条人工判定校准产物评分器；Gandalf在原生环境副本里主动检查文件。与Archipelago相近F1下API成本更低，但附录RewardKit对照削弱了普遍成本优势的说法。",
+    "insight": "先用带真实错误的交付物校准裁判，分开测误放行、误拒绝与成本，再将评分用于模型排名或RL奖励；结构、执行和视觉质量需要各自证据。",
+    "limits": "24题各仅一条轨迹，未验证RL收益；OpenClaw及部分消融未开放。成本只计模型API。附录RewardKit四组都更便宜，多数组F1无显著差异。未复现。",
+    "dateLabel": "2026-11-17 arXiv v1",
+    "evidence": "已读方法、实验、局限及附录A–E，核验固定版本公开数据/代码说明；未运行或复现",
+    "originalTitle": "Verifying Agents in Rubric-Graded Environments",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-21T16:30:46.507093+00:00",
+    "paperOriginalDate": "2026-11-17T14:21:38Z",
+    "firstSeenAt": "2026-11-21T16:32:38.748225+00:00",
+    "tags": [
+      "评分器校准",
+      "原生文件验证",
+      "误放行",
+      "Benchmark"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "arXiv版本与日期",
+        "url": "https://arxiv.org/abs/2611.22841v1"
+      },
+      {
+        "label": "原论文全文与附录",
+        "url": "https://arxiv.org/pdf/2611.22841v1"
+      },
+      {
+        "label": "BVB v1.0公开数据",
+        "url": "https://huggingface.co/datasets/handshake-ai-research/BankerVerifierBench/tree/v1.0"
+      },
+      {
+        "label": "BVB v1.0复现代码与发布边界",
+        "url": "https://github.com/Handshake-AI-Research/bankerverifierbench/tree/v1.0"
+      },
+      {
+        "label": "Gandalf v1.0.0实现说明",
+        "url": "https://github.com/Handshake-AI-Research/gandalf-the-grader/tree/v1.0.0"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "BVB用24题、2464条人工判定评测评分器本身；Gandalf直接检查原生文件和环境。其相对优势依赖对手、任务和预算，不能简化成所有评分器中又好又便宜。",
+      "motivation": "文件生成成功不代表公式、跨文件数值或工具副作用正确。只读轨迹或把文件转成文本会丢失证据，因此需要先校准负责验收的裁判。",
+      "novelty": "作者主张从评分标准反推验证能力并推出Gandalf。本站判断：最可复用的是独立评测裁判及分报误放行/误拒绝；附录RewardKit说明其成本优势不覆盖所有反应式裁判。",
+      "evidenceScope": "已读v1正文方法§3–6、实验§7–8、局限和附录A–E；另核验BVB v1.0数据卡、公开目录与发布清单、复现实验仓README、Gandalf v1.0.0 README，未执行裁判或复现。BVB基于BTB v1.1：24题各一条已选轨迹，两种生成模型各12题；2464条可评分标准，其中831条未满足，另13条删除或无效项仅留溯源。双人一致率92.1%，κ=0.82；每题标准不等于独立任务样本。Gemini 3 Flash上Gandalf未满足类F1为0.864、每轮24题API成本9.81美元，Archipelago为0.852、46.73美元；配对F1差异区间包含零，不能宣称准确率显著胜出。成本含缓存优惠但排除沙箱、文档提取和失败尝试。附录D同模型RewardKit四组均便宜24–44%；仅GPT-5.4组Gandalf的0.012 F1差异区间排除零，其余三组未检出差异，区间未做多重比较校正。MCP与提示消融保留终端/文件访问，未检出F1收益，不是对全部环境访问的完整消融。OpenClaw为24题396条内部标准，未满足比例不同，F1不可直接跨数据集比较；该集不公开。GitHub列明表2a、OpenClaw原始评测以及表A5多数输入消融未发布，不能声称全部可复现。verified仅表示来源核验。",
+      "limits": "24题各仅一条轨迹，未验证RL收益；OpenClaw及部分消融未开放。成本只计模型API。附录RewardKit四组都更便宜，多数组F1无显著差异。未复现。 公开SDK的sandbox_user是可选配置，省略则以当前用户运行；论文隔离约束不能当成任意默认部署的安全保证。本文未测试恶意产物、奖励投机、裁判对不同轨迹分布的稳定性或RL训练改善。创作方向启发为本站迁移设想，不添加创作topics。",
+      "method": [
+        "随机取24项投行任务，各选一条Gemini 2.5 Pro或GLM-5轨迹；两位专家独立看原生交付，资深审阅者裁决，得到2464条评分真值。",
+        "由标准生成能力标签、聚类并归并成九类，再给各标准标注主能力；设计反应式检查、环境一致性和领域提示三项原则。",
+        "Gandalf在任务结束后的隔离副本中读原生文件、运行检查和调用只读工具；逐标准输出证据与判定，BVB主比较分两会话复用已读取资料。",
+        "以未满足项为正类计算F1，同时记录误放行、误拒绝和每24题模型API成本；大多配置每题三次，任务重采样估计区间。",
+        "比较三类裁判、批量大小与模型，并单独对照RewardKit；领域提示和MCP消融未检出F1收益，不能据整体比较证明各原则的因果贡献。"
+      ],
+      "inspirations": [
+        "为代码视频和可编辑文档建立裁判校准集：同一工程分别注入结构、执行、视觉和跨文件一致性错误，保存双人标签，分报误放行与误拒绝。",
+        "先做原生文件检查与文本/图像快照裁判的等预算对照，再单独消融工具与领域提示；按任务重采样并另报运行方差和全部失败成本。",
+        "让裁判只接触冻结副本和只读工具，记录检查证据与异常状态；不要把未解析、超时或漏标准自动算通过，并阻断评分真值泄漏。"
+      ],
+      "reviewedAt": "2026-11-21T16:30:46.507093+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.22841v1",
+        "https://arxiv.org/pdf/2611.22841v1",
+        "https://huggingface.co/datasets/handshake-ai-research/BankerVerifierBench/tree/v1.0",
+        "https://github.com/Handshake-AI-Research/bankerverifierbench/tree/v1.0",
+        "https://github.com/Handshake-AI-Research/gandalf-the-grader/tree/v1.0.0"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.22841",
+      "status": "pending",
+      "checkedAt": "2026-11-21T16:32:38.641264+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.22925v2",
+    "url": "https://arxiv.org/abs/2611.22925v2",
+    "id": "paper-2611.22925",
+    "title": "Invoker-Render：用可编辑世界代理约束流式视频，长演示要与默认服务分开验收",
+    "summary": "Invoker-Render把可编辑世界代理接到四步视频渲染：先适应有误差的数据历史，再蒸馏并转向自身长序列。140段短片用单一VLM裁判；8GPU报告18FPS，30分钟赛车展示不等于默认服务或通用长程可靠性。",
+    "insight": "作者主张：同权重接粗细代理，逐阶段衔接因果适应、四步蒸馏与长序列自生成。本站判断：价值在分离结构控制和外观渲染；尚无训练阶段消融，不能单独归功ProForcing，也不等于代码创作全链路已验收。",
+    "limits": "未复现；140段6.58–20秒、单VLM裁判。8GPU/18FPS非24FPS端到端实时；30分钟赛车用了非默认质量策略。输出非可编辑工程，训练代码/数据未发布，推理依赖资产不齐；论文与README的Elo冲突。本轮补齐11月17日首发、11月18日v2修订的既有队列，非11月22日新首发。归入code2video仅因明确的程序世界/可编辑代理到视频渲染接口；论文没有评测Agent写代理代码的执行成功率、原生3D工程修改、时间线编辑或成片局部编辑保留率，不能扩成code2-3d或video-editing。定量评估是140个6.58–20秒留出代理序列，对三个流式基线使用同代理视频和外观参考；Gemini3.8Flash以672×384、12fps时间戳帧作匿名、随机平衡顺序的两两裁判。未提供人类一致性、跨裁判验证、多种子置信区间、任务分组成功率或等训练数据/算力预算对照。Overall是单独裁定的偏好，经Bradley–Terry汇总并将均值设1000，不是组件均分、准确率或执行成功率。论文v2表2为1232.0（SolarRenderer1135.3）；当前官方README却写1343.2/1245.3，其他基线也不同，未找到说明，本文以v2正文和TeX表为准，不混合口径。对SolarRenderer为88胜/2平/50负，62.9%是纯胜率，平局另计，非所有任务完成率。论文§5报告1344×768、单节点8GPU下稳态块周期1770→930ms、9.9→18.0FPS，未说明具体GPU型号、冷启动、网络/输入采集/浏览器延迟和并发负载，块周期不是单帧延迟。24FPS是媒体时间轴，6FPS是仓库预览播放率，均不能当生成吞吐。部署文档提示首次decoder编译可耗数分钟；默认代理编码器是完整H3，论文提速所用TAE需显式提供外部权重并另建bundle，不能直接给默认服务套18FPS。长程图仅两条赛车序列各六个时间点至298/299秒；另有作者30分钟赛车演示，仓库预览只是六段2秒抽样，未下载/播放完整视频。README明确该演示启用默认服务未启用的reference-guided quality policy，不能由此担保默认检查点无限无漂移。固定首帧sink和最近KV窗口会遗忘离开上下文的细节；论文把中途切换代理精细度和与交互状态引擎闭环耦合列为未来工作，网页交互示例不是已量化的通用闭环控制证据。约200小时是去重窗口/代理变体前的原始素材时长：150自采游戏、50公开子集；并非200小时真实世界或公开完整数据集。作者称按录制及可识别地图/场景划分，并将同录制的重叠窗/粗细代理/视角放同划分，但未发布名单供本站独立审计；部分缺少可靠结构对齐的片段只作外观和文本监督。短窗158帧、长序列328帧用于训练，30分钟不是直接监督序列长度。未见ProForcing各阶段、GAN项、精细度混合的受控收益消融或完整训练超参/成本复现配方；推理工程逐步加速不能替代训练方法消融。已核官方固定提交的README、部署文档、CLI入口/文件推理入口与demo元数据；HF公开未门控目录列33.12B FP32因果DiT的29分片和双向teacher LoRA。未下载权重或运行代码，不将目录可见视为可独立开箱复现。HF缺VAE、Qwen、因果decoder、silence张量和准备bundle，GitHub也没有检查点专属artifact；还需匹配训练配置、编码器与冻结prompt，文档无最小独立lockfile。训练方法/数据发行项仍未勾选，完整游戏工程/宣传素材未开源；代码Apache2但第三方组件及权重另含CC BY-NC4.0，不能笼统称全部可商用。",
+    "organization": "Inclusion AI / Ant Group；Westlake University；Zhejiang University",
+    "dateLabel": "2026-11-17 首发 · 11-18 v2修订 · 本轮方法解读",
+    "evidence": "已读v2全文方法、实验及活动TeX，核官方固定推理文档/入口与HF权重目录；未运行，保留论文/README指标和demo/默认服务边界",
+    "originalTitle": "Code World Model 2.0: Towards Infinite Controllable Video Generation",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-21T16:30:03.880757Z",
+    "paperOriginalDate": "2026-11-17T15:23:57Z",
+    "paperUpdatedAt": "2026-11-18T05:27:57Z",
+    "updatedAt": "2026-11-18T05:27:57Z",
+    "firstSeenAt": "2026-11-21T16:32:38.748225+00:00",
+    "tags": [
+      "Code World Model",
+      "Proxy-conditioned rendering",
+      "Progressive Forcing",
+      "DMD",
+      "Streaming video"
+    ],
+    "authors": [
+      "Ruoyu Wang",
+      "Hao Zhong",
+      "Yanming Yang",
+      "Jiahao Tian",
+      "Lin Liu",
+      "Biao Gong",
+      "Guoshan Lu",
+      "Yiding Tian",
+      "Chunhua Shen",
+      "Zhenzhong Lan",
+      "Chi Zhang"
+    ],
+    "topics": [
+      "code2video"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v2及提交历史",
+        "url": "https://arxiv.org/abs/2611.22925v2"
+      },
+      {
+        "label": "Hugging Face论文页",
+        "url": "https://huggingface.co/papers/2611.22925"
+      },
+      {
+        "label": "方法与实验全文",
+        "url": "https://arxiv.org/html/2611.22925v2"
+      },
+      {
+        "label": "活动TeX、表2与图说明",
+        "url": "https://arxiv.org/src/2611.22925v2"
+      },
+      {
+        "label": "作者官方项目页",
+        "url": "https://www.inclusion-ai.org/CodeWorldModel/"
+      },
+      {
+        "label": "官方推理仓库",
+        "url": "https://github.com/inclusionAI/CodeWorldModel"
+      },
+      {
+        "label": "固定提交README与发行边界",
+        "url": "https://github.com/inclusionAI/CodeWorldModel/blob/88fc349a260b691214e932cb37f6a080e07fb1ff/README.md"
+      },
+      {
+        "label": "固定部署协议与性能边界",
+        "url": "https://github.com/inclusionAI/CodeWorldModel/blob/88fc349a260b691214e932cb37f6a080e07fb1ff/docs/INFERENCE.md"
+      },
+      {
+        "label": "文件推理CLI输入约束",
+        "url": "https://github.com/inclusionAI/CodeWorldModel/blob/88fc349a260b691214e932cb37f6a080e07fb1ff/src/sglang/projects/minimax_h3/tools/infer_omni_h3.py"
+      },
+      {
+        "label": "演示源时长与抽样元数据",
+        "url": "https://github.com/inclusionAI/CodeWorldModel/blob/88fc349a260b691214e932cb37f6a080e07fb1ff/assets/demo/metadata.json"
+      },
+      {
+        "label": "官方权重与模型卡",
+        "url": "https://huggingface.co/inclusionAI/invoker-render-1.0"
+      },
+      {
+        "label": "固定权重版本文件列表",
+        "url": "https://huggingface.co/inclusionAI/invoker-render-1.0/tree/2314c6b89c12eef07285fedd22ab6f1b519a5866"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Invoker-Render把可编辑世界代理接到四步视频渲染：先适应有误差的数据历史，再蒸馏并转向自身长序列。140段短片用单一VLM裁判；8GPU报告18FPS，30分钟赛车展示不等于默认服务或通用长程可靠性。",
+      "motivation": "程序世界能精确改相机、位置和动作，却不能直接给出真实外观；代理过细制作昂贵，过粗又缺局部动作。流式渲染还须同时解决少步采样与自身误差逐块积累，不能把短视频好看等同长期可控。",
+      "novelty": "作者主张：同权重接粗细代理，逐阶段衔接因果适应、四步蒸馏与长序列自生成。本站判断：价值在分离结构控制和外观渲染；尚无训练阶段消融，不能单独归功ProForcing，也不等于代码创作全链路已验收。",
+      "evidenceScope": "已读arXiv v2全部主文：数据§3、GFT/TF/RF/RF-DMD/SF-DMD方法§4、推理栈§5、140段评测§6和结论限制；逐项核活动TeX与表2、图11说明，源文件未含独立附录。另读官方项目正文、GitHub固定提交88fc349a260b691214e932cb37f6a080e07fb1ff的README/部署文档/CLI与文件推理入口/demo元数据，HF模型卡和API目录版本2314c6b89c12eef07285fedd22ab6f1b519a5866。论文Overall1232.0与README1343.2冲突已披露，演示质量策略和TAE非默认已分开。不曾运行训练/推理、下载权重或观看完整30分钟影片；verified仅指来源与表述核验。",
+      "limits": "未复现；140段6.58–20秒、单VLM裁判。8GPU/18FPS非24FPS端到端实时；30分钟赛车用了非默认质量策略。输出非可编辑工程，训练代码/数据未发布，推理依赖资产不齐；论文与README的Elo冲突。本轮补齐11月17日首发、11月18日v2修订的既有队列，非11月22日新首发。归入code2video仅因明确的程序世界/可编辑代理到视频渲染接口；论文没有评测Agent写代理代码的执行成功率、原生3D工程修改、时间线编辑或成片局部编辑保留率，不能扩成code2-3d或video-editing。定量评估是140个6.58–20秒留出代理序列，对三个流式基线使用同代理视频和外观参考；Gemini3.8Flash以672×384、12fps时间戳帧作匿名、随机平衡顺序的两两裁判。未提供人类一致性、跨裁判验证、多种子置信区间、任务分组成功率或等训练数据/算力预算对照。Overall是单独裁定的偏好，经Bradley–Terry汇总并将均值设1000，不是组件均分、准确率或执行成功率。论文v2表2为1232.0（SolarRenderer1135.3）；当前官方README却写1343.2/1245.3，其他基线也不同，未找到说明，本文以v2正文和TeX表为准，不混合口径。对SolarRenderer为88胜/2平/50负，62.9%是纯胜率，平局另计，非所有任务完成率。论文§5报告1344×768、单节点8GPU下稳态块周期1770→930ms、9.9→18.0FPS，未说明具体GPU型号、冷启动、网络/输入采集/浏览器延迟和并发负载，块周期不是单帧延迟。24FPS是媒体时间轴，6FPS是仓库预览播放率，均不能当生成吞吐。部署文档提示首次decoder编译可耗数分钟；默认代理编码器是完整H3，论文提速所用TAE需显式提供外部权重并另建bundle，不能直接给默认服务套18FPS。长程图仅两条赛车序列各六个时间点至298/299秒；另有作者30分钟赛车演示，仓库预览只是六段2秒抽样，未下载/播放完整视频。README明确该演示启用默认服务未启用的reference-guided quality policy，不能由此担保默认检查点无限无漂移。固定首帧sink和最近KV窗口会遗忘离开上下文的细节；论文把中途切换代理精细度和与交互状态引擎闭环耦合列为未来工作，网页交互示例不是已量化的通用闭环控制证据。约200小时是去重窗口/代理变体前的原始素材时长：150自采游戏、50公开子集；并非200小时真实世界或公开完整数据集。作者称按录制及可识别地图/场景划分，并将同录制的重叠窗/粗细代理/视角放同划分，但未发布名单供本站独立审计；部分缺少可靠结构对齐的片段只作外观和文本监督。短窗158帧、长序列328帧用于训练，30分钟不是直接监督序列长度。未见ProForcing各阶段、GAN项、精细度混合的受控收益消融或完整训练超参/成本复现配方；推理工程逐步加速不能替代训练方法消融。已核官方固定提交的README、部署文档、CLI入口/文件推理入口与demo元数据；HF公开未门控目录列33.12B FP32因果DiT的29分片和双向teacher LoRA。未下载权重或运行代码，不将目录可见视为可独立开箱复现。HF缺VAE、Qwen、因果decoder、silence张量和准备bundle，GitHub也没有检查点专属artifact；还需匹配训练配置、编码器与冻结prompt，文档无最小独立lockfile。训练方法/数据发行项仍未勾选，完整游戏工程/宣传素材未开源；代码Apache2但第三方组件及权重另含CC BY-NC4.0，不能笼统称全部可商用。",
+      "method": [
+        "从约200小时素材恢复相机、实体与几何，生成同事件粗/细代理，去掉纹理外观；按录制划分，24fps短窗158帧、连续序列328帧，配全窗与因果局部文本。",
+        "以MiniMax-H3接代理、固定外观参考与文本；先用GFT学双向成片，再用干净历史TF和加噪重建历史RF适应块间因果注意力，历史构造不回传。",
+        "在仍由数据锚定的RF历史上，以冻结双向教师/可训练fake-score做DMD，另用教师特征GAN补细节，将学生压到四步；教师可看完整评分窗，学生保持因果。",
+        "将学生、fake-score、判别器、优化器状态和EMA一起续到自身滚动历史；局部重叠评分窗只对每个新目标块计一次梯度，单条多块轨迹完成后再统一更新。",
+        "用首帧锚与有限KV窗口维持流式状态；TAE代理编码、融合预填充/去噪、跨块编解码与CPU交付重叠提速，再分别测短片偏好、块吞吐与长赛车展示。"
+      ],
+      "inspirations": [
+        "为代码视频保存代理状态、固定外观参考和版本号，分别验收相机/轨迹/实体数约束与未受约束的细动作；再做局部代理修改后的成片保留检查，不能只看整体偏好。",
+        "把干净历史、重建误差历史、自生成历史分开对照，并固定步数、数据、总训练预算；单独消融GAN和critic续训，定位长程改善究竟来自哪一环。",
+        "冻结同一检查点与质量策略，报告冷启动、稳态块周期、端到端交互延迟、输入/输出帧数和多人并发；长测加入离开后重访、实体再现及中途精细度切换，避免用赛车精选片段替代通用验收。"
+      ],
+      "reviewedAt": "2026-11-21T16:30:03.880757Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.22925v2",
+        "https://arxiv.org/html/2611.22925v2",
+        "https://arxiv.org/src/2611.22925v2",
+        "https://huggingface.co/papers/2611.22925",
+        "https://www.inclusion-ai.org/CodeWorldModel/",
+        "https://github.com/inclusionAI/CodeWorldModel",
+        "https://github.com/inclusionAI/CodeWorldModel/blob/88fc349a260b691214e932cb37f6a080e07fb1ff/README.md",
+        "https://github.com/inclusionAI/CodeWorldModel/blob/88fc349a260b691214e932cb37f6a080e07fb1ff/docs/INFERENCE.md",
+        "https://github.com/inclusionAI/CodeWorldModel/blob/88fc349a260b691214e932cb37f6a080e07fb1ff/src/sglang/projects/minimax_h3/tools/infer_omni_h3.py",
+        "https://github.com/inclusionAI/CodeWorldModel/blob/88fc349a260b691214e932cb37f6a080e07fb1ff/assets/demo/metadata.json",
+        "https://huggingface.co/inclusionAI/invoker-render-1.0",
+        "https://huggingface.co/inclusionAI/invoker-render-1.0/tree/2314c6b89c12eef07285fedd22ab6f1b519a5866"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.22925",
+      "status": "pending",
+      "checkedAt": "2026-11-21T16:32:38.641264+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.23397v1",
+    "url": "https://arxiv.org/abs/2611.23397v1",
+    "id": "paper-opd-objectives-2611-23397",
+    "title": "OPD目标如何选：整段偏爱易续写路径，FKL学罕见token也未必赢数学",
+    "summary": "OPD的整段/逐token目标与散度选择会改变学习顺序：整段目标偏爱后续易模仿的路径，FKL更易拉起罕见token；但计算器与数学反例表明，没有通用最优目标。",
+    "insight": "作者主张：用logit梯度及条件收敛界解释未来一致偏置和罕见token学习差异。本站判断：价值在区分两条选择轴并给反例；不是证明FKL通优，也未给可直接部署的目标选择规则。",
+    "limits": "未复现；收敛分离只证表格logit与特定步长/前缀下界，不是神经训练提速。API主图为训练集93/480条、只判命名；拒答率不等于安全质量。数学反例中RKL更好，不能认定FKL通优；等步数未证等算力。一般梯度恒等式是对各上下文logit求导，神经参数更新还经过共享参数Jacobian，不能把logit几何直接等同神经优化全景。理论固定有限词表和长度、教师对所有输出赋正概率。二叉树例用独立logit表格学生、均匀初始化、教师δ=exp(−L)，步长η∈(0,2]且深度满足阈值，才有整段exp(Ω(L²))与逐token O(L log L)分离；38,786参数小Transformer仅作机制展示，使用L=15、δ=10⁻⁴及300步，并非上述渐近定理的实例复现。低概率token优化界还要求表格学生、η∈(0,1]、初始化概率充分小、所考察前缀在全程概率≥γ；隐藏常数依赖词表、步长、γ、精度和教师最小概率。所有目标在极少访问前缀上都可能弱监督，FKL也没有消除前缀探索问题。JS混合的是分布；有较好界的是FKL与RKL目标各半相加，不可互换。新API实验的480提示同时用于教师SFT、学生OPD和评估；公开build_cohort.py也从同一prompt_rows生成train/validation，仅ID不同。主图按初始首token概率≤10⁻³选93条、涉及26个API，不是全部96个API的独立测试。学生Qwen2.5-1.5B-Base早于这些API，教师Qwen3-8B-Base另同集SFT一轮；这不能隔离教师原训练暴露，更不能证明未见API泛化。命中只查正确名称及紧随字符，未查参数、其余代码或运行行为；448/480参考程序直接可运行，32条需额外资源是数据构建检查，并非学生执行成功率。OPD每目标900步、batch16、30轮、三种子，单H100；同更新数不等于实际token、GPU时或费用相等。安全实验Qwen实际5967训练/994测试，Gemma5956/994；主曲线取固定400训练提示，作者称400测试提示趋势相同。裁判按回答/拒绝分类，错误、含糊或不完整回答仍计回答，不能把不拒答当有用正确或把拒答比例当完整安全评测。Gemma提示专门调整到学生初始比教师更爱拒答；结果只覆盖所报模型/提示。每目标通常4轮376步、batch64、三种子；额外thinking版因预算只报3.5轮329步，不能混作4轮结论。计算器反例用6000生成算术题，主图500训练题，作者称500测试题趋势一致；调用是输出终止式CALCULATOR表达式，不是实际多轮工具闭环。附录的有利理论反例只保证早期阶段/早停优势，长期仍趋向教师，成功率可先降再升。数学为7500训练题到MATH500的独立测试，两学生0.6B/1.7B、4B/8B/14B/32B教师，关闭教师thinking，400步、batch64、三种子、每次4张H100。每题8个答案平均正确率不是Pass@8；训练最长4096、评估8192且top-p由无截断变0.8。32B教师下0.6B学生RKL为51.5±0.4%、FKL47.5±0.6%，1.7B学生67.0±0.4%对64.7±1.0%；这是固定配置均值±三种子标准差，未给配对显著性、等算力或跨家族普遍性。EOS须映射并交换教师相应概率，否则停词不匹配会污染目标比较；概率增幅探针仅描述相关模式，不能独立证明容量差是唯一原因。已核官方代码三个实验目录及固定提交核心损失、数据切分和判分实现，未安装、训练、运行基准或审完每行代码；未把开源视作复现。HF精确论文API404、GitHub API限流后用公开网页与固定提交归档核验；X仅公开搜索索引无精确作者原帖，不声称直读或全文抓取。",
+    "organization": "Princeton University；Bar-Ilan University",
+    "dateLabel": "2026-11-17 首发 · 本轮补齐方法解读",
+    "evidence": "已读全文方法、主实验、实验附录及关键证明假设，并静态核公开损失/数据与判分；来源核验，不是复现",
+    "originalTitle": "Which Tokens, in What Order, and How Fast? A Theoretical Analysis of On-Policy Distillation Objectives",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-21T16:31:38.451797Z",
+    "paperOriginalDate": "2026-11-17T19:01:02Z",
+    "paperUpdatedAt": "2026-11-17T19:01:02Z",
+    "updatedAt": "2026-11-17T19:01:02Z",
+    "firstSeenAt": "2026-11-21T16:32:38.748225+00:00",
+    "tags": [
+      "On-policy distillation",
+      "Forward KL",
+      "Reverse KL",
+      "Future agreement bias",
+      "Optimization theory"
+    ],
+    "authors": [
+      "Hubert Strauss",
+      "Liam Fowl",
+      "Noam Razin"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv首发及作者",
+        "url": "https://arxiv.org/abs/2611.23397v1"
+      },
+      {
+        "label": "论文方法、理论与实验全文",
+        "url": "https://arxiv.org/html/2611.23397v1"
+      },
+      {
+        "label": "作者官方实现",
+        "url": "https://github.com/princeton-pli/opd-objectives-analysis"
+      },
+      {
+        "label": "TeX证明与实验附录",
+        "url": "https://arxiv.org/src/2611.23397v1"
+      },
+      {
+        "label": "本轮核验的固定代码提交",
+        "url": "https://github.com/princeton-pli/opd-objectives-analysis/tree/e0f3713d48c572680915a88a5cff3e9e399a3837"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "OPD的整段/逐token目标与散度选择会改变学习顺序：整段目标偏爱后续易模仿的路径，FKL更易拉起罕见token；但计算器与数学反例表明，没有通用最优目标。",
+      "motivation": "同样在学生生成轨迹上蒸馏，整段与逐token目标、FKL/RKL/JS并非可随意替换。只看loss下降或教师强弱，解释不了学生为何过度拒答、学不进新API，或在数学上选错散度；论文希望把这些现象拆成可检查的学习动态。",
+      "novelty": "作者主张：用logit梯度及条件收敛界解释未来一致偏置和罕见token学习差异。本站判断：价值在区分两条选择轴并给反例；不是证明FKL通优，也未给可直接部署的目标选择规则。",
+      "evidenceScope": "已实际读取v1全文§2–4、结论、附录A有利反例、B序列梯度扩展、C关键梯度推导与两组收敛定理的正式假设/证明段、D实验设置和补充表；没有逐行验证全部证明。重点核480/93 API分母、训练/测试边界、三种子和MATH500平均8次正确率。公开代码固定提交e0f3713d48c572680915a88a5cff3e9e399a3837，静态读损失、EOS映射、同源train/validation及名称判分；未运行实验，verified仅表示来源核验。",
+      "limits": "未复现；收敛分离只证表格logit与特定步长/前缀下界，不是神经训练提速。API主图为训练集93/480条、只判命名；拒答率不等于安全质量。数学反例中RKL更好，不能认定FKL通优；等步数未证等算力。一般梯度恒等式是对各上下文logit求导，神经参数更新还经过共享参数Jacobian，不能把logit几何直接等同神经优化全景。理论固定有限词表和长度、教师对所有输出赋正概率。二叉树例用独立logit表格学生、均匀初始化、教师δ=exp(−L)，步长η∈(0,2]且深度满足阈值，才有整段exp(Ω(L²))与逐token O(L log L)分离；38,786参数小Transformer仅作机制展示，使用L=15、δ=10⁻⁴及300步，并非上述渐近定理的实例复现。低概率token优化界还要求表格学生、η∈(0,1]、初始化概率充分小、所考察前缀在全程概率≥γ；隐藏常数依赖词表、步长、γ、精度和教师最小概率。所有目标在极少访问前缀上都可能弱监督，FKL也没有消除前缀探索问题。JS混合的是分布；有较好界的是FKL与RKL目标各半相加，不可互换。新API实验的480提示同时用于教师SFT、学生OPD和评估；公开build_cohort.py也从同一prompt_rows生成train/validation，仅ID不同。主图按初始首token概率≤10⁻³选93条、涉及26个API，不是全部96个API的独立测试。学生Qwen2.5-1.5B-Base早于这些API，教师Qwen3-8B-Base另同集SFT一轮；这不能隔离教师原训练暴露，更不能证明未见API泛化。命中只查正确名称及紧随字符，未查参数、其余代码或运行行为；448/480参考程序直接可运行，32条需额外资源是数据构建检查，并非学生执行成功率。OPD每目标900步、batch16、30轮、三种子，单H100；同更新数不等于实际token、GPU时或费用相等。安全实验Qwen实际5967训练/994测试，Gemma5956/994；主曲线取固定400训练提示，作者称400测试提示趋势相同。裁判按回答/拒绝分类，错误、含糊或不完整回答仍计回答，不能把不拒答当有用正确或把拒答比例当完整安全评测。Gemma提示专门调整到学生初始比教师更爱拒答；结果只覆盖所报模型/提示。每目标通常4轮376步、batch64、三种子；额外thinking版因预算只报3.5轮329步，不能混作4轮结论。计算器反例用6000生成算术题，主图500训练题，作者称500测试题趋势一致；调用是输出终止式CALCULATOR表达式，不是实际多轮工具闭环。附录的有利理论反例只保证早期阶段/早停优势，长期仍趋向教师，成功率可先降再升。数学为7500训练题到MATH500的独立测试，两学生0.6B/1.7B、4B/8B/14B/32B教师，关闭教师thinking，400步、batch64、三种子、每次4张H100。每题8个答案平均正确率不是Pass@8；训练最长4096、评估8192且top-p由无截断变0.8。32B教师下0.6B学生RKL为51.5±0.4%、FKL47.5±0.6%，1.7B学生67.0±0.4%对64.7±1.0%；这是固定配置均值±三种子标准差，未给配对显著性、等算力或跨家族普遍性。EOS须映射并交换教师相应概率，否则停词不匹配会污染目标比较；概率增幅探针仅描述相关模式，不能独立证明容量差是唯一原因。已核官方代码三个实验目录及固定提交核心损失、数据切分和判分实现，未安装、训练、运行基准或审完每行代码；未把开源视作复现。HF精确论文API404、GitHub API限流后用公开网页与固定提交归档核验；X仅公开搜索索引无精确作者原帖，不声称直读或全文抓取。",
+      "method": [
+        "把选择拆成两轴：整段RKL在学生采样序列上求策略梯度；逐token目标固定采样前缀，对教师/学生下一词分布计算FKL、RKL或JS。",
+        "推导整段目标的logit梯度：早期token还受后续分布差异影响，可能偏向教师不常选却易模仿的路径；构造表格二叉树证明这种偏置可造成极慢恢复。",
+        "比较散度梯度：FKL的logit梯度范数等于两倍前缀概率乘总变差；在表格模型等假设下，它更快提升低概率token；等权FKL/RKL目标混合与JS不同。",
+        "用安全拒答、计算器及新API补全检验机制。API共96个、480提示，教师先同集SFT；主图只看93条低初始概率提示，成功只检查API名称边界。",
+        "再以两种Qwen3学生、四种教师各训练400步和三种子，独立MATH500每题采8答取平均正确率；RKL优于FKL的结果用来检验理论何时不对应任务收益。"
+      ],
+      "inspirations": [
+        "蒸馏新工具接口时，按学生对正确API首token的初始概率分层，并另留未见API/提示测执行结果；比较全词表FKL、RKL和等权混合，不只看蒸馏loss。",
+        "监控长任务早期动作、位置KL、拒答和工具调用率，检查是否转向容易续写的路径；把安全拒答、正确调用与投机捷径分别验收，再做同预算目标对照。",
+        "按教师能力差距做小规模目标选择试验，并记录EOS映射、实际输出token和GPU时；先确认任务正确率随教师增大是否改善，避免把更强教师或更大梯度当成更好学生。"
+      ],
+      "reviewedAt": "2026-11-21T16:31:38.451797Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.23397v1",
+        "https://arxiv.org/html/2611.23397v1",
+        "https://arxiv.org/src/2611.23397v1",
+        "https://github.com/princeton-pli/opd-objectives-analysis",
+        "https://github.com/princeton-pli/opd-objectives-analysis/tree/e0f3713d48c572680915a88a5cff3e9e399a3837"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.23397",
+      "status": "pending",
+      "checkedAt": "2026-11-21T16:32:38.641264+00:00"
+    }
   }
 ]
