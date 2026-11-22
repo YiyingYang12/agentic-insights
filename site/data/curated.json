@@ -27433,5 +27433,309 @@
       "status": "pending",
       "checkedAt": "2026-11-21T22:24:10.484208+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.24669v1",
+    "url": "https://arxiv.org/abs/2611.24669v1",
+    "id": "paper-movie2game-bench-2611-24669",
+    "title": "Movie2Game-Bench：电影元素出现了，是否真的成为玩法？",
+    "summary": "Movie2Game-Bench用22部电影、658条源内容参考评价14个模型与框架组合，分开衡量游戏质量、改编和GUI试玩。全部系统最弱的都是可转化为玩法的源片段；模型试玩评分与真人存在明显偏差，不能只按能启动或视觉像不像验收。",
+    "insight": "把原片事件映射到玩家动作、状态变化和可回放证据；分别验收内容保留、实际交互、执行成功与视觉质量，再用真人校准模型评委。",
+    "limits": "22部电影、主表为模型与框架组合；前两名差0.109分的配对区间跨零。每个受测游戏仅一份真人评分，模型玩家均分高11.1分；成本不含其他生成尝试和评测。未运行游戏或复现。",
+    "dateLabel": "2026-11-18 arXiv v1",
+    "evidence": "已读v1方法§3–4、结果§5及附录A–C的协议与统计口径；未运行游戏或复现",
+    "originalTitle": "Movie2Game-Bench: Holistic Evaluation of Film-to-Game Adaptation Beyond Playability",
+    "date": "2026-11-18",
+    "checkedAt": "2026-11-22T04:25:24.947530+00:00",
+    "paperOriginalDate": "2026-11-18T16:06:04Z",
+    "firstSeenAt": "2026-11-22T04:27:04.196140+00:00",
+    "tags": [
+      "电影改编",
+      "代码创作评测",
+      "GUI试玩",
+      "证据链"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "arXiv版本与发表日期",
+        "url": "https://arxiv.org/abs/2611.24669v1"
+      },
+      {
+        "label": "原论文方法、评测协议及附录",
+        "url": "https://arxiv.org/html/2611.24669v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "22部电影的改编评测将内容出现与实际玩法分开；14个模型与框架组合均最易丢失可玩片段。模型试玩均分比真人高11.1分，不能直接当真人体验。",
+      "motivation": "浏览器游戏能运行、画面含有电影人物，并不表示电影中的冲突已经转成玩家可操作的规则。论文要把源内容、交互和实际试玩放在同一证据链中评价。",
+      "novelty": "作者主张超越能玩与否，把源内容保留、交互实现和试玩结合。本站判断：价值在可追溯的内容到动作评价协议；权重、覆盖与未知项处理仍是设计选择，不能据此把主表视为纯模型能力排名。",
+      "evidenceScope": "已读arXiv v1正文方法§3–4、结果§5、附录A的环境与参考构建、附录B的评分/试玩协议及C的框架、区间、人工和成本分析；不是仅摘要解读。22部电影共658参考项，14个主模型与框架组合；每次生成四CPU、7168MB、三小时，主配置200k上下文，媒体上限20图5段视频。三GUI玩家每个游戏最多400步/180分钟；高交互判断要求试玩步骤及代码引用。可玩片段出现均分37.9，标志元素54.8；电影改编两评委相关0.9146仅反映分数变动一致性。Astra与Sol总体55.4/55.2，未四舍五入差0.109，配对95%区间[-3.055,3.082]；10,000次bootstrap固定已生成游戏和评分，只反映电影间变化。10人共100个不同游戏（22片、13生成模型、没有Mimo），每游戏一份真人问卷；模型玩家均分47.7、真人36.6，Spearman 0.60，不是人与人一致性。主表各模型框架不同，另有14模型×3框架×同8片对照。成本包括所选记录运行的模型和媒体生成，不含其他生成尝试与评测；失败保留成本、分数记零。本轮核验论文与其中可见链接，未核到作者专用代码/数据发布入口，未执行游戏或独立审看其渲染效果。verified仅表示来源核验。",
+      "limits": "22部电影、主表为模型与框架组合；前两名差0.109分的配对区间跨零。每个受测游戏仅一份真人评分，模型玩家均分高11.1分；成本不含其他生成尝试和评测。未运行游戏或复现。 参考项由模型构建，分数权重和排除未知项会影响结果；bootstrap不覆盖生成随机性。静态HTML可交付不等于已测局部可编辑性、复杂引擎或长期游玩。电影到游戏不自动归入视频剪辑或代码动画四专题，迁移启发为本站建议。",
+      "method": [
+        "先用多角色模型从时间戳画面与对白提取并交叉核验参考项；22部电影共658项，覆盖情节、人物关系、标志元素、可玩片段和情绪发展，清单在评分前固定。",
+        "各模型在指定Agent框架和三小时上限下生成静态服务器可运行的HTML游戏；提供本地开发与受控模型/媒体工具，禁一般网络；取最新成功产物，无成功则记零。",
+        "三名GUI模型玩家只用截图与键鼠试玩；通用评价以103个二值问题和逐级门槛衡量可玩性、玩法、呈现，另汇总24项试玩问卷。",
+        "两名改编评委分别判断源内容出现程度和交互实现；高交互必须给出实际游戏步骤与代码证据。未触发项记零，交互未知项从相应均值排除，保留已知的出现判断。",
+        "总体分按通用40%、改编40%、试玩20%聚合；报告22部电影配对bootstrap，并在同8部电影交叉比较三种框架，另以10人对100个不同游戏的盲试玩校准。"
+      ],
+      "inspirations": [
+        "对叙事剪辑或交互视频建立“源片段—预期动作/节奏—输出区间”清单；只保留角色图像或文字不算任务完成，同时记录未触发、证据缺失和明确失败。",
+        "为代码创作设置两组验收：一组测构建、启动、输入与状态变化，另一组测镜头、内容和视觉质量；保存回放及关键代码，再实测局部修改后的可编辑性。",
+        "采用同模型跨框架和同框架跨模型的交叉实验；把重试与评测开销计入总账，并用多名真人重复评分校准模型评委偏差。"
+      ],
+      "reviewedAt": "2026-11-22T04:25:24.947530+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.24669v1",
+        "https://arxiv.org/html/2611.24669v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.24669",
+      "status": "pending",
+      "checkedAt": "2026-11-22T04:28:24.732121+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.24681v1",
+    "url": "https://arxiv.org/abs/2611.24681v1",
+    "id": "paper-drawscore-2611-24681",
+    "title": "DrawScore：用三视工程图补足代码CAD的局部几何验收",
+    "summary": "DrawScore把生成CAD投成三视工程图，按可见/隐藏线检出IoU掩盖的小孔和槽错误，可作CadQuery训练奖励与选样器。20例矢量图选样IoU小升、边缘距离变差；它补充几何验收，不证明可制造或易编辑。",
+    "insight": "作者主张：用曲线积分和饱和惩罚提高局部错误权重，并兼作CAD奖励与验证器。本站判断：价值在补足体积指标的盲点；应与实体指标并报，不能把三视图高分等同完整几何、可编辑性或制造正确。",
+    "limits": "未复现；仅20个有效T1案例，真值矢量投影模拟输入；选样IoU小升但ECD31.79→33.47变差。RL评测153模型且归一尺度；v1缺所引补充材料，公开仓仅STEP评分器。这是11月18日首发的既有队列补齐，非本轮新发布。RQ1报告35个模型、53组受控比较，但公开v1正文只展示代表性案例，所引完整清单/离散化细节/训练配方补充材料没有包含在下载的TeX归档与HTML中；主TeX明确留待补齐附录。线性衰减推导以局部错误、其余几何固定、误差点超容差使惩罚近饱和等条件为界，不代表任意尺度、任意几何都线性。RQ2仅统计六种配置的1188个有效输出，未给完整失败分母及六配置明细；IoU≥0.95的1007个中190个DS<0.95，是指标分歧而非人工确认的190个制造不合格样本。反向827个DS≥0.95仍有10个IoU<0.95，且三视图不能唯一确定内部阶梯孔/空腔；剖视扩展尚未评估。RQ3对Qwen3.5-4B用106220个DeepCAD样本SFT，再用6407个Fusion360样本RL，153个模型留出评估，400步Dr.GRPO。表中DS奖励比SFT的有效率75.2%→89.5%、IoU0.338→0.445、DS0.242→0.272，但IoU奖励的有效率93.5%、IoU0.484和F-score0.407更高，不能称DS在所有指标最佳。valid仅指CadQuery代码执行并产生有效实体，不测设计约束或后续编辑成功。RQ3奖励与评估都额外归一尺度，不能由此证明绝对尺寸准确；其余实验和公开STEP接口保持尺度。有效性200步再DS200步使用两个不相交子集3203/3204，是阶段和数据共同改变，不能归因为单一奖励课程的独立收益。未报多训练种子/置信区间，几何均值对无效输出的处理在可读主文不明确。RQ4用Qwen3.8-max加Codex每题8候选，基线为有效候选均值，非全尝试成功率；只评20个有效Public T1案例，输入用三视真值矢量投影模拟，尚未验证扫描图/像素图向量化误差。选样IoU0.524→0.534、CD16.19→14.61、F-score0.529→0.555、DS0.546→0.591，但ECD31.79→33.47劣化；Oracle按各指标分别借真值选最佳，不是同一个可部署策略。作者报告推理选择不需要3D真值，但公开CLI/Python顶层入口实际需要reference.step与candidate.step；不能声称已提供直接输入矢量工程图的完整选样工具。固定仓为Apache-2.0指标代码，含配准/投影/计分及CLI测试，未见论文RL训练、权重、评测样本和best-of-N完整流程；未安装或运行。隐藏线多方向投影更慢，但未给完整时延/算力成本比较；默认60秒是超时设置而非实测耗时。几何指标未量化制造公差标准、语义设计意图、工程历史树可编辑性或视觉美学。",
+    "organization": "University of Electronic Science and Technology of China / De Artificial Intelligence Technology / University of Hong Kong",
+    "dateLabel": "2026-11-18 首发 · 本轮补齐方法解读",
+    "evidence": "已读v1全文方法、实验、活动TeX及固定公开指标实现；补充材料缺失，未运行或复现",
+    "originalTitle": "DrawScore: Evaluating Generated CAD Models against Engineering Drawings",
+    "date": "2026-11-18",
+    "checkedAt": "2026-11-22T04:26:44.390628Z",
+    "paperOriginalDate": "2026-11-18T16:14:30Z",
+    "paperUpdatedAt": "2026-11-18T16:14:30Z",
+    "updatedAt": "2026-11-18T16:14:30Z",
+    "firstSeenAt": "2026-11-22T04:27:04.196140+00:00",
+    "tags": [
+      "CAD evaluation",
+      "CadQuery",
+      "Engineering drawings",
+      "Geometric reward",
+      "Test-time selection"
+    ],
+    "authors": [
+      "Haorui Chen",
+      "Shiteng Lu",
+      "Zhanyu Guo",
+      "Zaixi Li",
+      "Yunhe Ni",
+      "Yaosong Du",
+      "Yichen Xiang",
+      "Xiande Huang",
+      "Rui Huang"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1与发表日期",
+        "url": "https://arxiv.org/abs/2611.24681v1"
+      },
+      {
+        "label": "完整方法和实验",
+        "url": "https://arxiv.org/html/2611.24681v1"
+      },
+      {
+        "label": "活动TeX及表格",
+        "url": "https://arxiv.org/src/2611.24681v1"
+      },
+      {
+        "label": "原始PDF",
+        "url": "https://arxiv.org/pdf/2611.24681v1"
+      },
+      {
+        "label": "Hugging Face论文页",
+        "url": "https://huggingface.co/papers/2611.24681"
+      },
+      {
+        "label": "官方实现",
+        "url": "https://github.com/UESTC-Simon/DrawScore"
+      },
+      {
+        "label": "固定提交README及发行范围",
+        "url": "https://github.com/UESTC-Simon/DrawScore/blob/d4fb7a8a4527c750ca2019022478502697d1b523/README.md"
+      },
+      {
+        "label": "固定曲线计分实现",
+        "url": "https://github.com/UESTC-Simon/DrawScore/blob/d4fb7a8a4527c750ca2019022478502697d1b523/drawscore/metric.py"
+      },
+      {
+        "label": "固定三视图投影实现",
+        "url": "https://github.com/UESTC-Simon/DrawScore/blob/d4fb7a8a4527c750ca2019022478502697d1b523/drawscore/projection.py"
+      },
+      {
+        "label": "固定STEP入口与配准流程",
+        "url": "https://github.com/UESTC-Simon/DrawScore/blob/d4fb7a8a4527c750ca2019022478502697d1b523/drawscore/step.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "DrawScore把生成CAD投成三视工程图，按可见/隐藏线检出IoU掩盖的小孔和槽错误，可作CadQuery训练奖励与选样器。20例矢量图选样IoU小升、边缘距离变差；它补充几何验收，不证明可制造或易编辑。",
+      "motivation": "孔洞和槽位占整件体积很小，位置错了仍可能拿到接近满分的IoU；只奖励代码运行成功还会鼓励可执行但粗糙的几何。作者希望从工程图局部轮廓获得更敏感的反馈，并区分执行有效、整体形状与局部细节。",
+      "novelty": "作者主张：用曲线积分和饱和惩罚提高局部错误权重，并兼作CAD奖励与验证器。本站判断：价值在补足体积指标的盲点；应与实体指标并报，不能把三视图高分等同完整几何、可编辑性或制造正确。",
+      "evidenceScope": "已读arXiv v1全文HTML与活动TeX：积分分析、§3方法、§4设置、§5四项实验及表2/3、§7讨论；原PDF为10页，未逐页视觉检查。源归档没有正文所引的补充材料，主TeX的附录插入行仍被注释，因此未声称读到缺失附录。另核arXiv提交历史、HF作者提交论文元数据，以及官方仓固定d4fb7a8a4527c750ca2019022478502697d1b523的README、文件清单、投影/评分/STEP入口与许可证；固定归档内容和main归档逐文件哈希相同。未执行外部代码、训练模型或复现实验。verified仅表示来源核验。",
+      "limits": "未复现；仅20个有效T1案例，真值矢量投影模拟输入；选样IoU小升但ECD31.79→33.47变差。RL评测153模型且归一尺度；v1缺所引补充材料，公开仓仅STEP评分器。这是11月18日首发的既有队列补齐，非本轮新发布。RQ1报告35个模型、53组受控比较，但公开v1正文只展示代表性案例，所引完整清单/离散化细节/训练配方补充材料没有包含在下载的TeX归档与HTML中；主TeX明确留待补齐附录。线性衰减推导以局部错误、其余几何固定、误差点超容差使惩罚近饱和等条件为界，不代表任意尺度、任意几何都线性。RQ2仅统计六种配置的1188个有效输出，未给完整失败分母及六配置明细；IoU≥0.95的1007个中190个DS<0.95，是指标分歧而非人工确认的190个制造不合格样本。反向827个DS≥0.95仍有10个IoU<0.95，且三视图不能唯一确定内部阶梯孔/空腔；剖视扩展尚未评估。RQ3对Qwen3.5-4B用106220个DeepCAD样本SFT，再用6407个Fusion360样本RL，153个模型留出评估，400步Dr.GRPO。表中DS奖励比SFT的有效率75.2%→89.5%、IoU0.338→0.445、DS0.242→0.272，但IoU奖励的有效率93.5%、IoU0.484和F-score0.407更高，不能称DS在所有指标最佳。valid仅指CadQuery代码执行并产生有效实体，不测设计约束或后续编辑成功。RQ3奖励与评估都额外归一尺度，不能由此证明绝对尺寸准确；其余实验和公开STEP接口保持尺度。有效性200步再DS200步使用两个不相交子集3203/3204，是阶段和数据共同改变，不能归因为单一奖励课程的独立收益。未报多训练种子/置信区间，几何均值对无效输出的处理在可读主文不明确。RQ4用Qwen3.8-max加Codex每题8候选，基线为有效候选均值，非全尝试成功率；只评20个有效Public T1案例，输入用三视真值矢量投影模拟，尚未验证扫描图/像素图向量化误差。选样IoU0.524→0.534、CD16.19→14.61、F-score0.529→0.555、DS0.546→0.591，但ECD31.79→33.47劣化；Oracle按各指标分别借真值选最佳，不是同一个可部署策略。作者报告推理选择不需要3D真值，但公开CLI/Python顶层入口实际需要reference.step与candidate.step；不能声称已提供直接输入矢量工程图的完整选样工具。固定仓为Apache-2.0指标代码，含配准/投影/计分及CLI测试，未见论文RL训练、权重、评测样本和best-of-N完整流程；未安装或运行。隐藏线多方向投影更慢，但未给完整时延/算力成本比较；默认60秒是超时设置而非实测耗时。几何指标未量化制造公差标准、语义设计意图、工程历史树可编辑性或视觉美学。",
+      "method": [
+        "先统一刚性配准两实体，保持尺度；用Open CASCADE生成前、顶、右三视图，分开可见/隐藏线，各视角取8个邻近方向减小残余旋转影响。",
+        "合并同可见性重叠曲线，按弧长计双向最近线距离；用σ=0.005L的高斯饱和惩罚计算召回/精确率，L为真值包围盒对角线。",
+        "各视图先平均8方向的精确率和召回，再取调和均值；总分取三视图最低值，避免另外两面正确稀释某一面的小孔、槽或轮廓错误。",
+        "将DS作Qwen3.5-4B的Dr.GRPO奖励，对生成CadQuery实体评分；与体积、表面、边缘及纯有效性奖励对照，另测有效性到DS的两阶段训练。",
+        "推理时每题生成8个CAD候选，按其投影与输入矢量工程图的DS择优；实验用真值投影模拟输入，同时报告其他几何指标与逐指标Oracle。"
+      ],
+      "inspirations": [
+        "为代码CAD验收同时保留执行有效率、体积/表面误差和分视图线条分数；主动注入孔位、错面槽、倒角和内部空腔错误，检查指标盲区，避免训练仅优化一种容易得分的代理。",
+        "把生成器输出的CAD代码、STEP实体与三视图绑定版本；修改局部参数后同时检查未改区域、绝对尺寸和设计历史，再以剖视或约束测试补足三视图不能识别的内部结构。",
+        "先在冻结候选池比较DS选择、随机有效选择和各指标Oracle，报告全部生成/执行失败、每次评分时延与向量化错误；再测试真实扫描图，避免把理想真值投影的收益当生产图纸收益。"
+      ],
+      "reviewedAt": "2026-11-22T04:26:44.390628Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.24681v1",
+        "https://arxiv.org/html/2611.24681v1",
+        "https://arxiv.org/src/2611.24681v1",
+        "https://arxiv.org/pdf/2611.24681v1",
+        "https://huggingface.co/papers/2611.24681",
+        "https://github.com/UESTC-Simon/DrawScore",
+        "https://github.com/UESTC-Simon/DrawScore/blob/d4fb7a8a4527c750ca2019022478502697d1b523/README.md",
+        "https://github.com/UESTC-Simon/DrawScore/blob/d4fb7a8a4527c750ca2019022478502697d1b523/drawscore/metric.py",
+        "https://github.com/UESTC-Simon/DrawScore/blob/d4fb7a8a4527c750ca2019022478502697d1b523/drawscore/projection.py",
+        "https://github.com/UESTC-Simon/DrawScore/blob/d4fb7a8a4527c750ca2019022478502697d1b523/drawscore/step.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.24681",
+      "status": "pending",
+      "checkedAt": "2026-11-22T04:28:51.031731+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.25123v1",
+    "url": "https://arxiv.org/abs/2611.25123v1",
+    "id": "paper-grepmem-2611-25123",
+    "title": "GrepMem：摘要负责继续工作，原文日志负责找回旧证据",
+    "summary": "GrepMem把摘要与可搜索原始日志分开，RL后精确KV/日志答对率达97.4%/95.3%；但AMA流式问答仅增0.9点且不显著，花2.3倍tokens；代码已开、RL权重未发。",
+    "insight": "作者主张：无索引原文日志加正则回查即可兼顾压缩和长期记忆。本站判断：把“保存证据”与“当前读什么”分开值得做基线；无损指存储层，不能推出检索必达、无需训练或普遍省成本。",
+    "limits": "未复现；无损仅日志存储，正则回查会截断。单一9B；AMA流增0.9点不显著却耗2.3倍tokens；看评估曲线后选80步，区间不含训练种子差异。记忆免索引≠研究免检索器；代码已开、RL权重未发。主表66.4是五任务等权均值，不是合并全部问题的成功率。ContextBench KV/Log为精确答案任务，含576/480问；11种长度×4种子共44流，每流24问，范围约33K–968Ktokens。训练已有同类合成流，只是种子从1000起与评价42–45分开，不能称从未见任务类型。MemGPT的KV为99.9，高于GrepMem97.4；作者实现采用BM25档案检索和子串消息搜索，不是原版嵌入式MemGPT的全面比较。BCP-Multi用830题固定打乱取276个不重叠三题组，丢2题，828问共用每组60轮且问题一开始同时给出；46.9对SUPO38.1的+8.8点是报告checkpoint比较。SUPO训练前45.2、前次checkpoint42.9，GrepMem自身RL前40.9→46.9；因此8.8不能直接当作RL的净因果贡献。AMA文件208轨迹/2496问，所有策略都有grep_trajectory访问原始源轨迹，GrepMem46.3略低MemGPT46.4，RL前46.9反略降。AMA流189条≤128K轨迹/2268问，每问从最终记忆独立复制，GrepMem46.1对SUPO45.2；长轨迹子集+2.3点的95%区间[-0.2,4.9]含零，四问型也未显著。所有策略仅一个基础模型，未报独立重复训练种子；95%区间由10000次配对bootstrap重采样测试题/episode/流/轨迹，三次采样不是三次训练。官方README补充看过评价曲线后使用80步checkpoint，未证明独立验证集选点。初版评价器丢掉写在reasoning里的摘要，作者修复并重评SUPO/GrepMem；不同策略补采路径和样本数不完全相同，ReAct只有两次且checkpoint未保留，成本图不含ReAct。token账本合计策略所有模型调用的输入和输出，包含摘要/记忆回复；BCP为1.22M对SUPO1.15M，AMA文件560K对590K，AMA流869K对377K，ContextBench平均每流2.51M对2.11M、MemGPT8.60M。它不是总费用：检索服务、训练、存储、裁判等未被该策略token计数覆盖；时延在共享推理/检索服务器并发测量，作者注明近似。Pareto仅对当前已评四个压缩策略/任务设置，不能推广成普遍最快最省。训练全实验约6000H100小时，每常规运行24卡，ReAct16卡，另共享3卡研究检索；不是一个轻量grep函数即可复现训练成绩。研究任务允许30/60个任务轮及最多10次额外纯记忆回复，MemGPT也有额度，SUPO/ReAct没有回查能力；流式协议每次输入最多8次模型调用，不能把“相同任务轮”理解为相同总调用/算力。ReAct上下文满即提前结束，且无剩余轮数提示，因此其接近零的长任务结果不是同等可伸缩记忆系统比较。代码固定提交已核：grep对旧grep输出不再检索，count统计匹配行而非词出现次数，来源还可能含摘要与重复观察，不能直接等同唯一事实数。原始历史与返回视图分离；返回按行裁300字符、分页及约6K字符并有regex超时。研究工具自身文档上限8192tokens/一般输出40K字符；研究循环记录assistant content、工具参数与返回，并未把独立reasoning字段也追加到grep日志。本站据此把“完整”限定为已记录文本，不能声称完整源文档或所有内部推理永不丢失。本轮读v1方法、实验和附录A–F，及固定仓README、方法/复现指南、grep与工作循环关键实现；40个文件公开，有训练/评价入口但无已训练RL checkpoint下载。README“paper links未发”文字已过时，arXiv原文已可读；不因此否认论文已发表。HF精确论文页/API404、名称模型/数据API均空，仅说明本轮这些入口未核到发布；X索引无可核作者新帖，不声称直读时间线。没有安装、训练、运行外部代码或复现实验，verified仅指来源核验。",
+    "organization": "University of Southern California",
+    "dateLabel": "2026-11-18 首发 · 本轮补齐方法解读",
+    "evidence": "已读v1方法、实验与全部附录，核固定作者仓关键实现；未复现",
+    "originalTitle": "Forget Freely, Grep Later: Lossless, Index-Free Memory for Long-Horizon LLM Agents",
+    "date": "2026-11-18",
+    "checkedAt": "2026-11-22T04:24:29.287691Z",
+    "paperOriginalDate": "2026-11-18T20:02:57Z",
+    "paperUpdatedAt": "2026-11-18T20:02:57Z",
+    "updatedAt": "2026-11-18T20:02:57Z",
+    "firstSeenAt": "2026-11-20T04:00:01Z",
+    "lastSeenAt": "2026-11-20T04:00:01Z",
+    "tags": [
+      "Agent memory",
+      "GRPO",
+      "Context compaction",
+      "Lexical retrieval"
+    ],
+    "authors": [
+      "Ziyan Yang",
+      "Taiwei Shi",
+      "Jieyu Zhao"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv日期与作者",
+        "url": "https://arxiv.org/abs/2611.25123v1"
+      },
+      {
+        "label": "论文方法、实验及附录",
+        "url": "https://arxiv.org/html/2611.25123v1"
+      },
+      {
+        "label": "TeX原始表格与协议",
+        "url": "https://arxiv.org/src/2611.25123v1"
+      },
+      {
+        "label": "作者官方代码仓",
+        "url": "https://github.com/limenlp/GrepMem"
+      },
+      {
+        "label": "固定README与发行范围",
+        "url": "https://github.com/limenlp/GrepMem/blob/b7e3744c2f7489feac4060b379be6936960dc7bd/README.md"
+      },
+      {
+        "label": "复现协议、checkpoint与成本",
+        "url": "https://github.com/limenlp/GrepMem/blob/b7e3744c2f7489feac4060b379be6936960dc7bd/docs/reproduction.md"
+      },
+      {
+        "label": "记忆实现与预算说明",
+        "url": "https://github.com/limenlp/GrepMem/blob/b7e3744c2f7489feac4060b379be6936960dc7bd/docs/method.md"
+      },
+      {
+        "label": "grep分页、计数与截断源码",
+        "url": "https://github.com/limenlp/GrepMem/blob/b7e3744c2f7489feac4060b379be6936960dc7bd/agents/common.py"
+      },
+      {
+        "label": "日志与压缩工作循环源码",
+        "url": "https://github.com/limenlp/GrepMem/blob/b7e3744c2f7489feac4060b379be6936960dc7bd/agents/flows.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "GrepMem把摘要与可搜索原始日志分开，RL后精确KV/日志答对率达97.4%/95.3%；但AMA流式问答仅增0.9点且不显著，花2.3倍tokens；代码已开、RL权重未发。",
+      "motivation": "压缩上下文时，Agent不知道未来还会追问哪条旧信息；只靠摘要可能永久丢掉精确值。论文把工作摘要和可回查证据分开，研究“先忘再找”何时比更复杂的结构化记忆划算。",
+      "novelty": "作者主张：无索引原文日志加正则回查即可兼顾压缩和长期记忆。本站判断：把“保存证据”与“当前读什么”分开值得做基线；无损指存储层，不能推出检索必达、无需训练或普遍省成本。",
+      "evidenceScope": "实际读取v1全文方法、主实验与附录A–F：提示/日志与视图、基线、数据/GRPO、评价修复与采样、长度分组及成本。独立读取作者固定提交b7e3744c2f7489feac4060b379be6936960dc7bd的README、docs与agents/common.py、flows.py、contextbench.py相关段；以原始TeX表格而非索引摘要提取数字。仅源代码阅读，未执行、下载权重或复现；verified是来源核验，不是实验认证。",
+      "limits": "未复现；无损仅日志存储，正则回查会截断。单一9B；AMA流增0.9点不显著却耗2.3倍tokens；看评估曲线后选80步，区间不含训练种子差异。记忆免索引≠研究免检索器；代码已开、RL权重未发。主表66.4是五任务等权均值，不是合并全部问题的成功率。ContextBench KV/Log为精确答案任务，含576/480问；11种长度×4种子共44流，每流24问，范围约33K–968Ktokens。训练已有同类合成流，只是种子从1000起与评价42–45分开，不能称从未见任务类型。MemGPT的KV为99.9，高于GrepMem97.4；作者实现采用BM25档案检索和子串消息搜索，不是原版嵌入式MemGPT的全面比较。BCP-Multi用830题固定打乱取276个不重叠三题组，丢2题，828问共用每组60轮且问题一开始同时给出；46.9对SUPO38.1的+8.8点是报告checkpoint比较。SUPO训练前45.2、前次checkpoint42.9，GrepMem自身RL前40.9→46.9；因此8.8不能直接当作RL的净因果贡献。AMA文件208轨迹/2496问，所有策略都有grep_trajectory访问原始源轨迹，GrepMem46.3略低MemGPT46.4，RL前46.9反略降。AMA流189条≤128K轨迹/2268问，每问从最终记忆独立复制，GrepMem46.1对SUPO45.2；长轨迹子集+2.3点的95%区间[-0.2,4.9]含零，四问型也未显著。所有策略仅一个基础模型，未报独立重复训练种子；95%区间由10000次配对bootstrap重采样测试题/episode/流/轨迹，三次采样不是三次训练。官方README补充看过评价曲线后使用80步checkpoint，未证明独立验证集选点。初版评价器丢掉写在reasoning里的摘要，作者修复并重评SUPO/GrepMem；不同策略补采路径和样本数不完全相同，ReAct只有两次且checkpoint未保留，成本图不含ReAct。token账本合计策略所有模型调用的输入和输出，包含摘要/记忆回复；BCP为1.22M对SUPO1.15M，AMA文件560K对590K，AMA流869K对377K，ContextBench平均每流2.51M对2.11M、MemGPT8.60M。它不是总费用：检索服务、训练、存储、裁判等未被该策略token计数覆盖；时延在共享推理/检索服务器并发测量，作者注明近似。Pareto仅对当前已评四个压缩策略/任务设置，不能推广成普遍最快最省。训练全实验约6000H100小时，每常规运行24卡，ReAct16卡，另共享3卡研究检索；不是一个轻量grep函数即可复现训练成绩。研究任务允许30/60个任务轮及最多10次额外纯记忆回复，MemGPT也有额度，SUPO/ReAct没有回查能力；流式协议每次输入最多8次模型调用，不能把“相同任务轮”理解为相同总调用/算力。ReAct上下文满即提前结束，且无剩余轮数提示，因此其接近零的长任务结果不是同等可伸缩记忆系统比较。代码固定提交已核：grep对旧grep输出不再检索，count统计匹配行而非词出现次数，来源还可能含摘要与重复观察，不能直接等同唯一事实数。原始历史与返回视图分离；返回按行裁300字符、分页及约6K字符并有regex超时。研究工具自身文档上限8192tokens/一般输出40K字符；研究循环记录assistant content、工具参数与返回，并未把独立reasoning字段也追加到grep日志。本站据此把“完整”限定为已记录文本，不能声称完整源文档或所有内部推理永不丢失。本轮读v1方法、实验和附录A–F，及固定仓README、方法/复现指南、grep与工作循环关键实现；40个文件公开，有训练/评价入口但无已训练RL checkpoint下载。README“paper links未发”文字已过时，arXiv原文已可读；不因此否认论文已发表。HF精确论文页/API404、名称模型/数据API均空，仅说明本轮这些入口未核到发布；X索引无可核作者新帖，不声称直读时间线。没有安装、训练、运行外部代码或复现实验，verified仅指来源核验。",
+      "method": [
+        "工作上下文限32768tokens，近28672时由同一模型写摘要并重启；另一份追加日志保留已记录消息、工具返回与摘要，首次压缩后才启用grep。",
+        "Agent自主写不区分大小写的正则，按时间回查并分页；可只计匹配行，默认10条、最多30条，带来源轮次和行号；每行展示300字符，响应约6K字符。",
+        "以Qwen3.5-9B分别训练五种记忆策略，共用4000条混合任务：70%单题研究、15%三题研究、15%合成流；研究用答案裁判，精确流用程序评分。",
+        "用GRPO训练80步，每批8题、每题8轨迹；动作、摘要与回查共用整段回报，无单独grep标签。研究允许额外10个记忆回复，仍计模型tokens。",
+        "固定32K窗比较提前给问题的BCP三题/AMA文件与事后提问的AMA流/KV/日志；主结果每项平均3次采样，ReAct两次，并报测试项bootstrap与调用成本。"
+      ],
+      "inspirations": [
+        "给代码动画或剪辑Agent保存素材ID、时间码、执行日志与校验结果，再用摘要指导回查；专设“压缩后才问旧参数”测试，分别验存储完整、检索命中和最终执行。",
+        "将精确查值、计数、状态更新与因果解释拆开评测；保留“AMA收益不显著但成本2.3倍”式反例，并给检索设回合预算，别把所有长期记忆都交给grep。",
+        "对照摘要、摘要加grep和RL后的同一系统，固定工具与采样预算并预先确定checkpoint；记录输入/输出tokens、裁判、检索器、存储与延迟，检查截断长行和重复计数。"
+      ],
+      "reviewedAt": "2026-11-22T04:24:29.287691Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.25123v1",
+        "https://arxiv.org/html/2611.25123v1",
+        "https://arxiv.org/src/2611.25123v1",
+        "https://github.com/limenlp/GrepMem",
+        "https://github.com/limenlp/GrepMem/blob/b7e3744c2f7489feac4060b379be6936960dc7bd/README.md",
+        "https://github.com/limenlp/GrepMem/blob/b7e3744c2f7489feac4060b379be6936960dc7bd/docs/reproduction.md",
+        "https://github.com/limenlp/GrepMem/blob/b7e3744c2f7489feac4060b379be6936960dc7bd/docs/method.md",
+        "https://github.com/limenlp/GrepMem/blob/b7e3744c2f7489feac4060b379be6936960dc7bd/agents/common.py",
+        "https://github.com/limenlp/GrepMem/blob/b7e3744c2f7489feac4060b379be6936960dc7bd/agents/flows.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.25123",
+      "status": "pending",
+      "checkedAt": "2026-11-22T04:26:11.346330+00:00"
+    }
   }
 ]
