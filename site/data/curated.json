@@ -28140,5 +28140,273 @@
         "https://zcode.z.ai/cn/changelog"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.26480v1",
+    "url": "https://arxiv.org/abs/2611.26480v1",
+    "id": "paper-held-while-waiting-2611-26480",
+    "title": "Held While Waiting：CPU闲置，Agent会话为何仍占着容量？",
+    "summary": "Agent等模型时CPU很闲，会话与配额却可能仍被占用。论文以384次会话分离等待和本地开销；共享运行时减少环境数59倍仅是模拟，不能当作真实费用降幅。",
+    "insight": "作者主张：刻画Agent等待期间仍保留的运行环境，并量化共享调度与及时关闭的收益。本站判断：贡献在拆开CPU计费、环境占用与会话生命周期；没有证明云厂商浪费了相同比例的物理机器。",
+    "limits": "未复现。3549步/384会话来自retail；5–40ms CPU是估计，59倍环境数下降和p99增延≤40ms均为模拟。不能等同成本节省；完整部署harness未开源，平台调查截至10/27，今日AgentCore另有可共置的Instances模式。实测部署为2026年9月的τ²-bench retail、Claude Sonnet 4.5、LangGraph与Strands；只统计7–19步会话的暖启动，排除冷启动，工具由外部benchmark执行，因此部署计时不含工具等待，不能外推网页渲染、视频编码或重CPU工具。模型调用计时含客户端序列化与解析；调用外的4.5ms墙钟既不是CPU下界也不是上界，论文用它构造工程估计，而非测得的CPU置信区间。上界先把约6.9k输入token换算20–34KB再外推1.1–19.6KB拟合，并将桌面LangGraph的2.2倍等待惩罚用于两框架，未在云上独立测该惩罚。硬件、Python版本、持久化与线程计时口径不同，不能把框架常数当通用速度排名。SQLite呈零中位数与成批写入尖峰；作者未确认刷盘工作归属，故不报告完整总开销。50次Haiku校准与Sonnet部署任务、时间和模型不同，不能混成同一分布。论文第7节全部为离散事件模拟：固定seed、平稳Poisson约30会话/秒、约33秒会话、2vCPU环境最多64会话、按固定CPU片段与采样等待推进事件，40分钟丢弃前20分钟；环境均值约1008→17，CPU取20.3/38.9ms时新增排队p99为13.1/39.67ms，不是端到端p99或真实生产SLA。假定0.5GB每环境加10MB每会话的内存收益未实测；256并发与重CPU组合会排长队。桌面50–400并发的mock验证保留真实等待样本，但不是1000个真实云Agent。15分钟闲置导致约28倍保留环境是按固定到达率推算，可能先撞配额，未实际创建这些环境。共享进程还共享内存与失败域；未验证隔离、安全或可恢复性等价，不能直接替换隔离架构。供应商可超售或复用底层资源，论文无法观测物理主机数量或厂商成本；释放会话应在工具与状态提交真正完成后执行。长上下文外推远超实测5–10k输入token。作者仓库固定ad43050包含CPU模拟/容量脚本及3549步部署CSV，README明确原部署研究完整harness不在artifact；本站仅静态读代码、复算CSV行数与会话数、核已发布模拟输出，没有重跑云实验或模拟。论文平台调查日期为2026-10-27，仓库平台表仍含研究代理报告及未确证项，不能声称全部平台逐项独立核验。本轮另读AWS三个当前公开页面：microVM的I/O等待CPU计费为零并不等于所有资源免费；今日文档另有可共置多个Agent的Instances模式及V2内存回收等差别。因此论文结论限定其调查的按会话microVM模式，不当作现行所有AgentCore产品配置。作者披露在AWS工作、研究独立并自费；未提供独立复现实验，verified只表示来源核验。",
+    "dateLabel": "2026-11-19 首发 · 历史平台调查与当前文档分开核验",
+    "evidence": "全文方法、固定作者仓库及当前AWS三页来源核验；未复现实验",
+    "originalTitle": "Held While Waiting: What LLM Agent Sessions Reserve on Serverless and Agent Runtimes",
+    "date": "2026-11-19",
+    "checkedAt": "2026-11-22T17:19:10.991632+00:00",
+    "paperOriginalDate": "2026-11-19T17:40:09Z",
+    "paperUpdatedAt": "2026-11-19T17:40:09Z",
+    "updatedAt": "2026-11-19T17:40:09Z",
+    "firstSeenAt": "2026-11-20T10:00:00Z",
+    "lastSeenAt": "2026-11-22T16:00:01Z",
+    "tags": [
+      "Agent runtime",
+      "Capacity",
+      "Session lifecycle",
+      "Measurement"
+    ],
+    "authors": [
+      "Mekhala Hithyshini Sreenivasa"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "论文作者与提交历史",
+        "url": "https://arxiv.org/abs/2611.26480v1"
+      },
+      {
+        "label": "原文方法、测量与模拟",
+        "url": "https://arxiv.org/html/2611.26480v1"
+      },
+      {
+        "label": "作者代码与数据固定版本",
+        "url": "https://github.com/MEKHALA/agent-runtime-capacity/tree/ad43050c46eda012a474aa7225dda47672fcf754"
+      },
+      {
+        "label": "当前AWS计费模式",
+        "url": "https://aws.amazon.com/bedrock/agentcore/pricing/"
+      },
+      {
+        "label": "当前AWS会话生命周期",
+        "url": "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-sessions.html"
+      },
+      {
+        "label": "当前AWS资源与配额说明",
+        "url": "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/bedrock-agentcore-limits.html"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Agent等模型时CPU很闲，会话与配额却可能仍被占用。论文以384次会话分离等待和本地开销；共享运行时减少环境数59倍仅是模拟，不能当作真实费用降幅。",
+      "motivation": "Agent的每一步常等待模型数秒，本地只做少量编排。如果容量规划只看CPU利用率，就可能漏掉仍保留的会话、内存与并发配额；论文要区分这些量，并判断何时真正结束会话。",
+      "novelty": "作者主张：刻画Agent等待期间仍保留的运行环境，并量化共享调度与及时关闭的收益。本站判断：贡献在拆开CPU计费、环境占用与会话生命周期；没有证明云厂商浪费了相同比例的物理机器。",
+      "evidenceScope": "已读arXiv v1正文方法、部署测量、容量模拟和有效性边界；独立审稿还读取作者固定commit的README、传输mock/模拟核心及已发布输出，复算CSV为3549步/384会话。另核当前AWS定价、会话和限制三页，区分其与10/27平台调查。不是仅摘要解读；未执行作者代码或复现云测量。",
+      "limits": "未复现。3549步/384会话来自retail；5–40ms CPU是估计，59倍环境数下降和p99增延≤40ms均为模拟。不能等同成本节省；完整部署harness未开源，平台调查截至10/27，今日AgentCore另有可共置的Instances模式。实测部署为2026年9月的τ²-bench retail、Claude Sonnet 4.5、LangGraph与Strands；只统计7–19步会话的暖启动，排除冷启动，工具由外部benchmark执行，因此部署计时不含工具等待，不能外推网页渲染、视频编码或重CPU工具。模型调用计时含客户端序列化与解析；调用外的4.5ms墙钟既不是CPU下界也不是上界，论文用它构造工程估计，而非测得的CPU置信区间。上界先把约6.9k输入token换算20–34KB再外推1.1–19.6KB拟合，并将桌面LangGraph的2.2倍等待惩罚用于两框架，未在云上独立测该惩罚。硬件、Python版本、持久化与线程计时口径不同，不能把框架常数当通用速度排名。SQLite呈零中位数与成批写入尖峰；作者未确认刷盘工作归属，故不报告完整总开销。50次Haiku校准与Sonnet部署任务、时间和模型不同，不能混成同一分布。论文第7节全部为离散事件模拟：固定seed、平稳Poisson约30会话/秒、约33秒会话、2vCPU环境最多64会话、按固定CPU片段与采样等待推进事件，40分钟丢弃前20分钟；环境均值约1008→17，CPU取20.3/38.9ms时新增排队p99为13.1/39.67ms，不是端到端p99或真实生产SLA。假定0.5GB每环境加10MB每会话的内存收益未实测；256并发与重CPU组合会排长队。桌面50–400并发的mock验证保留真实等待样本，但不是1000个真实云Agent。15分钟闲置导致约28倍保留环境是按固定到达率推算，可能先撞配额，未实际创建这些环境。共享进程还共享内存与失败域；未验证隔离、安全或可恢复性等价，不能直接替换隔离架构。供应商可超售或复用底层资源，论文无法观测物理主机数量或厂商成本；释放会话应在工具与状态提交真正完成后执行。长上下文外推远超实测5–10k输入token。作者仓库固定ad43050包含CPU模拟/容量脚本及3549步部署CSV，README明确原部署研究完整harness不在artifact；本站仅静态读代码、复算CSV行数与会话数、核已发布模拟输出，没有重跑云实验或模拟。论文平台调查日期为2026-10-27，仓库平台表仍含研究代理报告及未确证项，不能声称全部平台逐项独立核验。本轮另读AWS三个当前公开页面：microVM的I/O等待CPU计费为零并不等于所有资源免费；今日文档另有可共置多个Agent的Instances模式及V2内存回收等差别。因此论文结论限定其调查的按会话microVM模式，不当作现行所有AgentCore产品配置。作者披露在AWS工作、研究独立并自费；未提供独立复现实验，verified只表示来源核验。",
+      "method": [
+        "在SDK序列化与签名后替换传输响应，保留消息构建、解析和40轮工具历史；跨LangGraph/Strands、桌面与云配置测请求字节对应的CPU开销。",
+        "在384次retail部署会话保留3549个暖启动步骤，分离模型调用和外围墙钟；用微基准与等待惩罚构造CPU范围，明确不是逐步CPU实测。",
+        "按2026-10-27公开资料整理会话隔离、计费和闲置终止机制；将活跃等待与任务结束后的空闲分别计入环境占用，区别客户配额和底层物理机器。",
+        "以实测步骤数与1094个LangGraph调用等待样本驱动离散事件模拟；比较一会话一环境、及时关闭和2vCPU环境最多64会话的共享队列。",
+        "用桌面50–400并发的传输mock检查估算量级，再报告模拟的环境数与额外排队延迟；单列CPU、内存、闲置超时、隔离和复现材料的边界。"
+      ],
+      "inspirations": [
+        "容量看板同时记录执行、等待、结束后未关闭的会话数及内存时间和配额余量；用到达率×实际保留时长估算环境需求，避免仅凭低CPU判断还有容量。",
+        "给Agent建立明确结束协议：确认工具、状态与后台写入均完成后再幂等关闭运行会话；另测关闭失败、重试和后续唤醒，不能把前端回复完毕当作生命周期结束。",
+        "编排开销基准只替换传输层，保留序列化和递增长历史，并分别记录CPU与墙钟；共享调度先验证隔离和重工具负载，再比较相同任务的延迟、环境数与实际账单。"
+      ],
+      "reviewedAt": "2026-11-22T17:19:10.991632+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.26480v1",
+        "https://arxiv.org/html/2611.26480v1",
+        "https://github.com/MEKHALA/agent-runtime-capacity/tree/ad43050c46eda012a474aa7225dda47672fcf754",
+        "https://aws.amazon.com/bedrock/agentcore/pricing/",
+        "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-sessions.html",
+        "https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/bedrock-agentcore-limits.html"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.26480",
+      "status": "pending",
+      "checkedAt": "2026-11-22T17:20:03.966558+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://github.com/ManimCommunity/manim/releases/tag/v0.30.0a1",
+    "url": "https://github.com/ManimCommunity/manim/releases/tag/v0.30.0a1",
+    "id": "tool-manim-030-alpha1-20261122",
+    "title": "Manim 0.30.0a1：给代码动画增加状态评估与源码时间线",
+    "summary": "Manim发布0.30.0a1预览版：可运行场景而不生成影片、按需抽取帧，并导出带源码行的执行时间线。它给代码动画Agent提供检查接口；时间线不是完整编辑工程，预览API与性能仍需验证。",
+    "insight": "官方主张：重构Cairo/OpenGL共享运行流程，支持场景评估和时间线导出。本站判断：可把执行状态、源码定位与抽帧视觉验收连起来，但还不能证明Agent修复更准、更快或成片更好。",
+    "limits": "这是alpha预览版，非稳定版；未安装或渲染。timeline仅记录调用与源码位置，不是完整编辑工程；evaluate仍执行Python，非沙箱，且不支持原始GPU网格，不能靠对象状态验证纯着色器效果。API可无弃用期变更；未核实性能或视觉质量收益。已读官方发行说明、固定v0.30.0a1两份指南及manager.py/timeline.py关键实现，属于工具解读，不是论文实验。evaluate执行setup/construct/tear_down、动画插值与updater，省略默认逐帧绘图、编码和预览；指定frame_times时只画所需帧，仍运行到场景结束，不是随机跳到时间点。场景须从未播放或渲染，每个实例只运行一次，创建与评估需一致帧率；时长遵循帧采样和冻结wait取整。只检查最终mobject状态无法发现中间遮挡、内容错误或所有渲染后缺陷。音频仍需可读取的原文件；文件写入器、同场景嵌套render和交互预览在评估时禁用。Timeline是不可变记录，to_dict返回可改副本，from_json只载入记录；文档没有把修改后的JSON回写Python/图层工程的接口。记录包含play/wait/section/caption/sound、开始/结束时间、文件hash和调用行，可含skipped及ended_early；这些标志需用于判断检查覆盖。CLI --dry_run只是禁止媒体文件输出，仍走render路径；真正省略逐帧绘图需Python evaluate。正常完成后才可取得timeline，其他失败不产生完整记录；EndSceneEarlyException可作为正常提前结束并带标志。未执行跨Cairo/OpenGL一致性、旧项目兼容、墙钟加速或视觉质量测试。发行说明列出模块路径/Camera接口等破坏性变更，顶层import保留不代表依赖旧内部API的工程可直接迁移。",
+    "organization": "Manim Community",
+    "dateLabel": "2026-11-22 · 官方 alpha 预览发行（UTC）",
+    "evidence": "官方发行、preview 指南与固定版本关键源码已读；未安装、运行或渲染，不是论文复现",
+    "originalTitle": "Manim v0.30.0a1 preview prerelease",
+    "date": "2026-11-22",
+    "checkedAt": "2026-11-22T17:19:10.903Z",
+    "updatedAt": "2026-11-22T14:46:03Z",
+    "firstSeenAt": "2026-11-22T17:19:10.903Z",
+    "lastSeenAt": "2026-11-22T17:19:10.903Z",
+    "tags": [
+      "Manim",
+      "官方工具更新",
+      "alpha预览",
+      "执行时间线",
+      "代码动画"
+    ],
+    "topics": [
+      "code2motion",
+      "code2video"
+    ],
+    "featured": true,
+    "sources": [
+      {
+        "label": "官方 v0.30.0a1 预览发行与迁移说明",
+        "url": "https://github.com/ManimCommunity/manim/releases/tag/v0.30.0a1"
+      },
+      {
+        "label": "官方 preview 指南：不输出影片的场景评估",
+        "url": "https://docs.manim.community/en/preview/guides/evaluation.html"
+      },
+      {
+        "label": "官方 preview 指南：执行时间线格式与限制",
+        "url": "https://docs.manim.community/en/preview/guides/timeline.html"
+      },
+      {
+        "label": "固定发行源码：Manager.evaluate 与运行生命周期",
+        "url": "https://github.com/ManimCommunity/manim/blob/v0.30.0a1/manim/manager.py"
+      },
+      {
+        "label": "固定发行源码：只读 Timeline 格式",
+        "url": "https://github.com/ManimCommunity/manim/blob/v0.30.0a1/manim/timeline.py"
+      },
+      {
+        "label": "Official fixed-tag evaluation guide",
+        "url": "https://github.com/ManimCommunity/manim/blob/v0.30.0a1/docs/source/guides/evaluation.rst"
+      },
+      {
+        "label": "Official fixed-tag timeline guide",
+        "url": "https://github.com/ManimCommunity/manim/blob/v0.30.0a1/docs/source/guides/timeline.rst"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Manim发布0.30.0a1预览版：可运行场景而不生成影片、按需抽取帧，并导出带源码行的执行时间线。它给代码动画Agent提供检查接口；时间线不是完整编辑工程，预览API与性能仍需验证。",
+      "motivation": "代码动画Agent常要先知道场景能否执行、时间点对应哪段源码，再检查具体画面。这个预览版把状态评估与媒体输出分开，并让结构化执行记录连接回源码，便于构建局部诊断工具。",
+      "novelty": "官方主张：重构Cairo/OpenGL共享运行流程，支持场景评估和时间线导出。本站判断：可把执行状态、源码定位与抽帧视觉验收连起来，但还不能证明Agent修复更准、更快或成片更好。",
+      "evidenceScope": "已读官方v0.30.0a1发行说明及迁移清单、preview evaluation/timeline指南，并交叉核固定tag同名RST、manager.py的evaluate/_run和timeline.py序列化实现；源码范围不等于全库逐文件审计。未安装、执行、渲染或测性能。",
+      "limits": "这是alpha预览版，非稳定版；未安装或渲染。timeline仅记录调用与源码位置，不是完整编辑工程；evaluate仍执行Python，非沙箱，且不支持原始GPU网格，不能靠对象状态验证纯着色器效果。API可无弃用期变更；未核实性能或视觉质量收益。已读官方发行说明、固定v0.30.0a1两份指南及manager.py/timeline.py关键实现，属于工具解读，不是论文实验。evaluate执行setup/construct/tear_down、动画插值与updater，省略默认逐帧绘图、编码和预览；指定frame_times时只画所需帧，仍运行到场景结束，不是随机跳到时间点。场景须从未播放或渲染，每个实例只运行一次，创建与评估需一致帧率；时长遵循帧采样和冻结wait取整。只检查最终mobject状态无法发现中间遮挡、内容错误或所有渲染后缺陷。音频仍需可读取的原文件；文件写入器、同场景嵌套render和交互预览在评估时禁用。Timeline是不可变记录，to_dict返回可改副本，from_json只载入记录；文档没有把修改后的JSON回写Python/图层工程的接口。记录包含play/wait/section/caption/sound、开始/结束时间、文件hash和调用行，可含skipped及ended_early；这些标志需用于判断检查覆盖。CLI --dry_run只是禁止媒体文件输出，仍走render路径；真正省略逐帧绘图需Python evaluate。正常完成后才可取得timeline，其他失败不产生完整记录；EndSceneEarlyException可作为正常提前结束并带标志。未执行跨Cairo/OpenGL一致性、旧项目兼容、墙钟加速或视觉质量测试。发行说明列出模块路径/Camera接口等破坏性变更，顶层import保留不代表依赖旧内部API的工程可直接迁移。",
+      "method": [
+        "Manager统一管理场景生命周期，Cairo/OpenGL共享动画运行流程；相机描述视图、渲染器绘图，便于把执行、绘图与输出拆开。",
+        "对全新Scene调用evaluate，照常执行动画插值与updater，默认不绘图/编码；可指定frame_times按需取帧，运行仍继续到场景末尾。",
+        "用capture_timeline记录play、wait、section、caption、sound的时间、源码行与文件hash；成功后导出JSON，并保留提前结束/跳过标记。",
+        "检查对象状态与抽帧后再修改原Python并新建场景重验；Timeline仅供读取、展示和定位，不提供把JSON修改回写成编辑工程的接口。"
+      ],
+      "inspirations": [
+        "给动画Agent建两级验收：先核时长、对象状态和异常，再在关键切换时刻抽帧找遮挡；对同一工程比较全片渲染与按需抽帧的成本和漏检率。",
+        "把执行时间线的源码行、文件hash、skipped/ended_early连到缺陷记录，要求修补后重新核验原问题及邻近事件，量化局部改稿的非目标漂移。",
+        "固定alpha版本、后端和帧率保存回归样例，分别测执行成功、时间/音画同步和视觉质量；不可把JSON导出成功当成视频正确或工程可双向编辑。"
+      ],
+      "reviewedAt": "2026-11-22T17:19:10.903Z",
+      "sourceUrls": [
+        "https://github.com/ManimCommunity/manim/releases/tag/v0.30.0a1",
+        "https://docs.manim.community/en/preview/guides/evaluation.html",
+        "https://docs.manim.community/en/preview/guides/timeline.html",
+        "https://github.com/ManimCommunity/manim/blob/v0.30.0a1/manim/manager.py",
+        "https://github.com/ManimCommunity/manim/blob/v0.30.0a1/manim/timeline.py",
+        "https://github.com/ManimCommunity/manim/blob/v0.30.0a1/docs/source/guides/evaluation.rst",
+        "https://github.com/ManimCommunity/manim/blob/v0.30.0a1/docs/source/guides/timeline.rst"
+      ]
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.21524v1",
+    "url": "https://arxiv.org/abs/2611.21524v1",
+    "id": "paper-safead-alag-2611-21524",
+    "title": "Safe AD与A-Lag：平均代价下降，为何超预算反而更频繁？",
+    "summary": "A-Lag把预算感知教师的探索经验蒸馏进冻结策略，再按实测代价调节动作惩罚。五环境平均代价下降，但四个回报降低；HalfCheetah超预算率反升，均值改善不能当安全保证。",
+    "insight": "作者主张：两阶段预算感知教师与测试时动作惩罚可改进Safe AD。本站判断：价值是把平均代价、违规频率和严重度拆开；收益随数据混合与任务变化，尚不能证明自适应乘子普遍优于固定惩罚。",
+    "limits": "未复现；五仿真/3种子。平均代价虽降，四环境回报降；HalfCheetah超支率12.3%→15.8%；Ant同权重启用乘子代价3.54→4.08。定理只保固定历史下预测即时代价单调，非预算安全；未核到专用代码。主结果仅适用于每任务32条、强弱专家历史各半的混合；16条历史的五环境×五种专家占比中，仅16/25组合平均代价更低，Ant全弱专家时A-Lag代价18.95而Safe AD为6.15。“代价”是环境定义的碰撞或速度约束量，不是推理费用。HalfCheetah平均代价3.70→3.59，但违规率12.3%→15.8%；Ant违规率35.6%→18.4%，全回合平均超额2.17→2.23，违规后的平均超额约6→12，因此少违规不等于尾部风险更小。Ant与同权重λ=0相比，乘子使代价3.54→4.08、超额1.56→2.23；相对Safe AD的低代价在λ=0时已存在，不能全归因自适应惩罚。PointGoal成本差及HalfCheetah成本差的任务bootstrap区间包含零；三种子不是每种子都获益。理论要求上下文和表示固定，比较预测的下一步代价；连续动作推导使用对角高斯及非负曲率二次头，性质针对动作裁剪前分布。它不约束动作造成的新状态、延迟代价或真实整回合预算，也不是安全执行屏障。代价头只在教师实际执行动作上回归，未验证未采动作的预测校准。训练与测试任务分开：DarkRoom309训练/32新目标地图，PointGoal与CarGoal各128/30布局，HalfCheetah与Ant各64/30隐藏速度阈值；前3种从中心偏置转边缘偏置。每测试任务15次部署，共享RTG和预算抽样；一次部署分别50/20/10回合，历史跨回合保留、部署间清空。回报取末3回合，代价/违规/超额取全程，不能混成同一终点指标；导航回报才等于成功率。预算在训练范围内均匀抽样，未检验范围外预算泛化。序列模型均10万更新、种子42/43/44且用最终checkpoint；图带为部署标准误，附录1万次bootstrap重抽测试任务，区间描述任务抽样而非覆盖所有重新训练随机性。教师用环境专门搜索、切换事件及PPO控制器；日志回放的同观测核验只在DarkRoom覆盖原训练历史，其他环境检查另采历史。主动态数据一半强专家按历史数计，导航强专家仅约29%训练步，不能写成等步数混合。表列两预算机制、两质量档全部收集约5890万环境步，连续PPO控制器另训练600万/800万/2000万/3000万步；未报告完整GPU小时或墙钟，不能称廉价训练。动态预算对照同时改变训练与测试预算匹配度，缺少预算无关教师对照；较高RTG/CTG占用熵不是收益因果证明。自适应与固定乘子还改变平均惩罚幅度，未做等幅度固定对照或同骨干学习式屏障。本文CDT把控制输入改为上下文前缀而非原方法逐步输入，并未单独调参；旧PPO-Lagrangian历史对照只训练8任务、测试任务/目标/训练设置也不同，不能把差距归因教师数据。SafeMeta/MAML为不同协议的背景曲线；未与在线预训练SCARED等做同协议主比较。已读取v1正文、A–J附录及原始TeX表格；论文源中未给作者代码/数据链接，精确GitHub/HF/X搜索没有可核作者专用实现。HF论文页/API404，模型A-Lag搜索返回名称碰撞条目，数据名称搜索为空；只表示本轮未核到，不声称全网不存在。未运行环境、训练或复现实验，verified仅指来源核验。",
+    "organization": "University of Virginia",
+    "dateLabel": "2026-11-16 首发 · 本轮推进待解读队列",
+    "evidence": "全文与附录A–J/原始表格来源核验；无执行复现，未核到专用代码",
+    "originalTitle": "Algorithm Distillation for Safe In-Context Reinforcement Learning",
+    "date": "2026-11-16",
+    "checkedAt": "2026-11-22T16:38:56.959543Z",
+    "paperOriginalDate": "2026-11-16T18:16:28Z",
+    "paperUpdatedAt": "2026-11-16T18:16:28Z",
+    "updatedAt": "2026-11-16T18:16:28Z",
+    "firstSeenAt": "2026-11-22T16:38:56.959543Z",
+    "lastSeenAt": "2026-11-22T16:38:56.959543Z",
+    "tags": [
+      "Algorithm distillation",
+      "Safe ICRL",
+      "Budget constraints",
+      "Test-time adaptation"
+    ],
+    "authors": [
+      "Minjae Kwon",
+      "Amir Moeini",
+      "Shangtong Zhang",
+      "Lu Feng"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv作者与提交历史",
+        "url": "https://arxiv.org/abs/2611.21524v1"
+      },
+      {
+        "label": "原文方法、实验与附录A–J",
+        "url": "https://arxiv.org/html/2611.21524v1"
+      },
+      {
+        "label": "原始TeX、逐种子与消融表",
+        "url": "https://arxiv.org/src/2611.21524v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "A-Lag把预算感知教师的探索经验蒸馏进冻结策略，再按实测代价调节动作惩罚。五环境平均代价下降，但四个回报降低；HalfCheetah超预算率反升，均值改善不能当安全保证。",
+      "motivation": "只模仿固定预算下的安全RL训练历史，未必学会在新任务中发现隐藏约束并调整行为。论文研究预算感知教师及冻结策略上的测试时惩罚，并要求同时检查成本均值、违规次数与严重度。",
+      "novelty": "作者主张：两阶段预算感知教师与测试时动作惩罚可改进Safe AD。本站判断：价值是把平均代价、违规频率和严重度拆开；收益随数据混合与任务变化，尚不能证明自适应乘子普遍优于固定惩罚。",
+      "evidenceScope": "已读arXiv v1主文§3教师与§4动作重加权/定理、§5实验，以及附录A–J的拆分、教师权限、训练、调参、证明、数据混合、消融、种子和旧协议；交叉核原始TeX表6–9等数据。不是摘要分析；没有作者实现可供运行，未复现实验。",
+      "limits": "未复现；五仿真/3种子。平均代价虽降，四环境回报降；HalfCheetah超支率12.3%→15.8%；Ant同权重启用乘子代价3.54→4.08。定理只保固定历史下预测即时代价单调，非预算安全；未核到专用代码。主结果仅适用于每任务32条、强弱专家历史各半的混合；16条历史的五环境×五种专家占比中，仅16/25组合平均代价更低，Ant全弱专家时A-Lag代价18.95而Safe AD为6.15。“代价”是环境定义的碰撞或速度约束量，不是推理费用。HalfCheetah平均代价3.70→3.59，但违规率12.3%→15.8%；Ant违规率35.6%→18.4%，全回合平均超额2.17→2.23，违规后的平均超额约6→12，因此少违规不等于尾部风险更小。Ant与同权重λ=0相比，乘子使代价3.54→4.08、超额1.56→2.23；相对Safe AD的低代价在λ=0时已存在，不能全归因自适应惩罚。PointGoal成本差及HalfCheetah成本差的任务bootstrap区间包含零；三种子不是每种子都获益。理论要求上下文和表示固定，比较预测的下一步代价；连续动作推导使用对角高斯及非负曲率二次头，性质针对动作裁剪前分布。它不约束动作造成的新状态、延迟代价或真实整回合预算，也不是安全执行屏障。代价头只在教师实际执行动作上回归，未验证未采动作的预测校准。训练与测试任务分开：DarkRoom309训练/32新目标地图，PointGoal与CarGoal各128/30布局，HalfCheetah与Ant各64/30隐藏速度阈值；前3种从中心偏置转边缘偏置。每测试任务15次部署，共享RTG和预算抽样；一次部署分别50/20/10回合，历史跨回合保留、部署间清空。回报取末3回合，代价/违规/超额取全程，不能混成同一终点指标；导航回报才等于成功率。预算在训练范围内均匀抽样，未检验范围外预算泛化。序列模型均10万更新、种子42/43/44且用最终checkpoint；图带为部署标准误，附录1万次bootstrap重抽测试任务，区间描述任务抽样而非覆盖所有重新训练随机性。教师用环境专门搜索、切换事件及PPO控制器；日志回放的同观测核验只在DarkRoom覆盖原训练历史，其他环境检查另采历史。主动态数据一半强专家按历史数计，导航强专家仅约29%训练步，不能写成等步数混合。表列两预算机制、两质量档全部收集约5890万环境步，连续PPO控制器另训练600万/800万/2000万/3000万步；未报告完整GPU小时或墙钟，不能称廉价训练。动态预算对照同时改变训练与测试预算匹配度，缺少预算无关教师对照；较高RTG/CTG占用熵不是收益因果证明。自适应与固定乘子还改变平均惩罚幅度，未做等幅度固定对照或同骨干学习式屏障。本文CDT把控制输入改为上下文前缀而非原方法逐步输入，并未单独调参；旧PPO-Lagrangian历史对照只训练8任务、测试任务/目标/训练设置也不同，不能把差距归因教师数据。SafeMeta/MAML为不同协议的背景曲线；未与在线预训练SCARED等做同协议主比较。已读取v1正文、A–J附录及原始TeX表格；论文源中未给作者代码/数据链接，精确GitHub/HF/X搜索没有可核作者专用实现。HF论文页/API404，模型A-Lag搜索返回名称碰撞条目，数据名称搜索为空；只表示本轮未核到，不声称全网不存在。未运行环境、训练或复现实验，verified仅指来源核验。",
+      "method": [
+        "在五类仿真任务中让教师先按剩余预算搜索，首次奖励或代价后转专家控制；教师只用可观测历史，连续控制另靠预训练PPO，并混合强弱两档专家。",
+        "每条多回合历史抽一次预算，各回合重置额度；主模型每任务32条动态预算历史、强弱各半。将状态、动作、奖励和代价编码，逐步加入目标回报及剩余额度做行为克隆。",
+        "另学动作的下一步代价头，代价回归梯度不进入骨干；离散动作改logits，连续动作以非负曲率二次代价重加权高斯。训练时乘子为零，策略仍只模仿执行动作。",
+        "部署冻结权重，按基础策略乘exp(−λ×预测代价)采样；每回合结束用实际超支更新λ并截到上限。上限只用训练任务、保留至少75%基线回报的规则选择。",
+        "用3训练种子的最终checkpoint测试，每任务15个共享预算抽样部署，跨回合留历史；分报末3回合回报、全程平均代价、超预算率及超额，另做同权重λ=0消融。"
+      ],
+      "inspirations": [
+        "为剪辑或代码创作Agent同时记录交付成功、平均工具开销、超预算次数和超额严重度；少数严重失控不能被总体均值下降掩盖，预算应在任务内配对。",
+        "验证预算控制器时冻结同一策略，对照λ=0、固定λ、自适应λ及同平均惩罚强度；另测延迟代价与动作裁剪，区分预测单调和真实累计风险。",
+        "把不同起始预算写入训练轨迹，并固定总历史数和强弱专家的步数比例；给未见任务与预算分布留测试集，分别核教师规则成本、数据覆盖和策略泛化。"
+      ],
+      "reviewedAt": "2026-11-22T16:38:56.959543Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.21524v1",
+        "https://arxiv.org/html/2611.21524v1",
+        "https://arxiv.org/src/2611.21524v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.21524",
+      "status": "pending",
+      "checkedAt": "2026-11-22T17:20:03.966558+00:00"
+    }
   }
 ]
