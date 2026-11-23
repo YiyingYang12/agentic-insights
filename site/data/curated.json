@@ -29782,5 +29782,473 @@
         "https://huggingface.co/datasets/burtenshaw/raman-lab/raw/1d914f8473013fa038d9d83b47986c87d7925922/graphene-s01/task.toml"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.15207v1",
+    "url": "https://arxiv.org/abs/2611.15207v1",
+    "id": "paper-pre-qed-2611-15207",
+    "title": "Pre-QED：先界定哪些调用被证明，再相信“验证通过”",
+    "summary": "Pre-QED将API使用契约转为可执行验证环境。29库平均API覆盖从22.1%升至89.3%，但这不是整库安全证明；部分挑战目标还有私有源码或已知缺陷绕过条件。",
+    "insight": "审计Agent验证时，先检查环境是否覆盖合法顺序和边界输入，再讨论证明器是否通过。",
+    "limits": "89.3%是API函数覆盖率，未证明29库安全，也不等于状态/序列覆盖。LTL规则的充分性、监控器和数据约束仍需审计。固定仓库README承认部分harness绕开已知缺陷，三库源代码私有；本站未构建或复现。",
+    "dateLabel": "2026-11-11首发 · 本轮补齐方法解读",
+    "evidence": "方法、结果和固定仓库边界核验；未复现",
+    "originalTitle": "Pre-QED: Environment Specifications for Agentic Verification",
+    "date": "2026-11-11",
+    "checkedAt": "2026-11-23T22:29:42.777000+00:00",
+    "paperOriginalDate": "2026-11-11T09:03:05Z",
+    "paperUpdatedAt": "2026-11-11T09:03:05Z",
+    "updatedAt": "2026-11-11T09:03:05Z",
+    "firstSeenAt": "2026-11-13T04:00:00Z",
+    "lastSeenAt": "2026-11-13T04:00:00Z",
+    "tags": [
+      "环境规范",
+      "形式验证",
+      "API覆盖"
+    ],
+    "authors": [
+      "Tristan Lim",
+      "Haoxin Tu",
+      "Mehtab Zafar",
+      "Zhengxiong Luo",
+      "Abhik Roychoudhury"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv原文与首发日期",
+        "url": "https://arxiv.org/abs/2611.15207v1"
+      },
+      {
+        "label": "方法、结果及图4示例",
+        "url": "https://arxiv.org/html/2611.15207v1"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://pre-qed.github.io/"
+      },
+      {
+        "label": "固定提交README与公开资源边界",
+        "url": "https://github.com/NUS-Program-Verification/pre-qed-challenge/blob/d31d5862e9d615574be2c7ce82d48dfa6d2f2560/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Pre-QED把“允许怎样调用API”写成可执行验证环境：29库的平均API覆盖从22.1%升至89.3%，但证明环境完整仍是另一项任务。",
+      "motivation": "证明一个固定调用脚本正确，只覆盖脚本编码的使用方式。调用顺序、状态与边界输入未被编码时，证明成功仍可能漏掉合法场景。",
+      "novelty": "作者主张：让证明目标从有限测试脚本扩展到已建模契约内的合法客户端。本站判断：主要价值是把环境假设变成可审计产物；提高API覆盖不能自动保证契约完整。",
+      "evidenceScope": "已读v1§2–6、§8及表1/图4，核验项目页与固定仓库README。29库来自32个既有证明对象，排除1应用及2个超2000 API大库；11/29达到全部API覆盖，基线2/29。作者报告234条LTL规则，含人工快速检查，未提供整库证明结果。",
+      "limits": "89.3%是API函数覆盖率，未证明29库安全，也不等于状态/序列覆盖。LTL规则的充分性、监控器和数据约束仍需审计。固定仓库README承认部分harness绕开已知缺陷，三库源代码私有；本站未构建或复现。",
+      "method": [
+        "主Agent读源码和文档，区分调用顺序约束与数据前置条件，整理库的使用契约。",
+        "harness子Agent生成操作解码器、状态和保护条件；LTL子Agent将调用顺序写成时序逻辑规则，并用示例及模型判断反馈修正。",
+        "合并时序规则、状态更新与数据检查，保留符合契约的多次API调用；数据所有权、长度等限制仍由程序代码实现。",
+        "对29库生成环境并统计调用到的API比例，发布可供后续形式证明与模糊测试的挑战；尚未完成所有环境及整库的证明。"
+      ],
+      "inspirations": [
+        "给剪辑/渲染Agent建立“创建素材→引用→释放”的状态契约，并单列参数边界覆盖；将执行正确、契约完整、画面质量分别评估。",
+        "做解码器边界审计：本站静态检查发现图4的arg % 64只产生0–63，而文字契约允许长度64。此例提示合法输入覆盖也需测试；不能据此断言全部真实harness都有同一问题。",
+        "把绕过已知缺陷的条件与API合法性规则分别登记并固定版本，避免把排除失败场景误读为验证能力提升。"
+      ],
+      "reviewedAt": "2026-11-23T22:29:42.777000+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.15207v1",
+        "https://arxiv.org/html/2611.15207v1",
+        "https://pre-qed.github.io/",
+        "https://github.com/NUS-Program-Verification/pre-qed-challenge/blob/d31d5862e9d615574be2c7ce82d48dfa6d2f2560/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.15207",
+      "status": "pending",
+      "checkedAt": "2026-11-23T22:32:25.989421+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2606.30296",
+    "url": "https://arxiv.org/abs/2606.30296",
+    "id": "paper-manimagent-2606-30296",
+    "title": "ManimAgent（代表作）：让可编辑动画代码积累成功与失败经验",
+    "summary": "代表作补读：ManimAgent把科学论文段落写成可编辑Manim代码，将成功方案与修复教训分库积累。人评点估计改善，但评审一致性低、原始评分已删除，不能把少反思等同更快或已证实质量提升。",
+    "insight": "作者主张：用双通道经验库让动画Agent跨任务积累修复经验，无须更新权重。本站判断：方法价值在分开保存成功范例与失败教训；VLM提分只是写入筛选，不是人类验收或因果证明。",
+    "limits": "代表作补读，非近期发布；未复现。人评一致性低且原始评分已删，84.9%是个人赞成票率，非执行成功率；EMB@200较RAG少反思但耗时31对27分钟。首发6月29日，v3修订10月22日；所核代码最新提交为10月15日，检查时间不代表新开放。论文按paper分离39条记忆构建、33条固定probe和40条探索cross-test，195篇调试holdout不入主指标；人评只抽25个probe任务、54位志愿评审。附H计划175个视频、每视频3评，但实际说明2–3评，三锚点保留的逐维评分数量为50/54/53；所有独立票直接汇总、不作多数投票，不能把84.9%反推成25题通过数。人评Fleiss κ=-0.01、Likert ICC -0.09至0.33；作者说明原始rater–video记录14天后删除，条件分母与配对不确定性不能可靠重建。表1的84.9%对RAG83.3%、质量3.88对3.65是描述性点估计，不能宣称统计显著领先。37个有配对评分视频上VLM与人评Pearson -0.17、Spearman -0.20、二值κ=-0.07，记忆写入的85分/改善5分不是可靠人类质量门槛；“Known Pitfalls”是提示词约束，不是强制验证器。每任务反思轮是各场景文本重试加视觉修订之和，6.5对11.4不等于调用数或端到端加速；表13耗时31对27分钟，token只是按字符/评审次数估算，没有精确计量。扩展250–400条记忆仅内部VLM诊断、无独立人评，且趋势平台化；不能外推持续自我改进或百万级库。只测五类英文科学内容与Manim，未验证其他渲染器、中文、完整长视频或学生学习效果。固定仓库树可核Python包、Manim渲染、分版本代码与分镜输出，足以说明可编辑代码交付设计；未安装执行、渲染审片或测二次编辑保真，源码存在不等于实测执行率。当前固定树未找到论文任务清单、冻结EMB快照或评分侧车，项目/ACL摘要仍写将释放，不能把公开系统代码称为完整可复现资产包。verified仅表示来源核验。",
+    "dateLabel": "代表作 · 6月29日首发 · 10月22日v3修订；本轮补读",
+    "evidence": "v3方法、实验、人评分母限制及固定系统源码已核；代表作补读，非新发布；未执行或复现",
+    "originalTitle": "ManimAgent: Self-Evolving Multimodal Agents for Visual Education",
+    "date": "2026-06-29",
+    "checkedAt": "2026-11-23T22:30:18.083019Z",
+    "paperOriginalDate": "2026-06-29T13:37:56Z",
+    "paperUpdatedAt": "2026-10-22T04:27:09Z",
+    "updatedAt": "2026-10-22T04:27:09Z",
+    "firstSeenAt": "2026-11-02T09:16:49Z",
+    "lastSeenAt": "2026-11-23T22:00:01Z",
+    "tags": [
+      "代表作补读",
+      "Manim",
+      "跨任务记忆",
+      "可编辑代码",
+      "视觉反馈"
+    ],
+    "authors": [
+      "Wenjia Jiang",
+      "Zongyuan Cai",
+      "Yuanhang Shao",
+      "Chenru Wang",
+      "Boyan Han",
+      "Zhixue Song",
+      "Keyu Chen",
+      "Shengwei An",
+      "Xu Yang",
+      "Zhou Yang"
+    ],
+    "topics": [
+      "code2motion",
+      "code2video"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv首发与v3修订历史",
+        "url": "https://arxiv.org/abs/2606.30296"
+      },
+      {
+        "label": "EMNLP 2026论文元数据与摘要",
+        "url": "https://aclanthology.org/2026.emnlp-main.2542/"
+      },
+      {
+        "label": "公开feed原始来源",
+        "url": "https://arxiv.org/abs/2606.30296v3"
+      },
+      {
+        "label": "v3方法、固定probe实验与人评/成本边界",
+        "url": "https://arxiv.org/html/2606.30296v3"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://manimagent.github.io/"
+      },
+      {
+        "label": "固定代码提交（2026年10月15日）",
+        "url": "https://github.com/jwj1342/Paper2Manim/tree/16191b602e98dc3cc6172014ba6290bef337d1e8"
+      },
+      {
+        "label": "双通道记忆与版本选择设计",
+        "url": "https://github.com/jwj1342/Paper2Manim/blob/16191b602e98dc3cc6172014ba6290bef337d1e8/docs/architecture.md"
+      },
+      {
+        "label": "生成源代码、分镜与视频的输出约定",
+        "url": "https://github.com/jwj1342/Paper2Manim/blob/16191b602e98dc3cc6172014ba6290bef337d1e8/docs/getting-started.md"
+      },
+      {
+        "label": "分版本保存可编辑Python代码",
+        "url": "https://github.com/jwj1342/Paper2Manim/blob/16191b602e98dc3cc6172014ba6290bef337d1e8/paper2manim/artifacts.py"
+      },
+      {
+        "label": "Manim执行与错误结果实现",
+        "url": "https://github.com/jwj1342/Paper2Manim/blob/16191b602e98dc3cc6172014ba6290bef337d1e8/paper2manim/sandbox/render.py"
+      },
+      {
+        "label": "成功与失败经验写入门槛",
+        "url": "https://github.com/jwj1342/Paper2Manim/blob/16191b602e98dc3cc6172014ba6290bef337d1e8/paper2manim/emb/distill.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "代表作补读：ManimAgent把科学论文段落写成可编辑Manim代码，将成功方案与修复教训分库积累。人评点估计改善，但评审一致性低、原始评分已删除，不能把少反思等同更快或已证实质量提升。",
+      "motivation": "动画Agent在同一任务里反复修复布局、公式和渲染错误，换任务后却丢掉经验。作者把每次执行与视觉修订的轨迹转成可检索记忆，希望下一段科学解释少犯旧错，同时保留能再次修改的Manim源程序。",
+      "novelty": "作者主张：用双通道经验库让动画Agent跨任务积累修复经验，无须更新权重。本站判断：方法价值在分开保存成功范例与失败教训；VLM提分只是写入筛选，不是人类验收或因果证明。",
+      "evidenceScope": "已读arXiv v3完整§3方法、§4实验、限制以及附F–I的拆分/人评/奖励一致性、附P成本与超参数、附Q代码修订案例；先读v1后切换v3，最终表述全部以v3为准。复核作者项目、ACL元数据摘要，固定Git提交16191b6及全树；读取architecture/getting-started、scene_graph关键渲染/审阅/代码保存路径、artifacts、render、distill及CLI只读选项。没有运行代码、下载模型或验收演示；原文点估计仅来源核验，未实验复现。",
+      "limits": "代表作补读，非近期发布；未复现。人评一致性低且原始评分已删，84.9%是个人赞成票率，非执行成功率；EMB@200较RAG少反思但耗时31对27分钟。首发6月29日，v3修订10月22日；所核代码最新提交为10月15日，检查时间不代表新开放。论文按paper分离39条记忆构建、33条固定probe和40条探索cross-test，195篇调试holdout不入主指标；人评只抽25个probe任务、54位志愿评审。附H计划175个视频、每视频3评，但实际说明2–3评，三锚点保留的逐维评分数量为50/54/53；所有独立票直接汇总、不作多数投票，不能把84.9%反推成25题通过数。人评Fleiss κ=-0.01、Likert ICC -0.09至0.33；作者说明原始rater–video记录14天后删除，条件分母与配对不确定性不能可靠重建。表1的84.9%对RAG83.3%、质量3.88对3.65是描述性点估计，不能宣称统计显著领先。37个有配对评分视频上VLM与人评Pearson -0.17、Spearman -0.20、二值κ=-0.07，记忆写入的85分/改善5分不是可靠人类质量门槛；“Known Pitfalls”是提示词约束，不是强制验证器。每任务反思轮是各场景文本重试加视觉修订之和，6.5对11.4不等于调用数或端到端加速；表13耗时31对27分钟，token只是按字符/评审次数估算，没有精确计量。扩展250–400条记忆仅内部VLM诊断、无独立人评，且趋势平台化；不能外推持续自我改进或百万级库。只测五类英文科学内容与Manim，未验证其他渲染器、中文、完整长视频或学生学习效果。固定仓库树可核Python包、Manim渲染、分版本代码与分镜输出，足以说明可编辑代码交付设计；未安装执行、渲染审片或测二次编辑保真，源码存在不等于实测执行率。当前固定树未找到论文任务清单、冻结EMB快照或评分侧车，项目/ACL摘要仍写将释放，不能把公开系统代码称为完整可复现资产包。verified仅表示来源核验。",
+      "method": [
+        "从论文段落、场景角色与领域标签生成分镜，固定每个场景的主张、证据和结论；以MiniLM编码，分别检索2条成功范例和3条失败教训。",
+        "Coder输出完整Manim Scene代码，经静态检查和受资源限制的子进程渲染；崩溃交给文本Reviewer，默认最多2次重试，同类错误重复则提前停止。",
+        "成功渲染后抽4帧，由VLM按逻辑、布局与准确性评分；默认最多2次视觉改写，90分自动通过，交付最高分可渲染版本并保存对应代码。",
+        "最佳版本至少85分才写成功理由；相邻崩溃→成功或视觉分数至少提高5分才蒸馏失败教训。双通道分别入SQLite/Faiss，保留来源、去重键与固定编码器。",
+        "在39条构建任务上累积并冻结0/50/100/200条记忆，33条独立probe只读检索；用匹配预算RAG和随机记忆对照，主质量依据另行盲评。"
+      ],
+      "inspirations": [
+        "给代码视频Agent分开保存“可复用布局+代码片段”和“失败触发条件+修复步骤”，每条绑定代码版本、渲染帧及诊断；测真实复用，避免仅增长提示词。",
+        "把生成可执行、视频可读、科学主张正确和再次编辑保真分开验收；冻结记忆再做论文级留出，保存逐视频评分与分母，别只留汇总百分比。",
+        "给记忆写入加独立人工抽检、过期与淘汰规则，并同时记录墙钟时间、API费用和渲染时间；VLM分数上涨与反思轮下降都不能替代质量和成本验收。"
+      ],
+      "reviewedAt": "2026-11-23T22:30:18.083019Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2606.30296",
+        "https://arxiv.org/html/2606.30296v3",
+        "https://aclanthology.org/2026.emnlp-main.2542/",
+        "https://manimagent.github.io/",
+        "https://github.com/jwj1342/Paper2Manim/tree/16191b602e98dc3cc6172014ba6290bef337d1e8",
+        "https://github.com/jwj1342/Paper2Manim/blob/16191b602e98dc3cc6172014ba6290bef337d1e8/docs/architecture.md",
+        "https://github.com/jwj1342/Paper2Manim/blob/16191b602e98dc3cc6172014ba6290bef337d1e8/docs/getting-started.md",
+        "https://github.com/jwj1342/Paper2Manim/blob/16191b602e98dc3cc6172014ba6290bef337d1e8/paper2manim/artifacts.py",
+        "https://github.com/jwj1342/Paper2Manim/blob/16191b602e98dc3cc6172014ba6290bef337d1e8/paper2manim/sandbox/render.py",
+        "https://github.com/jwj1342/Paper2Manim/blob/16191b602e98dc3cc6172014ba6290bef337d1e8/paper2manim/emb/distill.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2606.30296",
+      "status": "pending",
+      "checkedAt": "2026-11-23T22:32:25.989421+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.26809v1",
+    "url": "https://arxiv.org/abs/2611.26809v1",
+    "id": "paper-querylm-2611-26809",
+    "title": "QueryLM：把搜索写进预训练，也要算清相信证据的代价",
+    "summary": "QueryLM把查询与检索证据写进预训练文本。同规模Search-SFT问答均分36.0对33.1；首查被强制、模型更易采纳假证据，不能当自主搜索或事实安全证明。",
+    "insight": "作者主张：把搜索能力前移到预训练，后续SFT仍保留收益。本站判断：价值在分开学习写查询与读证据；评测需同时记录拒绝坏证据、不开搜索的退化，以及标注和检索的完整成本。",
+    "limits": "未复现；1.4B实际存储2.619B，FLOP仅同规模配平；36.0对33.1为同规模Search-SFT；首查强制且更易采信假证据，不能当自主搜索或事实安全证明；完整训练代码未取得。主要证据为论文与公开HF元数据/文件清单，未下载权重或数据、未运行推理。论文“400M/1.4B/3.3B”排除value embeddings，表3实际存储参数分别为0.8422B/2.6191B/5.5397B，不能按标签估部署显存；HF代表1.4B Search-SFT元数据也列2,619,083,082个参数。FLOP匹配仅指各同规模QueryLM/Standard配对，不是1.4B与3.3B跨规模等算力；表5两规模分别4.51e20与23.5e20 FLOPs。表10 Search-SFT的1.4B八任务均分36.0±1.0对同规模33.1±1.0，而3.3B Standard为36.9±1.2；不能将摘要的跨规模表述推广为所有训练阶段、所有任务都更强。上述误差为按问题bootstrap的95%区间，不是多训练种子标准差或本站显著性复检。基础模型四样本提示、24-token答题、答案包含率；SFT零样本、64-token答题、GPT-oss-120B判定，两种评分不宜直接混比。所有搜索设置都强制第一条查询，事实题只许一次、多跳最多两次，查询24 tokens、每次top3结果抽取最多8句约1200字符；MuSiQue仅双跳子集。基础Standard借用QueryLM的查询和证据，SFT后才各写查询，因此前者不是两个独立搜索策略比较，也未证明自主决定何时搜索。主结果依赖Tavily实时检索；固定Sphere检索和更强Qwen查询的3.3B比较可使优势反转，FreshQA的500题2026-04-21快照在Search-SFT后也近似持平。反事实更服从证据同时意味着更易接受错误输入，不能解释为更准确或更抗提示注入；1000事实探针正文明确取自已训练的DCLM文档，表11虽称held-out，也不能当独立未见事实泛化。种子教师看全文选位置，但只看左侧1600字符写查询；大规模ROUGE过滤又看后续260字符，属于离线未来信息筛选。只核到种子检索去除与源文35%以上三元组重合，以及DCLM每文件精确去重，未见完整训练/索引/评测题跨集合去污染审计，不据此断言已污染或已排除污染。预训练损失屏蔽响应，但仍计算其前向/反向；配平后Standard读更多原文，3.3B还重复约34.6B文档tokens，较大模型学习率衰减比例略有不同。Search-SFT仅约5.3万会话、1 epoch、DCLM33次更新并继承各自优化器状态，不排除更强或更长后训练能追平。316/2240 GPU-hours是Wikipedia/DCLM两类QueryLM加对照的预训练合计，排除标注、消融等；不是单模型总成本，也不含搜索API费用。全文默认响应长度600字符与附录Wikipedia400/DCLM800、公开DCLM数据卡102.6B与论文101.54B等口径未独立对齐。HF公开collection列模型与三类数据，代表DCLM数据清单有7828 parquet；数据卡明确未含配对纯文本基线语料。公开推理代码可读，但作者项目反链GitHub本轮404，另README API403限流，完整训练/评测代码尚未取得。模型卡许可为Apache-2.0，DCLM与Search-SFT数据卡为CC BY-NC 4.0，Wikipedia为CC BY-NC-SA 4.0，不把模型与数据混成全部可商用。X检索未取得可核作者原帖；verified仅指来源核验。",
+    "organization": "EPFL；University of Toronto（论文署名）",
+    "dateLabel": "2026-11-19 首发 · 本轮补齐队列全文解读",
+    "evidence": "全文方法与HF发布物核验；参数/FLOP/强制搜索/反事实边界已区分，未复现",
+    "originalTitle": "Search From the Start: Search-Native Pretraining for Language Models",
+    "date": "2026-11-19",
+    "checkedAt": "2026-11-23T22:29:31.655799Z",
+    "paperOriginalDate": "2026-11-19T20:58:34Z",
+    "paperUpdatedAt": "2026-11-19T20:58:34Z",
+    "updatedAt": "2026-11-19T20:58:34Z",
+    "firstSeenAt": "2026-11-23T16:23:21.731188Z",
+    "lastSeenAt": "2026-11-23T22:29:31.655799Z",
+    "tags": [
+      "Search-native pretraining",
+      "检索增强",
+      "工具数据",
+      "证据遵从"
+    ],
+    "authors": [
+      "Kaustubh Ponkshe",
+      "Gyung Hyun Je",
+      "Stefan Taga",
+      "Colin Raffel",
+      "Martin Jaggi"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "此前候选核验来源",
+        "url": "https://arxiv.org/abs/2611.26809"
+      },
+      {
+        "label": "arXiv v1摘要、作者与精确首发时间",
+        "url": "https://arxiv.org/abs/2611.26809v1"
+      },
+      {
+        "label": "HF论文页；入榜日不等于发表日",
+        "url": "https://huggingface.co/papers/2611.26809"
+      },
+      {
+        "label": "原文方法、实验、表3/5/10与附录A",
+        "url": "https://arxiv.org/html/2611.26809v1"
+      },
+      {
+        "label": "作者公开模型与数据合集",
+        "url": "https://huggingface.co/collections/Kausp11/search-native-pretraining"
+      },
+      {
+        "label": "QueryLM 1.4B Search-SFT模型卡与文件",
+        "url": "https://huggingface.co/Kausp11/querylm-dclm-1.4b-sft-search"
+      },
+      {
+        "label": "同规模配对Standard Search-SFT模型卡",
+        "url": "https://huggingface.co/Kausp11/standard-dclm-1.4b-sft-search"
+      },
+      {
+        "label": "DCLM公开预训练数据与范围",
+        "url": "https://huggingface.co/datasets/Kausp11/querylm-dclm-pretraining-data"
+      },
+      {
+        "label": "Wikipedia公开预训练数据卡",
+        "url": "https://huggingface.co/datasets/Kausp11/querylm-wiki-pretraining-data"
+      },
+      {
+        "label": "公开Search-SFT会话、损失掩码与许可",
+        "url": "https://huggingface.co/datasets/Kausp11/querylm-search-sft-data"
+      },
+      {
+        "label": "固定版本nanochat推理实现，仅只读核验",
+        "url": "https://huggingface.co/Kausp11/querylm-dclm-1.4b-sft-search/blob/589f6b8bbe9fc7a1ba24a9835ccbd35d104d8fd8/modeling_nanochat.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "QueryLM把查询与检索证据写进预训练文本。同规模Search-SFT问答均分36.0对33.1；首查被强制、模型更易采纳假证据，不能当自主搜索或事实安全证明。",
+      "motivation": "静态文本预训练把事实压入参数，搜索通常到后训练才引入。作者希望普通文档就能提供“提出查询—读取外部证据—继续写作”的训练信号，让小模型更早学会使用可更新的外部知识。",
+      "novelty": "作者主张：把搜索能力前移到预训练，后续SFT仍保留收益。本站判断：价值在分开学习写查询与读证据；评测需同时记录拒绝坏证据、不开搜索的退化，以及标注和检索的完整成本。",
+      "evidenceScope": "已读arXiv v1全文§3–6及附录A.1–A.5：标注、检索、损失、架构、配平、SFT、评测协议与成本；重点核表3/5/9/10/11/14。读取作者HF合集、配对1.4B Search-SFT模型卡、三类数据卡、代表模型及DCLM数据API文件清单；只读固定版本推理config和modeling源码的参数/前向结构，未执行、未加载权重、未下载数据、未重算结果。作者项目页可读，反链GitHub页面与repo API404、README API403，未取得完整训练/评测代码。",
+      "limits": "未复现；1.4B实际存储2.619B，FLOP仅同规模配平；36.0对33.1为同规模Search-SFT；首查强制且更易采信假证据，不能当自主搜索或事实安全证明；完整训练代码未取得。主要证据为论文与公开HF元数据/文件清单，未下载权重或数据、未运行推理。论文“400M/1.4B/3.3B”排除value embeddings，表3实际存储参数分别为0.8422B/2.6191B/5.5397B，不能按标签估部署显存；HF代表1.4B Search-SFT元数据也列2,619,083,082个参数。FLOP匹配仅指各同规模QueryLM/Standard配对，不是1.4B与3.3B跨规模等算力；表5两规模分别4.51e20与23.5e20 FLOPs。表10 Search-SFT的1.4B八任务均分36.0±1.0对同规模33.1±1.0，而3.3B Standard为36.9±1.2；不能将摘要的跨规模表述推广为所有训练阶段、所有任务都更强。上述误差为按问题bootstrap的95%区间，不是多训练种子标准差或本站显著性复检。基础模型四样本提示、24-token答题、答案包含率；SFT零样本、64-token答题、GPT-oss-120B判定，两种评分不宜直接混比。所有搜索设置都强制第一条查询，事实题只许一次、多跳最多两次，查询24 tokens、每次top3结果抽取最多8句约1200字符；MuSiQue仅双跳子集。基础Standard借用QueryLM的查询和证据，SFT后才各写查询，因此前者不是两个独立搜索策略比较，也未证明自主决定何时搜索。主结果依赖Tavily实时检索；固定Sphere检索和更强Qwen查询的3.3B比较可使优势反转，FreshQA的500题2026-04-21快照在Search-SFT后也近似持平。反事实更服从证据同时意味着更易接受错误输入，不能解释为更准确或更抗提示注入；1000事实探针正文明确取自已训练的DCLM文档，表11虽称held-out，也不能当独立未见事实泛化。种子教师看全文选位置，但只看左侧1600字符写查询；大规模ROUGE过滤又看后续260字符，属于离线未来信息筛选。只核到种子检索去除与源文35%以上三元组重合，以及DCLM每文件精确去重，未见完整训练/索引/评测题跨集合去污染审计，不据此断言已污染或已排除污染。预训练损失屏蔽响应，但仍计算其前向/反向；配平后Standard读更多原文，3.3B还重复约34.6B文档tokens，较大模型学习率衰减比例略有不同。Search-SFT仅约5.3万会话、1 epoch、DCLM33次更新并继承各自优化器状态，不排除更强或更长后训练能追平。316/2240 GPU-hours是Wikipedia/DCLM两类QueryLM加对照的预训练合计，排除标注、消融等；不是单模型总成本，也不含搜索API费用。全文默认响应长度600字符与附录Wikipedia400/DCLM800、公开DCLM数据卡102.6B与论文101.54B等口径未独立对齐。HF公开collection列模型与三类数据，代表DCLM数据清单有7828 parquet；数据卡明确未含配对纯文本基线语料。公开推理代码可读，但作者项目反链GitHub本轮404，另README API403限流，完整训练/评测代码尚未取得。模型卡许可为Apache-2.0，DCLM与Search-SFT数据卡为CC BY-NC 4.0，Wikipedia为CC BY-NC-SA 4.0，不把模型与数据混成全部可商用。X检索未取得可核作者原帖；verified仅指来源核验。",
+      "method": [
+        "用GLM-5.2读取1万篇Wikipedia文档标搜索位置，再只用左侧1600字符生成查询；以清理检索后的种子数据微调Gemma4-E4B LoRA标注器。",
+        "标注器用一次因果前向计算各位置搜索概率，取≥0.05且相隔至少40字符的位置，再贪心写最多24-token查询。",
+        "用Sphere的1.34亿网页文档BM25取top10，按词干重合抽取句子；响应与后续260字符ROUGE-1 F1≥0.1才保留插入，原文继续保留。",
+        "把查询和响应插入原文，从零训练同架构模型；只监督原文与查询，响应可供条件化但不计损失，并把响应计算量纳入同规模预训练FLOP配平。",
+        "对两组模型施加相同Search-SFT，再由外部检索器运行查询循环；分开比较查询质量、固定证据下的回答、闭卷退化与错误证据遵从。"
+      ],
+      "inspirations": [
+        "给工具预训练数据分别保留搜索位置、左侧可见上下文、检索快照和过滤分数；做不看后文的筛选对照，检验离线高重合样本能否迁移到真正未知问题。",
+        "把“何时查、查什么、如何读”拆成三个测试：自由选择是否搜索、共用查询、共用证据；对正确/过期/反事实证据同时测采纳与拒绝，避免只奖服从。",
+        "比较早期工具预训练和后期SFT时，既匹配总FLOPs也报告原文曝光、实际存储参数、标注与检索费用；保留更长后训练及跨索引对照，检查收益来自哪里。"
+      ],
+      "reviewedAt": "2026-11-23T22:29:31.655799Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.26809v1",
+        "https://arxiv.org/html/2611.26809v1",
+        "https://huggingface.co/papers/2611.26809",
+        "https://huggingface.co/collections/Kausp11/search-native-pretraining",
+        "https://huggingface.co/Kausp11/querylm-dclm-1.4b-sft-search",
+        "https://huggingface.co/Kausp11/standard-dclm-1.4b-sft-search",
+        "https://huggingface.co/datasets/Kausp11/querylm-dclm-pretraining-data",
+        "https://huggingface.co/datasets/Kausp11/querylm-wiki-pretraining-data",
+        "https://huggingface.co/datasets/Kausp11/querylm-search-sft-data",
+        "https://huggingface.co/Kausp11/querylm-dclm-1.4b-sft-search/blob/589f6b8bbe9fc7a1ba24a9835ccbd35d104d8fd8/modeling_nanochat.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.26809",
+      "status": "pending",
+      "checkedAt": "2026-11-23T22:32:25.989421+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://openai.com/index/introducing-shirudo/",
+    "url": "https://openai.com/index/introducing-shirudo/",
+    "id": "update-openai-cisco-shirudo-20261123",
+    "title": "Shirudo：把 Agent 临时缓解代码接入签名加载与运行状态核验",
+    "summary": "OpenAI 与 Cisco 公布 Shirudo 开源安全运行时，让 Agent 编写的临时缓解代码进入测试、操作者批准、签名加载和状态核验流程。受控 Java4Shell 演示在运行中的 Elasticsearch 加入 Java 字节码输入检查；项目尚无稳定发行版。",
+    "insight": "可迁移价值是把代码生成、授权执行和效果证据分开：生成端提出候选，验证端同时检查攻击是否被挡和正常工作是否继续，部署端记录谁批准了什么。对 Agent 环境应分别衡量正确缓解、误拦截、恢复与证据完整性。",
+    "limits": "尚无稳定 release；只核对作者受控演示和公开设计，未装载代码或复现攻击。Java4Shell 示例是 Java 字节码输入检查，不能等同于 eBPF 对所有漏洞有效。签名与 TPM 提供来源和状态证据，不保证缓解逻辑正确、无误杀或业务可用性；当前威胁模型依赖受信内核、特定补丁及部署假设。",
+    "dateLabel": "2026-11-23 · 官方项目更新",
+    "evidence": "官方正文、版本或公开文档核验；未执行或复现",
+    "date": "2026-11-23",
+    "checkedAt": "2026-11-23T22:31:04.561110+00:00",
+    "firstSeenAt": "2026-11-23T22:32:26.025444+00:00",
+    "tags": [
+      "OpenAI",
+      "Cisco",
+      "Shirudo",
+      "Agent runtime",
+      "Signed execution"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "OpenAI 官方发布",
+        "url": "https://openai.com/index/introducing-shirudo/"
+      },
+      {
+        "label": "Cisco Isovalent 技术说明与受控演示",
+        "url": "https://isovalent.com/blog/post/cisco-openai-shirudo/"
+      },
+      {
+        "label": "公开项目仓库及 README",
+        "url": "https://github.com/shirudo-dev/shirudo"
+      },
+      {
+        "label": "项目威胁模型：目标、假设与未解决项",
+        "url": "https://docs.shirudo.dev/security/threat-model.html"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Shirudo 为临时防护代码提供可审计的执行通路；已公开的是开发项目与受控示例，不能据此宣称自动修复安全已解决。",
+      "motivation": "漏洞已知到正式补丁覆盖之间存在时间差；粗粒度阻断还可能中断正常服务，临时缓解需要细粒度验证与明确的部署责任。",
+      "novelty": "作者主张：面向 Agent 的代码接口可以加速运行中系统的临时防护。本站判断：值得关注的是可编程缓解与签名、测量、授权之间的分层；单次受控演示尚不能证明跨漏洞泛化或生产级可靠性。",
+      "evidenceScope": "已读 OpenAI 发布正文、Cisco Isovalent 技术说明中架构与 Java4Shell 示例、公开 README，以及威胁模型的安全目标、假设和边界部分；不是完整源码安全审计。README 说明 main 为开发分支且尚无 release。Cisco 示例报告 Elasticsearch 9.5.5 上的 Java 字节码防护；没有安装、运行、复现或检测正常业务误杀率。威胁模型明确来源不等于正确性，且依赖上游尚未全部具备的内核接口。发表时刻来自官方 RSS；动态文档修订时刻未知。",
+      "limits": "尚无稳定 release；只核对作者受控演示和公开设计，未装载代码或复现攻击。Java4Shell 示例是 Java 字节码输入检查，不能等同于 eBPF 对所有漏洞有效。签名与 TPM 提供来源和状态证据，不保证缓解逻辑正确、无误杀或业务可用性；当前威胁模型依赖受信内核、特定补丁及部署假设。",
+      "method": [
+        "由 Agent 依据漏洞信息提出和验证临时缓解，区分内核 eBPF 与应用字节码等不同作用位置。",
+        "在受控环境测试异常输入和正常工作负载；官方 Java4Shell 示例把 Base64 输入检查加入运行中的 Java/Elasticsearch。",
+        "操作者批准后，以签名包交付；运行时检查签名并控制加载，Agent 生成内容不因生成成功就自动获得部署权。",
+        "用运行事件、遥测和 TPM 签署的状态证据检查保护是否处于预期状态，同时保留正式补丁与恢复流程。"
+      ],
+      "inspirations": [
+        "构造 Agent 防护评测时，将“攻击被拦”“合法请求通过”“服务持续运行”设为独立验收项，并保存失败反例。",
+        "给代码执行环境增加候选生成、测试、签名授权和状态核验的独立证据；不要把合法签名当成代码效果正确。"
+      ],
+      "reviewedAt": "2026-11-23T22:31:04.561110+00:00",
+      "sourceUrls": [
+        "https://openai.com/index/introducing-shirudo/",
+        "https://isovalent.com/blog/post/cisco-openai-shirudo/",
+        "https://github.com/shirudo-dev/shirudo",
+        "https://docs.shirudo.dev/security/threat-model.html"
+      ]
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://github.com/anthropics/claude-code/releases/tag/v2.1.331",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.331",
+    "id": "update-claude-code-2-1-331-20261123",
+    "title": "Claude Code v2.1.331：云平台终端 Code Mode 与请求遥测扩展",
+    "summary": "v2.1.331 发行说明宣布在 Bedrock、Google Cloud Agent Platform、Microsoft Foundry 和 Claude Platform on AWS 的终端会话支持 Code Mode；同时增加请求 span 的 gen_ai 用量与模型字段，并修复脚本长输出中段丢失。当前 Code Mode 文档尚未同步云平台限制。",
+    "insight": "做 Agent 工具循环评测时，应固定客户端版本、provider、界面和权限模式，并检查模型实际收到的完整输出。用请求 span 归因成本时要明确缓存 token 口径；发布说明支持与本地实际可用状态应分开记录。",
+    "limits": "仅核发行说明与文档，未安装或连接云平台验证。v2.1.331 宣布的四种云平台终端支持与当前 Code Mode 文档的旧限制冲突，暂以“发行说明宣布、待实测”表述；不能扩大为所有 gateway、IDE、Desktop 或 Remote Control 支持。Code Mode 仍为默认关闭的实验功能；新增 trace 字段不证明 Code Mode 已兼容 tracing。",
+    "dateLabel": "2026-11-23 · 官方项目更新",
+    "evidence": "官方正文、版本或公开文档核验；未执行或复现",
+    "date": "2026-11-23",
+    "checkedAt": "2026-11-23T22:31:04.561110+00:00",
+    "firstSeenAt": "2026-11-23T22:32:26.025444+00:00",
+    "tags": [
+      "Anthropic",
+      "Claude Code",
+      "Code Mode",
+      "Observability",
+      "v2.1.331"
+    ],
+    "topics": [],
+    "sources": [
+      {
+        "label": "Claude Code v2.1.331 固定发行说明",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.331"
+      },
+      {
+        "label": "Code Mode 官方当前文档",
+        "url": "https://code.claude.com/docs/en/code-mode"
+      },
+      {
+        "label": "遥测与 tracing 官方文档",
+        "url": "https://code.claude.com/docs/en/monitoring-usage"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "本次增量是特定云平台终端支持、请求遥测字段和输出完整性修复；不是 Code Mode 首发，且平台文档仍有待同步之处。",
+      "motivation": "同一工具编排能力受 provider、会话界面、权限与输出传递影响。只记模型名或查看截短日志，会混淆执行失败、观察缺失和模型推理问题。",
+      "novelty": "作者主张：扩展终端 Code Mode 可用平台并修复执行及观察链问题。本站判断：这些变化为跨 provider 可比性和成本归因提供条件，但官方旧文档冲突及未实测状态限制了可用性结论。",
+      "evidenceScope": "已读取 v2.1.331 GitHub release 全文，并与同 tag 原始 CHANGELOG 的该版本段交叉核对；GitHub release API 给出 published_at=2026-11-23T21:34:41Z。已读 Code Mode 当前 Markdown：仍列四平台不可用且 tracing 需关闭，因此显式保留与新 release 的冲突，未把遥测字段新增推断为 Code Mode tracing 放开。未安装或运行任何版本。固定 blob 页面两次 HTTP 503、web 超时，展示来源采用可读的固定 release URL；动态文档修订日期未知。",
+      "limits": "仅核发行说明与文档，未安装或连接云平台验证。v2.1.331 宣布的四种云平台终端支持与当前 Code Mode 文档的旧限制冲突，暂以“发行说明宣布、待实测”表述；不能扩大为所有 gateway、IDE、Desktop 或 Remote Control 支持。Code Mode 仍为默认关闭的实验功能；新增 trace 字段不证明 Code Mode 已兼容 tracing。",
+      "method": [
+        "以 v2.1.331 固定发行说明确定增量：四种列明云平台的终端会话获得 Code Mode 支持声明。",
+        "Code Mode 由 JavaScript 组合多个工具调用，允许并行和结果筛选；仍需单独核对实验开关、会话界面与权限约束。",
+        "LLM 请求 span 增加 gen_ai.usage.*、gen_ai.response.model 和 gen_ai.operation.name；其中输入 token 包含 prompt cache token。",
+        "长脚本输出不再默默丢失中段，而向模型提供未截断文本的路径；另修复切换权限模式恢复会话时的 thinking 与缓存丢失。"
+      ],
+      "inspirations": [
+        "比较工具调用编排策略时，在结果表记录客户端 tag、provider、surface、权限模式和输出是否可完整取回，不只记录模型名。",
+        "对截断输出设计缺失关键中段的回归用例，检查完整文本路径能否被模型继续读取；缓存 token 在成本分析中单独标记，避免重复计数。"
+      ],
+      "reviewedAt": "2026-11-23T22:31:04.561110+00:00",
+      "sourceUrls": [
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.331",
+        "https://code.claude.com/docs/en/code-mode",
+        "https://code.claude.com/docs/en/monitoring-usage"
+      ]
+    }
   }
 ]
