@@ -8937,6 +8937,58 @@
     ]
   },
   {
+    "sourceType": "huggingface",
+    "category": "models",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.23219",
+    "url": "https://huggingface.co/papers/2611.23219",
+    "id": "live-2ec9f3d53f7f698e",
+    "title": "Do LLM Agents Still Need to Be Told How to Self-Improve?",
+    "summary": "LLM agents increasingly drive their own learning. Self-improvement methods delegate various components of model optimization to the models themselves. As models become more capable, this motivates a basic question: do these increasingly capable models still need us to specify how they should self-improve? In this paper we study an autonomous paradigm in which, given basic primitives, resources, and a general goal for self-improvement, agents construct their own self-learning algorithm for context-based optimization. Using the setting of gameplay as a testbed, a frozen LLM agent is given a compute budget and tools for collecting experience…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-17",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-23T04:00:00Z",
+    "updatedAt": "2026-11-17T18:57:10Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-23T04:00:00Z",
+    "dailySubmittedAt": "2026-11-18T00:00:00.000Z",
+    "tags": [
+      "Agent systems"
+    ],
+    "authors": [
+      "Shobhita Sundaram",
+      "Cansu Sancaktar",
+      "Phillip Isola"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.23219v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.23219"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.23219"
+      },
+      {
+        "label": "Project",
+        "url": "https://ssundaram21.github.io/self-org/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/ssundaram21/self-org"
+      }
+    ]
+  },
+  {
     "sourceType": "arxiv",
     "category": "training",
     "verified": false,

@@ -28408,5 +28408,423 @@
       "status": "pending",
       "checkedAt": "2026-11-22T17:20:03.966558+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.25360v1",
+    "url": "https://arxiv.org/abs/2611.25360v1",
+    "id": "paper-appsci-bench-2611-25360",
+    "title": "AppSci-Bench：Agent自造测试很快满分，独立验收为何跟不上？",
+    "summary": "AppSci评“替企业造Agent”：访谈需求、自建测试、部署后盲测。独立验收含七域367样本；132次有自测记录的构建中，86次自测很快饱和，外部收益却有限。最佳59.1是七任务宏平均MMS@3，不是成功率。",
+    "insight": "作者主张同时评需求获取、自建评测与最终Agent，暴露自优化瓶颈。本站判断：价值是让“谁定义成功”成为可测对象；小样本消融和预算不齐尚不能证明自优化普遍无效或原生框架因果优越。",
+    "limits": "未复现；367样本按7任务等权，MMS@3非成功率。自测只含132个有记录构建；优化每格3构建，校正后不显著≠无效。原生框架预算不齐、Codex缺用量；人类可用Claude Code。裁判有模型噪声，非生产部署验证。七任务样本数依次为O2C60、Compliance50、CRM50、Calls50、Slides10、Airline50、Banking97，程序化评分权重分别为0.80/0.70/0/0.25/0.21/1/1；其余由语言或视觉模型裁判，10张幻灯片与97个银行案例在总分同权。每配置独立构建3份，每份评3次；每案例取从三份各选一次trial的27种组合最小分后平均，再按案例、任务聚合，不是best-of-3、三个构建均分的最小值或367样本微平均。任一构建无可用产物记全零，该任务MMS@3就为零，不能将低分直接解释为所有构建全部失败。最佳59.1来自Opus-5加Claude Code且开优化；AppSci内最优55.7来自Opus-5关优化，二者不构成同预算方法优越证据。AppSci限3小时、40顶层和50编码子代理回合；原生适配器不执行这些限制。附录核Claude Code开优化时约2.0/3.1倍token（Opus-5/4.8），Codex用量未记录，不能把2–3倍推给所有原生框架。Opus-5关优化时用量约同量而AppSci55.7高于Claude Code51.7，反驳原生框架总是更好的概括。费用图只核开优化构建阶段，按记录token和固定公开费率重算，非账单；不含容器准备与最终评测，不能当端到端成本。自测分析排除没有内部评测记录的构建，86/132达到≥0.99，饱和者平均在第2.5次评测到顶；第1次尚未优化，26/132首次已到顶。报告的自测规模中位数7.5是小规模线索，不单独证明饱和成因。Opus-4.8局部分析只含13/21构建的24步（另8份按该表口径排除）：两侧均变时10/11同向，另6步内部上涨而留出分不变；10/17是这些选中步骤的口径，非全24步或所有模型的预测准确率。该表排除8而另一饱和表首轮为10，原文两处口径未完全对齐，本站未解释该差异，不能合并。均值自评增16.9点、留出增3.2点来自这一小队列，不代表所有模型。开关优化统计为3模型×2框架×2条件×7任务×3构建共252，单位是构建MMS@1；按任务分层置换检验，对6个效果和3个框架差分别Holm校正，置信区间未校正。均无校正后显著效果，样本少且区间宽；Opus-5原生效果区间−4.4到+10.1点，不是零收益证明。需求获取与外部成绩同任务相关r=0.34，按模型能力分层降到−0.12/−0.15/+0.29，不能宣称访谈更充分已证明因果提升。人类每任务两次独立尝试、软4小时，可借Claude Code/Opus-4.8，非裸人或成本配平；其对照是三份成功Opus-4.8产物的平均成绩，不是主指标MMS@3，也不是最优专家上限。构建/评测容器分阶段重建，评测时构建者和客户模拟器停止；CRM有意共享底层数据库，只留出问题。论文四道泄漏检查含字符串扫描与人工判读，348次命中被判为零真实泄漏，是作者审计结果，不保证没有语义泄漏或预训练污染。部分任务从已有公开基准改写，不能视为完全私有真实企业任务。v1失败分析表四行28+87+75+78=268，却写总计287；本文不据它推算失败总体占比。代码仓公开有七任务目录、评测器、子代理框架及结果表/作图说明；固定12d03da0的评测README仍列早期“其他六任务未迁移”，与同提交CRM/Compliance实际eval.py和eval_data目录不一致，应以具体文件核验，不能仅凭概述宣称完全可复现。已静态读取聚合器：错误按0、不可适用None被排除、评分有权重，未重跑MMS结果。作图README说明部分原始记录重取需AWS，已有表可离线处理；本轮未下载完整运行归档或执行容器、模型、统计脚本。代码为Apache-2.0、数据/结果为CC BY-NC 4.0且有上游例外，不是一概无条件开放。verified只指公开来源核验，不是实验复现。",
+    "organization": "Uniphore",
+    "dateLabel": "2026-11-19 首发 · 本轮补充完整方法解读",
+    "evidence": "原文方法/统计附录与固定作者实现静态核验；预算、宏平均和自测选择边界明确，未复现",
+    "originalTitle": "AppSci-Bench: Can LLMs Build AI Agents and Make Them Better?",
+    "date": "2026-11-19",
+    "checkedAt": "2026-11-23T04:26:15.795320Z",
+    "paperOriginalDate": "2026-11-19T01:58:31Z",
+    "paperUpdatedAt": "2026-11-19T01:58:31Z",
+    "updatedAt": "2026-11-19T01:58:31Z",
+    "firstSeenAt": "2026-11-20T04:00:01Z",
+    "lastSeenAt": "2026-11-22T22:00:00Z",
+    "tags": [
+      "Agent construction",
+      "Self-evaluation",
+      "MMS@3",
+      "Enterprise environments"
+    ],
+    "authors": [
+      "Sanjari Srivastava",
+      "Manpreet Kaur",
+      "Cheng Chang",
+      "Sofía Ramós Anton",
+      "Oumaima Essamadi",
+      "Rishu Garg",
+      "Alejandro Lavale Jiménez",
+      "Marcos Caballero Yus",
+      "Mercedes García Martínez",
+      "Peng Qi"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv作者与精确首发历史",
+        "url": "https://arxiv.org/abs/2611.25360v1"
+      },
+      {
+        "label": "论文方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.25360v1"
+      },
+      {
+        "label": "原始TeX及统计表格",
+        "url": "https://arxiv.org/src/2611.25360v1"
+      },
+      {
+        "label": "作者公开仓库固定版本",
+        "url": "https://github.com/sanjari-orb/appsci-bench/blob/12d03da0a9009656a4b3a1fa7c5b4a9647d6db0d/README.md"
+      },
+      {
+        "label": "评测聚合实现",
+        "url": "https://github.com/sanjari-orb/appsci-bench/blob/12d03da0a9009656a4b3a1fa7c5b4a9647d6db0d/appsci_bench/eval/aggregate.py"
+      },
+      {
+        "label": "评测流程与partial结果边界",
+        "url": "https://github.com/sanjari-orb/appsci-bench/blob/12d03da0a9009656a4b3a1fa7c5b4a9647d6db0d/appsci_bench/eval/README.md"
+      },
+      {
+        "label": "论文结果材料与重算范围",
+        "url": "https://github.com/sanjari-orb/appsci-bench/blob/12d03da0a9009656a4b3a1fa7c5b4a9647d6db0d/scripts/paper_plots/README.md"
+      },
+      {
+        "label": "内部饱和统计定义",
+        "url": "https://github.com/sanjari-orb/appsci-bench/blob/12d03da0a9009656a4b3a1fa7c5b4a9647d6db0d/scripts/paper_plots/compute_internal_saturation.py"
+      },
+      {
+        "label": "CRM构造及保留问题",
+        "url": "https://github.com/sanjari-orb/appsci-bench/blob/12d03da0a9009656a4b3a1fa7c5b4a9647d6db0d/tasks/crm_insights/KNOWN_ISSUES.md"
+      },
+      {
+        "label": "Compliance信息隔离沿革",
+        "url": "https://github.com/sanjari-orb/appsci-bench/blob/12d03da0a9009656a4b3a1fa7c5b4a9647d6db0d/tasks/compliance_review/KNOWN_ISSUES.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "AppSci评“替企业造Agent”：访谈需求、自建测试、部署后盲测。独立验收含七域367样本；132次有自测记录的构建中，86次自测很快饱和，外部收益却有限。最佳59.1是七任务宏平均MMS@3，不是成功率。",
+      "motivation": "多数基准评一个已有Agent能否解题，却不评它如何访谈用户、造测试、写代码并改进另一个Agent。论文把这些应用科学步骤放进可执行业务环境，追踪自评信号与独立验收是否一致。",
+      "novelty": "作者主张同时评需求获取、自建评测与最终Agent，暴露自优化瓶颈。本站判断：价值是让“谁定义成功”成为可测对象；小样本消融和预算不齐尚不能证明自优化普遍无效或原生框架因果优越。",
+      "evidenceScope": "已读v1正文§2–4及评分组成、完整结果、成本口径、内部饱和、优化统计、框架差异、隔离/泄漏、人类与失败分析等关键附录；交叉核原始TeX和作者固定12d03da0仓库README、聚合器、统计脚本、任务已知问题。未运行实验或重算结果，未读取全部原始轨迹。",
+      "limits": "未复现；367样本按7任务等权，MMS@3非成功率。自测只含132个有记录构建；优化每格3构建，校正后不显著≠无效。原生框架预算不齐、Codex缺用量；人类可用Claude Code。裁判有模型噪声，非生产部署验证。七任务样本数依次为O2C60、Compliance50、CRM50、Calls50、Slides10、Airline50、Banking97，程序化评分权重分别为0.80/0.70/0/0.25/0.21/1/1；其余由语言或视觉模型裁判，10张幻灯片与97个银行案例在总分同权。每配置独立构建3份，每份评3次；每案例取从三份各选一次trial的27种组合最小分后平均，再按案例、任务聚合，不是best-of-3、三个构建均分的最小值或367样本微平均。任一构建无可用产物记全零，该任务MMS@3就为零，不能将低分直接解释为所有构建全部失败。最佳59.1来自Opus-5加Claude Code且开优化；AppSci内最优55.7来自Opus-5关优化，二者不构成同预算方法优越证据。AppSci限3小时、40顶层和50编码子代理回合；原生适配器不执行这些限制。附录核Claude Code开优化时约2.0/3.1倍token（Opus-5/4.8），Codex用量未记录，不能把2–3倍推给所有原生框架。Opus-5关优化时用量约同量而AppSci55.7高于Claude Code51.7，反驳原生框架总是更好的概括。费用图只核开优化构建阶段，按记录token和固定公开费率重算，非账单；不含容器准备与最终评测，不能当端到端成本。自测分析排除没有内部评测记录的构建，86/132达到≥0.99，饱和者平均在第2.5次评测到顶；第1次尚未优化，26/132首次已到顶。报告的自测规模中位数7.5是小规模线索，不单独证明饱和成因。Opus-4.8局部分析只含13/21构建的24步（另8份按该表口径排除）：两侧均变时10/11同向，另6步内部上涨而留出分不变；10/17是这些选中步骤的口径，非全24步或所有模型的预测准确率。该表排除8而另一饱和表首轮为10，原文两处口径未完全对齐，本站未解释该差异，不能合并。均值自评增16.9点、留出增3.2点来自这一小队列，不代表所有模型。开关优化统计为3模型×2框架×2条件×7任务×3构建共252，单位是构建MMS@1；按任务分层置换检验，对6个效果和3个框架差分别Holm校正，置信区间未校正。均无校正后显著效果，样本少且区间宽；Opus-5原生效果区间−4.4到+10.1点，不是零收益证明。需求获取与外部成绩同任务相关r=0.34，按模型能力分层降到−0.12/−0.15/+0.29，不能宣称访谈更充分已证明因果提升。人类每任务两次独立尝试、软4小时，可借Claude Code/Opus-4.8，非裸人或成本配平；其对照是三份成功Opus-4.8产物的平均成绩，不是主指标MMS@3，也不是最优专家上限。构建/评测容器分阶段重建，评测时构建者和客户模拟器停止；CRM有意共享底层数据库，只留出问题。论文四道泄漏检查含字符串扫描与人工判读，348次命中被判为零真实泄漏，是作者审计结果，不保证没有语义泄漏或预训练污染。部分任务从已有公开基准改写，不能视为完全私有真实企业任务。v1失败分析表四行28+87+75+78=268，却写总计287；本文不据它推算失败总体占比。代码仓公开有七任务目录、评测器、子代理框架及结果表/作图说明；固定12d03da0的评测README仍列早期“其他六任务未迁移”，与同提交CRM/Compliance实际eval.py和eval_data目录不一致，应以具体文件核验，不能仅凭概述宣称完全可复现。已静态读取聚合器：错误按0、不可适用None被排除、评分有权重，未重跑MMS结果。作图README说明部分原始记录重取需AWS，已有表可离线处理；本轮未下载完整运行归档或执行容器、模型、统计脚本。代码为Apache-2.0、数据/结果为CC BY-NC 4.0且有上游例外，不是一概无条件开放。verified只指公开来源核验，不是实验复现。",
+      "method": [
+        "在7个业务任务中给构建者模糊需求、容器数据库/API和可访谈客户模拟器；关键政策需主动询问，分别记录需求获取与产物能力。",
+        "AppSci用编排器委派编码子代理，生成可部署HTTP服务；开优化时自行造数据、指标和评分脚本，以自评分爬山改产物，关优化作对照。",
+        "停止构建者与客户模拟器，再切换留出评测环境；每配置独立造3份，每份评3次。CRM只留出问题，底层数据库按设计共享。",
+        "每案例从3份产物各选1次trial，平均27种组合的最小分得MMS@3；再按案例及7任务等权聚合，构建失败全零，另报普通均分。",
+        "比较7模型、自测与留出得分及原生框架；优化消融以构建MMS@1作分层检验。另让每任务两次人类尝试可借Claude Code，区分预算和人机协作。"
+      ],
+      "inspirations": [
+        "把Agent自造测试作为待审产物：锁住独立留出任务，记录每次改动的内部/外部分数与假接受，防止“自己出题、自己判卷”成为唯一奖励。",
+        "同时报平均能力和跨构建可靠性；用固定I/O契约贯穿编排器与编码子代理，把无法部署、接口违约和业务错误分别统计，避免单总分掩盖原因。",
+        "比较框架时统一总token、执行预算与访谈权限；让人类基线明确是否使用AI、时间上限及成功构建筛选，并扩大独立构建次数再判断优化是否有效。"
+      ],
+      "reviewedAt": "2026-11-23T04:26:15.795320Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.25360v1",
+        "https://arxiv.org/html/2611.25360v1",
+        "https://arxiv.org/src/2611.25360v1",
+        "https://github.com/sanjari-orb/appsci-bench/blob/12d03da0a9009656a4b3a1fa7c5b4a9647d6db0d/README.md",
+        "https://github.com/sanjari-orb/appsci-bench/blob/12d03da0a9009656a4b3a1fa7c5b4a9647d6db0d/appsci_bench/eval/aggregate.py",
+        "https://github.com/sanjari-orb/appsci-bench/blob/12d03da0a9009656a4b3a1fa7c5b4a9647d6db0d/appsci_bench/eval/README.md",
+        "https://github.com/sanjari-orb/appsci-bench/blob/12d03da0a9009656a4b3a1fa7c5b4a9647d6db0d/scripts/paper_plots/README.md",
+        "https://github.com/sanjari-orb/appsci-bench/blob/12d03da0a9009656a4b3a1fa7c5b4a9647d6db0d/scripts/paper_plots/compute_internal_saturation.py",
+        "https://github.com/sanjari-orb/appsci-bench/blob/12d03da0a9009656a4b3a1fa7c5b4a9647d6db0d/tasks/crm_insights/KNOWN_ISSUES.md",
+        "https://github.com/sanjari-orb/appsci-bench/blob/12d03da0a9009656a4b3a1fa7c5b4a9647d6db0d/tasks/compliance_review/KNOWN_ISSUES.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.25360",
+      "status": "pending",
+      "checkedAt": "2026-11-23T04:26:42.553741+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.26937v1",
+    "url": "https://arxiv.org/abs/2611.26937v1",
+    "id": "paper-looking-right-geometry-2611-26937",
+    "title": "Looking Right：渲染相似掩盖几何错误，点云差异反馈能否修正？",
+    "summary": "把Blender场景对齐激光扫描后，“画面像”不等于几何准。视频输入下Astra为51.4分；用既有点云反馈误差，使Terra/Sol修订增益比同期对照多3.9/5.5分，但报告在同批30房间设计与测试。",
+    "insight": "作者主张将扫描参照几何评分与场景—输入误差报告加入重建。本站判断：关键是复用已有点云做明确验收，而非再看一遍渲染；反馈效应尚未验证跨房间、跨厂商泛化。",
+    "limits": "未复现；仅30房间、每模型每条件1次，报告在同房间设计与测试。3.9/5.5是修订增益差，非最终分差；Astra差异不显著。G不测可编辑性或语义；评测代码及完整数据未发布。主要结果来自同厂商Terra、Sol、Astra及一个Blender基本体构建环境，不是跨厂商普遍排名。Terra/Sol每场景预算3美元、Astra39美元以对应Terra的token量；预算并未耗尽，代理自行宣布完成，多数剩余超过一半，不能称跨模型同费用比较。95%区间按房间bootstrap，不代表多随机种子稳定性；未确认30房间是否排除在DA3训练数据之外。G只覆盖扫描有有效深度的室内可见区域：S是2厘米体素化后5/10/20厘米阈值F分数平均，V结合10厘米深度准确度与排除SAM3镜面区域的边界F分数，L单独衡量家具盒内扫描与非结构表面在10厘米内的吻合。三项按扫描自身分数归一并各截顶1，以几何均值合成0–100分；不能读成任务成功百分比、物理正确或可编辑操作成功率。默认G是保重力、尺度和手性的刚性对齐；Gs额外拟合尺度，Gdirect不拟合。拟合目标是截断对称Chamfer而非G，Gs−G只作尺度诊断，不能当严格误差分解。视频-only Astra 51.4对Poisson 75.9，提供估计点云后73.1；Poisson是不结构化的同输入几何参照，非可编辑竞品或严格上界，尺度拟合后Astra高0.6的区间含0。点云与相机共同按0.75–1.25缩放的实验仅每模型10房间，场景尺度跟随斜率0.93–0.96；oracle条件同时替换点、姿态及覆盖，不能把余下收益归给单因素。重评分的BVB超过2000重建、54配置均值相关0.79，与配置内逐房间中位相关0.10不是同一统计单位；不应把视觉相关说成处处为零。看图条件几何收益小且多数区间含0，不证明看图一概无效。工具轨迹发现11/380点云运行有显式场景—输入对比，只按记录操作定义；首存至末存分析限有可评分首场景的多存档运行。误差报告只比较已有估计点云，不能发现这些点本身的真实尺度错误；没有额外激光真值进入该反馈。同期对照也执行相同检查，仅隐藏报告，表6以每房间固定registration比较首存至末存增益：Terra 3.9[1.5,6.7]、Sol5.5[2.3,10.0]、Astra2.8[-0.5,8.1]。Astra两组最终场景仅差0.2分，较大增益差部分来自较低首存；排除各一个大错房间后Sol/Astra差降至3.7/0.5。该报告在测试的同批房间设计，跨房间泛化未知。公开GitHub固定08c93ca2主要提供单房间展示及汇总评分，评测实现和Agent harness仍待发布；HF固定7152c334仅README与.gitattributes，没有基准场景、模型权重或评测代码。演示沿相机路径逐步显露最终几何，不是在线构建或真实保存时间回放；本站只读取页面和JSON，未操作或验收3D渲染。当前demo列72配置并加入GPT-6.2和Claude Fable5.2，与论文54配置重评分范围不同，未把网页新分数混入论文结论。原始ARKitScenes资产保留其许可，不能从论文CC BY推导全部资产许可。verified仅指来源核验。",
+    "organization": "UCLA; Amazon及合作机构",
+    "dateLabel": "2026-11-20 首发 · 本轮新采集后精读",
+    "evidence": "v1全文方法/实验/表格与固定公开项目状态核验；未运行或复现实验",
+    "originalTitle": "Looking Right Is Not Being Right: Evaluating the Geometry of Agent-Built 3D Scenes",
+    "date": "2026-11-20",
+    "checkedAt": "2026-11-23T04:27:19.770104+00:00",
+    "paperOriginalDate": "2026-11-20T00:49:25Z",
+    "paperUpdatedAt": "2026-11-20T00:49:25Z",
+    "updatedAt": "2026-11-20T00:49:25Z",
+    "firstSeenAt": "2026-11-23T04:00:00Z",
+    "lastSeenAt": "2026-11-23T04:00:00Z",
+    "tags": [
+      "Blender",
+      "几何评测",
+      "可编辑场景",
+      "验证反馈"
+    ],
+    "authors": [
+      "Ziyang Long",
+      "Yen-Liang Lin",
+      "Shifan Zhu",
+      "Allen Tu",
+      "Meher Gitika Karumuri",
+      "Chenqi Li",
+      "Srikumar Sastry",
+      "Sarosij Bose",
+      "Mellon M. Zhang",
+      "Hsin-Jung Yang"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1与精确首发历史",
+        "url": "https://arxiv.org/abs/2611.26937v1"
+      },
+      {
+        "label": "原文方法、实验、表1–6与局限",
+        "url": "https://arxiv.org/html/2611.26937v1"
+      },
+      {
+        "label": "原始TeX和活动表格",
+        "url": "https://arxiv.org/src/2611.26937v1"
+      },
+      {
+        "label": "作者固定版本项目与开放范围说明",
+        "url": "https://github.com/Albertlongzi/looking-right-being-right/blob/08c93ca278a71a33ef95bec704bdf79b4bb56a93/README.md"
+      },
+      {
+        "label": "HF固定版本材料状态",
+        "url": "https://huggingface.co/datasets/Zylong/looking-right-being-right/blob/7152c3349c079194455e5f81b86b808c35cbaac8/README.md"
+      },
+      {
+        "label": "作者Scene Fidelity展示页",
+        "url": "https://albertlongzi.github.io/looking-right-being-right/"
+      },
+      {
+        "label": "作者展示页汇总评分及来源标签",
+        "url": "https://albertlongzi.github.io/looking-right-being-right/benchmark.json"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把Blender场景对齐激光扫描后，“画面像”不等于几何准。视频输入下Astra为51.4分；用既有点云反馈误差，使Terra/Sol修订增益比同期对照多3.9/5.5分，但报告在同批30房间设计与测试。",
+      "motivation": "现有代码重建常靠参考视频与渲染的相似度验收，但场景与相机一起缩放仍可生成相同画面。论文要区分几何推断、把点云转成可编辑场景，以及成稿后验证三种能力。",
+      "novelty": "作者主张将扫描参照几何评分与场景—输入误差报告加入重建。本站判断：关键是复用已有点云做明确验收，而非再看一遍渲染；反馈效应尚未验证跨房间、跨厂商泛化。",
+      "evidenceScope": "已读arXiv v1正文方法、实验、表1–6及局限，并核原始TeX对应活动章节；该主文未含独立附录，不把源包未引用的补充表格当成已读正式实验。核固定GitHub/HF README、HF完整两文件目录、作者展示页HTML及72行汇总JSON。未运行Agent、评分器或3D展示，未取得完整评测场景与运行轨迹。",
+      "limits": "未复现；仅30房间、每模型每条件1次，报告在同房间设计与测试。3.9/5.5是修订增益差，非最终分差；Astra差异不显著。G不测可编辑性或语义；评测代码及完整数据未发布。主要结果来自同厂商Terra、Sol、Astra及一个Blender基本体构建环境，不是跨厂商普遍排名。Terra/Sol每场景预算3美元、Astra39美元以对应Terra的token量；预算并未耗尽，代理自行宣布完成，多数剩余超过一半，不能称跨模型同费用比较。95%区间按房间bootstrap，不代表多随机种子稳定性；未确认30房间是否排除在DA3训练数据之外。G只覆盖扫描有有效深度的室内可见区域：S是2厘米体素化后5/10/20厘米阈值F分数平均，V结合10厘米深度准确度与排除SAM3镜面区域的边界F分数，L单独衡量家具盒内扫描与非结构表面在10厘米内的吻合。三项按扫描自身分数归一并各截顶1，以几何均值合成0–100分；不能读成任务成功百分比、物理正确或可编辑操作成功率。默认G是保重力、尺度和手性的刚性对齐；Gs额外拟合尺度，Gdirect不拟合。拟合目标是截断对称Chamfer而非G，Gs−G只作尺度诊断，不能当严格误差分解。视频-only Astra 51.4对Poisson 75.9，提供估计点云后73.1；Poisson是不结构化的同输入几何参照，非可编辑竞品或严格上界，尺度拟合后Astra高0.6的区间含0。点云与相机共同按0.75–1.25缩放的实验仅每模型10房间，场景尺度跟随斜率0.93–0.96；oracle条件同时替换点、姿态及覆盖，不能把余下收益归给单因素。重评分的BVB超过2000重建、54配置均值相关0.79，与配置内逐房间中位相关0.10不是同一统计单位；不应把视觉相关说成处处为零。看图条件几何收益小且多数区间含0，不证明看图一概无效。工具轨迹发现11/380点云运行有显式场景—输入对比，只按记录操作定义；首存至末存分析限有可评分首场景的多存档运行。误差报告只比较已有估计点云，不能发现这些点本身的真实尺度错误；没有额外激光真值进入该反馈。同期对照也执行相同检查，仅隐藏报告，表6以每房间固定registration比较首存至末存增益：Terra 3.9[1.5,6.7]、Sol5.5[2.3,10.0]、Astra2.8[-0.5,8.1]。Astra两组最终场景仅差0.2分，较大增益差部分来自较低首存；排除各一个大错房间后Sol/Astra差降至3.7/0.5。该报告在测试的同批房间设计，跨房间泛化未知。公开GitHub固定08c93ca2主要提供单房间展示及汇总评分，评测实现和Agent harness仍待发布；HF固定7152c334仅README与.gitattributes，没有基准场景、模型权重或评测代码。演示沿相机路径逐步显露最终几何，不是在线构建或真实保存时间回放；本站只读取页面和JSON，未操作或验收3D渲染。当前demo列72配置并加入GPT-6.2和Claude Fable5.2，与论文54配置重评分范围不同，未把网页新分数混入论文结论。原始ARKitScenes资产保留其许可，不能从论文CC BY推导全部资产许可。verified仅指来源核验。",
+      "method": [
+        "在ARKitScenes 30房间上，让Agent从视频编写Blender基本体场景；逐项改变相机姿态、估计或真值点云、看图权限，每模型每条件运行1次。",
+        "导出场景并与激光扫描刚性配准，测表面S、视角深度V、家具布局L；各按扫描分数归一截顶，以G=100×(SVL)^(1/3)合成几何分。",
+        "对比同输入Poisson稠密参照，并在每模型10房间联合缩放点云与相机，区分转换损失和继承尺度错误；另报拟合尺度及不配准的分数。",
+        "回放可评分的首存档与末存档，审查工具日志是否真的比较场景和输入几何；把重新测点云、查看渲染与显式几何验收分开。",
+        "每次保存后从输入相机投射射线，与已有点云比较，报告10厘米内表面比例及最多5个对象偏差；同期隐藏/可见报告两组都执行检查，比较修订增益。"
+      ],
+      "inspirations": [
+        "为Blender或Three.js重建同时保留图像分和独立几何分；验收墙距、家具位置与尺度，不让相机同步缩放掩盖真实尺寸错误。",
+        "在每次程序保存后自动输出对象名、偏移方向和距离，记录Agent是否修改了被指出的对象；用计算相同但隐藏反馈的对照区分报告作用与额外算力。",
+        "把报告设计房间与测试房间拆开，另外注入错误尺度及缺失点云；同时报告首稿、末稿、异常房间和实际编辑任务成功率，避免只看修订增益。"
+      ],
+      "reviewedAt": "2026-11-23T04:27:19.770104+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.26937v1",
+        "https://arxiv.org/html/2611.26937v1",
+        "https://arxiv.org/src/2611.26937v1",
+        "https://github.com/Albertlongzi/looking-right-being-right/blob/08c93ca278a71a33ef95bec704bdf79b4bb56a93/README.md",
+        "https://huggingface.co/datasets/Zylong/looking-right-being-right/blob/7152c3349c079194455e5f81b86b808c35cbaac8/README.md",
+        "https://albertlongzi.github.io/looking-right-being-right/",
+        "https://albertlongzi.github.io/looking-right-being-right/benchmark.json"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.26937",
+      "status": "pending",
+      "checkedAt": "2026-11-23T04:29:35.624026+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.23219v1",
+    "url": "https://arxiv.org/abs/2611.23219v1",
+    "id": "paper-self-organized-learning-2611-23219",
+    "title": "Self-org：不给学习配方，冻结Agent能自己练出有效策略吗？",
+    "summary": "冻结模型也能自编练习、观察失败并改写玩家笔记，从而改善未见游戏表现；这里学的是文本策略，不更新权重。效果限于筛选过的小型游戏集，更多评测信息反而可能损害迁移。",
+    "insight": "作者主张：不指定学习循环，强模型可自行组织文本层自我改进并迁移。本站判断：价值在把“练什么、怎样验证、改哪段笔记”交给教师；尚未证明行为相关性是因果，或可持续扩展到通用工作任务。",
+    "limits": "未复现；冻结权重文本更新。主测20关经Opus筛易题、3教师种子；GEPA匹配游戏预算，未证总费用配平。细化评测信息可损迁移；饱和关100%→98.8%。行为评分为单LLM裁判相关，非因果；代码/数据开放不等于独立复现。主实验六模型为Claude Opus-4.6/5、GPT-5.6-Sol/6-Astra、GLM-4.7/5.3，每模型3教师会话。Claude使用Claude Code，其余使用Pi/OpenRouter，并对GPT/GLM补充预算和参数说明，跨模型差异不能完全归因模型代际。教师与玩家同一模型、权重全冻结；无外部评测反馈进入教师，不等于没有预训练知识、人工设计目标、工具、PuzzleScript文档或预算提示。主设置20次文件更新或150次gameplay任一耗尽即止，每局20回合/25000输出token、单次响应最多20000、low reasoning；每次编辑工具调用是更新，不是梯度步。无Gameplay的Read/Write条件也有增益，说明不能将所有提升归因新采经验。带Bash条件中仅一个示例会话自行写模拟器，不证明所有模型都能摆脱专用Gameplay。PuzzleScript-t20先从500个社区关卡筛最短解≤12，再剔除Opus-5基线8/8全胜的关卡，剩20个不同基础游戏；筛选后重新运行基线。t30沿用流程但最短解13–22，20关。ARC-AGI-3只取首关，并剔除Opus-5 8/8全胜后从25缩至17；不能写成完整ARC通关或未筛选模型排名。MazeBench从256房间中按50步内可解过滤后随机取16，以100回合/75000token测试，指标SPL兼含成功和路径效率，不能当普通胜率或真实3D机器人。t20/t30/ARC每关4次玩家rollout，Maze每房间2次；图带为3教师种子的±1标准差，未提供大规模跨任务总体置信保证。大部分迁移、工具/信息消融只研究Opus-5，不能推广所有六模型。跨模型表只测试Opus与Astra互换文本；25.4→47.5与67.1→72.1是两个方向的t20胜率，非同一模型自身提升。GEPA以Opus-5为玩家和反思模型，用真实社区游戏10训练+10验证，基础游戏与t20测试不重合，150局预算将在下一轮超限前停止；对照优化系统提示，而自主条件可写多个辅助文件并用Bash。匹配gameplay数及游戏预算未证明所有教师推理、BFS、程序执行、prompt长度、实际token和费用也配平，不能称同总计算优于GEPA。语义信息消融由Fable-5.1读取9个Sokoban式评测游戏完整源码与初始观测生成0–6551token描述，属于有意暴露评测分布的近似测试，不能混入主设置的无真实游戏访问主张。更多信息提升该9关但ARC迁移平台或下降；加入t20专属预算也降低t30迁移。它们改变信息与约束，不是单因素普遍过拟合定律。附录10个基线8/8全胜的饱和关，学习后均值98.8%，其中两关91.7%/95.8%；“接近天花板”不等于零退化。增加更新/游戏预算仍出现平台，不证明无限递归改进。SRL量表由GPT-6-Astra初拟、作者修订，同模型medium effort两轮取证评分13项0–3；原17项中4项因试验中不可判被删，未报告独立人工一致性验证。评分以每次文本修改前的行为批次为单位，行为与提升共现不是因果机制。难度以BFS最短解为代理，观察胜率与重放频率还受选择偏差影响。编译失败或BFS已证明不可解的PuzzleScript练习被拒绝，但BFS60秒超时返回未知仍接受，README“验证可解”不能理解为全部严格可解。固定公开实现的自由预算按请求上限扣池、单局token最多默认1.25倍；失败调用总计最多尝试3次且全失败后退还计数，gameplay预算不是API实际开销账本。作者仓库固定882f6c70有教师/玩家/评测实现；HF固定64f4c120匿名可读且未门控，共488文件元数据，含评测清单和训练/评测归档。本站实际下载核五份清单条数20/20/9/17/16，与附录一致；未下载全部运行归档或复算论文曲线，不据目录宣称完整可复现。ARC接口、模型账号与容器依赖仍需运行时条件。已静态读源码，未运行生成游戏、代理、容器或模型调用。verified仅指来源核验。",
+    "organization": "MIT CSAIL; University of Tübingen",
+    "dateLabel": "2026-11-17 首发 · 本轮推进待解读队列",
+    "evidence": "正文与关键附录、固定公开实现及评测清单核验；冻结权重文本优化，未复现",
+    "originalTitle": "Do LLM Agents Still Need to Be Told How to Self-Improve?",
+    "date": "2026-11-17",
+    "checkedAt": "2026-11-23T00:55:34.109288Z",
+    "paperOriginalDate": "2026-11-17T18:57:10Z",
+    "paperUpdatedAt": "2026-11-17T18:57:10Z",
+    "updatedAt": "2026-11-17T18:57:10Z",
+    "firstSeenAt": "2026-11-18T10:00:00Z",
+    "lastSeenAt": "2026-11-23T04:00:00Z",
+    "tags": [
+      "Context optimization",
+      "Self-generated curricula",
+      "Frozen agents",
+      "Generalization"
+    ],
+    "authors": [
+      "Shobhita Sundaram",
+      "Cansu Sancaktar",
+      "Phillip Isola"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv作者与精确提交历史",
+        "url": "https://arxiv.org/abs/2611.23219v1"
+      },
+      {
+        "label": "作者HF论文页",
+        "url": "https://huggingface.co/papers/2611.23219"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.23219"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://ssundaram21.github.io/self-org/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/ssundaram21/self-org"
+      },
+      {
+        "label": "原文方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.23219v1"
+      },
+      {
+        "label": "原始TeX与表格",
+        "url": "https://arxiv.org/src/2611.23219v1"
+      },
+      {
+        "label": "作者公开实现固定提交",
+        "url": "https://github.com/ssundaram21/self-org/blob/882f6c70dc483aee396c4fe9d63f89253fbbb877/README.md"
+      },
+      {
+        "label": "生成游戏验证与预算执行",
+        "url": "https://github.com/ssundaram21/self-org/blob/882f6c70dc483aee396c4fe9d63f89253fbbb877/selforg/gameplay.py"
+      },
+      {
+        "label": "冻结玩家与评测聚合",
+        "url": "https://github.com/ssundaram21/self-org/blob/882f6c70dc483aee396c4fe9d63f89253fbbb877/eval.py"
+      },
+      {
+        "label": "评测配置",
+        "url": "https://github.com/ssundaram21/self-org/blob/882f6c70dc483aee396c4fe9d63f89253fbbb877/selforg/config.py"
+      },
+      {
+        "label": "公开评测与运行材料固定版本",
+        "url": "https://huggingface.co/datasets/ssundaram/self-org/tree/64f4c120bbe5a4bc51eb4152311127b1492aa876"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "冻结模型也能自编练习、观察失败并改写玩家笔记，从而改善未见游戏表现；这里学的是文本策略，不更新权重。效果限于筛选过的小型游戏集，更多评测信息反而可能损害迁移。",
+      "motivation": "现有自我改进常由人规定采样、评估与更新循环。论文研究只给基本工具、有限预算和泛化目标时，冻结模型能否自行组织练习，并让所写文本帮助未见任务，而非仅提高自造练习分数。",
+      "novelty": "作者主张：不指定学习循环，强模型可自行组织文本层自我改进并迁移。本站判断：价值在把“练什么、怎样验证、改哪段笔记”交给教师；尚未证明行为相关性是因果，或可持续扩展到通用工作任务。",
+      "evidenceScope": "已读arXiv v1正文§2–7，附录B评测筛选、C预算/提示/评分协议、D对照与退化反例，及E示例说明、F评分量表关键规则；交叉核原始TeX、固定作者代码与HF清单。没有执行实验，也未逐条重审所有原始轨迹。",
+      "limits": "未复现；冻结权重文本更新。主测20关经Opus筛易题、3教师种子；GEPA匹配游戏预算，未证总费用配平。细化评测信息可损迁移；饱和关100%→98.8%。行为评分为单LLM裁判相关，非因果；代码/数据开放不等于独立复现。主实验六模型为Claude Opus-4.6/5、GPT-5.6-Sol/6-Astra、GLM-4.7/5.3，每模型3教师会话。Claude使用Claude Code，其余使用Pi/OpenRouter，并对GPT/GLM补充预算和参数说明，跨模型差异不能完全归因模型代际。教师与玩家同一模型、权重全冻结；无外部评测反馈进入教师，不等于没有预训练知识、人工设计目标、工具、PuzzleScript文档或预算提示。主设置20次文件更新或150次gameplay任一耗尽即止，每局20回合/25000输出token、单次响应最多20000、low reasoning；每次编辑工具调用是更新，不是梯度步。无Gameplay的Read/Write条件也有增益，说明不能将所有提升归因新采经验。带Bash条件中仅一个示例会话自行写模拟器，不证明所有模型都能摆脱专用Gameplay。PuzzleScript-t20先从500个社区关卡筛最短解≤12，再剔除Opus-5基线8/8全胜的关卡，剩20个不同基础游戏；筛选后重新运行基线。t30沿用流程但最短解13–22，20关。ARC-AGI-3只取首关，并剔除Opus-5 8/8全胜后从25缩至17；不能写成完整ARC通关或未筛选模型排名。MazeBench从256房间中按50步内可解过滤后随机取16，以100回合/75000token测试，指标SPL兼含成功和路径效率，不能当普通胜率或真实3D机器人。t20/t30/ARC每关4次玩家rollout，Maze每房间2次；图带为3教师种子的±1标准差，未提供大规模跨任务总体置信保证。大部分迁移、工具/信息消融只研究Opus-5，不能推广所有六模型。跨模型表只测试Opus与Astra互换文本；25.4→47.5与67.1→72.1是两个方向的t20胜率，非同一模型自身提升。GEPA以Opus-5为玩家和反思模型，用真实社区游戏10训练+10验证，基础游戏与t20测试不重合，150局预算将在下一轮超限前停止；对照优化系统提示，而自主条件可写多个辅助文件并用Bash。匹配gameplay数及游戏预算未证明所有教师推理、BFS、程序执行、prompt长度、实际token和费用也配平，不能称同总计算优于GEPA。语义信息消融由Fable-5.1读取9个Sokoban式评测游戏完整源码与初始观测生成0–6551token描述，属于有意暴露评测分布的近似测试，不能混入主设置的无真实游戏访问主张。更多信息提升该9关但ARC迁移平台或下降；加入t20专属预算也降低t30迁移。它们改变信息与约束，不是单因素普遍过拟合定律。附录10个基线8/8全胜的饱和关，学习后均值98.8%，其中两关91.7%/95.8%；“接近天花板”不等于零退化。增加更新/游戏预算仍出现平台，不证明无限递归改进。SRL量表由GPT-6-Astra初拟、作者修订，同模型medium effort两轮取证评分13项0–3；原17项中4项因试验中不可判被删，未报告独立人工一致性验证。评分以每次文本修改前的行为批次为单位，行为与提升共现不是因果机制。难度以BFS最短解为代理，观察胜率与重放频率还受选择偏差影响。编译失败或BFS已证明不可解的PuzzleScript练习被拒绝，但BFS60秒超时返回未知仍接受，README“验证可解”不能理解为全部严格可解。固定公开实现的自由预算按请求上限扣池、单局token最多默认1.25倍；失败调用总计最多尝试3次且全失败后退还计数，gameplay预算不是API实际开销账本。作者仓库固定882f6c70有教师/玩家/评测实现；HF固定64f4c120匿名可读且未门控，共488文件元数据，含评测清单和训练/评测归档。本站实际下载核五份清单条数20/20/9/17/16，与附录一致；未下载全部运行归档或复算论文曲线，不据目录宣称完整可复现。ARC接口、模型账号与容器依赖仍需运行时条件。已静态读源码，未运行生成游戏、代理、容器或模型调用。verified仅指来源核验。",
+      "method": [
+        "将同一冻结模型分别实例化为教师和玩家；教师只获泛化目标、沙箱文件工具、Bash与Gameplay，自行决定练习和修改顺序，更新玩家提示及辅助文本。",
+        "教师生成PuzzleScript练习，经编译与不可解检查后让全新玩家尝试，读取分数和轨迹；BFS超时仍允许，不把检查说成全体可解保证。",
+        "主设置限20次文件更新或150局练习，任一耗尽即止；每局20回合、25000输出token。保存文本版本，测试用新玩家读取该版本，权重始终不变。",
+        "六模型各3教师种子测20关短程；主要用Opus-5再测20关长程、17个ARC首关、16个Maze房间，前三集每关4次，Maze每房间2次报SPL。",
+        "对照默认提示、分级工具和信息量，以及用真实10训练/10验证游戏的GEPA；另以单LLM裁判评分学习行为，区分外部效果、内部自评与行为相关性。"
+      ],
+      "inspirations": [
+        "给代码或视频Agent一个隔离练习区，让它选择失败案例并修改可版本化策略；真正验收固定在教师看不到的任务上，保留无笔记、旧笔记和新笔记配对结果。",
+        "把练习次数、教师token、执行/BFS费用及重试分别记账；比较固定循环和自主循环时同时匹配总成本与可修改文件范围，避免把多资源优势当学习方法优势。",
+        "保留易题回归集与跨任务测试：即使新难题提高，也核既有成功是否下降；逐级增添任务描述，观察领域内收益何时开始牺牲迁移。"
+      ],
+      "reviewedAt": "2026-11-23T00:55:34.109288Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.23219v1",
+        "https://arxiv.org/html/2611.23219v1",
+        "https://arxiv.org/src/2611.23219v1",
+        "https://ssundaram21.github.io/self-org/",
+        "https://github.com/ssundaram21/self-org/blob/882f6c70dc483aee396c4fe9d63f89253fbbb877/README.md",
+        "https://github.com/ssundaram21/self-org/blob/882f6c70dc483aee396c4fe9d63f89253fbbb877/selforg/gameplay.py",
+        "https://github.com/ssundaram21/self-org/blob/882f6c70dc483aee396c4fe9d63f89253fbbb877/eval.py",
+        "https://github.com/ssundaram21/self-org/blob/882f6c70dc483aee396c4fe9d63f89253fbbb877/selforg/config.py",
+        "https://huggingface.co/papers/2611.23219",
+        "https://huggingface.co/datasets/ssundaram/self-org/tree/64f4c120bbe5a4bc51eb4152311127b1492aa876"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.23219",
+      "status": "pending",
+      "checkedAt": "2026-11-23T04:25:16.588916+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://openai.com/index/perplexity-and-intelligence/",
+    "url": "https://openai.com/index/perplexity-and-intelligence/",
+    "id": "update-openai-perplexity-intelligence-20261122",
+    "title": "OpenAI披露预训练损失：共享评测提议及跨厂商比较边界",
+    "summary": "OpenAI以固定内部代码留出集披露log-perplexity：GPT-3.5约0.99、GPT-4约0.91，并提议将预训练损失用于共享评测讨论。作者对0.68–0.7窗口的能力判断是外推；指标不能直接跨厂商比较，也不能替代Agent任务和安全评测。",
+    "insight": "把预训练损失作为一条长期信号，同时单独测任务成功、后训练收益和监控有效性；只有固定测量协议并前瞻验证，才能判断这条信号对具体Agent能力有多少预测价值。",
+    "limits": "数值来自OpenAI内部代码留出集，非公开统一基准；跨厂商不能直接比。0.68–0.7是作者外推窗口，非已验证能力或安全阈值；CoT/后训练提升不由该指标充分反映。未取得数据、逐模型测量协议或复现实验，不能推因果或用单指标验收Agent。",
+    "organization": "OpenAI",
+    "dateLabel": "2026-11-22 官方研究文章；具体上线时刻未知",
+    "evidence": "官方全文及五条脚注、RSS日期与本轮新增差分已核；未取得内部数据或复现实验",
+    "originalTitle": "Perplexity and Intelligence",
+    "date": "2026-11-22",
+    "checkedAt": "2026-11-22T23:52:42.773598+00:00",
+    "firstSeenAt": "2026-11-23T04:27:55.506455+00:00",
+    "tags": [
+      "预训练",
+      "评测尺度",
+      "官方研究更新",
+      "证据边界"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "官方研究文章、数值口径及五条脚注",
+        "url": "https://openai.com/index/perplexity-and-intelligence/"
+      },
+      {
+        "label": "官方RSS发布日期与新增条目",
+        "url": "https://openai.com/news/rss.xml"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "OpenAI披露内部代码留出集上的预训练损失，并提议用于共同评测与研发节奏讨论；这些数值不能直接跨厂商比较，也不是Agent任务得分或安全门槛。",
+      "motivation": "任务基准会饱和、测量范围也会变化。作者希望用较长期可追踪的预训练信号，辅助判断潜在能力变化及何时需要新的安全评测。",
+      "novelty": "作者主张以预训练损失补充共享能力评测。本站判断：价值是暴露测量尺度与外推假设；文章没有建立跨厂商标尺或证明损失下降足以预测具体Agent行为。",
+      "evidenceScope": "已读2026-11-22官方文章全文与五条脚注，并核官方RSS日期及相对0024快照新增。数值和能力观察均为作者报告，来源核验不等于实验复现；未读取内部评测数据、原始测量或图像中的额外数值，不将图中点位自行推算成数据。文章日期只有日；RSS零点不能当实际上线时刻。",
+      "limits": "数值来自OpenAI内部代码留出集，非公开统一基准；跨厂商不能直接比。0.68–0.7是作者外推窗口，非已验证能力或安全阈值；CoT/后训练提升不由该指标充分反映。未取得数据、逐模型测量协议或复现实验，不能推因果或用单指标验收Agent。",
+      "method": [
+        "在自GPT-3.5沿用的内部代码留出数据固定快照上追踪log-perplexity，即交叉熵损失；公开的是该内部尺度。",
+        "把GPT-3.5约0.99、GPT-4约0.91及后续更低损失，与作者回顾的能力变化并列；这些观察不是阈值的因果验证。",
+        "作者由近期进展外推0.68–0.7窗口可能出现新能力，并提议联合透明度、评测与监控里程碑讨论研发限制；方案尚未成为共同标准。"
+      ],
+      "inspirations": [
+        "固定数据快照、分词和计分协议，同时记录预训练损失、任务成功率及监控有效性；检验它们在哪些任务上发生脱节。",
+        "把能力变化预测预注册到后续模型，再用未参与阈值选择的任务验证；单独评估后训练和推理预算，避免事后关联当因果。"
+      ],
+      "reviewedAt": "2026-11-22T23:52:42.773598+00:00",
+      "sourceUrls": [
+        "https://openai.com/index/perplexity-and-intelligence/",
+        "https://openai.com/news/rss.xml"
+      ]
+    }
   }
 ]
