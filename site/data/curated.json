@@ -29410,5 +29410,377 @@
         "https://code.claude.com/docs/en/monitoring-usage.md"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.27895v1",
+    "url": "https://arxiv.org/abs/2611.27895v1",
+    "id": "paper-tea-bench-br-2611-27895",
+    "title": "TEA-Bench-BR：先测试评测器能否抓住错误，再比较编码Agent",
+    "summary": "TEA-Bench-BR用参数化规范、隐藏边界案例和单错误变异检查编码Agent。31B在前三层的可见测试全绿，但19.4%的尝试仍有隐藏失败；测试质量需要随每次重新生成核验。",
+    "insight": "给代码视频任务注入一帧偏移、图层遗漏、错误帧率等已知缺陷，先验证评测能否识别，再比较模型。",
+    "limits": "仅测Gemma 4两种量化模型；虚构量表不能用于临床筛查。变异算子与测试共用设计边界，不保证覆盖所有错误；英语条件仍含葡语。已读论文与数据卡，未下载代码或复现。",
+    "dateLabel": "2026-11-20 · arXiv v1",
+    "evidence": "方法、结果与局限全文及公开数据卡核验；未复现",
+    "originalTitle": "TEA-Bench-BR: Can Coding Agents Turn a Branching Clinical Specification into Correct Code?",
+    "date": "2026-11-20",
+    "checkedAt": "2026-11-23T16:22:45.936327+00:00",
+    "paperOriginalDate": "2026-11-20T17:35:59Z",
+    "paperUpdatedAt": "2026-11-20T17:35:59Z",
+    "updatedAt": "2026-11-20T17:35:59Z",
+    "firstSeenAt": "2026-11-23T10:00:01Z",
+    "lastSeenAt": "2026-11-23T16:00:01Z",
+    "tags": [
+      "规范到代码",
+      "变异测试",
+      "测试充分性"
+    ],
+    "authors": [
+      "Marcio Andre de Souza Estevam"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv原文与日期",
+        "url": "https://arxiv.org/abs/2611.27895v1"
+      },
+      {
+        "label": "方法、结果和局限全文",
+        "url": "https://arxiv.org/html/2611.27895v1"
+      },
+      {
+        "label": "作者Kaggle数据卡 · 文件内容未核验",
+        "url": "https://www.kaggle.com/datasets/marcioestevampsi/tea-bench-br-clinical-spec-to-code-benchmark"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "TEA-Bench-BR把规范编程变成可再生测试：31B在前三层的可见测试全部通过，但19.4%的尝试仍未通过隐藏测试。",
+      "motivation": "能运行不等于遵守规范；阈值、取整、缺失值和类型错误可能给出看似合理的结果。",
+      "novelty": "作者主张：可再生、参数化且经变异检验的葡语规范编程基准。本站判断：可借鉴的是每次生成都重测测试充分性；零存活变异不等于无漏洞。",
+      "evidenceScope": "已读v1设计§3、实验§4、结果§5及局限§6；另核Kaggle公开数据卡v5。每任务3次无固定种子尝试；31B第3级平均成功78.7%，三次皆成功仅47.2%。规范曾按早期错误补明确三条规则，只报告最终规范结果。数据卡列源码、任务和轨迹，但本轮未查文件内容。",
+      "limits": "仅测Gemma 4两种量化模型；虚构量表不能用于临床筛查。变异算子与测试共用设计边界，不保证覆盖所有错误；英语条件仍含葡语。已读论文与数据卡，未下载代码或复现。",
+      "method": [
+        "用种子采样阈值、反向题等参数，生成规范，用参考实现计算答案；144任务分四级，共6,798个隐藏案例。",
+        "可见示例与隐藏输入分开，覆盖边界和非法类型；全部隐藏案例通过才算任务成功。",
+        "FHIR导出同时比对语义摘要和官方验证器结构结果；按固定清单豁免两个上游术语错误。",
+        "注入典型单错误实现检验测试充分性；主集杀死1,955/1,955变异，换种子后仍有1/1,969逃过。"
+      ],
+      "inspirations": [
+        "给代码视频任务注入一帧偏移、图层遗漏、错误帧率等已知缺陷，先验证评测能否识别，再比较模型。",
+        "分开报告执行率、逐项通过率、全约束成功率与重复稳定性；对同一语义做成对改写，排查提示表述效应。"
+      ],
+      "reviewedAt": "2026-11-23T16:22:45.936327+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.27895v1",
+        "https://arxiv.org/html/2611.27895v1",
+        "https://www.kaggle.com/datasets/marcioestevampsi/tea-bench-br-clinical-spec-to-code-benchmark"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.27895",
+      "status": "pending",
+      "checkedAt": "2026-11-23T16:24:27.936854+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.19247",
+    "url": "https://arxiv.org/abs/2611.19247",
+    "id": "paper-gamewm-2611-19247",
+    "title": "GameWM：用可编辑引擎固定事件，让视频模型生成技能外观",
+    "summary": "GameWM把可编辑Python场景、规则和事件交给引擎，再让视频模型生成角色与技能外观。已公开引擎和BD权重；四步因果模型仍未发布，8GPU仅13–18生成FPS，尚非实时闭环。",
+    "insight": "作者主张：以引擎事件为约束，让同一动作生成多种角色和技能表现。本站判断：价值在可编辑规则与视觉细节分离，以及多目标训练数据；它不是代码Agent自动造游戏的成功率证明。",
+    "limits": "未复现；论文主实验为固定代理回放。8GPU热运行仅13–18生成FPS，VAE仍整段解码，不能称实时闭环；AR/DMD权重、训练数据未发布。代码中的Layout、规则、碰撞与输入日志确为可编辑程序世界，视频模型输出仍是像素，不能把它说成生成可编辑3D资产或代码Agent建世界成功。§7采用按源录制分割的留出片段，主要是代理/输出并排的定性例图；没有跨系统排行榜、广泛事件成功率或人工盲评。表4仅四角色×四场景共16对：BD-Sheet角色对自身设定图的DINOv2余弦为0.588±0.096，对另外三角色为0.481；去掉设定图但保留首帧只下降0.024，小于两种子差0.039，不能将身份保持全部归功于设定图。表5为1280×704、124帧射击片段的预热后第二次运行；8GPU四步DMD首块3.1秒含KV填充，latent rollout11.5秒，全任务28.2秒含解码和写盘；不等于输入到显示延迟。v2删去v1的H200型号，本站只按v2写8GPU，不据旧版推定硬件。跨骨干对比仅同一射击片段各8种子：33B全8次按代理时序，14B有5/8提前至少一秒命中，5B常改变对手走位；图11展示各模型最贴近代理的3/8种子，不能当随机样本总体质量。附录A的VLM渲染筛查阈值为每轴至少3分（满分4），允许人审覆盖；字幕校验fail目前只统计报告、不从训练删除。低多边形训练代理多由H3重绘，不等同真实程序引擎输出；几何准确性与技能可见性仍可能错位。作者GitHub训练场另提供三种场景、脚本/控制器与规则源码；源码和文档只读，未安装、执行、下载权重或验收可玩性。当前STREAM文档明确VM尚不接收逐块文本，要先录制流再转take，流式接口存在不代表端到端实时链路已接通。HF模型卡与文件列表核到三骨干各BD/BD-Sheet共六组文件，AR/DMD尚未发布，训练数据未发布；本轮只核元数据/模型卡，未下载或校验权重。原发11月14日、修订11月19日、HF仓库创建/修改11月20日与本轮检查时间分开记录。verified仅指来源核验。",
+    "organization": "腾讯光子工作室群（Lightspeed Studios, Tencent）",
+    "dateLabel": "11月14日首发 · 11月19日v2修订 · HF仓库建于11月20日",
+    "evidence": "v2全文方法与实验、固定引擎源码和HF文件列表已核；未执行、下载权重或复现实验",
+    "originalTitle": "GameWM: Toward Next-Generation Video Games with Interaction-Centric World Models",
+    "date": "2026-11-14",
+    "checkedAt": "2026-11-23T16:25:12.813814Z",
+    "paperOriginalDate": "2026-11-14T08:22:46Z",
+    "paperUpdatedAt": "2026-11-19T08:28:17Z",
+    "updatedAt": "2026-11-19T08:28:17Z",
+    "firstSeenAt": "2026-11-23T10:27:06.327255Z",
+    "lastSeenAt": "2026-11-23T16:25:12.813814Z",
+    "tags": [
+      "程序化场景",
+      "引擎事件",
+      "可控视频渲染",
+      "交互数据",
+      "因果蒸馏"
+    ],
+    "authors": [
+      "Bing He",
+      "Runze Wang",
+      "Fei Zha",
+      "Zhongyuan Wu",
+      "Ke Xu",
+      "Tao Zhuang",
+      "Yuxuan Xie",
+      "Zhongyuan Liu"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2video"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv首发及v2修订历史",
+        "url": "https://arxiv.org/abs/2611.19247"
+      },
+      {
+        "label": "此前候选核验来源",
+        "url": "https://huggingface.co/papers/2611.19247"
+      },
+      {
+        "label": "此前候选核验来源",
+        "url": "https://game-world-model.github.io/"
+      },
+      {
+        "label": "作者公开代码与发布边界",
+        "url": "https://github.com/hebing-sjtu/GameWM"
+      },
+      {
+        "label": "v2原文方法、实验与附录A–D",
+        "url": "https://arxiv.org/html/2611.19247v2"
+      },
+      {
+        "label": "可编辑引擎、训练场与请求接口",
+        "url": "https://github.com/hebing-sjtu/GameWM/blob/e8e18cd1885e048512d2ca68bf4b65867ca79fcd/GameWM-engine/README.md"
+      },
+      {
+        "label": "引擎到视频模型协议与未实现范围",
+        "url": "https://github.com/hebing-sjtu/GameWM/blob/e8e18cd1885e048512d2ca68bf4b65867ca79fcd/GameWM-engine/protocol/PROTOCOL.md"
+      },
+      {
+        "label": "流式协议：当前仍转为完整take请求",
+        "url": "https://github.com/hebing-sjtu/GameWM/blob/e8e18cd1885e048512d2ca68bf4b65867ca79fcd/GameWM-engine/protocol/STREAM.md"
+      },
+      {
+        "label": "程序化三场景的Layout实现",
+        "url": "https://github.com/hebing-sjtu/GameWM/blob/e8e18cd1885e048512d2ca68bf4b65867ca79fcd/GameWM-engine/gamewm_engine/games/training_ground/layout.py"
+      },
+      {
+        "label": "规则、时序与伤害的Python参数",
+        "url": "https://github.com/hebing-sjtu/GameWM/blob/e8e18cd1885e048512d2ca68bf4b65867ca79fcd/GameWM-engine/gamewm_engine/games/training_ground/rules.py"
+      },
+      {
+        "label": "公开BD权重及模型卡；AR/DMD未发布",
+        "url": "https://huggingface.co/binghe-sjtu/GameWM"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "GameWM把可编辑Python场景、规则和事件交给引擎，再让视频模型生成角色与技能外观。已公开引擎和BD权重；四步因果模型仍未发布，8GPU仅13–18生成FPS，尚非实时闭环。",
+      "motivation": "纯视频世界容易把视觉漂移变成规则错误，传统引擎又要手工制作每个角色和交互动画。GameWM让代码保留可检查的状态与结果，把昂贵的角色、动作细节和特效外观交给生成模型。",
+      "novelty": "作者主张：以引擎事件为约束，让同一动作生成多种角色和技能表现。本站判断：价值在可编辑规则与视觉细节分离，以及多目标训练数据；它不是代码Agent自动造游戏的成功率证明。",
+      "evidenceScope": "已读arXiv v1正文与v2差异，并按v2完整复核§4–6方法、§7实验及附录A–D；v2与v1方法相同，延迟段删去GPU型号。核作者仓库树、固定版本引擎README/请求和流协议、训练场文档，逐段检查Layout、规则、world.step/碰撞、TrainingGround.feed/stream/replay和numpy render实现；未运行代码或观看全部演示。核HF模型卡、公开文件列表及创建/修改时间，无下载权重。论文本身的固定片段实验与随后仓库交付分别标识，来源核验不等于复现。",
+      "limits": "未复现；论文主实验为固定代理回放。8GPU热运行仅13–18生成FPS，VAE仍整段解码，不能称实时闭环；AR/DMD权重、训练数据未发布。代码中的Layout、规则、碰撞与输入日志确为可编辑程序世界，视频模型输出仍是像素，不能把它说成生成可编辑3D资产或代码Agent建世界成功。§7采用按源录制分割的留出片段，主要是代理/输出并排的定性例图；没有跨系统排行榜、广泛事件成功率或人工盲评。表4仅四角色×四场景共16对：BD-Sheet角色对自身设定图的DINOv2余弦为0.588±0.096，对另外三角色为0.481；去掉设定图但保留首帧只下降0.024，小于两种子差0.039，不能将身份保持全部归功于设定图。表5为1280×704、124帧射击片段的预热后第二次运行；8GPU四步DMD首块3.1秒含KV填充，latent rollout11.5秒，全任务28.2秒含解码和写盘；不等于输入到显示延迟。v2删去v1的H200型号，本站只按v2写8GPU，不据旧版推定硬件。跨骨干对比仅同一射击片段各8种子：33B全8次按代理时序，14B有5/8提前至少一秒命中，5B常改变对手走位；图11展示各模型最贴近代理的3/8种子，不能当随机样本总体质量。附录A的VLM渲染筛查阈值为每轴至少3分（满分4），允许人审覆盖；字幕校验fail目前只统计报告、不从训练删除。低多边形训练代理多由H3重绘，不等同真实程序引擎输出；几何准确性与技能可见性仍可能错位。作者GitHub训练场另提供三种场景、脚本/控制器与规则源码；源码和文档只读，未安装、执行、下载权重或验收可玩性。当前STREAM文档明确VM尚不接收逐块文本，要先录制流再转take，流式接口存在不代表端到端实时链路已接通。HF模型卡与文件列表核到三骨干各BD/BD-Sheet共六组文件，AR/DMD尚未发布，训练数据未发布；本轮只核元数据/模型卡，未下载或校验权重。原发11月14日、修订11月19日、HF仓库创建/修改11月20日与本轮检查时间分开记录。verified仅指来源核验。",
+      "method": [
+        "引擎计算规则、碰撞、相机和事件时刻，输出粗代理视频及事件日志；角色设定图、首帧和技能文字只决定外观，不回写命中或伤害。",
+        "围绕交互裁切游戏录制，读引擎深度/语义或从屏幕录像估计；生成多种低多边形代理与高保真目标，用VLM筛查相机、时序、布局和身份。",
+        "将代理、首帧、可选角色图与字幕放入原骨干参考通道；H3-33B和Wan14B训练rank128 LoRA，Wan5B全量微调，共用四类代理接口。",
+        "先做双向适配，再经AnyFlow因果初始化与DMD/self-gradient forcing蒸馏成四步学生；每块只读当前及此前五块代理。",
+        "公开参考实现用Python Layout和规则定义三类灰盒场景，numpy渲染代理并记录可回放输入；现有VM按完整take运行，逐块实时文本仍未接通。"
+      ],
+      "inspirations": [
+        "给代码视频Agent交付可编辑Layout、规则参数、输入回放和事件日志；同一状态换角色/技能外观，分别验收事件正确、画面遵从与局部编辑保真。",
+        "给每个命中或接触同时记录引擎帧与生成画面帧，测时差、漏表现和错误对象；不要只用整体视频美感或引擎正确率掩盖视觉反馈错误。",
+        "用同一代理对应多种目标训练外观自由度，同时加入真实引擎代理和未见布局；报告所有种子及错误累积，区分流式协议、吞吐和动作到显示延迟。"
+      ],
+      "reviewedAt": "2026-11-23T16:25:12.813814Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.19247",
+        "https://arxiv.org/html/2611.19247v2",
+        "https://github.com/hebing-sjtu/GameWM",
+        "https://github.com/hebing-sjtu/GameWM/blob/e8e18cd1885e048512d2ca68bf4b65867ca79fcd/GameWM-engine/README.md",
+        "https://github.com/hebing-sjtu/GameWM/blob/e8e18cd1885e048512d2ca68bf4b65867ca79fcd/GameWM-engine/protocol/PROTOCOL.md",
+        "https://github.com/hebing-sjtu/GameWM/blob/e8e18cd1885e048512d2ca68bf4b65867ca79fcd/GameWM-engine/protocol/STREAM.md",
+        "https://github.com/hebing-sjtu/GameWM/blob/e8e18cd1885e048512d2ca68bf4b65867ca79fcd/GameWM-engine/gamewm_engine/games/training_ground/layout.py",
+        "https://github.com/hebing-sjtu/GameWM/blob/e8e18cd1885e048512d2ca68bf4b65867ca79fcd/GameWM-engine/gamewm_engine/games/training_ground/rules.py",
+        "https://huggingface.co/binghe-sjtu/GameWM"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.19247",
+      "status": "pending",
+      "checkedAt": "2026-11-23T16:29:15.289848+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.27570v1",
+    "url": "https://arxiv.org/abs/2611.27570v1",
+    "id": "paper-weir-2611-27570",
+    "title": "WEIR：旧前缀该信多少，新续跑该花在哪一回合？",
+    "summary": "WEIR把同动作前缀的历史结果按漂移降权，再按价值变化选择分支续跑。7B问答均分37.85%；少28%只指生成token，理论最优有条件，未核公开实现。",
+    "insight": "作者主张：把漂移收缩、任务预算和关键回合分支接入同一critic闭环。本站判断：价值是让复用旧经验与购买新反馈共同依赖校准；前缀相同不保证状态等价，预算最优也依赖统计假设。",
+    "limits": "未复现；仅论文可读，未核作者实现/权重。分支要求恢复状态与历史，不能直接回滚真实外部操作；28–29%仅为匹配轨迹数的生成rollout token减少，不是总训练费用或推理加速。主体为Qwen2.5-3B/7B actor配3B critic，8张A100 80GB、BF16；QA训练HotpotQA 90447题，测试HotpotQA/2Wiki/MuSiQue各2000题、Bamboogle125题，QA Avg为四集合等权均值而非6125题整体准确率。ALFWorld训练1000/测试134任务、40回合；WebShop训练1024/测试256任务、15回合，二者使用最近2回合文本观察，不是真实机器人或商店部署。表8报告三训练种子均值±标准差；7B QA37.85±0.26对CAPO35.63±0.30，ALFWorld87.81±0.78对84.33±0.91，WebShop81.90±0.54对80.40±0.62；未把标准差倍数当本站配对显著性检验。QA最多4次搜索后强制答题，每次检索3段；三外域QA不做其域内RL。GRPO/Tree-GRPO取最佳已观察验证checkpoint，actor-critic取最终checkpoint；原文未在split表另列验证集合规模，本站未核选择日志。Search-R1/StepSearch使用不同训练数据或过程监督，仅外部参考。默认QA每题2主干+平均4分支、交互任务4+4，分支数2–7且任务间重新分配，总轨迹数配平不等于生成token、critic前向和训练token都相同。继承的主干token也进入actor损失，环境观察token不更新；历史结果只参与critic目标，不把旧策略轨迹直接称作当前策略rollout。25/30次critic预热计入150/120更新总预算。7B QA六轨迹配置5.4小时为8×A100墙钟时间，表11没有CAPO等方法对应墙钟；只列WEIR的4/6/8/12轨迹成本，不能据此宣称总GPU时间降28%。动作前缀去除思考和观察，QA仅同父节点下E5余弦≥0.95合并；不同观测/检索结果或语义近似仍可能共享节点，critic给的是聚合续行价值，不是完整环境状态保证。精确匹配QA36.75、阈值0.95为37.85；降到0.85虽命中79.5%却只36.23，说明高复用率本身不是目标。历史计数每轮乘0.95，固定漂移参数κ=0.4；留一目标的历史权重n/(1.4n+1)上限约0.714，不是访问足够多就完全信旧均值，也不是逐轮测量KL自适应估计漂移。极小极大结论假设新回报与池估计独立/不相关、池方差σ²/n且偏差有界；共享主干和指数权重不自动保证这些假设，去掉当前轨迹不能证明所有样本独立，折扣访问数也未自动成为统计有效样本量。Doob恒等式给方差分解，不单独证明所有任务的价值跳变集中在少数回合；1+CV²收益要求分支分数与真实方差减少成正比，实际分数是critic启发式。Neyman最优还假设梯度方差正比p(1-p)及条件独立，实际有主干下限、2–7上限、整数舍入和相关分支；task-balance权重只恢复任务等权，不能视作所有分支选择偏差都已消除。MC64是64次续跑近似参考而非精确真值；离线校准从2048训练题中选1362混合成败题，每题24轨迹训练/8轨迹提取评估前缀，属于同题轨迹留出，不是新问题泛化。在线256题MC64也不能替代全任务独立复现。移除漂移同时改γhist与κ，不能单独归因某一个参数；跨模型补充仍集中于Qwen家族。未发现论文反链公开仓库，文中提到的code/theory_checks.py不能当已取得代码；HF论文页本轮404，搜索无可核作者X原帖，不推断全网没有发布。verified仅指原文来源核验。",
+    "organization": "University of Wisconsin–Madison；University of Washington（论文署名）",
+    "dateLabel": "2026-11-20 首发 · 本轮补齐队列全文解读",
+    "evidence": "原文方法、协议与附录核验；模型/生成预算/理论假设边界已标，未核实现或复现实验",
+    "originalTitle": "WEIR: Watershed Exploration and Drift-Aware Prefix Shrinkage for Multi-Turn Agent Reinforcement Learning",
+    "date": "2026-11-20",
+    "checkedAt": "2026-11-23T16:22:47.590157Z",
+    "paperOriginalDate": "2026-11-20T13:05:55Z",
+    "paperUpdatedAt": "2026-11-20T13:05:55Z",
+    "updatedAt": "2026-11-20T13:05:55Z",
+    "firstSeenAt": "2026-11-23T04:00:00Z",
+    "lastSeenAt": "2026-11-23T16:00:01Z",
+    "tags": [
+      "Agent RL",
+      "Prefix critic",
+      "Adaptive rollout",
+      "Policy drift"
+    ],
+    "authors": [
+      "Pixel Nomand",
+      "Elena Voss",
+      "Marcus Hale",
+      "Sofia Reyes"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1摘要、作者与精确首发时间",
+        "url": "https://arxiv.org/abs/2611.27570v1"
+      },
+      {
+        "label": "此前候选核验来源",
+        "url": "https://arxiv.org/abs/2611.27570"
+      },
+      {
+        "label": "完整方法、理论假设、表1–13与复现实验协议",
+        "url": "https://arxiv.org/html/2611.27570v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "WEIR把同动作前缀的历史结果按漂移降权，再按价值变化选择分支续跑。7B问答均分37.85%；少28%只指生成token，理论最优有条件，未核公开实现。",
+      "motivation": "多轮任务只在终点给成败，单条轨迹会给中间回合同一个噪声标签。复用旧前缀可以稳定估值，却会混入旧策略偏差；还需要把有限续跑预算放到能改变结局的分叉。",
+      "novelty": "作者主张：把漂移收缩、任务预算和关键回合分支接入同一critic闭环。本站判断：价值是让复用旧经验与购买新反馈共同依赖校准；前缀相同不保证状态等价，预算最优也依赖统计假设。",
+      "evidenceScope": "已读arXiv v1摘要/提交历史、正文§3–7方法理论实验、附录B证明假设、C协议/超参/提示、D前缀合并与恢复、E表8–13及MC64设计、F讨论。未取得作者实现或权重、未执行论文代码、未重算原始任务结果；理论仅核推导假设与适用范围，不宣称独立形式化证明。",
+      "limits": "未复现；仅论文可读，未核作者实现/权重。分支要求恢复状态与历史，不能直接回滚真实外部操作；28–29%仅为匹配轨迹数的生成rollout token减少，不是总训练费用或推理加速。主体为Qwen2.5-3B/7B actor配3B critic，8张A100 80GB、BF16；QA训练HotpotQA 90447题，测试HotpotQA/2Wiki/MuSiQue各2000题、Bamboogle125题，QA Avg为四集合等权均值而非6125题整体准确率。ALFWorld训练1000/测试134任务、40回合；WebShop训练1024/测试256任务、15回合，二者使用最近2回合文本观察，不是真实机器人或商店部署。表8报告三训练种子均值±标准差；7B QA37.85±0.26对CAPO35.63±0.30，ALFWorld87.81±0.78对84.33±0.91，WebShop81.90±0.54对80.40±0.62；未把标准差倍数当本站配对显著性检验。QA最多4次搜索后强制答题，每次检索3段；三外域QA不做其域内RL。GRPO/Tree-GRPO取最佳已观察验证checkpoint，actor-critic取最终checkpoint；原文未在split表另列验证集合规模，本站未核选择日志。Search-R1/StepSearch使用不同训练数据或过程监督，仅外部参考。默认QA每题2主干+平均4分支、交互任务4+4，分支数2–7且任务间重新分配，总轨迹数配平不等于生成token、critic前向和训练token都相同。继承的主干token也进入actor损失，环境观察token不更新；历史结果只参与critic目标，不把旧策略轨迹直接称作当前策略rollout。25/30次critic预热计入150/120更新总预算。7B QA六轨迹配置5.4小时为8×A100墙钟时间，表11没有CAPO等方法对应墙钟；只列WEIR的4/6/8/12轨迹成本，不能据此宣称总GPU时间降28%。动作前缀去除思考和观察，QA仅同父节点下E5余弦≥0.95合并；不同观测/检索结果或语义近似仍可能共享节点，critic给的是聚合续行价值，不是完整环境状态保证。精确匹配QA36.75、阈值0.95为37.85；降到0.85虽命中79.5%却只36.23，说明高复用率本身不是目标。历史计数每轮乘0.95，固定漂移参数κ=0.4；留一目标的历史权重n/(1.4n+1)上限约0.714，不是访问足够多就完全信旧均值，也不是逐轮测量KL自适应估计漂移。极小极大结论假设新回报与池估计独立/不相关、池方差σ²/n且偏差有界；共享主干和指数权重不自动保证这些假设，去掉当前轨迹不能证明所有样本独立，折扣访问数也未自动成为统计有效样本量。Doob恒等式给方差分解，不单独证明所有任务的价值跳变集中在少数回合；1+CV²收益要求分支分数与真实方差减少成正比，实际分数是critic启发式。Neyman最优还假设梯度方差正比p(1-p)及条件独立，实际有主干下限、2–7上限、整数舍入和相关分支；task-balance权重只恢复任务等权，不能视作所有分支选择偏差都已消除。MC64是64次续跑近似参考而非精确真值；离线校准从2048训练题中选1362混合成败题，每题24轨迹训练/8轨迹提取评估前缀，属于同题轨迹留出，不是新问题泛化。在线256题MC64也不能替代全任务独立复现。移除漂移同时改γhist与κ，不能单独归因某一个参数；跨模型补充仍集中于Qwen家族。未发现论文反链公开仓库，文中提到的code/theory_checks.py不能当已取得代码；HF论文页本轮404，搜索无可核作者X原帖，不推断全网没有发布。verified仅指原文来源核验。",
+      "method": [
+        "冻结当前策略与更新前critic，每题先跑2/4条主干；按估计成功率的不确定性分配平均4条分支，设置2–7条上下限并校正总数。",
+        "在未终止且可恢复的回合，综合价值不确定性、相邻价值跳变与低访问奖励选分支；恢复检查点并重放核观察，再由当前策略续跑。",
+        "按任务和有序动作建跨轮前缀树；交互动作归一后精确匹配，QA只在同父节点用E5合并近义查询，actor仍保留自己的交互历史。",
+        "历史计数逐轮乘0.95并排除当前轨迹；以n/(1.4n+1)混合历史均值与新回报，冻结目标拟合前缀critic，稀疏节点更信新证据。",
+        "以更新前critic计算回合GAE，用任务等权修正和裁剪比率更新actor；环境观察不计损失，继承主干与续跑token都训练，再进入下一轮。"
+      ],
+      "inspirations": [
+        "给可回滚代码/网页训练环境保存检查点与观测哈希，续跑前先验恢复等价；同时统计分支的真实成功变化，避免把高价值跳变当因果修复。",
+        "让经验缓存记录策略版本、衰减权重和组内相关性；比较折扣计数与有效样本量，并按新策略校准误差调整旧数据可信度。",
+        "把新反馈预算同时按任务和回合分配，保留探索下限；配平生成token、critic前向、损失token和墙钟，另设新题/新环境评估闭环收益。"
+      ],
+      "reviewedAt": "2026-11-23T16:22:47.590157Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.27570v1",
+        "https://arxiv.org/html/2611.27570v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.27570",
+      "status": "pending",
+      "checkedAt": "2026-11-23T16:27:42.195341+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/agentic-evals",
+    "url": "https://huggingface.co/blog/agentic-evals",
+    "id": "update-hf-agentic-evals-20261123",
+    "title": "HF评测指南：先用反例检验评分器，再把分数与轨迹一起发布",
+    "summary": "HF发布开放Agent评测建设指南，以8个合成Raman光谱任务说明如何改写基准、用捷径检验评分器、读轨迹定位失败，再区分pass@3与pass^3。配套任务、六模型轨迹和分析文件公开可读；该小开发集不能作为通用排名。",
+    "insight": "可迁移的是一条审计链：把能力声明拆成可测项目，对评分器构造错误与合法替代解，保存运行条件和失败轨迹，并让每次测试修订都有可比性说明。对代码创作尤其要防止“截图像”或“数值对”掩盖执行/可编辑性失败。",
+    "limits": "仅8个合成开发任务、每任务3次；未复跑Agent。默认路由11/24与固定DeepInfra另一轮13/24不可直接归因于provider。三模型24/24已饱和，不能排优劣；固定窗口拟合与容差仍需领域专家审查。",
+    "dateLabel": "2026-11-23 · 官方指南",
+    "evidence": "官方全文与公开任务/结果文件核验；未复现实验",
+    "date": "2026-11-23",
+    "checkedAt": "2026-11-23T16:24:13.563013+00:00",
+    "firstSeenAt": "2026-11-23T16:00:01Z",
+    "lastSeenAt": "2026-11-23T16:00:01Z",
+    "tags": [
+      "Agentic evaluation",
+      "Harbor",
+      "Raman",
+      "Verifier",
+      "Reproducibility"
+    ],
+    "topics": [],
+    "sourceId": "hf_blog",
+    "sources": [
+      {
+        "label": "Hugging Face 官方全文指南与方法附录",
+        "url": "https://huggingface.co/blog/agentic-evals"
+      },
+      {
+        "label": "作者公开仓库：固定版本 README 与六模型结果",
+        "url": "https://github.com/burtenshaw/raman-lab-evals/blob/19cb7d4e89d7e4c6b9d9ce7f23d997d3116d56f8/README.md"
+      },
+      {
+        "label": "公开任务数据卡",
+        "url": "https://huggingface.co/datasets/burtenshaw/raman-lab/raw/main/README.md"
+      },
+      {
+        "label": "公开轨迹数据卡",
+        "url": "https://huggingface.co/datasets/burtenshaw/raman-lab-runs/raw/main/README.md"
+      },
+      {
+        "label": "固定任务：真实评分器",
+        "url": "https://huggingface.co/datasets/burtenshaw/raman-lab/raw/1d914f8473013fa038d9d83b47986c87d7925922/graphene-s01/tests/score.py"
+      },
+      {
+        "label": "固定任务：真实任务说明",
+        "url": "https://huggingface.co/datasets/burtenshaw/raman-lab/raw/1d914f8473013fa038d9d83b47986c87d7925922/graphene-s01/instruction.md"
+      },
+      {
+        "label": "固定任务：环境与时限",
+        "url": "https://huggingface.co/datasets/burtenshaw/raman-lab/raw/1d914f8473013fa038d9d83b47986c87d7925922/graphene-s01/task.toml"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "先验证评分器，再读轨迹和报分。8个合成Raman开发任务展示：至少一次成功与每次成功不同；任务、环境和provider必须随分数记录。",
+      "motivation": "Agent分数由任务、工具循环、环境和评分共同决定。只看总分，会把提前结束、缺依赖、解析问题和拟合错误混为模型能力。",
+      "novelty": "作者主张：把开放评测建设和持续纠错落实到可运行示例及组件发布清单。本站判断：价值是让评分器也接受反例检查，并把结果与运行条件绑定；不是新模型、通用能力榜或安全保证。",
+      "evidenceScope": "已读取官方博文完整正文、方法与附录A八步；交叉读取作者仓库固定提交19cb7d4e89d7e4c6b9d9ce7f23d997d3116d56f8的README、summary.csv及trials.csv，并静态核对公开任务固定修订1d914f8473013fa038d9d83b47986c87d7925922的instruction.md、score.py及task.toml。公开HF任务/轨迹元数据分别列68/1783个文件，private=false、gated=false；只据此确认这些公开文件可读，未逐条下载或审查全部轨迹。对171行公开CSV做分组计数：六模型各24次适配任务与3次原任务，另有9次oracle；此为作者结果表复核，不是实验复现。博文默认路由11/24和复跑10/24来自作者叙述；固定provider的11月18日结果表gpt-oss-120b为13/24、pass@3=6/8、pass^3=2/8，与前一组7/8、1/8分开。没有执行仓库命令、调用付费推理或运行交互图。",
+      "limits": "仅8个合成开发任务、每任务3次；未复跑Agent。默认路由11/24与固定DeepInfra另一轮13/24不可直接归因于provider。三模型24/24已饱和，不能排优劣；固定窗口拟合与容差仍需领域专家审查。 作者默认路由运行中11/24通过、pass@3=7/8、pass^3=1/8、均值0.46±约0.11聚类标准误；这些不是固定DeepInfra表的13/24、6/8与2/8。静态评分器对三个固定窗口要求RMSE不超过参考解1.10倍，并核D/G比值容差；抽查instruction并未列出这三个窗口和10%阈值，仓库也提示部分失败可能需审查评分器是否过严。只抽查一个任务评分文件，未将固定表分组核对夸为轨迹或实验复现。合成谱拟合不能代表整份实验报告审核或真实实验室部署；六模型单次比较、不同provider亦不能直接成为通用模型排名。",
+      "method": [
+        "先把能力声明限为峰拟合与D/G比值；复用Harbor任务格式和Terminus-2，以参考解及未改任务建立起点。",
+        "生成8个已知参数的合成光谱，改变噪声与缺陷水平；从两峰扩为三峰，明确参数和单位，配置环境及输出检查。",
+        "先测参考解、空操作和故意跳过拟合的捷径；只核比值会被8/8骗过，因此另核各峰在固定窗口的拟合误差。",
+        "每任务跑3次并读成功/失败轨迹；分开统计至少一次成功的pass@3、全部成功的pass^3，并按任务聚类估计标准误。",
+        "固定provider等条件比较六模型，记录版本、费用与排除；分别公开任务、轨迹、评分器和修订历史，敏感测试另设受控审查。"
+      ],
+      "inspirations": [
+        "为代码视频/3D评测加入空提交、只伪造指标、外观正确但结构不可编辑的捷径；分别检查执行产物、视觉结果与编辑操作。",
+        "每个分数保留模型/provider、任务版本、环境依赖和轨迹；将多次重试能成功与无人值守每次成功分栏，按任务而非全部rollout计算误差。",
+        "公开任务构造与评分容差，同时给隐藏答案提供授权审查路径；修订测试时明确哪些旧分数失去可比性。"
+      ],
+      "reviewedAt": "2026-11-23T16:24:13.563013+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/blog/agentic-evals",
+        "https://github.com/burtenshaw/raman-lab-evals/blob/19cb7d4e89d7e4c6b9d9ce7f23d997d3116d56f8/README.md",
+        "https://huggingface.co/datasets/burtenshaw/raman-lab/raw/main/README.md",
+        "https://huggingface.co/datasets/burtenshaw/raman-lab-runs/raw/main/README.md",
+        "https://huggingface.co/datasets/burtenshaw/raman-lab/raw/1d914f8473013fa038d9d83b47986c87d7925922/graphene-s01/tests/score.py",
+        "https://huggingface.co/datasets/burtenshaw/raman-lab/raw/1d914f8473013fa038d9d83b47986c87d7925922/graphene-s01/instruction.md",
+        "https://huggingface.co/datasets/burtenshaw/raman-lab/raw/1d914f8473013fa038d9d83b47986c87d7925922/graphene-s01/task.toml"
+      ]
+    }
   }
 ]
