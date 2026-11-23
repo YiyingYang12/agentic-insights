@@ -28826,5 +28826,589 @@
         "https://openai.com/news/rss.xml"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.27860v1",
+    "url": "https://arxiv.org/abs/2611.27860v1",
+    "id": "paper-splitbench-2611-27860",
+    "title": "SplitBench：把运行测试与最终评分分开，仍要防范测试语义漏洞",
+    "summary": "SplitBench把产出代码、执行测试和判断结果分成三个信任域，标准答案由外部Oracle保存。作者将两套编码基准的180/202任务迁移，并在可比较的1,374次尝试中获得98.7%评分一致性。",
+    "insight": "对代码创作和Agent评测，可让渲染/执行沙箱只提交有界结果，由沙箱外的评测器保存目标与判据；同时单独检查测试是否覆盖任务语义，不能把评分器没被攻破等同于作品做对了。",
+    "limits": "75%是完整知情攻击中126/168次已完成尝试被拒，非通用安全保证；87/112个DeepSWE转换仍信任回归测试自报。弱测试、公开答案和伪实现仍可过关。仅论文核验，未复现；完整代码与轨迹声明发表后发布。",
+    "dateLabel": "2026-11-20 · arXiv v1",
+    "evidence": "已读方法、评测与局限；来源核验，未复现实验",
+    "originalTitle": "Who Grades the Agent? Privilege Separation for Coding-Agent Benchmarks",
+    "date": "2026-11-20",
+    "checkedAt": "2026-11-23T10:21:27.905539+00:00",
+    "paperOriginalDate": "2026-11-20T17:09:10Z",
+    "paperUpdatedAt": "2026-11-20T17:09:10Z",
+    "updatedAt": "2026-11-20T17:09:10Z",
+    "firstSeenAt": "2026-11-23T10:00:01Z",
+    "lastSeenAt": "2026-11-23T10:00:01Z",
+    "tags": [
+      "评分完整性",
+      "Privilege separation",
+      "Coding agents"
+    ],
+    "authors": [
+      "Nathan Nour Houlamy",
+      "Mattia Favretto",
+      "Earlence Fernandes",
+      "Mauro Conti"
+    ],
+    "topics": [],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv 原文与发表日期",
+        "url": "https://arxiv.org/abs/2611.27860v1"
+      },
+      {
+        "label": "方法、实验与开放科学声明",
+        "url": "https://arxiv.org/html/2611.27860v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "将执行与裁决拆开，保护评分链路；完整知情攻击仍有42/168次未解题却通过，揭示弱测试等剩余问题。",
+      "motivation": "编码Agent能改写测试环境或伪造通过日志。即使把测试移入另一容器，候选代码运行后仍可能控制该容器，最终裁决需要独立可信边界。",
+      "novelty": "作者主张：首次在相关学术框架中分离测试执行与裁决，并展示现有基准的迁移可行性。本站判断：价值是可审计的信任边界和迁移证据；该优先权未独立穷尽核查，结果也不证明测试语义充分。",
+      "evidenceScope": "已读arXiv v1完整HTML的威胁模型、设计§IV、评测§V、局限§VI及开放科学声明。98.7%=1356/1374，排除5任务及26次不可比较尝试，其中7次受符号链接转换错误影响。完整知情攻击180次中12次被模型拒绝，剩168次拒126；总360次中53次未完成。87/112个DeepSWE任务的回归测试保留自报结果，目标新功能才按值判定。代码、180任务及全部轨迹写为发表后发布，本轮未取得或运行完整artifact。 威胁模型信任隔离机制；攻击提示明确排除容器逃逸、攻击relay/proxy/宿主机及提权，相关组件另做代码审查，不能把本轮攻击统计当完整基础设施渗透覆盖。",
+      "limits": "75%是完整知情攻击中126/168次已完成尝试被拒，非通用安全保证；87/112个DeepSWE转换仍信任回归测试自报。弱测试、公开答案和伪实现仍可过关。仅论文核验，未复现；完整代码与轨迹声明发表后发布。",
+      "method": [
+        "停机后仅捕获任务允许范围内的文件变化，生成带摘要和大小限制的候选清单，在干净基线上重放。",
+        "外部Oracle保留标准答案和随机种子，只向无网执行环境释放当前测试输入；适配器返回原始观测而不判对错。",
+        "框架验证有界JSON与声明输出文件，Oracle在独立受限进程按值裁决并保存可重算证据；每例或原测试组用新环境。",
+        "转换与审查Agent迭代保留原测试断言，用参考解、空改动、错误实现和定制攻击做资格检查，再比较原生评分与对抗结果。"
+      ],
+      "inspirations": [
+        "为代码视频或3D评测拆出可信评分进程：只收渲染帧、结构统计和执行产物，目标与阈值留在外部，并限制解析大小和时间。",
+        "迁移评测时建立四类资格样本：正确解、空提交、近似错误实现、评分篡改；分别报告迁移一致性与绕过率。",
+        "把执行成功、视觉质量与任务符合度分项测量，添加隐藏扰动输入检查硬编码；对仅输出正确却未完成指定实现的情况另做人工抽审。"
+      ],
+      "reviewedAt": "2026-11-23T10:21:27.905539+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.27860v1",
+        "https://arxiv.org/html/2611.27860v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.27860",
+      "status": "pending",
+      "checkedAt": "2026-11-23T10:25:15.457099+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.27336v1",
+    "url": "https://arxiv.org/abs/2611.27336v1",
+    "id": "paper-zing-1-0-2611-27336",
+    "title": "Zing-1.0：让代码决定世界规则，让视频负责外观",
+    "summary": "Zing让Agent编写可执行世界，由引擎判定碰撞与计分，再用视频模型渲染外观。单示例到达8个目标区；23.82FPS来自三GPU热运行，不代表通用建世界成功率或动作到画面延迟。",
+    "insight": "作者主张：形式化可控渲染接口，以WorldKit构造世界并把MiniMax-H3改为流式渲染器。本站判断：最值得迁移的是可执行状态与生成外观分权；“首个规范”仍是作者主张，尚无广泛建世界成功率。",
+    "limits": "未复现；8/8仅一个收集关卡的8目标区域。23.82FPS用1H200+2H100热运行，排除网关后传输/显示；StreamEval自报待官方核验。代码、权重及训练数据未能确认1.0公开可用。WorldKit用TypeScript、Three.js、Rapier和预置角色/相机/控制组件构造代理世界，不能把视频模型本身说成自动生成可编辑3D资产。源代码和资产锁是文中封装产物描述，本站未取得可执行包或执行编辑/回放。两条控制条件保证世界状态由引擎更新，不能保证像素外观始终忠实：生成的道具未必是可拾取实体，脚步/接触若未由引擎指定也未必可触发机关。外观提示与参考图仅传给渲染器，不自动改写游戏规则。§5.1的拾取、骑乘、驾驶、飞行与相机测试含两个WorldKit版本的独立离线代理会话；三种输入时长各重复5次位移/朝向一致、90步墙碰撞无胶囊穿透，仅支持这些受控示例。单收集关卡发生2次工具错误并自动修复，8/8为区域可达而非8任务成功；收割竞赛291/187平方米是一次30秒标准回合的引擎计分，不是代理胜率或人评。OpenVE308短视频和LongV2V229约一分钟任务使用Gemini2.5Pro按五类宏平均，3.90/3.44对JoyAI3.60/3.30；基线和分辨率从JoyAI论文引用而非同机重测，局部类别也非全部领先。StreamEval两轨各60例、每例3次，五种15/30/60/120/300秒时长组等权，含在线多模态指令改写/参考更新系统，不是孤立渲染器分数；57.86/54.06为作者暂定下界，已提交但待官方验证，参考轨质量和稳定性低于Vidu。世界风格替换、穿越场景与回访持久状态主要是定性例图，没有全面端到端任务分母。性能表固定832×480、24FPS代理输入、两去噪步；短403帧热运行网关首帧0.695秒、后续23.82FPS；最长15921帧含18次参考切换，首帧10.33秒、后续20.40FPS。不能把热启动首帧或吞吐当玩家动作延迟、单GPU速度或多会话容量；评测服务组一次只接一个活跃会话。KV64.80→24.08GiB是DiT池而非整机显存；约2.8倍是H100注意力微基准而非完整服务加速。PSNR/SSIM/LPIPS相对同种子Dense BF16输出而非真实视频质量，部分长序列指标缺失。训练混合一般生成、成对编辑、参考图和代理—目标视频，原文未提供完整样本清单、规模/拆分或逐项授权核验；不能从可读论文推断数据可下载。长程生成历史偏差与当前代理冲突可能积累或突变，作者亦列交互延迟、状态/外观责任边界和建世界覆盖为局限。本轮原文正文§3–7及全部表1–7已读，未运行代码/演示；论文反链项目zing.loopit.com本机DNS失败、web也不可达。匿名HF seedleap模型与Space列表仅见Zing0.5、数据集列表为空；这是核验范围，不证明全网未发布1.0，旧0.5不能替代1.0代码/权重。verified仅指来源核验。",
+    "organization": "SeedLeap.ai Zing Team；Loopit支持",
+    "dateLabel": "2026-11-20 首发 · 本轮补齐完整方法与实验",
+    "evidence": "v1原文方法、评测与局限已读；作者HF发布范围已核，项目不可达，未运行或复现",
+    "originalTitle": "Zing-1.0: A Playable World System Built on Controllable Rendering",
+    "date": "2026-11-20",
+    "checkedAt": "2026-11-23T10:27:06.327255Z",
+    "paperOriginalDate": "2026-11-20T09:13:31Z",
+    "paperUpdatedAt": "2026-11-20T09:13:31Z",
+    "updatedAt": "2026-11-20T09:13:31Z",
+    "firstSeenAt": "2026-11-23T04:00:00Z",
+    "lastSeenAt": "2026-11-23T10:00:01Z",
+    "tags": [
+      "WorldKit",
+      "可执行世界",
+      "代码创作",
+      "可控渲染",
+      "流式蒸馏"
+    ],
+    "authors": [
+      "Wenbo Zhang",
+      "Guoli Zhang",
+      "Xuewen Yu",
+      "Xueliang Yang",
+      "Jiangqiao Yan",
+      "Teng Xia",
+      "Xinmiao Wu",
+      "Zeyang Tian",
+      "Haoze Sun",
+      "Jinghui Niu",
+      "Hongli Ning",
+      "Zhiyuan Liu",
+      "Xinna Liu",
+      "Weimin Liu",
+      "Jialin Liu",
+      "Tianpeng Li",
+      "Kejun Li",
+      "Jun Li",
+      "Jiawen Li",
+      "Yirong He",
+      "Haoyuan Guo",
+      "Bosheng Gong",
+      "Junhao Gao",
+      "Xiaoxiao Fu",
+      "Xuezhi Chen",
+      "Shengdong Chen",
+      "Mingyang Chen",
+      "Diying Chen",
+      "Yinglun Chai",
+      "Yiwen Cai"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2video"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1首发与作者",
+        "url": "https://arxiv.org/abs/2611.27336v1"
+      },
+      {
+        "label": "原文完整方法、表1–7与局限",
+        "url": "https://arxiv.org/html/2611.27336v1"
+      },
+      {
+        "label": "作者公开HF组织页及模型/Space入口（本轮仅见Zing0.5）",
+        "url": "https://huggingface.co/seedleap"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Zing让Agent编写可执行世界，由引擎判定碰撞与计分，再用视频模型渲染外观。单示例到达8个目标区；23.82FPS来自三GPU热运行，不代表通用建世界成功率或动作到画面延迟。",
+      "motivation": "直接让生成视频决定世界状态，会把外观漂移变成碰撞、计分和交互错误。论文把可执行行为、代理观察和最终外观拆开，让代码Agent能验证规则，同时保留快速换风格的能力。",
+      "novelty": "作者主张：形式化可控渲染接口，以WorldKit构造世界并把MiniMax-H3改为流式渲染器。本站判断：最值得迁移的是可执行状态与生成外观分权；“首个规范”仍是作者主张，尚无广泛建世界成功率。",
+      "evidenceScope": "已精读arXiv2611.27336v1 §3系统/引擎/训练与蒸馏、§4交互基础设施、§5全部评测及表1–7、§6局限与§7结论，核摘要页v1提交时间。匿名检查作者HF模型/数据/Space列表；项目页本机DNS与web均失败，没有访问demo或取得Zing1.0代码/权重/训练集。未运行模型、世界构建、评测或真实交互；来源核验不等于实验复现。 另核作者HF公开组织页，页面列出Zing0.5模型与Space入口；公开阅读来源使用组织页，原API核验记录保留在本轮证据中。",
+      "limits": "未复现；8/8仅一个收集关卡的8目标区域。23.82FPS用1H200+2H100热运行，排除网关后传输/显示；StreamEval自报待官方核验。代码、权重及训练数据未能确认1.0公开可用。WorldKit用TypeScript、Three.js、Rapier和预置角色/相机/控制组件构造代理世界，不能把视频模型本身说成自动生成可编辑3D资产。源代码和资产锁是文中封装产物描述，本站未取得可执行包或执行编辑/回放。两条控制条件保证世界状态由引擎更新，不能保证像素外观始终忠实：生成的道具未必是可拾取实体，脚步/接触若未由引擎指定也未必可触发机关。外观提示与参考图仅传给渲染器，不自动改写游戏规则。§5.1的拾取、骑乘、驾驶、飞行与相机测试含两个WorldKit版本的独立离线代理会话；三种输入时长各重复5次位移/朝向一致、90步墙碰撞无胶囊穿透，仅支持这些受控示例。单收集关卡发生2次工具错误并自动修复，8/8为区域可达而非8任务成功；收割竞赛291/187平方米是一次30秒标准回合的引擎计分，不是代理胜率或人评。OpenVE308短视频和LongV2V229约一分钟任务使用Gemini2.5Pro按五类宏平均，3.90/3.44对JoyAI3.60/3.30；基线和分辨率从JoyAI论文引用而非同机重测，局部类别也非全部领先。StreamEval两轨各60例、每例3次，五种15/30/60/120/300秒时长组等权，含在线多模态指令改写/参考更新系统，不是孤立渲染器分数；57.86/54.06为作者暂定下界，已提交但待官方验证，参考轨质量和稳定性低于Vidu。世界风格替换、穿越场景与回访持久状态主要是定性例图，没有全面端到端任务分母。性能表固定832×480、24FPS代理输入、两去噪步；短403帧热运行网关首帧0.695秒、后续23.82FPS；最长15921帧含18次参考切换，首帧10.33秒、后续20.40FPS。不能把热启动首帧或吞吐当玩家动作延迟、单GPU速度或多会话容量；评测服务组一次只接一个活跃会话。KV64.80→24.08GiB是DiT池而非整机显存；约2.8倍是H100注意力微基准而非完整服务加速。PSNR/SSIM/LPIPS相对同种子Dense BF16输出而非真实视频质量，部分长序列指标缺失。训练混合一般生成、成对编辑、参考图和代理—目标视频，原文未提供完整样本清单、规模/拆分或逐项授权核验；不能从可读论文推断数据可下载。长程生成历史偏差与当前代理冲突可能积累或突变，作者亦列交互延迟、状态/外观责任边界和建世界覆盖为局限。本轮原文正文§3–7及全部表1–7已读，未运行代码/演示；论文反链项目zing.loopit.com本机DNS失败、web也不可达。匿名HF seedleap模型与Space列表仅见Zing0.5、数据集列表为空；这是核验范围，不证明全网未发布1.0，旧0.5不能替代1.0代码/权重。verified仅指来源核验。",
+      "method": [
+        "Agent用TypeScript/Three.js/Rapier写世界，锁定Atlas资产版本；Creator返回编译诊断、预览和输入回放，验证后封装代码、运行时与资产锁。",
+        "引擎以60Hz执行输入、规则、物理与相机，输出带状态步和版本的RGB代理帧；生成视频不回写引擎，外观提示独立传入渲染器。",
+        "将MiniMax-H3改为块因果生成，文本/参考图给外观、代理视频约束结构；经自回归适配、ODE端点初始化和DMD蒸馏，部署每块两步去噪。",
+        "增量解码并用有界队列、源帧标签和条件事件协调流水线；合并跨块前向，以三档历史注意力和FP8残差KV降低历史读取及存储成本。",
+        "分别核离线规则、单关卡构建/回放、视频编辑基准和三GPU服务；单独记录世界状态正确性、生成画面质量与网关吞吐，不合并成游戏成功率。"
+      ],
+      "inspirations": [
+        "给代码视频/3D Agent交付源码、资产锁和可回放事件，再从相同状态渲染多种风格；分别验收规则执行、几何轨迹、局部可编辑性和画面一致性。",
+        "每段生成视频附引擎步、代理帧和条件版本，把“确认收到提示”与“已显示生效帧”分开；测输入到显示的P50/P95，不能以FPS替代交互延迟。",
+        "建立多世界、多次生成的测试集，覆盖拾取、碰撞、计分与回访持久状态；加入像素诱导的假物体与漂移，检验规则正确但玩家看错的失败。"
+      ],
+      "reviewedAt": "2026-11-23T10:27:06.327255Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.27336v1",
+        "https://arxiv.org/html/2611.27336v1",
+        "https://huggingface.co/seedleap"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.27336",
+      "status": "pending",
+      "checkedAt": "2026-11-23T10:28:39.214565+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.546",
+    "url": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.546",
+    "id": "update-remotion-v40546-20261123",
+    "title": "Remotion4.0.546：本地转写与时间线参数探测接入代码视频",
+    "summary": "Remotion4.0.546新增本地Whisper转写与模型管理，OTIO导入先探测时间线帧率和首个视觉素材尺寸。可把字幕和已有剪辑接入代码视频；仅核固定源码，未测转写、导入保真或渲染。",
+    "insight": "官方更新：新增whisper命令，并改进既有OTIO导入的元数据探测。本站判断：价值在把素材理解和时间线参数变成可检查的输入；不代表自动剪辑完成、字幕准确或全部效果可编辑。",
+    "limits": "未运行转写/导入/渲染；新命令需Node.js WebGPU与额外依赖，首次模型下载需网络。OTIO尺寸取首个视觉素材，混合帧率无唯一值时回退30FPS；须人工核工程，不能当无损往返。whisper transcribe输出Caption[] JSON或--raw转写结果，不自动生成字幕画面、剪辑叙事或烧录成片；默认small.en，显式语言时默认small，多语言模型要求具体语言且拒绝auto。代码先用ffmpeg取首条音轨并重采样为单声道；未测多语识别、词级时间戳、长素材内存和音画同步准确性。输出默认可覆盖已有文件，--no-overwrite可阻止；源码禁止把输出写成输入媒体本身，采用临时文件重命名，但未做故障测试。原始资料只读核验，不执行文档命令或下载模型。OTIO CLI入口在4.0.543已有，4.0.546新增帧率/尺寸探测；FPS优先显式参数，其次global_start_time的有效rate，再看各source/available range或gap的共同rate，无法确定则30。宽高优先显式参数，缺失值从首个解析到的视觉素材补齐，非合成画布或所有素材最大尺寸；纯音轨、缺失媒体或探测失败需指定宽高。SVG取width/height或viewBox，其他素材用ffprobe考虑像素长宽比和90度旋转；不等于任意SVG/CSS布局或全部容器可识别。同一固定发行的CLI文档仍列1920×1080/30旧默认，与代码探测分支不同，本条以固定实现为准并保留文档差异。导入dry-run会解析工程及媒体和输出计划，但不安装依赖或写文件；实际导入可复制媒体、安装依赖及注册composition。反向播放、自定义转场或不支持结构可能失败，应用专属裁剪/缩放/调色不保证解释；本轮未重审全部转换器或验证往返效果。Safari内存与音频修复属发行说明，本站未测性能，不据此承诺提升。新增功能明确关联code2video与video-editing，未把沿用的动效渲染当本轮新code2motion能力。verified仅指官方来源及固定源码核验。",
+    "organization": "Remotion",
+    "dateLabel": "2026-11-23 17:58（北京时间）官方发行",
+    "evidence": "官方发行与固定文档/源码核验；未安装、转写、导入或渲染",
+    "originalTitle": "Remotion v4.0.546 — Whisper CLI and OpenTimelineIO metadata detection",
+    "date": "2026-11-23",
+    "checkedAt": "2026-11-23T10:27:06.327255Z",
+    "updatedAt": "2026-11-23T09:58:25Z",
+    "firstSeenAt": "2026-11-23T10:27:06.327255Z",
+    "lastSeenAt": "2026-11-23T10:27:06.327255Z",
+    "tags": [
+      "Remotion",
+      "Whisper",
+      "OTIO",
+      "代码视频",
+      "可编辑工程"
+    ],
+    "topics": [
+      "code2video",
+      "video-editing"
+    ],
+    "featured": true,
+    "sources": [
+      {
+        "label": "官方发行与日期",
+        "url": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.546"
+      },
+      {
+        "label": "固定发行 packages/docs/docs/cli/whisper/index.mdx",
+        "url": "https://github.com/remotion-dev/remotion/blob/4664bd64e6364f92b7e2994db775b28ad1af38a9/packages/docs/docs/cli/whisper/index.mdx"
+      },
+      {
+        "label": "固定发行 packages/docs/docs/cli/whisper/transcribe.mdx",
+        "url": "https://github.com/remotion-dev/remotion/blob/4664bd64e6364f92b7e2994db775b28ad1af38a9/packages/docs/docs/cli/whisper/transcribe.mdx"
+      },
+      {
+        "label": "固定发行 packages/docs/docs/cli/whisper/install.mdx",
+        "url": "https://github.com/remotion-dev/remotion/blob/4664bd64e6364f92b7e2994db775b28ad1af38a9/packages/docs/docs/cli/whisper/install.mdx"
+      },
+      {
+        "label": "固定发行 packages/docs/docs/cli/open-timeline/import.mdx",
+        "url": "https://github.com/remotion-dev/remotion/blob/4664bd64e6364f92b7e2994db775b28ad1af38a9/packages/docs/docs/cli/open-timeline/import.mdx"
+      },
+      {
+        "label": "固定发行 packages/cli/src/whisper/transcribe.ts",
+        "url": "https://github.com/remotion-dev/remotion/blob/4664bd64e6364f92b7e2994db775b28ad1af38a9/packages/cli/src/whisper/transcribe.ts"
+      },
+      {
+        "label": "固定发行 packages/cli/src/import-composition-command.ts",
+        "url": "https://github.com/remotion-dev/remotion/blob/4664bd64e6364f92b7e2994db775b28ad1af38a9/packages/cli/src/import-composition-command.ts"
+      },
+      {
+        "label": "固定发行 packages/studio-server/src/codemods/get-open-timeline-media-dimensions.ts",
+        "url": "https://github.com/remotion-dev/remotion/blob/4664bd64e6364f92b7e2994db775b28ad1af38a9/packages/studio-server/src/codemods/get-open-timeline-media-dimensions.ts"
+      },
+      {
+        "label": "固定发行 packages/studio-shared/src/get-open-timeline-frame-rate.ts",
+        "url": "https://github.com/remotion-dev/remotion/blob/4664bd64e6364f92b7e2994db775b28ad1af38a9/packages/studio-shared/src/get-open-timeline-frame-rate.ts"
+      },
+      {
+        "label": "固定发行 packages/studio-server/src/codemods/prepare-open-timeline-import.ts",
+        "url": "https://github.com/remotion-dev/remotion/blob/4664bd64e6364f92b7e2994db775b28ad1af38a9/packages/studio-server/src/codemods/prepare-open-timeline-import.ts"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Remotion4.0.546新增本地Whisper转写与模型管理，OTIO导入先探测时间线帧率和首个视觉素材尺寸。可把字幕和已有剪辑接入代码视频；仅核固定源码，未测转写、导入保真或渲染。",
+      "motivation": "把采访音轨变成有时间戳的字幕数据，以及把剪辑时间线带回代码工程，常被转写配置、素材尺寸和帧率猜测阻断；需要可检查的中间结果而不只是成片。",
+      "novelty": "官方更新：新增whisper命令，并改进既有OTIO导入的元数据探测。本站判断：价值在把素材理解和时间线参数变成可检查的输入；不代表自动剪辑完成、字幕准确或全部效果可编辑。",
+      "evidenceScope": "已读官方v4.0.546发行及精确发布时间，定位发行提交4664bd64e6364f92b7e2994db775b28ad1af38a9；读取固定whisper索引/转写/安装文档、转写实现、OTIO CLI与帧率推断/媒体准备/尺寸探测实现及固定CLI文档。PR补丁只作路径追踪，未把早期transcribe顶层命令当最终API。未运行命令、安装依赖、下载权重、操作素材或渲染；无需新作者域名。",
+      "limits": "未运行转写/导入/渲染；新命令需Node.js WebGPU与额外依赖，首次模型下载需网络。OTIO尺寸取首个视觉素材，混合帧率无唯一值时回退30FPS；须人工核工程，不能当无损往返。whisper transcribe输出Caption[] JSON或--raw转写结果，不自动生成字幕画面、剪辑叙事或烧录成片；默认small.en，显式语言时默认small，多语言模型要求具体语言且拒绝auto。代码先用ffmpeg取首条音轨并重采样为单声道；未测多语识别、词级时间戳、长素材内存和音画同步准确性。输出默认可覆盖已有文件，--no-overwrite可阻止；源码禁止把输出写成输入媒体本身，采用临时文件重命名，但未做故障测试。原始资料只读核验，不执行文档命令或下载模型。OTIO CLI入口在4.0.543已有，4.0.546新增帧率/尺寸探测；FPS优先显式参数，其次global_start_time的有效rate，再看各source/available range或gap的共同rate，无法确定则30。宽高优先显式参数，缺失值从首个解析到的视觉素材补齐，非合成画布或所有素材最大尺寸；纯音轨、缺失媒体或探测失败需指定宽高。SVG取width/height或viewBox，其他素材用ffprobe考虑像素长宽比和90度旋转；不等于任意SVG/CSS布局或全部容器可识别。同一固定发行的CLI文档仍列1920×1080/30旧默认，与代码探测分支不同，本条以固定实现为准并保留文档差异。导入dry-run会解析工程及媒体和输出计划，但不安装依赖或写文件；实际导入可复制媒体、安装依赖及注册composition。反向播放、自定义转场或不支持结构可能失败，应用专属裁剪/缩放/调色不保证解释；本轮未重审全部转换器或验证往返效果。Safari内存与音频修复属发行说明，本站未测性能，不据此承诺提升。新增功能明确关联code2video与video-editing，未把沿用的动效渲染当本轮新code2motion能力。verified仅指官方来源及固定源码核验。",
+      "method": [
+        "通过新增whisper子命令安装/列出/移除模型；转写在本地Node.js WebGPU执行，先解码首音轨为单声道，再输出Caption[]或原始转写JSON。",
+        "OTIO导入优先用户指定FPS，否则读取时间线起始rate或共同时间范围rate；无法确定时回退30FPS，输出生成工程的参数供复核。",
+        "缺失宽高从首个视觉素材探测；先解析可用范围与媒体引用，再生成可编辑composition，dry-run展示文件/资产/依赖计划。",
+        "检查字幕文本与时间戳、FPS/尺寸及不支持项后再导入或渲染；代码提供检查入口，发布说明没有字幕准确率、编辑成功率或往返保真结果。"
+      ],
+      "inspirations": [
+        "给剪辑Agent先输出逐句字幕JSON和素材时间范围，抽样核人名、停顿及片段边界后再生成字幕图层；把转写成功与字幕可用率分开统计。",
+        "建立OTIO往返回归集，包含混合FPS、旋转手机视频、非方像素、纯音频与SVG；记录探测值、用户覆盖和降级警告，验收时间线与渲染两层。",
+        "用dry-run计划作为工程审阅产物，并分别测试文本改稿、图层裁剪、音画同步和非目标片段保持；不要以CLI退出成功代替可编辑性交付。"
+      ],
+      "reviewedAt": "2026-11-23T10:27:06.327255Z",
+      "sourceUrls": [
+        "https://github.com/remotion-dev/remotion/releases/tag/v4.0.546",
+        "https://github.com/remotion-dev/remotion/blob/4664bd64e6364f92b7e2994db775b28ad1af38a9/packages/docs/docs/cli/whisper/index.mdx",
+        "https://github.com/remotion-dev/remotion/blob/4664bd64e6364f92b7e2994db775b28ad1af38a9/packages/docs/docs/cli/whisper/transcribe.mdx",
+        "https://github.com/remotion-dev/remotion/blob/4664bd64e6364f92b7e2994db775b28ad1af38a9/packages/docs/docs/cli/whisper/install.mdx",
+        "https://github.com/remotion-dev/remotion/blob/4664bd64e6364f92b7e2994db775b28ad1af38a9/packages/docs/docs/cli/open-timeline/import.mdx",
+        "https://github.com/remotion-dev/remotion/blob/4664bd64e6364f92b7e2994db775b28ad1af38a9/packages/cli/src/whisper/transcribe.ts",
+        "https://github.com/remotion-dev/remotion/blob/4664bd64e6364f92b7e2994db775b28ad1af38a9/packages/cli/src/import-composition-command.ts",
+        "https://github.com/remotion-dev/remotion/blob/4664bd64e6364f92b7e2994db775b28ad1af38a9/packages/studio-server/src/codemods/get-open-timeline-media-dimensions.ts",
+        "https://github.com/remotion-dev/remotion/blob/4664bd64e6364f92b7e2994db775b28ad1af38a9/packages/studio-shared/src/get-open-timeline-frame-rate.ts",
+        "https://github.com/remotion-dev/remotion/blob/4664bd64e6364f92b7e2994db775b28ad1af38a9/packages/studio-server/src/codemods/prepare-open-timeline-import.ts"
+      ]
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.24077v1",
+    "url": "https://arxiv.org/abs/2611.24077v1",
+    "id": "paper-aerorsi-2611-24077",
+    "title": "AeroRSI：先续飞验证修复，再逐轮蒸馏导航策略",
+    "summary": "先让导航策略从候选修复继续飞行，再把能走下去的动作蒸馏回模型。TravelUAV三轮成功率46.39%→67.49%；仅模拟器，验证只看8–20步，第三轮收益未显著，不能视为无限自我改进。",
+    "insight": "作者主张：策略亲自续飞验证弱规则与自身候选，逐轮刷新失败监督，可无需新增人工标签改善导航。本站判断：价值是按当前策略的后续可执行性筛标签；未证明普遍递归突破，且收益受训练场景与验证预算制约。",
+    "limits": "未复现；仅TravelUAV模拟器。续飞验证8–20步，非全程成功保证；第三轮增益未显著，未见地图仅与AeroDPO成功率相当且路径效率更低。训练需状态回滚、深度及目标位置，每轮约100 GPU小时。主模型是Qwen3-VL-2B上的AeroVLA监督策略，只更新LoRA(rank64)与视觉merger，每轮2epoch、batch16、学习率2e-5；不是冻结权重提示改写，也不是直接使用在线RL优化器。无新增人工标签仍依赖初始专家演示、人工规则和模拟器特权。部署输入除前/下视RGB和语言外，还有模糊目标方向；不能描述为无导航先验的纯视觉语言飞行。训练使用TravelUAV的7611路线/11场景；测试3005路线分为Seen1418、Unseen Object629、Unseen Map958，Overall按路线数聚合而非三个split等权平均。200动作内在目标20米内降落才算成功；碰撞率分母也是全部测试路线，不是每动作碰撞概率。采集在观测边界暂停并恢复状态，测试沿用不暂停协议；模拟器错误中断路线需从头补跑，不计作失败，本站未重算原始缺失分母。2B SFT初始化三轮SR46.39→57.60→66.02→67.49、CR38.64→19.10；约减半是该模拟器测试集作者报告。第三轮相对第二轮仅+1.46pp，配对McNemar z=1.6，未过论文1.96阈值；同期SPL51.96→51.00、训练SR71.41→70.85，不能称每项单调改善。SFT初始化Unseen Map SR46.24对AeroDPO45.93，SPL31.06低于35.45，优势主要在Seen/Unseen Object；更强DPO初始化三轮SR69.85是不同起点，不可混作同一初始模型提升。跨论文其他模型有L1与FD导航引导差异，严格可比主对照是同初始化与协议的AeroDPO。CVR最多4个温度1采样加3个规则候选与原动作，评分为目标接近距离减失败惩罚100、成功奖励20。合格仅要求在8–20步窗口内无失败且前进至少4米，或成功降落；还核原动作失败/落后4米并最多重飞两个候选，接受首个再次合格者。第一轮1048个已接纳修复独立再飞窗口仍仅81.5%合格；延长至200动作等终止条件仅57.2%到达，因此两次通过不是可靠性保证。无双重检查SR+0.77pp、z=0.8，不能把全部收益归因重飞；第一轮仅验证规则候选61.59高于混合57.60，混合来源的优势在第二轮体现。回放并非已证必需：第二轮去回放65.68对66.02、z=-0.4；保留正常态主要降低碰撞，而非已证成功率显著提高。旧标签重训60.30与单轮双倍锚点62.98低于重新采集两轮66.02，支持刷新失败状态，但未证明所有模拟器/训练总费用完全配平。保留目标是当前策略自己的贪心动作，论文SFT-init正常态观测取自AeroDPO成功飞行，公开REPRODUCE说明默认改取round0自身成功飞行；论文对应消融58.97对57.60，复跑不能要求逐点一致。失败类型发生转移：SFT-init超时由1.2%增至6.8%，峰值高度中位数10→36.2米。999路线15米限高子集保留13.21/16.22pp增益，不能当真实飞行空域/安全约束保证。论文配对检验来自报告运行，不替代多训练种子独立复现或sim-to-real验证。固定公开仓5c9f7190的README、复现/安装文档、配置与锚点/验证/组样/训练源码已静态读取。HF固定0a2b2af6公开且未门控，14个文件元数据含两个适配器权重；实际只读模型卡与两份adapter_config，核r64与visual.merger，未下载权重或运行模拟器/训练/评测。代码与模型可访问不等于已验证论文结果可复现；仍依赖外部TravelUAV环境与初始模型。verified仅指来源核验。",
+    "organization": "Tsinghua University; Foshan University; South China University of Technology",
+    "dateLabel": "2026-11-18 首发 · 本轮推进待解读队列",
+    "evidence": "正文方法与全部附录、固定公开代码和模型元数据核验；模拟器续飞验证与监督蒸馏，未复现",
+    "originalTitle": "AeroRSI: Recursive Self-Improvement for Aerial Vision-Language Navigation",
+    "date": "2026-11-18",
+    "checkedAt": "2026-11-23T10:22:20.991868Z",
+    "paperOriginalDate": "2026-11-18T09:07:04Z",
+    "paperUpdatedAt": "2026-11-18T09:07:04Z",
+    "updatedAt": "2026-11-18T09:07:04Z",
+    "firstSeenAt": "2026-11-23T10:22:20.991868Z",
+    "lastSeenAt": "2026-11-23T10:22:20.991868Z",
+    "tags": [
+      "Recursive self-improvement",
+      "Verified repair",
+      "Action distillation",
+      "Aerial navigation"
+    ],
+    "authors": [
+      "Shiwei Wu",
+      "Yuwen Pan",
+      "Zhi Li",
+      "Yaowen Li",
+      "Yan Zhou",
+      "Xuemiao Xu",
+      "Yu Liu"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "此前候选核验来源",
+        "url": "https://arxiv.org/abs/2611.24077"
+      },
+      {
+        "label": "HF论文页",
+        "url": "https://huggingface.co/papers/2611.24077"
+      },
+      {
+        "label": "arXiv摘要、作者与精确提交时间",
+        "url": "https://arxiv.org/abs/2611.24077v1"
+      },
+      {
+        "label": "原文方法、实验与全部附录",
+        "url": "https://arxiv.org/html/2611.24077v1"
+      },
+      {
+        "label": "作者公开项目页",
+        "url": "https://starsholic.github.io/AeroRSI/"
+      },
+      {
+        "label": "作者公开实现固定提交",
+        "url": "https://github.com/starsholic/AeroRSI/blob/5c9f71909ca58733a003fce32de9c81cf580b21f/README.md"
+      },
+      {
+        "label": "复现协议与论文/公开实现差异",
+        "url": "https://github.com/starsholic/AeroRSI/blob/5c9f71909ca58733a003fce32de9c81cf580b21f/docs/REPRODUCE.md"
+      },
+      {
+        "label": "续飞验证与接纳逻辑",
+        "url": "https://github.com/starsholic/AeroRSI/blob/5c9f71909ca58733a003fce32de9c81cf580b21f/aerorsi/repair/verify.py"
+      },
+      {
+        "label": "失败锚点与分组划分",
+        "url": "https://github.com/starsholic/AeroRSI/blob/5c9f71909ca58733a003fce32de9c81cf580b21f/aerorsi/repair/anchors.py"
+      },
+      {
+        "label": "修复、保留与重放训练样本",
+        "url": "https://github.com/starsholic/AeroRSI/blob/5c9f71909ca58733a003fce32de9c81cf580b21f/aerorsi/repair/assemble.py"
+      },
+      {
+        "label": "动作token加权监督训练",
+        "url": "https://github.com/starsholic/AeroRSI/blob/5c9f71909ca58733a003fce32de9c81cf580b21f/aerorsi/train.py"
+      },
+      {
+        "label": "公开实验配置",
+        "url": "https://github.com/starsholic/AeroRSI/blob/5c9f71909ca58733a003fce32de9c81cf580b21f/configs/aerorsi.yaml"
+      },
+      {
+        "label": "公开模型适配器固定版本",
+        "url": "https://huggingface.co/DavidWu1116/AeroRSI/tree/0a2b2af6772d44bdf8aafc8c0d03fb7616cf55c7"
+      },
+      {
+        "label": "SFT初始化适配器配置",
+        "url": "https://huggingface.co/DavidWu1116/AeroRSI/blob/0a2b2af6772d44bdf8aafc8c0d03fb7616cf55c7/AeroRSI-2B-SFTinit/adapter_config.json"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "先让导航策略从候选修复继续飞行，再把能走下去的动作蒸馏回模型。TravelUAV三轮成功率46.39%→67.49%；仅模拟器，验证只看8–20步，第三轮收益未显著，不能视为无限自我改进。",
+      "motivation": "飞行在首次失败时终止，成功演示不覆盖策略自己走到的危险状态；直接模仿规则修复也可能更差。需要筛出当前策略能接着执行的修复，并在旧失败消除后寻找新暴露的错误。",
+      "novelty": "作者主张：策略亲自续飞验证弱规则与自身候选，逐轮刷新失败监督，可无需新增人工标签改善导航。本站判断：价值是按当前策略的后续可执行性筛标签；未证明普遍递归突破，且收益受训练场景与验证预算制约。",
+      "evidenceScope": "已读arXiv v1 §3完整方法、§4实验与消融、附录A–C的协议/成本/配对检验/修复再验证/限高实验；交叉核固定公开实现和HF模型元数据及适配器配置。未执行代码、下载权重、复算逐路线结果或测试实机。",
+      "limits": "未复现；仅TravelUAV模拟器。续飞验证8–20步，非全程成功保证；第三轮增益未显著，未见地图仅与AeroDPO成功率相当且路径效率更低。训练需状态回滚、深度及目标位置，每轮约100 GPU小时。主模型是Qwen3-VL-2B上的AeroVLA监督策略，只更新LoRA(rank64)与视觉merger，每轮2epoch、batch16、学习率2e-5；不是冻结权重提示改写，也不是直接使用在线RL优化器。无新增人工标签仍依赖初始专家演示、人工规则和模拟器特权。部署输入除前/下视RGB和语言外，还有模糊目标方向；不能描述为无导航先验的纯视觉语言飞行。训练使用TravelUAV的7611路线/11场景；测试3005路线分为Seen1418、Unseen Object629、Unseen Map958，Overall按路线数聚合而非三个split等权平均。200动作内在目标20米内降落才算成功；碰撞率分母也是全部测试路线，不是每动作碰撞概率。采集在观测边界暂停并恢复状态，测试沿用不暂停协议；模拟器错误中断路线需从头补跑，不计作失败，本站未重算原始缺失分母。2B SFT初始化三轮SR46.39→57.60→66.02→67.49、CR38.64→19.10；约减半是该模拟器测试集作者报告。第三轮相对第二轮仅+1.46pp，配对McNemar z=1.6，未过论文1.96阈值；同期SPL51.96→51.00、训练SR71.41→70.85，不能称每项单调改善。SFT初始化Unseen Map SR46.24对AeroDPO45.93，SPL31.06低于35.45，优势主要在Seen/Unseen Object；更强DPO初始化三轮SR69.85是不同起点，不可混作同一初始模型提升。跨论文其他模型有L1与FD导航引导差异，严格可比主对照是同初始化与协议的AeroDPO。CVR最多4个温度1采样加3个规则候选与原动作，评分为目标接近距离减失败惩罚100、成功奖励20。合格仅要求在8–20步窗口内无失败且前进至少4米，或成功降落；还核原动作失败/落后4米并最多重飞两个候选，接受首个再次合格者。第一轮1048个已接纳修复独立再飞窗口仍仅81.5%合格；延长至200动作等终止条件仅57.2%到达，因此两次通过不是可靠性保证。无双重检查SR+0.77pp、z=0.8，不能把全部收益归因重飞；第一轮仅验证规则候选61.59高于混合57.60，混合来源的优势在第二轮体现。回放并非已证必需：第二轮去回放65.68对66.02、z=-0.4；保留正常态主要降低碰撞，而非已证成功率显著提高。旧标签重训60.30与单轮双倍锚点62.98低于重新采集两轮66.02，支持刷新失败状态，但未证明所有模拟器/训练总费用完全配平。保留目标是当前策略自己的贪心动作，论文SFT-init正常态观测取自AeroDPO成功飞行，公开REPRODUCE说明默认改取round0自身成功飞行；论文对应消融58.97对57.60，复跑不能要求逐点一致。失败类型发生转移：SFT-init超时由1.2%增至6.8%，峰值高度中位数10→36.2米。999路线15米限高子集保留13.21/16.22pp增益，不能当真实飞行空域/安全约束保证。论文配对检验来自报告运行，不替代多训练种子独立复现或sim-to-real验证。固定公开仓5c9f7190的README、复现/安装文档、配置与锚点/验证/组样/训练源码已静态读取。HF固定0a2b2af6公开且未门控，14个文件元数据含两个适配器权重；实际只读模型卡与两份adapter_config，核r64与visual.merger，未下载权重或运行模拟器/训练/评测。代码与模型可访问不等于已验证论文结果可复现；仍依赖外部TravelUAV环境与初始模型。verified仅指来源核验。",
+      "method": [
+        "用当前2B策略飞训练路线；在每次失败前1/2/4/8/16步设探针，从探针均匀抽2400个锚点，保存可恢复状态及原动作。",
+        "每锚点构造原动作、最多4个策略采样及3个规则提议；规则可用训练专有深度/目标位置，分别尝试避障、保前进避障和爬升。",
+        "恢复状态后执行候选，由同一策略贪心续飞8–20步；核至少4米进展或成功降落，再核原动作劣势和候选独立重飞，合格才作标签。",
+        "用动作token交叉熵更新LoRA和视觉merger：修复占80%权重、当前策略正常态目标占20%；第二轮起，修复权重30%用于上一轮回放。",
+        "新策略重新飞行、采集和验证，重复三轮；用3005条测试路线核成功、路径效率、碰撞与失败类型，并比较旧标签、单轮双倍锚点等消融。"
+      ],
+      "inspirations": [
+        "给代码Agent保存失败前多个可回滚快照，让同一策略从候选补丁继续完成后续任务；同时报告局部测试通过率与全任务成功率，防止把临时绕过当修复。",
+        "蒸馏时保留一组正常输入，用当前模型输出作回归约束；逐轮跟踪新增错误类型、旧成功退化及成本，不只看修复样本准确率。",
+        "比较刷新失败集和扩大固定数据集时，配平执行步数、验证重试、训练更新与总费用；设跨场景留出集，检验收益是否只集中于已探索分布。"
+      ],
+      "reviewedAt": "2026-11-23T10:22:20.991868Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.24077v1",
+        "https://arxiv.org/html/2611.24077v1",
+        "https://starsholic.github.io/AeroRSI/",
+        "https://github.com/starsholic/AeroRSI/blob/5c9f71909ca58733a003fce32de9c81cf580b21f/README.md",
+        "https://github.com/starsholic/AeroRSI/blob/5c9f71909ca58733a003fce32de9c81cf580b21f/docs/REPRODUCE.md",
+        "https://github.com/starsholic/AeroRSI/blob/5c9f71909ca58733a003fce32de9c81cf580b21f/aerorsi/repair/verify.py",
+        "https://github.com/starsholic/AeroRSI/blob/5c9f71909ca58733a003fce32de9c81cf580b21f/aerorsi/repair/anchors.py",
+        "https://github.com/starsholic/AeroRSI/blob/5c9f71909ca58733a003fce32de9c81cf580b21f/aerorsi/repair/assemble.py",
+        "https://github.com/starsholic/AeroRSI/blob/5c9f71909ca58733a003fce32de9c81cf580b21f/aerorsi/train.py",
+        "https://github.com/starsholic/AeroRSI/blob/5c9f71909ca58733a003fce32de9c81cf580b21f/configs/aerorsi.yaml",
+        "https://huggingface.co/papers/2611.24077",
+        "https://huggingface.co/DavidWu1116/AeroRSI/tree/0a2b2af6772d44bdf8aafc8c0d03fb7616cf55c7",
+        "https://huggingface.co/DavidWu1116/AeroRSI/blob/0a2b2af6772d44bdf8aafc8c0d03fb7616cf55c7/AeroRSI-2B-SFTinit/adapter_config.json"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.24077",
+      "status": "pending",
+      "checkedAt": "2026-11-23T10:22:16.750151+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://autoclaw.z.ai/en/blog/model/GLM-5.4/",
+    "url": "https://autoclaw.z.ai/en/blog/model/GLM-5.4/",
+    "id": "update-glm54-autoclaw-20261123",
+    "title": "GLM-5.4接入AutoClaw：先记录可用范围，再等待能力证据",
+    "summary": "AutoClaw官方11月23日公告GLM-5.4已接入，可通过GLM Coding Plan使用；V2、V3与Team Edition用户在AutoClaw使用该模型享1.5倍额度。公告没有给出架构或基准结果，暂不能据此判断相对5.3的能力提升。",
+    "insight": "把“官方接入”“账号实测可用”“固定任务能力”分开记账；在相同harness、工具权限和预算下补测后，才讨论模型更新是否改善长程任务。",
+    "limits": "目前核到的是AutoClaw接入与套餐额度公告，未披露模型架构、训练方法或可比较评测；1.5倍指指定套餐在AutoClaw的使用额度，不是性能提升。未实际登录、调用或核验账号可用性；公开HF模型卡请求返回401，不能据此判断权重是否发布或访问原因。",
+    "organization": "Z.ai / AutoClaw",
+    "dateLabel": "2026-11-23 官方接入公告；具体上线时刻未知",
+    "evidence": "官方原页全文与版本/快照差分已核；未运行产品或复现实验",
+    "originalTitle": "Meet GLM-5.4 in AutoClaw.",
+    "date": "2026-11-23",
+    "checkedAt": "2026-11-23T10:24:30.128734+00:00",
+    "firstSeenAt": "2026-11-23T10:27:30.616604+00:00",
+    "tags": [
+      "GLM-5.4",
+      "AutoClaw",
+      "官方接入",
+      "能力证据待核"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "AutoClaw官方GLM-5.4接入公告",
+        "url": "https://autoclaw.z.ai/en/blog/model/GLM-5.4/"
+      },
+      {
+        "label": "官方博客列表与11月23日日期",
+        "url": "https://autoclaw.z.ai/blog/"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "GLM-5.4新增AutoClaw官方接入公告；目前可核的是产品入口和指定套餐额度，尚无本条可引用的能力对照。",
+      "motivation": "模型上线消息通常同时混合可用入口、套餐权益与能力宣传。研究跟踪需要先明确哪些事实已公开，再决定下一步验证所需的模型版本和任务协议。",
+      "novelty": "官方主张新旗舰模型进入AutoClaw。本站判断：可确认增量是接入与权益说明，公告本身没有提供算法新意、成功率、成本或视觉质量提升证据。",
+      "evidenceScope": "已读AutoClaw官方11月23日公告全文与博客列表，列表相对04:19 UTC快照新增该项。公告只含接入与额度说明，没有方法章节或实验表；日期精度为日，不以checkedAt补造发布时刻。未登录账户或发起模型调用，verified仅表示公开来源核验。",
+      "limits": "目前核到的是AutoClaw接入与套餐额度公告，未披露模型架构、训练方法或可比较评测；1.5倍指指定套餐在AutoClaw的使用额度，不是性能提升。未实际登录、调用或核验账号可用性；公开HF模型卡请求返回401，不能据此判断权重是否发布或访问原因。",
+      "method": [
+        "官方公告将GLM-5.4列为已集成到AutoClaw的旗舰模型；本条只记录该公开接入声明。",
+        "使用范围表述为GLM Coding Plan；公告明确V2、V3和Team Edition用户在AutoClaw使用GLM-5.4享1.5倍额度。",
+        "将公告与官方博客列表交叉核对日期和内容；模型卡未取得，能力、架构及权重发布状态保留待核。"
+      ],
+      "inspirations": [
+        "给同一任务保存精确模型标识、AutoClaw版本、工具权限与实际消耗，避免把套餐额度增加解释成单次任务更省。",
+        "后续用固定任务和重试预算比较5.3与5.4，并分开报告执行完成、产物正确性和人工修改成本；先核实每次真实请求使用的模型。"
+      ],
+      "reviewedAt": "2026-11-23T10:24:30.128734+00:00",
+      "sourceUrls": [
+        "https://autoclaw.z.ai/en/blog/model/GLM-5.4/",
+        "https://autoclaw.z.ai/blog/"
+      ]
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://github.com/anthropics/claude-code/releases/tag/v2.1.329",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.329",
+    "id": "update-claude-code-mode-otel-20261123",
+    "title": "Claude Code v2.1.329的OTel支持：工具调用可见，判定仍需跨层关联",
+    "summary": "Claude Code文档补充Code Mode的OpenTelemetry规则：v2.1.329起允许事件和指标，内层调用有tool_decision/tool_result。auto分类器仍审代码块；内层缺失判定要关联REPL事件，同一request_id下多个判定无法唯一定位代码块。",
+    "insight": "把代码编排层、实际工具层和许可判定层分开建事件模型，保留无法唯一匹配的情况；事件数量增加不等于权限检查更细，也不等于任务更安全。",
+    "limits": "已读官方文档与版本说明，未开启Code Mode或采集实际事件。v2.1.329起支持OTel事件/指标，但tracing仍阻止启动；相同request_id下多个REPL判定不能唯一归因到具体代码块。内层缺少classifier_verdict不等于未审查或自动放行，也不证明每次调用单独过分类器；没有完整审计性或安全效果的实验。",
+    "organization": "Anthropic",
+    "dateLabel": "2026-11-19 v2.1.329支持OTel；文档补充于本轮发现，精确修订日未知",
+    "evidence": "官方原页全文与版本/快照差分已核；未运行产品或复现实验",
+    "originalTitle": "Monitor Code Mode with OpenTelemetry",
+    "date": "2026-11-19",
+    "checkedAt": "2026-11-23T10:24:30.128734+00:00",
+    "firstSeenAt": "2026-11-23T10:27:30.616604+00:00",
+    "tags": [
+      "Claude Code",
+      "Code Mode",
+      "OpenTelemetry",
+      "事件归因",
+      "Agent Harness"
+    ],
+    "topics": [],
+    "featured": false,
+    "sources": [
+      {
+        "label": "v2.1.329发布记录 · OTel兼容支持",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.329"
+      },
+      {
+        "label": "此前候选核验来源",
+        "url": "https://github.com/anthropics/claude-code/releases.atom"
+      },
+      {
+        "label": "Code Mode官方文档 · 新增OpenTelemetry观察规则",
+        "url": "https://code.claude.com/docs/en/code-mode"
+      },
+      {
+        "label": "官方Markdown全文 · 权限与事件归因",
+        "url": "https://code.claude.com/docs/en/code-mode.md"
+      },
+      {
+        "label": "此前候选核验来源",
+        "url": "https://code.claude.com/docs/en/hooks"
+      },
+      {
+        "label": "此前候选核验来源",
+        "url": "https://code.claude.com/docs/en/sandboxing"
+      },
+      {
+        "label": "此前候选核验来源",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.330"
+      },
+      {
+        "label": "v2.1.329固定版本变更说明",
+        "url": "https://github.com/anthropics/claude-code/blob/v2.1.329/CHANGELOG.md"
+      },
+      {
+        "label": "官方监控文档 · 事件关联和内容开关",
+        "url": "https://code.claude.com/docs/en/monitoring-usage.md"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Code Mode现有OTel支持新增详细观察文档：实际工具调用能被记录，但auto分类器审的是代码块，审计必须处理跨层关联和歧义。",
+      "motivation": "一段生成代码可执行多次工具调用。若将一次REPL执行、内层工具动作和许可判定混在一起统计，会错估工作量，也会把缺失的逐调用判定误读成权限缺口或已单独审过。",
+      "novelty": "官方主张让Code Mode兼容OTel事件/指标并说明内层调用的关联方式。本站判断：新增价值是把观察接口与归因缺口写清；这是监控与harness能力更新，不是新权限算法，也不是已验证的安全改善。",
+      "evidenceScope": "已读Code Mode HTML和Markdown全文、monitoring-usage事件/关联/内容开关章节及v2.1.329固定CHANGELOG。官方发布页relative-time和Atom更新时间均为2026-11-19T22:14:41Z（北京时间11月20日）；本条保留UTC发布日。OTel解释段相对2026-11-23T04:19 UTC快照新增，但文档没有可核修订时间，revisedAt保持null。未运行产品、配置日志或复现实验，verified仅表示来源核验。",
+      "limits": "已读官方文档与版本说明，未开启Code Mode或采集实际事件。v2.1.329起支持OTel事件/指标，但tracing仍阻止启动；相同request_id下多个REPL判定不能唯一归因到具体代码块。内层缺少classifier_verdict不等于未审查或自动放行，也不证明每次调用单独过分类器；没有完整审计性或安全效果的实验。",
+      "method": [
+        "v2.1.329起可在开启OpenTelemetry事件和指标时启动Code Mode；任意版本的tracing仍需关闭。版本支持日期与本轮观察到的文档补充日期分别记录。",
+        "内层工具使用原工具名发送tool_decision与tool_result；tool_use_id以repl_或toolu_cc_开头可识别代码内调用，REPL自己的事件不带这两个前缀。",
+        "auto分类器覆盖的内层调用没有classifier_verdict；按request_id关联REPL的tool_decision寻找判定，若匹配多个，事件不能指出哪块代码产生该调用。",
+        "把运行期deny/ask规则与PreToolUse钩子作为独立约束记录；分类器在代码执行前检查，无法看到搜索结果生成的路径等运行期值。",
+        "区分最小事件信息与内容日志：OTEL_LOG_TOOL_DETAILS会扩大工具输入记录范围，代码读到的值可能作为后续调用参数进入后端；本轮没有打开任何日志开关。"
+      ],
+      "inspirations": [
+        "将每个代码块、实际工具调用、许可判定和执行结果分别计数，加入关联唯一/多候选/缺失三种状态；用最小可复现多调用案例检查指标是否重复统计。",
+        "固定模型和任务对照直接调用与代码编排，分别测返回token、工具次数、时间及首次失败位置；加入动态路径和多个REPL判定案例，检验审计能否还原原因。",
+        "先用不含敏感信息的合成输入检验事件内容边界，再确定哪些字段需要保存；不要为了补齐归因而默认收集完整工具输入或对话。"
+      ],
+      "reviewedAt": "2026-11-23T10:24:30.128734+00:00",
+      "sourceUrls": [
+        "https://code.claude.com/docs/en/code-mode",
+        "https://code.claude.com/docs/en/code-mode.md",
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.329",
+        "https://github.com/anthropics/claude-code/blob/v2.1.329/CHANGELOG.md",
+        "https://code.claude.com/docs/en/monitoring-usage.md"
+      ]
+    }
   }
 ]
