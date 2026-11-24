@@ -31103,5 +31103,347 @@
       "status": "pending",
       "checkedAt": "2026-11-24T16:25:07.278401+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.28907",
+    "url": "https://arxiv.org/abs/2611.28907v1",
+    "id": "paper-stride-skills-2611-28907",
+    "title": "STRIDE：长期策略常驻、局部Hint按需取用，撤除消融暴露提示依赖",
+    "summary": "STRIDE训练学生在常驻策略下按需检索局部战术，由Sonnet4.5给检索事件评分并更新技能库。Qwen3-4B在ALFWorld为92.7%；推理时去战术89.1%、去策略72.9%。这显示不同层提示依赖，不代表已完成无Hint内化。",
+    "insight": "本站判断：将Hint的内容、触发时机和作用范围分开，能把“有用提示”变成可测检索事件。尤其要分清部署仍读技能的收益、推理时删除一层的退化，以及真正训练后完全不读提示的迁移；论文主要验证前两者。",
+    "limits": "未复现；辅助模型Sonnet4.5、学生Qwen，无Opus5.5/Fable5.2实测。标准评测保留技能，分层撤除不是完全无Hint部署；未报多种子误差与完整成本，3.2倍指训练步数。",
+    "organization": "Alibaba Taobao & Tmall Group / Zhejiang University",
+    "dateLabel": "2026-11-21首发v1",
+    "evidence": "HTML不可读后读取原论文PDF方法、主表、消融、参数和提示模板；verified指来源核验，未训练或复现。",
+    "originalTitle": "STRIDE: Strategy-to-Tactics Retrieval-Guided Skill Disclosure and Evolution for Agentic Reinforcement Learning",
+    "date": "2026-11-21",
+    "checkedAt": "2026-11-24T22:23:10.488229Z",
+    "originalDate": "2026-11-21",
+    "paperOriginalDate": "2026-11-21T16:31:55Z",
+    "paperUpdatedAt": "2026-11-21T16:31:55Z",
+    "updatedAt": "2026-11-21T16:31:55Z",
+    "firstSeenAt": "2026-11-24T04:00:01Z",
+    "lastSeenAt": "2026-11-24T04:00:01Z",
+    "tags": [
+      "CoT",
+      "Hint",
+      "行动反馈",
+      "技能检索",
+      "GRPO",
+      "提示依赖消融"
+    ],
+    "authors": [
+      "Shixin Hong",
+      "Wanqing Cui",
+      "Yibo Hu",
+      "Naen Xu",
+      "Zhiwei Huang",
+      "Meiguang Jin",
+      "Junfeng Ma"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1固定版本",
+        "url": "https://arxiv.org/abs/2611.28907v1"
+      },
+      {
+        "label": "arXiv提交记录",
+        "url": "https://arxiv.org/abs/2611.28907"
+      },
+      {
+        "label": "原PDF：方法、消融、参数与提示模板",
+        "url": "https://arxiv.org/pdf/2611.28907v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "策略常驻、局部战术按需检索，Sonnet4.5指导检索奖励。ALFWorld的4B学生92.7%；推理去战术89.1%、去策略72.9%，提示依赖仍在。",
+      "motivation": "把所有经验平铺进上下文会混合长期计划与当前卡点，还难判断一次检索是否值得。作者将任务级策略和局部行动建议拆开，让学生学会何时请求帮助，并从检索记录维护技能库。",
+      "novelty": "作者主张：把渐进技能披露、检索事件信用和技能库演化连接起来。本站判断：关键是将“是否请求Hint”作为动作学习；删除一层提示的消融提示依赖，不能据此宣称完全无Hint迁移。",
+      "evidenceScope": "已读v1原PDF §3.1–3.5方法、§4.1–4.6实验、表1–6、附录A–E的参数及实际提示模板；HTML本轮无可读行。ALFWorld学生为Qwen3-4B-Instruct-2507/Qwen3-8B，WebShop为Qwen2.5-7B-Instruct；Sonnet4.5同时担任事后Analyst与技能Strategist，学生不模仿Sonnet行动轨迹。GRPO组大小8、batch16、提示8192/响应512，ALFWorld上限50环境步、WebShop15步。表3的4B完整/去战术/去策略成功率为92.7/89.1/72.9%，平均动作轮17.3/20.8/26.1；去Analyst为85.0%，普通GRPO75.3%。表1总体4B/8B为92.7/94.9%，但8B Unseen Examine为66.7%，低于ReSkill的100%。WebShop相对SkillRL任务分85.2→89.7、成功率72.7→74.6%，两指标不可混用。作者3.2倍为达到GRPO峰值所需训练步数之比，未计总时间/费用。代码与种子级运行产物本轮未核验。",
+      "limits": "未复现；辅助模型Sonnet4.5、学生Qwen，无Opus5.5/Fable5.2实测。标准评测保留技能，分层撤除不是完全无Hint部署；未报多种子误差与完整成本，3.2倍指训练步数。 分层撤除未报告同时移除全部技能的结果，也未证明对代码任务或不同教师的迁移。采样和更新都以实际技能上下文为条件；不能把它等同于先受Hint诱导、再删上下文训练的无条件on-policy配方。事后评分会用后续行动和最终结果，GOOD比例是训练评分器自判；示例中的无检索分支是说明性对比。文中未充分说明评测题量、种子误差、技能库评测冻结与数据切分细节；正文主张检索后是否使用建议，但附录最终GOOD规则主要按时机与标题相关性，需核实现。",
+      "method": [
+        "任务开始按相似度、历史效用和探索项选策略；实现展示前三条策略及其战术标题，策略常驻，战术正文暂不进入学生上下文。",
+        "学生在当轮带策略/菜单的上下文中采样，选择环境动作或精确标题检索；检索返回战术正文、占额外决策轮但不推进环境，继续由学生行动。",
+        "整条rollout结束后，Sonnet4.5回看检索状态、所选标题及后续行为，按时机和相关性给GOOD/BAD反馈；不是独立人工正确性标注。",
+        "先奖励合法检索格式，再减弱格式奖励并限制过量检索；把事件奖励加到检索响应末token，与环境回报形成GRPO优势，训练带技能条件下的学生。",
+        "Sonnet4.5比较成功/失败轨迹提炼可复用战术，并据多次检索结果改写、剪除技能；标准评测继续提供策略与检索，另对训练好策略做分层撤除消融。"
+      ],
+      "inspirations": [
+        "把共享Hint拆为常驻的任务约束与按失败状态触发的短行动建议；固定提示总长度和模型预算，对比全部注入、规则触发与学生主动检索。",
+        "同一训练后checkpoint分别测完整提示、去策略、去战术和两者全去；另训练从未见Hint的对照，区分即时依赖、分布变化与真正内化。",
+        "保留检索前状态、建议和实际下一步，独立核验评分器GOOD/BAD；将教师调用、检索token、环境轮数和GPU时间一并计费，避免只按训练步数判断效率。"
+      ],
+      "reviewedAt": "2026-11-24T22:23:10.488229Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.28907",
+        "https://arxiv.org/abs/2611.28907v1",
+        "https://arxiv.org/pdf/2611.28907v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.28907",
+      "status": "pending",
+      "checkedAt": "2026-11-24T22:26:45.280060+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.30574",
+    "url": "https://arxiv.org/abs/2611.30574v1",
+    "id": "paper-forecast-cause-chain-2611-30574",
+    "title": "FORECAST：把测试差异压成有顺序的诊断，给修复Agent行动依据",
+    "summary": "FORECAST从失败与通过测试抽取按执行顺序排列的诊断，直接附在issue中。SWE-bench Lite上5种Agent汇总，Haiku4.5解决率48.5%→70.9%、Qwen3.5为31.2%→56.1%；前提是诊断可使用开发者测试。",
+    "insight": "本站判断：行动Hint值得保留的不只是位置，还包括真实条件、值、数据流及先后顺序。论文对照原始测试输出、仅位置和乱序诊断；可用这些对照区分有效证据、额外测试信息与长提示本身的贡献。此工作不训练学生。",
+    "limits": "未复现；仅Haiku4.5/Qwen3.5，无Opus5.5/Fable5.2实测。诊断使用基准开发者测试，属推理时辅助，非无Hint训练迁移；链条不证明逐环因果，单题诊断中位40分钟。",
+    "organization": "CISPA Helmholtz Center for Information Security / Humboldt-Universität zu Berlin",
+    "dateLabel": "2026-11-23首发v1",
+    "evidence": "已读原论文方法、实验、消融与局限，并核公开代码入口；verified指来源核验，未运行或复现。",
+    "originalTitle": "Improving Repair Agents with Cause-Chain Diagnoses",
+    "date": "2026-11-23",
+    "checkedAt": "2026-11-24T22:23:10.488229Z",
+    "originalDate": "2026-11-23",
+    "paperOriginalDate": "2026-11-23T12:19:04Z",
+    "paperUpdatedAt": "2026-11-23T12:19:04Z",
+    "updatedAt": "2026-11-23T12:19:04Z",
+    "firstSeenAt": "2026-11-24T10:00:00Z",
+    "lastSeenAt": "2026-11-24T22:00:01Z",
+    "tags": [
+      "CoT",
+      "Hint",
+      "行动诊断",
+      "代码Agent",
+      "测试特权信息"
+    ],
+    "authors": [
+      "Marius Smytzek",
+      "Martin Eberlein",
+      "Lars Grunske",
+      "Andreas Zeller"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1固定版本",
+        "url": "https://arxiv.org/abs/2611.30574v1"
+      },
+      {
+        "label": "arXiv提交记录",
+        "url": "https://arxiv.org/abs/2611.30574"
+      },
+      {
+        "label": "方法、实验与局限全文",
+        "url": "https://arxiv.org/html/2611.30574v1"
+      },
+      {
+        "label": "作者公开FORECAST仓库与README",
+        "url": "https://github.com/smythi93/forecast"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把通过/失败测试的执行差异按序写成诊断，持续提供给修复Agent；5种Agent汇总Haiku4.5解决率48.5%→70.9%，但诊断预先使用开发者测试。",
+      "motivation": "只给可疑代码位置，仍需Agent重建失败过程。作者尝试提供可追溯的条件、值与数据流差异，帮助决定下一步检查什么；这类Hint由实际执行分析产生，不由教师模型编写。",
+      "novelty": "作者主张：可跨Agent注入有顺序的执行诊断。本站判断：较强证据是同测试信息对照和乱序消融；支持观察的组织方式有用，不证明链中每一步造成下一步。",
+      "evidenceScope": "已读v1 HTML §3–8方法、实现、配对实验、表2–8及威胁分析，并读作者公开GitHub README。SWE-bench Lite共300题、12个Python项目，5种Agent×2模型×2模式主实验6000次修复。模型为claude-haiku-4-5-20251001与Qwen3.5 27B，均未开启thinking；主表为跨5种Agent的1500次尝试汇总，不是单Agent新基准成绩。Haiku为727/1500→1063/1500，Qwen为468/1500→842/1500。Qwen两模式各3轮，Haiku基线1轮、诊断2轮；论文报告配对bootstrap与校正检验。mini-SWE-agent的Qwen消融：完整诊断三轮均值198.3/300、仅测试输出150/300、乱序150/300、仅位置125/300、诊断加测试输出234/300。诊断机器时间中位40分钟、均值66分钟，不调用LLM；LLM费用下降不含机器成本。公开实现存在，本轮未运行代码或逐条重审补丁。",
+      "limits": "未复现；仅Haiku4.5/Qwen3.5，无Opus5.5/Fable5.2实测。诊断使用基准开发者测试，属推理时辅助，非无Hint训练迁移；链条不证明逐环因果，单题诊断中位40分钟。 SWE-agent、mini-SWE-agent、Agentless原本看不到开发者测试，诊断给了它们派生信息；RepairAgent和AutoCodeRover两模式可看同套测试，提供部分控制，但未评估由Agent自行生成测试再诊断的完整链路。AutoCodeRover为重实现、RepairAgent为Python移植，绝对分数不能直接对比原工具榜单。样本均公开Python问题，有记忆污染风险；补丁语义仅由一位非盲作者抽查两组各50例。诊断节省的token并不总降低单次成本，复用次数决定预处理是否划算。",
+      "method": [
+        "在固定仓库与容器中应用开发者测试补丁，对失败测试及有覆盖重叠的通过测试插桩；记录调用、分支、条件、数据流和属性，控制追踪大小。",
+        "先以失败调用路径建树，再合并通过路径；按调用进入、子调用、退出的次序比较局部观察，避免把不同执行位置直接混为一组。",
+        "用MCC选最能区分失败/通过的特征，必要时组合AND/OR；去重、筛弱信号并按原执行次序保留最多10条。MCC是判别度，不是因果概率。",
+        "将诊断一次性附到issue，所有包含issue的模型请求持续携带它；空诊断与追踪失败区别处理。保持Agent流程和模型参数不变，不做SFT或RL。",
+        "配对比较无诊断、完整诊断、测试输出、仅位置、乱序等输入，最终用官方测试判补丁；另报告反复运行、机器预处理时间及LLM开销。"
+      ],
+      "inspirations": [
+        "在同一失败状态下固定测试权限、模型与预算，对比原始错误、位置、无序事实和按序诊断；先隔离“多拿了测试信息”，再判断Hint表达是否有效。",
+        "把Hint写成可核验的条件—观察—下一步检查，标出证据不足处；对相关但错误的诊断单独做扰动测试，不能由无关Hint未显著伤害推断所有错误Hint安全。",
+        "缓存每个失败状态的诊断，分开计首次追踪/建树和复用成本；若研究训练迁移，另设同模型的训练有无Hint与评测保留/撤除矩阵，不能用本论文推理收益代替。"
+      ],
+      "reviewedAt": "2026-11-24T22:23:10.488229Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.30574",
+        "https://arxiv.org/abs/2611.30574v1",
+        "https://arxiv.org/html/2611.30574v1",
+        "https://github.com/smythi93/forecast"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.30574",
+      "status": "pending",
+      "checkedAt": "2026-11-24T22:26:45.280060+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.547",
+    "url": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.547",
+    "id": "update-remotion-v40547-elements-library-20261124",
+    "title": "Remotion4.0.547：把组件库注册补成Agent可调用的CLI步骤",
+    "summary": "Remotion4.0.547新增elements add-library，让Agent无需Studio界面即可把组件库登记进配置，并更新组件安装skill。它补齐“登记库—试装—复制源码—改稿预览”流程，登记成功仍不等于组件可用或视频完成。",
+    "insight": "把图库发现、库注册、组件安装和最终画面验收做成不同状态，能让创作Agent逐步排错。可编辑性来自复制到工程的React组件，而非库URL本身；评测应分别记录配置保留、代码执行、局部改稿和视觉结果。",
+    "limits": "仅静态核验官方源码与测试，未安装、执行、预览或渲染。add-library只登记图库，不安装组件，也不证明网页有可用Element；既有elements use才复制代码。无成功率、画质或性能实测。命令接受可获取的HTTP(S)页面，测试甚至包含普通JSON页；URL合法和HTTP成功不是组件协议验证。源码通过配置修改器追加调用并处理重复URL，作者测试检查原配置字节保持及后续组件插入，本站未执行这些测试。新增skill是官方流程说明，不是Agent已经完成任务的实验数据；本站仅阅读，不遵循其中安装命令。elements use早于4.0.547已有，4.0.547新增的是无UI的库注册入口与相应skill，不能称首次支持可编辑组件。注册本身无需composition；后续安装的dry-run/依赖/资源写入、帧0插入与预览要求来自固定skill，未本轮重审完整use实现。其它16位WebGPU、时长与内存修复仅见发行说明，不据此给出未经测试的性能或画质保证。",
+    "organization": "Remotion",
+    "dateLabel": "2026-11-25 01:20（北京时间）官方发行",
+    "evidence": "官方发行、文档和固定源码/测试静态核验；未运行或渲染",
+    "originalTitle": "v4.0.547",
+    "date": "2026-11-24",
+    "checkedAt": "2026-11-24T22:21:39.950182+00:00",
+    "updatedAt": "2026-11-24T17:20:40Z",
+    "firstSeenAt": "2026-11-24T22:21:39.950182+00:00",
+    "lastSeenAt": "2026-11-24T22:21:39.950182+00:00",
+    "tags": [
+      "Remotion",
+      "可编辑组件",
+      "Agent工具接口",
+      "Elements",
+      "工程验证"
+    ],
+    "topics": [
+      "code2motion",
+      "code2video"
+    ],
+    "featured": false,
+    "sources": [
+      {
+        "label": "官方v4.0.547发行及发布时间",
+        "url": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.547"
+      },
+      {
+        "label": "官方add-library文档",
+        "url": "https://www.remotion.dev/docs/cli/elements/add-library"
+      },
+      {
+        "label": "官方PR：从Studio操作补充Agent CLI入口",
+        "url": "https://github.com/remotion-dev/remotion/pull/13584"
+      },
+      {
+        "label": "固定v4.0.547 packages/cli/src/elements/add-library.ts",
+        "url": "https://github.com/remotion-dev/remotion/blob/4955ebc1ba196dd186446153cc5060e229386bcc/packages/cli/src/elements/add-library.ts"
+      },
+      {
+        "label": "固定v4.0.547 packages/cli/src/elements/fetch-element-page.ts",
+        "url": "https://github.com/remotion-dev/remotion/blob/4955ebc1ba196dd186446153cc5060e229386bcc/packages/cli/src/elements/fetch-element-page.ts"
+      },
+      {
+        "label": "固定v4.0.547 packages/cli/src/test/elements-add-library.test.ts",
+        "url": "https://github.com/remotion-dev/remotion/blob/4955ebc1ba196dd186446153cc5060e229386bcc/packages/cli/src/test/elements-add-library.test.ts"
+      },
+      {
+        "label": "固定v4.0.547 packages/docs/docs/cli/elements/add-library.mdx",
+        "url": "https://github.com/remotion-dev/remotion/blob/4955ebc1ba196dd186446153cc5060e229386bcc/packages/docs/docs/cli/elements/add-library.mdx"
+      },
+      {
+        "label": "固定v4.0.547 packages/skills/skills/remotion-elements/SKILL.md",
+        "url": "https://github.com/remotion-dev/remotion/blob/4955ebc1ba196dd186446153cc5060e229386bcc/packages/skills/skills/remotion-elements/SKILL.md"
+      },
+      {
+        "label": "固定use命令文档：版本标记4.0.542",
+        "url": "https://github.com/remotion-dev/remotion/blob/4955ebc1ba196dd186446153cc5060e229386bcc/packages/docs/docs/cli/elements/use.mdx"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "4.0.547新增无UI的组件库注册入口及安装skill。Agent可先登记库，再试装、复制源码和改稿预览；登记成功不等于组件可用或视频完成。",
+      "motivation": "此前添加Element Library主要经Studio界面；命令行Agent需要先把图库写入工程配置，再使用组件安装命令，避免把找到了素材页误当成已经装进时间线。",
+      "novelty": "官方新增：无UI的库注册命令及组件安装skill。本站判断：补齐Agent工程入口有价值，但只是注册、安装、改稿、预览流程的一环，不是自动剪辑模型或新增渲染质量证据。",
+      "evidenceScope": "核对GitHub公开release API及v4.0.547发行（2026-11-24T17:20:40Z），锁定提交4955ebc1ba196dd186446153cc5060e229386bcc。完整静态阅读add-library.ts、fetch-element-page.ts、elements-add-library.test.ts、固定CLI文档及remotion-elements SKILL.md；另阅读PR13584说明与作者测试范围。源码先检查已加载配置的URL，再用updateConfigFile处理配置内容，读取og:site_name或显式display-name。获取页面有30秒/20MB/10次重定向界限，但不校验其必为Element图库；测试明确普通JSON页也可登记。固定skill说明elements use复制源码、安装缺失依赖、保存资源、插入帧0及后续预览，这些不是本站执行结果。未安装运行外部代码、采集用户素材或提交任何项目。 版本口径补注：固定use.mdx标AvailableFrom 4.0.542，固定skill将use/--dry-run识别门槛合写为4.0.543；不据该skill推定use首次发行，本文只确认它早于4.0.547已有。",
+      "limits": "仅静态核验官方源码与测试，未安装、执行、预览或渲染。add-library只登记图库，不安装组件，也不证明网页有可用Element；既有elements use才复制代码。无成功率、画质或性能实测。命令接受可获取的HTTP(S)页面，测试甚至包含普通JSON页；URL合法和HTTP成功不是组件协议验证。源码通过配置修改器追加调用并处理重复URL，作者测试检查原配置字节保持及后续组件插入，本站未执行这些测试。新增skill是官方流程说明，不是Agent已经完成任务的实验数据；本站仅阅读，不遵循其中安装命令。elements use早于4.0.547已有，4.0.547新增的是无UI的库注册入口与相应skill，不能称首次支持可编辑组件。注册本身无需composition；后续安装的dry-run/依赖/资源写入、帧0插入与预览要求来自固定skill，未本轮重审完整use实现。其它16位WebGPU、时长与内存修复仅见发行说明，不据此给出未经测试的性能或画质保证。",
+      "method": [
+        "新增elements add-library规范化HTTP(S)地址，读取图库页及显示名称；已有库直接返回，不重复改文件。",
+        "通过既有配置修改器追加Config.addElementLibrary调用；缺失配置、无效地址或HTTP失败会报错，不自动创建视频。",
+        "固定skill描述后续用elements use先dry-run查看文件/依赖/资源计划，再复制React组件源码并插入composition；此安装能力早于本次版本。",
+        "安装后再修改文字、颜色、props与Sequence时序，并在Studio预览。官方测试覆盖配置保留、重复地址和组件插入；本站只读，未运行。"
+      ],
+      "inspirations": [
+        "给创作Agent分别记录库已注册、dry-run可执行、组件源码已插入、预览正确四个状态；不能用一次CLI成功概括整个视频交付。",
+        "用重复注册、缺失配置、普通JSON页、源码冲突和二次改稿构建回归集；分别验证配置保持、执行成功、编辑生效及无关画面保持。",
+        "评估复用组件是否节省总制作时间时，把检索、安装修复、参数修改和渲染都计入；同提示比较从零生成与组件复用，不能只统计代码行减少。"
+      ],
+      "reviewedAt": "2026-11-24T22:21:39.950182+00:00",
+      "sourceUrls": [
+        "https://github.com/remotion-dev/remotion/releases/tag/v4.0.547",
+        "https://www.remotion.dev/docs/cli/elements/add-library",
+        "https://github.com/remotion-dev/remotion/pull/13584",
+        "https://github.com/remotion-dev/remotion/blob/4955ebc1ba196dd186446153cc5060e229386bcc/packages/cli/src/elements/add-library.ts",
+        "https://github.com/remotion-dev/remotion/blob/4955ebc1ba196dd186446153cc5060e229386bcc/packages/cli/src/elements/fetch-element-page.ts",
+        "https://github.com/remotion-dev/remotion/blob/4955ebc1ba196dd186446153cc5060e229386bcc/packages/cli/src/test/elements-add-library.test.ts",
+        "https://github.com/remotion-dev/remotion/blob/4955ebc1ba196dd186446153cc5060e229386bcc/packages/docs/docs/cli/elements/add-library.mdx",
+        "https://github.com/remotion-dev/remotion/blob/4955ebc1ba196dd186446153cc5060e229386bcc/packages/skills/skills/remotion-elements/SKILL.md",
+        "https://github.com/remotion-dev/remotion/blob/4955ebc1ba196dd186446153cc5060e229386bcc/packages/docs/docs/cli/elements/use.mdx"
+      ]
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://openai.com/business/customer-stories/ifood",
+    "url": "https://openai.com/business/customer-stories/ifood",
+    "id": "update-ifood-remote-agents-20261124",
+    "title": "iFood远程Coding Agent：用异步API、隔离沙箱和确定性步骤统一仓库任务",
+    "summary": "iFood把Coding Agent封装成异步REST任务：先确定性准备仓库和分支，再在独立沙箱内运行GPT-5.6 Luna，最后交付MR及产物。官方案例称平台覆盖15,000多个仓库、完成25,000多次运行；这些是规模自报，不是成功率。",
+    "insight": "可复用的设计是将任务执行与准备、发布、状态归档分开，减少每个团队重复搭运行环境。评测时应另列产物有效性、测试通过和最终合并率；结构化完成状态无法代替外部验收。",
+    "limits": "官方客户案例自报，未独立运行或复现；15,000是仓库覆盖量，25,000+是完成runs，均非验证成功数。$0.04是平均推理费，不是含沙箱和人工审核的总成本；修复翻倍未给基线分母、观察期和验收协议。结构化输出仅约束格式，不证明修改正确；原文型号为GPT-5.6 Luna。",
+    "organization": "OpenAI",
+    "dateLabel": "2026-11-24 · 官方客户案例",
+    "evidence": "官方客户案例全文与RSS日期已核验；客户自报，未复现",
+    "originalTitle": "How iFood scales coding agents across 15,000 repositories",
+    "date": "2026-11-24",
+    "checkedAt": "2026-11-24T22:23:32.914106+00:00",
+    "originalDate": "2026-11-24",
+    "firstSeenAt": "2026-11-24T22:00:01Z",
+    "lastSeenAt": "2026-11-24T22:00:01Z",
+    "tags": [
+      "OpenAI",
+      "Coding agents",
+      "Agent runtime",
+      "Sandbox",
+      "客户案例"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "OpenAI · 官方更新",
+        "url": "https://openai.com/business/customer-stories/ifood"
+      },
+      {
+        "label": "OpenAI客户案例全文",
+        "url": "https://openai.com/business/customer-stories/ifood/"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "共享异步运行层把仓库准备、沙箱Agent执行和MR交付串起来；案例规模不等于正确性或生产总成本。",
+      "motivation": "跨大量仓库的依赖修复与检查需要统一运行环境；各团队重复构建Agent基础设施会增加维护成本。",
+      "novelty": "作者主张：共享运行层支撑大规模仓库任务。本站判断：工程启发是确定性流程与Agent执行分工；这不是新模型发布，也没有公开证据证明因果收益。",
+      "evidenceScope": "已读取OpenAI客户案例完整正文及官方RSS。页面发布日期为2026-11-24；RSS用当天00:00:00 GMT记此项，未据此推断实际上线时刻，publishedAt置null。原文写所有runs使用GPT-5.6 Luna，不映射其他型号。文章描述25,000+ tasks/runs、覆盖15,000+仓库及每run平均推理费0.04美元；未公开成功分母、任务分布、固定对照、观察区间和成本拆分。Structured Outputs是格式契约，并非功能正确性验证器。未访问iFood内网、执行平台或检查其真实仓库。",
+      "limits": "官方客户案例自报，未独立运行或复现；15,000是仓库覆盖量，25,000+是完成runs，均非验证成功数。$0.04是平均推理费，不是含沙箱和人工审核的总成本；修复翻倍未给基线分母、观察期和验收协议。结构化输出仅约束格式，不证明修改正确；原文型号为GPT-5.6 Luna。",
+      "method": [
+        "调用方经REST提交任务及环境需求，平台管理生命周期，异步查询结果和进度。",
+        "确定性步骤克隆仓库、导入技能并建工作分支；专用runner在隔离沙箱内执行。",
+        "沙箱中的GPT-5.6 Luna完成代码任务；后置步骤发布MR及产物，再用Structured Outputs形成约定格式。",
+        "先接入依赖漏洞修复场景，再向其他团队复用运行层；文章仅披露客户汇总结果，未提供公开对照评测。"
+      ],
+      "inspirations": [
+        "把任务状态、模型输出结构与外部测试结果分开存储；即使返回合法JSON，也必须核验变更范围、测试和MR验收。",
+        "比较运行方案时固定任务分布，分列推理、沙箱、重试和人工费用；同时报完成数、有效产物数与最终接受数。"
+      ],
+      "reviewedAt": "2026-11-24T22:23:32.914106+00:00",
+      "sourceUrls": [
+        "https://openai.com/business/customer-stories/ifood",
+        "https://openai.com/business/customer-stories/ifood/"
+      ]
+    }
   }
 ]
