@@ -30599,5 +30599,275 @@
       "status": "pending",
       "checkedAt": "2026-11-24T04:33:39.591832+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2606.11559",
+    "url": "https://arxiv.org/abs/2606.11559v2",
+    "id": "paper-hint-compressed-hindsight-2606-11559",
+    "title": "HINT（代表作，11月修订）：只把局部诊断交给教师，让学生无提示学习行动",
+    "summary": "HINT先让学生正常执行，再压缩完整轨迹为逐轮诊断；只有自蒸馏教师看诊断，学生训练与推理都不依赖它。4B Retail成功率34.9%，GRPO为33.2%；采样数为1/8，所报GPU时间约为一半。",
+    "insight": "作者把未来信息压缩为当前决策的诊断，避免教师直接照着另一条成功轨迹打分。本站判断：值得优先验证的是Hint进入谁的上下文、监督哪些原始动作，以及错误诊断怎样影响学习；这与删掉Hint后直接拟合改写轨迹是不同配方。",
+    "limits": "这是6月首发、11月修订的代表作补读。实验只涉及Qwen3-4B/30B-A3B与Tau-Bench、WebShop；无Opus5.5/Fable5.2实测。三种子仅覆盖HINT和GRPO，其他多为单种子；人工审阅75条Hint且仅一位作者标注。1/8是rollout数，不是总成本。",
+    "organization": "UC San Diego / UC Berkeley / Independent Researcher",
+    "dateLabel": "代表作：2026-06-10首发；2026-11-09修订v2",
+    "evidence": "已核原arXiv版本史及v2方法、实验、提示模板；未运行训练或复现实验。",
+    "originalTitle": "Multi-Turn Agent Self-Distillation with Compressed Hindsight",
+    "date": "2026-06-10",
+    "checkedAt": "2026-11-24T10:30:01.904653+00:00",
+    "originalDate": "2026-06-10",
+    "paperOriginalDate": "2026-06-10T01:35:34Z",
+    "paperUpdatedAt": "2026-11-09T07:15:40Z",
+    "updatedAt": "2026-11-09T07:15:40Z",
+    "firstSeenAt": "2026-11-24T10:33:24.828286+00:00",
+    "tags": [
+      "CoT",
+      "Hint",
+      "代表作补读",
+      "近期修订",
+      "On-policy self-distillation",
+      "行动反馈",
+      "特权信息"
+    ],
+    "authors": [
+      "Haoran Liu",
+      "Yuwei Zhang",
+      "Xiyao Li",
+      "Bohan Lyu",
+      "Jingbo Shang"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "arXiv v2固定版本",
+        "url": "https://arxiv.org/abs/2606.11559v2"
+      },
+      {
+        "label": "arXiv原论文与首发/修订记录",
+        "url": "https://arxiv.org/abs/2606.11559"
+      },
+      {
+        "label": "v2方法、实验与附录全文",
+        "url": "https://arxiv.org/html/2606.11559v2"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把事后复盘压缩成当前轮的行动诊断，只供自蒸馏教师评分；学生学习自己的原始动作token，采样和部署均不接收该Hint。",
+      "motivation": "多轮任务的最终奖励难定位中间错误，失败样本又可能没有组内奖励差异。作者发现，给教师整条成功示范反而使模型退步：示范中的后续动作未必适合学生当前状态。需要保留诊断依据，同时限制未来轨迹对当前动作评分的干扰。",
+      "novelty": "作者主张：压缩事后诊断，让多轮自蒸馏的监督对齐当前决策。本站判断：价值在于隔离诊断与部署策略，并在学生原动作上比较教师视图；现有消融不能保证压缩已消除泄漏，也未验证任意教师模型。",
+      "evidenceScope": "已直接读取arXiv v2 HTML的§2–5、结论/局限、附录A–E及表1–5，核对实际教师与reflector模板和原arXiv提交史。两模型为Qwen3-4B-Instruct-2507、Qwen3-30B-A3B-Instruct-2507，reflector为当前策略、教师为EMA副本。Retail训练500/测试115题；其模型在Airline50题测跨域；WebShop训练6219/测试691题。每批16题、1 epoch、每轮最多512生成token、8192上下文。HINT每题1次rollout，GRPO8次；评测报告mean@4，HINT/GRPO三种子，其余主要单种子。4B HINT/GRPO成功率为Retail34.9±0.5/33.2±1.1、Airline19.6±0.8/17.8±1.4、WebShop68.8±1.0/65.0±0.8；这些是作者表值。未独立审计数据清单、运行代码或复现实验，未取得可归属的完整实现链接。",
+      "limits": "未复现实验；仅Qwen3，未验证Opus5.5/Fable5.2。1/8指rollout数，所报GPU成本约一半；多数消融单种子，无法解析或空诊断被丢弃造成选择偏差。只支持所测Qwen和三个交互域，不是Opus5.5/Fable5.2的直接证据。4B在两个Tau域相对GRPO的优势较小，其他自蒸馏对照与上下文消融主要单种子；GRPO学习率在Retail验证集选四档，但验证划分的完整清单未给出。75条Hint由一位作者人工标注：58.6%正确、9.3%部分正确、17.3%错误、14.7%无行动价值；未见多人一致性。4B/30B解析失败4.8%/3.2%的轮次丢弃，会产生选择效应；反思仍可能泄露未来信息、归因最近一步或过度自信。Retail4B同硬件GPU小时HINT4.87、GRPO9.60；1/8采样量不能说成8倍总加速，也没有跨规模/任务的完整成本表。一般能力表仅报告相近分数，不能推出完全无遗忘。诊断不是拟合目标但仍会影响教师概率，JSD有界不保证错误Hint无害。原始示范对照的外部生成模型、任务清单、完整运行产物与代码归属仍待核验。",
+      "method": [
+        "当前学生在普通因果历史下每题采一条完整轨迹，保留成功和失败及最终环境奖励；不先给学生Hint，也不从固定经验池重放。",
+        "默认由学生自身充当reflector，一次读入任务、工具schema、完整轨迹和最终结果，为每轮输出结构化诊断及可选纠正动作；禁止逐字复写未来行动，无法明确纠正时留空。",
+        "对能解析且非空的诊断逐轮构造独立教师上下文：原历史＋本轮工具观察＋最终奖励＋本轮诊断。教师是学生的EMA副本，更新率0.001；不接收原始未来动作序列。",
+        "两视图对学生实际生成的相同token算JSD，使用学生top-100词、尾部概率桶及截断重要性权重；只监督assistant token，按轮内token、有效轮次依次平均。",
+        "更新学生及EMA教师后继续无Hint采样；用无事后诊断的策略评测Retail、跨域Airline及WebShop，并比较原示范、单步环境反馈、直接SFT纠正动作和把差异转成过程奖励等方案。"
+      ],
+      "inspirations": [
+        "固定同题、学生状态和原始动作，比较完整成功示范、原始工具反馈、简短诊断、诊断加纠正动作四种教师视图；另外检查诊断是否引用当前不可得事实，避免把文本变短等同于无泄漏。",
+        "将“直接拟合纠正动作”和“让Hint只改变教师对学生原动作的评分”分成独立对照；统一任务和更新预算，分别记录原本可解任务保留、失败任务学习与未见任务的无Hint效果。",
+        "把reflector生成、逐轮教师前向、环境交互和训练算力全部计入成本，同时报告工具调用与重复验证；逐轮诊断准确率、解析丢弃率和主任务成功率应一起看。"
+      ],
+      "reviewedAt": "2026-11-24T10:30:01.904653+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2606.11559",
+        "https://arxiv.org/abs/2606.11559v2",
+        "https://arxiv.org/html/2606.11559v2"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2606.11559",
+      "status": "pending",
+      "checkedAt": "2026-11-24T10:28:51.302272+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.28197",
+    "url": "https://arxiv.org/abs/2611.28197",
+    "id": "paper-s2bench-2611-28197",
+    "title": "S2Bench：代码3D贴合扫描之后，验证提示为何仍会漏掉工程关系",
+    "summary": "S2Bench让Agent写Rhino程序重建128个真实场景，分开验收几何、语义与工程关系。Sol扫描覆盖95.6%，Opus5.5工程全过率37.5%；Sol的22场景消融显示，增加工程要求未提高全过率，提示效果取决于可核验证据。",
+    "insight": "行动Hint应指定从原始证据核验什么，而不只复述目标：检查自己生成的构件列表，仍会漏掉根本没建出的门或支撑。该论文提供推理时验证指导的直接实验，适合设计提示内容对照；它没有训练学生，也没有测试撤去Hint后的能力迁移。",
+    "limits": "未独立复现，项目代码尚未发布。提示消融仅为Sol的22场景，非Opus/Fable指导实验，也未测无Hint迁移。各方法同为45分钟，但算力、Token和总费用不同。128场景含122个公开扫描及6个私有桥梁，域规模不均；输入已有配准与类别词表，不能外推到任意图像建模。原生harness不同且仅core22做交叉复核。ECR是九类几何构造检查全过的场景比例，不是结构承载能力、法规合规、可编辑性评分或视觉审美分；失败与超资源模型计不通过，参考表面F1仅对有效提交计分。每个提示干预仅单次，不能推广为所有Hint无效；默认重复运行全过率也在9.1%–18.2%间变动。",
+    "organization": "Technical University of Munich",
+    "dateLabel": "2026-11-20",
+    "evidence": "原论文方法、提示干预与作者项目页已核验；未复现实验",
+    "originalTitle": "From Point Clouds to Engineering Models: Benchmarking Agentic 3D Reconstruction in the Built Environment",
+    "date": "2026-11-20",
+    "checkedAt": "2026-11-24T10:30:14.310008+00:00",
+    "originalDate": "2026-11-20",
+    "paperOriginalDate": "2026-11-20T16:26:09Z",
+    "paperUpdatedAt": "2026-11-20T16:26:09Z",
+    "updatedAt": "2026-11-20T16:26:09Z",
+    "firstSeenAt": "2026-11-24T04:00:01Z",
+    "lastSeenAt": "2026-11-24T04:00:01Z",
+    "tags": [
+      "Scan-to-BIM",
+      "可编辑CAD",
+      "Hint",
+      "验证指导",
+      "Claude Opus 5.5",
+      "多Agent"
+    ],
+    "authors": [
+      "Changyu Du",
+      "Stavros Nousias",
+      "Syed Salman Ahmed",
+      "Kai Dietmair",
+      "Mohammad Alrabab’h",
+      "André Borrmann"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv摘要与版本史",
+        "url": "https://arxiv.org/abs/2611.28197"
+      },
+      {
+        "label": "公开feed原始来源",
+        "url": "https://arxiv.org/abs/2611.28197v1"
+      },
+      {
+        "label": "v1方法、结果与附录",
+        "url": "https://arxiv.org/html/2611.28197v1"
+      },
+      {
+        "label": "TUM作者项目页（代码尚待发布）",
+        "url": "https://tumcms.github.io/S2Bench.github.io/"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "三维模型贴近扫描，不代表构件类别、连接和开口正确。S2Bench把这三类结果分开测，并发现验证提示能推动有残差可查的几何修复，却未解决没有直接报警信号的工程错误。",
+      "motivation": "点到表面的距离对漏门、类别互换、虚假支撑可能几乎不变；Agent若只检查自己的建模假设，很容易得到自洽却不完整的工程模型。需要从真实扫描生成可编辑构件，并用独立关系规则验收。",
+      "novelty": "作者主张：以真实跨域扫描、三轴验收和带版本的异步协作建立场景级Scan-to-BIM基准。本站判断：对代码3D与Hint研究最有价值的是区分“提示要求检查”与“检查所需的独立证据”；模型自写断言和离线工程协议必须分别看，不能仅用覆盖率奖励重建。",
+      "evidenceScope": "已读取 arXiv v1 §3–6 的基准构造、重建方法、结果与限制，并核对附录 A 的实际提示/工具协议、B 的参考构造与检查器验证、C 的有效提交/成本/不确定性、D.3 的资源排除、E 的提示干预和 G 的团队对照；已核作者项目页。未运行 Rhino、下载场景或独立复现实验，未把项目动图逐帧作为本地视觉验收。 主比较中Opus5.5全过率37.5%，Sol27.3%；提示干预本身只在Sol上做。显式工程要求仍为18.2%；移除工作流后再移除验证指导，覆盖94.9%→90.3%，整场通过并不单调，默认重复运行全过率9.1%–18.2%。没有Fable5.2或教师Hint蒸馏实验。",
+      "limits": "未独立复现，项目代码尚未发布。提示消融仅为Sol的22场景，非Opus/Fable指导实验，也未测无Hint迁移。各方法同为45分钟，但算力、Token和总费用不同。128场景含122个公开扫描及6个私有桥梁，域规模不均；输入已有配准与类别词表，不能外推到任意图像建模。原生harness不同且仅core22做交叉复核。ECR是九类几何构造检查全过的场景比例，不是结构承载能力、法规合规、可编辑性评分或视觉审美分；失败与超资源模型计不通过，参考表面F1仅对有效提交计分。每个提示干预仅单次，不能推广为所有Hint无效；默认重复运行全过率也在9.1%–18.2%间变动。",
+      "method": [
+        "将128个真实场景统一为米制、Z向上、1厘米降采样点云与类别词表，配对65份既有参考和63份经五位专家重建/交叉复核的参考模型；划出覆盖各域的22场景干预子集。",
+        "Agent在隔离环境中用Python测量、分割和拟合扫描，编写含参数、build及validate的Rhino 8程序；执行后查看多视角渲染与结构反馈，再迭代。参考模型、点标签和离线检查器默认不向Agent开放。",
+        "在45分钟内交付建模程序、保留独立构件的原生模型和IFC4；离线分别测5厘米扫描覆盖、10厘米参考表面F1、类别mIoU，以及九条构件/连接/支撑/干涉/开口规则的整场景全过率。",
+        "测试五种模型及Terra团队；团队由主Agent向最多三名工作Agent派发带版本的任务，工作者在私有副本返回方案，主Agent拒绝过期方案并复核共享几何接口后合并。时间相同但总调用成本另计。",
+        "在Sol的22场景上分别添加真实点标签或显式工程要求，并依次去掉工作流指导、再去掉验证指导；结合重复运行与35条抽样轨迹，判断哪些改进来自可测几何残差、哪些错误仍未被独立发现。"
+      ],
+      "inspirations": [
+        "把行动Hint写成“原始证据—待检关系—可执行检查”：例如从扫描切片独立枚举门洞，再核模型开口，而不是拿生成代码里的对象列表作标准答案。比较通用提醒与这种证据绑定提示时，保持同题、同模型和预算。",
+        "建立三个独立验收轴：能执行并交付可编辑程序、几何/语义还原、外部关系约束；给缺失构件设必检条件，避免没有对象就没有失败检查的空通过。这里是研究建议，本站尚未运行。",
+        "团队方案同时报告壁钟时间和全队费用，并单独测合并后的共享边界。Terra覆盖72.7%→89.8%，但作者估算单场API费0.17→2.79美元；不能把等时长团队增益说成等成本收益。"
+      ],
+      "reviewedAt": "2026-11-24T10:30:14.310008+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.28197",
+        "https://arxiv.org/html/2611.28197v1",
+        "https://tumcms.github.io/S2Bench.github.io/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.28197",
+      "status": "pending",
+      "checkedAt": "2026-11-24T10:28:51.302272+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.21541",
+    "url": "https://arxiv.org/abs/2611.21541",
+    "id": "paper-sciresearch-eval-2611-21541",
+    "title": "SciResearch-Eval：Opus采纳了行动Hint，判断就更可靠吗？",
+    "summary": "在预注册的新划分上，策略Hint让Opus5.5的区间评分改善2.2倍，但覆盖真实值的比例只增1个百分点。行动采纳、误差减少和可靠性并非同一指标；Fable5.2未参加Hint消融。",
+    "insight": "共享Hint应连同行为采纳、失败机制、最终可靠性和预算一起评估。先在未见题验证策略，再测试去Hint迁移；推理时有效的提示不等于已学进模型。",
+    "limits": "未复现。仅推理时Hint，无训练或撤除后迁移；Fable5.2无Hint消融。新seed复验仍是热传导同领域，覆盖率仅+1pp。93道留出题及逐episode结果未公开。默认effort比较非等Token，部分effort行每题仅1次。",
+    "organization": "Lawrence Livermore National Laboratory",
+    "dateLabel": "2026-11-16 · v1 · 30天窗口补读",
+    "evidence": "原论文方法与固定仓库材料已核验；未复现实验",
+    "date": "2026-11-16",
+    "checkedAt": "2026-11-24T10:30:54.135429+00:00",
+    "originalDate": "2026-11-16",
+    "paperOriginalDate": "2026-11-16T18:27:09Z",
+    "firstSeenAt": "2026-11-24T10:33:24.828286+00:00",
+    "tags": [
+      "CoT",
+      "Hint",
+      "Opus5.5",
+      "Fable5.2",
+      "行动指导",
+      "推理预算"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "arXiv 摘要与版本史",
+        "url": "https://arxiv.org/abs/2611.21541"
+      },
+      {
+        "label": "arXiv v1 方法及附录",
+        "url": "https://arxiv.org/html/2611.21541v1"
+      },
+      {
+        "label": "作者公开仓库",
+        "url": "https://github.com/Btwestyo/sciresearch-eval"
+      },
+      {
+        "label": "固定提交README与公开范围",
+        "url": "https://github.com/Btwestyo/sciresearch-eval/blob/9d391b3aa8daf8d0b944acda12c7f8b089a1d8e0/README.md"
+      },
+      {
+        "label": "固定提交：新划分Hint预注册",
+        "url": "https://github.com/Btwestyo/sciresearch-eval/blob/9d391b3aa8daf8d0b944acda12c7f8b089a1d8e0/docs/prereg_fresh_hint_S.md"
+      },
+      {
+        "label": "固定提交：effort预注册与Fable补充",
+        "url": "https://github.com/Btwestyo/sciresearch-eval/blob/9d391b3aa8daf8d0b944acda12c7f8b089a1d8e0/docs/prereg_effort.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "行动策略Hint能改变Opus5.5的实验选择，却未同步校准置信区间：新划分上区间评分改善2.2倍，覆盖率只增1个百分点。Fable5.2仅有无Hint与effort结果。",
+      "motivation": "模型能发现模拟器有问题，也可能继续用不适用的数据拟合并给出过窄区间；需要把识别问题、采取行动和可靠交付分开测。",
+      "novelty": "作者主张将自主实验设计、故意有缺陷的模拟器与客观区间评分结合。本站判断：对Hint研究最有价值的是同时记录行为变化、误差和覆盖率，并把看测试后提出的策略交给新划分复验；不能据此证明Hint已内化。",
+      "evidenceScope": "已读arXiv v1方法§2–3、行为与Hint/effort实验§4–7、限制§10、附录A模型ID/表12–14及E提示；核固定仓库README与两份预注册文本，未审计完整Git时间线。新划分Opus S区间评分改善因子2.2，95%CI[1.5,3.3]，覆盖+1pp；弱加热采用率6%→93%，不是成功率。Fable默认/low/medium/max差异属于推理预算实验。首次发表11月16日，本轮按30天窗口补读。 Bedrock精确模型ID：us.anthropic.claude-opus-5-5、us.anthropic.claude-fable-5-2。原测试的区间评分提升因子为2.5[1.6,3.8]，新split为2.2[1.5,3.3]，由逐题log10分差转换，非中位分之比。",
+      "limits": "未复现。仅推理时Hint，无训练或撤除后迁移；Fable5.2无Hint消融。新seed复验仍是热传导同领域，覆盖率仅+1pp。93道留出题及逐episode结果未公开。默认effort比较非等Token，部分effort行每题仅1次。",
+      "method": [
+        "构造缺失物理、数值欠收敛和正常对照等热传导任务，以更高保真模拟器给出隐藏真值；主留出集93题、9模型、每题3次。",
+        "统一工具和预算：最多4次新实验、60次工具调用、80轮及600k累计输入Token；直接按真值评价区间评分与覆盖率，未交付计漏覆盖。",
+        "对Opus/Sonnet/Haiku5.5的66题分别追加通用实践B、校准提醒H、行动策略S。S由研究者归纳Astra行为：寻找模拟器适用的实验条件，核对拟合，再只用相容数据估计；模型推理时可见Hint。",
+        "S最初看过测试轨迹才设计，作者随后预注册，用同一冻结生成器的新seed复验63题（34题缺失物理）、每题每条件3次，报告逐题配对置信区间及正常对照。",
+        "另做无Hint的effort与成本消融；Opus5.5接受Hint，后补的Fable5.2仅做无Hint评测。无教师在线调用或学生训练；精确ID及范围见证据。"
+      ],
+      "inspirations": [
+        "为同一失败点比较“泛化提醒—下一步行动—完整策略”，同时记录动作是否采用、证据是否改善、最终任务是否达标；避免只奖励遵循Hint或CoT表面分。",
+        "把Hint内容与推理预算交叉控制，报告整轮输入、输出、工具成本和超预算未交付。本文Opus xhigh约47.2k输出Token、default约3.5k；两种条件不能只凭终分比较效率。",
+        "先在新题和新题族复验共享Hint，再研究撤除后的训练迁移；增加已可解对照，区分“学会被提醒”与“独立发现该行动”。Fable5.2可作为待测Hint对象，但本文不能提供其Hint收益结论。"
+      ],
+      "reviewedAt": "2026-11-24T10:30:54.135429+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.21541",
+        "https://arxiv.org/html/2611.21541v1",
+        "https://github.com/Btwestyo/sciresearch-eval",
+        "https://github.com/Btwestyo/sciresearch-eval/blob/9d391b3aa8daf8d0b944acda12c7f8b089a1d8e0/README.md",
+        "https://github.com/Btwestyo/sciresearch-eval/blob/9d391b3aa8daf8d0b944acda12c7f8b089a1d8e0/docs/prereg_fresh_hint_S.md",
+        "https://github.com/Btwestyo/sciresearch-eval/blob/9d391b3aa8daf8d0b944acda12c7f8b089a1d8e0/docs/prereg_effort.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.21541",
+      "status": "pending",
+      "checkedAt": "2026-11-24T10:28:51.302272+00:00"
+    }
   }
 ]
