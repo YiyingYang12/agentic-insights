@@ -30250,5 +30250,354 @@
         "https://code.claude.com/docs/en/monitoring-usage"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.28902v1",
+    "url": "https://arxiv.org/abs/2611.28902v1",
+    "id": "paper-studiobench-2611-28902",
+    "title": "StudioBench：会交付成片，不等于会发现并修好视听缺陷",
+    "summary": "160个分钟级视频任务、33个原子工具、7个MLLM共运行1,120次，交付1,063部影片。已交付影片需求项平均满足度98.1%，但画面、跨镜头一致性和声画同步仍有差距。",
+    "insight": "下一步应测检查是否触发有效修改，并把交付率、成片质量与源工程可编辑性分开；工作流更长或调用更多不能直接当作质量提升。",
+    "limits": "98.1%仅是已交付影片的需求项平均满足度；人评116任务含27个调参任务，r=0.997仅比较7个模型均值。每任务模型只跑一次；工作流相关性不是因果。仓库文档与v1评分协议不一致，未复现。当前条件类任务只在文字中描述条件，未附输入资产；成本曲线仅计LLM费用，未计生成/渲染等总成本；成片评分也不等于可编辑工程合格。",
+    "dateLabel": "2026-11-21首发 · 本轮全文方法解读",
+    "evidence": "v1方法、结果、人评边界与公开发布物核验；未复现",
+    "originalTitle": "StudioBench: Benchmarking Agentic Multimodal Large Language Models for Productive Audiovisual Creation",
+    "date": "2026-11-21",
+    "checkedAt": "2026-11-24T04:33:50.661005+00:00",
+    "paperOriginalDate": "2026-11-21T16:28:08Z",
+    "paperUpdatedAt": "2026-11-21T16:28:08Z",
+    "updatedAt": "2026-11-21T16:28:08Z",
+    "firstSeenAt": "2026-11-24T04:00:01Z",
+    "lastSeenAt": "2026-11-24T04:00:01Z",
+    "tags": [
+      "视频创作Agent",
+      "视听质量",
+      "工作流诊断"
+    ],
+    "authors": [
+      "Xinglong Xu",
+      "Yuxia Zhu",
+      "Siyuan Li",
+      "Lixu Tian",
+      "Xiaofei Zhao",
+      "Yuxin Liu",
+      "Caijun Jia",
+      "Jintao Chen",
+      "Bihui Yu",
+      "Alden Cai",
+      "Asher Qin",
+      "Jingxuan Wei",
+      "Cheng Tan"
+    ],
+    "topics": [
+      "code2video",
+      "video-editing"
+    ],
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv首发日期与摘要",
+        "url": "https://arxiv.org/abs/2611.28902v1"
+      },
+      {
+        "label": "v1方法、工具表与人评附录",
+        "url": "https://arxiv.org/html/2611.28902v1"
+      },
+      {
+        "label": "作者项目页",
+        "url": "https://openraiser.github.io/StudioBench/"
+      },
+      {
+        "label": "公开早期框架仓库",
+        "url": "https://github.com/OpenRaiser/StudioBench"
+      },
+      {
+        "label": "固定提交README与发布范围",
+        "url": "https://github.com/OpenRaiser/StudioBench/blob/31bc74fef64b605b1d0b423d82f5f1d5b440acca/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "StudioBench让7个多模态模型用33个原子工具制作1–3分钟成片：会交付、会满足字面要求，并不等于会发现和修正视听缺陷。",
+      "motivation": "单段视频生成指标很难解释整片制作中的选素材、剪辑、混音与返工决策。评测需要同时检查交付成片的质量，以及哪些工具产物真正进入成片，避免把调用成功当作创作成功。",
+      "novelty": "作者主张：把通用MLLM作为导演，在无整片流程模板的原子工具环境中联合分析完整视听作品和涌现工作流。本站判断：价值在于区分“交付/字面合规”与“感知质量/有效返工”，并用产物依赖链解释失败；这尚未证明某种流程会因果提升质量，也不是代码工程可编辑性的专门基准。",
+      "evidenceScope": "已读arXiv v1正文§3–5与附录A–E、H–J，核验首发为2026-11-21 16:28:08 UTC；1,120次单次运行中1,063交付，附录J可恢复1,062张工作流图。已读作者项目HTML、公开仓库及固定提交31bc74f README；README仍称97个人评任务、1–5分等权汇总，与v1的116任务、三档/genre权重不同，本文方法以v1为准。公开仓库自称早期版本，含框架、工具接口、模拟后端与演示任务，说明不含生产评测数据；模拟运行标记valid_for_bench=false。未执行工具、观看全部成片或复现实验；StudioFlow公共仓库URL返回404，不能认定其代码已公开可取。 98.1%是已交付影片层面的需求项平均满足度，81%为全部检查项满足的影片比例；人评116任务包含27个校准任务，模型均值r=0.997，任务内r=0.656、排除平局的成片对排序一致率72.3%。这些不同分母不可互换。",
+      "limits": "98.1%仅是已交付影片的需求项平均满足度；人评116任务含27个调参任务，r=0.997仅比较7个模型均值。每任务模型只跑一次；工作流相关性不是因果。仓库文档与v1评分协议不一致，未复现。当前条件类任务只在文字中描述条件，未附输入资产；成本曲线仅计LLM费用，未计生成/渲染等总成本；成片评分也不等于可编辑工程合格。",
+      "method": [
+        "从公开AIGC作品改写并人工审阅候选，抽取160任务，覆盖8种体裁、5类任务及60–180秒目标；将需求拆成1,686条仅用于评分的检查项。条件类标签在本版只由文字描述，不附资产/参考文件。",
+        "统一提示、预算和时限，提供33个生成、剪辑、检查与交付工具，视频生成固定MiniMax-H3。禁用shell，代码仅传给HTML/Three.js/Blender渲染工具；无整片模板，但有局部检查建议。",
+        "每个任务–模型组合跑一次，共1,120次；以最后一次export作为交付，未交付计0并纳入160任务均分。最终有1,063部影片；不把生成调用成功或存在视频文件直接当作完成。",
+        "Gemini 3.8 Flash裁判分模态检查73类带时间证据的缺陷，结合程序检测候选、两轮检查与27个开发任务校准阈值，得到12项工艺指标和需求完成度；按体裁加权13项指标。另用116任务的人评检查一致性。",
+        "按文件读写依赖重建工作流图，追溯哪些产物进入最终export，以及检查后是否重做/舍弃；图用于诊断而不进入分数。将高低分成片配对，分析静音、人物漂移、声画错位和检查未促成修改等失败。"
+      ],
+      "inspirations": [
+        "为剪辑/代码视频Agent分别记录执行状态、最终成片和可编辑源工程；在export前强制实际听音频并看目标片段，再验证检测后是否发生有效修改，不能只检查文件或音轨存在。",
+        "把渲染/剪辑日志转换为产物依赖图，统计进入成片的候选比例和检查后的替换；在同任务、同预算下随机加入“检查→重做”步骤，检验相关性背后是否真有质量收益。",
+        "将需求满足度与画面结构、跨镜头一致性、口型/音效同步分开报告；另设完全留出的人评集和多次独立运行，并把LLM、生成后端、渲染与人工检查成本分账。"
+      ],
+      "reviewedAt": "2026-11-24T04:33:50.661005+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.28902v1",
+        "https://arxiv.org/html/2611.28902v1",
+        "https://openraiser.github.io/StudioBench/",
+        "https://github.com/OpenRaiser/StudioBench",
+        "https://github.com/OpenRaiser/StudioBench/blob/31bc74fef64b605b1d0b423d82f5f1d5b440acca/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.28902",
+      "status": "pending",
+      "checkedAt": "2026-11-24T04:33:39.591832+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.29238",
+    "url": "https://arxiv.org/abs/2611.29238",
+    "id": "paper-gameanything-2611-29238",
+    "title": "GameAnything：把灵感写进可玩的游戏，再独立检查修改与回归",
+    "summary": "GameAnything把多模态灵感改写为现有游戏的代码、资产与配置，用独立试玩和回归状态持续修订。205项基准把内容、可玩性、外观与原游戏保留分开评分，避免把“像参考图”当“玩得通”。",
+    "insight": "作者主张：把多模态参考迁移、独立试玩与跨任务经验合为持续游戏开发。本站判断：价值在保留可修改工程并验收可玩交互；加权质量分和多轮增益不能自动证明执行成功率或记忆的独立贡献。",
+    "limits": "未复现；84.1是加权质量分，非执行成功率。迭代同时加时、critic和记忆，不能单独归因；人评对照仅40份且未评Host。数据限研究用途，商业游戏须自备；公开版Editing预算与评估流程和论文概括有差异。论文v1于11月22日05:17:35 UTC首发，署名页写11月21日；本轮检查与11月24日两个README提交时间不代表首次开源日期。共205任务：125构建、80编辑；开放核心77构建+64编辑，另有五个商业游戏的48构建+16编辑。14个环境混合2D与3D，code2-3d仅指代码修改程序化游戏场景与交互，不能把全体任务叫3D资产生成，也不是视频时间线编辑。表2比较的是模型加原生harness完整配置，并非同一代理框架下的纯模型排名；主实验每题一次生成一次评估。Claude Fable 5.2的Construction 84.1来自内容/功能/视觉各0.3与Host0.1的质量聚合，Editing 86.5按编辑成功乘保留惩罚，不是通过任务比例。构建/加载/原游戏存在门禁失败给零，但它只含每游戏三项探针；通过不保证无缺陷。未测试到的rubric项记零，基础设施错误重跑而不作失败分。评价主要由Claude Sonnet 5.5完成；40份六模型人工对照、两名评审仅评内容/功能/视觉，不含Host：Pearson 0.87、MAE8.8、rubric逐项一致71%；Full相对Lite误差9.8降至8.8但相关同为0.87，不能把组合中的playtest或仲裁单独认定为提升原因。47份可执行提交三次Full评估ICC0.93，不能外推所有任务或失败样本；换judge只是对同一已存证据重评分，不测不同探索轨迹。三轮后DeepSeek V4.1 Flash为59.1分、开发模型费用1.72美元，对原生Sonnet5.5的59.2与1.84，不是等时或端到端性价比结论。费用包含中间critic调用但排除最终独立评估；Full另约0.56美元/13分钟，按作者固定2026-10-30计价口径，不是当前价格承诺。首次Construction修订98/125任务用40分钟且无经验，其他为60分钟带经验，无法将增益仅归于记忆。公开固定Bench README规定构建120分钟、编辑60分钟，论文§6/表A20概括原生120分钟，版本对应待澄清。公开docs及edit_v2实现说明Editing依赖干净实例回放和初始检查点对照；Construction Full另含先盲后看访问说明的40动作/30分钟自主试玩与仲裁，不能宣称所有编辑都运行同一Full探索。静态核验平台752项、Bench1284项完整Git树，含代码、125构建instruction目录和80编辑清单；HF公开清单825项含443媒体、330目标图、36检查点归档、14原游戏截图。只核文件清单、卡片、固定实现，未下载大媒体/容器/检查点或执行安装、生成、试玩、二次编辑，未验全量资产完整性。代码Apache-2.0而数据卡标研究用途、参考视频限非商业研究，五款商业游戏须自备；不能统称全部内容任意商用。公开经验确认由异任务重复后提升状态，仍不是独立正确性证明。verified仅指来源核验。",
+    "dateLabel": "11月22日v1首发；本轮方法与公开代码核验",
+    "evidence": "v1方法、评估附录、固定公开系统/基准源码与数据文件清单已核；未执行或实验复现",
+    "originalTitle": "GameAnything: From Any Inspirations to Playable Game Worlds",
+    "date": "2026-11-22",
+    "checkedAt": "2026-11-24T04:30:33.891738Z",
+    "paperOriginalDate": "2026-11-22T05:17:35Z",
+    "paperUpdatedAt": "2026-11-22T05:17:35Z",
+    "updatedAt": "2026-11-22T05:17:35Z",
+    "firstSeenAt": "2026-11-24T04:00:01Z",
+    "lastSeenAt": "2026-11-24T04:00:01Z",
+    "tags": [
+      "游戏开发Agent",
+      "可编辑代码",
+      "多模态参考",
+      "独立试玩",
+      "回归检查"
+    ],
+    "authors": [
+      "Wenyi Wu",
+      "Siqi Liu",
+      "Yuru Feng",
+      "Zixuan Song",
+      "Aayush Salvi",
+      "Sibo Zhu",
+      "Kun Zhou",
+      "Biwei Huang"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv首发元数据",
+        "url": "https://arxiv.org/abs/2611.29238"
+      },
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.29238v1"
+      },
+      {
+        "label": "Hugging Face论文页与作者项目反链",
+        "url": "https://huggingface.co/papers/2611.29238"
+      },
+      {
+        "label": "作者项目与结果展示页",
+        "url": "https://huggingface.co/spaces/GameAnything/GameAnything"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/AetherLabsAI/GameAnything"
+      },
+      {
+        "label": "v1完整方法、基准、实验与评估附录",
+        "url": "https://arxiv.org/html/2611.29238v1"
+      },
+      {
+        "label": "平台公开源码固定提交",
+        "url": "https://github.com/AetherLabsAI/GameAnything/tree/1ac860d501b4dd7c09d7928b54fb59d6b7f70dc5"
+      },
+      {
+        "label": "需求状态与回归记录实现",
+        "url": "https://github.com/AetherLabsAI/GameAnything/blob/1ac860d501b4dd7c09d7928b54fb59d6b7f70dc5/gameanything/devstatus.py"
+      },
+      {
+        "label": "基准源码、任务及评分固定提交",
+        "url": "https://github.com/AetherLabsAI/GameAnything-Bench/tree/72e79113209e3c7d763aa85f55c287e406a9f61f"
+      },
+      {
+        "label": "公开版Construction与Editing评估路径",
+        "url": "https://github.com/AetherLabsAI/GameAnything-Bench/blob/72e79113209e3c7d763aa85f55c287e406a9f61f/docs/evaluation.md"
+      },
+      {
+        "label": "固定质量分聚合实现",
+        "url": "https://github.com/AetherLabsAI/GameAnything-Bench/blob/72e79113209e3c7d763aa85f55c287e406a9f61f/gab/eval/scoring.py"
+      },
+      {
+        "label": "逐配置经验检索、异任务确认与提取限制",
+        "url": "https://github.com/AetherLabsAI/GameAnything-Bench/blob/72e79113209e3c7d763aa85f55c287e406a9f61f/gab/refine/memory.py"
+      },
+      {
+        "label": "公开数据卡与媒体、检查点文件清单",
+        "url": "https://huggingface.co/datasets/GameAnything/GameAnything-Bench"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "GameAnything把多模态灵感改写为现有游戏的代码、资产与配置，用独立试玩和回归状态持续修订。205项基准把内容、可玩性、外观与原游戏保留分开评分，避免把“像参考图”当“玩得通”。",
+      "motivation": "把电影、照片或故事搬进游戏，难点是把场景和规则变成能被玩家发现、触发的交互，还要保住原游戏。静态截图或开发者自录演示会漏掉不可达内容、遗漏修改与回归。",
+      "novelty": "作者主张：把多模态参考迁移、独立试玩与跨任务经验合为持续游戏开发。本站判断：价值在保留可修改工程并验收可玩交互；加权质量分和多轮增益不能自动证明执行成功率或记忆的独立贡献。",
+      "evidenceScope": "已读arXiv v1 §3–7、完整§4方法、§5基准构建与评价，附10的构建与分布、11的探针/回放/评分、12执行费用、15参考消融与方差、16人评/证据消融/稳定性；核HF论文反链与项目/数据元数据。通过只读Git获取两个固定提交的完整树并读取平台状态/经验与Bench评分、评估文档、编辑路径、记忆检索与确认关键实现。只做静态阅读，不安装或执行作者工具，不观看或复现全量结果。",
+      "limits": "未复现；84.1是加权质量分，非执行成功率。迭代同时加时、critic和记忆，不能单独归因；人评对照仅40份且未评Host。数据限研究用途，商业游戏须自备；公开版Editing预算与评估流程和论文概括有差异。论文v1于11月22日05:17:35 UTC首发，署名页写11月21日；本轮检查与11月24日两个README提交时间不代表首次开源日期。共205任务：125构建、80编辑；开放核心77构建+64编辑，另有五个商业游戏的48构建+16编辑。14个环境混合2D与3D，code2-3d仅指代码修改程序化游戏场景与交互，不能把全体任务叫3D资产生成，也不是视频时间线编辑。表2比较的是模型加原生harness完整配置，并非同一代理框架下的纯模型排名；主实验每题一次生成一次评估。Claude Fable 5.2的Construction 84.1来自内容/功能/视觉各0.3与Host0.1的质量聚合，Editing 86.5按编辑成功乘保留惩罚，不是通过任务比例。构建/加载/原游戏存在门禁失败给零，但它只含每游戏三项探针；通过不保证无缺陷。未测试到的rubric项记零，基础设施错误重跑而不作失败分。评价主要由Claude Sonnet 5.5完成；40份六模型人工对照、两名评审仅评内容/功能/视觉，不含Host：Pearson 0.87、MAE8.8、rubric逐项一致71%；Full相对Lite误差9.8降至8.8但相关同为0.87，不能把组合中的playtest或仲裁单独认定为提升原因。47份可执行提交三次Full评估ICC0.93，不能外推所有任务或失败样本；换judge只是对同一已存证据重评分，不测不同探索轨迹。三轮后DeepSeek V4.1 Flash为59.1分、开发模型费用1.72美元，对原生Sonnet5.5的59.2与1.84，不是等时或端到端性价比结论。费用包含中间critic调用但排除最终独立评估；Full另约0.56美元/13分钟，按作者固定2026-10-30计价口径，不是当前价格承诺。首次Construction修订98/125任务用40分钟且无经验，其他为60分钟带经验，无法将增益仅归于记忆。公开固定Bench README规定构建120分钟、编辑60分钟，论文§6/表A20概括原生120分钟，版本对应待澄清。公开docs及edit_v2实现说明Editing依赖干净实例回放和初始检查点对照；Construction Full另含先盲后看访问说明的40动作/30分钟自主试玩与仲裁，不能宣称所有编辑都运行同一Full探索。静态核验平台752项、Bench1284项完整Git树，含代码、125构建instruction目录和80编辑清单；HF公开清单825项含443媒体、330目标图、36检查点归档、14原游戏截图。只核文件清单、卡片、固定实现，未下载大媒体/容器/检查点或执行安装、生成、试玩、二次编辑，未验全量资产完整性。代码Apache-2.0而数据卡标研究用途、参考视频限非商业研究，五款商业游戏须自备；不能统称全部内容任意商用。公开经验确认由异任务重复后提升状态，仍不是独立正确性证明。verified仅指来源核验。",
+      "method": [
+        "把文字、图片或视频参考与用户要求映射到目标游戏，Builder修改原工程的代码、资产和配置；输出可安装mod、访问说明、交互轨迹及截图。",
+        "每轮由独立critic回放试玩证据，逐条记录todo/partial/done/broken/regressed；把旧功能退化加入复查表，再交同一Builder修订。",
+        "将问题、原因、修复及证据写成候选经验，异任务重现后确认；按游戏、角色和当前问题检索，基准每轮最多6000字符，并隔离隐藏rubric与最终评分。",
+        "冻结提交后在干净实例验证构建、加载与原游戏保留；Construction Full结合提交轨迹回放、独立40动作/30分钟试玩、视觉评分与分歧仲裁。",
+        "用125构建及80编辑任务分别评内容、可玩性、外观、Host和编辑保留；质量分与门禁分开解释，再用人工子集、重复评估和等配置参考消融检查可靠性。"
+      ],
+      "inspirations": [
+        "给程序化场景Agent保存可安装工程、到达路径和动作前后状态；先让独立试玩者盲找内容，再给导航，分别测可发现性、可玩性与外观，别仅审漂亮截图。",
+        "把修改要求和不应改变的功能分开成表，每版绑定证据与回归复查；保持门禁、rubric质量分和运行成功率为独立指标，避免一项加权总分掩盖失败。",
+        "用相同总时间做无记忆、有critic、有记忆的分离对照；冻结逐配置经验并排除当前任务记录，同时公开开发费、评估费和游戏/资产依赖，检验真实复用收益。"
+      ],
+      "reviewedAt": "2026-11-24T04:30:33.891738Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.29238",
+        "https://arxiv.org/html/2611.29238v1",
+        "https://huggingface.co/papers/2611.29238",
+        "https://huggingface.co/spaces/GameAnything/GameAnything",
+        "https://github.com/AetherLabsAI/GameAnything/tree/1ac860d501b4dd7c09d7928b54fb59d6b7f70dc5",
+        "https://github.com/AetherLabsAI/GameAnything/blob/1ac860d501b4dd7c09d7928b54fb59d6b7f70dc5/gameanything/devstatus.py",
+        "https://github.com/AetherLabsAI/GameAnything-Bench/tree/72e79113209e3c7d763aa85f55c287e406a9f61f",
+        "https://github.com/AetherLabsAI/GameAnything-Bench/blob/72e79113209e3c7d763aa85f55c287e406a9f61f/docs/evaluation.md",
+        "https://github.com/AetherLabsAI/GameAnything-Bench/blob/72e79113209e3c7d763aa85f55c287e406a9f61f/gab/eval/scoring.py",
+        "https://github.com/AetherLabsAI/GameAnything-Bench/blob/72e79113209e3c7d763aa85f55c287e406a9f61f/gab/refine/memory.py",
+        "https://huggingface.co/datasets/GameAnything/GameAnything-Bench"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.29238",
+      "status": "pending",
+      "checkedAt": "2026-11-24T04:34:28.609897+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.28445",
+    "url": "https://arxiv.org/abs/2611.28445",
+    "id": "paper-muted-distillation-2611-28445",
+    "title": "Muted Distillation：教师少看思考，Agent不一定始终更省更准",
+    "summary": "Muted Distillation让教师只看可见行动，学生保留自己的思考。4B最终输出token减少约57%/53%；但OfficeQA的大模型最终准确率反降，最佳checkpoint不能替代训练稳定性。",
+    "insight": "作者主张：仅改变教师可见上下文和损失位置，无新增奖励、数据或调参项，即缓解on-policy蒸馏中的思考膨胀。本站判断：价值在把“教师读什么”与“学生哪些token被训练”分开检验；成功样本条件分析更有说服力，但大模型末轮反转说明这不是普适的更短、更准训练规律。",
+    "limits": "未复现；57%/53%仅为4B最终输出token降幅，不是实测加速。9B/27B在OfficeQA最终准确率反降，27B不再省token；跨规模优势用最佳checkpoint，部分未全评。表格2整任务成功不足2%，费用可反升；代码可读，权重缺模型卡。主表比较Qwen3.5-4B、同一397B-A17B教师的最终checkpoint：OfficeQA第139步37.7%对35.0%、15.6k对36.0k输出token；SpreadsheetBench第154步60.3%对55.5%、9.1k对19.5k。两任务每题采8次、温度1.0，报告pass@1估计，不是8次择优的pass@8。OfficeQA训练113道easy、评测133道Pro；SpreadsheetBench训练502条、评测专家验证400条，硬限制要求一条指令全部工作簿测试通过，不能把单元格/单测试通过当整任务成功；论文同时称总集912条，而502+400=902，未解释余下10条，不自行补分配。OfficeQA判分含规范化、数值1%相对容差与非数值模糊匹配，并非纯字节exact match。图1以每种配方各自最高评测准确率checkpoint比较；OfficeQA的9B最终35.3%对OPD38.9%，27B最终42.7%对46.6%，且双方均25.3k token。27B MD的53.9%胜教师50.9%取第20步峰值，不能说最终模型普遍胜教师；27B OfficeQA OPD、9B Spreadsheet OPD、27B Spreadsheet MD分别仅评12/15、14/15、10/15个checkpoint。未报告多训练种子复现；附E置信区间为按任务配对bootstrap、保留同题8次采样，不代表训练种子稳定性。成功条件分析只比较双方至少解出一次的任务及其中成功attempt：OfficeQA 4B为73题、表格4B为307题，token降幅52.3%与51.1%；双方8次全对的更严格交集仅9题/95题，降幅39.7%/36.4%，不能将筛选后的降幅外推所有任务。梯度诊断是32个相关训练问题的630个单回合、固定参数未裁剪梯度；训练后试探每checkpoint16回合，不是历史Adam更新重建或因果证明。输出token含思考与可见回复，均值下降不等于时延、GPU小时或总训练费用下降。图1按2026-09-10冻结的付费提供商中位单价估计每100 episode的未缓存输入/输出费用，没有本站计时或实付核验。SpreadsheetBench2的37.6对34.8是目标单元格准确率，严格整任务成功率均不足2%；作者列27/16个完成记录及2376分母，本文不将其解读为2376个独立任务。该迁移任务prompt增多，作者报告估计费用反升，不能承诺任何场景都省钱。JobBench另用65题训练、63题easy评测和Gemini3.5 Flash低思考判分，与公开榜判分器不同；9B最终MD0.385低于OPD0.403且区间重叠，亦非普适准确率收益。与Dr.GRPO组合使用每题8次rollout，而纯蒸馏每题1次，附G明确单次run且每步rollout计算量约8倍，不能作等算力RL优劣结论。OfficeQA训练/评测context为64k/原生262k；任务沙箱无网络，每回合一条bash，30秒命令超时，120/50回合上限，结论不覆盖开放网页或任意harness。代码核验固定Git提交bca5cf4bc759c1407f95a2e23021dace243fe7fa的README、rollout掩码/教师评分、KL损失与启动配置，未执行；代码有多种消融模式，不能把action-only、tail loss或teacher-no-think单开混作论文配方。已确认当前回合空思考块与原学生token位置映射，未逐路径审计全部历史模板或训练日志。README明确基准数据不随仓库分发。HF作者页列同名best/last checkpoint；4B MD页面可读、两代表README均404，MD详细API429而OPD元数据200，未下载权重或建立文件到每项论文结果的完整对应。仓库创建11/10、代表HF仓库创建9/18只作对象创建时间，不作本轮首次发布日；代码/权重许可与第三方依赖需各自核查，不能以论文CC BY 4.0代替软件许可。",
+    "organization": "UC San Diego；Google；University of Waterloo（论文署名）",
+    "dateLabel": "2026-11-21首发 · 本轮阅读全文与代码核验",
+    "evidence": "全文方法、附录反例与固定代码核验；未复现，输出token不等于实测加速",
+    "originalTitle": "Muted Distillation: Sealing Reasoning from Teacher Unlocks Token-Efficient Agents",
+    "date": "2026-11-21",
+    "checkedAt": "2026-11-24T04:32:38.080974Z",
+    "paperOriginalDate": "2026-11-21T00:50:35Z",
+    "paperUpdatedAt": "2026-11-21T00:50:35Z",
+    "updatedAt": "2026-11-21T00:50:35Z",
+    "firstSeenAt": "2026-11-24T04:00:01Z",
+    "lastSeenAt": "2026-11-24T04:00:01Z",
+    "tags": [
+      "On-policy distillation",
+      "可见行动监督",
+      "Token效率",
+      "Checkpoint选择"
+    ],
+    "authors": [
+      "Yuwei Zhang",
+      "Ian Miao",
+      "Wentao Zhang",
+      "Chen Qu",
+      "Bill Bi",
+      "Jingbo Shang",
+      "Donna Schut"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "规范原文入口",
+        "url": "https://arxiv.org/abs/2611.28445"
+      },
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.28445v1"
+      },
+      {
+        "label": "arXiv v1完整方法、主表与附录A–H",
+        "url": "https://arxiv.org/html/2611.28445v1"
+      },
+      {
+        "label": "同名公开实现，固定提交README与数据开放边界",
+        "url": "https://github.com/zhang-yu-wei/Muted-Distillation/blob/bca5cf4bc759c1407f95a2e23021dace243fe7fa/README.md"
+      },
+      {
+        "label": "固定提交：教师视图、tail loss与学生原序列映射",
+        "url": "https://github.com/zhang-yu-wei/Muted-Distillation/blob/bca5cf4bc759c1407f95a2e23021dace243fe7fa/src/officeqa_rl/training/opd_rollout.py"
+      },
+      {
+        "label": "固定提交：采样token的reverse-KL优势更新",
+        "url": "https://github.com/zhang-yu-wei/Muted-Distillation/blob/bca5cf4bc759c1407f95a2e23021dace243fe7fa/third_party/slime/slime/backends/megatron_utils/loss.py"
+      },
+      {
+        "label": "作者公开HF页面；checkpoint名称与发布时间另核",
+        "url": "https://huggingface.co/YWZBrandon"
+      },
+      {
+        "label": "公开4B MD最终checkpoint页面；无模型卡，未实测",
+        "url": "https://huggingface.co/YWZBrandon/qwen3.5-4b-officeqa-aod2op-tail-last-it139"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "教师不读学生的思考，只给可见回复和工具命令打分；学生仍在自己的完整思考上下文中学习。4B两个知识工作任务更短且更准，但较大模型最终checkpoint会退化，必须把峰值、末轮和费用分开看。",
+      "motivation": "标准on-policy蒸馏让教师沿学生思考前缀给每个token打分；作者观察到教师容易延长陌生思路，额外token又缺少有效纠正，导致工具Agent越蒸馏越啰嗦。问题是监督视图和训练位置是否把学习容量花在行动之外，而不是先加一个长度惩罚。",
+      "novelty": "作者主张：仅改变教师可见上下文和损失位置，无新增奖励、数据或调参项，即缓解on-policy蒸馏中的思考膨胀。本站判断：价值在把“教师读什么”与“学生哪些token被训练”分开检验；成功样本条件分析更有说服力，但大模型末轮反转说明这不是普适的更短、更准训练规律。",
+      "evidenceScope": "已阅读arXiv v1全文§2–4、主表1及附录A–H，重点核最佳/最终checkpoint、成功条件token统计、JobBench与RL组合、实际评分和沙箱协议；核固定Git提交的README、rollout、teacher client、loss和启动脚本。GitHub公开检索、仓库页面及原始固定源码可读；仓库详细API受403限流。作者公开GitHub/主页/HF身份线索相符；HF作者模型列表与MD页面、OPD元数据可读，两模型卡404、MD详细API429。未执行代码、下载权重/数据、重算实验或读取任何X原帖；verified仅指来源核验。",
+      "limits": "未复现；57%/53%仅为4B最终输出token降幅，不是实测加速。9B/27B在OfficeQA最终准确率反降，27B不再省token；跨规模优势用最佳checkpoint，部分未全评。表格2整任务成功不足2%，费用可反升；代码可读，权重缺模型卡。主表比较Qwen3.5-4B、同一397B-A17B教师的最终checkpoint：OfficeQA第139步37.7%对35.0%、15.6k对36.0k输出token；SpreadsheetBench第154步60.3%对55.5%、9.1k对19.5k。两任务每题采8次、温度1.0，报告pass@1估计，不是8次择优的pass@8。OfficeQA训练113道easy、评测133道Pro；SpreadsheetBench训练502条、评测专家验证400条，硬限制要求一条指令全部工作簿测试通过，不能把单元格/单测试通过当整任务成功；论文同时称总集912条，而502+400=902，未解释余下10条，不自行补分配。OfficeQA判分含规范化、数值1%相对容差与非数值模糊匹配，并非纯字节exact match。图1以每种配方各自最高评测准确率checkpoint比较；OfficeQA的9B最终35.3%对OPD38.9%，27B最终42.7%对46.6%，且双方均25.3k token。27B MD的53.9%胜教师50.9%取第20步峰值，不能说最终模型普遍胜教师；27B OfficeQA OPD、9B Spreadsheet OPD、27B Spreadsheet MD分别仅评12/15、14/15、10/15个checkpoint。未报告多训练种子复现；附E置信区间为按任务配对bootstrap、保留同题8次采样，不代表训练种子稳定性。成功条件分析只比较双方至少解出一次的任务及其中成功attempt：OfficeQA 4B为73题、表格4B为307题，token降幅52.3%与51.1%；双方8次全对的更严格交集仅9题/95题，降幅39.7%/36.4%，不能将筛选后的降幅外推所有任务。梯度诊断是32个相关训练问题的630个单回合、固定参数未裁剪梯度；训练后试探每checkpoint16回合，不是历史Adam更新重建或因果证明。输出token含思考与可见回复，均值下降不等于时延、GPU小时或总训练费用下降。图1按2026-09-10冻结的付费提供商中位单价估计每100 episode的未缓存输入/输出费用，没有本站计时或实付核验。SpreadsheetBench2的37.6对34.8是目标单元格准确率，严格整任务成功率均不足2%；作者列27/16个完成记录及2376分母，本文不将其解读为2376个独立任务。该迁移任务prompt增多，作者报告估计费用反升，不能承诺任何场景都省钱。JobBench另用65题训练、63题easy评测和Gemini3.5 Flash低思考判分，与公开榜判分器不同；9B最终MD0.385低于OPD0.403且区间重叠，亦非普适准确率收益。与Dr.GRPO组合使用每题8次rollout，而纯蒸馏每题1次，附G明确单次run且每步rollout计算量约8倍，不能作等算力RL优劣结论。OfficeQA训练/评测context为64k/原生262k；任务沙箱无网络，每回合一条bash，30秒命令超时，120/50回合上限，结论不覆盖开放网页或任意harness。代码核验固定Git提交bca5cf4bc759c1407f95a2e23021dace243fe7fa的README、rollout掩码/教师评分、KL损失与启动配置，未执行；代码有多种消融模式，不能把action-only、tail loss或teacher-no-think单开混作论文配方。已确认当前回合空思考块与原学生token位置映射，未逐路径审计全部历史模板或训练日志。README明确基准数据不随仓库分发。HF作者页列同名best/last checkpoint；4B MD页面可读、两代表README均404，MD详细API429而OPD元数据200，未下载权重或建立文件到每项论文结果的完整对应。仓库创建11/10、代表HF仓库创建9/18只作对象创建时间，不作本轮首次发布日；代码/权重许可与第三方依赖需各自核查，不能以论文CC BY 4.0代替软件许可。",
+      "method": [
+        "先让Qwen3.5学生按原策略在mini-swe-agent沙箱中运行，逐回合生成思考z与可见尾部a（正文加一条bash命令）；保存实际采样token和学生log-prob，不用教师替代学生生成轨迹。",
+        "构造不同的教师评分视图：论文规定隐去思考、换成空<think>块，只让397B-A17B教师读交互证据与可见尾部；学生序列和自身思考上下文保留。固定源码核到当前回合空块、尾部token对齐及两个关键开关。",
+        "只在可见尾部用teacher与student采样token的log-prob差形成reverse-KL优势，思考位置无直接loss；按批内监督token平均。对照全token、只训尾部、只训思考，拆开教师遮蔽与损失掩码。",
+        "同教师、同任务配对训练4B/9B/27B：OfficeQA用113道easy训练139步，表格502条训练154步；每步16题、每题一个episode，64k训练context。纯MD不把任务reward加入梯度。",
+        "在133道OfficeQA Pro及400道验证表格题上每题采8次估计pass@1，并计输出token；表格须通过全部未见工作簿测试。再分查成功交集、最佳/最终checkpoint及迁移，避免把便宜失败当效率。"
+      ],
+      "inspirations": [
+        "复现实验先做“教师是否读思考×是否监督思考”的二维消融，记录思考/可见解释/命令各自长度与梯度；源码显示仅mask command会把解释挪到未监督正文，因此应单独检查完整tail掩码。",
+        "给每个训练checkpoint同时报告整任务通过率、成功交集的token、失败/超context尾部以及实际端到端时延；在独立验证集挑停止点，并与末轮对照，专门检测9B/27B峰后退化。",
+        "将方法试用于有可靠执行验证器的工具Agent时，固定同一rollout预算比较纯MD、纯RL与组合；同时记录prompt缓存、教师打分和工具执行成本，防止输出变短却费用变高，或把8倍rollout带来的收益归给损失函数。"
+      ],
+      "reviewedAt": "2026-11-24T04:32:38.080974Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.28445v1",
+        "https://arxiv.org/html/2611.28445v1",
+        "https://github.com/zhang-yu-wei/Muted-Distillation/blob/bca5cf4bc759c1407f95a2e23021dace243fe7fa/README.md",
+        "https://github.com/zhang-yu-wei/Muted-Distillation/blob/bca5cf4bc759c1407f95a2e23021dace243fe7fa/src/officeqa_rl/training/opd_rollout.py",
+        "https://github.com/zhang-yu-wei/Muted-Distillation/blob/bca5cf4bc759c1407f95a2e23021dace243fe7fa/third_party/slime/slime/backends/megatron_utils/loss.py",
+        "https://huggingface.co/YWZBrandon",
+        "https://huggingface.co/YWZBrandon/qwen3.5-4b-officeqa-aod2op-tail-last-it139"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.28445",
+      "status": "pending",
+      "checkedAt": "2026-11-24T04:33:39.591832+00:00"
+    }
   }
 ]
