@@ -30869,5 +30869,239 @@
       "status": "pending",
       "checkedAt": "2026-11-24T10:28:51.302272+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.29193",
+    "url": "https://arxiv.org/abs/2611.29193v1",
+    "id": "paper-dfpo-2611-29193",
+    "title": "DFPO：改写失败轨迹后，先真实重放验证，再训练变化的动作",
+    "summary": "DFPO把测试失败触发的历史改写与真实重放组成局部训练对，只更新改变的assistant token。同样开启训练和评测重写时，SWE-rebench avg@3由GSPO的21.8%升至28.5%；这是作者报告的Qwen实验。",
+    "insight": "本站判断：它为行动Hint后的轨迹改写提供了可检验的训练单位——同一前缀、同一测试版本、真实状态与观察。更关键的是明确重写token的概率比只是代理目标，不能因轨迹来自当前模型就把全部监督称为on-policy。",
+    "limits": "未复现；仅Qwen3.5-35B-A3B，无Opus5.5/Fable5.2验证。评测保留历史重写，不是撤除Hint后的迁移证据；单主轨迹仍包含重试、重放与测试成本。",
+    "organization": "Alibaba Group",
+    "dateLabel": "2026-11-22首发v1",
+    "evidence": "已核arXiv版本史、v1方法、实验与局限；verified仅指来源核验，未复现实验。",
+    "originalTitle": "Direct Feedback Policy Optimization for AI Coding Agents",
+    "date": "2026-11-22",
+    "checkedAt": "2026-11-24T16:26:16.360265Z",
+    "originalDate": "2026-11-22",
+    "paperOriginalDate": "2026-11-22T03:36:09Z",
+    "paperUpdatedAt": "2026-11-22T03:36:09Z",
+    "updatedAt": "2026-11-22T03:36:09Z",
+    "firstSeenAt": "2026-11-24T04:00:01Z",
+    "lastSeenAt": "2026-11-24T04:00:01Z",
+    "tags": [
+      "CoT",
+      "Hint",
+      "行动反馈",
+      "轨迹修复",
+      "过程监督",
+      "代码Agent"
+    ],
+    "authors": [
+      "Fei Ding"
+    ],
+    "topics": [],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv v1固定版本",
+        "url": "https://arxiv.org/abs/2611.29193v1"
+      },
+      {
+        "label": "arXiv原论文与提交记录",
+        "url": "https://arxiv.org/abs/2611.29193"
+      },
+      {
+        "label": "v1方法、实验、消融与局限全文",
+        "url": "https://arxiv.org/html/2611.29193v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "利用实际测试反馈改写过去动作，重放通过后形成正负训练对；训练聚焦改动token，部署评测仍允许同样的历史重写。",
+      "motivation": "终局分数难定位多轮代码任务中的错误；失败后的修复还会改变历史与仓库状态。作者尝试把可重放验证的局部改写变成监督，减少另采完整对照轨迹的需要。",
+      "novelty": "作者主张：以单条主轨迹内的验证修复构造token级直接反馈优化。本站判断：值得借鉴的是重放一致性与局部监督；编辑距离不等于因果归因，当前结果也不能证明无Hint迁移。",
+      "evidenceScope": "直接读取v1 HTML §3.1–3.4、§4表1–3、§5–6及附录相关工作，并核提交史。主实验Qwen3.5-35B-A3B、LoRA训练400题；SWE-rebench测试110题，指标为avg@3。共同重写协议下GSPO/DFPO为21.8%/28.5%；同修复对、前缀、mask的SFT为24.2%。作者称训练方法三种子取均值、匹配端到端GPU小时；本轮未核运行产物或复现。",
+      "limits": "未复现；仅Qwen，无Opus5.5/Fable5.2实测；评测保留重写，不是无Hint迁移。自查测试作弊仍由同一策略承担，弱测试和不稳定重放可能偏置样本。R≤0任务被跳过，重写token采用代理比率；表中未给种子方差或完整成本明细。不能由单主轨迹推出总加速，也不能将不同harness分数直接比较。",
+      "method": [
+        "每轮每题启动一条主轨迹。局部测试失败时保留原输出、前缀和真实错误，由同一策略生成修复计划及修改历史assistant输出的命令。",
+        "在工作副本应用改写，真实重放受影响的代码操作；测试若改动，两版本须用相同新测试重验。仅原版失败、修订通过且模型未判定测试作弊时接受。",
+        "将验证后的输出及真实工具观察拼回原位置继续执行；失败修复可反复重写。终局奖励R>0的任务参与训练，正分不等于所有目标及回归测试均通过。",
+        "对原版与修订版做token编辑距离对齐，只监督变化的assistant token。接受侧权重+R、原侧−R；多次失败修复平分总负权重，工具观察仅作条件。",
+        "用冻结旧策略构造裁剪对比目标。直接重写token是在改写后的前缀下重新评分的代理比率，并非原改写选择过程的精确行为概率；训练和评测均保留重写与重放。"
+      ],
+      "inspirations": [
+        "固定同题、失败前缀、测试版本和实际仓库状态，对比只追加反馈与改写后重放；把“测试被放宽”和“环境未同步”的样本单列审计。",
+        "在完全相同的修复样本上比较整段模仿、改动token模仿和正负对比监督；分别统计原本可解、提示后才可解及未见题的结果，定位混训取舍。",
+        "为Hint保留与撤除建立独立评测格，统一生成token、工具调用和总时间预算；记录哪些token为真实采样、哪些来自重写，避免把上下文删除当成分布匹配。"
+      ],
+      "reviewedAt": "2026-11-24T16:26:16.360265Z",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.29193",
+        "https://arxiv.org/abs/2611.29193v1",
+        "https://arxiv.org/html/2611.29193v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.29193",
+      "status": "pending",
+      "checkedAt": "2026-11-24T16:25:07.278401+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.30013",
+    "url": "https://arxiv.org/abs/2611.30013",
+    "id": "paper-gamefactory-motion-2611-30013",
+    "title": "3AGameFactory-Motion：让Agent写动作参数，再独立检查骨架、阶段与反捷径条件",
+    "summary": "DivDynBench覆盖50种3D资产的850条动作任务；Agent编写骨架与分阶段动作参数，确定性执行器负责蒙皮、运动学和几何修正。参考骨架上，作者记作Claude-ops5.5的模型Overall由48.19升至50.07，但审美分下降，不能把控制精度提升等同可直接交付。",
+    "insight": "把“想做什么”写成可编辑阶段、关节目标和接触窗口，再让执行器解决骨长与可达性，能减少Agent逐帧编坐标的负担。独立验收还需先排除用整体平移替代肢体动作等捷径，再分开报告数值遵循、动作完整度、技术质量与审美；这是推理时程序生成与执行分工，没有训练新动作模型或证明撤去工具后的能力迁移。",
+    "limits": "未独立运行或复现。主动作表使用参考骨架，不能称从任意裸网格到高质量动作的端到端成功率；Overall为0–100加权分，原文Claude-ops5.5的审美分52.52→51.44，非各项都提升。保留论文模型名Claude-ops5.5，未将其自动等同另一正式型号。绑骨Source Fidelity 100%指源网格保持及提交有效性，不等于完美骨架或动作；表3只评49资产。论文称排除一个相似蜘蛛，公开数据卡进一步记载long_leg_spider旧GT与源网格顶点不符；当前发布修复了它并清理6个源资产原带骨架/动画，复现旧分数应固定版本及49清单。完整judge与聚合实现未由该数据包发布；论文称每项判断一次，发布scoring_rules却写3次取中位数，不能将配置当作论文实际运行次数。不同管线最大回合3–5不一，表6的numeric spec输入与隐藏评分规格边界仍需复现确认。30人主观研究只核三个方法的部分样本排序；附录运动学消融主要是案例，未形成全850任务的重复运行显著性证据。",
+    "dateLabel": "2026-11-23",
+    "evidence": "原论文方法、实验与评分附录、固定提交执行器和公开数据卡已核验；未复现实验",
+    "originalTitle": "3AGameFactory-Motion: Agentic Rigging and Reliable Complex Motion Generation for Diverse 3D Assets",
+    "date": "2026-11-23",
+    "checkedAt": "2026-11-24T16:27:32.566562+00:00",
+    "originalDate": "2026-11-23",
+    "paperOriginalDate": "2026-11-23T04:16:51Z",
+    "paperUpdatedAt": "2026-11-23T04:16:51Z",
+    "updatedAt": "2026-11-23T04:16:51Z",
+    "firstSeenAt": "2026-11-24T10:00:00Z",
+    "lastSeenAt": "2026-11-24T16:00:00Z",
+    "tags": [
+      "Agent systems",
+      "参数化动作程序",
+      "可编辑骨架",
+      "DivDynBench",
+      "运动学求解",
+      "反捷径评测"
+    ],
+    "authors": [
+      "Bohan Zeng",
+      "Kaixin Zhu",
+      "Yifan Yang",
+      "Dongge Yu",
+      "Zihao Wu",
+      "Yifan Dai",
+      "Zhou Liu",
+      "Junbo Niu",
+      "Xiaochen Ma",
+      "Shiran Ge",
+      "Zimo Meng",
+      "Junzhu Liang",
+      "Huanyao Zhang",
+      "Jinhang Liu",
+      "Tianqi Xiao",
+      "Jinhao Zhang",
+      "Tianyi Bai",
+      "Zhixiong Zeng",
+      "Penghao Zhao",
+      "Yuanbo Peng",
+      "Key Zhang",
+      "Wentao Zhang"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2motion"
+    ],
+    "featured": true,
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.30013"
+      },
+      {
+        "label": "arXiv v1 方法、实验与评分附录",
+        "url": "https://arxiv.org/html/2611.30013v1"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/OpenDCAI/GameFactory-3A"
+      },
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.30013v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.30013"
+      },
+      {
+        "label": "作者论文说明与代码入口（固定提交）",
+        "url": "https://github.com/OpenDCAI/GameFactory-3A/blob/889fcac0dd974cf8eab64a507ece3d5c6ecba7ff/docs/GameFactory3A-Motion/README.md"
+      },
+      {
+        "label": "动作参数程序执行器（固定提交）",
+        "url": "https://github.com/OpenDCAI/GameFactory-3A/blob/889fcac0dd974cf8eab64a507ece3d5c6ecba7ff/operators/gen_motion/funcs/vibe_motion_utils/motion_utils/program.py"
+      },
+      {
+        "label": "骨链运动学求解（固定提交）",
+        "url": "https://github.com/OpenDCAI/GameFactory-3A/blob/889fcac0dd974cf8eab64a507ece3d5c6ecba7ff/operators/gen_motion/funcs/vibe_motion_utils/motion_utils/kinematics.py"
+      },
+      {
+        "label": "公开 DivDynBench 数据卡",
+        "url": "https://huggingface.co/datasets/zbhpku/DivDynBench"
+      },
+      {
+        "label": "数据卡固定版本与49/50资产修复说明",
+        "url": "https://huggingface.co/datasets/zbhpku/DivDynBench/blob/352629f742141bbbf23bad230a3fb16f60143bdf/README.md"
+      },
+      {
+        "label": "发布评分规则（与论文存在口径差异）",
+        "url": "https://huggingface.co/datasets/zbhpku/DivDynBench/blob/352629f742141bbbf23bad230a3fb16f60143bdf/scoring_rules.json"
+      },
+      {
+        "label": "公开人形180任务、结构化规格及反捷径条款",
+        "url": "https://huggingface.co/datasets/zbhpku/DivDynBench/blob/352629f742141bbbf23bad230a3fb16f60143bdf/human.jsonl"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Agent写骨架配置和动作程序，确定性执行器保持骨长并检查网格。850任务中，Claude-ops5.5配对Overall提高1.88分，但审美下降；均为量表分数，非成功率。",
+      "motivation": "现有动作模型常围绕人形或短语，难满足异形资产的阶段、角度、时序和轨迹要求。自然姿势或生成视频也不直接提供可编辑骨架；需要分开动作意图、程序执行与独立验收。",
+      "novelty": "作者主张：跨形态强约束基准与Agentic Motion Framework提升绑骨及动作控制。本站判断：价值在语义参数程序、确定性执行与独立验收的分工；证据不支持完美自动动画或等预算普遍最优。",
+      "evidenceScope": "已阅读全文v1的方法§3–4、实验§5及补充§7–9，核对表3–6和表9的绑骨/参考骨架/预测骨架边界、评分公式、反捷径条款与人评。已静态阅读作者仓库固定提交889fcac0dd974cf8eab64a507ece3d5c6ecba7ff的论文README、动作程序、骨链求解及网格检查；读取公开HF数据卡及固定352629f742141bbbf23bad230a3fb16f60143bdf版本的scoring_rules和human.jsonl（本地计数180任务，90文本/90数值）。未执行代码、下载大型GLB、逐帧验收作者视频或独立复现实验。表4 Claude-ops5.5配对Accuracy47.03→50.72、Overall48.19→50.07、Aesthetics52.52→51.44；这些是论文量表分数，不是本站测得成功率。代码与公开数据存在，完整评审聚合协议仍不在数据包范围内。 详细方法与研究建议补充：现有动作模型常围绕人形或短语训练，难满足多足、长轴、翼、混合肢体和机械资产的多阶段动作，以及明确角度、时间、重复次数与轨迹条件。生成视频或看似自然的姿势也不直接交付可编辑骨架；需要把动作意图、实际执行和独立判分拆开。 建立DivDynBench：50个GLB源资产覆盖六类形态，配手工骨架与蒙皮；850任务包括428条文本任务和422条数值任务，预先固定阶段、rubric与数值检查。裸网格绑骨与参考骨架上的动作生成分别评估，避免把两类失败混为一谈。 Agent根据校准多视角识别部件、关节和骨链，写参数化骨架配置；执行器恢复三维层级，通过距离权重、测地约束平滑及部件掩码完成蒙皮，再用探测姿势检查。 Agent写可编辑动作程序：显式设置时长、帧率、阶段/事件、根轨迹、每条骨链的动作算子、目标和接触窗口。整体路径与局部肢体动作分别参数化，避免用整体移动冒充指定动作。 确定性Python执行器执行前向/逆向运动学；骨链在受限的单参数弯曲族内求解并保持骨长，不可达目标保留残差。执行器叠加小幅接触/避碰修正，每次几何目标分数须下降、最多五次重解；仍失败则由Agent在新回合改程序，再导出动画GLB/BVH。这里只静态核验公开实现，未运行导出。 独立评测导出资产：数值任务按30fps测量信号、时间窗和容差，反捷径失败使Accuracy归零；文本按固定分项和核心动作门槛评分，伪通过会使多个维度归零。最终分开报Semantic/Accuracy、Completeness、Morphology、Quality、Aesthetics及加权Overall，不以执行器自查报告代替基准验收。 作者主张：以跨形态、强时间/数值约束的DivDynBench与Agentic Motion Framework，提高任意3D资产的绑骨可靠性和动作控制。本站判断：实用贡献是把语义程序作者与确定性运动学执行器分开，并把“动作看起来像”落实为部件、阶段、接触和反捷径检查；现有证据不支持完美自动动画、全面胜过专用生成器或等预算的普遍最优。 为代码动作生成设计小型中间表示：每段显式给目标部件、时间窗、角度/路径和接触条件；先验收执行器不变量，再对最终GLB做外部检查。比较直接写坐标与参数程序时，固定同一模型、任务、回合和总费用；这仍是待运行研究建议。 在加权视觉评分前加入可观测的反捷径门槛：检查身体平移是否替代肢体动作、足端是否真的离地、重复次数是否完成。逐项保存实测值、容差和失败证据，避免整体观感掩盖某个必需动作缺失。 同时报参考骨架与预测骨架结果，并把数值遵循和审美放在独立列。公开数据要固定源网格/GT版本及评分协议；当前49/50资产修复和judge重复次数差异提醒我们，能下载数据还不等于能原样复现表格。",
+      "limits": "未独立运行或复现。主动作表使用参考骨架，不能称从任意裸网格到高质量动作的端到端成功率；Overall为0–100加权分，原文Claude-ops5.5的审美分52.52→51.44，非各项都提升。保留论文模型名Claude-ops5.5，未将其自动等同另一正式型号。绑骨Source Fidelity 100%指源网格保持及提交有效性，不等于完美骨架或动作；表3只评49资产。论文称排除一个相似蜘蛛，公开数据卡进一步记载long_leg_spider旧GT与源网格顶点不符；当前发布修复了它并清理6个源资产原带骨架/动画，复现旧分数应固定版本及49清单。完整judge与聚合实现未由该数据包发布；论文称每项判断一次，发布scoring_rules却写3次取中位数，不能将配置当作论文实际运行次数。不同管线最大回合3–5不一，表6的numeric spec输入与隐藏评分规格边界仍需复现确认。30人主观研究只核三个方法的部分样本排序；附录运动学消融主要是案例，未形成全850任务的重复运行显著性证据。",
+      "method": [
+        "建立50资产、六类形态的DivDynBench，配手工骨架与蒙皮。850任务含428文本/422数值任务；预先固定rubric与检查，分开评估裸网格绑骨和参考骨架上的动作。",
+        "Agent据校准多视角标注部件、关节和骨链，写骨架配置；执行器重建三维层级，用距离权重、测地约束平滑和部件掩码蒙皮，再以探测姿势检查。",
+        "Agent写显式时长、阶段/事件、根轨迹、骨链算子、目标与接触窗口。整体路径和局部动作分开参数化，避免整体移动替代指定肢体动作。",
+        "执行器在受限单参数弯曲族内求解并保持骨长；叠加接触/避碰修正，分数须下降且最多五次重解。仍失败则Agent另开回合改程序，再导出GLB/BVH；本站未运行。",
+        "独立检查导出资产：数值任务按30fps测量窗口与容差，反捷径失败使Accuracy归零；文本检查核心动作和分项。各维度与加权Overall分别报告，不以执行器自查替代验收。"
+      ],
+      "inspirations": [
+        "把目标部件、时间窗、角度/路径和接触条件写成可编辑中间表示。固定同模型、任务和总预算，对比直接写坐标与参数程序，并从最终GLB独立验收。",
+        "视觉加权评分前先检查反捷径：整体平移是否替代肢体、足端是否离地、重复次数是否完成。保存实测值、容差与失败证据，避免观感掩盖动作缺失。",
+        "分列参考骨架/预测骨架结果及数值遵循/审美。固定网格、GT和judge版本；49/50资产修复与评分次数差异说明，可下载数据不等于能原样复现表格。"
+      ],
+      "reviewedAt": "2026-11-24T16:27:32.566562+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.30013v1",
+        "https://huggingface.co/papers/2611.30013",
+        "https://arxiv.org/abs/2611.30013",
+        "https://github.com/OpenDCAI/GameFactory-3A",
+        "https://arxiv.org/html/2611.30013v1",
+        "https://github.com/OpenDCAI/GameFactory-3A/blob/889fcac0dd974cf8eab64a507ece3d5c6ecba7ff/docs/GameFactory3A-Motion/README.md",
+        "https://github.com/OpenDCAI/GameFactory-3A/blob/889fcac0dd974cf8eab64a507ece3d5c6ecba7ff/operators/gen_motion/funcs/vibe_motion_utils/motion_utils/program.py",
+        "https://github.com/OpenDCAI/GameFactory-3A/blob/889fcac0dd974cf8eab64a507ece3d5c6ecba7ff/operators/gen_motion/funcs/vibe_motion_utils/motion_utils/kinematics.py",
+        "https://huggingface.co/datasets/zbhpku/DivDynBench",
+        "https://huggingface.co/datasets/zbhpku/DivDynBench/blob/352629f742141bbbf23bad230a3fb16f60143bdf/README.md",
+        "https://huggingface.co/datasets/zbhpku/DivDynBench/blob/352629f742141bbbf23bad230a3fb16f60143bdf/scoring_rules.json",
+        "https://huggingface.co/datasets/zbhpku/DivDynBench/blob/352629f742141bbbf23bad230a3fb16f60143bdf/human.jsonl"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.30013",
+      "status": "pending",
+      "checkedAt": "2026-11-24T16:25:07.278401+00:00"
+    }
   }
 ]
