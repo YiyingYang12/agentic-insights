@@ -31445,5 +31445,393 @@
         "https://openai.com/business/customer-stories/ifood/"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.32246",
+    "url": "https://arxiv.org/abs/2611.32246v1",
+    "id": "paper-skillcore-scaffold-removed-2611-32246",
+    "title": "SkillCore：删掉技能脚手架后学行动，也要保住必要的技能调用",
+    "summary": "SkillCore把已有技能引导轨迹改成不含目标技能内容的SFT样本。无技能受控续写评分改善，但只训这类数据会明显抑制必要技能调用；加入原生轨迹能恢复调用倾向，同时增加外部技能依赖。",
+    "insight": "删去Hint不保证动作分布已变成无Hint策略。应把离线编辑、无Hint重新采样和必要工具路由分开评估，避免把续写质量、技能调用率或同一评审模型的偏好当作闭环成功率。",
+    "limits": "未复现；Opus4.8负责标注/编辑/评审，非Opus5.5/Fable5.2。无技能评测最多3轮且回放工具结果，非闭环成功；54.4%/24.8%来自不同设置，单种子无区间。原始轨迹生成模型未明确，不能视作学生当前策略的on-policy数据。论文称留出，但缺少可复核的数据去重、划分和公开样本；原生技能调用恢复不等于后续任务成功。",
+    "organization": "香港中文大学 / 腾讯WorkBuddy / 港科大（广州） / 浙江大学",
+    "dateLabel": "2026-11-24 · v1 · 首发",
+    "evidence": "已核原论文方法、实验和限制；来源核验不代表实验复现",
+    "originalTitle": "SkillCore: Internalizing Generalizable Skills via Scaffolding-Removed Fine-Tuning",
+    "date": "2026-11-24",
+    "checkedAt": "2026-11-25T04:26:15.400695+00:00",
+    "originalDate": "2026-11-24",
+    "paperOriginalDate": "2026-11-24T09:23:45Z",
+    "paperUpdatedAt": "2026-11-24T09:23:45Z",
+    "updatedAt": "2026-11-24T09:23:45Z",
+    "firstSeenAt": "2026-11-25T04:00:01Z",
+    "lastSeenAt": "2026-11-25T04:00:01Z",
+    "tags": [
+      "CoT",
+      "Hint",
+      "技能内化",
+      "离线SFT",
+      "能力保持"
+    ],
+    "authors": [
+      "Yi Liu",
+      "Changqing Ai",
+      "Peijie Dong",
+      "Xiankun Lin",
+      "Yongkang Yang",
+      "Zhezheng Hao",
+      "Xilin Xia",
+      "Hande Dong",
+      "Qiang Lin",
+      "Qiang Xu"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "固定v1元数据",
+        "url": "https://arxiv.org/abs/2611.32246v1"
+      },
+      {
+        "label": "arXiv摘要与版本史",
+        "url": "https://arxiv.org/abs/2611.32246"
+      },
+      {
+        "label": "固定v1原文方法与实验",
+        "url": "https://arxiv.org/html/2611.32246v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "离线删去技能脚手架后做SFT，可改善无目标技能内容的受控续写，但会压低必要技能调用；混入原生技能数据能恢复调用，代价是更依赖外部技能。",
+      "motivation": "可泛化的调试、核验流程不应只在加载技能后才生效；但外部接口和任务专用资源仍需调用，内化训练必须同时守住这两种行为。",
+      "novelty": "作者主张以离线脚手架移除实现通用技能内化，同时保留专用技能路由。本站判断：同源保留/删除对照及原生数据比例消融最有价值；实际证据仍是受控续写和路由，尚非无Hint闭环成功。",
+      "evidenceScope": "已读原文§3方法、§4全部实验、§5分析及Limitations。原池3352057条，108514条有效技能轨迹，选44960条注释，得到10037条移除候选；65,536 Token过滤后的最终训练数未明确。原始生成模型未披露；Opus4.8为标注、局部编辑、语义审核和裁判，非已证实的轨迹教师。8B纯移除训练续写偏好胜率82.8%、1–5评分+1.23；72B核心集+0.45，扩容且不截断集+0.70（24.8%）。默认mix25为native:removed=25%，即混合总量20%；8B/72B评分仅+1.00/+0.22，路由调用率52.6%/65.8%，近基线50.0%/65.4%。纯移除路由掉至13.2%/7.0%，说明恢复有代价。348题含381题技能对，152对的120技能未进最终训练集；不是所有任务技能全未见。单seed42、每检查点每题一次确定生成和一次Opus4.8评分；未运行训练、未取得可复核样本或模型发布。",
+      "limits": "未复现；Opus4.8负责标注/编辑/评审，非Opus5.5/Fable5.2。无技能评测最多3轮且回放工具结果，非闭环成功；54.4%/24.8%来自不同设置，单种子无区间。原始轨迹生成模型未明确，不能视作学生当前策略的on-policy数据。论文称留出，但缺少可复核的数据去重、划分和公开样本；原生技能调用恢复不等于后续任务成功。",
+      "method": [
+        "从真实轨迹筛选已加载并使用技能的样本，由Opus4.8标注质量与通用性；只移除可泛化技能，任务专用技能保留。",
+        "独立可定位的技能调用、文档和加载话语直接删；内容耦合时由Opus4.8局部改写，保留后续实质动作，不重新采样轨迹。",
+        "结构检查核对工具配对、系统消息和非目标技能；再让Opus4.8审核任务意图、动作保留、连贯性及后续技能文件访问。",
+        "对Qwen3-8B和经过Agent后训练的Qwen2.5-72B全参SFT；只监督助手语言与工具调用，默认原生技能:删脚手架轨迹为1:4。",
+        "在348题上从目标技能调用前续写最多3轮、回放源工具结果并评分；另用228题测下一步技能路由，以SWE-bench Verified检查一般代码能力。"
+      ],
+      "inspirations": [
+        "在同一题集对照保留Hint、精确删除、局部改写、无Hint重新采样；单列工具结果与新动作不匹配的样本，检验离线编辑造成的状态偏移。",
+        "加入必须查外部信息的题，联合看无Hint闭环成功、必要工具调用与调用后成功；扫描原生数据比例，防止把少调用误当内化。",
+        "按题族和技能划分未见集，固定预算做多种子评测；补独立评审与实际执行，避免同一模型兼任编辑和裁判放大风格收益。"
+      ],
+      "reviewedAt": "2026-11-25T04:26:15.400695+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.32246",
+        "https://arxiv.org/abs/2611.32246v1",
+        "https://arxiv.org/html/2611.32246v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.32246",
+      "status": "pending",
+      "checkedAt": "2026-11-25T04:26:15.557402+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.32131",
+    "url": "https://arxiv.org/abs/2611.32131v1",
+    "id": "paper-reasoning-effort-dense-anchor-2611-32131",
+    "title": "Reasoning Effort Training：用逐Token约束保住高档，再学提示控制的省算力策略",
+    "summary": "只用长度惩罚联合训练多个effort档位，会把高档也拉短。论文对比按学生新采样状态做教师蒸馏，与高档逐Token KL约束加自然语言档位提示；后者在保留外部effort条件下，较快形成可区分的长度档位。",
+    "insight": "不同训练目标共用参数时，只混入旧任务并不自动保住旧行为；可对需保持的策略加局部概率约束，并把单轮推理长度、交互轮数和任务成功分开统计。该论文提供预算控制线索，不是去Hint内化证明。",
+    "limits": "未复现；无Opus5.5/Fable5.2实测。评测仍按外部effort条件运行，未测撤提示迁移；reference已是OPD检查点，20/25步非总训练成本。切分、种子误差与完整算力披露不足。AIME/IFEval亦出现于训练，不能都当未见题；部分曲线由图像重建，低档缩短也会损失准确率。分档能力不等于自主决定何时行动或停止。",
+    "organization": "百度 ERNIE团队",
+    "dateLabel": "2026-11-24 · v1 · 首发",
+    "evidence": "已核原论文方法、实验和限制；来源核验不代表实验复现",
+    "originalTitle": "Rethinking Reasoning Effort Training in Large Language Models: On-Policy Distillation or Reinforcement Learning?",
+    "date": "2026-11-24",
+    "checkedAt": "2026-11-25T04:26:15.400695+00:00",
+    "originalDate": "2026-11-24",
+    "paperOriginalDate": "2026-11-24T07:45:23Z",
+    "paperUpdatedAt": "2026-11-24T07:45:23Z",
+    "updatedAt": "2026-11-24T07:45:23Z",
+    "firstSeenAt": "2026-11-25T04:00:01Z",
+    "lastSeenAt": "2026-11-25T04:00:01Z",
+    "tags": [
+      "CoT",
+      "Hint",
+      "on-policy蒸馏",
+      "推理预算",
+      "KL约束",
+      "能力保持"
+    ],
+    "authors": [
+      "Tianliang Lv",
+      "Hao Li",
+      "Xinchao Xu",
+      "Zhengkun Zhang",
+      "Ju Huo"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "固定v1元数据",
+        "url": "https://arxiv.org/abs/2611.32131v1"
+      },
+      {
+        "label": "arXiv摘要与版本史",
+        "url": "https://arxiv.org/abs/2611.32131"
+      },
+      {
+        "label": "固定v1原文方法与实验",
+        "url": "https://arxiv.org/html/2611.32131v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "长度惩罚能压缩单个策略，却可能把多档位一起拉短；对高档加逐Token KL约束，再用自然语言说明档位，可更快学会有条件的算力分配，尚未验证撤掉提示。",
+      "motivation": "低档节省推理与高档保留能力共用参数，序列总分难指定哪些继续或停止决策应改变；还需分清单轮省Token与多轮少行动是否能迁移。",
+      "novelty": "作者主张把多档位干扰归结到监督密度与状态覆盖，并给出高档KL约束加语义提示方案。本站判断：保持约束和交互格式对照可借鉴；效果依赖条件化策略及原模型基础，不能推广成撤Hint迁移或无损压缩。",
+      "evidenceScope": "已读原文§2–5方法、机制和配方，§6讨论、§8限制及附录A/B关键表。Qwen3-8B用于压缩/奖励粒度研究；GLM-4.5-Air用于多教师OPD和格式迁移；提示引导配方使用DeepSeek-V4-Flash与GLM-4.5-Air，无Opus/Fable教师或学生。OPD教师是同模型家族压缩检查点，学生从高档初始化，按自身当前条件策略采样；teacher不重新生成完整目标轨迹。高档KL参考为冻结初始化；附录A.4说明比较用reference本身是多教师OPD检查点。含Agent数据的GLM OPD在33项上high宏平均71.0对参考67.9，low比high少约58%思考Token；只用单轮蒸馏则多轮档位塌缩或反转。Prompt方案只用单轮训练，但10个有长度记录的代码/Agent基准×2模型中19/20满足长度顺序；不代表19/20任务成功。通用/推理子集DeepSeek高/中/低相对参考长度93%/57%/34%，得分67.22/65.39/62.89。未报告提示撤除实验；20/25训练步不含参考构建、教师及评估成本。AIME/IFEval为训练内分布分析，未取得逐题去重与种子级原始数据，未复现。",
+      "limits": "未复现；无Opus5.5/Fable5.2实测。评测仍按外部effort条件运行，未测撤提示迁移；reference已是OPD检查点，20/25步非总训练成本。切分、种子误差与完整算力披露不足。AIME/IFEval亦出现于训练，不能都当未见题；部分曲线由图像重建，低档缩短也会损失准确率。分档能力不等于自主决定何时行动或停止。",
+      "method": [
+        "先在Qwen3-8B、GLM-4.5-Air上用GSPO和长度惩罚压缩单策略；放宽评测上限，区分学会停止与被硬截断。",
+        "把GLM不同预算检查点作教师；学生按档位条件新采样，教师在学生访问的前缀上给Token概率，以反向KL蒸馏，不是删Hint后复用旧轨迹。",
+        "比较单轮数据与含Agent交互数据的蒸馏，分开测单轮档位、多轮工具观察后的继续行动，以及高档原有成绩是否下降。",
+        "单阶段方案对低/中档用正确性与长度奖励，对高档在当前采样状态上逐Token约束接近冻结初始化策略，保留停止概率等行为。",
+        "给各档添加自然语言effort说明；在DeepSeek-V4-Flash/GLM-4.5-Air上训20/25步，按外部指定档位比较24项分数和可得的20项长度。"
+      ],
+      "inspirations": [
+        "对要保留的无Hint策略单设回归集和逐Token参考约束，与只加旧数据混训对照；实际检验成功率，不能由KL小直接推断能力不退化。",
+        "用训练格式×评测格式交叉表检查迁移：同时记录每轮思考Token、工具轮数、总Token和失败；单轮压缩不代表少做无效行动。",
+        "对自然语言提示做保留、改写、撤除三种留出评测，匹配总预算与准确率；区分借用了指令先验、仍依赖提示和真正内化。"
+      ],
+      "reviewedAt": "2026-11-25T04:26:15.400695+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.32131",
+        "https://arxiv.org/abs/2611.32131v1",
+        "https://arxiv.org/html/2611.32131v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.32131",
+      "status": "pending",
+      "checkedAt": "2026-11-25T04:29:13.931149+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.31590",
+    "url": "https://arxiv.org/abs/2611.31590",
+    "id": "paper-goldibench-2611-31590",
+    "title": "GoldiBench：会调用编辑工具，不等于知道参数该调多少",
+    "summary": "500题覆盖五款专业编辑软件。150题程序通道L2子集中，Claude Opus 5.5从12.7%提高到34.0%，条件是工具效果表加目标差值统计；另500题强制四轮比较从13.4%提高到29.8%。两组分母和辅助条件不同，均未证明撤Hint后的能力迁移。",
+    "insight": "可执行目标把“工具选对了”与“效果达到指定程度”分开。对代码创作，更值得复用的是参数程序、真实渲染、独立量测和停止决策的闭环；Hint必须细分成工具校准表、目标差值统计和每轮评分，固定样本与总预算后再讨论因果作用。Blender子集确实改变场景参数，但整个基准不等同自由3D生成或视频剪辑。",
+    "limits": "未复现；统计Hint在评测时仍可见目标图，并附工具效果表，不是训练或撤Hint迁移。150题Hint与500题强制四轮不可混算，后者改变实际交互/渲染预算，未给等总token/费用对照。人评仅一位非专业调色师；代码创作仅涉及100题Blender子集。全部主任务是全局单图效果调整，不评视频时间线、自由建模或任意代码生成。程序是有限操作库的结构化参数，Blender修改灯光、地面材质与雾后重渲染，非生成任意3D资产。主表闭源模型仅一次运行；任务bootstrap区间不等于跨随机种子稳健性。L1给工具和数值且不显示目标图，L2给目标图与工具但不给数值，输入条件不完全相同。效果阈值按已筛选任务标定，不能等同通用审美或商业可交付性；边界强度人评一致率仅48–58%。GUI不同模型接口不一致，程序四次渲染与GUI一百步也非等预算。论文原始日志不含完整推理文本，开放模型未记录token；论文后完整回复抽样重跑不等于原实验轨迹。HF数据卡的公开PlayRaw重渲染素材覆盖154/160题，其余6题无明确许可不提供图像；不能把附加真实编辑集全部称为可运行。",
+    "dateLabel": "2026-11-23",
+    "evidence": "原论文方法、实验及附录、固定提交代码与公开数据/日志卡已核验；未复现",
+    "originalTitle": "GoldiBench: Right Tools, Wrong Amount -- Benchmarking Agents on Effect Judgement in Professional Editing",
+    "date": "2026-11-23",
+    "checkedAt": "2026-11-25T04:28:21.616738+00:00",
+    "originalDate": "2026-11-23",
+    "paperOriginalDate": "2026-11-23T21:37:22Z",
+    "paperUpdatedAt": "2026-11-23T21:37:22Z",
+    "updatedAt": "2026-11-23T21:37:22Z",
+    "firstSeenAt": "2026-11-25T04:00:01Z",
+    "lastSeenAt": "2026-11-25T04:00:01Z",
+    "tags": [
+      "Evaluation",
+      "效果强度",
+      "可执行参数程序",
+      "Blender",
+      "视觉反馈",
+      "Hint消融"
+    ],
+    "authors": [
+      "Wang Yang",
+      "Xinpeng Li",
+      "Yanyan Zhang",
+      "Chaoda Song",
+      "Shouren Wang",
+      "Debargha Ganguly",
+      "Vikash Singh",
+      "Chuang Ma",
+      "Xiaoran Cai",
+      "Kai Ye",
+      "Xiaotian Han",
+      "Vipin Chaudhary"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv 论文与版本史",
+        "url": "https://arxiv.org/abs/2611.31590"
+      },
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.31590v1"
+      },
+      {
+        "label": "arXiv v1 方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.31590v1"
+      },
+      {
+        "label": "作者公开项目页",
+        "url": "https://uservan.github.io/GoldiBench/"
+      },
+      {
+        "label": "公开代码说明（固定提交）",
+        "url": "https://github.com/uservan/GoldiBench/blob/4edf2c3909762f6cedf72d2e718f80368ae64614/README.md"
+      },
+      {
+        "label": "论文运行条件与记录边界（固定提交）",
+        "url": "https://github.com/uservan/GoldiBench/blob/4edf2c3909762f6cedf72d2e718f80368ae64614/docs/conditions.md"
+      },
+      {
+        "label": "统计Hint构造（固定提交）",
+        "url": "https://github.com/uservan/GoldiBench/blob/4edf2c3909762f6cedf72d2e718f80368ae64614/goldibench/bench/knowledge.py"
+      },
+      {
+        "label": "Blender参数操作库（固定提交）",
+        "url": "https://github.com/uservan/GoldiBench/blob/4edf2c3909762f6cedf72d2e718f80368ae64614/goldibench/bench/ops_blender.py"
+      },
+      {
+        "label": "渲染评分与任务验证（固定提交）",
+        "url": "https://github.com/uservan/GoldiBench/blob/4edf2c3909762f6cedf72d2e718f80368ae64614/goldibench/bench/score.py"
+      },
+      {
+        "label": "任务筛选的强度验证（固定提交）",
+        "url": "https://github.com/uservan/GoldiBench/blob/4edf2c3909762f6cedf72d2e718f80368ae64614/goldibench/bench/verify_b1.py"
+      },
+      {
+        "label": "公开数据卡（固定版本）",
+        "url": "https://huggingface.co/datasets/VanWang/GoldiBench/blob/58ab6fa4e78e12efc60e9b66f39a8d24b2ca87d0/README.md"
+      },
+      {
+        "label": "公开日志卡、成本和轨迹保存边界（固定版本）",
+        "url": "https://huggingface.co/datasets/VanWang/GoldiBench-logs/blob/2090345999873e6598ad29cd435f1bf4a974e289/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "GoldiBench分开“会操作”与“调到目标强度”：150题子集中，Claude Opus 5.5获工具效果表和目标差值Hint，L2通过率12.7%→34%；这是推理时辅助，未证明撤Hint迁移。",
+      "motivation": "真实编辑需求只描述效果，Agent还要判断参数应调多少。操作成功或VLM觉得相似，可能放过力度不足/过度；因此需要可重放目标、强度敏感指标及受控信息干预。",
+      "novelty": "作者主张：首次以目标效果强度系统区分编辑操作和判断能力。本站判断：更有价值的是同题分级、可执行目标与对照干预；统计Hint和强制回看改善推理结果，尚未证明训练后内化。",
+      "evidenceScope": "已阅读全文v1方法§3、验证§4、实验§5及附录B–E，核表2、3及干预/人评细节；读取作者项目页、固定Git提交4edf2c3909762f6cedf72d2e718f80368ae64614的README、conditions、knowledge、ops_blender、score与verify_b1；读取固定HF数据卡及日志卡。仅静态公开读取，未安装软件、执行代码、调用模型或复现表格。500主任务每应用100题，dev101/test399、417源资产，另160个PlayRaw任务单独报告。程序通道主表Claude Opus 5.5在L1/L2/L3为100/13.4/6.8%，GPT-6.1 Sol为100/19.0/13.4%，均作者高推理设置；不得把五应用宏平均当Blender成绩。仅Blender程序子集Opus为100/8/3%，GPT为100/6/5%。统计干预每应用30题合计150，代码table_state_diff同时给START上各工具参数的效果统计与TARGET−START的同类统计；包含CIELAB均值/色度、亮度标准差/分位数、边缘中心差与细节。Opus该子集默认12.7%、只工具效果表14.0%、加目标差值34.0%；GPT17.3/25.3/47.3%。所以34%不能描述为孤立差值字符串或纯文本提示的因果效应。差值图像干预仅开放模型，闭源未跑。另500题强制四轮，Opus13.4→29.8%，每轮再加数值色差为38.0%；GPT19.0→50.4→62.2%。默认虽允许四轮，Opus在99.8%、GPT在100%的L2任务首轮即停止，故不是所有条件实际迭代相同。人评913对但只有一人，整体与指标一致72.5%，边界48–58%；没有多人专业审美共识。公开日志卡成本记录含项目范围的调用，GPT费用采用假定单价且program/GUI混记，本站不据此计算四轮的成本倍率。公开脚本verify_b1的强度筛选与论文一致用0.5/1.5失败、0.9/1.1通过（裁剪例外）；README的double-strength概述及score附加over检查不能替代精确筛选协议。已核HF公开ungated元数据与文件清单，未下载大型图像包或逐条核日志。",
+      "limits": "未复现；统计Hint在评测时仍可见目标图，并附工具效果表，不是训练或撤Hint迁移。150题Hint与500题强制四轮不可混算，后者改变实际交互/渲染预算，未给等总token/费用对照。人评仅一位非专业调色师；代码创作仅涉及100题Blender子集。全部主任务是全局单图效果调整，不评视频时间线、自由建模或任意代码生成。程序是有限操作库的结构化参数，Blender修改灯光、地面材质与雾后重渲染，非生成任意3D资产。主表闭源模型仅一次运行；任务bootstrap区间不等于跨随机种子稳健性。L1给工具和数值且不显示目标图，L2给目标图与工具但不给数值，输入条件不完全相同。效果阈值按已筛选任务标定，不能等同通用审美或商业可交付性；边界强度人评一致率仅48–58%。GUI不同模型接口不一致，程序四次渲染与GUI一百步也非等预算。论文原始日志不含完整推理文本，开放模型未记录token；论文后完整回复抽样重跑不等于原实验轨迹。HF数据卡的公开PlayRaw重渲染素材覆盖154/160题，其余6题无明确许可不提供图像；不能把附加真实编辑集全部称为可运行。",
+      "method": [
+        "在五款软件各构建100题：隐藏1–5步参数程序渲染目标，经重放、可见差异、每步必要性与强度检查筛选；另用160个真实darktable编辑作补充验证。",
+        "同题拆三级：L1给工具/数值且不显示目标图；L2给起始图/目标图及工具；L3再去掉指定工具。程序最多四次渲染，GUI最多一百步，均验最后结果。",
+        "程序写有限操作库的结构化参数，由真实应用执行。Blender的100题改HDRI、太阳、地面材质与雾等场景设置后重渲染；不涉及任意建模或动画生成。",
+        "以平均CIEDE2000衡量结果对目标的色差，同时要求消除至少75%的初始差距且残差≤4；检查操作合法性，并用强度变体和人评探查指标边界。",
+        "分别测试工具手册、效果表、目标差值Hint与强制四轮比较；150题统计干预与500题迭代干预分表，额外数值色差反馈单列，避免混淆辅助与模型能力。"
+      ],
+      "inspirations": [
+        "把Hint拆成工具参数效果表、目标差值统计、逐轮误差三类，固定同一批任务与模型分别消融；对Claude Opus 5.5尤其避免把150题和500题结果拼成一条提升曲线。",
+        "为代码渲染闭环设置强制“生成→查看→比较→修正”，再做等总token/费用对照。除了有效程序比例，还报实际参数效果、最后产物与停止时机。",
+        "若研究Hint内化，另做训练时有Hint、测试时撤Hint及跨资产/操作迁移；公开论文只证明目标图存在时的推理辅助，不可直接当作无Hint学习证据。"
+      ],
+      "reviewedAt": "2026-11-25T04:28:21.616738+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.31590v1",
+        "https://arxiv.org/abs/2611.31590",
+        "https://arxiv.org/html/2611.31590v1",
+        "https://uservan.github.io/GoldiBench/",
+        "https://github.com/uservan/GoldiBench/blob/4edf2c3909762f6cedf72d2e718f80368ae64614/README.md",
+        "https://github.com/uservan/GoldiBench/blob/4edf2c3909762f6cedf72d2e718f80368ae64614/docs/conditions.md",
+        "https://github.com/uservan/GoldiBench/blob/4edf2c3909762f6cedf72d2e718f80368ae64614/goldibench/bench/knowledge.py",
+        "https://github.com/uservan/GoldiBench/blob/4edf2c3909762f6cedf72d2e718f80368ae64614/goldibench/bench/ops_blender.py",
+        "https://github.com/uservan/GoldiBench/blob/4edf2c3909762f6cedf72d2e718f80368ae64614/goldibench/bench/score.py",
+        "https://github.com/uservan/GoldiBench/blob/4edf2c3909762f6cedf72d2e718f80368ae64614/goldibench/bench/verify_b1.py",
+        "https://huggingface.co/datasets/VanWang/GoldiBench/blob/58ab6fa4e78e12efc60e9b66f39a8d24b2ca87d0/README.md",
+        "https://huggingface.co/datasets/VanWang/GoldiBench-logs/blob/2090345999873e6598ad29cd435f1bf4a974e289/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.31590",
+      "status": "pending",
+      "checkedAt": "2026-11-25T04:29:13.931149+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://github.com/anthropics/claude-code/releases/tag/v2.1.332",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.332",
+    "id": "update-claude-code-2-1-332-20261125",
+    "title": "Claude Code v2.1.332：MCP技能分发与加载前shell拦截",
+    "summary": "v2.1.332发布说明列出MCP server skills beta，以及在技能或命令加载时拒绝内联shell的PreSkillShellCommand事件。MCP技能支持文件通过资源读取；可用范围和权限需分别核对，版本公告并不等于所有部署已开放。",
+    "insight": "把技能正文、辅助资源和加载时副作用分开治理，更适合做可追踪的Agent运行层。实验应分别测技能能否发现、能否加载、实际执行与拒绝行为，不能把出现在菜单里当成工作流可靠性提升。",
+    "limits": "未安装或实测。Release将MCP skills列为v2.1.332新增，但当前文档写v2.1.331起，不能据此断言首次可用版本。该功能仍为beta且依账号、客户端与直连Anthropic条件开放；不支持Agent SDK、claude -p或云提供商连接。PreSkillShellCommand只据release核验，当前hooks文档尚未检出该事件，不能假定具体配置和返回协议。未证明这些改动提高任务成功率或阻断全部恶意技能。",
+    "organization": "Anthropic",
+    "dateLabel": "2026-11-25 · 官方版本更新",
+    "evidence": "官方release、发布时间与MCP/skills文档已核验；未运行验证",
+    "originalTitle": "v2.1.332",
+    "date": "2026-11-25",
+    "checkedAt": "2026-11-25T04:26:38.614751+00:00",
+    "originalDate": "2026-11-25",
+    "firstSeenAt": "2026-11-25T04:26:38.614751+00:00",
+    "lastSeenAt": "2026-11-25T04:26:38.614751+00:00",
+    "tags": [
+      "Anthropic",
+      "Claude Code",
+      "MCP",
+      "Skills",
+      "Agent runtime"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "Claude Code v2.1.332官方release",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.332"
+      },
+      {
+        "label": "MCP技能支持与权限文档",
+        "url": "https://code.claude.com/docs/en/mcp.md"
+      },
+      {
+        "label": "技能能力边界文档",
+        "url": "https://code.claude.com/docs/en/skills.md"
+      },
+      {
+        "label": "hooks参考页（尚无新事件条目）",
+        "url": "https://code.claude.com/docs/en/hooks.md"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "版本更新扩展MCP技能分发与技能加载时的shell控制；两者适用范围不同，公告与文档还存在版本口径差异。",
+      "motivation": "远端技能需要按来源与内容版本管理，而本地技能加载时的命令又可能先于Agent执行产生副作用，需要单独控制。",
+      "novelty": "官方新增：MCP技能beta与加载前shell hook列入本版本。本站判断：价值在分离分发、加载和执行权限；未提供可靠性或安全收益的量化证据。",
+      "evidenceScope": "已读GitHub release完整条目及MCP/skills相关文档；GitHub release时间元素和Atom一致为2026-11-25T01:32:14Z，关联提交eb8e6d253d0dbee6e52fb0d5fdcb72c9396fe3e8。当前MCP/skills文档把技能支持门槛写为v2.1.331，与v2.1.332 release的新增表述并存，不推断哪份代表首次上线。MCP技能依直接Anthropic连接、feature flag、模型/账号和客户端；终端和本地Desktop可用，VS Code仍滚动开放，SDK/headless/cloud provider等明确不支持。MCP内联!命令不执行，故不把新shell hook描述成MCP技能专属防线。当前hooks.md精确检索PreSkillShellCommand为0，未臆造schema。公告中的模型alias修正按云平台区分，未据此声称新Opus/Fable基模或Hint训练成果。",
+      "limits": "未安装或实测。Release将MCP skills列为v2.1.332新增，但当前文档写v2.1.331起，不能据此断言首次可用版本。该功能仍为beta且依账号、客户端与直连Anthropic条件开放；不支持Agent SDK、claude -p或云提供商连接。PreSkillShellCommand只据release核验，当前hooks文档尚未检出该事件，不能假定具体配置和返回协议。未证明这些改动提高任务成功率或阻断全部恶意技能。",
+      "method": [
+        "支持MCP技能的server提供正文和辅助资源，客户端以server:skill命名，供用户或模型调用。",
+        "按连接方式、账号与客户端判定可用范围，再应用服务器级规则及内容版本审批；不是所有服务器都会接受扫描。",
+        "MCP技能不执行!内联命令，也不采用本地技能的allowed-tools、hooks等字段；不能把它当本地技能的完整等价物。",
+        "Release另列PreSkillShellCommand，可在技能或命令加载时拒绝内联shell；详细配置协议尚未在当前hooks参考页核实。"
+      ],
+      "inspirations": [
+        "构造同内容的本地技能与MCP技能对照，记录发现、加载、资源读取及命令执行四个阶段，避免把不同权限语义混在一起。",
+        "把首次允许、内容更新、拒绝和异常恢复纳入回归集；固定客户端及模型版本，用外部日志检验边界而非只看Agent自述。"
+      ],
+      "reviewedAt": "2026-11-25T04:26:38.614751+00:00",
+      "sourceUrls": [
+        "https://github.com/anthropics/claude-code/releases/tag/v2.1.332",
+        "https://code.claude.com/docs/en/mcp.md",
+        "https://code.claude.com/docs/en/skills.md",
+        "https://code.claude.com/docs/en/hooks.md"
+      ]
+    }
   }
 ]
