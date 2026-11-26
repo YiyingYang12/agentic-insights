@@ -32579,5 +32579,350 @@
         "https://huggingface.co/datasets/nvidia/OCR-Synthetic-Multilingual-v2/raw/c0cfc389f3d5e2ce8c907a33363a5c55f1183b04/README.md"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.29824",
+    "url": "https://arxiv.org/abs/2611.29824v1",
+    "id": "paper-memphis-2611-29824",
+    "title": "Memphis：Opus5.5的一页Hint收益，受种子与任务知识约束",
+    "summary": "Memphis把一次真实采购装灯失败重建为模拟任务。一页混合地点知识与行动经验的Hint，使Opus5.5平均交付2.2→4.6盏，但首轮无均值收益、一个种子反降；这是推理时保留Hint的对照，没有训练或去Hint迁移证据。",
+    "insight": "应把Hint中的资源事实、通用工作顺序和针对某模型失败的补救分别消融；在冻结环境上重复运行并核每种子的损失，避免把总均值当作普遍受益。模拟器还需留出城市/供应事实与独立现实验证，才能判断行动经验是否可迁移。",
+    "limits": "未复现；只有单城单任务、5种子，无训练或撤Hint迁移。Hint混入地点/器件知识且围绕Sol失败修订；Opus种子10反降、c1无均值增益。模拟器无留出种子、同系模型兼任世界与评分，不证明真实工作收益或模型排名。Opus每条件15次，Sol最终轮每条件5次；两模型使用不同执行框架。已知模拟器错误包括技师过度准时、长途几乎总迟到及采购失败偏多，且限制到预列商店；审计只检与既定事实一致，不能验证事实覆盖充分。API费用不含世界模型用量，非等Token消耗实验。无Fable5.2结果。",
+    "dateLabel": "2026-11-22 · v1 · 首发",
+    "evidence": "已核原论文方法、实验及所列公开资料；来源核验不代表实验复现",
+    "originalTitle": "Memphis: A Case Study in Seeding an Agent Task from a Model's Real-World Attempt",
+    "date": "2026-11-22",
+    "checkedAt": "2026-11-26T14:26:08.351200+00:00",
+    "originalDate": "2026-11-22",
+    "paperOriginalDate": "2026-11-22T23:03:45Z",
+    "firstSeenAt": "2026-11-26T14:29:11.049313+00:00",
+    "tags": [
+      "Hint",
+      "Opus5.5",
+      "行动指导",
+      "环境模拟",
+      "重复采样",
+      "退化分析"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "规范原文入口",
+        "url": "https://arxiv.org/abs/2611.29824v1"
+      },
+      {
+        "label": "arXiv 原论文与版本日期",
+        "url": "https://arxiv.org/abs/2611.29824"
+      },
+      {
+        "label": "arXiv v1 方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.29824v1"
+      },
+      {
+        "label": "作者公开任务仓库与运行边界",
+        "url": "https://github.com/ia03/memphis-task"
+      },
+      {
+        "label": "作者逐种子结果、Opus配置与费用",
+        "url": "https://github.com/ia03/memphis-task/blob/main/RESULTS.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "一页地点知识与行动Hint让Opus5.5平均交付2.2→4.6盏灯，但一个种子反降、首轮无增益；仅测单任务中的外置指导，没有训练或撤Hint迁移。",
+      "motivation": "真实代理会在采购、分工和时限上反复失误；从实际失败建模拟器能复现哪些障碍，Hint又解决知识不足还是行动失误，需要分别检验。",
+      "novelty": "作者主张用模型真实失败为模拟任务提供事实与障碍。本站判断：价值在直接Opus有/无Hint和审计边界；提示含任务知识、按Sol优化，不能视作通用行动Hint或模型内化。",
+      "evidenceScope": "已读v1§2–6、§8及附录A/H/J，核作者GitHub README与RESULTS的最终轮和Opus三轮；未运行代码、未下载试验压缩包。真实尝试为Sol最大effort、5班、每工人19小时，成灯2盏；模拟只取前两班，7000埃镑不含工人工资，目标为周日17:00前尽可能多的合格灯。世界与评分模型均为GPT-6.1 Sol，世界medium；审核为独立Opus实例，无teacher-student训练。最终Sol为Codex CLI0.162.1、medium，种子10–14每条件5次，均值1.0→9.2灯，95%种子bootstrap区间分别[0,2.6]/[7.4,11.2]。Opus5.5经Claude Code2.1.311、medium、禁网页工具，冻结v12.0-rc17模拟器，每种子每条件3次，共30次；无Hint33/15=2.2灯，有Hint69/15=4.6灯。按种子合并，Hint在11/12/13改善、10变差、14持平；c1两条件都8灯，均值无收益。Opus无Hint灯数方差88%来自同种子三次之间，单轮不能稳定代表能力。两模型框架不同，Hint和模拟器开发围绕Sol；Hint还明示采购地、USB 5V升压至12V的供电知识与技师服务，不是纯领域无关提醒。Opus30次审计原标签24公平/5大致公平/1部分公平，其中c1有一条按判据应改为不公平，c1不满足接受条件而c2/c3满足。技师准时错误的重放敏感性仅针对Sol最终轮带Hint时间线：30–60分钟延误估少0.04灯/次，约2小时压力情形少1.2–2.3灯，均只计到第9灯且未重跑策略。Opus每次1–2.6小时，API标价均值带Hint3.90美元、无Hint6.34美元，输出29–92k含thinking；未计世界模型。Sol带Hint输出109–301k、无Hint420–623k，不能说更长轨迹带来收益。理论误差界未估一步误差，不提供分数现实预测保证。",
+      "limits": "未复现；只有单城单任务、5种子，无训练或撤Hint迁移。Hint混入地点/器件知识且围绕Sol失败修订；Opus种子10反降、c1无均值增益。模拟器无留出种子、同系模型兼任世界与评分，不证明真实工作收益或模型排名。Opus每条件15次，Sol最终轮每条件5次；两模型使用不同执行框架。已知模拟器错误包括技师过度准时、长途几乎总迟到及采购失败偏多，且限制到预列商店；审计只检与既定事实一致，不能验证事实覆盖充分。API费用不含世界模型用量，非等Token消耗实验。无Fable5.2结果。",
+      "method": [
+        "从Sol管理两名工人、7000埃镑造灯的真实记录提取事实；只模拟前两班，固定已见商店信息，未观察事实按5个种子采样。",
+        "Sol扮演工人、商店和城市；程序管理时间、账本及工人错误，提供消息、通信、搜索工具；评分按截止前合格灯数，超预算记0。",
+        "把作者整理的一页前任经验附到任务中，含采购地点、接线资源、成本比较与开工/交付时序；用Sol早期失败修订，测试始终保留。",
+        "冻结最终模拟器，对Sol每种子有/无Hint各跑1次；Opus5.5在相同种子与Hint下各跑3次，独立Opus实例审计每次仿真。",
+        "报告灯数、按种子聚合的重复差异、失败方式和成本；对照真实挫折率，另用时间线重放估算技师过度准时造成的偏差。"
+      ],
+      "inspirations": [
+        "做四臂对照：无Hint、仅资源事实、仅行动步骤、两者兼有；固定effort与环境种子，才能区分知道去哪买与知道何时行动的贡献。",
+        "用独立模型失败写共享Hint并冻结，再对不同模型重复运行；同时报告改善与退化种子，不让一次高分掩盖提示适配性差异。",
+        "把环境事实覆盖、仿真执行忠实度、验收器正确性分开审；新增未参与开发的种子与真实小规模任务，避免在同一模拟器上反复修到通过。"
+      ],
+      "reviewedAt": "2026-11-26T14:26:08.351200+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.29824",
+        "https://arxiv.org/html/2611.29824v1",
+        "https://github.com/ia03/memphis-task",
+        "https://github.com/ia03/memphis-task/blob/main/RESULTS.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.29824",
+      "status": "pending",
+      "checkedAt": "2026-11-26T14:28:48.692660+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.34777",
+    "url": "https://arxiv.org/abs/2611.34777v1",
+    "id": "paper-splice-2611-34777",
+    "title": "SPLICE：只教学生失败处的局部动作，用学生续跑筛选后撤去教师",
+    "summary": "SPLICE在8次学生rollout全败时，让提案模型接入失败中间点给3段局部动作，各用学生续跑3次估值，只监督有成功续跑的局部段。教师只在训练使用；两种Qwen学生的四项结果比GRPO高2.8–9.8点，但主表并非等计算预算。",
+    "insight": "局部纠错的筛选目标应是“当前学生接手后能否完成”，而非教师是否能做完整题。分离教师动作长度、续跑模型与loss覆盖区间，能检查长外源后缀是否难学；同时保留原本可解题的逐题退化和完整环境执行成本。",
+    "limits": "未复现；只评Qwen学生，无Opus5.5/Fable5.2。测试无proposal，但不是删自然语言Hint实验；主表同数据非等计算，K=M=3带续跑开销与估值噪声，局部外源动作仍是off-policy。学生初始能力、环境回滚和可验证结果是前提；昂贵真实环境未验证。Easy训练子集近饱和且均值相近，不等于逐题无遗忘；未报告跨模型普适最优Hint长度。三次训练的SD不是显著性检验；全suffix退化与off-policy解释一致但未孤立因果。未核到作者独立代码/逐条轨迹发布，不把HF摘要页当实现。",
+    "dateLabel": "2026-11-25 · v1 · 首发",
+    "evidence": "已核原论文方法、实验及所列公开资料；来源核验不代表实验复现",
+    "originalTitle": "When Every Rollout Fails: Splicing Learner-Conditioned Options into Long-Horizon Agent RL",
+    "date": "2026-11-25",
+    "checkedAt": "2026-11-26T14:26:08.351200+00:00",
+    "originalDate": "2026-11-25",
+    "paperOriginalDate": "2026-11-25T17:38:00Z",
+    "firstSeenAt": "2026-11-26T10:00:02Z",
+    "lastSeenAt": "2026-11-26T10:00:02Z",
+    "tags": [
+      "Hint研究",
+      "局部教师干预",
+      "在线训练",
+      "无教师评测",
+      "off-policy",
+      "计算预算"
+    ],
+    "authors": [
+      "Haowen Hou",
+      "Yicheng Liu",
+      "Zhen Huang",
+      "Jiaqi Wang"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "规范原文入口",
+        "url": "https://arxiv.org/abs/2611.34777v1"
+      },
+      {
+        "label": "arXiv 原论文与版本日期",
+        "url": "https://arxiv.org/abs/2611.34777"
+      },
+      {
+        "label": "Hugging Face 作者提交页（仅摘要）",
+        "url": "https://huggingface.co/papers/2611.34777"
+      },
+      {
+        "label": "arXiv v1 方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.34777v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "全败组改用局部教师动作，按学生接手续跑的成功率加权学习；测试不再使用教师。四项比GRPO高2.8–9.8点，但主表同题量、非等计算。",
+      "motivation": "长任务中8次rollout全败时，GRPO没有基于奖励差异的学习信号；完整教师解法昂贵，且学生可能无法延续其中的状态与行为。",
+      "novelty": "作者主张用学生续跑估值建立局部监督，减少完整外源历史暴露。本站判断：可学习性筛选与loss范围消融有价值；经验加权占优只针对候选估值，不保证真实回报或更新必增。",
+      "evidenceScope": "已读v1§3–6及附录B–F，核表1–6；HF公开页仅作作者提交与摘要交叉核验，不当作方法原文。proposal为Qwen3.5-122B-A10B；学生Qwen3-8B-CS先以500 SWE+500 Deep Research任务的教师成功轨迹混合冷启，关thinking；Qwen3.5-9B直接用发布检查点、开thinking。各方法共享每领域3200题；SWE源为SWE-Gym/R2E-Gym并排除与SWE-bench重叠仓库，Deep Research从5类公开数据取问答、去重，再由DeepSeek-V4-Flash核当前检索证据。SWE用OpenHands默认系统提示/工具，研究用Uni-Agent的search/open/find；训练上限150轮、128k上下文。K=3候选、M=3学生续跑、C=4、α=0.3；教师选择器可看完整失败和终局反馈，局部执行回到所选前缀。loss只覆盖保留option的proposal动作token，逐段长度归一后加权，不是变长序列上的精确KL投影。使用32块H200，RL全供学生，SPLICE/ReLIFT其中8块供proposal，异步staleness≤2；每批32组×8轨迹，actor学习率2e-6，SFT3轮1e-5。主表为3次训练最终检查点均值±SD：8B-CS的SWE/BC+从GRPO15.9/20.2到25.7/29.3，9B从58.4/46.2到61.2/50.7；BC+用Qwen3-Embedding-8B检索、gpt-oss-20b判答。主表控制可用任务数据，不控制各方法计算；SFT+RL同RL步数但另有完整教师收集/预训。8B-CS初始失败训练题每题1次评测，毕业率GRPO8.1、ReLIFT15.9、SPLICE18.9%；proposal命中30.7低于ReLIFT55.1，teacher轮数93.5k低于113.4k。独立rollout划分Easy/Medium/Hard共342/1087/1771题；Easy初始99.4、RL和SPLICE均99.3，非逐题无回归保证。同K/M下hard-top和uniform-positive为24.3/23.7，SPLICE25.7。改教师续跑但仍只训option为26.2，teacher轮数372.5k；同教师续跑改训整个成功后缀降22.3，teacher365.9k。α0.1/0.3/0.5为18.2/25.7/24.3，较长虽命中上升仍不优；不能外推普适长度。文中训练限定proposal与分支重建，评测为proposal-free；未测试自然语言Hint保留/删除。",
+      "limits": "未复现；只评Qwen学生，无Opus5.5/Fable5.2。测试无proposal，但不是删自然语言Hint实验；主表同数据非等计算，K=M=3带续跑开销与估值噪声，局部外源动作仍是off-policy。学生初始能力、环境回滚和可验证结果是前提；昂贵真实环境未验证。Easy训练子集近饱和且均值相近，不等于逐题无遗忘；未报告跨模型普适最优Hint长度。三次训练的SD不是显著性检验；全suffix退化与off-policy解释一致但未孤立因果。未核到作者独立代码/逐条轨迹发布，不把HF摘要页当实现。",
+      "method": [
+        "每题采8条当前学生轨迹：有成有败走GRPO，全成跳过，全败随机取1条；提案模型结合完整失败历史与终局验证反馈选分支点。",
+        "每4轮记录可恢复点；SWE恢复容器快照，研究任务复用历史。教师从同一点提3段动作，每段最多为当前批平均轮数的30%向上取整。",
+        "每段结束后由当前学生独立续跑3次，终局成功率作局部价值；若教师段已终止则直接验证，零成功段丢弃，全零就跳过更新。",
+        "对正价值段标准化并softmax加权，只算这些段内教师动作token的平均负对数似然；前缀、工具观察和学生续跑不进入该监督loss。",
+        "局部监督与GRPO分开小批交替训练；最终检查点独立评测，不调用提案模型或分支重建，并统计难题恢复、原可解题表现与成本。"
+      ],
+      "inspirations": [
+        "对同一失败状态生成多种行动纠正，让当前学生各续跑多次后再选训练段；分别记教师可解、学生可接手和最终无教师解题率。",
+        "固定候选与续跑预算，对照局部loss、整后缀loss以及仅训学生续跑；同时记录原可解题的配对损失，检验是否真的降低分布错配。",
+        "把教师选点、教师生成、环境恢复和学生续跑成本全部记账；长度按可接手收益调节，不能凭教师命中率上升就认定更长更好。"
+      ],
+      "reviewedAt": "2026-11-26T14:26:08.351200+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.34777",
+        "https://arxiv.org/html/2611.34777v1",
+        "https://huggingface.co/papers/2611.34777"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.34777",
+      "status": "pending",
+      "checkedAt": "2026-11-26T14:28:48.692660+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.33728",
+    "url": "https://arxiv.org/abs/2611.33728",
+    "id": "paper-asset4d-bench-2611-33728",
+    "title": "Asset4D-Bench：运动轨迹正确，不代表可编辑场景的交互正确",
+    "summary": "Asset4D-Bench用可重开的Blender工程分别核几何、运动与交互。24个从零任务中，两模型各14个运动满分，但其中3个/8个关系零分；这是恢复后场景诊断，不能当原交付成功率。",
+    "insight": "行动反馈应指向对象、时间窗和可执行关系检查，并把原始交付与评估器修复分开留档。总分达标之外再设关键约束，才能发现“路径对了、货物悬空”这样的交付缺陷。",
+    "limits": "已读原文方法、实验和附录，未复现。228条混合原始交付、恢复后场景和版本化重测，不能当统一端到端排名或原始执行成功率。全/部分资产虽共享参考，但历史执行、评分、恢复及部分任务版本不匹配，不能因果归因资产供给。Z24是独立选题，不是无资产对照。几何/事件谓词只覆盖给定观察时间与容差，不证明力学正确、任意后续编辑、反事实响应或视觉审美。评审角色对应与窗口判断没有统一裁判型号、人评人数/一致性披露；无重复采样置信区间，留一任务范围不是置信区间。公开论文未提供可核作者代码/数据下载链接，本轮未找到可复放仓库；作者亦说明clean-host重放未完成、部分adapter依赖绝对路径。可编辑原生工程不等于编辑后仍正确；可选反馈闭环未评测，不是Hint训练或撤Hint迁移证据。",
+    "organization": "Vidu",
+    "dateLabel": "2026-11-25 · 首发v1",
+    "evidence": "已核原文方法、实验、附录及表2/3；未复现",
+    "originalTitle": "Asset4D-Bench: Benchmarking Coding Agents for Editable 3D and 4D Reconstruction",
+    "date": "2026-11-25",
+    "checkedAt": "2026-11-26T14:25:36.613180+00:00",
+    "originalDate": "2026-11-25",
+    "paperOriginalDate": "2026-11-25T03:47:00Z",
+    "paperUpdatedAt": "2026-11-25T03:47:00Z",
+    "updatedAt": "2026-11-25T03:47:00Z",
+    "firstSeenAt": "2026-11-26T04:00:01Z",
+    "lastSeenAt": "2026-11-26T04:00:01Z",
+    "tags": [
+      "可编辑3D",
+      "原生工程验收",
+      "运动与关系",
+      "评测恢复边界",
+      "Blender"
+    ],
+    "authors": [
+      "Chengyi Sun",
+      "Deyuan Liu",
+      "Lei Zhao",
+      "Jungang Li",
+      "Qi Jia"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2motion"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · 原始版本与发表日期",
+        "url": "https://arxiv.org/abs/2611.33728"
+      },
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.33728v1"
+      },
+      {
+        "label": "原文方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.33728v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "运动对了，接触关系仍可能全错：两模型各14个运动满分的恢复后场景中，Sol有3个、Astra有8个关系零分。原生工程验收要把执行、轨迹、关系与严格完成分开。",
+      "motivation": "一段重建视频能把货物运到终点，却让它全程悬空。只看成片或物体路径无法确认可编辑场景是否恢复了支撑、接触及事件顺序，需要在保存后重开工程测量。",
+      "novelty": "作者主张：在同一可重开原生场景中分开量化几何、运动和交互关系。本站判断：价值在可核的关系验收与恢复账目；现有记录不足以证明资产因果增益或跨模型总排名。",
+      "evidenceScope": "已读arXiv v1主文§3–6和附录A–G，并查看HTML内嵌SVG表2/3；原生项目与原始记录未下载或执行。首发2026-11-25T03:47:00Z，checkedAt为本次核读时间。114条件×2模型形成228条选定评分；gpt-6.1-sol与gpt-6-astra均xhigh，每条件每模型一个选定结果，帧/顶点/窗口不是额外独立样本。动态预算G/D/R/C=25/35/25/15；全部48个Z24场景用动态预算。图像编辑目标60、保留25、相机15；静态Z只是协议配置，非新增已评测轨道。Z24恢复后均分Sol66.29、Astra59.78；按未四舍五入值差6.5041点，其中关系贡献5.1508点（79.2%，加性拆分非因果）。两者各14/24运动满分，其中关系零分分别3/14与8/14，折合全任务3/24与8/24；严格完成11/24与4/24，高于80分分别11/24与6/24，Astra有2个高分场景仍违反必要关系。严格完成需分数下界≥80、覆盖≥0.95、全部关键项满分及adapter gates；最终结果仍要求完整确定证据。未知项不删分母；原交付确认执行失败时U=0，场景保真未测，技术或证据hold的U未定义。120条视频评分46个零中44个是确认原执行失败、2个是场景测量零；不能据此把其余76个都称原始执行成功。48个Z24答案中32用旧动画API兼容恢复，7含源码操作（1个仅代码围栏提取、5个语法规范化、1个关键帧参数修复），9用既有评分/保存场景。排除任何源码操作后剩17对，恢复后均分65.35/59.84，差5.51，其中关系4.33；仍保留兼容恢复，不是独立测试集。全24对留一任务差4.61–7.87，非置信区间。30组F/P在设计上共享观察/目标/评分卡，但仅41/60个模型×参考对绑定双方所见输入；仍缺评分、运行时与恢复一致性。Sol MV01V/P37.52的修订包没有对应Astra答案。请求预算按批次不同：早期pilot20分钟/32768输出Token含推理且有其他模型；两个后来明确绑定请求40分钟、单次POST无SDK重试、无工具定义且省略客户端Token上限，不能推成无限预算或全228条统一设定。全文未给统一全量费用/耗时。离线执行审查不是模型侧渲染反馈。IN02用33公开采样和192源状态；AABB接触、比例而非全形状几何及别名对应都有边界，私有密集状态不自动保证公开可辨认。九个有目的选取的HM条件坐标修正使两模型零分各8→1，仅是评分敏感性诊断。Q08作者支撑缺陷控制87.5分仍严格失败；对照不是模型能力结果。Q14的128顶点入凸包是基础网格穿透见证，不是穿透体积/完整物理验证。展示性生成图和中性Workbench图不参与外观质量证明。当前arXiv摘要/全文均无作者代码项目链接；HF原页与API该ID均404，公开索引未核到仓库或作者X原帖，不能声称已开源可复现。",
+      "limits": "已读原文方法、实验和附录，未复现。228条混合原始交付、恢复后场景和版本化重测，不能当统一端到端排名或原始执行成功率。全/部分资产虽共享参考，但历史执行、评分、恢复及部分任务版本不匹配，不能因果归因资产供给。Z24是独立选题，不是无资产对照。几何/事件谓词只覆盖给定观察时间与容差，不证明力学正确、任意后续编辑、反事实响应或视觉审美。评审角色对应与窗口判断没有统一裁判型号、人评人数/一致性披露；无重复采样置信区间，留一任务范围不是置信区间。公开论文未提供可核作者代码/数据下载链接，本轮未找到可复放仓库；作者亦说明clean-host重放未完成、部分adapter依赖绝对路径。可编辑原生工程不等于编辑后仍正确；可选反馈闭环未评测，不是Hint训练或撤Hint迁移证据。",
+      "method": [
+        "建立114条件：30图像编辑、30全资产视频、30同参考的部分资产视频、24独立从零重建；冻结观察、时间戳、资产及评分版本。",
+        "先审核要求能否从公开观察辨认，隔离源场景状态、目标动画和作者解；任务入场需完整证据、关键项和协议检查通过。",
+        "独立执行、保存并重开Blender工程，按原PTS采样几何、运动、接触/支撑/事件顺序及相机；图像编辑另测目标与非目标保留。",
+        "未知证据保留原分母和区间，不冒充失败；原始交付效用、恢复后保真分、证据覆盖与严格完成各自记录，关键关系可否决高总分。",
+        "对恢复操作与坐标解释做敏感性检查；剔除任一模型有源码操作的配对后重算，不把修复后分数改写成原交付成功。"
+      ],
+      "inspirations": [
+        "给代码创作Agent的行动Hint指定对象、原始时间窗及关系谓词，例如“在松爪前后检查货物与托盘间隙”；用独立重开验证，另测有/无Hint收益。",
+        "训练数据同时保存原始答案、执行结果、兼容修复和源码补丁；把原交付成功与修复后可用分开标注，防止把评估器补救误学成Agent能力。",
+        "把总分达标与关键约束通过设为不同终点；加入等价场景旋转、无改动基线及局部缺陷控制，检查裁判是否在奖励坐标习惯而非任务本身。"
+      ],
+      "reviewedAt": "2026-11-26T14:25:36.613180+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.33728v1",
+        "https://arxiv.org/abs/2611.33728",
+        "https://arxiv.org/html/2611.33728v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.33728",
+      "status": "pending",
+      "checkedAt": "2026-11-26T14:28:48.692660+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/training-swarms",
+    "url": "https://huggingface.co/blog/training-swarms",
+    "id": "update-hf-training-swarms-20261126",
+    "title": "HF Swarms训练例：先学会共享私有信息，再讨论协作是否省算力",
+    "summary": "HF用四个共享Qwen3-0.6B代理练习私有数字聚合：75步checkpoint在32道留出题解出26道；另给TRL 50步实现和192题评测。价值在可核验通信训练管线，不能把训练期省Token当等算力协作优势。",
+    "insight": "研究共享Hint或教师指导时，可借鉴团队级训练行与消息证据记录，但先给单Agent完整信息、统一总预算，隔离通信、已有提示与RL各自贡献；同时统计团队成功、个体正确和原可解任务退化。",
+    "limits": "未复现；这是四人私有信息聚合的教学训练例，通信由任务设定所必需，不能证明协作优于拥有完整输入的单Agent或等算力独立采样。75步留出仅32题，37.4%省Token与best-of-8比较均来自训练数据；未留存该checkpoint的留出效率。TRL的50步/192题结果属于另一实现，不是75步复现；无原论文KL、会替换同奖组，prompt与结束时机也不同。共享团队奖励未解决个体贡献归因；未测去提示、真实长程任务或Opus5.5/Fable5.2。",
+    "dateLabel": "2026-11-26 · 官方训练教程",
+    "evidence": "已核官方博客、TRL示例与模型卡；来源核验不代表实验复现",
+    "originalTitle": "Swarms, Flocks, Gangs: How to build, train, and evaluate multi-agent systems",
+    "date": "2026-11-26",
+    "checkedAt": "2026-11-26T14:25:11.223439+00:00",
+    "originalDate": "2026-11-26",
+    "firstSeenAt": "2026-11-26T14:29:11.049313+00:00",
+    "tags": [
+      "多Agent",
+      "团队奖励",
+      "GRPO",
+      "通信训练",
+      "预算对照"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "HF官方训练文章",
+        "url": "https://huggingface.co/blog/training-swarms"
+      },
+      {
+        "label": "TRL公开示例目录",
+        "url": "https://github.com/huggingface/trl/tree/main/examples/async_grpo_s3_aggregation"
+      },
+      {
+        "label": "TRL方法/结果/偏差说明",
+        "url": "https://github.com/huggingface/trl/blob/main/examples/async_grpo_s3_aggregation/README.md"
+      },
+      {
+        "label": "训练主程序（只读）",
+        "url": "https://github.com/huggingface/trl/blob/main/examples/async_grpo_s3_aggregation/async_grpo_s3_aggregation.py"
+      },
+      {
+        "label": "任务与团队奖励（只读）",
+        "url": "https://github.com/huggingface/trl/blob/main/examples/async_grpo_s3_aggregation/harness/task.py"
+      },
+      {
+        "label": "留出评测程序（只读）",
+        "url": "https://github.com/huggingface/trl/blob/main/examples/async_grpo_s3_aggregation/evaluate.py"
+      },
+      {
+        "label": "TRL发布checkpoint模型卡",
+        "url": "https://huggingface.co/trl-lib/Qwen3-0.6B-S3-Aggregation"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "四个共享0.6B策略代理用团队奖励学习交换私有数字，75步留出26/32成功；另有TRL实现。通信是题目必要条件，尚不能证明多Agent更省算力。",
+      "motivation": "增加代理同时改变可见信息、重试次数与费用。先用答案可精确校验的小任务测通信能否学会，再分辨收益来自训练、沟通还是额外采样。",
+      "novelty": "官方主张：给出可复查的小模型团队RL教学实现。本站判断：强项是透明区分训练与评测、团队与个体及不同实现；该任务不检验一般协作优势，也不识别Hint撤除迁移。",
+      "evidenceScope": "已读官方博客全文、TRL README/训练主程序/评测程序/任务奖励及模型卡，未执行。公告页为11/26，RSS时间00:00仅日期级，不作精确发稿时刻。原记录：1024训练题、32题×8团队=256尝试/更新、75更新；4代理共享Qwen3-0.6B，工作8192+终答1024 Token/代理，温度1、学习率5e-7，1训练+7 rollout H200。前5/后5更新训练成功6.56→82.34%，Token12826.9→8026.0（-37.4%）、广播2.38→5.73；checkpoint75留出26/32=81.25%，未保留留出效率。训练早期best-of-8为37.5%/约103k Token，对后期单团队82.3%/约8k，非留出/等预算比较，前5步已略训练。任务提示已要求分享、读信、按发送者去重，未测无提示。TRL另一实现50步约150团队/更新、2H100约4.8小时，192同源生成留出题base4.7%→60.9%（SE1.5/3.5点），13.2k→11.8k Token；训练ID0–1023、留出ID1000000起且团队seed固定。--teams-per-update128是Token打包近似数，不是严格128。源码核团队等权、ratio mask0.2–5、无PPO clipping/无KL；同奖组丢弃重采、部分prompt与终答时机不同于原论文。教程建议2H200并称约5小时/50美元，与已报告2H100结果区分。引用原论文200步93.2%仅他方报告，不冒作本轮全文核验。GitHub API403未固定commit，main快照以本轮时间和SHA限定；未下载权重、启动Jobs或核全部原始轨迹。",
+      "limits": "未复现；这是四人私有信息聚合的教学训练例，通信由任务设定所必需，不能证明协作优于拥有完整输入的单Agent或等算力独立采样。75步留出仅32题，37.4%省Token与best-of-8比较均来自训练数据；未留存该checkpoint的留出效率。TRL的50步/192题结果属于另一实现，不是75步复现；无原论文KL、会替换同奖组，prompt与结束时机也不同。共享团队奖励未解决个体贡献归因；未测去提示、真实长程任务或Opus5.5/Fable5.2。",
+      "method": [
+        "每题四个代理各见一个英文私有数字，分上下文共享同一Qwen3-0.6B；通过发消息、显式读信和通知聚合，保留重复数字。",
+        "任一代理交出完整升序列表就算团队成功；失败奖励0，成功按团队生成Token占36864总额最多扣25%，不单奖消息数量。",
+        "同题采八次团队尝试，按组内奖励算优势并共享给四个代理；每代理的采样Token成训练行，消息与工具输出仅作上下文。",
+        "按团队内Token再跨团队归一损失，避免长轨迹权重更大；分别记录训练与留出成功、Token、广播和个体表现，并保存执行版本。"
+      ],
+      "inspirations": [
+        "为Hint实验记录建议发送、被读、实际执行与验证结果，别把消息变多或团队有一人答对当成每个学生都学会。",
+        "加完整输入单Agent、等总Token独立重试、仅任务提示和训练后撤提示对照；分离信息可得性、奖励与提示产生的收益。",
+        "同时保留团队成功和个体正确率，抽查成功团队里的错误动作；从共享奖励转向个体信用分配前先验证局部奖励没有破坏合作。"
+      ],
+      "reviewedAt": "2026-11-26T14:25:11.223439+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/blog/training-swarms",
+        "https://github.com/huggingface/trl/tree/main/examples/async_grpo_s3_aggregation",
+        "https://github.com/huggingface/trl/blob/main/examples/async_grpo_s3_aggregation/README.md",
+        "https://github.com/huggingface/trl/blob/main/examples/async_grpo_s3_aggregation/async_grpo_s3_aggregation.py",
+        "https://github.com/huggingface/trl/blob/main/examples/async_grpo_s3_aggregation/harness/task.py",
+        "https://github.com/huggingface/trl/blob/main/examples/async_grpo_s3_aggregation/evaluate.py",
+        "https://huggingface.co/trl-lib/Qwen3-0.6B-S3-Aggregation"
+      ]
+    }
   }
 ]
