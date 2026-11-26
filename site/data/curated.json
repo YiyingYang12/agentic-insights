@@ -32188,5 +32188,396 @@
         "https://x.com/AnthropicAI/status/2125627317263466739"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.33757",
+    "url": "https://arxiv.org/abs/2611.33757v1",
+    "id": "paper-transharness-2611-33757",
+    "title": "TransHarness：让行动Hint按条件触发，同时核算救回与误伤",
+    "summary": "TransHarness从同题成败轨迹提炼“触发条件＋诊断指导”，用跨题回放和独立语义筛选控制干预范围。DeepSWE平均73.2%→76.4%，但恢复44次同时退化33次，增益区间跨0；它是持续外置Hint，不是去Hint训练。",
+    "insight": "对行动Hint应同时冻结内容和触发时机做对照，并按原本成功/失败分层报告恢复与退化。让指导要求核对当前需求、找证据再修正，可避免共享Hint把源任务解法强加给新任务；这一机制仍需跨模型、等预算重验。",
+    "limits": "未复现；未更新模型权重，测试仍运行外置触发策略，不能视作删Hint后的能力内化。实际干预实验为DeepSeek、GLM和Qwen，不是Opus5.5/Fable5.2；公开排行榜中的Claude与GPT分数不是同场干预对照。两项代表性整体增益的95%区间均跨0，不能写成显著胜出。恢复/退化按任务与重复序号配对，不是相同随机流的反事实重放；无review消融还改变策略数量。成本排除轨迹采集和目标评测，方法搜索预算不同；未核得作者公开完整策略实现与逐题日志。",
+    "dateLabel": "2026-11-25 · v1 · 首发",
+    "evidence": "已核原论文方法、实验及所列公开资料；来源核验不代表实验复现",
+    "originalTitle": "TransHarness: From Benchmark Overfitting to Transferable Harness Evolution",
+    "date": "2026-11-25",
+    "checkedAt": "2026-11-26T08:29:33.018042+00:00",
+    "originalDate": "2026-11-25",
+    "paperOriginalDate": "2026-11-25T04:15:25Z",
+    "paperUpdatedAt": "2026-11-25T04:15:25Z",
+    "updatedAt": "2026-11-25T04:15:25Z",
+    "firstSeenAt": "2026-11-26T04:00:01Z",
+    "lastSeenAt": "2026-11-26T04:00:01Z",
+    "tags": [
+      "Hint",
+      "行动指导",
+      "触发时机",
+      "退化分析",
+      "跨基准迁移"
+    ],
+    "authors": [
+      "Tianze Xia",
+      "Zimo Wang",
+      "Heng Tong",
+      "Zhaoxiang Liu",
+      "Shiguo Lian",
+      "Fan Huang",
+      "Wenyu Liu",
+      "Yunchao Wei",
+      "Xinggang Wang"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "公开feed原始来源",
+        "url": "https://arxiv.org/abs/2611.33757v1"
+      },
+      {
+        "label": "arXiv 原论文与版本日期",
+        "url": "https://arxiv.org/abs/2611.33757"
+      },
+      {
+        "label": "arXiv v1 方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.33757v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "从同题成败轨迹生成带触发条件的行动Hint，跨题筛选后在运行中干预；收益需同时核算救回与误伤，但整体增益区间跨0，且测试仍依赖外置策略。",
+      "motivation": "强代理本来可解的任务更多，一条过宽或预设修法的Hint可能救回失败，也破坏成功；只看新增解题率会掩盖负迁移。",
+      "novelty": "作者主张将执行触发与诊断语义联合演化以实现跨基准迁移。本站判断：同指导提前触发、固定修法消融有启发；仍未隔离所有组合和预算因素，也不是参数学习。",
+      "evidenceScope": "已读v1全文§3–4及附录A–C，核表1–11和方法边界。源集从731题SWE-bench Pro选100题，11仓库、每仓库至少4题，按公开难度与语言偏置筛选；每模型/执行框架收集300轨迹。源与DeepSWE的91仓库、任务ID及精确指令不重叠；需求-测试人工检查只覆盖4道分层源题。源版本中DeepSeek Harness轨迹来自9月Flash，验证/目标用V4.1 Flash(1017)，Mini-SWE/Terminus源轨迹用1017 max。实际干预对象还包括GLM-5.3 Flash和Qwen3.8-Flash-Next；不是teacher-student蒸馏，作者/审阅器的独立模型ID与各配置具体执行上限未在已读方法表中单列，不补猜。运行中可在起始/模型步、工具返回、工具调用或结束处干预；要求保留信息、被拒工具可相同重试、最终能结束。跨题事件触发门槛为同时触发成败的配对占比<0.9，且只触发失败数≥只触发成功数；起始指导不计事件触发统计，但仍过语义审核。DeepSWE113题×3次，Mini-SWE从248/339到259/339，即73.2→76.4%，44恢复/33退化占全部配对13.0/9.7%，不是条件恢复率；增益95%任务bootstrap区间[-2.4,8.8]点，三轮增益6.2/3.5/0点。TB2.1的89题×3次，DeepSeek Harness89.9→95.5%，区间[-1.1,12.4]。提前触发同指导得72.6%，保留触发但规定修法65.5%；无构建review为14条策略67.3%，主配置为7条76.4%，不能只归因review。源集25/50/75/100题分别69.9/70.8/74.3/76.4%，少样本并非总有收益。132.7M演化Token来自另一轮14对轨迹的构建账本，计构建/源验证、缓存输入只计一次，排除共同轨迹采集与目标评测；Mini-SWE该构建没有新增计分源执行，其他方法源执行40/200/1000次，非等搜索预算。未找到本论文作者的独立实现链接；未执行策略或复现实验。",
+      "limits": "未复现；未更新模型权重，测试仍运行外置触发策略，不能视作删Hint后的能力内化。实际干预实验为DeepSeek、GLM和Qwen，不是Opus5.5/Fable5.2；公开排行榜中的Claude与GPT分数不是同场干预对照。两项代表性整体增益的95%区间均跨0，不能写成显著胜出。恢复/退化按任务与重复序号配对，不是相同随机流的反事实重放；无review消融还改变策略数量。成本排除轨迹采集和目标评测，方法搜索预算不同；未核得作者公开完整策略实现与逐题日志。",
+      "method": [
+        "从独立100题、每题3次执行中取同题成败对照；策略生成器只读任务与轨迹及接口，不接触仓库、参考修复或隐藏验收测试。",
+        "把可复用诊断写成插入位置、可执行触发条件和指导；独立review核对成败证据，可改措辞或要求一次重做。",
+        "在其他源题轨迹上重放，筛掉近乎无差别触发或更偏向成功轨迹的策略；回放只审触发行为，不测新执行是否成功。",
+        "独立语义筛选检查诊断依据、不携带源题解法、修正由当前失败检查或明确需求支撑；接受或拒绝，不再编辑。",
+        "保留源顺序组合并冻结策略，在新基准连续运行Hint；同模型、工具和执行上限对照，统计平均成功、恢复、退化及成本。"
+      ],
+      "inspirations": [
+        "把Hint拆成“何时触发、核查什么证据、何时允许改动”，分别对照立即插入、条件插入与不插入，观察误伤原本成功任务的比例。",
+        "共享Hint保留诊断程序而去掉源题实体和答案；用异题成功轨迹检查是否过度触发，再在人审留出集核是否强迫无依据修改。",
+        "独立记录源轨迹采集、策略生成、回放、部署Token和工具调用；新增去Hint评测才能回答内化问题，不能用外置迁移替代。"
+      ],
+      "reviewedAt": "2026-11-26T08:29:33.018042+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.33757",
+        "https://arxiv.org/html/2611.33757v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.33757",
+      "status": "pending",
+      "checkedAt": "2026-11-26T08:30:04.087822+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.33639",
+    "url": "https://arxiv.org/abs/2611.33639v1",
+    "id": "paper-claude55-review-effort-2611-33639",
+    "title": "Opus5.5审代码：增加effort能少漏错，但Hint教师的判断仍需独立验收",
+    "summary": "同90个Django补丁上，Opus5.5高effort把错误接受数从37/55降至25/55；medium在15点界限内非劣但只省约20%几何均值API成本。排除32条需求必要性有争议样本后，优效与非劣结论均不再获支持；这不是Hint干预实验。",
+    "insight": "用强模型写行动Hint前，先分离“发现可疑行为、判断是否违反需求、决定下一步验证”。教师能描述缺陷却仍给通过，说明措辞质量或更长思考不能代替独立判据；应在人审需求标签上单独检验Hint是否促成可执行纠错。",
+    "limits": "未复现；仅effort对照，无Hint训练或Fable5.2结果。90个Django补丁，标签事后修订；模型事后判定32错题不属需求，剔除后优效与非劣均不再获支持（小样本，不等于无效）。需求/记忆/理由编码未人审。未添加Hint、生成训练轨迹或训练学生；68个问题、每配置一次，20次重复仅覆盖Opus high。需求必要性、记忆及理由编码由同系模型完成，32条排除是探索性敏感性分析，不能当作独立真值。跨模型运行日期/框架版本不同；成本仅API标价不含云计算，15点非劣界限不能外推到高可靠门槛。",
+    "dateLabel": "2026-11-25 · v1 · 首发",
+    "evidence": "已核原论文方法、实验及所列公开资料；来源核验不代表实验复现",
+    "originalTitle": "How Much Effort Does an AI Code Reviewer Need? Evidence from Claude 5.5 Models on Plausible-but-Wrong Patches",
+    "date": "2026-11-25",
+    "checkedAt": "2026-11-26T08:29:33.018042+00:00",
+    "originalDate": "2026-11-25",
+    "paperOriginalDate": "2026-11-25T02:07:31Z",
+    "paperUpdatedAt": "2026-11-25T02:07:31Z",
+    "updatedAt": "2026-11-25T02:07:31Z",
+    "firstSeenAt": "2026-11-26T04:00:01Z",
+    "lastSeenAt": "2026-11-26T04:00:01Z",
+    "tags": [
+      "CoT",
+      "Hint研究",
+      "Opus5.5",
+      "教师判断",
+      "标签有效性",
+      "推理预算"
+    ],
+    "authors": [
+      "Zax Shen",
+      "Hanling Zhang",
+      "Zixu Wang"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "公开feed原始来源",
+        "url": "https://arxiv.org/abs/2611.33639v1"
+      },
+      {
+        "label": "arXiv 原论文与版本日期",
+        "url": "https://arxiv.org/abs/2611.33639"
+      },
+      {
+        "label": "arXiv v1 方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.33639v1"
+      },
+      {
+        "label": "作者公开版本化补充材料（配置、标签与证据范围）",
+        "url": "https://raw.githubusercontent.com/trustmybot/research-artifacts/cr-effort-claude-5.5-v1.2/papers/cr-effort-claude-5.5/supplement.md"
+      },
+      {
+        "label": "作者公开聚合结果 JSON（已逐项核关键统计）",
+        "url": "https://raw.githubusercontent.com/trustmybot/research-artifacts/cr-effort-claude-5.5-v1.2/papers/cr-effort-claude-5.5/artifact/outputs/models.json"
+      },
+      {
+        "label": "作者公开分析资料 README（只读，未执行）",
+        "url": "https://raw.githubusercontent.com/trustmybot/research-artifacts/cr-effort-claude-5.5-v1.2/papers/cr-effort-claude-5.5/artifact/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "Opus5.5增加审查effort后漏错减少，但high仍接受25/55错误补丁；medium非劣依赖15点界限和争议标签，不能直接当作Hint教师可靠性保证。",
+      "motivation": "能跑过原测试的补丁仍可能有缺陷；更长思考到底改善独立核验，还是更接近有争议的测试标签，需要成对控制与标签审计。",
+      "novelty": "作者主张以配对实验和预注册检验审查effort的收益与成本。本站判断：直接Opus5.5证据有用，更重要的是标签审计削弱表面结论；论文没有验证Hint生成、RFT或去Hint迁移。",
+      "evidenceScope": "已读v1§3–4、§6、§8，核表1–8；另读取作者公开tag v1.2的artifact README、supplement A.3–A.5/B与I.11，以及models.json中Opus/Sonnet/Haiku聚合字段，未运行分析脚本。对象是claude-opus-5-5、claude-sonnet-5-5、claude-haiku-5-5，Claude Code2.1.311，无teacher/student训练。90补丁覆盖68个问题，每模型270次主评测；原标签60错/30对在结果后改成55错/35对（8错转对、3对转错）。Opus11月2–3日，其他两模型11月5日；每配置一次，Opus额外20次high复测0翻转但95%上界16.1%。基准hints_text被屏蔽，只有通用review提示，代码/需求相同，低中高仅改effort；CLI未返回有效effort，论文靠运行前请求捕获与行为变化核交付。Opus低/中/高错误接受37/26/25（分母55），误报均2/35；high-low差-21.8点CI[-35.0,-10.1]，medium-high差1.8点CI[-6.5,10.8]，非劣界限15点。medium/high几何均值成本比0.798，CI[0.750,0.849]，未达预注册0.70阈值；均值API成本0.0946/0.1202美元。每评测4美元/60分钟上限均未触达，不是固定Token消耗；主评测三模型共33.30美元，全项目约50.69美元，不含云计算。Sonnet/Haiku均探索性，medium未证非劣；15次格式无效默认不算接受，改口径不改假设判定。事后模型判55错中6需求明确、14不清、32非必要、3无失败测试；去掉32后只剩23错，Opus优效p=0.0625、非劣区间上界23.6点，三模型准确性假设均不再受支持。该分组未人审，不能当客观真值，也不能据失去显著性判定无效。Opus high接受25错中14条反馈仍指认参考缺陷；全九配置290次错误接受中111指认、64部分指认，理由编码未人审且最终逐项代码/原始对话不全公开，不能独立重算全部RQ6。原问题修复记忆、32次晚批重跑、12题后基础设施变化仍可能影响；不把行为相关当中介因果。OSF链接本轮403未独立核登记时间，预注册时间据论文和版本化作者材料。",
+      "limits": "未复现；仅effort对照，无Hint训练或Fable5.2结果。90个Django补丁，标签事后修订；模型事后判定32错题不属需求，剔除后优效与非劣均不再获支持（小样本，不等于无效）。需求/记忆/理由编码未人审。未添加Hint、生成训练轨迹或训练学生；68个问题、每配置一次，20次重复仅覆盖Opus high。需求必要性、记忆及理由编码由同系模型完成，32条排除是探索性敏感性分析，不能当作独立真值。跨模型运行日期/框架版本不同；成本仅API标价不含云计算，15点非劣界限不能外推到高可靠门槛。",
+      "method": [
+        "抽取90个公开Django补丁并本地三次重验测试标签；每个补丁在三种Claude5.5和low/medium/high下各审一次，形成配对对照。",
+        "在隔离环境提供原始需求和匿名补丁，允许读写代码、运行自编测试；屏蔽benchmark Hint、验收测试、标准修复和外网。",
+        "只改变模型及effort，统一每次4美元/60分钟上限；严格解析通过、拒绝或无有效结论，统计漏错、误报、API成本与行为。",
+        "Opus预注册优效、15点非劣和至少30%成本节约假设；另审结果后修订标签、原标签、故障替补及争议需求剔除的敏感性。",
+        "用同系模型事后编码记忆与反馈理由，区分提到缺陷但仍接受、拒绝且指出缺陷；这些编码未人审，作为探索性解释。"
+      ],
+      "inspirations": [
+        "Hint教师输出拆为需求证据、具体缺陷、建议验证动作和判定；分别评分，避免“说出了问题”被误当作学生一定会修正。",
+        "先人工双审需求是否支持测试，再比较无Hint、诊断Hint和预设修法；保持模型版本、effort、Token与工具预算，报告配对区间。",
+        "教师采样把medium/high当待验证配置而非固定优劣；单列原本可解与需救回任务，并把原始标签、修订标签和争议剔除结果并报。"
+      ],
+      "reviewedAt": "2026-11-26T08:29:33.018042+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.33639",
+        "https://arxiv.org/html/2611.33639v1",
+        "https://raw.githubusercontent.com/trustmybot/research-artifacts/cr-effort-claude-5.5-v1.2/papers/cr-effort-claude-5.5/supplement.md",
+        "https://raw.githubusercontent.com/trustmybot/research-artifacts/cr-effort-claude-5.5-v1.2/papers/cr-effort-claude-5.5/artifact/outputs/models.json",
+        "https://raw.githubusercontent.com/trustmybot/research-artifacts/cr-effort-claude-5.5-v1.2/papers/cr-effort-claude-5.5/artifact/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.33639",
+      "status": "pending",
+      "checkedAt": "2026-11-26T08:30:04.087822+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.34237",
+    "url": "https://arxiv.org/abs/2611.34237",
+    "id": "paper-vibevideoagent-2611-34237",
+    "title": "VibeVideoAgent：给Opus5.5可定位的声画反馈，代码视频更好看但规格仍会回退",
+    "summary": "七类感知工具把草稿声画问题压成带时间与位置证据的Finding，配合最小预览和局部修订。239题中Opus5.5的L3由4.03升至4.43、rubric细项通过率98.87%升至99.35%；交付技术规范却从99.92%降到98.59%，不能只看视觉提升。",
+    "insight": "比泛泛“再检查一下”更具体的是需求引用、错在哪个片段、应补哪种证据，以及新渲染是否消除了同一缺陷。它与行动Hint研究直接相关，但系统不训练权重。应单独验证反馈撤除、局部修改策略、技术回归和总费用，不能用短Finding或高L3替代完整效果证据。",
+    "limits": "未复现；是推理时工具与流程，不训练权重、未测撤反馈迁移，未测试Fable5.2。239题双裁判L3提高不代表全部指标改善：Opus5.5的L1从99.92%降至98.59%，Sonnet5.5的L1/L2均下降。L2是细项通过率，不能当整题全部成功率；没有独立人工审美验证。论文报告相同运行环境并记录耗时、token和重试，但未给完整两条件总耗时/总费用及共同数值上限，也未报告多随机种子重复数或置信区间。八题6.5倍压缩是接受观测对应的worker输入与返回JSON大小比较，不是端到端成本下降。感知抽样最高16fps，漏看的区间、密集文字及细微深度可能遗漏；完整解码只保证技术有效。版本hash只能绑定观察与源码，不能证明代码改动因果正确或所有相邻镜头无回归。公开工具可选返回最多六张证据图，只有八题审计明确未请求，不能把全文的“raw媒体不进入coder”当所有运行已核实事实。发布代码的交付accepted只核技术规范并记录语义证据，不要求所有创作条目pass；允许预览例外说明。代码已公开不等于本站安装、运行或跨平台复现通过。",
+    "dateLabel": "2026-11-25",
+    "evidence": "原论文完整方法、实验、附录及固定公开代码关键实现已核验；未复现",
+    "originalTitle": "VibeVideoAgent: Closing the Perceptual Loop for Code-Driven Video Generation",
+    "date": "2026-11-25",
+    "checkedAt": "2026-11-26T08:29:29.517884+00:00",
+    "originalDate": "2026-11-25",
+    "paperOriginalDate": "2026-11-25T11:59:44Z",
+    "paperUpdatedAt": "2026-11-25T11:59:44Z",
+    "updatedAt": "2026-11-25T11:59:44Z",
+    "firstSeenAt": "2026-11-26T04:00:01Z",
+    "lastSeenAt": "2026-11-26T04:00:01Z",
+    "tags": [
+      "Agent systems",
+      "Opus5.5",
+      "行动Hint",
+      "声画核验",
+      "可编辑视频",
+      "前后版本比较"
+    ],
+    "authors": [
+      "Xuanyu Zheng",
+      "Luoyuan Zhang",
+      "Yancheng Long",
+      "Haoyang Xu",
+      "Muxi Diao",
+      "Yuzhe Chen",
+      "Kaiyu Jiang",
+      "Bin Wen",
+      "Tingting Gao"
+    ],
+    "topics": [
+      "code2motion",
+      "code2video"
+    ],
+    "featured": true,
+    "sourceId": "arxiv_code2video",
+    "sources": [
+      {
+        "label": "arXiv 首发日期及版本史",
+        "url": "https://arxiv.org/abs/2611.34237"
+      },
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.34237v1"
+      },
+      {
+        "label": "arXiv v1 方法、实验与完整附录",
+        "url": "https://arxiv.org/html/2611.34237v1"
+      },
+      {
+        "label": "Hugging Face 论文与作者仓库链接",
+        "url": "https://huggingface.co/papers/2611.34237"
+      },
+      {
+        "label": "公开代码说明（固定提交）",
+        "url": "https://github.com/Kling-Keye/VibeVideoAgent/blob/06574d276dd7517276e7047565c32b221b7eb194/README.md"
+      },
+      {
+        "label": "发布记录（固定提交）",
+        "url": "https://github.com/Kling-Keye/VibeVideoAgent/blob/06574d276dd7517276e7047565c32b221b7eb194/CHANGELOG.md"
+      },
+      {
+        "label": "感知验证、预算和前后版本比较实现",
+        "url": "https://github.com/Kling-Keye/VibeVideoAgent/blob/06574d276dd7517276e7047565c32b221b7eb194/src/vibevideo_mcp/media_service.py"
+      },
+      {
+        "label": "生产计划和交付语义边界实现",
+        "url": "https://github.com/Kling-Keye/VibeVideoAgent/blob/06574d276dd7517276e7047565c32b221b7eb194/src/vibevideo_mcp/workflow.py"
+      },
+      {
+        "label": "可选证据图片工具参数",
+        "url": "https://github.com/Kling-Keye/VibeVideoAgent/blob/06574d276dd7517276e7047565c32b221b7eb194/src/vibevideo_mcp/media_tools.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把声画问题压成带时空证据的行动反馈，指导Agent局部改代码。239题中Opus5.5声画综合分4.03→4.43，但技术规范分下降；这是推理辅助，未证明撤Hint迁移。",
+      "motivation": "渲染成功仍会出现字幕重叠、镜头错位和旁白不同步。全片末尾才审查容易返工，持续把媒体塞进编码上下文又会膨胀，需要分阶段、可定位且能核实修复的反馈。",
+      "novelty": "作者主张：统一多时间轴、七类感知原语与分阶段流程支持跨引擎代码视频创作。本站判断：有价值的是可核验行动反馈及修复证据绑定；提升仍伴随规格退化，不能等同Hint内化。",
+      "evidenceScope": "已读arXiv v1方法§3、实验§4、限制§5和附录A–H；核表1–6、感知时钟/证据规则及轨迹分母。读取HF公开论文/API，并经公开git HEAD固定提交06574d276dd7517276e7047565c32b221b7eb194，静态读README、CHANGELOG、perception、schema、media_tools、media_service、workflow、artifacts；未安装、执行代码或调用模型。239题12类任务要求MP4和可编辑源码，不允许像素视频生成API。Claude Opus5.5/Sonnet5.5用Claude Code claude -p、effort max，GPT-6 Astra用Codex CLI；每任务16vCPU Linux隔离环境。所有增强组固定感知gemini-3.8-flash并加PreToolUse约束；版本号CC2.1.325只在八题审计中明确，不能外推主表全部运行。最终MP4/源码冻结后才评隐藏rubric。L1为交付技术规范，L2为二元rubric细项通过率，L3为视觉质量、美感、内容逻辑、时序动效、音频/声画同步五项1–5分平均；报告Gemini3.8Flash与Gemini4Argon等权平均。Opus L2为98.87→99.35%、L3为4.03→4.43、AQ为3.89→4.45，但L1为99.92→98.59%。Astra L3为4.03→4.27；Sonnet为3.97→4.10，却L2为96.36→94.61%、L1为99.18→95.75%。Flash同时参与感知与评判；Argon独立于感知模型但仍同厂商自动裁判，没有人评。Argon下Opus L3表面值3.91→4.25，原文报告差值0.33可能由未四舍五入值计算，本文不混算。36题消融仅Opus，按原生baseline诊断与公开元数据预选：12rubric瓶颈、8参考资产、10声画瓶颈、6中位表现守护题，非随机代表全239。Full L3=4.40；去需求核验/前后比较/信号探针/分阶段协议分别4.29/4.30/4.33/4.32；这比较整套接口与流程，未单独隔离Hint措辞、等预算或编辑粒度的因果作用。Opus平均12.0worker调用、6.2接受Finding、386帧/171秒音频、147.9k编码输出token；Astra50.6调用、23.1Finding、179.3k编码输出，均不是系统总成本。Opus预览93.9%=138/147条有accepted Finding的轨迹，占全239题57.7%；规划步骤100%不等于预览完成。失败后编辑171/221=77.4%，前后比较解决88/151=58.3%，分母是检查或比较而非全部任务。编辑越局部表现越稳为轨迹关联，未随机干预编辑粒度。八题payload审计含五个开发案例与三个生成前按baseline低通过率挑的困难案例。接受Finding对应worker平均35.8k输入token，返回JSON约5.5k（按约4字节/token估计）为6.5倍；所有尝试worker输入均值38.1k，不能删掉无效调用后宣称总费用节省。原生比较使用归档v4_claude_opus_sub，不是同题多seed全量独立复验。论文生产采样上限128帧/调用，schema默认256；公开0.2.1 README默认40语义调用、8192帧、7200秒音频且无墙钟截止，不能倒推出论文Astra调用预算。公开默认standard profile不会强制感知边界，论文需PreToolUse并另配主机隔离。固定代码核实：证据时间/框/模态越界拒绝，缺所需模态降uncertain，相同媒体hash不能resolved；历史片段hash核验后才比较。workflow对原文引用和需求到镜头映射做形式校验，但不证明observable等同用户意图；实例W0448就出现自行过度具体化条目。submit_delivery保留最终hash上各条证据，技术accepted不等于语义全通过。",
+      "limits": "未复现；是推理时工具与流程，不训练权重、未测撤反馈迁移，未测试Fable5.2。239题双裁判L3提高不代表全部指标改善：Opus5.5的L1从99.92%降至98.59%，Sonnet5.5的L1/L2均下降。L2是细项通过率，不能当整题全部成功率；没有独立人工审美验证。论文报告相同运行环境并记录耗时、token和重试，但未给完整两条件总耗时/总费用及共同数值上限，也未报告多随机种子重复数或置信区间。八题6.5倍压缩是接受观测对应的worker输入与返回JSON大小比较，不是端到端成本下降。感知抽样最高16fps，漏看的区间、密集文字及细微深度可能遗漏；完整解码只保证技术有效。版本hash只能绑定观察与源码，不能证明代码改动因果正确或所有相邻镜头无回归。公开工具可选返回最多六张证据图，只有八题审计明确未请求，不能把全文的“raw媒体不进入coder”当所有运行已核实事实。发布代码的交付accepted只核技术规范并记录语义证据，不要求所有创作条目pass；允许预览例外说明。代码已公开不等于本站安装、运行或跨平台复现通过。",
+      "method": [
+        "先把需求逐字引用到计划并关联镜头，指定最高风险点与最小预览；先检查局部草稿，再逐步组装、修订和交付。",
+        "短生命周期感知worker读取有界媒体片段，返回结论、时间、模态与位置证据；编码Agent主要保留结构化Finding，默认不附原始帧。",
+        "区分原素材、截取片段与全片三套时间轴，先裁剪后缩放；探索、转写和需求检查按模态取证，缺证据就返回uncertain。",
+        "把旧缺陷绑定不可变片段与源码hash，用两个独立时间轴比较新旧版本；缺双边证据或字节未变，不能直接宣称已修复。",
+        "本地FFmpeg检查完整解码、响度、静音和定帧等信号；保存MP4、源码与重放命令，技术交付和抽样语义证据分开记录。"
+      ],
+      "inspirations": [
+        "让Hint包含需求原句、观察到的错误、时间/区域与缺失证据；分别比较只有反馈、带动作建议和固定工作流，测试时再撤反馈，避免混淆辅助与学习。",
+        "对Opus5.5同时跟踪整题交付、rubric细项、感知质量和原可解任务回归；固定总耗时及所有模型费用，别只比较L3或压缩后的返回token。",
+        "把“局部补丁”与“整段重写”做配对干预，冻结旧片段后复查修复点和相邻镜头；将unknown与未检查区间保留下来，不用技术验收替代语义通过。"
+      ],
+      "reviewedAt": "2026-11-26T08:29:29.517884+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.34237v1",
+        "https://arxiv.org/abs/2611.34237",
+        "https://arxiv.org/html/2611.34237v1",
+        "https://huggingface.co/papers/2611.34237",
+        "https://github.com/Kling-Keye/VibeVideoAgent/blob/06574d276dd7517276e7047565c32b221b7eb194/README.md",
+        "https://github.com/Kling-Keye/VibeVideoAgent/blob/06574d276dd7517276e7047565c32b221b7eb194/CHANGELOG.md",
+        "https://github.com/Kling-Keye/VibeVideoAgent/blob/06574d276dd7517276e7047565c32b221b7eb194/src/vibevideo_mcp/media_service.py",
+        "https://github.com/Kling-Keye/VibeVideoAgent/blob/06574d276dd7517276e7047565c32b221b7eb194/src/vibevideo_mcp/workflow.py",
+        "https://github.com/Kling-Keye/VibeVideoAgent/blob/06574d276dd7517276e7047565c32b221b7eb194/src/vibevideo_mcp/media_tools.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.34237",
+      "status": "pending",
+      "checkedAt": "2026-11-26T08:30:04.087822+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin",
+    "url": "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin",
+    "id": "update-nemotron-parse-sft-rlvr-20261126",
+    "title": "Nemotron Parse：先用合成页学抽取，再让RL改善完整交付",
+    "summary": "NVIDIA公布Parse3.5的合成数据与SFT/GRPO适配方案。开发checkpoint在2078页上重复标记126→29；独立牙科示例SFT已达95.85%，RL再到96.58%。应区分学习抽取能力、改善完成稳定性和服务吞吐。",
+    "insight": "可借鉴的不是把反馈统一成总分，而是从合成规格得到独立可核目标，并将内容、完成、重复分开验收。对行动Hint研究，应另做相同SFT起点的训练和撤提示对照；该方案没有证明提示内化。",
+    "limits": "官方公开方案，未复现。开发checkpoint的GRPO比较不是最终发布模型榜单；牙科留出仍来自同一合成生成器，仅一次训练配置，不能代表真实文档或跨模板泛化。pass@1由每页8次采样估计，不是8次取最好。内容奖励不保证框、块类型或标记正确，loop指标不等同幻觉率。三张数据卡头部标CC-BY-4.0，Terms却写未指定全数据集复用许可且上游条款仍适用，存在冲突，不能据此称许可已厘清。未下载数据分片/权重、运行示例或核全部日志；不是Hint撤除或Opus/Fable对照。",
+    "organization": "NVIDIA",
+    "dateLabel": "2026-11-26 · 官方训练方案",
+    "evidence": "官方博客、测量协议、流程文档与数据卡已核；未复现",
+    "originalTitle": "Building on Nemotron 3.5 Parse: Open Data, Fine-Tuning, and Faster Inference",
+    "date": "2026-11-26",
+    "checkedAt": "2026-11-26T08:28:30.195721+00:00",
+    "originalDate": "2026-11-26",
+    "firstSeenAt": "2026-11-26T08:28:30.195721+00:00",
+    "lastSeenAt": "2026-11-26T08:28:30.195721+00:00",
+    "tags": [
+      "合成数据",
+      "GRPO",
+      "RLVR",
+      "文档抽取",
+      "完成奖励",
+      "SFT"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "官方方案与公告",
+        "url": "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin"
+      },
+      {
+        "label": "固定版本测量说明",
+        "url": "https://huggingface.co/datasets/nvidia/Nemotron-Parse-Blog-Assets/raw/258831906d00005a680fbdae47bf651476c99d35/measurement-notes.md"
+      },
+      {
+        "label": "官方SFT/RLVR流程与评测协议",
+        "url": "https://github.com/NVIDIA-NeMo/Nemotron/blob/main/docs/nemotron/parse/workflow.md"
+      },
+      {
+        "label": "固定版本公开数据卡",
+        "url": "https://huggingface.co/datasets/nvidia/Synthetic-Charts-V1/raw/9859b63eb20c4127584a63aa654e4bebb131ed0e/README.md"
+      },
+      {
+        "label": "固定版本公开数据卡",
+        "url": "https://huggingface.co/datasets/nvidia/Synthetic-Tables-V1/raw/c74cfb5fbffadaff1d60ca9d3f9a321d9ee5239d/README.md"
+      },
+      {
+        "label": "固定版本公开数据卡",
+        "url": "https://huggingface.co/datasets/nvidia/OCR-Synthetic-Multilingual-v2/raw/c0cfc389f3d5e2ce8c907a33363a5c55f1183b04/README.md"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "用可验证合成页先做SFT，再用可核内容奖励做GRPO，另验完整结束。牙科同源留出95.85%→96.58%，主要能力来自SFT；不是新基础模型或跨域泛化。",
+      "motivation": "文档抽取既要读对，也要完整结束。只模仿单一标注难容纳等价表达；可核验的结构与内容目标能把错误、重复和截断分开优化。",
+      "novelty": "官方主张：开放训练数据、适配流程及推测解码，提升抽取质量与效率。本站判断：价值是把能力学习、完成稳定性和服务吞吐分开验收，不能把全部增益归给RL。",
+      "evidenceScope": "已读官方HF博客全文、测量说明、NeMo workflow全文及三张数据卡；说明与数据卡已固定HF commit。公开规模分别9,980,000图表、1,000,000表格、7,907,809多语页（数据卡称149语言/文字项、28文字系统）。数据仓库创建11/12、模型最后修改11/14，11/26是本篇方案公告日期，不作为权重首发。2078页开发checkpoint同评分/解码比较Overall66.24→71.38，loop126→29，9000Token封顶185→35；循环标记是参考感知重复检查。牙科例为256训练、32监控、256独立留出，按病人上下文排除交叉；SFT2852步、RLVR128步，单H200每阶段。留出每页8样本，temperature/top-p均1，评测seed1231031；base/SFT/RLVR pass@1为0/95.85/96.58%，RL仅增0.73点，要求自然EOS、精确牙科内容及归一化可见文本CER为0。奖励本身只判内容/CER，成功指标另加EOS，不保证框/块类型/markup。声明保留采样及模型血缘，但本轮未核原始答案。吞吐测试另用2078页/8744Token上限；单H200 BF16、各模型原生prompt/runtime，封顶样本仍计，排除启动/读图/预热/序列化/HTTP；并发1的7.62倍及512的1.52倍是DFlash2对Parse3.5关闭推测，不是RL收益。未读取权重/分片或执行公开代码。GitHub API限流未取得workflow固定commit，所读main版本以checkedAt和快照hash限定。",
+      "limits": "官方公开方案，未复现。开发checkpoint的GRPO比较不是最终发布模型榜单；牙科留出仍来自同一合成生成器，仅一次训练配置，不能代表真实文档或跨模板泛化。pass@1由每页8次采样估计，不是8次取最好。内容奖励不保证框、块类型或标记正确，loop指标不等同幻觉率。三张数据卡头部标CC-BY-4.0，Terms却写未指定全数据集复用许可且上游条款仍适用，存在冲突，不能据此称许可已厘清。未下载数据分片/权重、运行示例或核全部日志；不是Hint撤除或Opus/Fable对照。",
+      "method": [
+        "由同一规格生成图表、表格及多语页面与结构标注，保留内容、坐标和块类型；牙科示例按病人上下文隔离训练、监控和留出集。",
+        "先用配对页面做SFT；牙科示例用256训练页、2852步，记录原模型、数据和checkpoint身份，保持各阶段可核对。",
+        "从SFT模型继续GRPO；示例生成512个候选上下文、每个4答后选择256个，训练128步，奖励核牙位/操作/表面与归一化文本。",
+        "固定256留出页和解码设置对照base/SFT/RLVR；每页采样8答估计单答成功，另看自然结束、字符错误、重复和Token封顶。"
+      ],
+      "inspirations": [
+        "先确定可验证目标再渲染合成输入；训练与评测按模板、来源或生成规则分层隔离，补真实留出集，避免只学会同源格式。",
+        "行动训练也可拆开最终正确、合法完成与重复行为；记录原可解任务退化，别让“减少长输出”奖励变成提前停工。",
+        "固定SFT起点做等数据/等更新预算对照，分别报告RL增益、奖励未覆盖的错误和推理费用；单独测共享Hint及撤Hint迁移。"
+      ],
+      "reviewedAt": "2026-11-26T08:28:30.195721+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/blog/nvidia/building-on-nemotron-35-parse-open-data-fine-tunin",
+        "https://huggingface.co/datasets/nvidia/Nemotron-Parse-Blog-Assets/raw/258831906d00005a680fbdae47bf651476c99d35/measurement-notes.md",
+        "https://github.com/NVIDIA-NeMo/Nemotron/blob/main/docs/nemotron/parse/workflow.md",
+        "https://huggingface.co/datasets/nvidia/Synthetic-Charts-V1/raw/9859b63eb20c4127584a63aa654e4bebb131ed0e/README.md",
+        "https://huggingface.co/datasets/nvidia/Synthetic-Tables-V1/raw/c74cfb5fbffadaff1d60ca9d3f9a321d9ee5239d/README.md",
+        "https://huggingface.co/datasets/nvidia/OCR-Synthetic-Multilingual-v2/raw/c0cfc389f3d5e2ce8c907a33363a5c55f1183b04/README.md"
+      ]
+    }
   }
 ]
