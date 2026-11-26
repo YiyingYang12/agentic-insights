@@ -32506,13 +32506,13 @@
     "title": "Nemotron Parse：先用合成页学抽取，再让RL改善完整交付",
     "summary": "NVIDIA公布Parse3.5的合成数据与SFT/GRPO适配方案。开发checkpoint在2078页上重复标记126→29；独立牙科示例SFT已达95.85%，RL再到96.58%。应区分学习抽取能力、改善完成稳定性和服务吞吐。",
     "insight": "可借鉴的不是把反馈统一成总分，而是从合成规格得到独立可核目标，并将内容、完成、重复分开验收。对行动Hint研究，应另做相同SFT起点的训练和撤提示对照；该方案没有证明提示内化。",
-    "limits": "官方公开方案，未复现。开发checkpoint的GRPO比较不是最终发布模型榜单；牙科留出仍来自同一合成生成器，仅一次训练配置，不能代表真实文档或跨模板泛化。pass@1由每页8次采样估计，不是8次取最好。内容奖励不保证框、块类型或标记正确，loop指标不等同幻觉率。三张数据卡头部标CC-BY-4.0，Terms却写未指定全数据集复用许可且上游条款仍适用，存在冲突，不能据此称许可已厘清。未下载数据分片/权重、运行示例或核全部日志；不是Hint撤除或Opus/Fable对照。",
+    "limits": "官方公开方案，未复现。开发checkpoint的GRPO比较不是最终发布模型榜单；牙科留出仍来自同一合成生成器，仅一次训练配置，不能代表真实文档或跨模板泛化。pass@1由每页8次采样估计，不是8次取最好。内容奖励不保证框、块类型或标记正确，loop指标不等同幻觉率。初次核读的固定版本曾出现许可表述冲突；11/26晚间新版本已删除“未指定全数据集复用许可”，头部仍标CC-BY-4.0，并保留上游文本和素材条款。此为官方文本变化，不代表本站完成逐项许可审查。未下载数据分片/权重、运行示例或核全部日志；不是Hint撤除或Opus/Fable对照。",
     "organization": "NVIDIA",
     "dateLabel": "2026-11-26 · 官方训练方案",
     "evidence": "官方博客、测量协议、流程文档与数据卡已核；未复现",
     "originalTitle": "Building on Nemotron 3.5 Parse: Open Data, Fine-Tuning, and Faster Inference",
     "date": "2026-11-26",
-    "checkedAt": "2026-11-26T08:28:30.195721+00:00",
+    "checkedAt": "2026-11-26T20:29:10.073894+00:00",
     "originalDate": "2026-11-26",
     "firstSeenAt": "2026-11-26T08:28:30.195721+00:00",
     "lastSeenAt": "2026-11-26T08:28:30.195721+00:00",
@@ -32550,14 +32550,30 @@
       {
         "label": "固定版本公开数据卡",
         "url": "https://huggingface.co/datasets/nvidia/OCR-Synthetic-Multilingual-v2/raw/c0cfc389f3d5e2ce8c907a33363a5c55f1183b04/README.md"
+      },
+      {
+        "label": "11/26晚间修订数据卡（固定版本）",
+        "url": "https://huggingface.co/datasets/nvidia/Synthetic-Charts-V1/raw/9f1db4f54d230fbc19ca3da178692bad15a3dcf9/README.md"
+      },
+      {
+        "label": "11/26晚间修订数据卡（固定版本）",
+        "url": "https://huggingface.co/datasets/nvidia/Synthetic-Tables-V1/raw/f9770ad231601ed847e62a8909e7f96d58bcc077/README.md"
+      },
+      {
+        "label": "11/26晚间修订数据卡（固定版本）",
+        "url": "https://huggingface.co/datasets/nvidia/OCR-Synthetic-Multilingual-v2/raw/9d842c74647e2c56b3c2481d210907fefca7c938/README.md"
+      },
+      {
+        "label": "数据卡更新后的官方适配入口",
+        "url": "https://github.com/NVIDIA-NeMo/Nemotron/blob/main/docs/nemotron/parse/index.md"
       }
     ],
     "projectBrief": {
       "tldr": "用可验证合成页先做SFT，再用可核内容奖励做GRPO，另验完整结束。牙科同源留出95.85%→96.58%，主要能力来自SFT；不是新基础模型或跨域泛化。",
       "motivation": "文档抽取既要读对，也要完整结束。只模仿单一标注难容纳等价表达；可核验的结构与内容目标能把错误、重复和截断分开优化。",
       "novelty": "官方主张：开放训练数据、适配流程及推测解码，提升抽取质量与效率。本站判断：价值是把能力学习、完成稳定性和服务吞吐分开验收，不能把全部增益归给RL。",
-      "evidenceScope": "已读官方HF博客全文、测量说明、NeMo workflow全文及三张数据卡；说明与数据卡已固定HF commit。公开规模分别9,980,000图表、1,000,000表格、7,907,809多语页（数据卡称149语言/文字项、28文字系统）。数据仓库创建11/12、模型最后修改11/14，11/26是本篇方案公告日期，不作为权重首发。2078页开发checkpoint同评分/解码比较Overall66.24→71.38，loop126→29，9000Token封顶185→35；循环标记是参考感知重复检查。牙科例为256训练、32监控、256独立留出，按病人上下文排除交叉；SFT2852步、RLVR128步，单H200每阶段。留出每页8样本，temperature/top-p均1，评测seed1231031；base/SFT/RLVR pass@1为0/95.85/96.58%，RL仅增0.73点，要求自然EOS、精确牙科内容及归一化可见文本CER为0。奖励本身只判内容/CER，成功指标另加EOS，不保证框/块类型/markup。声明保留采样及模型血缘，但本轮未核原始答案。吞吐测试另用2078页/8744Token上限；单H200 BF16、各模型原生prompt/runtime，封顶样本仍计，排除启动/读图/预热/序列化/HTTP；并发1的7.62倍及512的1.52倍是DFlash2对Parse3.5关闭推测，不是RL收益。未读取权重/分片或执行公开代码。GitHub API限流未取得workflow固定commit，所读main版本以checkedAt和快照hash限定。",
-      "limits": "官方公开方案，未复现。开发checkpoint的GRPO比较不是最终发布模型榜单；牙科留出仍来自同一合成生成器，仅一次训练配置，不能代表真实文档或跨模板泛化。pass@1由每页8次采样估计，不是8次取最好。内容奖励不保证框、块类型或标记正确，loop指标不等同幻觉率。三张数据卡头部标CC-BY-4.0，Terms却写未指定全数据集复用许可且上游条款仍适用，存在冲突，不能据此称许可已厘清。未下载数据分片/权重、运行示例或核全部日志；不是Hint撤除或Opus/Fable对照。",
+      "evidenceScope": "已读官方HF博客全文、测量说明、NeMo workflow全文及三张数据卡；说明与数据卡已固定HF commit。公开规模分别9,980,000图表、1,000,000表格、7,907,809多语页（数据卡称149语言/文字项、28文字系统）。数据仓库创建11/12、模型最后修改11/14，11/26是本篇方案公告日期，不作为权重首发。2078页开发checkpoint同评分/解码比较Overall66.24→71.38，loop126→29，9000Token封顶185→35；循环标记是参考感知重复检查。牙科例为256训练、32监控、256独立留出，按病人上下文排除交叉；SFT2852步、RLVR128步，单H200每阶段。留出每页8样本，temperature/top-p均1，评测seed1231031；base/SFT/RLVR pass@1为0/95.85/96.58%，RL仅增0.73点，要求自然EOS、精确牙科内容及归一化可见文本CER为0。奖励本身只判内容/CER，成功指标另加EOS，不保证框/块类型/markup。声明保留采样及模型血缘，但本轮未核原始答案。吞吐测试另用2078页/8744Token上限；单H200 BF16、各模型原生prompt/runtime，封顶样本仍计，排除启动/读图/预热/序列化/HTTP；并发1的7.62倍及512的1.52倍是DFlash2对Parse3.5关闭推测，不是RL收益。未读取权重/分片或执行公开代码。GitHub API限流未取得workflow固定commit，所读main版本以checkedAt和快照hash限定。 11/26 20:26 UTC补核仅限公开数据卡及入口：三卡固定新commit为9f1db4f5/f9770ad2/9d842c74，均删去旧Terms未指定许可一句，保留CC-BY-4.0 metadata和上游条款；recipe链接转main文档入口。原方法/测量核读时间仍为11/26 08:28 UTC，原始固定来源全部保留；未将卡片修订当新模型或重做实验。",
+      "limits": "官方公开方案，未复现。开发checkpoint的GRPO比较不是最终发布模型榜单；牙科留出仍来自同一合成生成器，仅一次训练配置，不能代表真实文档或跨模板泛化。pass@1由每页8次采样估计，不是8次取最好。内容奖励不保证框、块类型或标记正确，loop指标不等同幻觉率。初次核读的固定版本曾出现许可表述冲突；11/26晚间新版本已删除“未指定全数据集复用许可”，头部仍标CC-BY-4.0，并保留上游文本和素材条款。此为官方文本变化，不代表本站完成逐项许可审查。未下载数据分片/权重、运行示例或核全部日志；不是Hint撤除或Opus/Fable对照。",
       "method": [
         "由同一规格生成图表、表格及多语页面与结构标注，保留内容、坐标和块类型；牙科示例按病人上下文隔离训练、监控和留出集。",
         "先用配对页面做SFT；牙科示例用256训练页、2852步，记录原模型、数据和checkpoint身份，保持各阶段可核对。",
@@ -32576,7 +32592,11 @@
         "https://github.com/NVIDIA-NeMo/Nemotron/blob/main/docs/nemotron/parse/workflow.md",
         "https://huggingface.co/datasets/nvidia/Synthetic-Charts-V1/raw/9859b63eb20c4127584a63aa654e4bebb131ed0e/README.md",
         "https://huggingface.co/datasets/nvidia/Synthetic-Tables-V1/raw/c74cfb5fbffadaff1d60ca9d3f9a321d9ee5239d/README.md",
-        "https://huggingface.co/datasets/nvidia/OCR-Synthetic-Multilingual-v2/raw/c0cfc389f3d5e2ce8c907a33363a5c55f1183b04/README.md"
+        "https://huggingface.co/datasets/nvidia/OCR-Synthetic-Multilingual-v2/raw/c0cfc389f3d5e2ce8c907a33363a5c55f1183b04/README.md",
+        "https://huggingface.co/datasets/nvidia/Synthetic-Charts-V1/raw/9f1db4f54d230fbc19ca3da178692bad15a3dcf9/README.md",
+        "https://huggingface.co/datasets/nvidia/Synthetic-Tables-V1/raw/f9770ad231601ed847e62a8909e7f96d58bcc077/README.md",
+        "https://huggingface.co/datasets/nvidia/OCR-Synthetic-Multilingual-v2/raw/9d842c74647e2c56b3c2481d210907fefca7c938/README.md",
+        "https://github.com/NVIDIA-NeMo/Nemotron/blob/main/docs/nemotron/parse/index.md"
       ]
     }
   },
@@ -32922,6 +32942,383 @@
         "https://github.com/huggingface/trl/blob/main/examples/async_grpo_s3_aggregation/harness/task.py",
         "https://github.com/huggingface/trl/blob/main/examples/async_grpo_s3_aggregation/evaluate.py",
         "https://huggingface.co/trl-lib/Qwen3-0.6B-S3-Aggregation"
+      ]
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.34756",
+    "url": "https://arxiv.org/abs/2611.34756v1",
+    "id": "paper-care-opd-2611-34756",
+    "title": "CARE-OPD：把历史覆盖、置信度筛选与事后选轮用于代理蒸馏",
+    "summary": "CARE-OPD在旧轨迹前缀上重采学生当前回复，用少量学生起跑扩充历史、教师置信度过滤更新、最终执行证据选择训练轮。Qwen3.5-9B的SWE成功率59.5%，异步单轮OPD为57.1%；同硬件耗时5.5→3.0小时。回复是on-policy，历史仍off-policy，回复也未实际执行。",
+    "insight": "值得复用的是把“是否到过失败状态”“教师在该回复上是否有把握”“哪轮值得训练”拆成三道门。应追加执行新回复的有效性检查，并按原可解/新增可解题追踪退化；仅凭当前策略重采或较高教师置信度，无法排除历史分布偏移与错误监督。",
+    "limits": "未复现；仅回复层面on-policy，回放历史仍off-policy，新回复不执行。教师置信度不等于正确性；静态池会过时，未逐题审原可解任务退化。需要教师logits，无Opus5.5/Fable5.2或删Hint训练对照。三组模型/任务设置各3个训练种子，报均值与样本标准差，非显著性结论。时间比较限定同32块H200、环境worker与batch；不能外推到闭源文本Hint接口。学生roll-in只取冻结快照、比例有限，学生自行完成的轨迹被丢弃；成功教师续跑筛选改变了训练分布。事后结果只用于选轮，未作为学生输入；对未执行的新回复，仍无法核工具动作有效性与下游后果。",
+    "dateLabel": "2026-11-25 · v1 · 首发",
+    "evidence": "已核原论文方法、实验与附录；来源核验不代表实验复现",
+    "originalTitle": "Collect for Coverage, Replay with Evidence: Adaptive and Efficient On-Policy Distillation for Long-Horizon Agents",
+    "date": "2026-11-25",
+    "checkedAt": "2026-11-26T20:33:00.414356+00:00",
+    "originalDate": "2026-11-25",
+    "paperOriginalDate": "2026-11-25T17:27:31Z",
+    "paperUpdatedAt": "2026-11-25T17:27:31Z",
+    "updatedAt": "2026-11-25T17:27:31Z",
+    "firstSeenAt": "2026-11-26T10:00:02Z",
+    "lastSeenAt": "2026-11-26T16:00:01Z",
+    "tags": [
+      "Hint",
+      "on-policy蒸馏",
+      "历史分布",
+      "教师置信度",
+      "行动选择",
+      "计算预算"
+    ],
+    "authors": [
+      "Haowen Hou",
+      "Gen Li",
+      "Ruilin Li",
+      "Yicheng Liu",
+      "Zhen Huang",
+      "Shuai Dong",
+      "Congcong Wang",
+      "Kaiwen Tuo",
+      "Hongrui Wu",
+      "Zelin Peng",
+      "Kanghui Tian",
+      "Ji Zhao",
+      "Dianyi Wang",
+      "Jiaqi Wang"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.34756v1"
+      },
+      {
+        "label": "arXiv 原论文与版本日期",
+        "url": "https://arxiv.org/abs/2611.34756"
+      },
+      {
+        "label": "arXiv v1 方法、主表与附录",
+        "url": "https://arxiv.org/html/2611.34756v1"
+      },
+      {
+        "label": "Hugging Face 作者提交页（摘要）",
+        "url": "https://huggingface.co/papers/2611.34756"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "在旧前缀上重采当前回复，再做历史覆盖、置信度过滤与事后选轮；SWE达59.5%，同硬件较异步单轮OPD耗时少45%。回复on-policy，历史仍off-policy。",
+      "motivation": "长程代理在线蒸馏消耗大量工具交互；简单回放教师成功历史虽便宜，却可能遗漏学生会犯的错，并在教师不熟悉的回复上施加不可靠监督。",
+      "novelty": "作者主张覆盖学生偏移历史、过滤低置信更新并以执行证据分配训练轮。本站判断：贡献是三模块组合及成本核算；on-policy仅指重采回复，不能替代历史覆盖或动作执行验证。",
+      "evidenceScope": "已读v1§2–5及附录A–F，核表1–4和超参数表8；HF页仅核作者提交摘要，未运行模型或代码。三组设置为Qwen3.5-9B学生/27B教师的SWE与Deep Research，以及Qwen3-8B学生/Qwen3-Coder-30B-A3B-Instruct教师的SWE。Qwen3.5开启thinking；Qwen3工具格式不一致，先用500个R2E-Gym-Subset任务的教师成功轨迹做共同冷启动，仓库与SWE-bench不重叠，初始SWE从8.6%到10.8%，不能把该冷启动遗漏。Qwen3 Deep Research因候选教师17.3%、学生12.7%仅差4.6点而未继续，不是四组完整实验。SWE用SWE-Gym训练，留100题验证；Deep Research只取五个公开数据集的问题/参考答案、弃原轨迹，规范化去重75372题，再由DeepSeek-V4-Flash结合Serper验证当前可回答性，留16855题；SFT对照固定3840题匹配OPD任务预算。OpenHands用于SWE、Uni-Agent用于检索，128k上下文、150轮上限。学生起跑K均匀取1至Kmax，Qwen3.5的Kmax按收集平均轮数取SWE72、检索20；若学生起跑已完成任务则丢弃，不给它教师续跑目标。教师事后选轮按ceil(0.4×合格轮数)，可复用整条轨迹KV；学生只见截至该轮的旧前缀，未来证据只影响选择。训练需教师logits，反向KL沿当前学生回复取样；教师置信度是每token最大概率的平均，不是任务reward。每方法3训练种子，表1均值±样本标准差：Qwen3.5 SWE/BrowseComp-Plus/Qwen3 SWE，初始53.2/42.5/10.8，SFT54.7±0.4/46.1±1.5/17.6±1.0，在线单轮57.7±0.3/47.1±0.2/20.3±0.5，普通前缀回放53.7±1.1/45.9±1.3/17.1±0.8，CARE59.5±0.3/49.6±0.5/23.0±0.5。评测对象是训练后的学生，未描述以外置Hint辅助完成这些评测，也没有删除文本Hint再训练的对照。表2同32块H200、worker与batch，含收集/选轮/训练及失败尝试：异步单轮OPD5.5±0.1小时、308.1k环境动作、57.1%；CARE3.0±0.1小时、171.2±3.3k动作、59.5%，分别约省45%时间、44%动作；同步单轮7.5小时不可偷换成同一分母。32卡分配教师8、学生生成16、更新8；OPD学习率1e-6、batch64、60步，异步最大滞后4次更新；SFT1e-5、3epoch。无事后选轮时，教师历史无/有门为53.7/54.5，学生起跑历史无/有门55.1/57.1；单独选轮实验随机留40%仍53.7，教师按结果留40%为57.3，独立122B-A10B评审为57.6±2.0，不能把两者称显著等效。附录扫α=0.1/0.3/0.5为59.5/59.1/58.8；γ=0.1/0.3/0.5为59.5/58.9/57.7；选轮r=0.2/0.4/0.6/0.8为57.5/59.5/59.3/58.7，筛得更狠未持续改善。这些是有限设置的敏感性结果，不证明通用最佳阈值。",
+      "limits": "未复现；仅回复层面on-policy，回放历史仍off-policy，新回复不执行。教师置信度不等于正确性；静态池会过时，未逐题审原可解任务退化。需要教师logits，无Opus5.5/Fable5.2或删Hint训练对照。三组模型/任务设置各3个训练种子，报均值与样本标准差，非显著性结论。时间比较限定同32块H200、环境worker与batch；不能外推到闭源文本Hint接口。学生roll-in只取冻结快照、比例有限，学生自行完成的轨迹被丢弃；成功教师续跑筛选改变了训练分布。事后结果只用于选轮，未作为学生输入；对未执行的新回复，仍无法核工具动作有效性与下游后果。",
+      "method": [
+        "收集冻结策略轨迹：90%教师独立完成，10%由学生先走若干轮、教师续跑；只保留教师完成且验证成功的轨迹，学生轮仅作历史。",
+        "让教师看完整执行结果选出40%教师轮；选轮标记、未来轨迹与最终结果从学生输入移除，训练时先均匀选轨迹、再选其中一轮。",
+        "学生在所选旧前缀上重新生成完整回复，教师提供逐token分布，以反向KL训练；回复不送回环境，因此只在回复层面on-policy。",
+        "按教师在回复各token上的最大概率均值排序，每批丢弃最低10%的更新；前缀仍留池中，可在之后重采；高置信度不是正确性验证。",
+        "比较在线/回放/SFT及三模块消融，用同硬件端到端耗时、全部环境动作数和3种子任务成功率审收益，并扫历史混入与筛选比例。"
+      ],
+      "inspirations": [
+        "做“教师历史/学生起跑历史”×“置信度筛选开/关”的2×2实验，再独立加选轮；固定总更新预算，避免把更多数据与筛选策略混为一项收益。",
+        "把置信度门与执行验证门分开：统计高置信错误、低置信正确和工具拒绝率；对原可解题单列回退，核静态池随学生更新多久需要刷新。",
+        "事后成功可用于找值得学的纠错轮，但保存给学生的真实前缀；同时报告收集失败尝试、选择教师调用、训练和评测总成本。"
+      ],
+      "reviewedAt": "2026-11-26T20:33:00.414356+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.34756",
+        "https://arxiv.org/html/2611.34756v1",
+        "https://huggingface.co/papers/2611.34756"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.34756",
+      "status": "pending",
+      "checkedAt": "2026-11-26T20:31:27.317323+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.34440",
+    "url": "https://arxiv.org/abs/2611.34440v1",
+    "id": "paper-vsft-2611-34440",
+    "title": "vSFT：把行动反馈转成LoRA，区分测试时纠错与持久迁移",
+    "summary": "vSFT把技能/反思交给超网络生成LoRA，任务代理上下文只留任务与当轮历史。Qwen3-4B在ALFWorld最高10次尝试下平均成功92.7%，Reflexion为78.8%；默认流程仍依赖测试时反馈。另有固定合并LoRA跨split收益，可作为持久迁移证据，但不能视作裸模型撤Hint。",
+    "insight": "这里的核心问题是把语言指导转为可执行的参数调整，而非让轨迹写得更像教师。实验应拆开离线超网络训练、同题反馈重试、固定适配器跨题迁移三阶段；分别核救回、原可解题保留、推理成本与缓存退化，避免用多次纠错总分替代一次无反馈能力。",
+    "limits": "未复现；默认测试仍用监督者反馈、动态LoRA和最多10次尝试，离线元训练为off-policy成功轨迹模仿。固定LoRA有同基准跨split迁移，但不是裸模型撤Hint。WebShop49%低于GiGPO50%；ALF seen一次计时多3%。无Opus5.5/Fable5.2实验。主表未报重复种子区间，RL与反思方法默认推理预算不同，扩展对照只是缩小差距。少量ALF共同失败题不足以支持普遍纠错结论。KV缓存跨适配器复用有退化，LoRA推理下换用LoRA缓存平均43.0→38.6。作者代码链接及HF页本轮404；论文可读，不声称开源已可用或完成复现。",
+    "dateLabel": "2026-11-25 · v1 · 首发",
+    "evidence": "已核原论文方法、实验与附录；来源核验不代表实验复现",
+    "originalTitle": "vSFT: Learning to Verbally Tune Agents at Test Time",
+    "date": "2026-11-25",
+    "checkedAt": "2026-11-26T20:33:00.414356+00:00",
+    "originalDate": "2026-11-25",
+    "paperOriginalDate": "2026-11-25T14:22:22Z",
+    "paperUpdatedAt": "2026-11-25T14:22:22Z",
+    "updatedAt": "2026-11-25T14:22:22Z",
+    "firstSeenAt": "2026-11-26T16:00:01Z",
+    "lastSeenAt": "2026-11-26T16:00:01Z",
+    "tags": [
+      "Hint",
+      "行动反馈",
+      "反思",
+      "LoRA",
+      "元学习",
+      "测试时适配",
+      "迁移边界"
+    ],
+    "authors": [
+      "Qishuai Wen",
+      "Rui Chen",
+      "Haiwen Li",
+      "Zhiyuan Huang",
+      "Qiwen Gu",
+      "Bingjie Gao",
+      "Geng Li",
+      "Jing Tang",
+      "Xiangxiang Chu",
+      "Chun-Guang Li"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "公开feed原始来源",
+        "url": "https://arxiv.org/abs/2611.34440v1"
+      },
+      {
+        "label": "arXiv 原论文与版本日期",
+        "url": "https://arxiv.org/abs/2611.34440"
+      },
+      {
+        "label": "arXiv v1 方法、主表与附录",
+        "url": "https://arxiv.org/html/2611.34440v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "超网络把技能/反思映射成LoRA，4B代理在ALFWorld最高10次尝试平均92.7%。测试仍用反馈与适配器；固定合并LoRA另有跨split收益，不能等同裸模型撤Hint。",
+      "motivation": "代理能写出正确反思却仍重复失误；把反馈继续塞进上下文未必改变动作。研究能否学会将自然语言指导转换为权重调整，并保留可迁移的改进。",
+      "novelty": "作者主张学习语言到LoRA的反馈接口，在测试时直接改变动作策略。本站判断：固定合并适配器的跨split证据很有价值；默认反馈闭环与离线成功轨迹模仿应分别核算，不能统称on-policy训练。",
+      "evidenceScope": "已读v1§2–4与附录§6–9，核表2–8、原SVG图5/7的文字标签及图注；未运行模型或作者代码。基础代理为Qwen3-4B-Instruct-2507，Doc-to-LoRA超网络421M可训练参数、rank8、目标MLP down-projection，学习率4e-6；基础权重始终冻结。离线数据由带文本条件的Reflexion策略收集，可来自另一个代理；每个完成任务只留最终成功尝试，训练损失对动作做交叉熵，仅更新超网络。因此是离线off-policy模仿，不因名称vSFT或测试时使用自己的失败轨迹而成为在线RL。默认vSFT的收集代理/监督者与测试代理/监督者均为4B；†在收集与测试均换Qwen-Plus-2507监督；‡再把收集代理换为Qwen-Plus，评测代理仍4B。监督者看到当前任务、失败轨迹、一个已解任务及其成功轨迹、累计反馈；代理仅看到任务和本轮交互历史，系统提示、few-shot、技能与反思经超网络进入LoRA。FIFO容量B在算法中出现，所读实现说明未给具体值，不补猜。每次新LoRA替换旧LoRA，最多10次尝试、成功即停。表2 ALFWorld seen/unseen验证集的两分数简单平均：4B ReAct57.2、Reflexion78.8、GRPO84.0；vSFT一次64.7、默认92.7（92.9/92.5），†96.7、‡99.7。主表这些方法推理预算不同，不能称等成本超越RL。表3 WebShop成功率ReAct18.8、Reflexion30.8、GRPO44.2、GiGPO50.0、vSFT一次24.45/默认49.0/†59.8/‡62.0；vanilla未超GiGPO。表4只替换已训练系统的监督者时Qwen-Plus为50.4，不是同时改收集数据的†59.8；该表也测GPT-5.6 Sol/Terra/Luna、DeepSeek-V4与GLM，但没有Opus/Fable。图5共同初始失败集：WebShop360题vSFT救回30.0%、Reflexion12.2%；ALF seen20题55%/15%，unseen25题44%/12%，小分母须保留。图7明确为vSFT†，将成功任务LoRA合并固定，ALF对六任务类别等总权，WebShop对独立反馈文档等权；跨split固定适配器在ALF seen/unseen84.3/83.6%，一次vSFT†为62.9/65.7%；WebShop test固定迁移38.2%，一次27.6%、同split合并42.0%、10次†59.8%。这是同基准跨split、保留适配器的迁移，不是无LoRA基础模型或任意领域迁移。数据收集ALF10712、WebShop86533个rollout，为默认GRPO公式预算284160/926720的3.8%/9.3%，不等于总Token或GPU预算。作者报ALF同单RTX6000D训练总耗时623→54小时；文中逐项为GRPO62小时/epoch×10，vSFT9小时×5另加8小时收集，取其总量报告不制造精确重算。ALF seen推理同设备Reflexion592秒、vSFT608秒（多3%），生成/加载LoRA分别61/4秒。表8扩展为3温度×每温度3次、反思由10降至2轮，GiGPO86.1、加Reflexion86.5、加vSFT88.7；作者只称缩小推理预算差，未证明总成本严格相等。表7跨缓存源：base推理44.3→45.6平均略升，但LoRA推理使用base KV与LoRA KV为43.0/38.6，Retr.MultiHop40.3→19.5，不能泛称缓存复用无损。",
+      "limits": "未复现；默认测试仍用监督者反馈、动态LoRA和最多10次尝试，离线元训练为off-policy成功轨迹模仿。固定LoRA有同基准跨split迁移，但不是裸模型撤Hint。WebShop49%低于GiGPO50%；ALF seen一次计时多3%。无Opus5.5/Fable5.2实验。主表未报重复种子区间，RL与反思方法默认推理预算不同，扩展对照只是缩小差距。少量ALF共同失败题不足以支持普遍纠错结论。KV缓存跨适配器复用有退化，LoRA推理下换用LoRA缓存平均43.0→38.6。作者代码链接及HF页本轮404；论文可读，不声称开源已可用或完成复现。",
+      "method": [
+        "离线以Reflexion收集轨迹，每个完成任务只留最后的成功尝试，抽取条件、历史前缀与动作三元组；条件含系统提示、示例和反馈记忆。",
+        "将条件从代理文本上下文移给超网络，冻结Qwen3-4B，只训练421M参数超网络，用动作交叉熵学习生成MLP down-projection的rank8 LoRA。",
+        "测试时先生成适配器并执行；失败后，监督者读取失败轨迹、成功参考轨迹和旧反馈，生成技能与反思，按FIFO保留最近记忆。",
+        "超网络把更新后的条件转成新LoRA，替换上轮适配器，直到成功或达到10次尝试；无测试时反向传播，但仍有监督者和动态参数适配。",
+        "另将成功任务LoRA按加权TIES合并并固定，测同/异split任务；并核共同失败题、推理预算、RL叠加和跨适配器KV缓存复用。"
+      ],
+      "inspirations": [
+        "用同一批反馈分三臂：上下文保留、超网络动态LoRA、冻结合并LoRA；再加无反馈一次作答，分别判断当题纠错与跨题留存。",
+        "按同题共同失败集合核救回率，并追踪原可解任务退化；固定监督者、参考成功例和总尝试/Token，避免将更多反馈机会算作表示优势。",
+        "动态适配时按LoRA版本管理缓存：比较清空重算、复用旧KV和固定LoRA，并用检索/格式/行动三类任务核退化，不能只测平均收益。"
+      ],
+      "reviewedAt": "2026-11-26T20:33:00.414356+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.34440",
+        "https://arxiv.org/html/2611.34440v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.34440",
+      "status": "pending",
+      "checkedAt": "2026-11-26T20:31:27.317323+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.34813",
+    "url": "https://arxiv.org/abs/2611.34813",
+    "id": "paper-solve-vision-code-2611-34813",
+    "title": "Solve Vision with Code：会渲染答案，不等于程序已学会迁移",
+    "summary": "在500道合成视觉题上，Coding Agent写程序渲染答案，沿用视频基准规则评分；Codex均分0.923、视频榜最强0.670。关键是分开看交付、内容正确与程序换图后能否重算，不能把高分直接当通用视频能力。",
+    "insight": "代码创作评估应同时保留源程序、渲染结果和同族换图重跑：区分“把当前答案画出来”与“从新输入重新求解”。行动指导可强调测量再绘制，但收益需做等预算对照，不能从工具调用相关性推成有效Hint。",
+    "limits": "已读原文方法、全部实验及附录，未复现。0.923等是500题规则评分均值，不是解题成功率；500/500只表示交出视频。代码侧每题一次30分钟episode内部可反复执行、检查、改写，视频侧为既有榜单单样本且未重跑，不是等算力、等费用或等交互比较。任务为平色、精确几何、可从首帧计算答案的合成场景，不能外推真实素材、审美、叙事、3D物理或一般视频生成。程序可读改不等于经过任意编辑验收；迁移分类还把在新图测量时崩溃的程序计入depictive，不是成功泛化比例。单次运行无重复采样区间，模型、CLI、工具适配与默认设置混在比较中；跨模型Token口径不同，未披露美元实付成本。论文没有给作者评测管线、全部程序/日志的可核下载入口，HF页也无关联模型/数据，本站未执行代码。实验用Fable5.1，不是Fable5.2或Opus5.5；无Hint对照、撤Hint训练或权重更新。",
+    "organization": "UCL / NTU / USC / UCSD / CMU 等",
+    "dateLabel": "2026-11-25 · 首发v1",
+    "evidence": "已核原文§2–4、表1–5及附录A–D；未复现",
+    "originalTitle": "Solve Vision with Code: Coding Agents Are Stronger Visual Reasoners Than Video Models",
+    "date": "2026-11-25",
+    "checkedAt": "2026-11-26T20:29:54.461010+00:00",
+    "originalDate": "2026-11-25",
+    "paperOriginalDate": "2026-11-25T18:01:22Z",
+    "paperUpdatedAt": "2026-11-25T18:01:22Z",
+    "updatedAt": "2026-11-25T18:01:22Z",
+    "firstSeenAt": "2026-11-26T16:00:01Z",
+    "lastSeenAt": "2026-11-26T16:00:01Z",
+    "tags": [
+      "代码生成视频",
+      "可验证视觉推理",
+      "交付与正确性",
+      "程序迁移",
+      "预算边界"
+    ],
+    "authors": [
+      "Dezhi Luo",
+      "Fengyuan Yu",
+      "Haotian Zhang",
+      "Zehong Zhao",
+      "Ran Ji",
+      "Siyuan An",
+      "Huayi Qin",
+      "Qingying Gao",
+      "Zhongang Cai",
+      "Lei Yang",
+      "Ziqi Huang",
+      "Ruisi Wang",
+      "Maijunxian Wang",
+      "Hokin Deng"
+    ],
+    "topics": [
+      "code2motion",
+      "code2video"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · 原始版本与发表日期",
+        "url": "https://arxiv.org/abs/2611.34813"
+      },
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.34813v1"
+      },
+      {
+        "label": "原文方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.34813v1"
+      },
+      {
+        "label": "Hugging Face · 论文原页",
+        "url": "https://huggingface.co/papers/2611.34813"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "同样首帧与规则裁判，代码渲染的500题均分最高0.923，视频榜最高0.670；这不是成功率或等预算比较。换图重跑更能区分可复用求解程序与写死答案。",
+      "motivation": "可执行视频能忠实画出当前答案，但代码里可能只有固定坐标。要判断代码创作的研究价值，需要把交出视频、内容正确和换输入后重新计算拆开衡量。",
+      "novelty": "作者主张：同输入、同视频格式、同裁判下，代码是更可靠的视觉解题路径。本站判断：有价值的是交付/内容/程序迁移的拆分；结论只覆盖此合成基准与实际预算。",
+      "evidenceScope": "已读arXiv v1方法§2、结果§3、讨论§4、表1–5和附录A–D；本次核的是论文文本、表格及HF元数据，没有重跑原始程序或视频。首发2026-11-25T18:01:22Z；HF API只给日期零点，以arXiv提交记录为精确时间。VBVR-Pro-Bench有100族×5实例=500题，五类原始标签数39/25/20/19/17，16族多标签，主评分按1/k分摊。50族ID/50族OOD指VBVR-Pro训练划分，不证明这些闭源Agent预训练从未见过任务。闭源配置为Codex CLI0.154.0/gpt-6-astra，Claude Code2.1.268/Fable5.1（Bedrock），Gemini CLI0.59.0/gemini-3.1-pro-preview；作者称原厂默认设置、无新增系统提示/skill，未单列推理强度。OpenCode1.18.30配24个Bedrock开放权重模型，DeepSeekR1因该服务无工具调用被排除，剩23，不应当作模型能力零分。所有编码Agent每题新容器、CPU执行、可联网调API/装包、30分钟墙钟，一次episode无外部重试；内部可检查修改多次。未给予答案、任务元数据或生成器，作者审计事件日志和留存程序未见生成模型调用。主表含3闭源+23开放权重+11视频模型=37系统；视频来自原榜14个中最高11个，未由本文重跑。Codex/Fable5.1/Gemini均交付500/500视频，规则均分0.923/0.894/0.893，既有最强RL视频模型0.670，差0.253/0.224/0.223，均为分值差而非成功率差。GLM5交付495/500、均分0.572；KimiK2.5交付498/500、均分0.557。Qwen3-Coder-Next93题触及1800秒上限，却总共仍交付498视频、均分0.264，显示超时与无产物不同。开放权重得分与交付数Spearman相关0.93（n=23），只是观察关联。视频类别行从原论文各半划分、已舍入三位小数的分类分合并，非新评测。表4按全部500题统计：Codex/Fable/Gemini平均调用3.2/9.2/25.3，中位墙钟22/105/218秒，平均输入57k/233k/659k、输出1.2k/7.3k/7.5k；Claude主模型计数之外Sonnet5辅助调用再增加约0.6%。GLM5平均48调用、中位378秒、输入1569k/输出16.3k、12超时；Token分词与缓存不同，不能转写成统一实付成本或效率因果。作者另对1,385条在原题解决问题的闭源程序做行为分类，每条重跑同族四个可选新实例中的另一个；正文未充分披露入选“已解”阈值、换题选择和分类阈值/审计一致性。depictive包括重算维持得分以及在新图测量时失败；propositional为能运行但改动区域重合、仍画旧答案，中间类包含部分迁移或不同错误。Perception的depictive占67%、Transformation45%、Abstraction33%、Knowledge27%；不能称这些比例为新题成功率或潜在CoT忠实性。G-161的15条原题程序，12条换图得1.0、3条崩溃，全部仍被视为depictive。附录自检视频占比Claude94.0%、Codex13.8%，只是行为差异，未随机化反馈、不能证明自检降低或提高成绩。代码操作像素且产出随时间变化的视频，因此归入code2video/code2motion；没有原生编辑时间线、任意后续编辑质量或物理仿真正确性的量化验收。论文只在未来工作提出GRPO训练，没有已训练policy或Hint消融。论文/摘要未给作者管线或完整程序日志仓库；HF原页与API可读，linkedModels/linkedDatasets/linkedSpaces为空。",
+      "limits": "已读原文方法、全部实验及附录，未复现。0.923等是500题规则评分均值，不是解题成功率；500/500只表示交出视频。代码侧每题一次30分钟episode内部可反复执行、检查、改写，视频侧为既有榜单单样本且未重跑，不是等算力、等费用或等交互比较。任务为平色、精确几何、可从首帧计算答案的合成场景，不能外推真实素材、审美、叙事、3D物理或一般视频生成。程序可读改不等于经过任意编辑验收；迁移分类还把在新图测量时崩溃的程序计入depictive，不是成功泛化比例。单次运行无重复采样区间，模型、CLI、工具适配与默认设置混在比较中；跨模型Token口径不同，未披露美元实付成本。论文没有给作者评测管线、全部程序/日志的可核下载入口，HF页也无关联模型/数据，本站未执行代码。实验用Fable5.1，不是Fable5.2或Opus5.5；无Hint对照、撤Hint训练或权重更新。",
+      "method": [
+        "给100族各5题相同的1024像素首帧、指令和成片规格；隔离答案、生成器及元数据，禁用图像/视频生成模型。",
+        "让原厂CLI或OpenCode在CPU沙箱写、跑、修改像素渲染程序；每题一个30分钟episode，可内部迭代但无第二次重试。",
+        "沿用原版规则/OCR裁判，对500题取均分；缺视频记零，多标签按1/k加权，同时单记视频交付数和内容失败。",
+        "从日志统计调用与Token均值、耗时中位数及超时；视频模型引用既有榜单，明确资源与交互不对称。",
+        "将1,385条原题已解程序在同族另一题重跑，区分重新测量、固定答案和中间情况；测量时崩溃也可被标为重新测量型。"
+      ],
+      "inspirations": [
+        "把行动Hint写成“定位对象→测量关系→再绘制”，与只给答案坐标比较；另测撤去指导后的新题表现，不能把本文直接当训练迁移证据。",
+        "每个高分程序增加同族换图测试，分别记录重新算对、测量崩溃、旧答案复用；让可编辑源码与可复用求解能力成为不同验收项。",
+        "同时报缺产物率、交付后内容分、工具调用、总Token与墙钟；再做等预算和同一harness对照，避免把适配失败或更长探索误归因为模型推理强弱。"
+      ],
+      "reviewedAt": "2026-11-26T20:29:54.461010+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.34813",
+        "https://arxiv.org/html/2611.34813v1",
+        "https://huggingface.co/papers/2611.34813"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.34813",
+      "status": "pending",
+      "checkedAt": "2026-11-26T20:29:34.580953+00:00"
+    }
+  },
+  {
+    "sourceType": "official",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://www.kimi.com/code/docs/en/kimi-code-cli/changelog.html",
+    "url": "https://www.kimi.com/code/docs/en/kimi-code-cli/changelog.html",
+    "id": "update-kimi-context-recovery-20261126",
+    "title": "Kimi Code 2.8：先核对Hint实际上下文，再比较失败续跑",
+    "summary": "Kimi新增实际上下文组成查看、全局AGENTS.md编辑和会话引用，同时移除子Agent继承调用者全历史的实验参数；失败续跑不再追加合成Continue消息，并修复工具变更后的恢复错误。这些变化有助排查Hint输入与运行框架差异，尚无任务增益实证。",
+    "insight": "有/无Hint对照需冻结工具集、指令文件、引用会话和恢复方式；不仅保存UI输入，还要核模型实际收到的内容。将模型犯错、工具未加载和恢复时新增指令分开，才不把框架修复误归因于Hint。",
+    "limits": "仅核官方变更记录和文档，未安装、运行或复现。CLI2.8与Desktop1.5为工具版本，不是新模型或Hint训练成果；无任务成功率、成本或撤Hint迁移对照。Context usage、Prompt prediction、Session mentions均为默认关闭的实验功能；预测下一条用户输入不等于教师行动Hint。移除Agent/AgentSwarm的experimental fork参数不等于删除用户/fork会话功能。KAP最低版本为CLI2.7/Desktop1.4，不能把新导航当本轮新协议发布。",
+    "organization": "Moonshot AI",
+    "dateLabel": "11/25 功能更新 · 11/26 修复更新",
+    "evidence": "官方版本记录与功能文档核验；未实机测试或复现",
+    "originalTitle": "Kimi Code CLI 2.8.0/2.8.1 and Desktop 1.5.0/1.5.1",
+    "date": "2026-11-26",
+    "checkedAt": "2026-11-26T20:29:10.073894+00:00",
+    "originalDate": "2026-11-25",
+    "firstSeenAt": "2026-11-26T20:34:04.311076+00:00",
+    "tags": [
+      "Agent工具",
+      "上下文核验",
+      "会话恢复",
+      "提示实验",
+      "Kimi"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "CLI官方版本日期",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-cli/changelog.html"
+      },
+      {
+        "label": "Desktop官方版本日期",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-desktop/changelog.html"
+      },
+      {
+        "label": "CLI完整技术变更",
+        "url": "https://github.com/MoonshotAI/kimi-code/blob/main/apps/kimi-code/CHANGELOG.md"
+      },
+      {
+        "label": "设置、实验功能与全局指令",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-desktop/settings-and-extensions.html"
+      },
+      {
+        "label": "输入、会话引用与reload边界",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-desktop/input-and-context.html"
+      },
+      {
+        "label": "子Agent上下文隔离",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-cli/customization/agents.html"
+      },
+      {
+        "label": "KAP版本前提（既有能力）",
+        "url": "https://www.kimi.com/code/docs/en/kimi-code-cli/guides/other-agents.html"
+      }
+    ],
+    "projectBrief": {
+      "tldr": "Kimi把上下文组成、全局指令和恢复路径变得更可核对，并修复动态工具会话错误。对Hint研究的价值是控制实验输入；暂无Hint有效性或训练迁移证据。",
+      "motivation": "同一句Hint在不同指令文件、工具集和恢复会话中可能对应不同实际输入。先分清运行框架改变了什么，才能评估模型是否从提示获益。",
+      "novelty": "官方主张是上下文可见性、输入便利与恢复可靠性改进。本站判断：可用于建立可审计的Hint输入与恢复对照；功能说明本身没有验证模型推理或行动能力提升。",
+      "evidenceScope": "本轮对比11/26 22:19轮快照，官方CLI变更页新增2.8.0（11/25）及2.8.1（11/26），Desktop对应1.5.0/1.5.1；日期只有日级，未推断精确发稿时刻。已读CLI源码CHANGELOG相应完整条目及官网设置/上下文/子Agent/KAP文档。2.8.0细项包括移除Agent/AgentSwarm的experimental fork、失败轮Continue不附加合成用户消息、MCP启动同步、后台超时输出不再全量灌入上下文；保存模型失效时可恢复会话，但选择可用模型前禁止继续发送。2.8.1修unloaded_tool及Gemini/Vertex取消连接与用量保留。Desktop1.5.0可编辑连接服务器全局AGENTS.md，本地/SSH分别作用于各自主机；reload在生成中不可用。三个Lab功能默认关闭；Prompt prediction为下一条用户输入建议且不会自动发送，Session mentions为显式引用其他会话。升级重启默认接续活动会话，可取消该选项，但本轮没有升级或重启用户环境。子Agent当前文档说只见显式派发内容、不见父历史；用户/fork仍创建完整历史副本，两者不同。KAP文档最低2.7.0/1.4.0，只作为已有能力背景。源码CHANGELOG为main快照，未固定release构建或验证协议实现；没有任务级效果、吞吐或统计置信区间。",
+      "limits": "仅核官方变更记录和文档，未安装、运行或复现。CLI2.8与Desktop1.5为工具版本，不是新模型或Hint训练成果；无任务成功率、成本或撤Hint迁移对照。Context usage、Prompt prediction、Session mentions均为默认关闭的实验功能；预测下一条用户输入不等于教师行动Hint。移除Agent/AgentSwarm的experimental fork参数不等于删除用户/fork会话功能。KAP最低版本为CLI2.7/Desktop1.4，不能把新导航当本轮新协议发布。",
+      "method": [
+        "在实验性Context usage中查看模型输入项；全局AGENTS.md按连接服务器分别保存，已有会话需reload才立即应用修改。",
+        "把会话引用和下一条用户输入预测作为可控输入源；两者需单独开启，预测不会自动发送，评测时记录是否采用。",
+        "子Agent不再通过实验fork参数继承父会话全历史；失败轮原地Continue不附加合成用户消息，区分两种恢复与分支操作。",
+        "创建或恢复会话时等待初始MCP连接稳定、受逐服务器启动超时约束；2.8.1另修工具变更或恢复引起的unloaded_tool错误。"
+      ],
+      "inspirations": [
+        "每次对照保存有效指令、工具schema、会话引用和新增消息清单，分离有Hint、无Hint及恢复时隐式增加输入三种条件。",
+        "用固定失败现场对照全新执行、原地续跑和显式纠错；同时统计工具加载失败与模型决策失败，避免把基础设施修复记成模型收益。",
+        "子Agent实验明确传入的信息边界，检查答案或完整父轨迹是否额外流入；跨版本比较时重核派发参数与默认行为。"
+      ],
+      "reviewedAt": "2026-11-26T20:29:10.073894+00:00",
+      "sourceUrls": [
+        "https://www.kimi.com/code/docs/en/kimi-code-cli/changelog.html",
+        "https://www.kimi.com/code/docs/en/kimi-code-desktop/changelog.html",
+        "https://github.com/MoonshotAI/kimi-code/blob/main/apps/kimi-code/CHANGELOG.md",
+        "https://www.kimi.com/code/docs/en/kimi-code-desktop/settings-and-extensions.html",
+        "https://www.kimi.com/code/docs/en/kimi-code-desktop/input-and-context.html",
+        "https://www.kimi.com/code/docs/en/kimi-code-cli/customization/agents.html",
+        "https://www.kimi.com/code/docs/en/kimi-code-cli/guides/other-agents.html"
       ]
     }
   }
