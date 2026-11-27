@@ -33321,5 +33321,277 @@
         "https://www.kimi.com/code/docs/en/kimi-code-cli/guides/other-agents.html"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.34331",
+    "url": "https://arxiv.org/abs/2611.34331v1",
+    "id": "paper-puzzling-bench-2611-34331",
+    "title": "Puzzling-Bench：Opus5.5的Hint差值，要连同双向翻转与预算看",
+    "summary": "Puzzling-Bench给出直接Opus5.5有/无Hint对照：40道双方无报错的谜题，有出题者Hint答对20题，移除后14题。本站核作者公开行结果，9题由错转对、3题反向；原本无Hint的重复题也会翻转。该证据针对推理时解题信息，没有行动Hint训练或撤Hint迁移。",
+    "insight": "这项工作最可用的是保留相同题目、相同参考答案与无Hint重复组，同时检查提示帮助了谁、误导了谁。建议把答案线索与通用行动提醒分开，以实际Token和完整失败记录约束预算；平均正确率差值不能替代稳定迁移或工具决策能力。",
+    "limits": "未复现；仅40题推理时有/无Hint，无训练、撤Hint迁移或Fable5.2结果。提示来自出题者，未拆知识与行动；请求4096Token上限未生效，非等预算。单次配对有双向翻转，15点差值不代表稳定个体收益。评测剔除报错，可能偏高；Hint差值未给重复种子区间。主榜只有255道筛选后的文本题，不能把23777题库规模当Hint样本量。参考答案有LLM抽取错误、接受答案可能不唯一；三裁判一致不等于真值正确。Opus5.5的训练截止与“post-cutoff”子集重叠，不能据该子集宣称无污染。",
+    "dateLabel": "2026-11-25 · v1 · 首发",
+    "evidence": "已核原论文方法、实验与所列公开资料；来源核验不代表独立模型实验复现",
+    "originalTitle": "Puzzling-Bench: Evaluating Language Models on 23,777 Human-Written Puzzles with Community-Verified Answers",
+    "date": "2026-11-25",
+    "checkedAt": "2026-11-27T03:32:00.445009+00:00",
+    "originalDate": "2026-11-25",
+    "paperOriginalDate": "2026-11-25T13:10:49Z",
+    "firstSeenAt": "2026-11-27T03:33:06.409127+00:00",
+    "tags": [
+      "Hint",
+      "Opus5.5",
+      "推理时信息",
+      "配对评测",
+      "参考答案",
+      "预算审计"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "规范原文入口",
+        "url": "https://arxiv.org/abs/2611.34331v1"
+      },
+      {
+        "label": "arXiv 原论文与版本日期",
+        "url": "https://arxiv.org/abs/2611.34331"
+      },
+      {
+        "label": "arXiv v1 方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.34331v1"
+      },
+      {
+        "label": "作者公开评测仓库与README",
+        "url": "https://github.com/a1bhinav/puzzling-bench"
+      },
+      {
+        "label": "作者数据集固定版本",
+        "url": "https://huggingface.co/datasets/puzzling-bench/puzzling-bench/tree/0753b055d35c2bd5be916c78a9578d35e160df5c"
+      },
+      {
+        "label": "作者Opus5.5有Hint逐行结果（固定版本）",
+        "url": "https://huggingface.co/datasets/puzzling-bench/puzzling-bench/resolve/0753b055d35c2bd5be916c78a9578d35e160df5c/results/pilot255/claude-opus-5.5.judged.locked_ref.opus48.jsonl"
+      },
+      {
+        "label": "作者Opus5.5无Hint逐行结果（固定版本）",
+        "url": "https://huggingface.co/datasets/puzzling-bench/puzzling-bench/resolve/0753b055d35c2bd5be916c78a9578d35e160df5c/results/pilot255_no_hints/claude-opus-5.5.judged.locked_ref.opus48.jsonl"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "40道配对谜题中，Opus5.5有Hint答对20题、移除后14题；公开行结果为9题由错转对、3题反向。仅推理时解题信息对照，无训练或撤Hint迁移。",
+      "motivation": "给模型补充线索可能提高得分，但题目、参考答案、报错剔除与推理预算都会影响差值；需要可配对的Hint条件及无改动重跑组来量化边界。",
+      "novelty": "作者主张带人类接受答案、原始Hint和时间戳的大规模谜题评测。本站判断：直接Opus有/无Hint及同提示重跑有诊断价值；提示内容未拆成知识/行动，不能外推到训练迁移。",
+      "evidenceScope": "已读v1§3–6、局限与附录A/B/E；核作者GitHub README、HF数据卡与固定版本0753b055d35c2bd5be916c78a9578d35e160df5c的两份Opus逐行结果、参考文件。未运行模型，以下额外计数是作者已发布产物的只读审计。题库从2026-06-30快照30526题筛至23777，4825题有Hint；Pilot-255只取严格纯文本、原spoiler短答≤100字符、题目≤4000字符的9508候选，随机200题加56道日期子集、去1重叠，共255题，其中40带Hint。Hint来自出题者spoiler块，有Hint条件显示原题，去Hint仅删除这些块；不是教师给学生失败轨迹写建议。Opus5.5与GPT-6.1 Sol同harness A、medium，温度0、工具禁用；A还自动注入约7.5k字符系统提示和时间戳，不能当成无harness的API基准。§4.2表3：Opus40题有/无Hint50.0%/35.0%，其中≥2块19题47.4%/21.1%；GPT38题55.3%/44.7%，≥2块17题64.7%/41.2%。两模型样本数差来自双方无报错交集，不是不同总题集。本站核Opus40题：20/40对14/40，同对11、同错17、有Hint对而无Hint错9、反向3；214道原本无Hint题同提示两轮正确148/147，双向翻转13/12，净差很小也可掩盖逐题波动。所核配对行served_model均claude-opus-5.5、medium、tool_requests=0。40题两条件completion_tokens字段均值2268.2/2765.6，分别5/8题超过4096；该字段不等于全部推理成本，不能据此宣称等预算或稳定省Token。论文承认请求的4096上限仅被shim记录、未执行，所有模型7%–63%文本回复越过；无ANSWER行会再调用索要短答，100-token要求也未强制，单调用超时600秒，报错后剔除可能抬高难题成绩。Opus4.8抽取参考从不看模型输出，50题人审46正确、2过度包含解释经修正、2未能核验；255题中3个抽取失败回退spoiler参考。所读参考JSONL有258行、255个独立post_id，不能按行数误算题量。主榜以Opus4.8判答案等价；另两裁判为Opus5.5/GPT-5.6 Sol，1540条需裁判记录一致率95.3%–96.9%，分数最大变1.6点，但这些是共同输出复核，不是Hint消融的独立重复。主榜有HintOpus66.1%为254条未报错，1000次题目bootstrap区间60.6%–71.7%，不可挪作40题Hint差值区间。论文还报告旧harness B无界thinking，不能混作同预算代际排名。2026-05-01后的254题只晚于九模型中六个所报截止；Opus5.5截止到6月，不能用该时间切片排除其训练曝光。公开源码与数据可读，未下载图片包、未进行实验复现。",
+      "limits": "未复现；仅40题推理时有/无Hint，无训练、撤Hint迁移或Fable5.2结果。提示来自出题者，未拆知识与行动；请求4096Token上限未生效，非等预算。单次配对有双向翻转，15点差值不代表稳定个体收益。评测剔除报错，可能偏高；Hint差值未给重复种子区间。主榜只有255道筛选后的文本题，不能把23777题库规模当Hint样本量。参考答案有LLM抽取错误、接受答案可能不唯一；三裁判一致不等于真值正确。Opus5.5的训练截止与“post-cutoff”子集重叠，不能据该子集宣称无污染。",
+      "method": [
+        "从2026年6月的Puzzling Stack Exchange快照保留未关闭且有作者接受答案的题，抽出Hint块、标签与日期；筛出固定255道纯文本试验题。",
+        "Opus4.8从完整接受答案抽取短参考，人工抽查50题并修正；先做规范化精确匹配，再让裁判核答案等价，不给推理过程打分。",
+        "对Opus5.5与GPT-6.1 Sol重跑同一255题，只移除出题者Hint块；固定harness、effort、裁判与参考，仅在双方无报错题上配对。",
+        "把有Hint题按Hint数量分层；无Hint题保持原提示重跑，用其双向翻转识别运行噪声，再核实际模型ID、工具调用和Token记录。",
+        "另用三裁判、参考答案版本及报错恢复做敏感性检查；本站只读作者冻结公开行结果核计数，未重新调用模型或执行其研究代码。"
+      ],
+      "inspirations": [
+        "固定题目与参考，预先分成答案线索、领域知识、行动提醒三类，再对同模型做有/无Hint配对；单列由错转对和由对转错。",
+        "保留原本没有Hint的同提示重复组，并对带Hint题重复采样；把净增分和运行噪声分别报告，避免将一次翻转当成稳定因果。",
+        "核实际served model、effort、Token上限是否生效与报错分母；同时给完成率、报错记失败得分和固定总预算成功率。"
+      ],
+      "reviewedAt": "2026-11-27T03:32:00.445009+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.34331",
+        "https://arxiv.org/html/2611.34331v1",
+        "https://github.com/a1bhinav/puzzling-bench",
+        "https://huggingface.co/datasets/puzzling-bench/puzzling-bench/tree/0753b055d35c2bd5be916c78a9578d35e160df5c",
+        "https://huggingface.co/datasets/puzzling-bench/puzzling-bench/resolve/0753b055d35c2bd5be916c78a9578d35e160df5c/results/pilot255/claude-opus-5.5.judged.locked_ref.opus48.jsonl",
+        "https://huggingface.co/datasets/puzzling-bench/puzzling-bench/resolve/0753b055d35c2bd5be916c78a9578d35e160df5c/results/pilot255_no_hints/claude-opus-5.5.judged.locked_ref.opus48.jsonl"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.34331",
+      "status": "pending",
+      "checkedAt": "2026-11-27T03:29:52.463009+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.34398",
+    "url": "https://arxiv.org/abs/2611.34398v1",
+    "id": "paper-skill-compatibility-2611-34398",
+    "title": "技能组合修复：同时验原技能保留、换搭档迁移与额外监督预算",
+    "summary": "这篇受控研究发现：能单独完成任务的软提示技能，同调用组合仍会失败；修复某组合也可能抹掉原技能。加入原任务复习能保留能力，但用例翻倍，等预算保留收益未闭合；一套0.5B技能库的修复训练组合90.4%，换未见搭档仅10.4%。它提供保留与迁移的评测设计，不是自然语言Hint或Opus实验。",
+    "insight": "建议把新增能力、原能力保留、旧组合回归、未见搭档迁移列成四个独立验收项。复习或混合训练若额外增加标签，需补同总监督预算；只比较新任务成绩，无法判断模型是学会可复用方法，还是适配了特定组合。",
+    "limits": "未复现；仅合成任务的软提示块，无Opus5.5/Fable5.2实验或自然语言Hint迁移证据。复习臂标签翻倍，保留收益未做等预算对照；跨搭档迁移仅一套0.5B技能库。双调用更慢、额外暴露中间输出，非同算力。技能种子只改采样，不是独立初始化；共享组件使检验近似。部分阈值经修改、搭档替换为事后分析，学习率在被比较的seed1组合上选，无独立调参集。长度/范数控制仅两种底座清晰，局部干预未识别统一失败机制。作者仓库只有代码，无权重或运行结果。",
+    "dateLabel": "2026-11-25 · v1 · 首发",
+    "evidence": "已核原论文方法、实验与所列公开资料；来源核验不代表独立模型实验复现",
+    "originalTitle": "When Skills Fail to Compose: Compatibility and Retention in Language Models",
+    "date": "2026-11-25",
+    "checkedAt": "2026-11-27T03:32:00.445009+00:00",
+    "originalDate": "2026-11-25",
+    "paperOriginalDate": "2026-11-25T13:59:48Z",
+    "paperUpdatedAt": "2026-11-25T13:59:48Z",
+    "updatedAt": "2026-11-25T13:59:48Z",
+    "firstSeenAt": "2026-11-26T16:00:01Z",
+    "lastSeenAt": "2026-11-26T22:00:01Z",
+    "tags": [
+      "Hint",
+      "软提示技能",
+      "能力保留",
+      "组合泛化",
+      "修复训练",
+      "预算对照"
+    ],
+    "authors": [
+      "Yan Lin",
+      "Zhongliang Guo",
+      "Jingyu Sun",
+      "Qiyan Zhao",
+      "Ruihong Zeng",
+      "Ying Chen",
+      "Zhengtao Yao",
+      "Yan Wen",
+      "Kunyu Peng",
+      "Yuxia Wang"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "公开feed原始来源",
+        "url": "https://arxiv.org/abs/2611.34398v1"
+      },
+      {
+        "label": "arXiv 原论文与版本日期",
+        "url": "https://arxiv.org/abs/2611.34398"
+      },
+      {
+        "label": "arXiv v1 方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.34398v1"
+      },
+      {
+        "label": "作者公开源码与发布范围",
+        "url": "https://github.com/YanLin-Quinne/SkillCompatibility"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "软提示技能修好当前组合，可能损失原技能；原任务复习改善保留但标签翻倍。单套0.5B库训练组合90.4%、未见搭档10.4%，需把保留、迁移和预算分别验收。",
+      "motivation": "技能库不断增加和修补模块，单项熟练未必能组合，修复成功也未必保留旧能力；需要控制组件身份与执行顺序，区分这些不同目标。",
+      "novelty": "作者主张单项能力不能定义组合接口，修复成功不能替代保留与迁移。本站判断：最有用的是逐项验收和预算边界；软提示结果只启发自然语言Hint实验，未证明同一失效机制。",
+      "evidenceScope": "已读v1§3–7、局限、附录证据索引，重点核A.1–A.3/A.6与F.1–F.6；另读作者GitHub README，未执行代码或训练。数字底座为Qwen2.5-0.5B、1.5B、7B及Gemma-3-1B，后3个按数字操作进一步预训练；记录任务为Qwen2.5-Instruct 0.5B/1.5B/7B。每技能20新嵌入行，数字技能交叉熵训练99999例、3epoch、lr0.005，其他权重冻结；3技能种子仅改变样本、初始向量相同，非三次独立初始化。学习时数字技能可与预训练操作相邻，但不见另一个新技能；记录技能仅邻接ID。六个数字技能排除恒等或第二步不可观测的三对，余27个有向组合；每条件300条长8输入、greedy解码、屏蔽新增技能输出ID。记录任务30对，只保单技能≥90%的组合，小模型20对、7B30对。表1数字单调用6.4/1.3/0.9/2.7%，双调用100/99.9/88.2/100%，按能区分省略操作的同一诊断子集；非诊断全输入的一调用值不同，不混分母。7B首种子MOD3失败，排除后双调用98.1%。记录合格组合一调用7.6/1.1/2.0%，双调用100/100/99。双调用有显式中间输出和额外计算，数字prompt49对58Token、记录均约101对163，数字批处理慢1.61–2.06倍，不是等计算优势。单技能对中性插入更稳仍不保证组合；长度/逐行范数匹配块的清晰对照只在Qwen0.5B/1.5B的25/27、23/27对成立，7B/Gemma9或12对不足阈值，不能推广统一原因。表2在两个Qwen底座先与冻结伙伴训练，见过操作的原搭档组合中位98.0/95.3%，换为同操作、单项≥90%的独立新嵌入后12.7/0.5%；该替换是事后分析。记录文档形式还增加步骤与例子，7B约405Token对软块101，未隔离纯文本表示优势。表18每对8个组合标签时，普通20行编辑后单技能中位0.9%–23.0%，加原任务复习88.9%–99.0%（排除失败7B种子）；后者有16例对8例，等总监督的保留比较未记录。补充4组合+4复习对8组合且同50步的事后比较，普通编辑组合胜492/648个共享组件格，不能由此推回等预算保留率。与SPoT相比，40行新pair prompt保留原块不动，各方法学习率网格不同且在seed1被比较组合上选；调参后无一致最优，未显著差异不等于等效。F.3记录任务20对中普通后继编辑在16–1024标签预算下单技能损失中位86–100点，复习0–0.3点，但仅0.5B且基线未调参。F.5留一前驱在一套Qwen0.5B技能库27折，256组合标签/训练对时训练组合90.4%、未见搭档10.4%，未修复5.7%，仅4/27折增≥10点；三训练种子是重采样同库，不能视为27个独立技能库。原任务保留仍可伴随旧上下文退化；不含被编辑后继的prompt不变只是结构保证。F.6单H100在0.5B的64标签修复达到100%时约需283个batch1请求摊回训练，批处理约11115次；8标签虽更快摊销但准确率55%，非同服务质量。训练计时含评估与共享GPU争用，不作跨模型经济排名。Llama/Mistral配方未通过技能准入，不作成功跨家族复现；研究未建真实Agent或测试长链CoT/自然语言Hint，仓库明示只公开代码而无权重、运行输出。",
+      "limits": "未复现；仅合成任务的软提示块，无Opus5.5/Fable5.2实验或自然语言Hint迁移证据。复习臂标签翻倍，保留收益未做等预算对照；跨搭档迁移仅一套0.5B技能库。双调用更慢、额外暴露中间输出，非同算力。技能种子只改采样，不是独立初始化；共享组件使检验近似。部分阈值经修改、搭档替换为事后分析，学习率在被比较的seed1组合上选，无独立调参集。长度/范数控制仅两种底座清晰，局部干预未识别统一失败机制。作者仓库只有代码，无权重或运行结果。",
+      "method": [
+        "冻结语言模型，为数字变换/记录编辑各独立学习20行软提示嵌入；直接给技能身份和顺序，排除检索与规划选错的影响。",
+        "在相同输入上测单技能、单调用组合和双调用顺序执行；另插入中性或范数匹配块，区分布局敏感与具体搭档干扰。",
+        "让技能与冻结搭档共同训练，再用独立学会同一操作的搭档替换；核“会同一操作”是否足以保证组合可互换。",
+        "只改前/后一个技能的20行，比较N个组合例与额外N个原任务复习例；同时测组合准确率、单技能保留和其他既有上下文。",
+        "留出一个前驱搭档核迁移，再与新pair prompt和共享connector比较；另报告参数、标签、训练计时和单/双调用服务成本。"
+      ],
+      "inspirations": [
+        "将训练后验收分成原任务、修复组合、旧上下文、未见搭档四组；保持任务ID和预算，逐题记新增成功及退化，不用混合均值替代保留。",
+        "复习臂与纯修复臂对齐总标签数、更新步数和调参预算；同时保留固定组合例数的对照，分别回答复习代价与保留收益。",
+        "共享Hint或技能更新后，重测依赖它的搭档组合；把独立学得但功能相同的替代实现留作测试，检验是否只记住训练中的接口。"
+      ],
+      "reviewedAt": "2026-11-27T03:32:00.445009+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.34398",
+        "https://arxiv.org/html/2611.34398v1",
+        "https://github.com/YanLin-Quinne/SkillCompatibility"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.34398",
+      "status": "pending",
+      "checkedAt": "2026-11-27T03:31:49.152546+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "models",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.34414",
+    "url": "https://arxiv.org/abs/2611.34414",
+    "id": "paper-semproxy-2611-34414",
+    "title": "SemProxy：用可编辑三维盒传达空间意图，分开核验信息增益与控制收益",
+    "summary": "SemProxy把部件名称、位置、尺寸和朝向写成可编辑有向盒，同时交给Agent JSON与Blender场景；Agent用Blender Python补出几何细节，用户再改盒或文字继续同一会话。60个对象/场景、三种Agent的单次对照中，真值盒相对文字+图片使Chamfer距离平均相对改善47%；自动起草盒收益较小，不能把额外真值信息归为普通Hint的效果。",
+    "insight": "值得借鉴的是让空间意图成为可检查、可修改、能随会话交付的中间产物。研究时应同时比较真值盒、仅由原图起草的盒、真实用户编辑的盒，并计入制盒与纠错成本；再分开检查脚本执行、最终导出、空间约束、材质和后续编辑一致性。本文没有训练或撤提示迁移实验。",
+    "limits": "未训练或验证撤Hint迁移；每个样本×条件×Agent只跑1次，真值盒额外提供3D信息。主指标经尺度归一与最佳朝向对齐；用户偏好排除平票，且部分导出异常改用Agent自渲染展示。运行成本不含人工制盒，7人交互研究无对照组，不能证明生产效率或精密CAD约束保证。",
+    "organization": "The University of Edinburgh",
+    "dateLabel": "2026-11-25 · 首发v1",
+    "evidence": "已核原文§3–5、表1–2及附录A–D；未复现",
+    "originalTitle": "SemProxy: Semantic 3D Proxies for Controllable Agentic 3D Modeling",
+    "date": "2026-11-25",
+    "checkedAt": "2026-11-27T03:31:04.085125+00:00",
+    "originalDate": "2026-11-25",
+    "paperOriginalDate": "2026-11-25T14:08:05Z",
+    "paperUpdatedAt": "2026-11-25T14:08:05Z",
+    "updatedAt": "2026-11-25T14:08:05Z",
+    "firstSeenAt": "2026-11-26T16:00:01Z",
+    "lastSeenAt": "2026-11-26T22:00:01Z",
+    "tags": [
+      "可编辑三维代理",
+      "空间控制",
+      "代码生成三维",
+      "额外信息边界",
+      "人机协作"
+    ],
+    "authors": [
+      "Shuyuan Zhang",
+      "Changjian Li"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv 原始摘要与v1日期",
+        "url": "https://arxiv.org/abs/2611.34414"
+      },
+      {
+        "label": "arXiv v1全文：方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.34414v1"
+      },
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.34414v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "把空间意图写成可编辑三维盒，Agent再用Blender代码补细节。真值盒使几何距离平均相对改善47%，但额外3D信息、自动起草盒和真人编辑须分开评价。",
+      "motivation": "文字与参考图难以精确描述部件的大小、位置和朝向。作者希望用户只编辑关心的空间结构，让现成编码Agent完成细节，并继续修改同一模型。",
+      "novelty": "作者主张：无需训练，以语义三维代理连接直接空间编辑和编码Agent。本站判断：贡献是可编辑中间表示与交互接口；真值盒新增信息，不能当普通行动Hint或训练迁移的独立证据。",
+      "evidenceScope": "已阅读全文方法§3、实验§4、用户研究§4.3与结论§5及附录A–D，未执行作者代码或复现渲染。原文v1提交于2026-11-25 14:08:05 UTC；本次reviewedAt只表示来源复核。主评测60项=20个3–6部件的简单对象、20个10–19部件的复杂对象、20个3–7对象的房间。配置为Codex/GPT-6.1 Sol medium、Claude Code/Claude Opus 5.5 medium、DeepSeekHarness/DeepSeek V4.1 Flash high；不是Fable5.2。三Agent×60项=180个配对，每条件只跑一次。作者报告所有trial都交付可加载mesh，不代表所有几何或语义约束合格。47%是三Agent×三级别均值的平均相对Chamfer改善，非成功率；附录聚合CD×1000由6.9至3.5，F-score .66至.77、表面体素IoU .16至.22，148/180配对CD更好。DINO .824至.840、Uni3D .823至.835，但Claude简单对象/房间DINO和DeepSeek简单对象Uni3D有下降。自动起草盒聚合CD6.1、DINO .820、Uni3D .823，弱于真值盒；此条件两会话成本相加，未插入真人修盒。模型会话平均分钟数，Codex文字+图4.2→真值盒4.1，Claude2.5→2.3，DeepSeek36.6→34.6；input token包含缓存，Codex .27M→.29M、Claude .31M→.35M，不能称所有成本都降低，也未报人工制盒成本或实际账单。32人问卷涵盖60项×Codex/Claude=120对模型、768次比较；233次平票排除后361/535偏好真值盒，才得到67.5%，按样本bootstrap区间61–74%。7名博士生完成21项无对照交互任务；对象任务用Opus5.5，场景编辑用Codex。所有21项结束时有模型、6/7主观感到能控制结果，不能视为普遍效率提升。",
+      "limits": "没有权重训练、撤提示迁移或跨模型Hint迁移实验。真值代理来自GT分割/场景，提供原图可能遮挡的信息；自动起草盒和人工制盒不可沿用真值收益。每样本条件仅1次；主指标不提供运行方差，用户bootstrap区间也不衡量模型重复稳定性。表面各采8192点后独立居中、缩至单位球，CD从四个yaw旋转选最佳；DINO从四视图最佳置换，不能证明绝对尺度、平移、朝向被准确遵守。Uni3D训于单对象，场景仅参考；表面IoU非实体体积。盒不描述曲率、纹理、材质与风格，冲突输入下不同Agent优先级不同，近似盒非硬CAD约束。10%噪声测全60项，更强噪声和编码消融只有15项；模板文本137–772词、LLM文本111–131词且无数字，不是信息量/长度相同的格式对照。Claude还收到处理shell等待的额外段落，不能称跨harness提示完全相同。偏好研究6个模型人工修正朝向，17/120对因导出材质丢失改用双方Agent自渲染展示，故不是全部原始导出物的直接质量验收；仅361/768全部投票明确选真值盒。7人建模研究为实验员在场、单台CPU机器，无文字+图对照；任务片段时长包含闲置与交流，不是完成耗时。自动草盒任务无人手工移动/新增盒，5/7直接接受首稿；场景任务仅3/7用盒。一次发送遗漏变更输入说明，Agent实际仅读文字；另两份覆盖的版本从命令/备份恢复，不能当完整原生交付轨迹。未核到作者公开代码/原始逐题日志下载入口，HF条目与API本次404；verified仅指上述原文来源已核。",
+      "method": [
+        "用带名称/描述的有向盒表示部件或场景对象，记录中心、尺寸与旋转；可只标关心的部分，同时导出JSON和Blender盒场景。",
+        "把盒、文字和参考图交给现成编码Agent，调用Blender Python生成几何、渲染并导出mesh.glb；盒是近似参照，非硬约束。",
+        "ProxyStudio支持移动、缩放、旋转及复制盒。每轮生成后把编辑与下一条消息交给同一会话；也可先由独立Agent起草盒。",
+        "在40个对象与20个房间上，对比文字+图、真值盒、自动起草盒和噪声盒；三Agent每个条件各跑一次，单会话上限120分钟。",
+        "以几何/视觉指标、32人偏好问卷及7人21项交互任务分别核验质量与控制体验；检查噪声、替代编码及导出异常。"
+      ],
+      "inspirations": [
+        "把操作性Hint、额外空间信息和输入格式分开对照；同一原图起草盒后再比较直接使用与人工修订，并记录制盒、审核和纠错耗时。",
+        "同时保存用户提交、Agent实际读取的盒版本及最终导出；分别验收可加载、绝对尺寸/朝向、材质、局部修改和未授权变化，避免对齐掩盖错误。",
+        "对冲突输入预设优先级并做负例；将成功率、用户编辑次数及人工+模型总成本配对报告，单次偏好不能替代多次运行和后续可编辑性测试。"
+      ],
+      "reviewedAt": "2026-11-27T03:31:04.085125+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.34414",
+        "https://arxiv.org/html/2611.34414v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.34414",
+      "status": "pending",
+      "checkedAt": "2026-11-27T03:27:47.989809+00:00"
+    }
   }
 ]
