@@ -33593,5 +33593,290 @@
       "status": "pending",
       "checkedAt": "2026-11-27T03:27:47.989809+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.32884",
+    "url": "https://arxiv.org/abs/2611.32884v1",
+    "id": "paper-rlvb-2611-32884",
+    "title": "RLVB：奖励何时继续取证，也要防止Agent学成不肯停手",
+    "summary": "RLVB把模拟器可验证的证据后验变成行动过程奖励，教学生何时继续、何时提交。三种Qwen九组评测相对Base平均+17.1点，但用更多动作，belief准确性与每步信息价值没有稳定改善。",
+    "insight": "行动Hint研究应把“提前停手”与“证据足够仍不停”对称考核。本文逐更新重采样变体更慢且更多无答案，提醒我们不能把on-policy或长轨迹直接当更好学习；测试仍有复核提醒。",
+    "limits": "未复现；只测Qwen，非自然语言Hint蒸馏，无Opus5.5/Fable5.2实验。测试保留自身belief行及首次提交复核提醒；训练混入教师动作并阶段复用，非纯on-policy。更多步骤不等于更好取证，缺同总预算对照。精确后验教师需要已知规则、先验与观测似然；开放任务无法直接照搬。主实验3个采样种子不等于充分独立训练复测。训练GPU小时、附录阶段/逐更新实验的墙钟时间及测试动作数分属不同口径，不混算。RoboQuest没有精确后验，其证据充足性与belief分析另依任务要求和模型读者，不能当统一机器真值。当前公开仓库默认测试步数已改为150，论文结果用各任务原限额。",
+    "dateLabel": "2026-11-24 · v1 · 首发",
+    "evidence": "已核原论文方法、实验与所列公开资料；来源核验不代表独立模型实验复现",
+    "originalTitle": "Lazy Agents Answer Against Their Own Beliefs: Reinforcement Learning with Verifiable Beliefs Teaches Them to Act on What They Believe",
+    "date": "2026-11-24",
+    "checkedAt": "2026-11-27T08:34:54.037435+00:00",
+    "originalDate": "2026-11-24",
+    "paperOriginalDate": "2026-11-24T16:17:51Z",
+    "paperUpdatedAt": "2026-11-24T16:17:51Z",
+    "updatedAt": "2026-11-24T16:17:51Z",
+    "firstSeenAt": "2026-11-25T10:00:01Z",
+    "lastSeenAt": "2026-11-27T04:00:01Z",
+    "tags": [
+      "Hint",
+      "行动反馈",
+      "过程奖励",
+      "继续与停止",
+      "阶段采样",
+      "成本边界"
+    ],
+    "authors": [
+      "Richmond Sin Jing Xuan",
+      "Peilin Feng",
+      "Wenbin Wang",
+      "Soujanya Poria"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.32884v1"
+      },
+      {
+        "label": "arXiv · 首发元数据",
+        "url": "https://arxiv.org/abs/2611.32884"
+      },
+      {
+        "label": "公开feed原始来源",
+        "url": "https://huggingface.co/papers/2611.32884"
+      },
+      {
+        "label": "Project",
+        "url": "https://declare-lab.github.io/RLVB/?case=tabletop_cups&m=rlvb_grpo&s=0"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/declare-lab/RLVB"
+      },
+      {
+        "label": "arXiv v1 · 方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.32884v1"
+      },
+      {
+        "label": "作者仓库 · 固定版本预算与测试说明",
+        "url": "https://github.com/declare-lab/RLVB/blob/9a4aea084d65480f71a4d3996ce8ff52f1b0e8af/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "RLVB用精确后验奖励“继续取证还是提交”，三种Qwen在九组评测较Base平均提高17.1点；收益伴随更多步骤，并未学会稳定选择更有信息的动作。",
+      "motivation": "终局奖励会奖中幸运猜测；即使显式belief行仍列出多个可能答案，Agent也会提前提交。需要把“知道多少”与“何时停手”分开训练和评测。",
+      "novelty": "作者主张用可验证后验监督行动，避免把幸运猜中当正确过程。本站判断：价值在训练继续/停止的决策；不是证明CoT更准确，也不是自然语言Hint撤除迁移。",
+      "evidenceScope": "本轮重新读取arXiv v1原方法§3、实验§4、限制§5及相关附录C/H/K.5/L，并核作者固定版本README；论文2026-11-24 16:17:51 UTC首发，checkedAt是本轮核验时间。教师是已知规则模拟器的后验/前瞻策略，不是Opus或Fable。主RLVB只用动作项；它仍训练整个学生输出，belief行不是从目标中删除。EM变体保留belief奖励，正权样本的belief未过核验时屏蔽其推理/行损失，只训动作；负权策略梯度规则另述于附录C，不能将EM与主版当只换优化器。阶段开始冻结策略取样：教师动作替代率两阶段0.5→0.465，Qwen3.5五阶段到0.374，半数场景另加随机证据动作前缀。相同历史8段推理×4决定，必要时再采一轮；主版Qwen3-VL每阶段抽1200历史用800、每阶段最多25更新，Qwen3.5每5更新抽240用160、共25更新且无长度奖励。样本阶段复用加KL早停，不是逐更新完全on-policy，也不是纯离线固定教师轨迹。论文评测HiddenGames 756局、Pro-Worlds 300局、RoboQuest 500局，各3个采样种子；后两类未参与训练。表1主版对Base九格平均+17.1个百分点；Qwen3-VL-4B分别24.6→36.2、17.2→28.7、28.4→61.2。相对已有belief行的Base还需另算，不能把全部差额归给奖励。测试不给后验或教师动作，但保留学生belief行；§4.6明确harness对所有方法首次提交都问一次是否证据足够，并允许继续/改答。故这不是完全撤去提示的独立验证。统一单轮推理上限8192 token不等于统一整局token：Qwen3-VL-4B主版在三套平均证据动作8.3/31.7/10.0，Base为3.3/10.6/3.1。表3在小样本300/200历史下，动作项35.3/23.9/55.5；加belief项35.9/21.7/45.8；仅belief项24.6/14.6/19.7，但最后一臂也关掉动作接受规则，不能称完全单变量消融。作者的状态匹配和证据分解支持减少提前提交，不证明因果中介已独立随机化；每步证据价值未稳定提升，错误且证据充分的回答占比由约2–4%升到10–15%。表4作者报告Qwen3.5在A100的RLVB 74.2 GPU小时，对照PPO belief+action为120.1并调用DeepSeek V4.1 Flash裁判约1.26万次；此处不是三模型统一节省比例或等算力比较。附录L另报Qwen3-VL-4B阶段采样6.4小时/50更新，逐更新重采样20.8小时/46更新，三套准确率低4.9/0.6/1.6点；五个有答案HiddenGames子任务测试步骤18.9对7.9、无答案约50%对18%，提示过度继续风险。两处成本口径不同不拼接换算。固定README 9a4aea084d65480f71a4d3996ce8ff52f1b0e8af明确现默认测试150 moves/152 turns，原表仍用任务限额（如Pro-Worlds35、MiniGrid64），恢复原限额需对应设置；README列训练suite为8任务含1项仅训练任务，正文按7种HiddenGames评测任务描述，本站保留差异，不据当前默认配置声称复现原表。RoboQuest无精确后验，行为分析依据任务需求且部分表仅八个可计数任务；不是真实开放工具环境中的自然语言Hint训练、撤除、Fable5.2或Opus5.5验证。",
+      "limits": "未复现；只测Qwen，非自然语言Hint蒸馏，无Opus5.5/Fable5.2实验。测试保留自身belief行及首次提交复核提醒；训练混入教师动作并阶段复用，非纯on-policy。更多步骤不等于更好取证，缺同总预算对照。精确后验教师需要已知规则、先验与观测似然；开放任务无法直接照搬。主实验3个采样种子不等于充分独立训练复测。训练GPU小时、附录阶段/逐更新实验的墙钟时间及测试动作数分属不同口径，不混算。RoboQuest没有精确后验，其证据充足性与belief分析另依任务要求和模型读者，不能当统一机器真值。当前公开仓库默认测试步数已改为150，论文结果用各任务原限额。",
+      "method": [
+        "已知规则的模拟器按已见证据算精确后验，再用前瞻与时间折扣给继续动作和提交打分；主奖励不读取学生belief文本。",
+        "固定阶段模型生成历史，教师以0.5起始概率替换动作，部分场景加随机动作前缀；同一历史采8段推理、各4个决定。",
+        "按动作得分做组内相对更新，低于教师最佳概率1/20的动作不获正权；主版整轮推理、belief与动作都训练，阶段内复用并限KL。",
+        "训练Qwen3-VL-4B/8B-Thinking及Qwen3.5-4B的LoRA；测试无后验教师，保留自身belief行，首次提交有统一复核提醒。",
+        "同时报告成功、提前提交、证据增量与无答案；另比较加belief奖励、缩小样本、逐更新重采样，检查过度探索和推理截断。"
+      ],
+      "inspirations": [
+        "把“证据不足却提交”和“证据足够仍继续”分成两项；短行动提示也应有停止条件，不能只要求多检查。",
+        "同任务配对记每步新增证据、总动作、token和最终答案；在同总预算下比较，防止把延长轨迹当成行动质量改善。",
+        "把教师介入率、历史重采样频率与Hint可见性拆成独立开关，并单测撤去复核提醒，才可识别训练后自主行为。"
+      ],
+      "reviewedAt": "2026-11-27T08:34:54.037435+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/html/2611.32884v1",
+        "https://arxiv.org/abs/2611.32884",
+        "https://github.com/declare-lab/RLVB/blob/9a4aea084d65480f71a4d3996ce8ff52f1b0e8af/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.32884",
+      "status": "pending",
+      "checkedAt": "2026-11-27T08:31:16.786839+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.20844",
+    "url": "https://arxiv.org/abs/2611.20844v1",
+    "id": "paper-detourbench-2611-20844",
+    "title": "DetourBench：一句工具入口Hint的收益，要与绕路和剩余工作一起算",
+    "summary": "DetourBench用可穷举状态机给出最短行动界。960局配对消融只删指出已有数据视图的一句话，平均成功率降41点；同为成功的轨迹也更绕。论文另有375局综合评测，不能混作同一实验。",
+    "insight": "这里的Hint主要帮助发现工具入口，作用路径比“CoT质量提高”具体得多。评估应同时报告成功、共同成功题的访问成本和失败剩余步骤；撤去推理提示的损失不等于Hint训练不能迁移。",
+    "limits": "未复现；这是推理时工具入口提示消融，无训练或撤Hint迁移，无Opus5.5/Fable5.2实验。40题仅3复测；成本按访问次数，非token或耗时。全信息最短路不是部分可观测最优策略；主榜任务经模型表现筛选。Hint消融用claude-opus-4-8等四个endpoint，另375局主榜用claude-opus-5等五个endpoint，两批不能合并或替换版本。等价审核只保留Currency类40题；仅4个综合任务执行内容反事实，其他依结构先决条件与人工语义。仓库未提供模型轨迹，本轮只核论文表和公开仓库说明，无法逐局复算41点。固定预算倍率1.5未做敏感性扫描；成功条件化效率需配对成功子集才可减少选择偏差。",
+    "dateLabel": "2026-11-16 · v1 · 首发",
+    "evidence": "已核原论文方法、实验与所列公开资料；来源核验不代表独立模型实验复现",
+    "originalTitle": "DetourBench: Trajectory-Level Evaluation of Interactive Agents with Exact Minimum-Action Bounds",
+    "date": "2026-11-16",
+    "checkedAt": "2026-11-27T08:34:54.037435+00:00",
+    "originalDate": "2026-11-16",
+    "paperOriginalDate": "2026-11-16T10:22:21Z",
+    "firstSeenAt": "2026-11-27T08:38:22.601227+00:00",
+    "tags": [
+      "Hint",
+      "行动提示",
+      "工具发现",
+      "配对消融",
+      "轨迹效率",
+      "证据边界"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "规范原文入口",
+        "url": "https://arxiv.org/abs/2611.20844v1"
+      },
+      {
+        "label": "arXiv · 首发日期",
+        "url": "https://arxiv.org/abs/2611.20844"
+      },
+      {
+        "label": "Hugging Face · 作者公开说明（原论文交叉核验）",
+        "url": "https://huggingface.co/papers/2611.20844"
+      },
+      {
+        "label": "arXiv v1 · 单句消融、方法和审计附录",
+        "url": "https://arxiv.org/html/2611.20844v1"
+      },
+      {
+        "label": "作者仓库 · 发布内容及轨迹缺失说明",
+        "url": "https://github.com/DatagridsAI/DetourBench"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "DetourBench只删去指出可用数据视图的一句话，四模型40题的平均成功率降41点；它测入口发现与绕路，不能外推为删训练Hint后的能力损失。",
+      "motivation": "只看成功率分不清高效完成、有效但昂贵的探索、差一步成功和不可逆误交付。行动Hint还可能仅改变是否发现已有工具，需要单独识别。",
+      "novelty": "作者主张用可复放精确行动下界拆开成功与绕路。本站判断：单句消融隔离了入口提示价值；最短路有全信息优势，不能把所有额外探索判为坏行动。",
+      "evidenceScope": "本轮读取arXiv v1§3–6及附录B/C/I，并核GitHub公开README和HF作者评论。首发2026-11-16 10:22:21 UTC，属于30天扩展窗口补读；HF在11月26日被作者提交不等于论文新发布。状态是已访问资源、凭据和终态，资源/凭据单调增加，发现后的ID可全局直接调用，无当前位置或回退成本。穷举求L₀和最短证据路径；无效、重复、被派发的批内调用都收费，未触发访问的模型文字不收费，另有模型轮数限制。所有正式实例信息完整见证长度Lᵢ=L₀，固定B=⌈1.5L₀⌉，未扫描预算倍率。L₀来自知道整图的事后最优选择；并非部分可观测条件下最优Agent成本，也不直接等价token或壁钟耗时。§5.1 controlled cue独立实验是40配对问题×qwen3.6-plus/deepseek-v3.2/glm-5.2/claude-opus-4-8×3次×2臂=960局，每模型每臂120局。两臂point-in-time view工具及边上URL都存在，唯一改变是seed句子是否指向该视图。删除后四模型进入视图比例100→5、96→68、87→32、77→2%；Pass@1为98→42、69→38、71→37、85→42%（表中四舍五入值）。作者报告跨160个模型-题配对平均视图使用−63点、成功−41点、范围外条文读取+2.9次/局；HF评论的数值可在原§5.1核到，非仅凭评论转述。为避免两臂成功集合改变导致效率选择偏差，作者另取均成功的176个模型-题-复测配对、来自31题：L₀/C由0.763降0.637，差−0.126；按题cluster bootstrap 20000次95%区间[−0.156,−0.099]，范围外读取0.91→2.72。未报告训练或Hint移除后的模型适应。表1还列pass³，不能把它写成至少一次成功的pass@3，本稿以Pass@1和配对轨迹结果为主。综合主榜另用25任务×claude-opus-5/deepseek-v4-pro/qwen3.6-plus/glm-5.2/kimi-k3×3次=375局；72/69/46/45/44个成功分别对应96.0/92.0/61.3/60.0/58.7%。条件化效率只在各模型成功局算，不宜直接当无条件能力排行。99个失败中95耗尽访问预算、2主动停在可恢复态、2不可逆误提交；不可逆终态不赋有限剩余距离。构建审核初53个Currency配对内容等价，正式只报所有模型均跑的40个；142个Sufficiency/Disposition配对因额外差异排除。综合20任务按已观测模型差距筛选，2个不区分模型的实例被替换；21–24是review后增加，其中21/22又经早期运行修改，25此前跑过但漏manifest。六任务用后修订prompt；冻结哈希证明版本一致不等于从未看过测试结果。314个最短路节点移除审计中309使目标不可达，但内容反事实只在21–24四个任务执行，结构必经不等同语义必要。公开仓库README明确不含模型轨迹，因此本轮没有逐局独立重算，也未运行模型或框架。GitHub树API访问遇403限流，公开网页说明可读；引用主结果仍来自原论文。无Opus5.5/Fable5.2、教师学生蒸馏或等总token训练对照。",
+      "limits": "未复现；这是推理时工具入口提示消融，无训练或撤Hint迁移，无Opus5.5/Fable5.2实验。40题仅3复测；成本按访问次数，非token或耗时。全信息最短路不是部分可观测最优策略；主榜任务经模型表现筛选。Hint消融用claude-opus-4-8等四个endpoint，另375局主榜用claude-opus-5等五个endpoint，两批不能合并或替换版本。等价审核只保留Currency类40题；仅4个综合任务执行内容反事实，其他依结构先决条件与人工语义。仓库未提供模型轨迹，本轮只核论文表和公开仓库说明，无法逐局复算41点。固定预算倍率1.5未做敏感性扫描；成功条件化效率需配对成功子集才可减少选择偏差。",
+      "method": [
+        "把任务做成有限部分可观测状态机，已发现资源可直接访问；调用到环境的无效、重复和有效访问都计一次成本。",
+        "穷举全信息最短成功路L₀，并从可恢复失败终态算剩余工作R；记录成功、L₀/实际访问数、绕路和不可逆错误，预算固定为⌈1.5L₀⌉。",
+        "40个Currency问题做配对：图、答案、工具、URL与预算保持一致，只删起始材料中指出point-in-time视图的句子；四模型每臂各3次。",
+        "另测25个综合任务×5模型×3次共375局；主榜与960局单句消融分开，比较共同成功子集并披露筛选和修订过程。"
+      ],
+      "inspirations": [
+        "先把“工具存在但未被发现”从“知道工具却不会用”分开；对同题只改一条入口提示，保持权限、URL、数据与限额不变。",
+        "评Hint同时看救回/误伤、共同成功题上的路径成本和失败剩余工作；访问次数之外另记token、耗时与工具代价。",
+        "训练后撤Hint应另开实验：本文只改推理输入，不能替代无提示学生评测；对照集避免按模型差距事后挑题。"
+      ],
+      "reviewedAt": "2026-11-27T08:34:54.037435+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/html/2611.20844v1",
+        "https://arxiv.org/abs/2611.20844",
+        "https://github.com/DatagridsAI/DetourBench",
+        "https://huggingface.co/papers/2611.20844"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.20844",
+      "status": "pending",
+      "checkedAt": "2026-11-27T08:31:16.786839+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "data",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.28783",
+    "url": "https://arxiv.org/abs/2611.28783",
+    "id": "paper-3dcodefactory-2611-28783",
+    "title": "3DCodeFactory：用产物验收筛选长轨迹，训练三维代码Agent",
+    "summary": "从原始文本合成参考图、建模规格和交互需求，让强教师在Blender或Three.js中多轮写代码、执行与看图，再按视觉、规格、功能等条件筛选轨迹做SFT。论文保留5,045条；Qwen3.8-27B三基准均分58.66→66.78，BlenderWorld 53.02→70.13。完整多轮监督优于只训最终代码，但训练Token与推理消耗没有配平。",
+    "insight": "对行动指导更有启发的是：把验收规则留在评估侧，用真实执行/图像反馈形成可追溯纠错轨迹；异常动作可保留为上下文但不作为训练目标，后续恢复动作继续学习。应把最终代码、完整轨迹、错误轮掩码、质量筛选和预算分别做对照；本文没有撤Hint迁移或RL实验。",
+    "limits": "离线教师轨迹筛选+SFT，非撤Hint迁移或RL。各组同epoch不等于同训练Token，推理轮次与输出增长明显。当前HF的6,414条训练记录不能等同论文5,045条轨迹；未下载全量或复现，下游逐题预算/方差及公开模板与论文配置仍待核。",
+    "organization": "小红书 Dots Studio",
+    "dateLabel": "2026-11-21 · 首发v1",
+    "evidence": "已核原文§3–5、附录A–D、相关提示及公开代码/数据卡；未复现",
+    "originalTitle": "3DCodeFactory: Scaling Training Data for 3D Code Agents",
+    "date": "2026-11-21",
+    "checkedAt": "2026-11-27T08:32:23.797490+00:00",
+    "originalDate": "2026-11-21",
+    "paperOriginalDate": "2026-11-21T12:58:42Z",
+    "paperUpdatedAt": "2026-11-21T12:58:42Z",
+    "updatedAt": "2026-11-21T12:58:42Z",
+    "firstSeenAt": "2026-11-26T20:29:54.461010+00:00",
+    "lastSeenAt": "2026-11-27T08:32:23.797490+00:00",
+    "tags": [
+      "三维代码训练数据",
+      "多轮轨迹SFT",
+      "产物验收",
+      "行动与反馈",
+      "计算预算边界"
+    ],
+    "authors": [
+      "Zhaoyu Wang",
+      "Xueru Wen",
+      "XingYu Li",
+      "Jie Lou"
+    ],
+    "topics": [
+      "code2-3d"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv首发日期与摘要",
+        "url": "https://arxiv.org/abs/2611.28783"
+      },
+      {
+        "label": "arXiv v1方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.28783v1"
+      },
+      {
+        "label": "作者项目与代码展示",
+        "url": "https://3dcodefactory.github.io/"
+      },
+      {
+        "label": "作者合成/验收/导出代码",
+        "url": "https://github.com/3DCodeFactory/3DCodeFactory"
+      },
+      {
+        "label": "公开数据仓库",
+        "url": "https://huggingface.co/datasets/3DCodeFactory/3DCodeFactory"
+      },
+      {
+        "label": "已核版本数据卡：当前6414记录口径",
+        "url": "https://huggingface.co/datasets/3DCodeFactory/3DCodeFactory/raw/3e626fae85b9faece48b4e47e7a62d3c688d7244/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "先验收三维产物，再用多轮代码与反馈轨迹做SFT。27B三基准均分58.66→66.78；完整轨迹优于只训最终代码，但训练Token和推理消耗未配平。",
+      "motivation": "现有三维代码数据多是静态单物体的单轮问答，缺少复杂场景、交互验收和出错后的继续修正。作者从文本直接合成任务与验收规则，收集可执行的长轨迹。",
+      "novelty": "作者主张：从原始文本扩展复杂三维任务，以多维可执行验收筛选长轨迹。本站判断：价值在任务—产物—纠错轨迹的联动；收益尚不能单独归因Hint、轨迹长度或筛选。",
+      "evidenceScope": "已读原文§3–5、附录A–D的构建/训练/筛选/人评与消融，以及相关P01/P08–P11提示；只读检查公开README、paper.toml、supplement-update、adapters和trajectory/workflow/docker_agent/vector_guard关键代码。未运行来源代码或模型。v1首发2026-11-21 12:58:42 UTC；本次checkedAt不是发布日。参考图由GPT Image 2.5 Sunburst生成，任务和全流程裁判为GPT-5.6-Terra，教师为DeepSeek-V4.1-Flash-1017，harness Claude Code2.1.251；不是Opus5.5/Fable5.2教师实验。论文5,283候选任务产生13,312条已完成rollout：逐维下限淘汰2,389，均值不足或未成对合计排除833，10,090条合格成对后选5,045赢家；238题未凑足2条合格被丢弃，37.9%是最终轨迹占completed pool比例，不是单次任务成功率。2,920条Blender默认静态、2,125条Three.js支持最多3项交互；平均累计轨迹1,094.5K tokens、413.6工具调用，中位代码4,270行。SFT为Qwen3.5-9B/Qwen3.8-27B、384K上下文、1 epoch、LR1e-5、batch48；论文765步仅指本数据。9B三基准均分28.50→56.31，27B58.66→66.78；该均分由BlenderWorld、P3D-Bench Three.js及3DCodeBench分数平均，不是通过率。27B BlenderWorld53.02→70.13，不筛选63.86、同5,045任务只保留最终代码58.38。BlenderGym零样本编辑PL3.544→2.202、N-CLIP10.617→7.555，均为表中×1000误差口径，非交互成功率。27B BlenderWorld中位轮数85→160、累计输出127.8K→374.1K；不筛选178轮/412.5K，工具报错7.8%对筛后4.3%、连续重复编辑18.6%对6.8%，说明更长也可能更差。人评为150题重采300产物、3名三维专家多数票，剔除缺陷的precision87.2%/recall91.1%，同题偏好一致116/150=77.3%；100题独立合成留出的87胜10平3负是自动裁判，非同一人评。公开HF规范仓库3DCodeFactory/3DCodeFactory当前commit 3e626fae85b9faece48b4e47e7a62d3c688d7244、lastModified11/24；数据卡写6,414条Qwen SFT记录，文件树与SHA256SUMS可读，401个zstd分片大小和302,582,627,266 bytes吻合，仅核目录/数据卡，未下载或逐行验证。",
+      "limits": "本文是离线强教师轨迹筛选+SFT，没有撤Hint后迁移或RL证据。相同优化器/epoch及同题数不等于相同训练Token；单轮对多轮还改变视觉反馈、动作序列和监督量，未给独立的错误掩码因果消融。作者称推理预算相同，但实际轮次/输出显著增加，未报告对应账单、总GPU时长及完整下游逐题预算/重复方差，不能称更便宜或全面超越大模型。rubric由同一模型家族生成和评判，有同源偏好；几何难度加分在独立校准集确定，最大加0.060，校准规模与原始人评标注未在已核材料中给全。人评precision/recall测缺陷拒绝，不等于最终所有轨迹正确；100题留出仍来自相同合成体系。论文描述与四基准做文本/图像相似度排除，未在论文给出完整阈值/索引；公开guard要求外置冻结索引与校准阈值，不能仅凭代码存在断言零污染。公开源码自述测试只核编排/schema/选择/恢复，未重算论文表格，未打包原始实验轨迹与人评标注。当前6,414条训练记录与论文5,045轨迹的逐条映射未核，不能称已完整核验复现数据。代码与数据卡标Apache-2.0，仅核声明，未审核所有原始语料/图像权利。当前paper.toml为command backend且commands空，network=bridge、agent_max_turns=100，不能当论文隔离环境及全部下游评测配置；使用仍需配置执行适配器、模型端点与数据。几何/视觉分数和特定交互测试不保证任意后续编辑、精密CAD公差或生产级稳定性；仅code2-3d，未将静态Blender统一称动画。",
+      "method": [
+        "清洗文本并按10领域56类采样，生成参考图，再合成场景背景、几何规格与最多3项Three.js交互；评分细则不交给求解Agent。",
+        "DeepSeek-V4.1-Flash-1017通过Claude Code在Blender/浏览器沙箱中写代码、执行、看图、修正，GPT-5.6-Terra核验产物。",
+        "分别核视觉、规格、交互、显示稳定与美观；适用维度各≥0.5、均值≥0.6。每题最多6次采样，凑2条合格后取高分者。",
+        "按上下文压缩边界切段，保留文字和渲染反馈；环境输出及异常助手轮不计损失，后续诊断纠错仍可训练，再做1轮全参数多模态SFT。",
+        "比较三类生成基准和独立场景编辑基准，并检验不筛选、只训最终代码、150题人评及100题合成留出；单列轨迹长度与消耗。"
+      ],
+      "inspirations": [
+        "把可执行验收留在评估侧，分别核代码跑通、几何规格、渲染质量和交互状态；静态场景不虚算功能通过，原产物只读核验。",
+        "将失败动作保留为上下文但屏蔽训练损失，保留后续恢复步骤；对照完整轨迹、最终代码与逐轮掩码，配平训练Token后再判断行动学习收益。",
+        "同时记录完工率、细节质量、工具错误和重复修改、实际输出Token及耗时；同一轮次上限不代表同花费，长轨迹本身也不是高质量证据。"
+      ],
+      "reviewedAt": "2026-11-27T08:32:23.797490+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.28783",
+        "https://arxiv.org/html/2611.28783v1",
+        "https://3dcodefactory.github.io/",
+        "https://github.com/3DCodeFactory/3DCodeFactory",
+        "https://huggingface.co/datasets/3DCodeFactory/3DCodeFactory",
+        "https://huggingface.co/datasets/3DCodeFactory/3DCodeFactory/raw/3e626fae85b9faece48b4e47e7a62d3c688d7244/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.28783",
+      "status": "pending",
+      "checkedAt": "2026-11-27T08:30:28.558703+00:00"
+    }
   }
 ]
