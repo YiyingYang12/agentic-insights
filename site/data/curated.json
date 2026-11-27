@@ -34216,5 +34216,305 @@
         "https://huggingface.co/buckets/dacorvo/video-generation/tree/entertainment"
       ]
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.30494",
+    "url": "https://arxiv.org/abs/2611.30494v1",
+    "id": "paper-lcebench-2611-30494",
+    "title": "LCEBench：共享经验是否泛化，要拆开提示初值与格式收益",
+    "summary": "论文统一比较三种上下文优化方法、三模型与五任务；15个模型任务组合仅5个按作者检验显著优于最佳CoT/ICL基线。部分提升来自初始模板或格式遵循，失败类型越杂的设置收益越小，但相关不是聚类有效的因果证明。",
+    "insight": "评估共享行动Hint时，同时保留原始模板、优化后模板和格式归一后的评分；再对同一失败族做留出验证。本文测试始终带上下文，不能用它证明模型学会在撤Hint后独立执行。",
+    "limits": "未复现；权重冻结、测试保留所学上下文，非撤Hint迁移，无Opus5.5/Fable5.2实验。多样性负相关非聚类有效的因果证据；代码相关检验为单侧。方法预算与初始提示不等，不能把格式收益当推理提升。主实验仅三模型五任务、各5种子；失败类型由模型标注，未报告人工一致性审核。45个设置的相关不等于45个独立随机干预；抽样失败数默认取最小组大小，文中未报其具体数值。长上下文消融改变示例数量或重复结构，不能推出所有Hint越短越好。",
+    "dateLabel": "2026-11-23 · v1 · 首发",
+    "evidence": "已核原论文方法、实验与所列公开资料；来源核验不代表独立实验复现",
+    "originalTitle": "Revisiting LLMs as Context Engineers",
+    "date": "2026-11-23",
+    "checkedAt": "2026-11-27T20:28:16.620733+00:00",
+    "originalDate": "2026-11-23",
+    "paperOriginalDate": "2026-11-23T11:13:05Z",
+    "firstSeenAt": "2026-11-27T20:31:23.608054+00:00",
+    "tags": [
+      "Hint",
+      "共享经验",
+      "上下文优化",
+      "失败类型",
+      "格式与推理",
+      "成本边界"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "规范原文入口",
+        "url": "https://arxiv.org/abs/2611.30494v1"
+      },
+      {
+        "label": "arXiv · 首发元数据",
+        "url": "https://arxiv.org/abs/2611.30494"
+      },
+      {
+        "label": "此前候选核验来源",
+        "url": "https://huggingface.co/papers/2611.30494"
+      },
+      {
+        "label": "arXiv v1 · 原方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.30494v1"
+      },
+      {
+        "label": "作者仓库 · 固定版本实验说明",
+        "url": "https://github.com/costa-nus/LCEBench/blob/c3ae88c019ca088d4fe6dd4f818e4b3ce41372aa/README.md"
+      },
+      {
+        "label": "作者代码 · Vendi抽样与单侧相关定义",
+        "url": "https://github.com/costa-nus/LCEBench/blob/c3ae88c019ca088d4fe6dd4f818e4b3ce41372aa/failure_modes/vendi.py"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "三模型五任务中，优化上下文仅5/15组显著优于最佳简单基线；收益有时来自初始提示或格式。失败多样性与收益负相关，不证明聚类即可改善。",
+      "motivation": "从失败轨迹抽出的共享经验，可能丢失解题信息，也可能只修好输出格式。需要把“模板本来就好”“工程后更好”和测试泛化分开衡量。",
+      "novelty": "作者主张经验抽取能力是异质失败上的瓶颈。本站判断：有价值的是统一对照和收益分解；模型标注、单侧相关及非等预算限制了机制与普遍性结论。",
+      "evidenceScope": "本轮核读arXiv v1§3–6、附录A–I及作者仓库固定版本c3ae88c019ca088d4fe6dd4f818e4b3ce41372aa的README与failure_modes/vendi.py；首发2026-11-23 11:13:05 UTC，checkedAt是本轮核验时间。主要生成/反思模型为Qwen3-8B、Gemma-4-E4B-it、Ministral-3-8B-Instruct-2512-BF16，不把Gemma型号改写成8B。训练在此指上下文搜索/经验更新，不更新模型权重，也不构成参数RFT或on-policy梯度蒸馏。单步最大输出16384、温度0.7；AppWorld每步4096，执行输出及总历史上限10000/200000字符，未据此补猜整局token上限。MATH500训练/验证/测试100/200/200；HotpotQA150/300/300且直接提供gold及干扰段落、移除检索；IFBench150/300/294；MiddleMatch100/100/300；AppWorld90/57/168，均五种子0–4。GEPA用heavy配置，TF-GRPO三epoch、每题五rollout并逐epoch验证选池，ACE三epoch、curator每5条且去重；AppWorld ACE改为每条curation、最多5轮反思。故同生成配置并非相同优化调用、token或墙钟预算。ICL每训练样本先生成五条，再为每测试题随机取三条成功轨迹。主表比较三方法×三模型×五任务：最佳方法相对最佳CoT/ICL共7/15组超过1点、5组按作者显著性检验通过；并非45个方法设置中只有5个有效。各方法初始模板不同，例如Gemma IFBench的GEPA最终46.70相对CoT39.76高6.94，却比自身初始低1.22；不能把6.94全部归因于优化。Qwen MiddleMatch的GEPA42.33虽比自身初始高12.53，仍低于ICL46.07。失败分析将每设置五种子初始失败合并，Qwen3.8-27B写可复用的一句机制，all-mpnet-base-v2嵌入，等N无放回抽样100次计算Vendi。固定代码默认N=min各设置失败数，未公布本次具体N；仅静态核代码，未重跑模型或统计。README作者输出示例每法15设置、合并45：GEPA r=-0.556/p=0.0158，TF-GRPO -0.512/0.0256，ACE -0.372/0.0860，合并-0.464/0.0007；代码使用alternative=less单侧负相关检验，不能不说明就当双侧结论。附录G混合模型以数据集/初始分数为固定项、模型/方法为随机项，多样性系数-0.793且p≤0.05；仍是观察关联，不能认定人工聚类或减少失败多样性会因果提升。附录I对Gemma MATH500失败用Qwen3.8-27B重新抽取答案，GEPA/TF-GRPO/ACE的自身优化增益由3.50/6.10/1.60变为-0.50/1.50/-0.80，说明这组收益高度依赖格式评分，不外推全部任务。附录F的Min3 MATH500：三条随机ICL平均3859输入token、68.10；三条检索示例11112 token、26.50；改一条检索示例3807 token、68.50，错误回答示例题比例分别15.1%/64.3%/14.9%。示例数与选择亦改变，非完全纯长度随机干预；318对合成gold示例来自测试题解的改写，是诊断性高相关上下文，不是无泄漏普通泛化成绩。附录H预算相关不显著不等于预算无效；Pass@128不等于统一成本或能力边界证明。测试均保留所学上下文，无撤Hint后权重迁移、Opus5.5或Fable5.2实验。",
+      "limits": "未复现；权重冻结、测试保留所学上下文，非撤Hint迁移，无Opus5.5/Fable5.2实验。多样性负相关非聚类有效的因果证据；代码相关检验为单侧。方法预算与初始提示不等，不能把格式收益当推理提升。主实验仅三模型五任务、各5种子；失败类型由模型标注，未报告人工一致性审核。45个设置的相关不等于45个独立随机干预；抽样失败数默认取最小组大小，文中未报其具体数值。长上下文消融改变示例数量或重复结构，不能推出所有Hint越短越好。",
+      "method": [
+        "冻结生成模型权重，比较GEPA改提示、TF-GRPO积累经验、ACE更新playbook；TextGrad先在验证集比较，未进入主测试表。",
+        "三模型各跑五任务、五个固定种子，用独立验证集选上下文；测试保留所学提示/经验，并对比CoT及三条成功轨迹ICL。",
+        "分别计算优化后相对自身初始提示的变化，以及最佳方法相对最佳简单基线的变化，防止把模板优势算给优化算法。",
+        "用统一模型提取失败机制、嵌入并按等量抽样计算Vendi多样性，再做设置级相关和混合效应分析，不做因果聚类干预。",
+        "通过答案重新抽取、经验/示例检索及长度消融，检查收益是否来自格式、信息保留或上下文长度；另扩模型规模与反思者。"
+      ],
+      "inspirations": [
+        "共享Hint实验至少保留三项：原模板、优化后模板、格式归一后的结果；逐项记录修复真实行为还是只让评分器更易识别。",
+        "在同任务与同预算下随机分配按失败族生成或跨族生成的Hint，再测留出族、原可解题误伤；相关性本身不能替代此对照。",
+        "用同token预算比较原轨迹、短经验和检索经验，记录答错目标题的比例；有提示与撤提示另测，避免把上下文辅助称作训练迁移。"
+      ],
+      "reviewedAt": "2026-11-27T20:28:16.620733+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/html/2611.30494v1",
+        "https://arxiv.org/abs/2611.30494",
+        "https://github.com/costa-nus/LCEBench/blob/c3ae88c019ca088d4fe6dd4f818e4b3ce41372aa/README.md",
+        "https://github.com/costa-nus/LCEBench/blob/c3ae88c019ca088d4fe6dd4f818e4b3ce41372aa/failure_modes/vendi.py"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.30494",
+      "status": "pending",
+      "checkedAt": "2026-11-27T20:31:23.572541+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.34397",
+    "url": "https://arxiv.org/abs/2611.34397v1",
+    "id": "paper-unimopd-2611-34397",
+    "title": "Uni-MOPD：先合并同底座专家，再用学生回答短程蒸馏",
+    "summary": "Uni-MOPD先等权合并五个同底座专家，再做50步学生在线回答蒸馏，五领域均值67.6→69.8。相同查询的固定教师回答对照为68.6；收益伴有OCR单项下降，3.3倍加速属于指定训练实现整体。",
+    "insight": "比较教师监督前先控制学生起点、回答来源与loss归一。题目占比均匀时，长回答领域仍占更多token权重；把这件事和Hint具体/泛化、保留/撤除混在一起，会难以归因。",
+    "limits": "未复现；仅同底座Qwen3-VL权重可合并，非语言Hint撤除，无Opus5.5/Fable5.2实验。3.3倍为指定后端与管线整体对照，不含专家训练；多数单种子，部分OCR单项下降。均匀题数不等于均匀token权重，同更新/查询数不等于同FLOPs。完整词表在同verl对照未优于top16/128；不能把整套实现加速归给损失函数。训练查询未公开，现有代码与模型不构成原成绩复现；GUI是截图定位而非完整交互任务成功。",
+    "dateLabel": "2026-11-25 · v1 · 首发",
+    "evidence": "已核原论文方法、实验与所列公开资料；来源核验不代表独立实验复现",
+    "originalTitle": "Strong Starts, Simple Recipes: Unified Multi-Teacher On-Policy Distillation from Multimodal Specialists",
+    "date": "2026-11-25",
+    "checkedAt": "2026-11-27T20:28:16.620733+00:00",
+    "originalDate": "2026-11-25",
+    "paperOriginalDate": "2026-11-25T13:59:32Z",
+    "firstSeenAt": "2026-11-27T20:31:23.608054+00:00",
+    "tags": [
+      "Hint",
+      "多教师蒸馏",
+      "on-policy回答",
+      "权重合并",
+      "token权重",
+      "成本边界"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "此前候选核验来源",
+        "url": "https://arxiv.org/abs/2611.34397v1"
+      },
+      {
+        "label": "arXiv · 首发元数据",
+        "url": "https://arxiv.org/abs/2611.34397"
+      },
+      {
+        "label": "arXiv v1 · 原方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.34397v1"
+      },
+      {
+        "label": "作者仓库 · 固定版本方法与预算",
+        "url": "https://github.com/AmberHeart/Uni-MOPD/blob/41106bed778a1533ed3b0f701d525acd2d9612bc/README.md"
+      },
+      {
+        "label": "作者配置 · 固定版本实际训练条件",
+        "url": "https://github.com/AmberHeart/Uni-MOPD/blob/41106bed778a1533ed3b0f701d525acd2d9612bc/configs/train/unimopd_uniform_rkl.yaml"
+      },
+      {
+        "label": "作者说明 · 复现与数据边界",
+        "url": "https://github.com/AmberHeart/Uni-MOPD/blob/41106bed778a1533ed3b0f701d525acd2d9612bc/REPRODUCIBILITY.md"
+      },
+      {
+        "label": "Hugging Face · 作者公开模型集合",
+        "url": "https://huggingface.co/collections/AmberHeart/uni-mopd"
+      },
+      {
+        "label": "作者项目页 · 当前公开状态",
+        "url": "https://amberheart.github.io/Uni-MOPD/"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "五个同底座专家等权合并后，50步MOPD使五领域均值67.6→69.8；固定教师回答为68.6。测试不调用教师，但这不是自然语言Hint撤除实验。",
+      "motivation": "多教师蒸馏的改善可能主要来自更强的学生初始化。作者把起点、回答来源、领域采样和损失逐项拆开，检验复杂调权是否仍必要。",
+      "novelty": "作者主张强起点加简单在线蒸馏足以匹配复杂配方。本站判断：有价值的是起点与实际采样协议的对照；不能推广为全词表必胜top-k或闭源Hint可直接合并。",
+      "evidenceScope": "本轮核读arXiv v1§3–6、附录A–D，及作者仓库固定版本41106bed778a1533ed3b0f701d525acd2d9612bc的README、REPRODUCIBILITY与主训练配置；另核公开HF模型集合。首发2026-11-25 13:59:32 UTC，项目README的11月26公告日期不替代论文首发。所有教师/学生同源Qwen3-VL-30B-A3B-Instruct，30B总参数/3B激活；STEM、VQA、具身专家各自领域SFT+RL，OCR/GUI则从不同多域SFT再做领域RL，不能说五个教师训练数据完全隔离。合并基于相同底座任务向量，主DARE drop0.7、seed42、每专家系数0.2；专家已训练的成本不属于“合并无需训练”。训练域包括STEM、VQA、OCR/图表、GUI定位、具身理解。每域无放回抽40960构成204800查询池，全局打乱；50步消费25600，200步102400。查询保留system/user及可能的更早轮次，仅最后assistant回答删除并由学生重新生成，故on-policy指当前回答而非保证完整历史都来自当前策略。每批512题当前权重采样、一次更新后重同步；MoE训练回放生成时expert IDs，教师看相同图像/token编码。损失只覆盖有效回答token，全词表RKL按全批token平均；域题数约20%但平均回答长度STEM1674.5、GUI91.3，不能称各域监督权重均匀。主配置全参数bf16、AdamW lr3e-6恒定、温度1/top_p1/non-thinking，prompt20480、总序列32768，五域回答上限依次12288/8192/12288/1024/4096。评测是每题一次贪心、回答32768上限，部分任务用gpt-oss-20b评分；19基准先各域内均值，再五域等权，不是19项直接等权。GUI三项只测截图坐标定位，OSWorld-G不是交互完成率。主表Base58.1，等权merge67.6，MOPD50步69.8；Base蒸馏200步67.7，不能漏掉merge已获得的专家先验。各域均值均改善，但DocVQA94.8→93.4、OCRBench v2 67.6→63.8退化；50步到200步均值69.8→69.4而KL0.105→0.049。固定教师回答消融使用同起点、25600题、教师与RKL/优化器，50步68.6对学生在线69.8；教师版本不需生成引擎和路由回放，成本与系统路径仍不同，不是完全只改文字内容。Open-MOPD对照每2048条旧策略rollout拆四次512更新，后续小批相对初始rollout策略已有滞后；主法每512重新采样，不能把两者都简写成严格逐更新on-policy。其loss归一及三个预算机制也有差异。共同verl/Megatron且一次更新的监督消融为采样token68.1、top16/top128均69.6、全词表69.4；本框架全词表69.8不证明目标本身优于top-k。24张H200、同50更新和25600查询，作者报告经适配的Open-MOPD FSDP2为888秒/步、296 GPU小时，Megatron+R3移植版348秒、116小时，主法266秒、89小时（约3.7墙钟小时）。3.3倍来自跨后端加流式管线等整套差异；同全词表实现另在2–15步比较263.4与597.8秒约2.3倍。时间排除初始化/存盘，未含专家训练、合并搜索与全部研究开销；查询数相同不等于token/FLOPs完全相同。手调merge及gap采样用过19项评测分数；等权起点/均匀采样不需这些分数，但整体比较不是完全未见评测设计。大多单种子；两个种子一致性只在另一种域内来源平衡协议检验，不能代替全部配置重复实验或显著性检验。第二个四窄专家bank仍为相同模型家族，未验证跨架构/闭源教师。作者目前已公开代码与模型，原v1“将发布”已被仓库开放状态补充；训练查询未公开、评测harness需自备，未运行其CPU测试或训练，不声称独立复现。没有自然语言Hint保留/删除、Opus5.5或Fable5.2实验。",
+      "limits": "未复现；仅同底座Qwen3-VL权重可合并，非语言Hint撤除，无Opus5.5/Fable5.2实验。3.3倍为指定后端与管线整体对照，不含专家训练；多数单种子，部分OCR单项下降。均匀题数不等于均匀token权重，同更新/查询数不等于同FLOPs。完整词表在同verl对照未优于top16/128；不能把整套实现加速归给损失函数。训练查询未公开，现有代码与模型不构成原成绩复现；GUI是截图定位而非完整交互任务成功。",
+      "method": [
+        "五个Qwen3-VL-30B-A3B同底座专家的任务向量先DARE稀疏，再各以0.2权重合并；主设drop=0.7，不搜索专家权重。",
+        "按领域近等量取题并路由到对应冻结教师；当前学生每批生成最后一轮回答，历史上下文可来自原数据。",
+        "教师评分学生同一prefix，全词表reverse-KL只训回答token、按全批有效token归一；每批512题只更新一次并重同步模型。",
+        "MoE路由回放保持采样与训练一致；完成的回答流式交给教师，教师从CPU逐个换入，分块计算词表损失。",
+        "固定起点与查询，比较教师固定回答、采样权重和损失；19基准先域内平均再等权平均五域，并单列退化和系统耗时。"
+      ],
+      "inspirations": [
+        "比较监督配方时统一学生初始化，并加入不蒸馏的强起点；否则更好的起点可能被误记为教师Hint或训练算法的收益。",
+        "同时报告每领域题数、输出token和实际loss权重；再固定归一方式比较当前学生回答与固定教师回答，避免多因素一起改。",
+        "把专家构建、合并、训练与推理成本分开核算；停止规则看独立验证及单项退化，不因KL继续下降就追加蒸馏轮数。"
+      ],
+      "reviewedAt": "2026-11-27T20:28:16.620733+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/html/2611.34397v1",
+        "https://arxiv.org/abs/2611.34397",
+        "https://github.com/AmberHeart/Uni-MOPD/blob/41106bed778a1533ed3b0f701d525acd2d9612bc/README.md",
+        "https://github.com/AmberHeart/Uni-MOPD/blob/41106bed778a1533ed3b0f701d525acd2d9612bc/configs/train/unimopd_uniform_rkl.yaml",
+        "https://github.com/AmberHeart/Uni-MOPD/blob/41106bed778a1533ed3b0f701d525acd2d9612bc/REPRODUCIBILITY.md",
+        "https://huggingface.co/collections/AmberHeart/uni-mopd",
+        "https://amberheart.github.io/Uni-MOPD/"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.34397",
+      "status": "pending",
+      "checkedAt": "2026-11-27T20:27:43.825841+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "benchmark",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.34457v1",
+    "url": "https://arxiv.org/abs/2611.34457v1",
+    "id": "paper-proxygenbench-2611-34457",
+    "title": "ProxyGenBench：代码草图越细，不一定越容易生成好视频",
+    "summary": "312个案例把代码/3D代理引导的成片验收拆成保结构、补细节、绑条件。31匹配场景里，代理从粗到细后5模型的补全均分下降6.3点；结构均分提高2.9点，但其场景聚类区间跨零。",
+    "insight": "用代码草图承载镜头、轨迹与事件，再明确哪些占位细节要修正。把结构全过、补全质量、人物/声音绑定分开验收；共同场景对照与失败审计比单一视觉分更能定位瓶颈。",
+    "limits": "每成功模型/案例只保留1输出，几何和动作细节共同变化；无执行率、用户编辑率或端到端成本对照。Joint只指12项结构全过，不是全部指标成功。代码/数据待公开，未复现；没有训练或撤Hint迁移。",
+    "organization": "中科院自动化所、UC San Diego、HKUST、腾讯、国科大",
+    "dateLabel": "2026-11-25 · 首发v1",
+    "evidence": "已读方法、实验与附录A–F；核作者项目/固定README，代码数据待发布，未复现",
+    "originalTitle": "ProxyGenBench: Benchmarking Proxy-Guided Video Generation",
+    "date": "2026-11-25",
+    "checkedAt": "2026-11-27T20:28:07.040990+00:00",
+    "originalDate": "2026-11-25",
+    "paperOriginalDate": "2026-11-25T14:31:23Z",
+    "paperUpdatedAt": "2026-11-25T14:31:23Z",
+    "updatedAt": "2026-11-25T14:31:23Z",
+    "firstSeenAt": "2026-11-27T20:28:07.040990+00:00",
+    "lastSeenAt": "2026-11-27T20:28:07.040990+00:00",
+    "tags": [
+      "代理引导视频",
+      "程序化3D草图",
+      "Preserve/Complete/Bind",
+      "配对评估",
+      "条件绑定"
+    ],
+    "authors": [
+      "Zhenchen Tang",
+      "Haolin Lu",
+      "Songlin Yang",
+      "Xiaotong Zhao",
+      "Ran Zhang",
+      "Bo Peng",
+      "Shuai Li",
+      "Haotian Fan",
+      "Haobin Zhong",
+      "Yanni Zhang",
+      "Songlian Li",
+      "Ning Zhang",
+      "Xun Gao",
+      "Alan Zhao",
+      "Jing Dong"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2video"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "规范原文入口",
+        "url": "https://arxiv.org/abs/2611.34457v1"
+      },
+      {
+        "label": "arXiv 首发日期与摘要",
+        "url": "https://arxiv.org/abs/2611.34457"
+      },
+      {
+        "label": "arXiv v1 方法、实验与完整附录",
+        "url": "https://arxiv.org/html/2611.34457v1"
+      },
+      {
+        "label": "Hugging Face 论文页与作者项目入口",
+        "url": "https://huggingface.co/papers/2611.34457"
+      },
+      {
+        "label": "作者公开项目与结果展示",
+        "url": "https://2kxx.github.io/ProxyGenBench/"
+      },
+      {
+        "label": "作者仓库固定版本 README 与发布范围",
+        "url": "https://github.com/2kxx/ProxyGenBench/blob/98e045918cd5b1c77f2a308cc123b81cd4efc443/README.md"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "312例把代理视频评估拆成保结构、补细节、绑条件。31场景中，粗代理变细后补全均值降6.3点；结构均值升2.9点但区间跨零，不能把更像代理等同更好成片。",
+      "motivation": "代码能画出角色、镜头和事件草图，但生成器既要遵守这些关系，又要修正方块、僵硬动作等非目标细节，还要把图片和声音分给正确角色。单看画质或代理相似度无法验收这三件事。",
+      "novelty": "作者主张：以有缺陷代理的保结构、补全和条件绑定联合诊断视频生成。本站判断：价值是把代码草图的意图与应修复细节分开验收；不是新视频模型，也未证明最终像素视频可编辑。",
+      "evidenceScope": "已完整核读原文§3–5与附录A–F，包括代理构建、评分、31场景配对、共同支持集和人审；核arXiv v1首发2026-11-25 14:31:23 UTC。HF显示11/27日榜提交，不当作论文首发。项目标题/作者与arXiv链接一致，GitHub固定提交98e045918cd5b1c77f2a308cc123b81cd4efc443的README确认评估代码和数据仍待review后发布。未运行bpy、视频模型或评分器，未独立审看片段/听音频。Native Code-to-Proxy是真正LLM代码创作子集；A.5说明执行harness运行生成的bpy并返回错误、场景信息与预览，Agent迭代修复，作者再查源场景与渲染。geometry-swap借共享父节点继承动画并保留镜头、时长、角色颜色和轨迹，但仍需渲染检查；其余游戏/Studio来源不必走同一作者流程。60场景的257核心配置加18去代理、15去图、8去音和14定点变体，共312例，其中294带代理；177例带图、60例带独立音频，非互斥计数。5生成器为Seedance2.5、Kling4.0、Wan3.0、Seedance2.0、MiniMaxH3，统一720p，通常15秒及16:9或21:9；Kling不支持独立音频，排除该组。每成功模型/案例保留一个输出；缺失输出计零，不支持或无法评估配置排除。Gemini3.1Pro以temperature0读并排时间线、8或12抽帧、必要细节裁剪及最多64视觉输入，音频项另给相关音轨；Qwen3.5-397B-A17B先核问题。32准则按能力、维度等权分层聚合，P/C/B均分Q；Strict=Q×rho²，rho为12项Preserve通过比例；294带代理案例均支持这12项，Joint仅指其全过。50组有/无代理视频配对来自18场景；双顺序VLM偏好35胜/15平或顺序敏感/0稳定败，不是人类70%偏好或全部任务成功率。行动转换22对/8场景从0.894到1.000；跨镜头空间14对/5场景从0.833到0.952；MEt3R 17对/10场景从0.464降到0.337，子集可重叠。31匹配T2且无独立音频场景×5模型=155模型/场景对：Pr2−Pr0的平均Complete −0.063，场景聚类95%CI[−0.082,−0.043]；Preserve +0.029、CI[−0.030,+0.095]。49/155对补全下降却未提高结构，29/155对结构提高且补全未下降；主要损失在代理瑕疵修正C3 −0.104、CI[−0.151,−0.057]，不能把均值趋势说成所有场景规律。主表无独立音频Joint仅7.2%–17.4%；12例/10场景Studio子集Preserve0.848–0.962而Bind0.182–0.500。完整共同支持集另取无音频190例/48场景、有音频44例/9场景，5000次场景聚类bootstrap，模型配对scene-cluster sign-flip并做组内Holm校正；无音频前两名差异不显著，有音频全部配对不显著。人审110视频中的3199准则判定，总体一致率92.9%，不是3199个独立视频；Bind失败判定一致率84.0%，细分B2仅35个失败判定、一致率71.4%且Wilson区间[54.9%,83.7%]。",
+      "limits": "无权重训练、教师Hint撤除或跨学生迁移实验；代码代理可修改不等于最终视频可编辑，未测多轮用户编辑成功率或代码执行成功率。评估代码/数据未正式公开，本站未复现。几何与动作细节同时随代理档位变化，不能把补全下降归因到其中单一因素；155模型/场景对仍只有31个独立场景，聚类区间不估计同题多种子方差。论文每成功模型/案例保留1输出，没有给完整API重试日志、端到端延迟/费用、Agent构造代理和人工修复成本，不能据720p一致宣称等成本最优。缺失输出计零与共同支持交集是不同统计口径；294代理案例不等于每模型都成功输出294次。音频分组表示独立输入音频，不表示另一组没有生成音轨。Strict是预设结构权重的综合分而非成功率，Joint只要求结构全过，不要求Complete和Bind同时通过。增加图/音既改变输入又增加绑定要求，跨配置Strict下降不是加参考导致退步的单因素因果证据。生成代理细化后结构均值升幅的区间跨零；模型榜首间未稳定分离，不能把四舍五入名次当显著排名。Gemini裁判抽帧与VLM物理/声画判定会漏细节，Qwen核清单不代表两裁判独立给全部分；人审的细分失败一致率提示时序、声源和角色绑定仍需人工复查。发布页展示和作者案例只用于核公开范围，本次未播放所有媒体或核可运行工程，来源核验不等于实验复现。",
+      "method": [
+        "从参考视频任务、LLM代码代理、游戏和未完成3D资产取60场景；部分代理由Agent写bpy，经Blender执行、预览和人工检查修复。",
+        "以同一故事/时间线构造三档代理与三档文本；固定详细文本变代理，固定粗代理变文本，并增加去代理、去参考及角色/时序对照，共312例。",
+        "把保结构、补细节、绑条件拆成8能力32准则；Gemini3.1Pro生成输入可支持的清单，Qwen3.5审查，先固定问题再跨模型打分。",
+        "用视觉/音频证据逐准则评估，分别报P/C/B；Strict为维度均分乘结构通过率平方，Joint只看12项结构全过，缺失输出计零。",
+        "测5个视频生成器，按独立音频输入分组；每成功模型/案例保留1输出，用场景聚类重采样、配对对照与110视频人审检查结果。"
+      ],
+      "inspirations": [
+        "给程序化草图标注必须保持的事件/镜头，以及应被替换的占位几何；对同一场景做粗细配对，分别测结构、补全和绑定，避免用相似度奖励复制瑕疵。",
+        "将评审清单固定在模型可见输入内，隐藏场景规格不添加额外要求；把可执行率、12项结构全过、视觉质量和用户编辑成功率分别报告。",
+        "参考图与声音会增加验收要求，跨配置先取共享准则再查新增绑定项；保留逐场景区间与失败审计，并单独核算造代理、人工修复和生成重试成本。"
+      ],
+      "reviewedAt": "2026-11-27T20:28:07.040990+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.34457",
+        "https://arxiv.org/html/2611.34457v1",
+        "https://huggingface.co/papers/2611.34457",
+        "https://2kxx.github.io/ProxyGenBench/",
+        "https://github.com/2kxx/ProxyGenBench/blob/98e045918cd5b1c77f2a308cc123b81cd4efc443/README.md"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.34457",
+      "status": "pending",
+      "checkedAt": "2026-11-27T20:31:23.572541+00:00"
+    }
   }
 ]
