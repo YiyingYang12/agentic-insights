@@ -34516,5 +34516,319 @@
       "status": "pending",
       "checkedAt": "2026-11-27T20:31:23.572541+00:00"
     }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "distillation",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.31427",
+    "url": "https://arxiv.org/abs/2611.31427v1",
+    "id": "paper-harness-rehearsal-2611-31427",
+    "title": "Harness Rehearsal：把任务知识与接口动作分开训练，再检查能否迁移",
+    "summary": "论文把跨接口任务示范与目标接口排练做成2×2对照。BFCL多轮四次训练均值中，二者单独为12.8%和31.1%，合并56.8%，base为44.6%。给步骤的训练排练能帮助执行迁移，但单独排练也可能破坏其他接口。",
+    "insight": "行动Hint研究可以先区分“知道做什么”和“能通过当前工具正确做出来”。用目标接口排练、非目标接口排练及等量任务示范作对照，再在不给步骤的新题上测；同时统计原接口退化和轨迹长度。",
+    "limits": "未复现；训练排练给步骤、测试回到原题，非自然语言Hint留删对照，无Opus5.5/Fable5.2实验。主要为4B模型；轨迹数匹配不等于总token相等；跨接口退化仍存在。SFT覆盖指令、模型输出和环境反馈，离线固定示范并非当前学生on-policy。此处核心数值取四seed，部分主表/消融单run；RL仅两基准的初始部分可解任务，未证明所有难题都获益。人工失败审核仅100例且看得到自动标签。",
+    "dateLabel": "2026-11-23 · v1 · 首发",
+    "evidence": "已核原论文方法、实验与所列公开资料；来源核验不代表独立实验复现",
+    "originalTitle": "Learning What vs. Learning How: Decomposing Task and Interface Competence in Agentic Training",
+    "date": "2026-11-23",
+    "checkedAt": "2026-11-28T02:29:42.587463+00:00",
+    "originalDate": "2026-11-23",
+    "paperOriginalDate": "2026-11-23T19:13:24Z",
+    "paperUpdatedAt": "2026-11-23T19:13:24Z",
+    "updatedAt": "2026-11-23T19:13:24Z",
+    "firstSeenAt": "2026-11-25T04:00:01Z",
+    "lastSeenAt": "2026-11-25T04:00:01Z",
+    "tags": [
+      "Hint",
+      "动作排练",
+      "接口迁移",
+      "离线蒸馏",
+      "全轨迹监督",
+      "退化边界"
+    ],
+    "authors": [
+      "Chaeeun Lee",
+      "Hossein A. Rahmani",
+      "Aryo Pradipta Gema",
+      "Kexin Xu",
+      "Emine Yilmaz",
+      "Pasquale Minervini",
+      "T. Ian Simpson",
+      "Chen Jin",
+      "Amrutha Saseendran"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "arXiv v1（日期与摘要）",
+        "url": "https://arxiv.org/abs/2611.31427v1"
+      },
+      {
+        "label": "此前候选核验来源",
+        "url": "https://arxiv.org/abs/2611.31427"
+      },
+      {
+        "label": "论文全文（方法与附录）",
+        "url": "https://arxiv.org/html/2611.31427v1"
+      },
+      {
+        "label": "作者代码与实验说明",
+        "url": "https://github.com/chaeeunlee-io/harness-competence"
+      },
+      {
+        "label": "作者公开轨迹与标注数据卡",
+        "url": "https://huggingface.co/datasets/chaeeunlee/harness-competence"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "BFCL四次训练均值：跨接口示范12.8%、目标接口排练31.1%，合并56.8%，base44.6%。收益来自两类监督的配合，非通用Hint留删结论。",
+      "motivation": "同一个模型换工具调用格式就可能失效。失败究竟是缺少解题知识，还是不会把已知步骤正确送进工具、提交结果并终止？",
+      "novelty": "作者主张：任务知识与接口能力可分别学习、丢失并相互补充。本站判断：2×2及非目标接口控制比总分更能定位动作瓶颈，但不保证换任意接口都迁移。",
+      "evidenceScope": "已读v1§3–5、附录A–F，并核作者GitHub README与HF数据卡。主教师Qwen3-32B、学生Qwen3-4B，部分MAB/RG用Gemma-3-4B-it。三训练接口加一个留出接口；MAB训练209/测试61，RG每难度192/96且测试换seed，AppWorld94/168，BFCL多轮600/200、单轮1051/355。多数指标是每题4次尝试的平均成功率，不是pass@4；BFCL单轮greedy一次。AppWorld按56场景bootstrap，其余主要按任务。蒸馏只留教师成功轨迹，固定数据SFT全序列所有token，包括指令和工具反馈；2epoch、lr1e-5、32768token、单H100。3H学生为排练示范者，并不表示这些离线示范是被训练学生的实时on-policy。排练保留给定操作，测试回到原始任务而非继续提供答案。MAB替换107条Terminus排练、总365条；RG替换120、总389；BFCL跨接口任务802条另加268条排练，总1070。附表21四训练seed：BFCL fc base44.6、任务12.8±2.9、排练31.1±4.6、合并56.8±5.0；主表3的8.5/32.5/58.8仅s0。MAB目标Terminus合并40.5%，RG易/难39.1/28.8%。表24单run控制中，BFCL合并57.5，减至任务组行数仍56.2/57.1，任务数据重复到合并行数7.8；它匹配样本规模与训练配方，未报告精确总处理token或GPU小时相等。表25把相同量排练换为非目标接口，BFCL23.6→13.5、MAB8.6→2.5，而目标接口为57.5/35.2。边界：仅fc排练在s0把BFCL json33.5→0、pycall28.2→0.1；3H也非处处高于base，例如Gemma RG留出Aider16.4→0。排练收益依任务与示范者而变：MAB目标fc排练39.6，追加任务36.6；RG用未训练目标答案的32B示范者，单排练易48.8/难36.6，合并44.4/32.6。MAB两示范者通过同验证器，但4B/32B平均assistant轮数34.7/3.6；混合后非目标parity52.5/70.2，不能仅用成功标签判断过程质量，也未证明差异只由长度造成。GRPO只在初始并非全成全败的MAB96题/RG114题上运行，单/多接口匹配1728/2052次rollout，不是等实际token；无KL、组内均值优势不作标准差归一，仅模型生成token受优势训练，步间同步权重且token级TIS上截2。通常两训练seed。它在这些设置比单接口SFT少见跨接口坍塌，但不是对任意数据分布的on-policy优越性证明。失败分类3,618次中2,347失败，100例三人审核、κ=0.61；人看到自动标签，MAB自动/人工分类差异明显。HF卡公开三基准轨迹与100例标注加6例示范，注明一条无assistant记录未公开、RG四行任务ID截短；未逐行对齐全部发布数据与论文表。",
+      "limits": "未复现；训练排练给步骤、测试回到原题，非自然语言Hint留删对照，无Opus5.5/Fable5.2实验。主要为4B模型；轨迹数匹配不等于总token相等；跨接口退化仍存在。SFT覆盖指令、模型输出和环境反馈，离线固定示范并非当前学生on-policy。此处核心数值取四seed，部分主表/消融单run；RL仅两基准的初始部分可解任务，未证明所有难题都获益。人工失败审核仅100例且看得到自动标签。",
+      "method": [
+        "用Qwen3-32B收集不同接口下的成功任务轨迹，离线蒸馏给Qwen3-4B；另以Gemma-3-4B-it检验部分结果。",
+        "把训练题改成明确给出步骤或答案的机械排练，保留环境与验证器；通常由固定3H学生示范，只留通过轨迹。",
+        "做任务示范有/无×目标接口排练有/无的2×2；SFT连指令与环境反馈一起训练，不先删除给定步骤。",
+        "测试使用不含排练步骤的原始留出题；再用等轨迹数、非目标接口排练、失败排练及未见目标答案的示范者作控制。",
+        "在初始部分可解训练题上继续GRPO，按任务和接口各采6次，比较单/多接口及其他接口是否退化。"
+      ],
+      "inspirations": [
+        "固定任务知识数据，只替换目标接口排练与非目标接口排练；测试恢复原题，检查收益是否真依赖目标动作格式。",
+        "同时报告有效工具调用、交付/终止错误与任务内容错误；不把“轨迹通过验证”直接等同于过程简洁可靠。",
+        "给排练设长度分层，并保留其他接口回归集：训练目标接口变好，仍可能损伤已有执行方式。"
+      ],
+      "reviewedAt": "2026-11-28T02:29:42.587463+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.31427v1",
+        "https://arxiv.org/html/2611.31427v1",
+        "https://github.com/chaeeunlee-io/harness-competence",
+        "https://huggingface.co/datasets/chaeeunlee/harness-competence"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.31427",
+      "status": "pending",
+      "checkedAt": "2026-11-28T02:25:14.529040+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.34703",
+    "url": "https://arxiv.org/abs/2611.34703v1",
+    "id": "paper-maco-rl-2611-34703",
+    "title": "Maco-RL：混训先核配额、策略滞后与旧能力回退，再谈采样效率",
+    "summary": "Maco-RL让每次异步更新包含多任务，并用未解、曾成功、历史任务三池分配采样。Qwen3.5-27B五项混合指标均值43.6→60.1，但S1特征开发Tests Passed37.9→28.6；TBS独立消融末点+3.09个百分点的区间跨0。",
+    "insight": "混训掉点时先检查每域实际token权重、策略版本差与旧任务回归，不能只归因于数据来源。历史池要区分重用任务与重用旧轨迹；同时列出救回、退化、探索新解和含筛选/重启的成本。",
+    "limits": "未复现；无Hint留删或Opus5.5/Fable5.2实验。异步轨迹含策略滞后；TBS末点收益置信区间跨0，混训也出现能力退化。综合分混合不同指标，不能当统一成功率。配额平衡的是实例数，token求和使长轨迹权重仍较大；稳定性消融未单独隔离滞后与梯度冲突。成本比较用最佳观察检查点，生成token不含提示/工具观察及全部被丢弃工作；统计区间是固定模型状态的任务抽样，不涵盖多训练seed。",
+    "dateLabel": "2026-11-25 · v1 · 首发",
+    "evidence": "已核原论文方法、实验与所列公开资料；来源核验不代表独立实验复现",
+    "originalTitle": "Maco-RL: Scaling Agent Capabilities with Mixed-Task Reinforcement Learning",
+    "date": "2026-11-25",
+    "checkedAt": "2026-11-28T02:29:42.587463+00:00",
+    "originalDate": "2026-11-25",
+    "paperOriginalDate": "2026-11-25T16:59:27Z",
+    "firstSeenAt": "2026-11-28T02:30:06.203919+00:00",
+    "tags": [
+      "Hint迁移线索",
+      "混合任务RL",
+      "策略滞后",
+      "采样配额",
+      "旧能力保持",
+      "工具成本"
+    ],
+    "topics": [],
+    "featured": true,
+    "sources": [
+      {
+        "label": "arXiv v1（日期与摘要）",
+        "url": "https://arxiv.org/abs/2611.34703v1"
+      },
+      {
+        "label": "规范原文入口",
+        "url": "https://arxiv.org/abs/2611.34703"
+      },
+      {
+        "label": "论文全文（方法与附录）",
+        "url": "https://arxiv.org/html/2611.34703v1"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "逐批混任务与三池采样提高部分综合指标，却不保证每域都涨：Qwen3.5的S1特征开发测试通过率37.9%→28.6%。TBS末点+3.09pp的区间跨0。",
+      "motivation": "异步任务耗时不同，快任务可能挤占更新；难题全失败又没有有效相对优势。怎样兼顾新题探索、偶尔能解题的巩固和旧能力保持？",
+      "novelty": "作者主张：逐批混合配合异步调度与三池采样可扩展统一Agent。本站判断：最有用的是公开了滞后、回退和奖励漏洞；尚不能把整套收益归因于三池采样。",
+      "evidenceScope": "已读v1§3–4及附录A–G。方法为直接RL，不使用Hint生成教师；Claw训练的Qwen3.5-397B-A17B是奖励裁判，不能混称蒸馏teacher。Qwen3.5-27B S1含Claw/SWE/TMax共11086题，S2新增10452题并引入CodeWorld、累计21538；Qwen3.8-27B单阶段20875题。Qwen3.5训练数据的SWE/CodeWorld初筛各题8次由Qwen3.6-35B-A3B执行，TMax初筛用Qwen3.5，且TMax排除8/8全成题。Claw因部分分数可提供组内差异而均匀采样；其余三域TBS20/60/20，历史空时重新归一到25/75。曾成功池也保留SWE/CodeWorld的8/8全成题，入池后不退回未解池，只按近期成功率调权。历史池储存任务并重新生成，不是旧成功轨迹直接回放。每次32任务组×8rollout，组内有效轨迹RLOO；策略loss按轨迹内有效response token求和、再对256轨迹平均，故等实例配额非等token或梯度。S2每域8组，lr1e-6，KL/熵项关闭，另有MTP辅助loss0.1；Qwen3.5 rollout关闭thinking，Qwen3.8开启；最终评测均关闭thinking。S1/S2每3/2次更新同步，S2优先最新版本、同版最新完成；未完成轨迹同步时丢弃、已消费轨迹不重复训练。PPO参考快照取同步周期起点，可能不同于behavior policy，未额外加rollout重要性权重或拒绝采样，不能称严格当前策略采样。正文提出最大滞后和冷却机制，但已读附录未明确所有阈值数值。S1响应上限128K、S2一般96K，Claw缩为64K/50轮；SWE/TMax/CodeWorld每组80%完成后慢轨迹达到2400秒可截断，通常轨迹总限3600秒。超预算Claw得0，其他域验证当前状态得0.8r仍参加训练；服务失败同时排除RLOO基线及梯度。训练64设备另配推理32–40设备，3.8推理96；不能将固定更新数当固定端到端成本。主表Qwen3.5总体43.6→54.2(S1)→60.1(S2)，S1 FeatureBench Tests Passed37.9→28.6、S2恢复39.9，SWE67.4→67.0→68.6。3.8总体61.4→67.0，作者未舍入均值差约5.7pp。Overall为Claw-Eval全部3次都成功的Pass³、FeatureBench每题测试通过比例、另三项pass@1的等权均值；非同一种成功率。最终Claw-Anything288题一次、Claw-Eval161题三次、TB2.1共89题三次平均pass@1、FeatureBench fast100题一次、SWE500题一次。前沿模型TB/SWE借用外部榜单，框架不同，非本文等条件排序。混合相对三个专训模型，最佳已观察三项平均pass@1为68.41/64.28；计费输出token1.852B/1.821B，GPU小时12572.4/13090.6，均摊1.001B初筛与3992.6GPU小时并含重启；token只计训练消耗轨迹的模型输出，不含提示/工具观察。不是更少总生成token的证明。TBS FeatureBench step25为42.87 vs39.78，差3.09pp，配对95%CI[-2.21,8.51]；同期新解发现15 vs33，不能称TBS探索更多。交替更新Claw在step25坍塌而逐批混合稳定，只支持该异步配置；解释“因滞后而非梯度冲突”仍属机制猜测。附表13配对不确定性用Claw-Anything共同150题，故整体43.61→61.49和61.37→66.54不可混用主表288题分数；两整体区间排0但多单项跨0，不覆盖训练seed不确定性。日志中的response span与纯模型completion token并非同口径；早晚行为和挑选的成败轨迹是观察，不能把工具轮次/显式推理增减当因果。早期出现参考实现泄漏和奖励误判，作者报告清理Git/build等并多次回退修复，且收紧工具执行验证；本轮未独立审计任务污染或复现这些修复。",
+      "limits": "未复现；无Hint留删或Opus5.5/Fable5.2实验。异步轨迹含策略滞后；TBS末点收益置信区间跨0，混训也出现能力退化。综合分混合不同指标，不能当统一成功率。配额平衡的是实例数，token求和使长轨迹权重仍较大；稳定性消融未单独隔离滞后与梯度冲突。成本比较用最佳观察检查点，生成token不含提示/工具观察及全部被丢弃工作；统计区间是固定模型状态的任务抽样，不涵盖多训练seed。",
+      "method": [
+        "直接对Qwen3.5-27B做两阶段混合RL，后期增题并加入特征开发；Qwen3.8-27B另从四域同时起训，无Hint教师。",
+        "按域配额凑齐32题×8条轨迹后做RLOO，慢域多配并发；更新周期同步权重，检查版本并丢弃未完成或过旧轨迹。",
+        "采用TBS的域分未解/曾成功/历史三池，目标配额20/60/20；曾成功池偏重近期成功率25%的题，历史题重新rollout。",
+        "只在有效模型输出上更新；工具反馈作上下文。基础设施失败排除，预算耗尽另计罚分；Claw单独用均匀采样。",
+        "分开测综合分、逐域退化、交替/逐批混合消融和采样消融，并核生成token、GPU小时及工具执行失效。"
+      ],
+      "inspirations": [
+        "做混训消融时同时记录每域实例份额、输出token份额和behavior版本差；等题数并不自动等梯度贡献。",
+        "旧能力回放优先明确“旧题重新采样”还是“旧轨迹重用”，并给原可解题单独报告退化率与成本。",
+        "对未解题保留探索配额，同时报告新发现解数和下游成功率；发现更多训练解不必然换来更好测试成绩。"
+      ],
+      "reviewedAt": "2026-11-28T02:29:42.587463+00:00",
+      "sourceUrls": [
+        "https://arxiv.org/abs/2611.34703v1",
+        "https://arxiv.org/html/2611.34703v1"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.34703",
+      "status": "pending",
+      "checkedAt": "2026-11-28T02:29:24.914967+00:00"
+    }
+  },
+  {
+    "sourceType": "arxiv",
+    "category": "training",
+    "verified": true,
+    "originUrl": "https://arxiv.org/abs/2611.34671v1",
+    "url": "https://arxiv.org/abs/2611.34671v1",
+    "id": "live-dce328c745e6ee91",
+    "title": "DemoFoundry：先用代码生成可执行动作，再把仿真视频变成训练示范",
+    "summary": "编码Agent搭建Blender几何并写可执行机器人程序，仿真提供动作标签，微调视频渲染器补外观。相同50条轨迹仅换视觉后，π0.5三任务真机均值由27.8%到60.0%；50条真实示范为62.2%，不能据此宣称统计等价。",
+    "insight": "把代码中可控的几何、动作和镜头，与生成器补出的外观分开管理。保留同轨迹换视觉对照，分别验收程序执行、动作—视频一致性和真机表现；反馈修复后的配对数据可以训练渲染器，但不等于程序策略学会自行纠错。",
+    "limits": "三任务每条件各30次、未给重复训练方差；重建累计验收率不是新任务执行率。仅证明程序表示可改，未测用户编辑成功率；成片仍可能跨视图不一致。$0.765为假定单价下生成估算，不含渲染器训练。代码、LoRA与部分数据已公开，本站未运行。",
+    "organization": "香港中文大学（深圳）、DexForce AI、佛山大学",
+    "dateLabel": "2026-11-25 · 首发v1",
+    "evidence": "已读原文方法、实验及附录A–E；核固定代码、H3模型卡和数据清单，未执行或复现",
+    "originalTitle": "DemoFoundry: Toward Scalable Photorealistic Robot Data with Coding Agents and Generative Rendering",
+    "date": "2026-11-25",
+    "checkedAt": "2026-11-28T02:28:21.142259+00:00",
+    "originalDate": "2026-11-25",
+    "paperOriginalDate": "2026-11-25T16:37:10Z",
+    "paperUpdatedAt": "2026-11-25T16:37:10Z",
+    "updatedAt": "2026-11-25T16:37:10Z",
+    "firstSeenAt": "2026-11-26T10:00:02Z",
+    "lastSeenAt": "2026-11-27T22:00:01Z",
+    "dailySubmittedAt": "2026-11-26T00:00:00.000Z",
+    "tags": [
+      "Training / RL",
+      "程序化场景",
+      "代码生成示范",
+      "真实—代理视频对",
+      "仿真到真实",
+      "视觉与动作对齐"
+    ],
+    "authors": [
+      "Ruixiang Wang",
+      "Xinyue Yao",
+      "Xuanning Zhou",
+      "Yueci Deng",
+      "Yongyi Su",
+      "Kui Jia"
+    ],
+    "topics": [
+      "code2-3d",
+      "code2video"
+    ],
+    "featured": true,
+    "sourceId": "arxiv",
+    "sources": [
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.34671v1"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.34671"
+      },
+      {
+        "label": "arXiv v1 方法、实验与附录",
+        "url": "https://arxiv.org/html/2611.34671v1"
+      },
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.34671"
+      },
+      {
+        "label": "Project",
+        "url": "https://robbinw.github.io/DemoFoundry-Web/"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/RobbinW/DemoFoundry"
+      },
+      {
+        "label": "作者仓库固定 README 与发布清单",
+        "url": "https://github.com/RobbinW/DemoFoundry/blob/6c40eeb957347fcf38b0733f95fae8136b2d3772/README.md"
+      },
+      {
+        "label": "固定版本 Marvin 程序化示例说明",
+        "url": "https://github.com/RobbinW/DemoFoundry/blob/6c40eeb957347fcf38b0733f95fae8136b2d3772/examples/marvin/README.md"
+      },
+      {
+        "label": "固定版本任务程序",
+        "url": "https://github.com/RobbinW/DemoFoundry/blob/6c40eeb957347fcf38b0733f95fae8136b2d3772/examples/marvin/src/program.py"
+      },
+      {
+        "label": "固定版本 H3 渲染接口说明",
+        "url": "https://github.com/RobbinW/DemoFoundry/blob/6c40eeb957347fcf38b0733f95fae8136b2d3772/inference/h3/README.md"
+      },
+      {
+        "label": "公开 H3 LoRA 固定模型卡",
+        "url": "https://huggingface.co/RobbinWang123/demofoundry-h3/blob/b2d7893cefa36823ec5126686f89f5dfcab4373d/README.md"
+      },
+      {
+        "label": "公开数据固定版本卡片",
+        "url": "https://huggingface.co/datasets/RobbinWang123/DemoFoundry/blob/4f341b1c1848d792aa78ae6670f31eb81daf5750/README.md"
+      },
+      {
+        "label": "公开数据固定文件列表",
+        "url": "https://huggingface.co/datasets/RobbinWang123/DemoFoundry/tree/4f341b1c1848d792aa78ae6670f31eb81daf5750/data"
+      }
+    ],
+    "paperBrief": {
+      "tldr": "代码先生成几何和可执行动作，视频模型再补外观。同50条轨迹只换视觉，π0.5三任务真机均值27.8%→60.0%；50条真实示范62.2%，接近均值不等于统计等价。",
+      "motivation": "仿真能给可靠动作标签却有视觉差距，直接生成视频又难保证动作与接触一致。作者希望让程序决定可执行运动，再用配对训练的渲染器补真实外观，减少新任务人工遥操作。",
+      "novelty": "作者主张：把编码Agent的可执行交互与生成渲染连成机器人数据工厂。本站判断：关键是保留同轨迹动作标签并单独替换视觉；不是纯视频扩散，也未证明最终像素视频可直接编辑。",
+      "evidenceScope": "已核读原文§3–5与附录A–E的方法、实验、训练配置、成本和真机设置；arXiv v1首发为2026-11-25 16:37:10 UTC，HF日榜11/26提交不是首发日期。核作者项目与原论文互链、固定GitHub提交6c40eeb957347fcf38b0733f95fae8136b2d3772的README、Marvin说明/程序、H3推理说明及任务编程说明文件；这些文件仅当公开研究材料阅读，未执行其指令。GPT-6 Astra编码Agent先利用SAM3.1分割、深度/标定和桌面拟合，简单对象用参数形状与Blender Python，复杂对象可用SAM3D Objects，随后在MuJoCo或DexSim按原控制重放，由接触动力学产生物体运动。验收要求每个可见物体在各检查视角/关键帧的轮廓IoU≥0.80；失败定位对象、视角和帧，固定标定/分割/控制，仅修几何、尺度和初始位姿，初始尝试后最多3轮。附表S2在固定来源均衡episode集合上，累计验收率33.1%→35.3%→36.8%→39.7%，分母是全部尝试episode，未给具体N；独立留出关键帧的平均IoU .517→.601、轨迹误差1.370%→.956%图像对角线、运动相关.893→.932。这不是新任务控制成功率，验收门限与留出平均IoU不是同一分母。最终1884真实—代理视频对来自DROID、AgiBot World、RoboMIND和RH20T，1522.03分钟按相机视图求和，不等于独立episode总时长。配对样本96/2/2划分；文中未明确同episode跨视图是否分组隔离。渲染器以真实首帧和代理视频为条件进行flow-matching LoRA训练，骨干和视觉编码器冻结。LTX-2.5 22B dev继续Layout-to-Render LoRA v1.0、rank/alpha128、121帧，37000步；MiniMax-H3 Ref2VA rank/alpha32、Q/K/V/O、158帧24fps，7000步；两者batch32。H3训练启用冻结DeCFG修正、推理移除；这是该渲染训练配置，不是教师Hint撤除或语言模型跨学生迁移实验。新场景输入参考图、相机标定、机器人/夹爪规格和任务，不要求目标任务人工示范；控制程序调用抓取、IK、规划和控制，通过试执行及任务完成检查筛选成功轨迹。Qwen-Image2.1（可替GPT Image2.5）依据布局重制初始参考，渲染窗口以生成的上一末帧续接、一帧重叠；各相机独立生成但共享原仿真时间与动作标签。留出配对视频表2：发布版H3→适配H3的PSNR15.462→23.317，SSIM .5281→.8569，LPIPS .3294→.1242，FID121.01→52.88，FVD808.74→258.81；LTX对应PSNR16.989→22.092、FVD886.74→454.62。自家适配前后保持同骨干的输入/采样设置，不同系统原生接口仍不同。表3发布版H3→适配H3，5%阈值PCK93.55%→97.24%，RAFT归一化端点误差.461→.433，TRAJAN轨迹嵌入距离24.251→22.294，事件一致率80.95%→95.23%；事件需物体身份一致且标注时间差区间完全在±0.5秒内。正文未给这些事件/视频的确切统计N，不把百分比反推样本量。TianJi Marvin M6S真机测罐入托盘、方块堆叠、笔入笔筒3任务，每种策略/任务/训练条件各30次，按释放后稳定目标状态判成功，各任务独立训练。每任务50条相同仿真动作轨迹只换视觉：DP平均12.2%→46.7%，π0.5 27.8%→60.0%；每任务50条真实示范对应48.9%/62.2%。50真实+100生成为DP72.2%、π0.5 82.2%，50真实+100原始仿真为47.8%/63.3%，不同数据规模不能混作等数据比较。渲染器适配消融同50轨迹，π0.5由发布版H3的44.4%到适配版60.0%。固定策略初始化/优化预算，25/50/100/200生成示范的π0.5均值42.2/60.0/77.8/85.6%；图阴影是三任务极值范围，不是置信区间。成本设已训练渲染器可用，30秒3视图每示范估算9/N+0.765美元：9美元为观察到的单次Agent规划费用，15.3 GPU分钟按假定3美元/H100小时换算为0.765美元，包含窗口渲染、3次图像编辑及20%开销。未把渲染器训练等前置成本摊入；并非完整账单或端到端实测成本。颜色/背景/光照3种外观试验仅在罐入托盘任务，各30次，对应外观条件已在训练覆盖；不能视为未见外观的泛化证明。当前release不同于v1中的未来发布承诺：GitHub已含Marvin例子与H3推理；固定模型卡b2d7893cefa36823ec5126686f89f5dfcab4373d公开rank32、step7000 LoRA，并列权重文件和哈希，未下载验证权重。数据固定版本4f341b1c1848d792aa78ae6670f31eb81daf5750的API文件清单为946个real.mp4及946个sim.mp4，支持946对公开文件，不可宣称论文1884对已全部释出。代码MIT、模型卡为MiniMax-H3 Community、数据卡标MIT；只核声明，没有据代码许可推导所有上游数据权利。Marvin说明提供37.86秒三视图25fps代理与50Hz状态/动作、frame_state_index映射；默认render_wrist仅前6秒腕部，另有完整分窗接口。只读源文件/卡/清单，未运行仿真、渲染、训练或真机；项目明确展示包括训练episode，未把媒体展示当独立留出验证。",
+      "limits": "未验证教师Hint撤除或跨学生训练迁移；反馈主要修场景和程序，LoRA训练的是视频渲染器。只证明程序化表示可修改/重用，未测多轮用户编辑成功率，生成的最终像素视频不是可编辑3D场景。重建验收率以全部尝试episode为分母，但未给N、重复运行或区间，轮次增加也增加计算；不能单凭33.1→39.7认定反馈优于等预算重新采样，更不能当新任务Agent执行率。验收关键帧的逐对象IoU门限与留出关键帧平均IoU是不同口径，轮廓匹配也不保证完整3D几何、隐藏表面或接触参数准确。真机仅一个机器人平台、3任务、每条件每任务30次；未报告独立训练种子方差/显著性，60.0与62.2只是接近的均值，未做等效或非劣检验。不同生成数量与固定训练步数也不是等数据、等总成本。配对数据按样本划分，但原文未明确episode及多视角分组隔离；画质和动作一致性指标的有效视频/事件N未充分展开，无法据比例推断统计精度。自动指标不等于人审美学、逐帧物理正确或交互编辑质量。各视角分别生成，长序列逐窗续接，作者承认多视角不一致和长期漂移；沿用动作标签不自动保证生成像素与动作逐帧对齐。外观鲁棒性只在训练已覆盖条件及一个任务测过。成本9/N+0.765美元依赖复用已训练渲染器、假定H100单价和20%开销估计，未包含完整渲染器训练/配对构建和全部失败重试账单；与文献人工成本对照非同场实测。公开仓库/LoRA/946对文件不等于完整1884对数据及全部实验流程均已重现。当前可见Marvin命令只是提供运行接口，本站未执行，不能宣称复现成功；默认6秒腕部示例不代表完整三视图全部成片已验证。项目媒体包含训练episode，本站未独立播放/审查所有媒体或下载大文件。verified仅指公开来源核验，不代表实验复现、性能背书或上游数据许可链已完整审计。",
+      "method": [
+        "从4个机器人数据源取观测与控制；Agent写Blender几何，复杂物体可用SAM3D，再在物理仿真中重放固定控制，对齐真实视频。",
+        "按物体、视角和关键帧检查轮廓，最多3轮反馈修几何/初始位姿；通过者形成1884个真实—代理视频对，按视角合计1522.03分钟。",
+        "冻结视频骨干，以代理视频和真实首帧为条件训练LoRA；分别适配LTX-2.5与H3，用配对真实视频监督外观渲染。",
+        "新场景给参考图、相机/机器人规格和任务；Agent写可查询物体位姿的控制程序，试执行、修错并筛出成功轨迹，再随机化布局。",
+        "同一次仿真导出视频、状态和动作；按视角分窗生成真实外观视频，连同原动作训练DP/π0.5，再分开测画质、动作对齐与真机成功。"
+      ],
+      "inspirations": [
+        "把场景几何、可执行控制和生成外观分开存档，用同一动作轨迹只替换视觉做对照；同时查执行成功、事件时序和下游收益，避免画质改善掩盖动作失配。",
+        "将反馈定位到物体、视角和关键帧，固定相机与控制再改几何；同时报告全部尝试数、各轮新增验收数、失败成本和独立关键帧质量。",
+        "可编辑性先落在程序参数与对象关系上；另设多轮用户修改测试，并按轨迹/视角分组划分训练与测试，独立测跨视图一致性、长视频漂移和总成本。"
+      ],
+      "reviewedAt": "2026-11-28T02:28:21.142259+00:00",
+      "sourceUrls": [
+        "https://huggingface.co/papers/2611.34671",
+        "https://arxiv.org/abs/2611.34671",
+        "https://robbinw.github.io/DemoFoundry-Web/",
+        "https://arxiv.org/abs/2611.34671v1",
+        "https://github.com/RobbinW/DemoFoundry",
+        "https://arxiv.org/html/2611.34671v1",
+        "https://github.com/RobbinW/DemoFoundry/blob/6c40eeb957347fcf38b0733f95fae8136b2d3772/README.md",
+        "https://github.com/RobbinW/DemoFoundry/blob/6c40eeb957347fcf38b0733f95fae8136b2d3772/examples/marvin/README.md",
+        "https://github.com/RobbinW/DemoFoundry/blob/6c40eeb957347fcf38b0733f95fae8136b2d3772/examples/marvin/src/program.py",
+        "https://github.com/RobbinW/DemoFoundry/blob/6c40eeb957347fcf38b0733f95fae8136b2d3772/inference/h3/README.md",
+        "https://huggingface.co/RobbinWang123/demofoundry-h3/blob/b2d7893cefa36823ec5126686f89f5dfcab4373d/README.md",
+        "https://huggingface.co/datasets/RobbinWang123/DemoFoundry/blob/4f341b1c1848d792aa78ae6670f31eb81daf5750/README.md",
+        "https://huggingface.co/datasets/RobbinWang123/DemoFoundry/tree/4f341b1c1848d792aa78ae6670f31eb81daf5750/data"
+      ]
+    },
+    "translation": {
+      "provider": "幻觉翻译",
+      "url": "https://hjfy.top/arxiv/2611.34671",
+      "status": "pending",
+      "checkedAt": "2026-11-28T02:25:14.529040+00:00"
+    }
   }
 ]

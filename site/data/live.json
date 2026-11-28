@@ -983,6 +983,61 @@
   },
   {
     "sourceType": "huggingface",
+    "category": "training",
+    "verified": false,
+    "originUrl": "https://huggingface.co/papers/2611.34671",
+    "url": "https://huggingface.co/papers/2611.34671",
+    "id": "live-dce328c745e6ee91",
+    "title": "DemoFoundry: Toward Scalable Photorealistic Robot Data with Coding Agents and Generative Rendering",
+    "summary": "Scaling robot learning requires demonstrations that combine realistic visual observations with reliable action supervision. Simulation-based synthesis faces a substantial visual gap relative to real environments, while video-only generation struggles to maintain physically consistent interactions and provide aligned action labels. We present DemoFoundry, an automated framework that couples coding agents with generative rendering to synthesize photorealistic and physically grounded robot demonstrations. Coding agents both construct aligned real--proxy video pairs from existing robot episodes to train a video renderer and write executable…",
+    "insight": "自动收录，待人工解读。",
+    "limits": "依据公开元数据自动筛选，尚未阅读全文或复现实验；分类可能需要调整。",
+    "dateLabel": "2026-11-25",
+    "evidence": "自动收录·待解读",
+    "date": "2026-11-25",
+    "checkedAt": "2026-11-27T22:00:01Z",
+    "updatedAt": "2026-11-25T16:37:10Z",
+    "firstSeenAt": "2026-11-26T10:00:02Z",
+    "lastSeenAt": "2026-11-27T22:00:01Z",
+    "dailySubmittedAt": "2026-11-26T00:00:00.000Z",
+    "tags": [
+      "Training / RL"
+    ],
+    "authors": [
+      "Ruixiang Wang",
+      "Xinyue Yao",
+      "Xuanning Zhou",
+      "Yueci Deng",
+      "Yongyi Su",
+      "Kui Jia"
+    ],
+    "topics": [],
+    "sourceId": "hf_papers",
+    "sources": [
+      {
+        "label": "Hugging Face · Daily Papers",
+        "url": "https://huggingface.co/papers/2611.34671"
+      },
+      {
+        "label": "arXiv 论文",
+        "url": "https://arxiv.org/abs/2611.34671"
+      },
+      {
+        "label": "Project",
+        "url": "https://robbinw.github.io/DemoFoundry-Web/"
+      },
+      {
+        "label": "arXiv · Agentic 论文",
+        "url": "https://arxiv.org/abs/2611.34671v1"
+      },
+      {
+        "label": "Code",
+        "url": "https://github.com/RobbinW/DemoFoundry"
+      }
+    ]
+  },
+  {
+    "sourceType": "huggingface",
     "category": "distillation",
     "verified": false,
     "originUrl": "https://huggingface.co/papers/2611.34756",
